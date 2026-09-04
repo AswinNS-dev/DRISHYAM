@@ -6,8 +6,14 @@ import Dashboard from "./pages/Dashboard";
 import NetworkIntelligence from "./pages/NetworkIntelligence";
 import Entities from "./pages/Entities";
 import Cases from "./pages/Cases";
+import FIRs from "./pages/FIRs";
+import Intelligence from "./pages/Intelligence";
+import Timeline from "./pages/Timeline";
+import Locations from "./pages/Locations";
 import DataImport from "./pages/DataImport";
 import Alerts from "./pages/Alerts";
+import Admin from "./pages/Admin";
+import Settings from "./pages/Settings";
 
 export default function App() {
   return (
@@ -25,8 +31,14 @@ export default function App() {
           <Route path="/network" element={<NetworkIntelligence />} />
           <Route path="/entities" element={<Entities />} />
           <Route path="/cases" element={<Cases />} />
+          <Route path="/firs" element={<FIRs />} />
+          <Route path="/intelligence" element={<Intelligence />} />
+          <Route path="/timeline" element={<Timeline />} />
+          <Route path="/locations" element={<Locations />} />
           <Route path="/data-import" element={<DataImport />} />
           <Route path="/alerts" element={<Alerts />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/settings" element={<Settings />} />
         </Route>
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
