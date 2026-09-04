@@ -36,19 +36,22 @@ network that investigators can explore, analyze, and act on.
   triggers, views, and seed data, with a zero-config SQLite fallback so the
   whole thing runs immediately without any cloud setup
 
-## What's NOT yet built (scoped out of this pass — see note below)
+## Features & Pages Overview
 
-`/firs`, `/intelligence`, `/timeline`, `/locations`, `/admin`, `/settings` as
-separate pages; Neo4j adapter (intentionally optional per spec — the graph
-is derived from Postgres/SQLite via NetworkX); geospatial map view; PDF/DOCX
-report file export (report *content* generation works, file rendering
-doesn't yet); real LLM provider wiring (the abstraction point exists in
-`backend/app/ai/assistant.py::_call_llm_provider`, but needs your API key).
-
-This was a deliberate scope cut to ship a fully-working, fully-tested core
-rather than a wider surface of half-wired screens — every page and button
-that exists does real work end-to-end. Ask and I'll build out any of the
-above next.
+- **Cyberpunk Intelligence UI**: Glassmorphic HUD theme, glowing neon accents, particle network background, animated telemetry counters, and Recharts analytics.
+- **Dashboard (`/dashboard`)**: Tactical intelligence overview, animated metric counters, entity radar, risk distribution breakdown, and activity sparklines.
+- **Network Intel (`/network`)**: High-performance Canvas 2D force simulation graph, minimap, type-coded neon nodes, pulsating selection rings, path tracer particles, tactical dossier drawer, and evidence-grounded AI assistant.
+- **Entities (`/entities`)**: Comprehensive entity registry with type filter tabs, risk badges, search, and slide-out 360-degree tactical dossiers.
+- **Cases (`/cases`)**: Case management workspace linking FIRs, accused entities, and sub-networks.
+- **FIRs (`/firs`)**: First Information Report browser with inline NLP entity highlighting (persons, phones, vehicles, locations).
+- **Intelligence (`/intelligence`)**: Tri-tab operational intelligence center featuring Leads, Classified Reports, and Hidden Multi-Hop Links.
+- **Timeline (`/timeline`)**: Chronological event stream visualizing case filings, communications, and movements along a vertical neon timeline.
+- **Locations (`/locations`)**: Tactical radar hotspot monitor displaying coordinates, threat scores, and territorial crime cluster correlation.
+- **Data Import (`/data-import`)**: Multi-source ingestion workspace with live NLP entity extraction and confidence metrics.
+- **Alerts (`/alerts`)**: Critical anomaly feeds, cross-district syndicate alerts, and bridge entity detections.
+- **Admin (`/admin`)**: RBAC user management, system telemetry indicators, and tamper-evident audit log ledger.
+- **Settings (`/settings`)**: System calibration panel with AI provider configuration, confidence thresholds, and PII redaction settings.
+- **Tactical Dossier Export**: Formatted, printable classified dossiers generated on demand.
 
 ## Quickstart (zero setup)
 

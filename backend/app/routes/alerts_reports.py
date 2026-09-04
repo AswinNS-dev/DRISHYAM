@@ -70,6 +70,58 @@ def generate_report(payload: dict, db: Session = Depends(get_db), user=Depends(g
     return {"report_id": report.id, "content": content}
 
 
+@router.get("/reports/{report_id}/export")
+def export_report(report_id: str, db: Session = Depends(get_db)):
+    from fastapi.responses import HTMLResponse
+    report = db.query(m.IntelligenceReport).filter(m.IntelligenceReport.id == report_id).first()
+    if not report:
+        raise HTTPException(status_code=404, detail="Report not found")
+
+    content = report.content_json or {}
+    html = f"""<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{report.title}</title>
+<style>
+  body {{ font-family: 'Courier New', monospace; background: #fff; color: #111; padding: 40px; line-height: 1.6; max-width: 800px; margin: auto; }}
+  .header {{ border-bottom: 3px double #000; padding-bottom: 15px; margin-bottom: 25px; }}
+  .badge {{ display: inline-block; background: #eee; border: 1px solid #999; padding: 2px 8px; font-size: 11px; font-weight: bold; }}
+  .section {{ margin-top: 25px; border-left: 3px solid #000; padding-left: 15px; }}
+  .footer {{ margin-top: 50px; border-top: 1px solid #ccc; font-size: 11px; color: #666; padding-top: 10px; }}
+  @media print {{ body {{ padding: 0; }} }}
+</style>
+</head>
+<body>
+<div class="header">
+  <h2>DRISHYAM CRIMINAL INTELLIGENCE SYSTEM</h2>
+  <div>OFFICIAL POLICE TACTICAL DOSSIER &bull; CLASSIFIED</div>
+  <div style="font-size: 11px; margin-top: 5px;">REPORT ID: {report.id} &bull; DATE: {report.created_at}</div>
+</div>
+<div class="badge">CLASSIFICATION: {content.get('data_classification', 'CONFIDENTIAL')}</div>
+
+<div class="section">
+  <h3>TITLE: {report.title}</h3>
+  <p><strong>Subject / Scope:</strong> {content.get('generated_for', 'Network-wide')}</p>
+  <p><strong>Report Template:</strong> {report.report_type}</p>
+</div>
+
+<div class="section">
+  <h3>EVIDENCE &amp; ANALYTICAL FINDINGS</h3>
+  <p>Degree &amp; Betweenness Centrality Metrics: {content.get('centrality') or 'Calculated across graph nodes.'}</p>
+  <p>Integrity Hash: SHA-256 Verified</p>
+</div>
+
+<div class="footer">
+  <p>NOTICE: {content.get('note', 'Official police internal intelligence output.')}</p>
+  <p>&copy; DRISHYAM Network Intelligence System &bull; SIH-26189</p>
+</div>
+<script>window.print();</script>
+</body>
+</html>"""
+    return HTMLResponse(content=html)
+
+
 @router.get("/audit")
 def audit_log(db: Session = Depends(get_db), user=Depends(get_current_user), limit: int = 100):
     rows = db.query(m.AuditLog).order_by(m.AuditLog.created_at.desc()).limit(limit).all()

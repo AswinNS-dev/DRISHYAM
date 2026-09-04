@@ -49,6 +49,48 @@ export const api = {
   caseDetail: (id: string) => request(`/api/v2/cases/${id}`),
   caseNetwork: (id: string) => request(`/api/v2/cases/${id}/network`),
 
+  // FIRs
+  firs: (q = "", caseId = "") => {
+    const params: Record<string, string> = {};
+    if (q) params.q = q;
+    if (caseId) params.case_id = caseId;
+    return request(`/api/v2/firs?${new URLSearchParams(params)}`);
+  },
+  firDetail: (id: string) => request(`/api/v2/firs/${id}`),
+  createFir: (payload: { fir_number: string; narrative_text: string; case_id?: string; location_name?: string; district?: string }) =>
+    request("/api/v2/firs", { method: "POST", body: JSON.stringify(payload) }),
+
+  // Intelligence
+  intelligenceLeads: () => request("/api/v2/intelligence/leads"),
+  intelligenceReports: () => request("/api/v2/intelligence/reports"),
+  intelligenceReportDetail: (id: string) => request(`/api/v2/intelligence/reports/${id}`),
+  intelligenceHiddenLinks: () => request("/api/v2/intelligence/hidden-links"),
+
+  // Timeline
+  timeline: (params: { entity_id?: string; event_type?: string; limit?: number } = {}) => {
+    const q: Record<string, string> = {};
+    if (params.entity_id) q.entity_id = params.entity_id;
+    if (params.event_type) q.event_type = params.event_type;
+    if (params.limit) q.limit = params.limit.toString();
+    return request(`/api/v2/timeline?${new URLSearchParams(q)}`);
+  },
+
+  // Locations / Map
+  locations: () => request("/api/v2/locations"),
+  locationDetail: (id: string) => request(`/api/v2/locations/${id}`),
+
+  // Admin
+  adminUsers: () => request("/api/v2/admin/users"),
+  createAdminUser: (payload: any) => request("/api/v2/admin/users", { method: "POST", body: JSON.stringify(payload) }),
+  updateAdminRole: (userId: string, role: string) =>
+    request(`/api/v2/admin/users/${userId}/role`, { method: "PATCH", body: JSON.stringify({ role }) }),
+  adminTelemetry: () => request("/api/v2/admin/system"),
+  adminAudit: () => request("/api/v2/admin/audit"),
+
+  // Settings
+  settings: () => request("/api/v2/settings"),
+  updateSettings: (payload: any) => request("/api/v2/settings", { method: "POST", body: JSON.stringify(payload) }),
+
   alerts: () => request("/api/v2/alerts"),
 
   importFir: (text: string, caseId?: string) =>
