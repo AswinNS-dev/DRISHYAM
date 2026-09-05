@@ -19,29 +19,15 @@ type SimNode = GraphNode & { x: number; y: number; vx: number; vy: number; index
 type SimLink = { source: SimNode; target: SimNode; relationship_type: string; confidence_score: number; id?: string };
 
 const TYPE_COLORS: Record<string, string> = {
-  PERSON: "#5b8def",
-  PHONE: "#2dd4bf",
-  VEHICLE: "#fbbf24",
-  LOCATION: "#a855f7",
-  ORGANIZATION: "#ff3b5c",
-  GANG: "#ff3b5c",
-  BANK_ACCOUNT: "#34d399",
+  PERSON: "#3b82f6",
+  PHONE: "#0ea5e9",
+  VEHICLE: "#f59e0b",
+  LOCATION: "#8b5cf6",
+  ORGANIZATION: "#ef4444",
+  GANG: "#ef4444",
+  BANK_ACCOUNT: "#10b981",
   CASE: "#64748b",
 };
-
-const RISK_GLOW: Record<string, { color: string; intensity: number }> = {
-  high: { color: "rgba(255,59,92,", intensity: 0.6 },
-  medium: { color: "rgba(251,191,36,", intensity: 0.4 },
-  low: { color: "rgba(45,212,191,", intensity: 0.2 },
-  unknown: { color: "rgba(45,212,191,", intensity: 0.1 },
-};
-
-function hexToRgba(hex: string, alpha: number): string {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `rgba(${r},${g},${b},${alpha})`;
-}
 
 export default function NetworkGraph({
   nodes, edges, onSelect, onSelectEdge, highlightPath,
@@ -63,8 +49,6 @@ export default function NetworkGraph({
   const selectedRef = useRef<SimNode | null>(null);
   const selectedEdgeRef = useRef<SimLink | null>(null);
   const animRef = useRef(0);
-  const pulseRef = useRef(0);
-  const particleRef = useRef(0);
   const sizeRef = useRef({ w: 900, h: 640 });
   const dragRef = useRef<{ node: SimNode | null; active: boolean }>({ node: null, active: false });
   const highlightSet = useRef(new Set<string>());
@@ -73,7 +57,6 @@ export default function NetworkGraph({
     highlightSet.current = new Set(highlightPath || []);
   }, [highlightPath]);
 
-  // Build simulation once and update on data change
   useEffect(() => {
     if (!containerRef.current || !canvasRef.current || nodes.length === 0) return;
 
@@ -89,7 +72,6 @@ export default function NetworkGraph({
     canvas.style.width = w + "px";
     canvas.style.height = h + "px";
 
-    // Build node/link arrays
     const nodeMap = new Map<string, SimNode>();
     nodes.forEach((n) => {
       nodeMap.set(n.id, {
@@ -114,195 +96,127 @@ export default function NetworkGraph({
     nodesRef.current = simNodes;
     linksRef.current = simLinks;
 
-    // Stop previous simulation
     if (simRef.current) simRef.current.stop();
 
     const sim = d3.forceSimulation<SimNode>(simNodes)
-      .force("link", d3.forceLink<SimNode, SimLink>(simLinks).id((d) => d.id).distance(80).strength(0.3))
-      .force("charge", d3.forceManyBody().strength(-150).distanceMax(400))
+      .force("link", d3.forceLink<SimNode, SimLink>(simLinks).id((d) => d.id).distance(85).strength(0.3))
+      .force("charge", d3.forceManyBody().strength(-160).distanceMax(420))
       .force("center", d3.forceCenter(w / 2, h / 2).strength(0.05))
-      .force("collide", d3.forceCollide<SimNode>(16).strength(0.6))
+      .force("collide", d3.forceCollide<SimNode>(18).strength(0.6))
       .force("x", d3.forceX(w / 2).strength(0.02))
       .force("y", d3.forceY(h / 2).strength(0.02))
       .alphaDecay(0.02)
       .velocityDecay(0.4);
 
-    // Warm-up: run 200 ticks silently before rendering
     sim.stop();
     for (let i = 0; i < 200; i++) sim.tick();
     sim.alpha(0.3).restart();
 
     simRef.current = sim;
 
-    sim.on("tick", () => { /* Canvas is redrawn in the animation loop */ });
-
     return () => {
       sim.stop();
     };
   }, [nodes, edges]);
 
-  // Rendering loop
+  // Main Canvas Render Loop
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    const dpr = window.devicePixelRatio || 1;
 
     const draw = () => {
       const { w, h } = sizeRef.current;
-      ctx.save();
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, w, h);
+      const dpr = window.devicePixelRatio || 1;
+      ctx.clearRect(0, 0, w * dpr, h * dpr);
 
-      // Apply zoom transform
+      ctx.save();
+      ctx.scale(dpr, dpr);
+
       const t = transformRef.current;
       ctx.translate(t.x, t.y);
       ctx.scale(t.k, t.k);
 
-      const simNodes = nodesRef.current;
+      // Draw Subtle Background Grid
+      ctx.strokeStyle = "rgba(148, 163, 184, 0.05)";
+      ctx.lineWidth = 1 / t.k;
+      const gridSize = 40;
+      const startX = -t.x / t.k - 100;
+      const startY = -t.y / t.k - 100;
+      const endX = (w - t.x) / t.k + 100;
+      const endY = (h - t.y) / t.k + 100;
+
+      ctx.beginPath();
+      for (let x = Math.floor(startX / gridSize) * gridSize; x < endX; x += gridSize) {
+        ctx.moveTo(x, startY);
+        ctx.lineTo(x, endY);
+      }
+      for (let y = Math.floor(startY / gridSize) * gridSize; y < endY; y += gridSize) {
+        ctx.moveTo(startX, y);
+        ctx.lineTo(endX, y);
+      }
+      ctx.stroke();
+
+      // Draw Links
       const simLinks = linksRef.current;
-      const hl = highlightSet.current;
-      const hovered = hoveredRef.current;
-      const selected = selectedRef.current;
-
-      pulseRef.current += 0.02;
-      particleRef.current += 0.008;
-      const pulseVal = Math.sin(pulseRef.current) * 0.5 + 0.5;
-
-      // ── Draw edges ──
       for (const link of simLinks) {
-        const s = link.source;
-        const tgt = link.target;
-        const isHighlighted = hl.has(s.id) && hl.has(tgt.id);
-        const isHoveredEdge = hovered && (s.id === hovered.id || tgt.id === hovered.id);
+        const isSelected = selectedEdgeRef.current === link;
+        const isPathLink = highlightSet.current.has(link.source.id) && highlightSet.current.has(link.target.id);
 
-        if (isHighlighted) {
-          // Animated glow edge
-          ctx.save();
-          ctx.beginPath();
-          ctx.moveTo(s.x, s.y);
-          ctx.lineTo(tgt.x, tgt.y);
-          ctx.strokeStyle = `rgba(0, 255, 255, ${0.5 + pulseVal * 0.3})`;
-          ctx.lineWidth = 2.5;
-          ctx.shadowColor = "rgba(0, 255, 255, 0.5)";
-          ctx.shadowBlur = 12;
-          ctx.setLineDash([6, 4]);
-          ctx.lineDashOffset = -particleRef.current * 200;
-          ctx.stroke();
-          ctx.restore();
+        ctx.beginPath();
+        ctx.moveTo(link.source.x, link.source.y);
+        ctx.lineTo(link.target.x, link.target.y);
 
-          // Particle traveling along edge
-          const progress = (particleRef.current * 3) % 1;
-          const px = s.x + (tgt.x - s.x) * progress;
-          const py = s.y + (tgt.y - s.y) * progress;
-          ctx.beginPath();
-          ctx.arc(px, py, 3, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(0, 255, 255, 0.8)";
-          ctx.fill();
+        if (isPathLink) {
+          ctx.strokeStyle = "#38bdf8";
+          ctx.lineWidth = 3 / t.k;
+        } else if (isSelected) {
+          ctx.strokeStyle = "#2563eb";
+          ctx.lineWidth = 2.5 / t.k;
         } else {
-          ctx.beginPath();
-          ctx.moveTo(s.x, s.y);
-          ctx.lineTo(tgt.x, tgt.y);
-          ctx.strokeStyle = isHoveredEdge
-            ? "rgba(45, 212, 191, 0.3)"
-            : `rgba(45, 212, 191, ${Math.max(0.04, link.confidence_score * 0.12)})`;
-          ctx.lineWidth = isHoveredEdge ? 1.2 : 0.6;
-          ctx.stroke();
+          ctx.strokeStyle = "rgba(148, 163, 184, 0.22)";
+          ctx.lineWidth = 1.2 / t.k;
         }
+        ctx.stroke();
       }
 
-      // ── Draw nodes ──
-      for (const node of simNodes) {
-        const color = TYPE_COLORS[node.type] || "#8b96ac";
-        const isSelected = selected?.id === node.id;
-        const isHovered = hovered?.id === node.id;
-        const isOnPath = hl.has(node.id);
-        const isNeighbor = selected && simLinks.some(
-          (l) => (l.source.id === selected.id && l.target.id === node.id) ||
-                 (l.target.id === selected.id && l.source.id === node.id)
-        );
+      // Draw Nodes
+      const simNodes = nodesRef.current;
+      for (const n of simNodes) {
+        const isHovered = hoveredRef.current?.id === n.id;
+        const isSelected = selectedRef.current?.id === n.id;
+        const isPath = highlightSet.current.has(n.id);
+        const baseColor = TYPE_COLORS[n.type] || "#94a3b8";
 
-        const baseRadius = node.type === "PERSON" ? 6 : 5;
-        const r = isSelected ? baseRadius + 4 : isHovered ? baseRadius + 2 : isOnPath ? baseRadius + 2 : baseRadius;
+        let radius = 7;
+        if (n.type === "PERSON") radius = 9;
+        if (n.type === "CASE" || n.type === "GANG") radius = 10;
+        if (isHovered || isSelected || isPath) radius += 2.5;
 
-        // Risk glow
-        const risk = RISK_GLOW[node.risk_band || "unknown"] || RISK_GLOW.unknown;
-        if (risk.intensity > 0.15 || isSelected || isOnPath) {
-          ctx.save();
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, r + 8, 0, Math.PI * 2);
-          const glowAlpha = isSelected ? 0.25 + pulseVal * 0.15 : isOnPath ? 0.2 : risk.intensity * 0.15;
-          ctx.fillStyle = isOnPath
-            ? `rgba(0, 255, 255, ${glowAlpha})`
-            : `${risk.color}${glowAlpha})`;
-          ctx.fill();
-          ctx.restore();
-        }
-
-        // Selection ring (animated pulse)
-        if (isSelected) {
-          ctx.save();
-          ctx.beginPath();
-          const ringR = r + 6 + pulseVal * 3;
-          ctx.arc(node.x, node.y, ringR, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(0, 255, 255, ${0.3 + pulseVal * 0.2})`;
-          ctx.lineWidth = 1.5;
-          ctx.stroke();
-          ctx.restore();
-        }
-
-        // Node circle
+        // Base node circle
         ctx.beginPath();
-        ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
-        ctx.fillStyle = isOnPath ? "#0ff" : color;
+        ctx.arc(n.x, n.y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = baseColor;
         ctx.fill();
 
-        // Border
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
-        ctx.strokeStyle = isSelected
-          ? "rgba(0, 255, 255, 0.8)"
-          : isHovered ? "rgba(255,255,255,0.5)" : "rgba(6, 9, 15, 0.6)";
-        ctx.lineWidth = isSelected ? 2 : 1;
+        // High contrast border
+        ctx.strokeStyle = isSelected || isPath ? "#ffffff" : "rgba(24, 24, 27, 0.85)";
+        ctx.lineWidth = isSelected || isPath ? 2.5 / t.k : 1.5 / t.k;
         ctx.stroke();
 
-        // Labels (only for selected, hovered, neighbors, and highlighted path)
-        if (isSelected || isHovered || isOnPath || isNeighbor) {
-          ctx.save();
-          ctx.font = `${isSelected || isHovered ? "600" : "400"} ${isSelected ? 11 : 10}px 'Inter', sans-serif`;
-          ctx.textAlign = "left";
-          ctx.textBaseline = "middle";
-
-          // Label background
-          const text = node.name;
-          const metrics = ctx.measureText(text);
-          const lx = node.x + r + 6;
-          const ly = node.y;
-          const padding = 4;
-
-          ctx.fillStyle = "rgba(6, 9, 15, 0.85)";
-          ctx.beginPath();
-          ctx.roundRect(
-            lx - padding, ly - 8 - padding / 2,
-            metrics.width + padding * 2, 16 + padding,
-            4
-          );
-          ctx.fill();
-
-          ctx.fillStyle = isSelected || isHovered
-            ? "#f0f4ff"
-            : isOnPath ? "#0ff" : "rgba(139, 150, 172, 0.9)";
-          ctx.fillText(text, lx, ly);
-          ctx.restore();
+        // Node Label
+        if (t.k > 0.6 || isHovered || isSelected || isPath) {
+          ctx.font = `${11 / t.k}px Inter, sans-serif`;
+          ctx.fillStyle = isSelected || isPath ? "#ffffff" : "#cbd5e1";
+          ctx.textAlign = "center";
+          ctx.fillText(n.name, n.x, n.y + radius + 11 / t.k);
         }
       }
 
       ctx.restore();
 
-      // ── Minimap ──
       drawMinimap();
-
       animRef.current = requestAnimationFrame(draw);
     };
 
@@ -310,28 +224,26 @@ export default function NetworkGraph({
     return () => cancelAnimationFrame(animRef.current);
   }, []);
 
-  // Minimap drawing
+  // Minimap
   const drawMinimap = useCallback(() => {
     const minimap = minimapRef.current;
     if (!minimap) return;
     const mctx = minimap.getContext("2d");
     if (!mctx) return;
 
-    const mw = 150;
-    const mh = 100;
+    const mw = 140;
+    const mh = 90;
     mctx.clearRect(0, 0, mw, mh);
 
-    // Background
-    mctx.fillStyle = "rgba(6, 9, 15, 0.9)";
+    mctx.fillStyle = "#0c1322";
     mctx.fillRect(0, 0, mw, mh);
-    mctx.strokeStyle = "rgba(45, 212, 191, 0.15)";
+    mctx.strokeStyle = "rgba(148, 163, 184, 0.2)";
     mctx.lineWidth = 1;
     mctx.strokeRect(0, 0, mw, mh);
 
     const simNodes = nodesRef.current;
     if (simNodes.length === 0) return;
 
-    // Calculate bounds
     let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
     for (const n of simNodes) {
       if (n.x < minX) minX = n.x;
@@ -340,25 +252,23 @@ export default function NetworkGraph({
       if (n.y > maxY) maxY = n.y;
     }
 
-    const padding = 40;
+    const padding = 30;
     const rangeX = (maxX - minX) || 1;
     const rangeY = (maxY - minY) || 1;
     const scale = Math.min((mw - padding) / rangeX, (mh - padding) / rangeY);
     const ox = (mw - rangeX * scale) / 2 - minX * scale;
     const oy = (mh - rangeY * scale) / 2 - minY * scale;
 
-    // Draw dots
     for (const n of simNodes) {
       const mx = n.x * scale + ox;
       const my = n.y * scale + oy;
-      const color = TYPE_COLORS[n.type] || "#8b96ac";
+      const color = TYPE_COLORS[n.type] || "#94a3b8";
       mctx.beginPath();
-      mctx.arc(mx, my, 1.2, 0, Math.PI * 2);
-      mctx.fillStyle = highlightSet.current.has(n.id) ? "#0ff" : color;
+      mctx.arc(mx, my, 1.5, 0, Math.PI * 2);
+      mctx.fillStyle = highlightSet.current.has(n.id) ? "#38bdf8" : color;
       mctx.fill();
     }
 
-    // Viewport rectangle
     const { w, h } = sizeRef.current;
     const t = transformRef.current;
     const vx = (-t.x / t.k) * scale + ox;
@@ -366,30 +276,29 @@ export default function NetworkGraph({
     const vw = (w / t.k) * scale;
     const vh = (h / t.k) * scale;
 
-    mctx.strokeStyle = "rgba(0, 255, 255, 0.4)";
+    mctx.strokeStyle = "rgba(56, 189, 248, 0.6)";
     mctx.lineWidth = 1;
     mctx.strokeRect(vx, vy, vw, vh);
   }, []);
 
-  // Zoom & Pan via D3 zoom
+  // Zoom & Pan
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const zoom = d3.zoom<HTMLCanvasElement, unknown>()
-      .scaleExtent([0.1, 6])
+      .scaleExtent([0.15, 5])
       .on("zoom", (event) => {
         transformRef.current = event.transform;
       });
 
     d3.select(canvas).call(zoom);
-
     return () => {
       d3.select(canvas).on(".zoom", null);
     };
   }, []);
 
-  // Mouse interactions
+  // Mouse selection & dragging
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -399,7 +308,7 @@ export default function NetworkGraph({
       const x = (mx - t.x) / t.k;
       const y = (my - t.y) / t.k;
       let closest: SimNode | null = null;
-      let closestDist = 20;
+      let closestDist = 22;
       for (const n of nodesRef.current) {
         const d = Math.sqrt((n.x - x) ** 2 + (n.y - y) ** 2);
         if (d < closestDist) {
@@ -449,32 +358,11 @@ export default function NetworkGraph({
       dragRef.current = { node: null, active: false };
     };
 
-    const getEdgeAt = (mx: number, my: number): SimLink | null => {
-      const t = transformRef.current;
-      const x = (mx - t.x) / t.k;
-      const y = (my - t.y) / t.k;
-      let closest: SimLink | null = null;
-      let closestDist = 8;
-      for (const link of linksRef.current) {
-        const x1 = link.source.x, y1 = link.source.y;
-        const x2 = link.target.x, y2 = link.target.y;
-        const l2 = (x2 - x1) ** 2 + (y2 - y1) ** 2;
-        if (l2 === 0) continue;
-        const tt = Math.max(0, Math.min(1, ((x - x1) * (x2 - x1) + (y - y1) * (y2 - y1)) / l2));
-        const px = x1 + tt * (x2 - x1);
-        const py = y1 + tt * (y2 - y1);
-        const dist = Math.sqrt((x - px) ** 2 + (y - py) ** 2);
-        if (dist < closestDist) {
-          closestDist = dist;
-          closest = link;
-        }
-      }
-      return closest;
-    };
-
     const handleClick = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
-      const node = getNodeAt(e.clientX - rect.left, e.clientY - rect.top);
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      const node = getNodeAt(mx, my);
       if (node) {
         selectedRef.current = node;
         selectedEdgeRef.current = null;
@@ -482,25 +370,24 @@ export default function NetworkGraph({
         return;
       }
 
-      const edge = getEdgeAt(e.clientX - rect.left, e.clientY - rect.top);
-      if (edge && onSelectEdge) {
-        selectedEdgeRef.current = edge;
-        onSelectEdge(edge);
-      }
-    };
-
-    const handleDblClick = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      const node = getNodeAt(e.clientX - rect.left, e.clientY - rect.top);
-      if (node) {
-        if (node.fx !== null && node.fx !== undefined) {
-          node.fx = null;
-          node.fy = null;
-        } else {
-          node.fx = node.x;
-          node.fy = node.y;
+      // Check if clicked close to an edge
+      if (onSelectEdge) {
+        const t = transformRef.current;
+        const x = (mx - t.x) / t.k;
+        const y = (my - t.y) / t.k;
+        for (const link of linksRef.current) {
+          const x1 = link.source.x, y1 = link.source.y;
+          const x2 = link.target.x, y2 = link.target.y;
+          const len = Math.hypot(x2 - x1, y2 - y1);
+          if (len === 0) continue;
+          const dist = Math.abs((y2 - y1) * x - (x2 - x1) * y + x2 * y1 - y2 * x1) / len;
+          if (dist < 6 / t.k) {
+            selectedRef.current = null;
+            selectedEdgeRef.current = link;
+            onSelectEdge(link);
+            return;
+          }
         }
-        simRef.current?.alpha(0.1).restart();
       }
     };
 
@@ -508,146 +395,81 @@ export default function NetworkGraph({
     canvas.addEventListener("mousedown", handleMouseDown);
     window.addEventListener("mouseup", handleMouseUp);
     canvas.addEventListener("click", handleClick);
-    canvas.addEventListener("dblclick", handleDblClick);
 
     return () => {
       canvas.removeEventListener("mousemove", handleMouseMove);
       canvas.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
       canvas.removeEventListener("click", handleClick);
-      canvas.removeEventListener("dblclick", handleDblClick);
     };
   }, [onSelect]);
 
-  // Resize handler
-  useEffect(() => {
-    const container = containerRef.current;
-    const canvas = canvasRef.current;
-    if (!container || !canvas) return;
-
-    const ro = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const { width, height } = entry.contentRect;
-        const dpr = window.devicePixelRatio || 1;
-        canvas.width = width * dpr;
-        canvas.height = height * dpr;
-        canvas.style.width = width + "px";
-        canvas.style.height = height + "px";
-        sizeRef.current = { w: width, h: height };
-      }
-    });
-    ro.observe(container);
-    return () => ro.disconnect();
-  }, []);
-
-  // Zoom controls
-  const zoomTo = (scaleDelta: number) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const t = transformRef.current;
-    const { w, h } = sizeRef.current;
-    const newK = Math.max(0.1, Math.min(6, t.k * scaleDelta));
-    transformRef.current = d3.zoomIdentity
-      .translate(w / 2, h / 2)
-      .scale(newK)
-      .translate(-w / 2, -h / 2);
+  const handleZoomIn = () => {
+    if (!canvasRef.current) return;
+    d3.select(canvasRef.current).transition().call(
+      d3.zoom<HTMLCanvasElement, unknown>().scaleBy as any, 1.3
+    );
   };
 
-  const fitToView = () => {
-    const simNodes = nodesRef.current;
-    if (simNodes.length === 0) return;
-    const { w, h } = sizeRef.current;
-    let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
-    for (const n of simNodes) {
-      if (n.x < minX) minX = n.x;
-      if (n.x > maxX) maxX = n.x;
-      if (n.y < minY) minY = n.y;
-      if (n.y > maxY) maxY = n.y;
-    }
-    const padding = 60;
-    const rangeX = (maxX - minX) || 1;
-    const rangeY = (maxY - minY) || 1;
-    const k = Math.min((w - padding * 2) / rangeX, (h - padding * 2) / rangeY, 2);
-    const cx = (minX + maxX) / 2;
-    const cy = (minY + maxY) / 2;
-    transformRef.current = d3.zoomIdentity
-      .translate(w / 2, h / 2)
-      .scale(k)
-      .translate(-cx, -cy);
+  const handleZoomOut = () => {
+    if (!canvasRef.current) return;
+    d3.select(canvasRef.current).transition().call(
+      d3.zoom<HTMLCanvasElement, unknown>().scaleBy as any, 0.75
+    );
+  };
+
+  const handleResetZoom = () => {
+    if (!canvasRef.current) return;
+    d3.select(canvasRef.current).transition().call(
+      d3.zoom<HTMLCanvasElement, unknown>().transform as any, d3.zoomIdentity
+    );
   };
 
   return (
-    <div ref={containerRef} className="relative w-full h-full" style={{ background: "var(--bg-void)" }}>
-      <canvas ref={canvasRef} className="w-full h-full" />
+    <div ref={containerRef} className="w-full h-full relative overflow-hidden select-none bg-[var(--bg-void)]">
+      <canvas ref={canvasRef} className="block w-full h-full" />
 
-      {/* Zoom controls */}
-      <div className="absolute top-3 right-3 flex flex-col gap-1.5 z-10">
-        {[
-          { icon: ZoomIn, action: () => zoomTo(1.3), title: "Zoom in" },
-          { icon: ZoomOut, action: () => zoomTo(0.7), title: "Zoom out" },
-          { icon: Maximize2, action: fitToView, title: "Fit to view" },
-        ].map(({ icon: Icon, action, title }) => (
-          <button
-            key={title}
-            onClick={action}
-            title={title}
-            className="glass-panel-static flex items-center justify-center transition-all"
-            style={{
-              width: 32, height: 32, borderRadius: 8,
-              cursor: "pointer", color: "var(--text-muted)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "var(--neon-teal)";
-              e.currentTarget.style.borderColor = "rgba(45,212,191,0.3)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "var(--text-muted)";
-              e.currentTarget.style.borderColor = "var(--border-strong)";
-            }}
-          >
-            <Icon size={14} />
-          </button>
-        ))}
+      {/* Zoom Controls */}
+      <div className="absolute top-3 right-3 z-10 flex flex-col gap-1.5 bg-[var(--bg-panel-solid)] p-1 rounded border border-[var(--border-subtle)]">
+        <button
+          onClick={handleZoomIn}
+          className="p-1.5 rounded hover:bg-[var(--bg-panel-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          title="Zoom In"
+        >
+          <ZoomIn size={14} />
+        </button>
+        <button
+          onClick={handleZoomOut}
+          className="p-1.5 rounded hover:bg-[var(--bg-panel-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          title="Zoom Out"
+        >
+          <ZoomOut size={14} />
+        </button>
+        <button
+          onClick={handleResetZoom}
+          className="p-1.5 rounded hover:bg-[var(--bg-panel-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          title="Reset View"
+        >
+          <Maximize2 size={14} />
+        </button>
       </div>
 
       {/* Minimap */}
-      <div className="absolute bottom-3 right-3 z-10" style={{
-        borderRadius: 8, overflow: "hidden",
-        border: "1px solid var(--border-strong)",
-        boxShadow: "0 4px 16px rgba(0,0,0,0.4)",
-      }}>
-        <canvas ref={minimapRef} width={150} height={100} />
+      <div className="absolute bottom-3 right-3 z-10 rounded overflow-hidden border border-[var(--border-subtle)] shadow-md">
+        <canvas ref={minimapRef} width={140} height={90} />
       </div>
 
-      {/* Legend */}
-      <div className="absolute bottom-3 left-3 z-10 glass-panel-static px-3 py-2 flex flex-wrap gap-x-3 gap-y-1"
-           style={{ maxWidth: 280 }}>
+      {/* Clean Investigation Legend */}
+      <div className="absolute bottom-3 left-3 z-10 bg-[var(--bg-panel-solid)] border border-[var(--border-subtle)] rounded p-2.5 flex flex-wrap gap-x-3 gap-y-1.5 max-w-xs shadow-md">
         {Object.entries(TYPE_COLORS).map(([type, color]) => (
           <div key={type} className="flex items-center gap-1.5">
-            <div style={{ width: 8, height: 8, borderRadius: "50%", background: color, boxShadow: `0 0 6px ${hexToRgba(color, 0.4)}` }} />
-            <span className="hud-label" style={{ fontSize: 8 }}>{type.replace("_", " ")}</span>
+            <div style={{ width: 7, height: 7, borderRadius: "50%", background: color }} />
+            <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase">
+              {type.replace("_", " ")}
+            </span>
           </div>
         ))}
       </div>
-
-      {/* Tooltip */}
-      {hoveredRef.current && (
-        <div className="absolute z-20 pointer-events-none glass-panel-static px-3 py-2"
-             style={{ left: 12, top: 12, maxWidth: 220 }}>
-          <div className="text-xs font-semibold">{hoveredRef.current.name}</div>
-          <div className="flex items-center gap-2 mt-1">
-            <span className="badge badge-info" style={{ fontSize: 8, padding: "1px 6px" }}>
-              {hoveredRef.current.type}
-            </span>
-            {hoveredRef.current.risk_band && hoveredRef.current.risk_band !== "unknown" && (
-              <span className={`badge badge-${hoveredRef.current.risk_band}`}
-                    style={{ fontSize: 8, padding: "1px 6px" }}>
-                {hoveredRef.current.risk_band}
-              </span>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

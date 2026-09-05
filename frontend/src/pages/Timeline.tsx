@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../lib/api";
 import {
-  Clock, Filter, Search, Calendar, FileText, AlertTriangle,
-  Zap, DollarSign, RefreshCw
+  Clock, Filter, Search, RefreshCw, Users
 } from "lucide-react";
 
 export default function Timeline() {
@@ -34,94 +33,85 @@ export default function Timeline() {
     e.entity_tags?.some((t: any) => t.name.toLowerCase().includes(search.toLowerCase()))
   );
 
-  function getEventIcon(type: string) {
+  function getEventBadge(type: string) {
     switch (type) {
       case "FIR_FILED":
-        return <FileText size={14} className="text-[var(--neon-teal)]" />;
+        return <span className="badge badge-low text-[8px]">FIR COMPLAINT</span>;
       case "TRANSACTION":
-        return <DollarSign size={14} className="text-[var(--neon-amber)]" />;
+        return <span className="badge badge-demo text-[8px]">CAPITAL TRANSFER</span>;
       case "ANOMALY_FLAGGED":
-        return <AlertTriangle size={14} className="text-[var(--accent-red)]" />;
+        return <span className="badge badge-high text-[8px]">UNUSUAL ACTIVITY</span>;
       case "TACTICAL_ALERT":
-        return <Zap size={14} className="text-[var(--neon-cyan)]" />;
+        return <span className="badge badge-medium text-[8px]">SURVEILLANCE SIGHTING</span>;
       default:
-        return <Clock size={14} className="text-[var(--text-muted)]" />;
+        return <span className="badge badge-low text-[8px]">CHRONOLOGY</span>;
     }
   }
 
   return (
     <div className="flex flex-col h-full bg-[var(--bg-void)]">
-      {/* ── Top HUD Header ── */}
-      <div
-        className="px-6 py-4 border-b flex flex-wrap items-center justify-between gap-4 glass-panel"
-        style={{ borderColor: "var(--border-subtle)", borderRadius: 0 }}
-      >
+      {/* ── Top Header Strip ── */}
+      <div className="px-6 py-4 border-b border-[var(--border-subtle)] flex flex-wrap items-center justify-between gap-4 bg-[var(--bg-panel-solid)]">
         <div className="flex items-center gap-3">
-          <div
-            className="w-9 h-9 rounded-lg flex items-center justify-center"
-            style={{
-              background: "linear-gradient(135deg, rgba(45,212,191,0.2), rgba(0,255,255,0.05))",
-              border: "1px solid rgba(45,212,191,0.3)",
-              boxShadow: "0 0 12px rgba(45,212,191,0.2)",
-            }}
-          >
-            <Clock size={18} color="var(--neon-teal)" />
+          <div className="w-8 h-8 rounded-lg bg-zinc-800 text-zinc-100 border border-zinc-700/60 flex items-center justify-center shadow-sm">
+            <Clock size={16} />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-sm font-bold tracking-wide uppercase text-[var(--text-primary)]">
-                Chronological Intelligence Timeline
+              <h1 className="text-xs font-bold tracking-wide uppercase text-[var(--text-primary)]">
+                Investigative Chronology Reconstruction
               </h1>
-              <span className="hud-label text-[9px] text-[var(--neon-teal)]">AUDIT STREAM</span>
+              <span className="badge badge-low text-[8px]">TEMPORAL AUDIT</span>
             </div>
             <p className="text-[11px] text-[var(--text-muted)]">
-              Temporal event reconstruction across complaints, capital flows, and syndicate movements
+              Temporal event reconstruction before, during, and after registered crime incidents
             </p>
           </div>
         </div>
 
         {/* Filters */}
-        <div className="flex items-center gap-3 flex-wrap">
-          <div className="relative w-64">
-            <Search size={13} className="absolute left-3 top-2.5 text-[var(--text-muted)]" />
+        <div className="flex items-center gap-2.5 flex-wrap">
+          <div className="relative w-60">
+            <Search size={12} className="absolute left-2.5 top-2.5 text-[var(--text-muted)]" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search timeline events..."
-              className="w-full bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] rounded-lg pl-8 pr-3 py-1.5 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--neon-teal)]"
+              placeholder="Search timeline events or suspects..."
+              className="workstation-input pl-7 text-xs"
             />
           </div>
 
-          <div className="flex items-center gap-1.5 bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] rounded-lg px-2.5 py-1">
+          <div className="flex items-center gap-1.5 bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] rounded px-2 py-1">
             <Filter size={12} className="text-[var(--text-muted)]" />
             <select
               value={eventTypeFilter}
               onChange={(e) => setEventTypeFilter(e.target.value)}
               className="bg-transparent text-xs text-[var(--text-secondary)] outline-none cursor-pointer"
             >
-              <option value="" className="bg-[var(--bg-panel)]">All Incident Types</option>
-              <option value="FIR_FILED" className="bg-[var(--bg-panel)]">FIR Filings</option>
-              <option value="TRANSACTION" className="bg-[var(--bg-panel)]">Capital Transfers</option>
-              <option value="ANOMALY_FLAGGED" className="bg-[var(--bg-panel)]">Anomalies</option>
-              <option value="TACTICAL_ALERT" className="bg-[var(--bg-panel)]">Tactical Alerts</option>
+              <option value="" className="bg-[var(--bg-panel-solid)]">All Event Types</option>
+              <option value="FIR_FILED" className="bg-[var(--bg-panel-solid)]">FIR Filings</option>
+              <option value="TRANSACTION" className="bg-[var(--bg-panel-solid)]">Capital Transfers</option>
+              <option value="ANOMALY_FLAGGED" className="bg-[var(--bg-panel-solid)]">Unusual Activities</option>
+              <option value="TACTICAL_ALERT" className="bg-[var(--bg-panel-solid)]">Tactical Sightings</option>
             </select>
           </div>
 
           <button
             onClick={loadTimeline}
-            className="p-1.5 rounded-lg border border-[var(--border-subtle)] hover:border-[var(--neon-teal)] text-[var(--text-muted)] hover:text-[var(--neon-teal)] transition-all bg-[var(--bg-panel-raised)]"
+            className="p-1.5 rounded border border-[var(--border-subtle)] hover:border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--bg-panel-raised)] transition-all"
+            title="Refresh Timeline"
           >
-            <RefreshCw size={14} className={loading ? "animate-spin text-[var(--neon-teal)]" : ""} />
+            <RefreshCw size={13} className={loading ? "animate-spin text-[var(--intel-sky)]" : ""} />
           </button>
         </div>
       </div>
 
-      {/* ── Main Timeline View ── */}
+      {/* ── Main Timeline Spine & Event Cards ── */}
       <div className="flex-1 p-6 overflow-y-auto max-w-4xl mx-auto w-full">
         {loading ? (
-          <div className="space-y-6">
-            {[1, 2, 3, 4, 5].map((n) => (
-              <div key={n} className="glass-panel p-4 h-24 rounded-xl animate-pulse border border-[var(--border-subtle)]" />
+          <div className="space-y-4">
+            {[1, 2, 3, 4].map((n) => (
+              <div key={n} className="skeleton h-24 rounded-lg" />
             ))}
           </div>
         ) : filteredEvents.length === 0 ? (
@@ -129,72 +119,63 @@ export default function Timeline() {
             No chronological records found matching active filter.
           </div>
         ) : (
-          <div className="relative pl-6 border-l-2 border-[rgba(45,212,191,0.25)] space-y-6">
-            {filteredEvents.map((evt, idx) => (
-              <div key={evt.id || idx} className="relative group">
-                {/* Glowing Node on Spine */}
-                <div
-                  className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full flex items-center justify-center transition-transform group-hover:scale-125"
-                  style={{
-                    backgroundColor: "var(--bg-void)",
-                    border: "2px solid var(--neon-teal)",
-                    boxShadow: "0 0 10px rgba(45,212,191,0.5)",
-                  }}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--neon-teal)]" />
-                </div>
+          <div className="relative pl-6 border-l-2 border-[var(--border-strong)] space-y-6">
+            {filteredEvents.map((evt, idx) => {
+              const dateObj = evt.timestamp ? new Date(evt.timestamp) : new Date();
+              const isFir = evt.event_type === "FIR_FILED";
 
-                {/* Event Card */}
-                <div className="glass-panel p-4 rounded-xl border border-[var(--border-subtle)] group-hover:border-[rgba(45,212,191,0.4)] transition-all relative">
-                  <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
-                    <div className="flex items-center gap-2">
-                      <div className="p-1 rounded bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)]">
-                        {getEventIcon(evt.event_type)}
-                      </div>
-                      <span className="text-xs font-bold text-[var(--text-primary)]">
-                        {evt.title}
-                      </span>
-                      <span
-                        className={`badge text-[9px] ${
-                          evt.severity === "critical"
-                            ? "badge-critical"
-                            : evt.severity === "high"
-                            ? "badge-high"
-                            : "badge-medium"
-                        }`}
-                      >
-                        {evt.severity?.toUpperCase()}
-                      </span>
-                    </div>
+              return (
+                <div key={evt.id || idx} className="relative group">
+                  {/* Dot on spine */}
+                  <div
+                    className="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full flex items-center justify-center bg-[var(--bg-void)] border-2 border-[var(--intel-blue)]"
+                  />
 
-                    <span className="text-[11px] font-mono text-[var(--text-muted)] flex items-center gap-1">
-                      <Calendar size={11} />
-                      {new Date(evt.timestamp).toLocaleString()}
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-3">
-                    {evt.description}
-                  </p>
-
-                  {/* Entity Tags */}
-                  {evt.entity_tags && evt.entity_tags.length > 0 && (
-                    <div className="flex items-center gap-2 flex-wrap pt-2 border-t border-[var(--border-subtle)] text-[10px]">
-                      <span className="text-[var(--text-muted)] uppercase font-mono">Associated:</span>
-                      {evt.entity_tags.map((tag: any, i: number) => (
-                        <span
-                          key={i}
-                          onClick={() => navigate("/entities")}
-                          className="px-2 py-0.5 rounded bg-[rgba(45,212,191,0.1)] text-[var(--neon-teal)] border border-[rgba(45,212,191,0.25)] hover:border-[var(--neon-teal)] cursor-pointer transition-all"
-                        >
-                          {tag.name}
+                  {/* Event Card */}
+                  <div className={`panel p-4 bg-[var(--bg-panel-solid)] border ${isFir ? "border-[var(--intel-sky)]" : "border-[var(--border-subtle)]"} hover:border-[var(--border-strong)] transition-all space-y-2`}>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                      <div className="flex items-center gap-2">
+                        {getEventBadge(evt.event_type)}
+                        <span className="text-xs font-bold text-[var(--text-primary)]">
+                          {evt.title}
                         </span>
-                      ))}
+                      </div>
+
+                      <div className="text-[10px] font-mono text-[var(--text-muted)] flex items-center gap-1.5">
+                        <Clock size={11} className="text-[var(--intel-sky)]" />
+                        <span>{dateObj.toLocaleDateString()} {dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} IST</span>
+                      </div>
                     </div>
-                  )}
+
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                      {evt.description}
+                    </p>
+
+                    <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[var(--border-subtle)] text-[10px] font-mono text-[var(--text-muted)]">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[var(--text-muted)]">SOURCE RECORD:</span>
+                        <span className="text-[var(--intel-sky)] font-semibold">{evt.source_doc || "Incident Record"}</span>
+                      </div>
+
+                      {evt.entity_tags?.length > 0 && (
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <Users size={11} className="text-[var(--text-muted)]" />
+                          {evt.entity_tags.map((t: any) => (
+                            <span
+                              key={t.id}
+                              onClick={() => navigate("/entities")}
+                              className="px-1.5 py-0.5 rounded bg-[var(--bg-panel-raised)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] cursor-pointer"
+                            >
+                              {t.name}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

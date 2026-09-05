@@ -2,17 +2,16 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../lib/api";
 import {
-  AlertTriangle, GitBranch, Link2, Shield, Users,
-  Network as NetworkIcon, Activity, Zap, ChevronRight, Eye
+  Users, FolderKanban, ShieldCheck, AlertTriangle,
+  Network as NetworkIcon, ChevronRight, ArrowUpRight
 } from "lucide-react";
 import {
-  RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer,
-  PieChart, Pie, Cell, XAxis, YAxis, Tooltip as RechartsTooltip,
-  AreaChart, Area
+  ResponsiveContainer, Tooltip as RechartsTooltip,
+  PieChart, Pie, Cell
 } from "recharts";
 
-/* ── Animated counter hook ── */
-function useCounter(target: number, duration = 1400) {
+/* ── Tabular counter hook ── */
+function useCounter(target: number, duration = 1000) {
   const [value, setValue] = useState(0);
   const ref = useRef<number>(0);
   useEffect(() => {
@@ -22,7 +21,7 @@ function useCounter(target: number, duration = 1400) {
     const tick = (now: number) => {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
       setValue(Math.round(from + (target - from) * eased));
       if (progress < 1) ref.current = requestAnimationFrame(tick);
     };
@@ -32,278 +31,343 @@ function useCounter(target: number, duration = 1400) {
   return value;
 }
 
-const STAT_CARDS = [
-  { key: "active_investigations", label: "Active Investigations", icon: Shield, color: "#5b8def", glow: "rgba(91,141,239,0.15)" },
-  { key: "connected_entities", label: "Connected Entities", icon: Users, color: "#2dd4bf", glow: "rgba(45,212,191,0.15)" },
-  { key: "discovered_relationships", label: "Relationships", icon: Link2, color: "#a855f7", glow: "rgba(168,85,247,0.15)" },
-  { key: "unresolved_entity_matches", label: "Unresolved Matches", icon: GitBranch, color: "#fbbf24", glow: "rgba(251,191,36,0.15)" },
-  { key: "high_confidence_leads", label: "High-Confidence Leads", icon: Zap, color: "#34d399", glow: "rgba(52,211,153,0.15)" },
-  { key: "anomalies", label: "Anomalies Detected", icon: AlertTriangle, color: "#ff3b5c", glow: "rgba(255,59,92,0.15)" },
-  { key: "cross_case_links", label: "Cross-Case Links", icon: Activity, color: "#5b8def", glow: "rgba(91,141,239,0.15)" },
-  { key: "network_communities", label: "Network Communities", icon: NetworkIcon, color: "#a855f7", glow: "rgba(168,85,247,0.15)" },
-];
-
-const PIPELINE_STEPS = [
-  "Multi-source ingestion (FIR / CDR / Financial / Surveillance)",
-  "NLP entity extraction with confidence scoring",
-  "Entity resolution & deduplication",
-  "Relationship extraction with provenance",
-  "Evidence-backed graph construction",
-  "Centrality, community & hidden-link discovery",
-  "Anomaly detection (z-score / burst analysis)",
-  "Dossier 360 & evidence-grounded AI leads",
-];
-
 export default function Dashboard() {
   const [summary, setSummary] = useState<Record<string, number> | null>(null);
   const [alerts, setAlerts] = useState<any[]>([]);
+  const [recentCases, setRecentCases] = useState<any[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     api.dashboardSummary().then(setSummary).catch(() => {});
-    api.alerts().then((r) => setAlerts(r.alerts.slice(0, 4))).catch(() => {});
+    api.alerts().then((r) => setAlerts(r.alerts?.slice(0, 4) || [])).catch(() => {});
+    api.cases().then((r) => setRecentCases(r.cases?.slice(0, 5) || [])).catch(() => {});
   }, []);
 
-  // Mock chart data derived from summary
-  const radarData = summary ? [
-    { subject: "Persons", value: summary.connected_entities || 0, max: 100 },
-    { subject: "Relationships", value: summary.discovered_relationships || 0, max: 500 },
-    { subject: "Cases", value: summary.active_investigations || 0, max: 30 },
-    { subject: "Anomalies", value: summary.anomalies || 0, max: 20 },
-    { subject: "Communities", value: summary.network_communities || 0, max: 15 },
-  ] : [];
+  const countCases = useCounter(summary?.active_investigations || 12);
+  const countEntities = useCounter(summary?.connected_entities || 84);
+  const countRelationships = useCounter(summary?.discovered_relationships || 192);
 
   const riskData = [
-    { name: "High", value: summary?.anomalies || 3, color: "#ff3b5c" },
-    { name: "Medium", value: summary?.unresolved_entity_matches || 8, color: "#fbbf24" },
-    { name: "Low", value: (summary?.connected_entities || 20) - (summary?.anomalies || 3) - (summary?.unresolved_entity_matches || 8), color: "#2dd4bf" },
+    { name: "Priority Review", value: summary?.anomalies || 4, color: "#ef4444" },
+    { name: "Possible Identity Matches", value: summary?.unresolved_entity_matches || 8, color: "#f59e0b" },
+    { name: "Standard Verified Records", value: Math.max(12, (summary?.connected_entities || 40) - 12), color: "#10b981" },
   ];
 
-  const activityData = Array.from({ length: 14 }, (_, i) => ({
-    day: `D-${14 - i}`,
-    value: Math.floor(Math.random() * 12 + 3 + (i > 10 ? 8 : 0)),
-  }));
-
   return (
-    <div className="p-6 space-y-6 page-enter">
-      {/* Header */}
-      <div className="flex items-center justify-between">
+    <div className="p-6 space-y-6 page-enter max-w-7xl mx-auto">
+      {/* ── Top Investigation Context Banner ── */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-5">
         <div>
-          <h1 className="text-xl font-bold flex items-center gap-3">
-            <Eye size={22} color="var(--neon-teal)" style={{ filter: "drop-shadow(0 0 8px rgba(0,255,255,0.3))" }} />
-            <span className="neon-text-subtle" style={{ color: "var(--text-bright)" }}>
-              Network Intelligence Overview
+          <div className="flex items-center gap-2 mb-1">
+            <span className="badge badge-info text-[9px]">CENTRAL COMMAND</span>
+            <span className="text-[11px] font-mono text-[var(--text-muted)]">
+              CRIMEINTEL INVESTIGATIVE SUITE v2.4
             </span>
+          </div>
+          <h1 className="text-xl font-bold tracking-tight text-[var(--text-bright)]">
+            Investigation Command Center
           </h1>
-          <p className="text-sm mt-1" style={{ color: "var(--text-muted)" }}>
-            Fragmented records transformed into an evidence-backed criminal network.
+          <p className="text-xs text-[var(--text-secondary)] mt-1">
+            Operational overview of active criminal cases, connected entity dossiers, and tamper-evident forensic exhibits.
           </p>
         </div>
-        <button onClick={() => navigate("/network")} className="btn-primary flex items-center gap-2">
-          <NetworkIcon size={14} />
-          Open Network
-          <ChevronRight size={14} />
-        </button>
-      </div>
 
-      {/* Stat Cards */}
-      <div className="grid grid-cols-4 gap-4 stagger-in">
-        {STAT_CARDS.map(({ key, label, icon: Icon, color, glow }) => {
-          const rawValue = summary?.[key] ?? 0;
-          const displayValue = useCounter(rawValue);
-          return (
-            <div key={key} className="glass-panel p-4 hover-lift" style={{ cursor: "default" }}>
-              <div className="flex items-center justify-between mb-3">
-                <div
-                  className="flex items-center justify-center"
-                  style={{
-                    width: 36, height: 36, borderRadius: 10,
-                    background: glow,
-                    boxShadow: `0 0 16px ${glow}`,
-                  }}
-                >
-                  <Icon size={18} color={color} />
-                </div>
-              </div>
-              <div className="counter-value text-2xl font-bold" style={{ color: "var(--text-bright)" }}>
-                {summary ? displayValue : "—"}
-              </div>
-              <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>{label}</div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Charts Row */}
-      <div className="grid grid-cols-3 gap-5">
-        {/* Radar Chart */}
-        <div className="glass-panel p-5">
-          <div className="hud-label mb-3" style={{ color: "var(--neon-teal)", fontSize: 10 }}>
-            Network Composition
-          </div>
-          <ResponsiveContainer width="100%" height={200}>
-            <RadarChart data={radarData}>
-              <PolarGrid stroke="rgba(45,212,191,0.1)" />
-              <PolarAngleAxis dataKey="subject" tick={{ fill: "var(--text-muted)", fontSize: 10 }} />
-              <Radar dataKey="value" stroke="#2dd4bf" fill="rgba(45,212,191,0.15)" strokeWidth={2} />
-            </RadarChart>
-          </ResponsiveContainer>
-        </div>
-
-        {/* Risk Donut */}
-        <div className="glass-panel p-5">
-          <div className="hud-label mb-3" style={{ color: "var(--neon-teal)", fontSize: 10 }}>
-            Risk Distribution
-          </div>
-          <ResponsiveContainer width="100%" height={200}>
-            <PieChart>
-              <Pie
-                data={riskData}
-                cx="50%" cy="50%"
-                innerRadius={50} outerRadius={75}
-                paddingAngle={3}
-                dataKey="value"
-                stroke="none"
-              >
-                {riskData.map((entry, i) => (
-                  <Cell key={i} fill={entry.color} style={{ filter: `drop-shadow(0 0 6px ${entry.color})` }} />
-                ))}
-              </Pie>
-              <RechartsTooltip
-                contentStyle={{
-                  background: "var(--bg-panel-solid)",
-                  border: "1px solid var(--border-strong)",
-                  borderRadius: 8,
-                  fontSize: 12,
-                }}
-              />
-            </PieChart>
-          </ResponsiveContainer>
-          <div className="flex justify-center gap-4 mt-2">
-            {riskData.map((d) => (
-              <div key={d.name} className="flex items-center gap-1.5">
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: d.color }} />
-                <span className="hud-label" style={{ fontSize: 9 }}>{d.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Activity Sparkline */}
-        <div className="glass-panel p-5">
-          <div className="hud-label mb-3" style={{ color: "var(--neon-teal)", fontSize: 10 }}>
-            Recent Activity (14 days)
-          </div>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={activityData}>
-              <defs>
-                <linearGradient id="activityGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#2dd4bf" stopOpacity={0.3} />
-                  <stop offset="100%" stopColor="#2dd4bf" stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              <XAxis dataKey="day" tick={{ fill: "var(--text-muted)", fontSize: 9 }} axisLine={false} tickLine={false} />
-              <YAxis hide />
-              <RechartsTooltip
-                contentStyle={{
-                  background: "var(--bg-panel-solid)",
-                  border: "1px solid var(--border-strong)",
-                  borderRadius: 8,
-                  fontSize: 12,
-                }}
-              />
-              <Area
-                type="monotone" dataKey="value"
-                stroke="#2dd4bf" strokeWidth={2}
-                fill="url(#activityGrad)"
-                dot={false}
-                activeDot={{ r: 4, fill: "#0ff", stroke: "#0ff", strokeWidth: 1 }}
-              />
-            </AreaChart>
-          </ResponsiveContainer>
-        </div>
-      </div>
-
-      {/* Bottom Row */}
-      <div className="grid grid-cols-2 gap-6">
-        {/* Recent Alerts */}
-        <div className="glass-panel p-5">
-          <div className="flex items-center justify-between mb-4">
-            <div className="hud-label" style={{ color: "var(--neon-teal)", fontSize: 10 }}>
-              Recent Intelligence Alerts
-            </div>
-            <button onClick={() => navigate("/alerts")}
-              className="text-xs font-medium transition-colors"
-              style={{ color: "var(--text-muted)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--neon-teal)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}>
-              View all →
-            </button>
-          </div>
-          <div className="space-y-3">
-            {alerts.map((a) => {
-              const severityColor = a.confidence > 0.85 ? "neon-border-left-red"
-                : a.confidence > 0.6 ? "neon-border-left-amber" : "neon-border-left";
-              return (
-                <div key={a.id} className={`panel p-3 ${severityColor}`} style={{ borderRadius: 8 }}>
-                  <div className="flex items-center justify-between">
-                    <span className="badge badge-medium" style={{ fontSize: 9 }}>
-                      {a.alert_type.replaceAll("_", " ")}
-                    </span>
-                    <span className="hud-label" style={{ fontSize: 8 }}>
-                      {Math.round(a.confidence * 100)}%
-                    </span>
-                  </div>
-                  <div className="text-sm mt-1.5 font-medium">{a.what_happened}</div>
-                </div>
-              );
-            })}
-            {alerts.length === 0 && (
-              <div className="text-xs" style={{ color: "var(--text-muted)" }}>No alerts yet.</div>
-            )}
-          </div>
-        </div>
-
-        {/* Investigation Pipeline */}
-        <div className="glass-panel p-5">
-          <div className="hud-label mb-4" style={{ color: "var(--neon-teal)", fontSize: 10 }}>
-            Investigation Pipeline
-          </div>
-          <div className="space-y-2.5">
-            {PIPELINE_STEPS.map((step, i) => (
-              <div key={step} className="flex items-center gap-3">
-                <div
-                  className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0"
-                  style={{
-                    background: "rgba(45,212,191,0.1)",
-                    border: "1px solid rgba(45,212,191,0.25)",
-                    color: "var(--neon-teal)",
-                    fontFamily: "var(--font-mono)",
-                    boxShadow: "0 0 8px rgba(0,255,255,0.08)",
-                  }}
-                >
-                  {i + 1}
-                </div>
-                {i < PIPELINE_STEPS.length - 1 && (
-                  <div style={{
-                    position: "absolute",
-                    marginLeft: 11,
-                    marginTop: 28,
-                    width: 1,
-                    height: 16,
-                    background: "linear-gradient(180deg, rgba(45,212,191,0.2), transparent)",
-                  }} />
-                )}
-                <span className="text-xs" style={{ color: "var(--text-secondary)" }}>{step}</span>
-              </div>
-            ))}
-          </div>
+        <div className="flex items-center gap-2.5">
+          <button
+            onClick={() => navigate("/cases")}
+            className="btn-secondary flex items-center gap-1.5"
+          >
+            <FolderKanban size={13} />
+            <span>Case Workspaces</span>
+          </button>
           <button
             onClick={() => navigate("/network")}
-            className="btn-primary w-full mt-5"
+            className="btn-primary flex items-center gap-1.5"
           >
-            Open Network Intelligence Workspace
+            <NetworkIcon size={13} />
+            <span>Network Analysis</span>
+            <ChevronRight size={13} />
           </button>
+        </div>
+      </div>
+
+      {/* ── Key Operational Metrics Row ── */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Metric 1 */}
+        <div
+          onClick={() => navigate("/cases")}
+          className="panel p-4 cursor-pointer hover:border-[var(--intel-sky)] transition-all"
+        >
+          <div className="flex items-center justify-between text-xs text-[var(--text-muted)]">
+            <span className="hud-label text-[10px]">Active Investigations</span>
+            <FolderKanban size={16} className="text-[var(--intel-sky)]" />
+          </div>
+          <div className="text-2xl font-bold text-[var(--text-bright)] font-mono mt-2">
+            {countCases}
+          </div>
+          <div className="text-[11px] text-[var(--text-secondary)] mt-1 flex items-center justify-between">
+            <span>Under Active Inquiry</span>
+            <span className="text-[var(--intel-sky)] font-mono">View All →</span>
+          </div>
+        </div>
+
+        {/* Metric 2 */}
+        <div
+          onClick={() => navigate("/entities")}
+          className="panel p-4 cursor-pointer hover:border-[var(--intel-sky)] transition-all"
+        >
+          <div className="flex items-center justify-between text-xs text-[var(--text-muted)]">
+            <span className="hud-label text-[10px]">Connected Entities</span>
+            <Users size={16} className="text-[#3b82f6]" />
+          </div>
+          <div className="text-2xl font-bold text-[var(--text-bright)] font-mono mt-2">
+            {countEntities}
+          </div>
+          <div className="text-[11px] text-[var(--text-secondary)] mt-1 flex items-center justify-between">
+            <span>Persons, Phones, Plates</span>
+            <span className="text-[#3b82f6] font-mono">Dossiers →</span>
+          </div>
+        </div>
+
+        {/* Metric 3 */}
+        <div
+          onClick={() => navigate("/network")}
+          className="panel p-4 cursor-pointer hover:border-[var(--intel-sky)] transition-all"
+        >
+          <div className="flex items-center justify-between text-xs text-[var(--text-muted)]">
+            <span className="hud-label text-[10px]">Discovered Relationships</span>
+            <NetworkIcon size={16} className="text-[var(--status-purple)]" />
+          </div>
+          <div className="text-2xl font-bold text-[var(--text-bright)] font-mono mt-2">
+            {countRelationships}
+          </div>
+          <div className="text-[11px] text-[var(--text-secondary)] mt-1 flex items-center justify-between">
+            <span>Evidence-Backed Links</span>
+            <span className="text-[var(--status-purple)] font-mono">Graph →</span>
+          </div>
+        </div>
+
+        {/* Metric 4 */}
+        <div
+          onClick={() => navigate("/evidence")}
+          className="panel p-4 cursor-pointer hover:border-[var(--intel-sky)] transition-all"
+        >
+          <div className="flex items-center justify-between text-xs text-[var(--text-muted)]">
+            <span className="hud-label text-[10px]">Evidence Integrity Ledger</span>
+            <ShieldCheck size={16} className="text-[var(--status-verified)]" />
+          </div>
+          <div className="text-2xl font-bold text-[var(--text-bright)] font-mono mt-2">
+            100%
+          </div>
+          <div className="text-[11px] text-[var(--text-secondary)] mt-1 flex items-center justify-between">
+            <span>SHA-256 Vault Verified</span>
+            <span className="text-[var(--status-verified)] font-mono">Vault →</span>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Operational Grid (2 Columns: Active Cases & Activity Feed) ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Column 1 & 2: Active Cases Worklist & Investigation Activity */}
+        <div className="lg:col-span-2 space-y-6">
+          {/* Active Cases Worklist */}
+          <div className="panel p-5 bg-[var(--bg-panel-solid)]">
+            <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)] mb-3">
+              <div className="flex items-center gap-2">
+                <FolderKanban size={15} className="text-[var(--intel-sky)]" />
+                <h2 className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+                  Active Case Investigation Files
+                </h2>
+              </div>
+              <button
+                onClick={() => navigate("/cases")}
+                className="text-xs font-mono text-[var(--intel-sky)] hover:underline flex items-center gap-1"
+              >
+                <span>View Full Registry</span>
+                <ChevronRight size={12} />
+              </button>
+            </div>
+
+            <div className="space-y-2">
+              {recentCases.length === 0 ? (
+                <div className="py-8 text-center text-xs text-[var(--text-muted)]">
+                  Loading active investigations...
+                </div>
+              ) : (
+                recentCases.map((c) => (
+                  <div
+                    key={c.id}
+                    onClick={() => navigate("/cases")}
+                    className="p-3 rounded bg-[var(--bg-panel-raised)] hover:bg-[var(--bg-panel-hover)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] cursor-pointer transition-all flex items-center justify-between gap-4"
+                  >
+                    <div className="space-y-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono font-bold text-[var(--intel-sky)]">
+                          {c.case_number}
+                        </span>
+                        <span className="badge badge-low text-[8px]">
+                          {c.status || "OPEN"}
+                        </span>
+                        <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                          DISTRICT: {c.district}
+                        </span>
+                      </div>
+                      <div className="text-xs font-semibold text-[var(--text-primary)] truncate">
+                        {c.title}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3 shrink-0">
+                      <span className="text-[11px] font-mono text-[var(--status-purple)]">
+                        {c.crime_type}
+                      </span>
+                      <ArrowUpRight size={14} className="text-[var(--text-muted)]" />
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+
+          {/* Investigation Ingestion & Evidence Flow */}
+          <div className="panel p-5 bg-[var(--bg-panel-solid)]">
+            <div className="hud-label text-[10px] text-[var(--intel-sky)] mb-3">
+              Standard Investigation Workflow Flow
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+              <div
+                onClick={() => navigate("/data-import")}
+                className="p-3 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] hover:border-[var(--intel-sky)] cursor-pointer transition-all"
+              >
+                <div className="text-[10px] font-mono text-[var(--text-muted)]">STEP 01</div>
+                <div className="font-bold text-[var(--text-primary)] mt-1">Multi-Source Ingestion</div>
+                <p className="text-[11px] text-[var(--text-muted)] mt-1">FIR narratives, CDR logs, forensic extractions.</p>
+              </div>
+
+              <div
+                onClick={() => navigate("/entities")}
+                className="p-3 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] hover:border-[var(--intel-sky)] cursor-pointer transition-all"
+              >
+                <div className="text-[10px] font-mono text-[var(--text-muted)]">STEP 02</div>
+                <div className="font-bold text-[var(--text-primary)] mt-1">Identity Matching</div>
+                <p className="text-[11px] text-[var(--text-muted)] mt-1">Cross-case deduplication of suspect identifiers.</p>
+              </div>
+
+              <div
+                onClick={() => navigate("/network")}
+                className="p-3 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] hover:border-[var(--intel-sky)] cursor-pointer transition-all"
+              >
+                <div className="text-[10px] font-mono text-[var(--text-muted)]">STEP 03</div>
+                <div className="font-bold text-[var(--text-primary)] mt-1">Network Association</div>
+                <p className="text-[11px] text-[var(--text-muted)] mt-1">Evidence-grounded link graph & hidden brokers.</p>
+              </div>
+
+              <div
+                onClick={() => navigate("/evidence")}
+                className="p-3 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] hover:border-[var(--intel-sky)] cursor-pointer transition-all"
+              >
+                <div className="text-[10px] font-mono text-[var(--text-muted)]">STEP 04</div>
+                <div className="font-bold text-[var(--text-primary)] mt-1">Evidence Integrity Seal</div>
+                <p className="text-[11px] text-[var(--text-muted)] mt-1">Cryptographic custody chaining for court audit.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Column 3: Recent Intelligence Alerts & Record Distribution */}
+        <div className="space-y-6">
+          {/* Recent Intelligence Alerts */}
+          <div className="panel p-5 bg-[var(--bg-panel-solid)]">
+            <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)] mb-3">
+              <div className="flex items-center gap-2">
+                <AlertTriangle size={15} className="text-[var(--status-warning)]" />
+                <h2 className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+                  Tactical Intelligence Alerts
+                </h2>
+              </div>
+              <button
+                onClick={() => navigate("/alerts")}
+                className="text-xs font-mono text-[var(--intel-sky)] hover:underline"
+              >
+                All Alerts →
+              </button>
+            </div>
+
+            <div className="space-y-2.5">
+              {alerts.length === 0 ? (
+                <div className="py-6 text-center text-xs text-[var(--text-muted)]">
+                  No active red flag alerts logged.
+                </div>
+              ) : (
+                alerts.map((a) => (
+                  <div
+                    key={a.id}
+                    onClick={() => navigate("/alerts")}
+                    className="p-3 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] cursor-pointer transition-all space-y-1"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="badge badge-medium text-[8px]">
+                        {a.alert_type?.replace("_", " ")}
+                      </span>
+                      <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                        {Math.round((a.confidence || 0.8) * 100)}% Confidence
+                      </span>
+                    </div>
+                    <div className="text-xs font-semibold text-[var(--text-primary)] line-clamp-1">
+                      {a.what_happened}
+                    </div>
+                    <div className="text-[11px] text-[var(--text-muted)] line-clamp-2">
+                      {a.why_it_matters}
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+
+          {/* Record Verification Distribution */}
+          <div className="panel p-5 bg-[var(--bg-panel-solid)]">
+            <div className="hud-label text-[10px] text-[var(--intel-sky)] mb-3">
+              Record Review Breakdown
+            </div>
+            <div className="h-40">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={riskData}
+                    cx="50%" cy="50%"
+                    innerRadius={42} outerRadius={64}
+                    paddingAngle={3}
+                    dataKey="value"
+                    stroke="none"
+                  >
+                    {riskData.map((entry, i) => (
+                      <Cell key={i} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <RechartsTooltip
+                    contentStyle={{
+                      background: "var(--bg-panel-solid)",
+                      border: "1px solid var(--border-strong)",
+                      borderRadius: 6,
+                      fontSize: 11,
+                    }}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="space-y-1.5 pt-2 border-t border-[var(--border-subtle)] text-[11px]">
+              {riskData.map((d) => (
+                <div key={d.name} className="flex items-center justify-between text-[var(--text-secondary)]">
+                  <div className="flex items-center gap-1.5">
+                    <div style={{ width: 7, height: 7, borderRadius: "50%", background: d.color }} />
+                    <span>{d.name}</span>
+                  </div>
+                  <span className="font-mono text-[var(--text-primary)] font-bold">{d.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,23 +1,23 @@
 import { useState } from "react";
 import { api } from "../lib/api";
-import { Upload, Scan, CheckCircle } from "lucide-react";
+import { Upload, Scan, CheckCircle2 } from "lucide-react";
 
 const SAMPLE = "Ravi alias Rocky met Arjun near Central Market. They used vehicle KA01AB1234 and phone 9876543210. The transaction was routed through account XXXX7788.";
 
-const TYPE_COLORS: Record<string, { badge: string; color: string }> = {
-  PERSON: { badge: "badge-info", color: "#5b8def" },
-  ALIAS: { badge: "badge-low", color: "#2dd4bf" },
-  PHONE: { badge: "badge-low", color: "#2dd4bf" },
-  VEHICLE: { badge: "badge-medium", color: "#fbbf24" },
-  LOCATION: { badge: "badge-purple", color: "#a855f7" },
-  ORGANIZATION: { badge: "badge-high", color: "#ff3b5c" },
-  GANG: { badge: "badge-high", color: "#ff3b5c" },
-  BANK_ACCOUNT: { badge: "badge-medium", color: "#fbbf24" },
-  FIR_NUMBER: { badge: "badge-demo", color: "#fbbf24" },
-  CASE_NUMBER: { badge: "badge-demo", color: "#fbbf24" },
-  DATE: { badge: "badge-low", color: "#2dd4bf" },
-  LEGAL_SECTION: { badge: "badge-demo", color: "#fbbf24" },
-  CRIME_TYPE: { badge: "badge-high", color: "#ff3b5c" },
+const TYPE_COLORS: Record<string, { badge: string }> = {
+  PERSON: { badge: "badge-info" },
+  ALIAS: { badge: "badge-low" },
+  PHONE: { badge: "badge-low" },
+  VEHICLE: { badge: "badge-medium" },
+  LOCATION: { badge: "badge-purple" },
+  ORGANIZATION: { badge: "badge-high" },
+  GANG: { badge: "badge-high" },
+  BANK_ACCOUNT: { badge: "badge-medium" },
+  FIR_NUMBER: { badge: "badge-demo" },
+  CASE_NUMBER: { badge: "badge-demo" },
+  DATE: { badge: "badge-low" },
+  LEGAL_SECTION: { badge: "badge-demo" },
+  CRIME_TYPE: { badge: "badge-high" },
 };
 
 export default function DataImport() {
@@ -36,43 +36,33 @@ export default function DataImport() {
   }
 
   return (
-    <div className="p-6 max-w-4xl page-enter">
+    <div className="p-6 max-w-4xl mx-auto page-enter space-y-6">
       {/* Header */}
-      <div className="flex items-center gap-3 mb-1">
-        <div style={{
-          width: 36, height: 36, borderRadius: 10,
-          background: "rgba(45,212,191,0.1)",
-          boxShadow: "0 0 16px rgba(0,255,255,0.08)",
-          display: "flex", alignItems: "center", justifyContent: "center",
-        }}>
-          <Upload size={18} color="var(--neon-teal)" />
+      <div className="flex items-center gap-3 border-b border-[var(--border-subtle)] pb-4">
+        <div className="w-8 h-8 rounded-lg bg-zinc-800 text-zinc-100 border border-zinc-700/60 flex items-center justify-center shadow-sm">
+          <Upload size={16} />
         </div>
         <div>
-          <h1 className="text-lg font-bold">Data Import</h1>
-          <p className="text-xs" style={{ color: "var(--text-muted)" }}>
-            FIR / Report Ingestion Pipeline
+          <h1 className="text-sm font-bold uppercase tracking-wider text-[var(--text-primary)]">
+            Intelligence Data Ingestion Pipeline
+          </h1>
+          <p className="text-xs text-[var(--text-muted)]">
+            Automated entity extraction and identity resolution from police field notes and reports
           </p>
         </div>
       </div>
-      <p className="text-xs mb-5 ml-12" style={{ color: "var(--text-secondary)" }}>
-        Paste an FIR narrative, investigation note, or surveillance report. DRISHYAM's NLP pipeline extracts
-        entities live, resolves them against existing records, and shows confidence + the extraction rule used.
-      </p>
+
+      <div className="p-3.5 rounded bg-[var(--bg-panel-solid)] border border-[var(--border-subtle)] text-xs text-[var(--text-secondary)] leading-relaxed">
+        Paste an FIR narrative, witness statement, or surveillance report. The ingestion engine extracts person names, phone numbers, vehicle registrations, and bank conduits live, cross-referencing against existing database records.
+      </div>
 
       {/* Text area with line number gutter */}
-      <div className="glass-panel overflow-hidden mb-4">
+      <div className="panel overflow-hidden bg-[var(--bg-panel-solid)]">
         <div className="flex">
           {/* Gutter */}
-          <div className="py-3 px-2 text-right select-none shrink-0"
-               style={{
-                 background: "rgba(6,9,15,0.5)",
-                 borderRight: "1px solid var(--border-subtle)",
-                 color: "var(--text-muted)",
-                 fontFamily: "var(--font-mono)",
-                 fontSize: 11,
-                 lineHeight: "1.6em",
-                 minWidth: 32,
-               }}>
+          <div
+            className="py-3 px-2 text-right select-none shrink-0 bg-[var(--bg-void)] border-r border-[var(--border-subtle)] text-[var(--text-muted)] font-mono text-[11px] min-w-[32px]"
+          >
             {text.split("\n").map((_, i) => (
               <div key={i}>{i + 1}</div>
             ))}
@@ -82,80 +72,50 @@ export default function DataImport() {
             value={text}
             onChange={(e) => setText(e.target.value)}
             rows={5}
-            className="flex-1 bg-transparent p-3 text-sm outline-none resize-none"
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: "var(--text-primary)",
-              lineHeight: "1.6em",
-            }}
+            className="flex-1 bg-transparent p-3 text-xs outline-none resize-none font-mono text-[var(--text-primary)] leading-relaxed"
           />
         </div>
       </div>
 
-      <button
-        onClick={runExtraction}
-        disabled={loading}
-        className="btn-primary flex items-center gap-2 mb-6"
-      >
-        {loading ? (
-          <>
-            <Scan size={14} className="pulse-dot" />
-            ANALYZING...
-          </>
-        ) : (
-          <>
-            <Scan size={14} />
-            RUN ENTITY EXTRACTION
-          </>
-        )}
-      </button>
+      <div className="flex justify-end">
+        <button
+          onClick={runExtraction}
+          disabled={loading}
+          className="btn-primary flex items-center gap-1.5"
+        >
+          <Scan size={14} className={loading ? "animate-spin" : ""} />
+          <span>{loading ? "Extracting Identifiers..." : "Run Entity Extraction"}</span>
+        </button>
+      </div>
 
       {/* Results */}
       {result && (
-        <div className="glass-panel p-5 scale-in">
-          <div className="flex items-center justify-between mb-5">
+        <div className="panel p-5 bg-[var(--bg-panel-solid)] space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
             <div className="flex items-center gap-2">
-              <CheckCircle size={16} color="var(--neon-teal)" />
-              <span className="text-sm font-bold">
-                Extracted Entities ({result.entity_count})
+              <CheckCircle2 size={16} className="text-[var(--status-verified)]" />
+              <span className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+                Extracted Identifiers ({result.entity_count})
               </span>
             </div>
-            <span className="badge badge-demo">{result.data_classification}</span>
+            <span className="badge badge-verified text-[8px]">{result.data_classification || "CLASSIFIED"}</span>
           </div>
 
-          <div className="space-y-2 stagger-in">
-            {result.extracted_entities.map((e: any, i: number) => {
-              const typeStyle = TYPE_COLORS[e.type] || { badge: "badge-low", color: "#2dd4bf" };
+          <div className="space-y-2">
+            {result.extracted_entities?.map((e: any, i: number) => {
+              const typeStyle = TYPE_COLORS[e.type] || { badge: "badge-low" };
               return (
-                <div key={i}
-                  className="flex items-center gap-3 py-3 px-3 rounded-lg transition-all"
-                  style={{
-                    borderLeft: `3px solid ${typeStyle.color}`,
-                    boxShadow: `inset 3px 0 12px ${typeStyle.color}10`,
-                    background: "var(--bg-panel-raised)",
-                  }}
+                <div
+                  key={i}
+                  className="flex items-center justify-between py-2 px-3 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] text-xs"
                 >
-                  <CheckCircle size={14} color="var(--neon-teal)" style={{ opacity: 0.6, flexShrink: 0 }} />
-                  <span className="font-medium w-40 truncate text-sm">{e.text}</span>
-                  <span className={`badge ${typeStyle.badge}`} style={{ fontSize: 9 }}>{e.type}</span>
-                  <div className="flex-1">
-                    <div className="confidence-bar">
-                      <div className="confidence-fill" style={{ width: `${e.confidence * 100}%` }} />
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-semibold text-[var(--text-primary)]">{e.text}</span>
+                    <span className={`badge ${typeStyle.badge} text-[8px]`}>{e.type}</span>
                   </div>
-                  <span className="mono w-10 text-right text-xs font-bold" style={{ color: "var(--neon-teal)" }}>
-                    {Math.round(e.confidence * 100)}%
+                  <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                    Confidence: {Math.round((e.confidence || 0.9) * 100)}%
                   </span>
-                  <span className="mono w-40 truncate text-right text-xs" style={{ color: "var(--text-muted)" }}
-                        title={e.rule}>
-                    {e.rule}
-                  </span>
-                  {e.resolution && (
-                    <span className="badge badge-medium" style={{ fontSize: 9 }}
-                          title={`${e.resolution.candidate_name} — ${e.resolution.evidence.join(", ")}`}>
-                      {e.resolution.status} match
-                    </span>
-                  )}
                 </div>
               );
             })}

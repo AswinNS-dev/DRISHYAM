@@ -1,45 +1,55 @@
 import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 import {
-  LayoutDashboard, Network, Users, FolderKanban, Upload, Bell,
-  LogOut, Eye, FileText, Brain, Clock, MapPin, Shield, Settings,
-  ChevronLeft, ChevronRight, Search, CornerDownLeft, Sun, Moon
+  LayoutDashboard, Network, Users, FolderKanban, Bell,
+  LogOut, FileText, Brain, Clock, MapPin, Settings,
+  Search, CornerDownLeft, Sun, Moon,
+  ChevronDown, PanelLeft, CheckSquare, Inbox, Activity,
+  CreditCard
 } from "lucide-react";
 import { useAuth } from "../store/auth";
 import { useTheme } from "../store/theme";
 import { useState, useEffect, useRef } from "react";
 import { api } from "../lib/api";
 
-const NAV_GROUPS = [
+interface NavItem {
+  to: string;
+  label: string;
+  icon: any;
+  badge?: string | number;
+  adminOnly?: boolean;
+}
+
+interface NavGroup {
+  group: string;
+  items: NavItem[];
+}
+
+const NAV_GROUPS: NavGroup[] = [
   {
-    group: "OVERVIEW",
+    group: "WORKSPACE",
     items: [
-      { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+      { to: "/dashboard", label: "Command center", icon: LayoutDashboard, badge: 8 },
+      { to: "/cases", label: "Inbox", icon: Inbox, badge: 12 },
+      { to: "/entities", label: "Approvals", icon: CheckSquare, badge: 5 },
+      { to: "/firs", label: "Automations", icon: FileText },
+      { to: "/network", label: "Projects", icon: Network },
     ],
   },
   {
-    group: "INVESTIGATION",
+    group: "INSIGHTS",
     items: [
-      { to: "/network", label: "Network Intel", icon: Network, highlight: true },
-      { to: "/entities", label: "Dossiers & Entities", icon: Users },
-      { to: "/cases", label: "Cases", icon: FolderKanban },
-      { to: "/firs", label: "FIR Intelligence", icon: FileText },
+      { to: "/timeline", label: "Performance", icon: Activity },
+      { to: "/locations", label: "Usage", icon: MapPin },
+      { to: "/intelligence", label: "Activity log", icon: Brain },
     ],
   },
   {
-    group: "INTELLIGENCE",
+    group: "ACCOUNT",
     items: [
-      { to: "/intelligence", label: "AI Intel & Leads", icon: Brain },
-      { to: "/timeline", label: "Timeline", icon: Clock },
-      { to: "/locations", label: "Sector Locations", icon: MapPin },
-      { to: "/alerts", label: "Alerts & Red Flags", icon: Bell },
-    ],
-  },
-  {
-    group: "SYSTEM",
-    items: [
-      { to: "/data-import", label: "Data Ingestion", icon: Upload },
-      { to: "/admin", label: "Security & Admin", icon: Shield },
-      { to: "/settings", label: "Engine Config", icon: Settings },
+      { to: "/alerts", label: "Notifications", icon: Bell, badge: 4 },
+      { to: "/evidence", label: "Billing & Ledger", icon: CreditCard },
+      { to: "/admin", label: "Members", icon: Users, adminOnly: true },
+      { to: "/settings", label: "Settings", icon: Settings, adminOnly: true },
     ],
   },
 ];
@@ -50,148 +60,158 @@ export default function Layout() {
   const navigate = useNavigate();
   const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const userMenuRef = useRef<HTMLDivElement>(null);
   const [pageKey, setPageKey] = useState(location.pathname);
   const mainRef = useRef<HTMLDivElement>(null);
 
   const userRole = (user?.role || "").toLowerCase();
-  const visibleNavGroups = NAV_GROUPS.map((group) => {
-    if (group.group === "SYSTEM") {
-      return {
-        ...group,
-        items: group.items.filter((item) => {
-          if (item.to === "/admin" || item.to === "/settings") {
-            return userRole === "admin";
-          }
-          return true;
-        }),
-      };
-    }
-    return group;
-  }).filter((group) => group.items.length > 0);
 
-  // Live Military Clock
-  const [timeStr, setTimeStr] = useState("");
+  // Close user dropdown menu when clicking outside
   useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      setTimeStr(
-        now.toLocaleTimeString("en-US", { hour12: false, hour: "2-digit", minute: "2-digit", second: "2-digit" }) +
-        " IST"
-      );
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
+    function handleClickOutside(event: MouseEvent) {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setUserMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Global Command Palette / Search
+  // Filter groups based on user RBAC permissions
+  const visibleNavGroups = NAV_GROUPS.map((group) => ({
+    ...group,
+    items: group.items.filter((item: NavItem) => {
+      if (item.adminOnly) {
+        return userRole === "admin";
+      }
+      return true;
+    }),
+  })).filter((group) => group.items.length > 0);
+
+  // Live Military Clock (IST)
+  const [timeStr, setTimeStr] = useState("");
+  useEffect(() => {
+    function updateClock() {
+      const now = new Date();
+      setTimeStr(
+        now.toLocaleTimeString("en-IN", {
+          hour12: false,
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          timeZone: "Asia/Kolkata",
+        }) + " IST"
+      );
+    }
+    updateClock();
+    const timer = setInterval(updateClock, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Omni-Search Keyboard Shortcut (Ctrl+K / Cmd+K)
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
-  const [searchLoading, setSearchLoading] = useState(false);
-  const searchInputRef = useRef<HTMLInputElement>(null);
 
-  // Keyboard shortcut Ctrl+K
   useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+    function handleKeyDown(e: KeyboardEvent) {
+      if ((e.ctrlKey || e.metaKey) && e.key === "k") {
         e.preventDefault();
         setSearchOpen((prev) => !prev);
       }
       if (e.key === "Escape") {
         setSearchOpen(false);
       }
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Auto focus input when opened
-  useEffect(() => {
-    if (searchOpen) {
-      setTimeout(() => searchInputRef.current?.focus(), 50);
-    } else {
-      setQuery("");
-      setSearchResults([]);
-    }
-  }, [searchOpen]);
-
-  // Query global search
   useEffect(() => {
     if (!query.trim()) {
       setSearchResults([]);
       return;
     }
-    const timer = setTimeout(() => {
-      setSearchLoading(true);
-      api.globalSearch(query)
-        .then((res) => setSearchResults(res.results || []))
-        .catch(() => setSearchResults([]))
-        .finally(() => setSearchLoading(false));
-    }, 200);
-    return () => clearTimeout(timer);
+    const q = query.toLowerCase();
+    const results: any[] = [];
+    api.cases().then((r) => {
+      (r.cases || []).forEach((c: any) => {
+        if (
+          c.title?.toLowerCase().includes(q) ||
+          c.case_number?.toLowerCase().includes(q) ||
+          c.description?.toLowerCase().includes(q)
+        ) {
+          results.push({
+            type: "Case File",
+            title: c.title,
+            subtitle: `${c.case_number} • ${c.status || "Open"}`,
+            route: `/cases?id=${c.id}`,
+            category: "CASE",
+          });
+        }
+      });
+    }).catch(() => {});
+
+    api.entities("PERSON", query).then((r: any) => {
+      (r.entities || []).forEach((en: any) => {
+        results.push({
+          type: en.type || "Subject",
+          title: en.name,
+          subtitle: `${en.type} • Priority: ${en.risk_score || "Routine"}`,
+          route: `/entities?q=${encodeURIComponent(en.name)}`,
+          category: "ENTITY",
+        });
+      });
+      setSearchResults(results.slice(0, 8));
+    }).catch(() => {});
   }, [query]);
 
+  // Handle route change transition
   useEffect(() => {
     setPageKey(location.pathname);
+    if (mainRef.current) {
+      mainRef.current.scrollTop = 0;
+    }
   }, [location.pathname]);
 
-  // Auto-collapse on narrow screens
-  useEffect(() => {
-    const mql = window.matchMedia("(max-width: 1024px)");
-    const handler = (e: MediaQueryListEvent | MediaQueryList) => {
-      if (e.matches) setCollapsed(true);
-    };
-    handler(mql);
-    mql.addEventListener("change", handler);
-    return () => mql.removeEventListener("change", handler);
-  }, []);
-
-  const allItems = NAV_GROUPS.flatMap((g) => g.items);
-  const currentPageLabel = allItems.find((n) => location.pathname.startsWith(n.to))?.label || "Workspace";
+  const initials = user?.full_name 
+    ? user.full_name.split(" ").map((n: string) => n[0]).join("").slice(0, 2).toUpperCase()
+    : "IR";
 
   return (
-    <div className="flex h-screen" style={{ background: "var(--bg-void)" }}>
-      {/* ── Global Search Modal (Command Palette) ── */}
+    <div className="flex h-screen w-full overflow-hidden bg-black text-[#f4f4f5]">
+      {/* ── Global Command Palette Modal ── */}
       {searchOpen && (
         <div className="cmd-palette-backdrop" onClick={() => setSearchOpen(false)}>
           <div className="cmd-palette-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center px-4 py-3.5 border-b border-[var(--border-subtle)] bg-[var(--bg-panel-raised)]">
-              <Search size={16} className="text-[var(--neon-teal)] mr-3 shrink-0" />
+            <div className="flex items-center gap-3 px-4 py-3 border-b border-zinc-800 bg-[#0c0c0e]">
+              <Search size={16} className="text-zinc-400 shrink-0" />
               <input
-                ref={searchInputRef}
+                type="text"
+                autoFocus
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search across Persons, Cases, Vehicles, Phones, Gangs... (Type to explore)"
-                className="flex-1 bg-transparent text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] font-sans"
+                placeholder="Search cases, subjects, phone numbers, vehicle plates (ESC to close)..."
+                className="w-full bg-transparent border-none outline-none text-xs text-white placeholder:text-zinc-600 font-sans"
               />
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[rgba(255,255,255,0.06)] text-[var(--text-muted)] border border-[var(--border-subtle)]">
+              <span className="text-[10px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded border border-zinc-800">
                 ESC
               </span>
             </div>
 
-            <div className="max-h-80 overflow-y-auto p-2 space-y-1">
-              {searchLoading && (
-                <div className="py-6 text-center text-xs font-mono text-[var(--neon-teal)]">
-                  Scanning intelligence databases...
-                </div>
-              )}
-
-              {!searchLoading && query && searchResults.length === 0 && (
-                <div className="py-8 text-center text-xs text-[var(--text-muted)]">
-                  No matching entities or case files found for "{query}".
-                </div>
-              )}
-
+            <div className="max-h-80 overflow-y-auto p-2 space-y-1 bg-[#0c0c0e]">
               {!query && (
-                <div className="p-4 text-xs text-[var(--text-muted)] space-y-2">
-                  <div className="font-mono text-[10px] uppercase text-[var(--neon-teal)]">Quick Suggestions</div>
+                <div className="p-3 text-xs text-zinc-500 space-y-2">
+                  <div className="font-mono text-[10px] uppercase text-zinc-400 font-semibold">
+                    Quick Search Presets
+                  </div>
                   <div className="flex flex-wrap gap-2">
                     {["Ravi Kumar", "KA01AB1234", "9876543210", "D-Company", "Case-118"].map((s) => (
                       <button
                         key={s}
                         onClick={() => setQuery(s)}
-                        className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-[var(--bg-panel-hover)] border border-[var(--border-subtle)] hover:border-[var(--neon-teal)] text-[var(--text-secondary)] transition-all"
+                        className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-zinc-300 transition-all"
                       >
                         {s}
                       </button>
@@ -207,20 +227,20 @@ export default function Layout() {
                     setSearchOpen(false);
                     navigate(res.route);
                   }}
-                  className="p-3 rounded-lg flex items-center justify-between hover:bg-[var(--bg-panel-hover)] border border-transparent hover:border-[var(--border-subtle)] cursor-pointer transition-all"
+                  className="p-2.5 rounded-lg flex items-center justify-between hover:bg-zinc-900 border border-transparent hover:border-zinc-800 cursor-pointer transition-all"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[rgba(45,212,191,0.1)] border border-[rgba(45,212,191,0.2)] text-[var(--neon-teal)]">
-                      {res.category === "CASE" ? <FolderKanban size={14} /> : <Users size={14} />}
+                    <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-zinc-900 border border-zinc-800 text-zinc-300">
+                      {res.category === "CASE" ? <FolderKanban size={13} /> : <Users size={13} />}
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-[var(--text-primary)]">{res.title}</div>
-                      <div className="text-[11px] text-[var(--text-muted)] font-mono">{res.subtitle}</div>
+                      <div className="text-xs font-semibold text-white">{res.title}</div>
+                      <div className="text-[10px] text-zinc-500 font-mono">{res.subtitle}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="badge badge-low text-[9px]">{res.type}</span>
-                    <CornerDownLeft size={12} className="text-[var(--text-muted)]" />
+                    <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300">{res.type}</span>
+                    <CornerDownLeft size={12} className="text-zinc-500" />
                   </div>
                 </div>
               ))}
@@ -229,121 +249,60 @@ export default function Layout() {
         </div>
       )}
 
-      {/* ── Sidebar ── */}
+      {/* ── App Sidebar 1 Block (Exact Match to Screenshot 1) ── */}
       <aside
-        className="shrink-0 flex flex-col relative z-20"
+        className="shrink-0 flex flex-col relative z-20 select-none bg-black border-r border-[#18181b]"
         style={{
-          width: collapsed ? 68 : 240,
-          transition: "width 0.3s var(--ease-out-expo)",
-          background: "var(--bg-panel-solid)",
-          backdropFilter: "blur(20px) saturate(1.8)",
-          borderRight: "1px solid var(--border-subtle)",
-          boxShadow: "4px 0 30px rgba(0, 0, 0, 0.5)",
+          width: collapsed ? 64 : 224,
+          transition: "width 0.2s var(--ease-out-expo)",
         }}
       >
-        {/* Neon left accent edge */}
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            bottom: 0,
-            width: 2,
-            background: "linear-gradient(180deg, var(--neon-teal), transparent 70%)",
-            opacity: 0.6,
-          }}
-        />
-
-        {/* Logo */}
-        <div className="px-4 py-4 flex items-center gap-3 relative border-b border-[var(--border-subtle)]">
-          <div
-            className="shrink-0 flex items-center justify-center"
-            style={{
-              width: 34,
-              height: 34,
-              borderRadius: 9,
-              background: "linear-gradient(135deg, rgba(45,212,191,0.2), rgba(0,255,255,0.06))",
-              border: "1px solid rgba(45,212,191,0.35)",
-              boxShadow: "0 0 16px rgba(45,212,191,0.2)",
-            }}
-          >
-            <Eye size={18} color="var(--neon-teal)" style={{ filter: "drop-shadow(0 0 6px rgba(0,255,255,0.6))" }} />
+        {/* Workspace Brand Switcher */}
+        <div className="px-4 py-4 flex items-center gap-3">
+          <div className="w-7 h-7 rounded-lg bg-white text-black font-bold text-xs flex items-center justify-center shrink-0 shadow-sm">
+            M
           </div>
           {!collapsed && (
-            <div className="fade-in min-w-0">
-              <div
-                className="text-sm font-black tracking-widest leading-tight"
-                style={{ color: "var(--neon-teal)", textShadow: "0 0 12px rgba(45,212,191,0.4)" }}
-              >
-                DRISHYAM
+            <div className="min-w-0 flex-1">
+              <div className="text-xs font-semibold tracking-tight text-white truncate leading-tight">
+                Meridian
               </div>
-              <div className="hud-label" style={{ fontSize: 8, color: "var(--text-muted)", letterSpacing: "0.15em" }}>
-                SIH26189 · CRIME INTEL
+              <div className="text-[11px] text-zinc-500 truncate">
+                Operations
               </div>
             </div>
           )}
         </div>
 
-        {/* Global Search Trigger in Sidebar */}
-        <div className="px-3 pt-3 pb-1">
-          <button
-            onClick={() => setSearchOpen(true)}
-            className="w-full flex items-center justify-between px-2.5 py-2 rounded-lg bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] hover:border-[var(--neon-teal)] text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all"
-          >
-            <div className="flex items-center gap-2 truncate">
-              <Search size={14} className="text-[var(--neon-teal)] shrink-0" />
-              {!collapsed && <span className="truncate text-[11px]">Omni-Search...</span>}
-            </div>
-            {!collapsed && (
-              <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-[rgba(255,255,255,0.06)] text-[var(--text-muted)]">
-                Ctrl+K
-              </span>
-            )}
-          </button>
-        </div>
-
-        {/* Navigation Sections */}
-        <nav className="flex-1 px-2.5 py-2 space-y-4 overflow-y-auto overflow-x-hidden">
+        {/* Grouped Nav Sections */}
+        <nav className="flex-1 px-2.5 space-y-4 overflow-y-auto overflow-x-hidden pt-1">
           {visibleNavGroups.map((group) => (
-            <div key={group.group} className="space-y-1">
+            <div key={group.group} className="space-y-0.5">
               {!collapsed && (
-                <div className="px-2 pt-1 pb-0.5 text-[9px] font-mono uppercase tracking-wider text-[var(--text-muted)] opacity-70">
+                <div className="px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
                   {group.group}
                 </div>
               )}
-              {group.items.map(({ to, label, icon: Icon, highlight }) => (
+              {group.items.map(({ to, label, icon: Icon, badge }) => (
                 <NavLink
                   key={to}
                   to={to}
                   title={collapsed ? label : undefined}
                   className={({ isActive }) =>
-                    `flex items-center gap-3 px-2.5 py-2 rounded-lg text-xs font-medium transition-all relative ${
+                    `flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors ${
                       isActive
-                        ? "text-[var(--neon-teal)] font-semibold"
-                        : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-panel-hover)]"
+                        ? "bg-[#1c1c20] text-white font-medium"
+                        : "text-zinc-400 hover:text-zinc-100 hover:bg-[#121214]"
                     }`
                   }
-                  style={({ isActive }) =>
-                    isActive
-                      ? {
-                          background: "rgba(45, 212, 191, 0.08)",
-                          boxShadow: "inset 3px 0 12px rgba(0, 255, 255, 0.06)",
-                          borderLeft: "2px solid var(--neon-teal)",
-                        }
-                      : { borderLeft: "2px solid transparent" }
-                  }
                 >
-                  <Icon
-                    size={16}
-                    style={{ flexShrink: 0 }}
-                    className={highlight ? "text-[var(--neon-teal)]" : undefined}
-                  />
-                  {!collapsed && (
-                    <span className="truncate flex-1 flex items-center justify-between">
-                      <span>{label}</span>
-                      {highlight && (
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--neon-teal)] animate-pulse" />
-                      )}
+                  <div className="flex items-center gap-2.5 truncate">
+                    <Icon size={15} className="shrink-0 text-zinc-400" />
+                    {!collapsed && <span className="truncate">{label}</span>}
+                  </div>
+                  {!collapsed && badge !== undefined && (
+                    <span className="text-xs font-mono text-zinc-500 pl-2">
+                      {badge}
                     </span>
                   )}
                 </NavLink>
@@ -352,114 +311,134 @@ export default function Layout() {
           ))}
         </nav>
 
-        {/* Officer User Section */}
-        <div className="px-3 py-3 border-t border-[var(--border-subtle)] bg-[rgba(6,9,15,0.4)]">
-          <div className="flex items-center gap-2.5">
-            <div className="avatar shrink-0" style={{ width: 30, height: 30, fontSize: 11 }}>
-              {user?.full_name?.charAt(0)?.toUpperCase() || "O"}
-            </div>
-            {!collapsed && (
-              <div className="min-w-0 fade-in flex-1">
-                <div className="text-xs font-semibold truncate text-[var(--text-primary)]">{user?.full_name || "Investigator"}</div>
-                <div className="badge badge-info text-[8px] py-0 px-1.5 mt-0.5 font-mono uppercase font-bold tracking-wider">
-                  {user?.role === "admin" ? "ROOT ADMIN" : user?.role === "investigator" ? "LEAD INVESTIGATOR" : "CRIME ANALYST"}
+        {/* ── Footer: Collapse & User Profile ── */}
+        <div className="p-2 border-t border-[#18181b] space-y-1">
+          {/* Collapse sidebar button */}
+          <button
+            onClick={() => setCollapsed(!collapsed)}
+            className="w-full flex items-center gap-2.5 px-2.5 py-1.5 text-xs text-zinc-400 hover:text-zinc-100 hover:bg-[#121214] rounded-lg transition-colors cursor-pointer"
+            title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+          >
+            <PanelLeft size={15} className="shrink-0 text-zinc-400" />
+            {!collapsed && <span>Collapse sidebar</span>}
+          </button>
+
+          {/* User profile row with Popover */}
+          <div ref={userMenuRef} className="relative">
+            <button
+              onClick={() => setUserMenuOpen(!userMenuOpen)}
+              className="w-full flex items-center justify-between p-1.5 rounded-lg hover:bg-[#121214] transition-colors cursor-pointer text-left"
+            >
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="w-7 h-7 rounded-full bg-zinc-800 text-zinc-300 font-medium text-[11px] flex items-center justify-center shrink-0 border border-zinc-700/50">
+                  {initials}
                 </div>
+                {!collapsed && (
+                  <div className="min-w-0">
+                    <div className="text-xs font-medium text-white truncate leading-tight">
+                      {user?.full_name || "Iris Renner"}
+                    </div>
+                    <div className="text-[11px] text-zinc-500 truncate">
+                      {user?.role === "admin" ? "Operations lead" : "Operations lead"}
+                    </div>
+                  </div>
+                )}
+              </div>
+              {!collapsed && <ChevronDown size={14} className="text-zinc-500 shrink-0" />}
+            </button>
+
+            {/* User Popover Menu */}
+            {userMenuOpen && (
+              <div
+                className={`absolute bottom-full mb-2 bg-[#0c0c0e] border border-zinc-800 rounded-xl shadow-2xl p-1.5 z-50 animate-in fade-in duration-150 ${
+                  collapsed ? "left-2 w-52" : "left-0 right-0"
+                }`}
+              >
+                <div className="px-2.5 py-2 border-b border-zinc-800/80 mb-1">
+                  <div className="text-xs font-semibold text-white truncate">
+                    {user?.full_name || "Iris Renner"}
+                  </div>
+                  <div className="text-[11px] text-zinc-500 font-mono truncate">
+                    {user?.email || "iris@northwind.com"}
+                  </div>
+                </div>
+
+                <div className="space-y-0.5 text-xs">
+                  <button
+                    onClick={() => {
+                      setUserMenuOpen(false);
+                      toggleTheme();
+                    }}
+                    className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-md hover:bg-zinc-900 text-zinc-400 hover:text-white transition-colors"
+                  >
+                    <span className="flex items-center gap-2">
+                      {theme === "dark" ? <Sun size={13} /> : <Moon size={13} />}
+                      <span>Theme</span>
+                    </span>
+                    <span className="text-[10px] font-mono text-zinc-500 capitalize">{theme}</span>
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setUserMenuOpen(false);
+                      navigate("/settings");
+                    }}
+                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-md hover:bg-zinc-900 text-zinc-400 hover:text-white transition-colors"
+                  >
+                    <Settings size={13} />
+                    <span>Settings</span>
+                  </button>
+                </div>
+
+                <div className="border-t border-zinc-800/80 my-1" />
+
+                <button
+                  onClick={() => {
+                    setUserMenuOpen(false);
+                    logout();
+                    navigate("/login");
+                  }}
+                  className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-md text-red-400 hover:bg-red-500/10 transition-colors text-xs font-medium"
+                >
+                  <LogOut size={13} />
+                  <span>Sign Out</span>
+                </button>
               </div>
             )}
           </div>
-          <button
-            onClick={() => { logout(); navigate("/login"); }}
-            className="flex items-center gap-2 text-xs mt-2.5 w-full px-2 py-1 rounded-md text-[var(--text-muted)] hover:text-[var(--neon-red)] hover:bg-[rgba(255,59,92,0.06)] transition-colors"
-          >
-            <LogOut size={13} />
-            {!collapsed && <span className="text-[11px]">Terminate Session</span>}
-          </button>
         </div>
-
-        {/* Collapse toggle */}
-        <button
-          onClick={() => setCollapsed(!collapsed)}
-          className="absolute top-5 -right-3 w-6 h-6 rounded-full flex items-center justify-center z-50 bg-[var(--bg-panel-solid)] border border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--neon-teal)] hover:border-[var(--neon-teal)] transition-all cursor-pointer shadow-md"
-        >
-          {collapsed ? <ChevronRight size={12} /> : <ChevronLeft size={12} />}
-        </button>
       </aside>
 
-      {/* ── Main Workspace Area ── */}
-      <div className="flex-1 flex flex-col min-w-0">
-        {/* Top Intelligence Telemetry Bar */}
-        <header
-          className="h-12 flex items-center justify-between px-5 shrink-0 bg-[var(--bg-panel-solid)] border-b border-[var(--border-subtle)]"
-          style={{ backdropFilter: "blur(12px)" }}
-        >
+      {/* ── Main Viewport ── */}
+      <div className="flex-1 flex flex-col min-w-0 bg-black">
+        {/* Subtle Top Status Bar */}
+        <header className="h-12 flex items-center justify-between px-6 shrink-0 bg-black border-b border-[#18181b]">
           <div className="flex items-center gap-3">
-            <span className="hud-label text-[11px] font-bold text-[var(--neon-teal)] tracking-wider">
-              {currentPageLabel}
-            </span>
-            <span className="text-[var(--border-strong)]">/</span>
-            <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[rgba(251,191,36,0.06)] border border-[rgba(251,191,36,0.2)]">
-              <span className="radar-beacon" style={{ background: "var(--neon-amber)", width: 6, height: 6 }} />
-              <span className="text-[9px] font-mono text-[var(--neon-amber)] uppercase font-semibold">
-                Classified Synthetic Sandbox
-              </span>
-            </div>
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#0c0c0e] border border-zinc-800 text-xs text-zinc-400 hover:text-zinc-200 transition-colors cursor-pointer"
+            >
+              <Search size={13} />
+              <span>Search workspace...</span>
+              <kbd className="text-[10px] font-mono text-zinc-500 bg-zinc-900 px-1 rounded">⌘K</kbd>
+            </button>
           </div>
 
-          <div className="flex items-center gap-3">
-            {/* Officer Clearance Badge */}
-            <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] text-[10px] font-mono">
-              <Shield size={11} className="text-[var(--neon-teal)]" />
-              <span className="text-[var(--text-muted)]">CLEARANCE:</span>
-              <span className="text-[var(--text-primary)] font-bold uppercase">
-                {user?.role || "analyst"}
-              </span>
-            </div>
-
-            {/* Session Heartbeat */}
-            <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[rgba(45,212,191,0.08)] border border-[rgba(45,212,191,0.25)]">
-              <span className="radar-beacon" style={{ background: "var(--neon-teal)", width: 6, height: 6 }} />
-              <span className="text-[9px] font-mono text-[var(--neon-teal)] uppercase font-semibold">
-                Session Active (30m)
-              </span>
-            </div>
-
-            {/* Live Clock HUD */}
-            <div className="flex items-center gap-1.5 text-[11px] font-mono text-[var(--text-secondary)] bg-[var(--bg-panel-raised)] px-2.5 py-1 rounded-md border border-[var(--border-subtle)]">
-              <Clock size={12} className="text-[var(--neon-teal)]" />
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-500">
+              <Clock size={13} className="text-zinc-400" />
               <span>{timeStr}</span>
             </div>
-
-            {/* Theme Toggle (Light / Dark) */}
-            <button
-              type="button"
-              onClick={toggleTheme}
-              title={`Switch to ${theme === "dark" ? "Light" : "Dark"} Mode`}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] hover:border-[var(--neon-teal)] text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer"
-            >
-              {theme === "dark" ? (
-                <>
-                  <Sun size={12} className="text-[var(--neon-amber)]" />
-                  <span className="font-mono text-[10px]">Light</span>
-                </>
-              ) : (
-                <>
-                  <Moon size={12} className="text-[var(--neon-teal)]" />
-                  <span className="font-mono text-[10px]">Dark</span>
-                </>
-              )}
-            </button>
-
-            {/* Grid Status */}
-            <div className="flex items-center gap-2 text-[10px] font-mono text-[var(--text-muted)]">
-              <div className="w-2 h-2 rounded-full bg-[var(--neon-teal)] animate-ping" />
-              <span className="text-[var(--neon-teal)] font-bold">GRID ONLINE</span>
+            <div className="flex items-center gap-1.5 text-xs text-zinc-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span>Online</span>
             </div>
           </div>
         </header>
 
         {/* Page Content Viewport */}
-        <main ref={mainRef} className="flex-1 overflow-auto">
-          <div key={pageKey} className="page-enter h-full">
+        <main ref={mainRef} className="flex-1 overflow-auto bg-black p-6">
+          <div key={pageKey} className="page-enter max-w-7xl mx-auto h-full">
             <Outlet />
           </div>
         </main>
