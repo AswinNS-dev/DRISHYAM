@@ -1,39 +1,105 @@
 import { useEffect, useRef, useCallback } from "react";
 import * as d3 from "d3";
-import { ZoomIn, ZoomOut, Maximize2 } from "lucide-react";
+import { ZoomIn, ZoomOut, Maximize2, Layers } from "lucide-react";
+import Network3DGraph, { ENTITY_COLORS } from "./Network3DGraph";
 
 export type GraphNode = {
-  id: string; type: string; name: string;
-  role_label?: string; community?: number; risk_band?: string; risk_level?: string;
+  id: string;
+  type: string;
+  name: string;
+  role_label?: string;
+  community?: number;
+  risk_band?: string;
+  risk_level?: string;
   centrality?: { degree_centrality: number; betweenness_centrality: number; pagerank: number };
-  x?: number; y?: number; fx?: number | null; fy?: number | null;
-  vx?: number; vy?: number;
+  x?: number;
+  y?: number;
+  fx?: number | null;
+  fy?: number | null;
+  vx?: number;
+  vy?: number;
 };
+
 export type GraphEdge = {
   id?: string;
-  source_entity_id: string; target_entity_id: string;
-  relationship_type: string; confidence_score: number;
+  source_entity_id: string;
+  target_entity_id: string;
+  relationship_type: string;
+  confidence_score: number;
+  evidence_id?: string;
 };
 
 type SimNode = GraphNode & { x: number; y: number; vx: number; vy: number; index?: number };
 type SimLink = { source: SimNode; target: SimNode; relationship_type: string; confidence_score: number; id?: string };
 
-const TYPE_COLORS: Record<string, string> = {
-  PERSON: "#3b82f6",
-  PHONE: "#0ea5e9",
-  VEHICLE: "#f59e0b",
-  LOCATION: "#8b5cf6",
-  ORGANIZATION: "#ef4444",
-  GANG: "#ef4444",
-  BANK_ACCOUNT: "#10b981",
-  CASE: "#64748b",
-};
+export const TYPE_COLORS: Record<string, string> = ENTITY_COLORS;
+
+interface NetworkGraphProps {
+  nodes: GraphNode[];
+  edges: GraphEdge[];
+  selectedNodeId?: string | null;
+  onSelect: (n: GraphNode) => void;
+  onSelectEdge?: (edge: any) => void;
+  highlightPath?: string[];
+  viewMode?: "3d" | "2d";
+  focusDegree?: 1 | 2 | 3;
+  onDegreeChange?: (deg: 1 | 2 | 3) => void;
+  onResetFocus?: () => void;
+}
 
 export default function NetworkGraph({
-  nodes, edges, onSelect, onSelectEdge, highlightPath,
+  nodes,
+  edges,
+  selectedNodeId,
+  onSelect,
+  onSelectEdge,
+  highlightPath,
+  viewMode = "3d",
+  focusDegree = 1,
+  onDegreeChange,
+  onResetFocus,
+}: NetworkGraphProps) {
+  // If 3D mode is selected, render the high-performance 3D Neural Graph
+  if (viewMode === "3d") {
+    return (
+      <Network3DGraph
+        nodes={nodes}
+        edges={edges}
+        selectedNodeId={selectedNodeId}
+        onSelect={onSelect}
+        onSelectEdge={onSelectEdge}
+        highlightPath={highlightPath}
+        focusDegree={focusDegree}
+        onDegreeChange={onDegreeChange}
+        onResetFocus={onResetFocus}
+      />
+    );
+  }
+
+  // Graceful 2D Planar Canvas Fallback
+  return (
+    <Network2DPlanarGraph
+      nodes={nodes}
+      edges={edges}
+      selectedNodeId={selectedNodeId}
+      onSelect={onSelect}
+      onSelectEdge={onSelectEdge}
+      highlightPath={highlightPath}
+    />
+  );
+}
+
+function Network2DPlanarGraph({
+  nodes,
+  edges,
+  selectedNodeId,
+  onSelect,
+  onSelectEdge,
+  highlightPath,
 }: {
   nodes: GraphNode[];
   edges: GraphEdge[];
+  selectedNodeId?: string | null;
   onSelect: (n: GraphNode) => void;
   onSelectEdge?: (edge: SimLink) => void;
   highlightPath?: string[];
@@ -78,7 +144,8 @@ export default function NetworkGraph({
         ...n,
         x: n.x ?? w / 2 + (Math.random() - 0.5) * w * 0.6,
         y: n.y ?? h / 2 + (Math.random() - 0.5) * h * 0.6,
-        vx: 0, vy: 0,
+        vx: 0,
+        vy: 0,
       });
     });
 
@@ -98,8 +165,16 @@ export default function NetworkGraph({
 
     if (simRef.current) simRef.current.stop();
 
-    const sim = d3.forceSimulation<SimNode>(simNodes)
-      .force("link", d3.forceLink<SimNode, SimLink>(simLinks).id((d) => d.id).distance(85).strength(0.3))
+    const sim = d3
+      .forceSimulation<SimNode>(simNodes)
+      .force(
+        "link",
+        d3
+          .forceLink<SimNode, SimLink>(simLinks)
+          .id((d) => d.id)
+          .distance(85)
+          .strength(0.3)
+      )
       .force("charge", d3.forceManyBody().strength(-160).distanceMax(420))
       .force("center", d3.forceCenter(w / 2, h / 2).strength(0.05))
       .force("collide", d3.forceCollide<SimNode>(18).strength(0.6))
@@ -162,7 +237,8 @@ export default function NetworkGraph({
       const simLinks = linksRef.current;
       for (const link of simLinks) {
         const isSelected = selectedEdgeRef.current === link;
-        const isPathLink = highlightSet.current.has(link.source.id) && highlightSet.current.has(link.target.id);
+        const isPathLink =
+          highlightSet.current.has(link.source.id) && highlightSet.current.has(link.target.id);
 
         ctx.beginPath();
         ctx.moveTo(link.source.x, link.source.y);
@@ -172,7 +248,7 @@ export default function NetworkGraph({
           ctx.strokeStyle = "#38bdf8";
           ctx.lineWidth = 3 / t.k;
         } else if (isSelected) {
-          ctx.strokeStyle = "#2563eb";
+          ctx.strokeStyle = "#0ea5e9";
           ctx.lineWidth = 2.5 / t.k;
         } else {
           ctx.strokeStyle = "rgba(148, 163, 184, 0.22)";
@@ -185,14 +261,14 @@ export default function NetworkGraph({
       const simNodes = nodesRef.current;
       for (const n of simNodes) {
         const isHovered = hoveredRef.current?.id === n.id;
-        const isSelected = selectedRef.current?.id === n.id;
+        const isSelected = selectedRef.current?.id === n.id || selectedNodeId === n.id;
         const isPath = highlightSet.current.has(n.id);
         const baseColor = TYPE_COLORS[n.type] || "#94a3b8";
 
         let radius = 7;
         if (n.type === "PERSON") radius = 9;
         if (n.type === "CASE" || n.type === "GANG") radius = 10;
-        if (isHovered || isSelected || isPath) radius += 2.5;
+        if (isHovered || isSelected || isPath) radius += 3;
 
         // Base node circle
         ctx.beginPath();
@@ -201,7 +277,7 @@ export default function NetworkGraph({
         ctx.fill();
 
         // High contrast border
-        ctx.strokeStyle = isSelected || isPath ? "#ffffff" : "rgba(24, 24, 27, 0.85)";
+        ctx.strokeStyle = isSelected || isPath ? "#ffffff" : "rgba(15, 23, 42, 0.85)";
         ctx.lineWidth = isSelected || isPath ? 2.5 / t.k : 1.5 / t.k;
         ctx.stroke();
 
@@ -222,7 +298,7 @@ export default function NetworkGraph({
 
     draw();
     return () => cancelAnimationFrame(animRef.current);
-  }, []);
+  }, [selectedNodeId]);
 
   // Minimap
   const drawMinimap = useCallback(() => {
@@ -235,7 +311,7 @@ export default function NetworkGraph({
     const mh = 90;
     mctx.clearRect(0, 0, mw, mh);
 
-    mctx.fillStyle = "#0c1322";
+    mctx.fillStyle = "#070c18";
     mctx.fillRect(0, 0, mw, mh);
     mctx.strokeStyle = "rgba(148, 163, 184, 0.2)";
     mctx.lineWidth = 1;
@@ -244,7 +320,10 @@ export default function NetworkGraph({
     const simNodes = nodesRef.current;
     if (simNodes.length === 0) return;
 
-    let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    let minX = Infinity,
+      maxX = -Infinity,
+      minY = Infinity,
+      maxY = -Infinity;
     for (const n of simNodes) {
       if (n.x < minX) minX = n.x;
       if (n.x > maxX) maxX = n.x;
@@ -253,8 +332,8 @@ export default function NetworkGraph({
     }
 
     const padding = 30;
-    const rangeX = (maxX - minX) || 1;
-    const rangeY = (maxY - minY) || 1;
+    const rangeX = maxX - minX || 1;
+    const rangeY = maxY - minY || 1;
     const scale = Math.min((mw - padding) / rangeX, (mh - padding) / rangeY);
     const ox = (mw - rangeX * scale) / 2 - minX * scale;
     const oy = (mh - rangeY * scale) / 2 - minY * scale;
@@ -286,7 +365,8 @@ export default function NetworkGraph({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const zoom = d3.zoom<HTMLCanvasElement, unknown>()
+    const zoom = d3
+      .zoom<HTMLCanvasElement, unknown>()
       .scaleExtent([0.15, 5])
       .on("zoom", (event) => {
         transformRef.current = event.transform;
@@ -370,14 +450,15 @@ export default function NetworkGraph({
         return;
       }
 
-      // Check if clicked close to an edge
       if (onSelectEdge) {
         const t = transformRef.current;
         const x = (mx - t.x) / t.k;
         const y = (my - t.y) / t.k;
         for (const link of linksRef.current) {
-          const x1 = link.source.x, y1 = link.source.y;
-          const x2 = link.target.x, y2 = link.target.y;
+          const x1 = link.source.x,
+            y1 = link.source.y;
+          const x2 = link.target.x,
+            y2 = link.target.y;
           const len = Math.hypot(x2 - x1, y2 - y1);
           if (len === 0) continue;
           const dist = Math.abs((y2 - y1) * x - (x2 - x1) * y + x2 * y1 - y2 * x1) / len;
@@ -402,26 +483,29 @@ export default function NetworkGraph({
       window.removeEventListener("mouseup", handleMouseUp);
       canvas.removeEventListener("click", handleClick);
     };
-  }, [onSelect]);
+  }, [onSelect, onSelectEdge]);
 
   const handleZoomIn = () => {
     if (!canvasRef.current) return;
     d3.select(canvasRef.current).transition().call(
-      d3.zoom<HTMLCanvasElement, unknown>().scaleBy as any, 1.3
+      d3.zoom<HTMLCanvasElement, unknown>().scaleBy as any,
+      1.3
     );
   };
 
   const handleZoomOut = () => {
     if (!canvasRef.current) return;
     d3.select(canvasRef.current).transition().call(
-      d3.zoom<HTMLCanvasElement, unknown>().scaleBy as any, 0.75
+      d3.zoom<HTMLCanvasElement, unknown>().scaleBy as any,
+      0.75
     );
   };
 
   const handleResetZoom = () => {
     if (!canvasRef.current) return;
     d3.select(canvasRef.current).transition().call(
-      d3.zoom<HTMLCanvasElement, unknown>().transform as any, d3.zoomIdentity
+      d3.zoom<HTMLCanvasElement, unknown>().transform as any,
+      d3.zoomIdentity
     );
   };
 
@@ -429,25 +513,33 @@ export default function NetworkGraph({
     <div ref={containerRef} className="w-full h-full relative overflow-hidden select-none bg-[var(--bg-void)]">
       <canvas ref={canvasRef} className="block w-full h-full" />
 
+      {/* Top Floating Badge */}
+      <div className="absolute top-3 left-4 z-10 flex items-center gap-2">
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[rgba(15,23,42,0.85)] border border-slate-700/60 backdrop-blur-md shadow-lg text-[11px] font-semibold text-slate-300">
+          <Layers size={13} />
+          <span>2D PLANAR OVERVIEW</span>
+        </div>
+      </div>
+
       {/* Zoom Controls */}
-      <div className="absolute top-3 right-3 z-10 flex flex-col gap-1.5 bg-[var(--bg-panel-solid)] p-1 rounded border border-[var(--border-subtle)]">
+      <div className="absolute top-3 right-3 z-10 flex flex-col gap-1.5 bg-[var(--bg-panel-solid)] p-1 rounded-xl border border-[var(--border-subtle)] shadow-xl">
         <button
           onClick={handleZoomIn}
-          className="p-1.5 rounded hover:bg-[var(--bg-panel-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          className="p-2 rounded-lg hover:bg-[var(--bg-panel-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
           title="Zoom In"
         >
           <ZoomIn size={14} />
         </button>
         <button
           onClick={handleZoomOut}
-          className="p-1.5 rounded hover:bg-[var(--bg-panel-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          className="p-2 rounded-lg hover:bg-[var(--bg-panel-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
           title="Zoom Out"
         >
           <ZoomOut size={14} />
         </button>
         <button
           onClick={handleResetZoom}
-          className="p-1.5 rounded hover:bg-[var(--bg-panel-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          className="p-2 rounded-lg hover:bg-[var(--bg-panel-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
           title="Reset View"
         >
           <Maximize2 size={14} />
@@ -455,15 +547,15 @@ export default function NetworkGraph({
       </div>
 
       {/* Minimap */}
-      <div className="absolute bottom-3 right-3 z-10 rounded overflow-hidden border border-[var(--border-subtle)] shadow-md">
-        <canvas ref={minimapRef} width={140} height={90} />
+      <div className="absolute bottom-3 right-3 z-10 rounded-xl overflow-hidden border border-[var(--border-subtle)] shadow-xl bg-[rgba(15,23,42,0.85)] backdrop-blur-md">
+        <canvas ref={minimapRef} width={140} height={90} className="block" />
       </div>
 
-      {/* Clean Investigation Legend */}
-      <div className="absolute bottom-3 left-3 z-10 bg-[var(--bg-panel-solid)] border border-[var(--border-subtle)] rounded p-2.5 flex flex-wrap gap-x-3 gap-y-1.5 max-w-xs shadow-md">
+      {/* Legend */}
+      <div className="absolute bottom-3 left-3 z-10 bg-[var(--bg-panel-solid)] border border-[var(--border-subtle)] rounded-xl p-2.5 flex flex-wrap gap-x-3 gap-y-1.5 max-w-sm shadow-xl">
         {Object.entries(TYPE_COLORS).map(([type, color]) => (
           <div key={type} className="flex items-center gap-1.5">
-            <div style={{ width: 7, height: 7, borderRadius: "50%", background: color }} />
+            <div style={{ width: 8, height: 8, borderRadius: "50%", background: color }} />
             <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase">
               {type.replace("_", " ")}
             </span>

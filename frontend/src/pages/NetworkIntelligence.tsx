@@ -1,14 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../lib/api";
 import NetworkGraph, { type GraphNode } from "../components/NetworkGraph";
+import { getEntityColor, getPoliceRelationLabel } from "../components/Network3DGraph";
 import {
-  Search, Network, AlertTriangle, GitBranch,
-  Layers, Zap, Filter, Eye, RefreshCw, ShieldCheck
+  Search,
+  Network,
+  AlertTriangle,
+  GitBranch,
+  Layers,
+  Zap,
+  Filter,
+  RefreshCw,
+  ShieldCheck,
+  Compass,
+  Clock,
+  ChevronRight,
+  Sparkles,
+  Share2,
 } from "lucide-react";
 
 type BottomTab = "centrality" | "communities" | "paths" | "anomalies";
 
 export default function NetworkIntelligence() {
+  const navigate = useNavigate();
+
   const [graph, setGraph] = useState<{ nodes: GraphNode[]; edges: any[] } | null>(null);
   const [loading, setLoading] = useState(true);
   const [entityTypeFilter, setEntityTypeFilter] = useState("");
@@ -16,20 +32,30 @@ export default function NetworkIntelligence() {
   const [selected, setSelected] = useState<GraphNode | null>(null);
   const [selectedEdge, setSelectedEdge] = useState<any | null>(null);
   const [dossier, setDossier] = useState<any>(null);
+  const [timelineEvents, setTimelineEvents] = useState<any[]>([]);
+  const [timelineLoading, setTimelineLoading] = useState(false);
+
+  // 3D Neural View vs 2D Fallback & Subgraph Depth
+  const [viewMode, setViewMode] = useState<"3d" | "2d">("3d");
+  const [focusDegree, setFocusDegree] = useState<1 | 2 | 3>(1);
+
+  // Bottom Workbench state
   const [bottomTab, setBottomTab] = useState<BottomTab>("centrality");
   const [centrality, setCentrality] = useState<any>(null);
   const [communities, setCommunities] = useState<any>(null);
   const [anomalies, setAnomalies] = useState<any>(null);
+
+  // AI Assistant chat state
   const [chatQ, setChatQ] = useState("");
   const [chatLog, setChatLog] = useState<{ q: string; a: any }[]>([]);
   const [chatLoading, setChatLoading] = useState(false);
-  const [highlightPath, setHighlightPath] = useState<string[] | undefined>(undefined);
 
-  // Path finder state
+  // Shortest Path finder state
   const [sourceNodeId, setSourceNodeId] = useState("");
   const [targetNodeId, setTargetNodeId] = useState("");
   const [pathResult, setPathResult] = useState<any>(null);
   const [pathLoading, setPathLoading] = useState(false);
+  const [highlightPath, setHighlightPath] = useState<string[] | undefined>(undefined);
 
   function loadGraph() {
     setLoading(true);
@@ -53,21 +79,43 @@ export default function NetworkIntelligence() {
     setSelected(n);
     setSelectedEdge(null);
     setHighlightPath(undefined);
-    if (n.type === "PERSON" || n.type === "PHONE" || n.type === "ORGANIZATION") {
-      api.dossier(n.id).then(setDossier).catch(() => setDossier(null));
-    } else {
-      setDossier(null);
-    }
+
+    // Fetch full 360 intelligence dossier
+    api.dossier(n.id)
+      .then((data) => setDossier(data))
+      .catch(() => setDossier(null));
+
+    // Fetch live chronological activity from timeline feed
+    setTimelineLoading(true);
+    api.timeline({ entity_id: n.id, limit: 5 })
+      .then((res) => {
+        setTimelineEvents(res.timeline || []);
+        setTimelineLoading(false);
+      })
+      .catch(() => {
+        setTimelineEvents([]);
+        setTimelineLoading(false);
+      });
   }
 
   function selectEdge(edge: any) {
     setSelected(null);
     setSelectedEdge(edge);
+    setDossier(null);
+    setTimelineEvents([]);
   }
 
-  const filteredNodes = graph?.nodes.filter((n) =>
-    !search || n.name.toLowerCase().includes(search.toLowerCase()) || (n.role_label && n.role_label.toLowerCase().includes(search.toLowerCase()))
-  ) || [];
+  const filteredNodes = useMemo(() => {
+    if (!graph) return [];
+    if (!search.trim()) return graph.nodes;
+    const s = search.toLowerCase();
+    return graph.nodes.filter(
+      (n) =>
+        n.name.toLowerCase().includes(s) ||
+        (n.role_label && n.role_label.toLowerCase().includes(s)) ||
+        n.type.toLowerCase().includes(s)
+    );
+  }, [graph, search]);
 
   async function askAI() {
     if (!chatQ.trim()) return;
@@ -78,7 +126,10 @@ export default function NetworkIntelligence() {
       const res = await api.chat(q);
       setChatLog((log) => [{ q, a: res }, ...log]);
     } catch {
-      setChatLog((log) => [{ q, a: { answer: "Query failed. Please verify network connectivity." } }, ...log]);
+      setChatLog((log) => [
+        { q, a: { answer: "Query failed. Please verify network connectivity." } },
+        ...log,
+      ]);
     } finally {
       setChatLoading(false);
     }
@@ -93,56 +144,102 @@ export default function NetworkIntelligence() {
       if (res?.path) {
         setHighlightPath(res.path);
       }
-    } catch (e) {
+    } catch {
       setPathResult({ error: "No recorded association route between selected entities." });
     } finally {
       setPathLoading(false);
     }
   }
 
+  // Connection Summary statistics for selected entity
+  const connectionStats = useMemo(() => {
+    if (!selected) return null;
+    const directCount = dossier?.connections?.length || 0;
+    const relatedCases = dossier?.related_cases?.length || 0;
+    const locationsCount =
+      dossier?.connections?.filter((c: any) => c.type === "LOCATION").length || 0;
+    const communityId =
+      dossier?.network_position?.community_id ?? selected.community ?? "N/A";
+
+    return { directCount, relatedCases, locationsCount, communityId };
+  }, [selected, dossier]);
+
   return (
     <div className="flex flex-col h-full overflow-hidden bg-[var(--bg-void)]">
       {/* ── Top HUD Control Strip ── */}
-      <div className="px-5 py-3 border-b border-[var(--border-subtle)] flex flex-wrap items-center justify-between gap-3 bg-[var(--bg-panel-solid)]">
+      <div className="px-5 py-2.5 border-b border-[var(--border-subtle)] flex flex-wrap items-center justify-between gap-3 bg-[var(--bg-panel-solid)] shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-zinc-800 text-zinc-100 border border-zinc-700/60 flex items-center justify-center shadow-sm">
+          <div className="w-8 h-8 rounded-lg bg-sky-950/60 text-sky-400 border border-sky-800/50 flex items-center justify-center shadow-inner">
             <Network size={16} />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-xs font-bold tracking-wide text-[var(--text-primary)] uppercase">
+              <h1 className="text-xs font-bold tracking-wider text-[var(--text-primary)] uppercase">
                 Criminal Network Analysis Workspace
               </h1>
-              <span className="badge badge-low text-[8px]">
-                ASSOCIATION GRAPH
+              <span className="badge badge-low text-[8px] bg-sky-950/80 text-sky-300 border border-sky-800/60">
+                {viewMode === "3d" ? "3D NEURAL GRAPH" : "2D PLANAR GRAPH"}
               </span>
             </div>
             <p className="text-[11px] text-[var(--text-muted)]">
-              Multi-hop associative clustering, key influencers, and co-conspirator group detection
+              Multi-hop associative clustering, key influencers, and co-conspirator neural maps
             </p>
           </div>
         </div>
 
-        {/* Search & Filters */}
+        {/* View Mode Toggle & Filters */}
         <div className="flex items-center gap-2.5 flex-wrap">
-          <div className="relative w-56">
+          {/* 3D vs 2D Toggle */}
+          <div className="flex items-center bg-slate-900 border border-slate-700/70 rounded-lg p-0.5 text-xs">
+            <button
+              onClick={() => setViewMode("3d")}
+              className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-all font-medium ${
+                viewMode === "3d"
+                  ? "bg-sky-600 text-white shadow-sm font-semibold"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              <Sparkles size={11} />
+              <span>3D Neural</span>
+            </button>
+            <button
+              onClick={() => setViewMode("2d")}
+              className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-all font-medium ${
+                viewMode === "2d"
+                  ? "bg-slate-700 text-white shadow-sm font-semibold"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              <Layers size={11} />
+              <span>2D Planar</span>
+            </button>
+          </div>
+
+          {/* Search Node */}
+          <div className="relative w-52">
             <Search size={12} className="absolute left-2.5 top-2.5 text-[var(--text-muted)]" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Filter nodes..."
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && filteredNodes.length > 0) {
+                  selectNode(filteredNodes[0]);
+                }
+              }}
+              placeholder="Filter or find entity..."
               className="workstation-input pl-7 text-xs"
             />
           </div>
 
-          <div className="flex items-center gap-1.5 bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] rounded px-2 py-1">
+          {/* Entity Type Filter */}
+          <div className="flex items-center gap-1.5 bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] rounded-lg px-2.5 py-1">
             <Filter size={12} className="text-[var(--text-muted)]" />
             <select
               value={entityTypeFilter}
               onChange={(e) => setEntityTypeFilter(e.target.value)}
               className="bg-transparent text-xs text-[var(--text-secondary)] outline-none cursor-pointer"
             >
-              <option value="" className="bg-[var(--bg-panel-solid)]">All Types</option>
+              <option value="" className="bg-[var(--bg-panel-solid)]">All Entity Types</option>
               <option value="PERSON" className="bg-[var(--bg-panel-solid)]">Persons</option>
               <option value="PHONE" className="bg-[var(--bg-panel-solid)]">Phones</option>
               <option value="VEHICLE" className="bg-[var(--bg-panel-solid)]">Vehicles</option>
@@ -153,138 +250,321 @@ export default function NetworkIntelligence() {
             </select>
           </div>
 
+          {/* Refresh Simulation */}
           <button
             onClick={loadGraph}
             title="Refresh network simulation"
-            className="p-1.5 rounded border border-[var(--border-subtle)] hover:border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--bg-panel-raised)] transition-all"
+            className="p-1.5 rounded-lg border border-[var(--border-subtle)] hover:border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--bg-panel-raised)] transition-all"
           >
             <RefreshCw size={13} className={loading ? "animate-spin text-[var(--intel-sky)]" : ""} />
           </button>
 
+          {/* Status Counter */}
           {graph && (
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] text-[10px] font-mono text-[var(--text-secondary)]">
-              <span>{graph.nodes.length} Nodes</span>
+            <div className="flex items-center gap-2 px-3 py-1 rounded-lg bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] text-[10px] font-mono text-[var(--text-secondary)]">
+              <span className="font-semibold text-slate-300">{graph.nodes.length} Nodes</span>
               <span>·</span>
-              <span>{graph.edges.length} Links</span>
+              <span className="text-slate-400">{graph.edges.length} Links</span>
             </div>
           )}
         </div>
       </div>
 
-      {/* ── Main Workspace: Graph Canvas + Inspection Panel ── */}
+      {/* ── Main Workspace: 3D/2D Graph Canvas + Entity Dossier ── */}
       <div className="flex-1 flex min-h-0 relative">
-        {/* Canvas */}
+        {/* Canvas Workspace */}
         <div className="flex-1 min-w-0 h-full relative bg-[var(--bg-void)]">
           {loading ? (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-              <div className="w-8 h-8 rounded-full border-2 border-[var(--intel-blue)] border-t-transparent animate-spin" />
-              <div className="text-xs font-mono text-[var(--intel-sky)] uppercase">
-                Computing association matrix...
+              <div className="w-9 h-9 rounded-full border-2 border-[var(--intel-sky)] border-t-transparent animate-spin" />
+              <div className="text-xs font-mono text-[var(--intel-sky)] uppercase tracking-wider">
+                Computing 3D association matrix...
               </div>
             </div>
           ) : graph ? (
             <NetworkGraph
               nodes={filteredNodes}
               edges={graph.edges}
+              selectedNodeId={selected?.id}
               onSelect={selectNode}
               onSelectEdge={selectEdge}
               highlightPath={highlightPath}
+              viewMode={viewMode}
+              focusDegree={focusDegree}
+              onDegreeChange={setFocusDegree}
+              onResetFocus={() => {
+                setSelected(null);
+                setSelectedEdge(null);
+                setDossier(null);
+                setTimelineEvents([]);
+              }}
             />
           ) : (
             <div className="p-8 text-center text-xs text-[var(--text-muted)]">
-              Failed to load network graph. Please check backend status.
+              Failed to load network graph. Please verify backend status.
             </div>
           )}
         </div>
 
-        {/* Right Inspection Drawer */}
-        <div className="w-96 shrink-0 border-l border-[var(--border-subtle)] flex flex-col min-h-0 bg-[var(--bg-panel-solid)]">
-          <div className="px-4 py-3 border-b border-[var(--border-subtle)] flex items-center justify-between">
+        {/* ── Right Inspection Drawer (The Redesigned Entity Dossier) ── */}
+        <div className="w-96 shrink-0 border-l border-[var(--border-subtle)] flex flex-col min-h-0 bg-[var(--bg-panel-solid)] shadow-2xl">
+          {/* Header */}
+          <div className="px-4 py-3 border-b border-[var(--border-subtle)] flex items-center justify-between bg-slate-900/40">
             <div className="flex items-center gap-2">
               <ShieldCheck size={14} className="text-[var(--intel-sky)]" />
               <span className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
                 {selectedEdge ? "Relationship Record" : "Entity Dossier"}
               </span>
             </div>
+
             {selected && (
-              <span className="badge badge-low text-[8px]">
+              <span
+                className="text-[9px] font-bold px-2 py-0.5 rounded uppercase font-mono tracking-wider"
+                style={{
+                  background: `${getEntityColor(selected.type)}22`,
+                  color: getEntityColor(selected.type),
+                  border: `1px solid ${getEntityColor(selected.type)}55`,
+                }}
+              >
                 {selected.type}
               </span>
             )}
+
             {selectedEdge && (
-              <span className="badge badge-low text-[8px]">
-                {Math.round(selectedEdge.confidence_score * 100)}% Confidence
+              <span className="badge badge-low text-[9px]">
+                {Math.round((selectedEdge.confidence_score || 0.8) * 100)}% Corroborated
               </span>
             )}
           </div>
 
-          <div className="flex-1 overflow-y-auto p-4 space-y-3">
+          {/* Dossier Body */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-3.5">
+            {/* Edge Selection View */}
             {selectedEdge ? (
               <div className="space-y-3">
-                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] space-y-1">
+                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] space-y-1.5 border border-slate-700/50">
                   <div className="hud-label text-[9px] text-[var(--intel-sky)]">
-                    CORROBORATED CONNECTION
+                    CORROBORATED CONNECTION RECORD
                   </div>
                   <div className="flex items-center gap-2 text-xs font-bold text-[var(--text-primary)]">
-                    <span>{selectedEdge.source?.name}</span>
+                    <span className="truncate">{selectedEdge.source?.name}</span>
                     <span className="text-[var(--intel-sky)]">↔</span>
-                    <span>{selectedEdge.target?.name}</span>
+                    <span className="truncate">{selectedEdge.target?.name}</span>
                   </div>
-                  <div className="text-[10px] font-mono text-[var(--status-warning)] uppercase">
-                    {selectedEdge.relationship_type?.replace("_", " ")}
+                  <div className="text-[10px] font-mono text-amber-400 font-semibold uppercase">
+                    {getPoliceRelationLabel(selectedEdge.relationship_type)}
                   </div>
                 </div>
 
-                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] space-y-2">
+                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] space-y-2 border border-slate-700/50">
                   <div className="hud-label text-[9px] text-[var(--text-muted)]">SUPPORTING EVIDENCE SOURCE</div>
                   <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    Association recorded under formal case FIR records and verified CDR logs.
+                    Association verified under primary case records and validated intelligence logs.
                   </p>
+                  {selectedEdge.evidence_id && (
+                    <div className="text-[10px] font-mono text-slate-400">
+                      Evidence Ref: {selectedEdge.evidence_id}
+                    </div>
+                  )}
                 </div>
 
-                <button onClick={() => setSelectedEdge(null)} className="btn-ghost w-full text-xs">
+                <button
+                  onClick={() => setSelectedEdge(null)}
+                  className="btn-ghost w-full text-xs py-1.5 border border-slate-700/60"
+                >
                   Clear Selection
                 </button>
               </div>
             ) : !selected ? (
-              <div className="h-full flex flex-col items-center justify-center text-center p-6 text-[var(--text-muted)]">
-                <Eye size={28} className="opacity-20 mb-2" />
+              /* Empty State when No Entity is Selected */
+              <div className="h-full flex flex-col items-center justify-center text-center p-6 text-[var(--text-muted)] space-y-2">
+                <div className="w-12 h-12 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-500">
+                  <Compass size={24} className="opacity-50" />
+                </div>
                 <div className="text-xs font-semibold text-[var(--text-secondary)]">No Entity Selected</div>
-                <p className="text-[11px] text-[var(--text-muted)] mt-1 max-w-[220px]">
-                  Click on any node in the graph to inspect its intelligence profile and connected contacts.
+                <p className="text-[11px] text-[var(--text-muted)] max-w-[220px] leading-relaxed">
+                  Click any node in the 3D neural map or search above to isolate its direct relationships,
+                  examine case ties, and review timeline records.
                 </p>
               </div>
             ) : (
-              <div className="space-y-3">
-                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] space-y-1">
-                  <div className="text-xs font-bold text-[var(--text-primary)]">{selected.name}</div>
-                  <div className="text-[10px] font-mono text-[var(--status-warning)]">
-                    Role: {selected.role_label || "Associated Entity"}
+              /* Selected Entity Dossier */
+              <div className="space-y-3.5">
+                {/* Entity Identity Card */}
+                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-2">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <div className="text-sm font-bold text-[var(--text-primary)] leading-tight">
+                        {selected.name}
+                      </div>
+                      <div className="text-[10px] font-mono text-amber-400 font-semibold mt-0.5">
+                        {selected.role_label || dossier?.identity?.role || "Recorded Associate"}
+                      </div>
+                    </div>
+                    {dossier?.identity?.risk_band && (
+                      <span className="badge badge-low text-[8px] uppercase">
+                        {dossier.identity.risk_band} RISK
+                      </span>
+                    )}
                   </div>
-                  <div className="text-[10px] font-mono text-[var(--text-muted)]">
-                    ID: {selected.id}
+
+                  <div className="text-[10px] font-mono text-[var(--text-muted)] truncate">
+                    ENTITY ID: {selected.id}
                   </div>
+
+                  {/* Aliases if present */}
+                  {dossier?.identity?.aliases?.length > 0 && (
+                    <div className="text-[10px] text-slate-300 pt-1 border-t border-slate-800">
+                      <span className="text-slate-400">Known Aliases: </span>
+                      {dossier.identity.aliases.join(", ")}
+                    </div>
+                  )}
                 </div>
 
-                {dossier && (
-                  <div className="panel p-3.5 bg-[var(--bg-panel-raised)] space-y-2">
-                    <div className="hud-label text-[9px] text-[var(--intel-sky)]">VERIFIED ATTRIBUTES</div>
-                    <div className="space-y-1 text-xs">
-                      {dossier.identity?.primary_phone && (
-                        <div className="flex justify-between">
-                          <span className="text-[var(--text-muted)]">Phone:</span>
-                          <span className="font-mono">{dossier.identity.primary_phone}</span>
-                        </div>
-                      )}
-                      {dossier.identity?.primary_vehicle && (
-                        <div className="flex justify-between">
-                          <span className="text-[var(--text-muted)]">Vehicle:</span>
-                          <span className="font-mono">{dossier.identity.primary_vehicle}</span>
-                        </div>
-                      )}
+                {/* Connection Summary Stats */}
+                {connectionStats && (
+                  <div className="grid grid-cols-2 gap-2 text-center">
+                    <div className="p-2 rounded-lg bg-[var(--bg-panel-raised)] border border-slate-800/80">
+                      <div className="text-base font-bold font-mono text-[var(--intel-sky)]">
+                        {connectionStats.directCount}
+                      </div>
+                      <div className="text-[9px] uppercase font-mono text-[var(--text-muted)]">
+                        Direct Links
+                      </div>
+                    </div>
+                    <div className="p-2 rounded-lg bg-[var(--bg-panel-raised)] border border-slate-800/80">
+                      <div className="text-base font-bold font-mono text-red-400">
+                        {connectionStats.relatedCases}
+                      </div>
+                      <div className="text-[9px] uppercase font-mono text-[var(--text-muted)]">
+                        Linked Cases
+                      </div>
+                    </div>
+                    <div className="p-2 rounded-lg bg-[var(--bg-panel-raised)] border border-slate-800/80">
+                      <div className="text-base font-bold font-mono text-emerald-400">
+                        {connectionStats.locationsCount}
+                      </div>
+                      <div className="text-[9px] uppercase font-mono text-[var(--text-muted)]">
+                        Locations
+                      </div>
+                    </div>
+                    <div className="p-2 rounded-lg bg-[var(--bg-panel-raised)] border border-slate-800/80">
+                      <div className="text-base font-bold font-mono text-purple-400">
+                        #{connectionStats.communityId}
+                      </div>
+                      <div className="text-[9px] uppercase font-mono text-[var(--text-muted)]">
+                        Cluster
+                      </div>
                     </div>
                   </div>
                 )}
+
+                {/* Action Toolbar */}
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => setFocusDegree((d) => (d === 1 ? 2 : 1))}
+                    className="flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-950/60 border border-sky-800/60 text-sky-300 text-xs hover:bg-sky-900/60 transition-all font-medium"
+                    title="Toggle 1st / 2nd Degree connections"
+                  >
+                    <Share2 size={12} />
+                    <span>{focusDegree === 1 ? "Expand 2° Hops" : "Collapse to 1°"}</span>
+                  </button>
+
+                  <button
+                    onClick={() => navigate(`/timeline`)}
+                    className="flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-slate-200 text-xs hover:bg-slate-700 transition-all font-medium"
+                  >
+                    <Clock size={12} />
+                    <span>View Timeline</span>
+                  </button>
+                </div>
+
+                {/* Corroborated Relationships List */}
+                <div className="panel p-3 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="hud-label text-[9px] text-[var(--intel-sky)]">
+                      CORROBORATED RELATIONSHIPS ({dossier?.connections?.length || 0})
+                    </div>
+                    <span className="text-[9px] text-slate-400 font-mono">Click to Pivot</span>
+                  </div>
+
+                  <div className="max-h-48 overflow-y-auto space-y-1.5 pr-1">
+                    {dossier?.connections && dossier.connections.length > 0 ? (
+                      dossier.connections.map((c: any) => (
+                        <div
+                          key={c.id}
+                          onClick={() => {
+                            const targetNode = graph?.nodes.find((n) => n.id === c.id);
+                            if (targetNode) {
+                              selectNode(targetNode);
+                            }
+                          }}
+                          className="p-2 rounded-lg bg-slate-900/60 hover:bg-slate-800/90 border border-slate-800/80 cursor-pointer transition-all flex items-center justify-between gap-2 group"
+                        >
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-1.5">
+                              <div
+                                className="w-2 h-2 rounded-full shrink-0"
+                                style={{ background: getEntityColor(c.type) }}
+                              />
+                              <span className="text-xs font-semibold text-slate-200 truncate group-hover:text-sky-300">
+                                {c.name}
+                              </span>
+                            </div>
+                            <div className="text-[10px] text-amber-400/90 font-mono mt-0.5 truncate">
+                              {getPoliceRelationLabel(c.relationship_type)}
+                            </div>
+                          </div>
+                          <div className="text-right shrink-0">
+                            <span className="text-[9px] font-mono text-slate-400">
+                              {Math.round((c.confidence || 0.8) * 100)}%
+                            </span>
+                            <ChevronRight size={12} className="text-slate-500 group-hover:text-white inline ml-1" />
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-xs text-[var(--text-muted)] py-2 text-center">
+                        No direct relationships recorded.
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Recent Chronological Activity */}
+                <div className="panel p-3 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="hud-label text-[9px] text-[var(--text-muted)]">
+                      RECENT INTELLIGENCE ACTIVITY
+                    </div>
+                    {timelineLoading && <RefreshCw size={11} className="animate-spin text-sky-400" />}
+                  </div>
+
+                  <div className="space-y-2">
+                    {timelineEvents.length > 0 ? (
+                      timelineEvents.slice(0, 3).map((evt: any, idx: number) => (
+                        <div
+                          key={evt.id || idx}
+                          className="p-2 rounded-lg bg-slate-900/60 border border-slate-800 text-xs space-y-1"
+                        >
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="font-semibold text-slate-200 truncate">{evt.title}</span>
+                            <span className="text-[9px] font-mono text-slate-400 shrink-0">
+                              {evt.timestamp ? new Date(evt.timestamp).toLocaleDateString() : ""}
+                            </span>
+                          </div>
+                          <p className="text-[11px] text-slate-400 line-clamp-2 leading-relaxed">
+                            {evt.description}
+                          </p>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-xs text-[var(--text-muted)] py-2 text-center">
+                        {timelineLoading ? "Retrieving activity feed..." : "No recent activity records found."}
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -292,11 +572,16 @@ export default function NetworkIntelligence() {
           {/* Natural Language Investigation Query Input */}
           <div className="p-3 border-t border-[var(--border-subtle)] bg-[var(--bg-panel)] space-y-2">
             {chatLog.length > 0 && (
-              <div className="max-h-28 overflow-y-auto space-y-1 text-xs mb-1">
+              <div className="max-h-24 overflow-y-auto space-y-1 text-xs mb-1">
                 {chatLog.slice(0, 2).map((entry, i) => (
-                  <div key={i} className="p-2 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] text-[11px]">
+                  <div
+                    key={i}
+                    className="p-2 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] text-[11px]"
+                  >
                     <div className="font-semibold text-[var(--intel-sky)]">{entry.q}</div>
-                    <div className="text-[var(--text-secondary)] mt-0.5">{entry.a.answer || entry.a.text || JSON.stringify(entry.a)}</div>
+                    <div className="text-[var(--text-secondary)] mt-0.5">
+                      {entry.a.answer || entry.a.text || JSON.stringify(entry.a)}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -307,7 +592,7 @@ export default function NetworkIntelligence() {
                 value={chatQ}
                 onChange={(e) => setChatQ(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && askAI()}
-                placeholder="Query network relationships..."
+                placeholder="Ask investigative assistant..."
                 className="workstation-input text-xs flex-1"
               />
               <button
@@ -323,7 +608,7 @@ export default function NetworkIntelligence() {
       </div>
 
       {/* ── Bottom Analysis Workbench ── */}
-      <div className="border-t border-[var(--border-subtle)] shrink-0 bg-[var(--bg-panel-solid)]">
+      <div className="border-t border-[var(--border-subtle)] shrink-0 bg-[var(--bg-panel-solid)] shadow-lg">
         <div className="flex items-center gap-1 px-4 pt-2 border-b border-[var(--border-subtle)]">
           {(
             [
@@ -338,7 +623,7 @@ export default function NetworkIntelligence() {
               onClick={() => setBottomTab(id as BottomTab)}
               className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-t transition-all ${
                 bottomTab === id
-                  ? "bg-zinc-800 text-zinc-100 font-semibold border-b-2 border-zinc-100 shadow-sm"
+                  ? "bg-slate-800 text-sky-300 font-semibold border-b-2 border-sky-400 shadow-sm"
                   : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
               }`}
             >
@@ -357,7 +642,7 @@ export default function NetworkIntelligence() {
           )}
         </div>
 
-        <div className="p-4 h-36 overflow-y-auto bg-[var(--bg-panel)]">
+        <div className="p-3.5 h-36 overflow-y-auto bg-[var(--bg-panel)]">
           {bottomTab === "centrality" && centrality && (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
               <div>
@@ -374,7 +659,7 @@ export default function NetworkIntelligence() {
                       }}
                       className="flex justify-between py-0.5 px-1.5 rounded hover:bg-[var(--bg-panel-hover)] cursor-pointer"
                     >
-                      <span className="text-[var(--text-primary)]">{r.name}</span>
+                      <span className="text-[var(--text-primary)] truncate max-w-[150px]">{r.name}</span>
                       <span className="font-mono text-[var(--intel-sky)]">{(r.pagerank * 100).toFixed(0)}%</span>
                     </div>
                   ))}
@@ -395,8 +680,10 @@ export default function NetworkIntelligence() {
                       }}
                       className="flex justify-between py-0.5 px-1.5 rounded hover:bg-[var(--bg-panel-hover)] cursor-pointer"
                     >
-                      <span className="text-[var(--text-primary)]">{r.name}</span>
-                      <span className="font-mono text-[var(--status-purple)]">{(r.betweenness_centrality * 100).toFixed(0)}%</span>
+                      <span className="text-[var(--text-primary)] truncate max-w-[150px]">{r.name}</span>
+                      <span className="font-mono text-[var(--status-purple)]">
+                        {(r.betweenness_centrality * 100).toFixed(0)}%
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -416,8 +703,10 @@ export default function NetworkIntelligence() {
                       }}
                       className="flex justify-between py-0.5 px-1.5 rounded hover:bg-[var(--bg-panel-hover)] cursor-pointer"
                     >
-                      <span className="text-[var(--text-primary)]">{r.name}</span>
-                      <span className="font-mono text-[var(--status-warning)]">{(r.degree_centrality * 100).toFixed(0)}%</span>
+                      <span className="text-[var(--text-primary)] truncate max-w-[150px]">{r.name}</span>
+                      <span className="font-mono text-[var(--status-warning)]">
+                        {(r.degree_centrality * 100).toFixed(0)}%
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -428,7 +717,10 @@ export default function NetworkIntelligence() {
           {bottomTab === "communities" && communities && (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
               {communities.communities?.map((c: any) => (
-                <div key={c.community_id} className="p-2.5 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)]">
+                <div
+                  key={c.community_id}
+                  className="p-2.5 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)]"
+                >
                   <div className="font-bold text-[var(--text-primary)]">
                     Cluster #{c.community_id} ({c.size} Associates)
                   </div>
@@ -450,10 +742,12 @@ export default function NetworkIntelligence() {
                 >
                   <option value="">Select Entity A...</option>
                   {graph?.nodes.map((n) => (
-                    <option key={n.id} value={n.id}>{n.name} ({n.type})</option>
+                    <option key={n.id} value={n.id}>
+                      {n.name} ({n.type})
+                    </option>
                   ))}
                 </select>
-                <span className="text-[var(--text-muted)]">to</span>
+                <span className="text-[var(--text-muted)] font-mono">↔</span>
                 <select
                   value={targetNodeId}
                   onChange={(e) => setTargetNodeId(e.target.value)}
@@ -461,15 +755,17 @@ export default function NetworkIntelligence() {
                 >
                   <option value="">Select Entity B...</option>
                   {graph?.nodes.map((n) => (
-                    <option key={n.id} value={n.id}>{n.name} ({n.type})</option>
+                    <option key={n.id} value={n.id}>
+                      {n.name} ({n.type})
+                    </option>
                   ))}
                 </select>
                 <button
                   onClick={findShortestPath}
                   disabled={pathLoading || !sourceNodeId || !targetNodeId}
-                  className="btn-primary py-1 px-3 text-xs"
+                  className="btn-primary py-1 px-3 text-xs shrink-0"
                 >
-                  {pathLoading ? "Tracing..." : "Trace Route"}
+                  {pathLoading ? "Tracing..." : "Trace 3D Route"}
                 </button>
               </div>
 
@@ -478,7 +774,9 @@ export default function NetworkIntelligence() {
                   {pathResult.error ? (
                     <span className="text-[var(--status-alert)]">{pathResult.error}</span>
                   ) : (
-                    <span>Route Identified: {pathResult.path?.join(" → ")}</span>
+                    <span>
+                      Identified Route ({pathResult.path?.length} hops): {pathResult.path_names?.join(" → ") || pathResult.path?.join(" → ")}
+                    </span>
                   )}
                 </div>
               )}
@@ -488,9 +786,23 @@ export default function NetworkIntelligence() {
           {bottomTab === "anomalies" && anomalies && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
               {anomalies.anomalies?.map((a: any, i: number) => (
-                <div key={i} className="p-2 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)]">
-                  <div className="font-bold text-[var(--status-warning)]">{a.title || a.type || "Unusual Activity"}</div>
-                  <div className="text-[11px] text-[var(--text-secondary)] mt-0.5">{a.description || a.reason}</div>
+                <div
+                  key={i}
+                  onClick={() => {
+                    if (a.entity_id) {
+                      const n = graph?.nodes.find((node) => node.id === a.entity_id);
+                      if (n) selectNode(n);
+                    }
+                  }}
+                  className="p-2.5 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] cursor-pointer hover:border-amber-500/50 transition-all"
+                >
+                  <div className="font-bold text-[var(--status-warning)]">
+                    {a.title || a.anomaly_type || "Unusual Activity"}
+                  </div>
+                  <div className="text-[11px] text-[var(--text-secondary)] mt-0.5">{a.reason}</div>
+                  {a.entity_name && (
+                    <div className="text-[10px] text-slate-400 font-mono mt-1">Entity: {a.entity_name}</div>
+                  )}
                 </div>
               ))}
             </div>
