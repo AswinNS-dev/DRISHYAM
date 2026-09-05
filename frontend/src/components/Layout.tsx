@@ -2,9 +2,10 @@ import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 import {
   LayoutDashboard, Network, Users, FolderKanban, Upload, Bell,
   LogOut, Eye, FileText, Brain, Clock, MapPin, Shield, Settings,
-  ChevronLeft, ChevronRight, Search, CornerDownLeft
+  ChevronLeft, ChevronRight, Search, CornerDownLeft, Sun, Moon
 } from "lucide-react";
 import { useAuth } from "../store/auth";
+import { useTheme } from "../store/theme";
 import { useState, useEffect, useRef } from "react";
 import { api } from "../lib/api";
 
@@ -45,11 +46,28 @@ const NAV_GROUPS = [
 
 export default function Layout() {
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
   const [pageKey, setPageKey] = useState(location.pathname);
   const mainRef = useRef<HTMLDivElement>(null);
+
+  const userRole = (user?.role || "").toLowerCase();
+  const visibleNavGroups = NAV_GROUPS.map((group) => {
+    if (group.group === "SYSTEM") {
+      return {
+        ...group,
+        items: group.items.filter((item) => {
+          if (item.to === "/admin" || item.to === "/settings") {
+            return userRole === "admin";
+          }
+          return true;
+        }),
+      };
+    }
+    return group;
+  }).filter((group) => group.items.length > 0);
 
   // Live Military Clock
   const [timeStr, setTimeStr] = useState("");
@@ -286,7 +304,7 @@ export default function Layout() {
 
         {/* Navigation Sections */}
         <nav className="flex-1 px-2.5 py-2 space-y-4 overflow-y-auto overflow-x-hidden">
-          {NAV_GROUPS.map((group) => (
+          {visibleNavGroups.map((group) => (
             <div key={group.group} className="space-y-1">
               {!collapsed && (
                 <div className="px-2 pt-1 pb-0.5 text-[9px] font-mono uppercase tracking-wider text-[var(--text-muted)] opacity-70">
@@ -343,8 +361,8 @@ export default function Layout() {
             {!collapsed && (
               <div className="min-w-0 fade-in flex-1">
                 <div className="text-xs font-semibold truncate text-[var(--text-primary)]">{user?.full_name || "Investigator"}</div>
-                <div className="badge badge-info text-[8px] py-0 px-1.5 mt-0.5">
-                  {user?.role || "analyst"}
+                <div className="badge badge-info text-[8px] py-0 px-1.5 mt-0.5 font-mono uppercase font-bold tracking-wider">
+                  {user?.role === "admin" ? "ROOT ADMIN" : user?.role === "investigator" ? "LEAD INVESTIGATOR" : "CRIME ANALYST"}
                 </div>
               </div>
             )}
@@ -387,14 +405,51 @@ export default function Layout() {
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            {/* Officer Clearance Badge */}
+            <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] text-[10px] font-mono">
+              <Shield size={11} className="text-[var(--neon-teal)]" />
+              <span className="text-[var(--text-muted)]">CLEARANCE:</span>
+              <span className="text-[var(--text-primary)] font-bold uppercase">
+                {user?.role || "analyst"}
+              </span>
+            </div>
+
+            {/* Session Heartbeat */}
+            <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[rgba(45,212,191,0.08)] border border-[rgba(45,212,191,0.25)]">
+              <span className="radar-beacon" style={{ background: "var(--neon-teal)", width: 6, height: 6 }} />
+              <span className="text-[9px] font-mono text-[var(--neon-teal)] uppercase font-semibold">
+                Session Active (30m)
+              </span>
+            </div>
+
             {/* Live Clock HUD */}
             <div className="flex items-center gap-1.5 text-[11px] font-mono text-[var(--text-secondary)] bg-[var(--bg-panel-raised)] px-2.5 py-1 rounded-md border border-[var(--border-subtle)]">
               <Clock size={12} className="text-[var(--neon-teal)]" />
               <span>{timeStr}</span>
             </div>
 
-            {/* Supabase / Service Status Indicator */}
+            {/* Theme Toggle (Light / Dark) */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              title={`Switch to ${theme === "dark" ? "Light" : "Dark"} Mode`}
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] hover:border-[var(--neon-teal)] text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer"
+            >
+              {theme === "dark" ? (
+                <>
+                  <Sun size={12} className="text-[var(--neon-amber)]" />
+                  <span className="font-mono text-[10px]">Light</span>
+                </>
+              ) : (
+                <>
+                  <Moon size={12} className="text-[var(--neon-teal)]" />
+                  <span className="font-mono text-[10px]">Dark</span>
+                </>
+              )}
+            </button>
+
+            {/* Grid Status */}
             <div className="flex items-center gap-2 text-[10px] font-mono text-[var(--text-muted)]">
               <div className="w-2 h-2 rounded-full bg-[var(--neon-teal)] animate-ping" />
               <span className="text-[var(--neon-teal)] font-bold">GRID ONLINE</span>

@@ -1,0 +1,16 @@
+{
+  "name": "drishyam",
+  "version": "1.0.0",
+  "description": "DRISHYAM – monorepo root scripts",
+  "private": true,
+  "scripts": {
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "python -m uvicorn app.main:app --reload --app-dir backend",
+    "dev:all": "npm-run-all --parallel dev:frontend dev:backend",
+    "install:frontend": "npm install --prefix frontend",
+    "build": "npm run build --prefix frontend"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

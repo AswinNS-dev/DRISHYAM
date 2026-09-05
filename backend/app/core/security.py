@@ -28,7 +28,11 @@ def decode_token(token: str) -> dict:
     try:
         return jwt.decode(token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM])
     except JWTError:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid or expired token")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Session has expired. Please authenticate to resume.",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
 
 
 def get_current_user(token: str = Depends(oauth2_scheme)) -> dict:

@@ -37,8 +37,22 @@ export default function App() {
           <Route path="/locations" element={<Locations />} />
           <Route path="/data-import" element={<DataImport />} />
           <Route path="/alerts" element={<Alerts />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route
+            path="/admin"
+            element={
+              <RequireAuth allowedRoles={["admin"]}>
+                <Admin />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <RequireAuth allowedRoles={["admin"]}>
+                <Settings />
+              </RequireAuth>
+            }
+          />
         </Route>
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>

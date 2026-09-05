@@ -1,17 +1,21 @@
 from fastapi import APIRouter, Depends, Body
 from sqlalchemy.orm import Session
 from app.database.db import get_db
-from app.core.security import get_current_user, require_roles
 from app.models import models as m
 from app.nlp.extractor import extract_entities
 from app.entity_resolution import resolver as er
+from app.security.roles import Role
+from app.security.dependencies import AuthenticatedOfficer, require_role
 
 router = APIRouter(prefix="/api/v2/import", tags=["import"])
 
 
 @router.post("/fir")
-def import_fir(payload: dict = Body(...), db: Session = Depends(get_db),
-               user=Depends(require_roles(["investigator", "crime_analyst"]))):
+def import_fir(
+    payload: dict = Body(...),
+    db: Session = Depends(get_db),
+    officer: AuthenticatedOfficer = Depends(require_role([Role.INVESTIGATOR, Role.ADMIN]))
+):
     """
     Runs the live NLP entity-extraction pipeline on investigator-supplied
     text (an FIR / report narrative) and returns extracted entities with
@@ -52,7 +56,7 @@ def import_fir(payload: dict = Body(...), db: Session = Depends(get_db),
     db.add(fir)
     db.add(m.ImportJob(job_type="fir", filename=fir_number, status="completed",
                         entities_extracted=len(entity_rows), relationships_created=0))
-    db.add(m.AuditLog(user_id=user["user_id"], action="DATA_IMPORT",
+    db.add(m.AuditLog(user_id=officer.id, action="DATA_IMPORT",
                        details={"type": "fir", "fir_number": fir_number, "entities": len(entity_rows)}))
     db.commit()
 

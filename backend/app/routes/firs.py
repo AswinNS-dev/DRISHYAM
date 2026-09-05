@@ -6,6 +6,8 @@ import datetime as dt
 
 from app.database.db import get_db
 from app.core.security import get_current_user
+from app.security.roles import Role
+from app.security.dependencies import AuthenticatedOfficer, require_role
 from app.models import models as m
 from app.nlp.extractor import extract_entities
 from app.services import graph_data
@@ -144,7 +146,11 @@ def get_fir_detail(fir_id: str, db: Session = Depends(get_db), user=Depends(get_
 
 
 @router.post("")
-def create_fir(payload: FIRCreate, db: Session = Depends(get_db), user=Depends(get_current_user)):
+def create_fir(
+    payload: FIRCreate,
+    db: Session = Depends(get_db),
+    officer: AuthenticatedOfficer = Depends(require_role([Role.INVESTIGATOR, Role.ADMIN]))
+):
     # Check if location exists or create
     loc_id = None
     if payload.location_name:
@@ -186,7 +192,7 @@ def create_fir(payload: FIRCreate, db: Session = Depends(get_db), user=Depends(g
         db.add(mention)
 
     db.add(m.AuditLog(
-        user_id=user["user_id"],
+        user_id=officer.id,
         action="FIR_FILED",
         details={"fir_id": fir.id, "fir_number": fir.fir_number, "entities_found": len(extracted)}
     ))

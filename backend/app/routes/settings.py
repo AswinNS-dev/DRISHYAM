@@ -4,8 +4,9 @@ from pydantic import BaseModel
 from typing import Optional, Dict, Any
 
 from app.database.db import get_db
-from app.core.security import get_current_user
 from app.core.config import settings
+from app.security.roles import Role
+from app.security.dependencies import AuthenticatedOfficer, require_role, get_current_officer
 
 router = APIRouter(prefix="/api/v2/settings", tags=["settings"])
 
@@ -32,12 +33,15 @@ SYSTEM_CONFIG = {
 
 
 @router.get("")
-def get_system_settings(user=Depends(get_current_user)):
+def get_system_settings(officer: AuthenticatedOfficer = Depends(get_current_officer)):
     return {"settings": SYSTEM_CONFIG}
 
 
 @router.post("")
-def update_system_settings(payload: SettingsUpdate, user=Depends(get_current_user)):
+def update_system_settings(
+    payload: SettingsUpdate,
+    officer: AuthenticatedOfficer = Depends(require_role([Role.ADMIN]))
+):
     if payload.ai_provider:
         SYSTEM_CONFIG["ai_provider"] = payload.ai_provider
     if payload.min_confidence_threshold is not None:

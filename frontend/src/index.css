@@ -7,7 +7,7 @@
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ── Core Palette ── */
+  /* ── Core Palette (Dark Mode Default) ── */
   --bg-void:           #06090f;
   --bg-panel:          rgba(12, 17, 28, 0.85);
   --bg-panel-solid:    #0c111c;
@@ -51,6 +51,41 @@
   /* ── Timing ── */
   --ease-out-expo:     cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring:       cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Light Mode Palette (Executive Forensics Light Theme) ── */
+html.light {
+  --bg-void:           #f3f6fb;
+  --bg-panel:          rgba(255, 255, 255, 0.88);
+  --bg-panel-solid:    #ffffff;
+  --bg-panel-raised:   #edf2f7;
+  --bg-panel-hover:    #e2e8f0;
+  --bg-input:          #ffffff;
+
+  --border-subtle:     rgba(13, 148, 136, 0.14);
+  --border-strong:     rgba(13, 148, 136, 0.3);
+  --border-glow:       rgba(13, 148, 136, 0.4);
+  --border-input:      rgba(15, 23, 42, 0.18);
+  --border-focus:      rgba(13, 148, 136, 0.6);
+
+  --neon-teal:         #0d9488;
+  --neon-cyan:         #0284c7;
+  --neon-amber:        #d97706;
+  --neon-red:          #e11d48;
+  --neon-blue:         #2563eb;
+  --neon-purple:       #9333ea;
+  --neon-green:        #059669;
+
+  --text-primary:      #0f172a;
+  --text-secondary:    #475569;
+  --text-muted:        #94a3b8;
+  --text-bright:       #020617;
+
+  --glow-teal:         0 4px 16px rgba(13, 148, 136, 0.08);
+  --glow-teal-strong:  0 4px 20px rgba(13, 148, 136, 0.16);
+  --glow-red:          0 4px 16px rgba(225, 29, 72, 0.1);
+  --glow-amber:        0 4px 16px rgba(217, 119, 6, 0.1);
+  --glow-blue:         0 4px 16px rgba(37, 99, 235, 0.1);
 }
 
 /* ── Reset ── */
@@ -345,6 +380,12 @@ body {
   color: var(--text-primary);
   outline: none;
   transition: all 0.25s ease;
+}
+.input-cyber-icon-left {
+  padding-left: 42px !important;
+}
+.input-cyber-icon-right {
+  padding-right: 42px !important;
 }
 .input-cyber:focus {
   border-color: var(--border-focus);

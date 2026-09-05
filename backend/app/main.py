@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.database.db import Base, engine, SessionLocal
 from app.core.config import settings
 from app.services.seed import seed_all
-from app.routes import auth, entities, network, cases, alerts_reports, imports, ai, firs, intelligence, timeline, locations, admin
+from app.routes import auth, entities, network, cases, alerts_reports, imports, ai, firs, intelligence, timeline, locations, admin, evidence
 from app.routes import settings as settings_route
 
 app = FastAPI(title="DRISHYAM API", version="1.0.0",
@@ -30,6 +30,7 @@ app.include_router(timeline.router)
 app.include_router(locations.router)
 app.include_router(admin.router)
 app.include_router(settings_route.router)
+app.include_router(evidence.router)
 
 
 @app.on_event("startup")
