@@ -6,6 +6,8 @@ import datetime as dt
 
 from app.database.db import get_db
 from app.core.security import get_current_user, hash_password
+from app.security.roles import Role
+from app.security.dependencies import require_role, get_current_officer, AuthenticatedOfficer
 from app.models import models as m
 
 router = APIRouter(prefix="/api/v2/admin", tags=["admin"])
@@ -23,7 +25,7 @@ class RoleUpdate(BaseModel):
 
 
 @router.get("/users")
-def list_users(db: Session = Depends(get_db), user=Depends(get_current_user)):
+def list_users(db: Session = Depends(get_db), officer: AuthenticatedOfficer = Depends(require_role([Role.ADMIN]))):
     users = db.query(m.User).order_by(m.User.created_at.desc()).all()
     return {
         "users": [
@@ -41,7 +43,7 @@ def list_users(db: Session = Depends(get_db), user=Depends(get_current_user)):
 
 
 @router.post("/users")
-def create_user(payload: UserCreate, db: Session = Depends(get_db), user=Depends(get_current_user)):
+def create_user(payload: UserCreate, db: Session = Depends(get_db), officer: AuthenticatedOfficer = Depends(require_role([Role.ADMIN]))):
     existing = db.query(m.User).filter(m.User.email == payload.email).first()
     if existing:
         raise HTTPException(status_code=400, detail="User with this email already exists")
@@ -55,7 +57,7 @@ def create_user(payload: UserCreate, db: Session = Depends(get_db), user=Depends
     )
     db.add(new_user)
     db.add(m.AuditLog(
-        user_id=user["user_id"],
+        user_id=officer.user_id,
         action="USER_CREATED",
         details={"created_email": new_user.email, "role": new_user.role}
     ))
@@ -64,7 +66,7 @@ def create_user(payload: UserCreate, db: Session = Depends(get_db), user=Depends
 
 
 @router.patch("/users/{user_id}/role")
-def update_user_role(user_id: str, payload: RoleUpdate, db: Session = Depends(get_db), user=Depends(get_current_user)):
+def update_user_role(user_id: str, payload: RoleUpdate, db: Session = Depends(get_db), officer: AuthenticatedOfficer = Depends(require_role([Role.ADMIN]))):
     target = db.query(m.User).filter(m.User.id == user_id).first()
     if not target:
         raise HTTPException(status_code=404, detail="User not found")
@@ -72,7 +74,7 @@ def update_user_role(user_id: str, payload: RoleUpdate, db: Session = Depends(ge
     old_role = target.role
     target.role = payload.role
     db.add(m.AuditLog(
-        user_id=user["user_id"],
+        user_id=officer.user_id,
         action="USER_ROLE_CHANGED",
         details={"target_user": target.email, "old_role": old_role, "new_role": payload.role}
     ))
@@ -81,7 +83,7 @@ def update_user_role(user_id: str, payload: RoleUpdate, db: Session = Depends(ge
 
 
 @router.get("/system")
-def get_system_telemetry(db: Session = Depends(get_db), user=Depends(get_current_user)):
+def get_system_telemetry(db: Session = Depends(get_db), officer: AuthenticatedOfficer = Depends(require_role([Role.ADMIN]))):
     from app.core.config import settings
     return {
         "telemetry": {
@@ -101,7 +103,7 @@ def get_system_telemetry(db: Session = Depends(get_db), user=Depends(get_current
 
 
 @router.get("/audit")
-def list_audit_trail(db: Session = Depends(get_db), user=Depends(get_current_user)):
+def list_audit_trail(db: Session = Depends(get_db), officer: AuthenticatedOfficer = Depends(require_role([Role.ADMIN]))):
     logs = db.query(m.AuditLog).order_by(m.AuditLog.created_at.desc()).limit(150).all()
     return {
         "audit_logs": [

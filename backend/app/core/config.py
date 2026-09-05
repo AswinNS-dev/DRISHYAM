@@ -38,10 +38,10 @@ class Settings(BaseSettings):
     GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
     OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
 
-    # --- Auth ---
+    # --- Auth & Session Security ---
     JWT_SECRET: str = os.getenv("JWT_SECRET", "drishyam-dev-secret-change-me")
     JWT_ALGORITHM: str = "HS256"
-    JWT_EXPIRE_MINUTES: int = 480
+    JWT_EXPIRE_MINUTES: int = 30  # Strict 30-minute session timeout
 
     # --- Seed control ---
     AUTO_SEED: bool = os.getenv("AUTO_SEED", "true").lower() == "true"

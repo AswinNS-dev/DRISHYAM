@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../lib/api";
 import { useAuth } from "../store/auth";
-import { Eye, EyeOff, Shield, AlertTriangle, Lock, Mail, ArrowRight } from "lucide-react";
+import { useTheme } from "../store/theme";
+import { Eye, EyeOff, Shield, AlertTriangle, Lock, Mail, ArrowRight, Sun, Moon } from "lucide-react";
 import ParticleNetwork from "../components/ParticleNetwork";
 
 const DEMO_ACCOUNTS = [
@@ -18,12 +19,14 @@ export default function Login() {
   const [keepSignedIn, setKeepSignedIn] = useState(true);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, sessionExpiredMessage, clearExpiredMessage } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
+    clearExpiredMessage();
     setLoading(true);
     try {
       const res = await api.login(email, password);
@@ -40,11 +43,34 @@ export default function Login() {
     setEmail(demoEmail);
     setPassword("demo1234");
     setError("");
+    clearExpiredMessage();
   }
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center overflow-hidden"
          style={{ background: "var(--bg-void)" }}>
+      {/* Theme Toggle in top right */}
+      <div className="absolute top-5 right-5 z-20">
+        <button
+          type="button"
+          onClick={toggleTheme}
+          title={`Switch to ${theme === "dark" ? "Light" : "Dark"} Mode`}
+          className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] hover:border-[var(--neon-teal)] text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer shadow-lg"
+        >
+          {theme === "dark" ? (
+            <>
+              <Sun size={14} className="text-[var(--neon-amber)]" />
+              <span className="font-mono text-[11px]">Light Mode</span>
+            </>
+          ) : (
+            <>
+              <Moon size={14} className="text-[var(--neon-teal)]" />
+              <span className="font-mono text-[11px]">Dark Mode</span>
+            </>
+          )}
+        </button>
+      </div>
+
       {/* Dynamic interactive particle network background */}
       <ParticleNetwork />
 
@@ -147,16 +173,16 @@ export default function Login() {
                 <span>OFFICER IDENTITY / EMAIL</span>
                 <span className="font-mono text-[var(--text-muted)]">SECURE DOMAIN</span>
               </label>
-              <div className="relative">
+              <div className="relative flex items-center">
+                <Mail size={16} className="absolute left-3.5 text-[var(--neon-teal)] opacity-80 pointer-events-none z-10" />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="officer@drishyam.demo"
-                  className="input-cyber w-full pl-9 pr-3 text-xs"
+                  className="input-cyber input-cyber-icon-left text-xs"
                   required
                 />
-                <Mail size={14} className="absolute left-3 top-3 text-[var(--text-muted)]" />
               </div>
             </div>
 
@@ -165,22 +191,22 @@ export default function Login() {
                 <span>SECURITY CLEARANCE PIN</span>
                 <span className="font-mono text-[var(--text-muted)]">AES-256</span>
               </label>
-              <div className="relative">
+              <div className="relative flex items-center">
+                <Lock size={16} className="absolute left-3.5 text-[var(--neon-teal)] opacity-80 pointer-events-none z-10" />
                 <input
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="input-cyber w-full pl-9 pr-10 text-xs"
+                  className="input-cyber input-cyber-icon-left input-cyber-icon-right text-xs"
                   required
                 />
-                <Lock size={14} className="absolute left-3 top-3 text-[var(--text-muted)]" />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-2.5 text-[var(--text-muted)] hover:text-[var(--neon-teal)] transition-colors p-1"
+                  className="absolute right-3 text-[var(--text-muted)] hover:text-[var(--neon-teal)] transition-colors p-1 z-10 cursor-pointer"
                 >
-                  {showPassword ? <EyeOff size={14} /> : <Eye size={14} />}
+                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
             </div>
@@ -202,6 +228,21 @@ export default function Login() {
               Forgot PIN?
             </span>
           </div>
+
+          {/* Session Inactivity Expired Alert Banner */}
+          {sessionExpiredMessage && (
+            <div className="flex items-center gap-2 mb-4 p-3 rounded-lg bg-[rgba(245,158,11,0.12)] border border-[rgba(245,158,11,0.4)] text-[var(--neon-amber)] text-xs">
+              <AlertTriangle size={15} className="shrink-0 text-[var(--neon-amber)]" />
+              <div className="flex-1 font-medium">{sessionExpiredMessage}</div>
+              <button
+                type="button"
+                onClick={clearExpiredMessage}
+                className="text-[10px] font-mono opacity-70 hover:opacity-100 uppercase"
+              >
+                Dismiss
+              </button>
+            </div>
+          )}
 
           {/* Error Banner */}
           {error && (

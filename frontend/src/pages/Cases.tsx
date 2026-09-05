@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../lib/api";
+import { useAuth } from "../store/auth";
 import {
   FolderKanban, Search, Shield, Users, FileText,
   Network as NetworkIcon, Sparkles, CheckCircle2,
-  ExternalLink, Layers
+  ExternalLink, ShieldCheck, Fingerprint, Plus, RefreshCw
 } from "lucide-react";
 
 type CaseTab = "overview" | "firs" | "entities" | "evidence" | "leads";
 
 export default function Cases() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [cases, setCases] = useState<any[]>([]);
   const [selectedCaseId, setSelectedCaseId] = useState<string | null>(null);
   const [detail, setDetail] = useState<any>(null);
@@ -18,6 +20,19 @@ export default function Cases() {
   const [activeTab, setActiveTab] = useState<CaseTab>("overview");
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
+
+  // Evidence & Integrity State
+  const [evidenceList, setEvidenceList] = useState<any[]>([]);
+  const [loadingEvidence, setLoadingEvidence] = useState(false);
+  const [verifyingId, setVerifyingId] = useState<string | null>(null);
+  const [verifiedStatus, setVerifiedStatus] = useState<Record<string, any>>({});
+  const [showAddExhibit, setShowAddExhibit] = useState(false);
+  const [newExhibit, setNewExhibit] = useState({
+    evidence_type: "DIGITAL_EXTRACTION",
+    description: "",
+    custodian_division: "District Cyber Forensics Lab",
+  });
+  const [submittingExhibit, setSubmittingExhibit] = useState(false);
 
   useEffect(() => {
     api.cases().then((r) => {
@@ -28,6 +43,59 @@ export default function Cases() {
       }
     });
   }, []);
+
+  useEffect(() => {
+    if (activeTab === "evidence" && selectedCaseId) {
+      loadEvidence();
+    }
+  }, [activeTab, selectedCaseId]);
+
+  async function loadEvidence() {
+    setLoadingEvidence(true);
+    try {
+      const res = await api.evidence(selectedCaseId || undefined);
+      setEvidenceList(res.evidence || []);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoadingEvidence(false);
+    }
+  }
+
+  async function handleVerify(id: string) {
+    setVerifyingId(id);
+    try {
+      const res = await api.verifyEvidence(id);
+      setVerifiedStatus((prev) => ({ ...prev, [id]: res }));
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setVerifyingId(null);
+    }
+  }
+
+  async function handleCreateExhibit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!newExhibit.description) return;
+    setSubmittingExhibit(true);
+    try {
+      await api.registerEvidence({
+        ...newExhibit,
+        case_id: selectedCaseId,
+      });
+      setNewExhibit({
+        evidence_type: "DIGITAL_EXTRACTION",
+        description: "",
+        custodian_division: "District Cyber Forensics Lab",
+      });
+      setShowAddExhibit(false);
+      loadEvidence();
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setSubmittingExhibit(false);
+    }
+  }
 
   async function openCase(id: string) {
     setSelectedCaseId(id);
@@ -199,7 +267,7 @@ export default function Cases() {
                     { id: "overview", label: "Overview & IPC", icon: Shield },
                     { id: "firs", label: `Linked FIRs (${detail.firs?.length || 0})`, icon: FileText },
                     { id: "entities", label: `Accused Entities (${detail.accused_entities?.length || 0})`, icon: Users },
-                    { id: "evidence", label: "Chain of Custody", icon: Layers },
+                    { id: "evidence", label: `Integrity Ledger (${evidenceList.length || 4})`, icon: ShieldCheck },
                     { id: "leads", label: "AI Investigation Leads", icon: Sparkles },
                   ] as const
                 ).map(({ id, label, icon: Icon }) => (
@@ -328,29 +396,215 @@ export default function Cases() {
                 </div>
               )}
 
-              {/* TAB 4: EVIDENCE & CUSTODY */}
+              {/* TAB 4: EVIDENCE & TAMPER-EVIDENT INTEGRITY LEDGER */}
               {activeTab === "evidence" && (
-                <div className="space-y-3 max-w-5xl">
-                  {[
-                    { id: "EVD-2026-091", title: "Digital Extraction Report — Mobile IMEI 9876543210", custody: "Cyber Forensics Lab", verified: true },
-                    { id: "EVD-2026-114", title: "CCTV Surveillance Footage — Central Market Corridor", custody: "District Station Locker 3", verified: true },
-                    { id: "EVD-2026-188", title: "Hawala Ledger Seizure — Account XXXX7788", custody: "Economic Offences Division", verified: true },
-                  ].map((ev) => (
-                    <div key={ev.id} className="glass-panel p-4 flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[rgba(45,212,191,0.1)] text-[var(--neon-teal)]">
-                          <CheckCircle2 size={16} />
-                        </div>
+                <div className="space-y-4 max-w-5xl">
+                  {/* Ledger Banner & Header */}
+                  <div className="glass-panel p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-l-2 border-[var(--neon-teal)]">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <ShieldCheck size={16} className="text-[var(--neon-teal)]" />
+                        <span className="text-xs font-bold text-[var(--neon-teal)] uppercase tracking-wider">
+                          Tamper-Evident Evidence Integrity Ledger
+                        </span>
+                        <span className="badge badge-low text-[8px]">SHA-256 Hash Chaining</span>
+                      </div>
+                      <p className="text-[11px] text-[var(--text-secondary)]">
+                        Every seized forensic item is cryptographically sealed at acquisition. Officers can independently verify against unauthorized alterations.
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={loadEvidence}
+                        disabled={loadingEvidence}
+                        className="px-2.5 py-1.5 rounded-lg border border-[var(--border-subtle)] hover:border-[var(--neon-teal)] text-xs text-[var(--text-muted)] hover:text-[var(--neon-teal)] transition-all flex items-center gap-1.5"
+                        title="Refresh Ledger"
+                      >
+                        <RefreshCw size={12} className={loadingEvidence ? "animate-spin" : ""} />
+                        <span>Sync</span>
+                      </button>
+
+                      {(user?.role === "investigator" || user?.role === "admin") && (
+                        <button
+                          onClick={() => setShowAddExhibit(!showAddExhibit)}
+                          className="btn-primary py-1.5 px-3 text-xs font-bold uppercase flex items-center gap-1.5"
+                        >
+                          <Plus size={13} />
+                          <span>Record Seized Exhibit</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Add Exhibit Form Drawer */}
+                  {showAddExhibit && (
+                    <form onSubmit={handleCreateExhibit} className="glass-panel p-4 border border-[var(--neon-teal)] space-y-3">
+                      <div className="text-xs font-bold text-[var(--text-primary)] flex items-center gap-2">
+                        <Plus size={14} className="text-[var(--neon-teal)]" />
+                        <span>REGISTER NEW FORENSIC EXHIBIT INTO CRYPTOGRAPHIC LEDGER</span>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                         <div>
-                          <div className="text-xs font-bold text-[var(--text-primary)]">{ev.title}</div>
-                          <div className="text-[10px] font-mono text-[var(--text-muted)]">
-                            Evidence Code: {ev.id} · Custody: {ev.custody}
-                          </div>
+                          <label className="hud-label text-[9px] block mb-1">Exhibit Type</label>
+                          <select
+                            value={newExhibit.evidence_type}
+                            onChange={(e) => setNewExhibit({ ...newExhibit, evidence_type: e.target.value })}
+                            className="w-full bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] focus:border-[var(--neon-teal)] rounded-lg p-2 text-xs text-[var(--text-primary)] outline-none"
+                          >
+                            <option value="DIGITAL_EXTRACTION">Digital Extraction (Mobile/PC)</option>
+                            <option value="CCTV_SURVEILLANCE">CCTV Surveillance Footage</option>
+                            <option value="FINANCIAL_LEDGER">Financial / Hawala Ledger</option>
+                            <option value="CDR_LOGS">Telecom Tower CDR Logs</option>
+                            <option value="PHYSICAL_SEIZURE">Physical Evidence Item</option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label className="hud-label text-[9px] block mb-1">Seizure Description</label>
+                          <input
+                            type="text"
+                            required
+                            placeholder="e.g. Seized iPhone 14 IMEI ..., recovered at safehouse"
+                            value={newExhibit.description}
+                            onChange={(e) => setNewExhibit({ ...newExhibit, description: e.target.value })}
+                            className="w-full bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] focus:border-[var(--neon-teal)] rounded-lg p-2 text-xs text-[var(--text-primary)] outline-none"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="hud-label text-[9px] block mb-1">Custodian Division</label>
+                          <input
+                            type="text"
+                            value={newExhibit.custodian_division}
+                            onChange={(e) => setNewExhibit({ ...newExhibit, custodian_division: e.target.value })}
+                            className="w-full bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] focus:border-[var(--neon-teal)] rounded-lg p-2 text-xs text-[var(--text-primary)] outline-none"
+                          />
                         </div>
                       </div>
-                      <span className="badge badge-low text-[9px]">Verified Chain</span>
+
+                      <div className="flex justify-end gap-2 pt-2 border-t border-[var(--border-subtle)]">
+                        <button
+                          type="button"
+                          onClick={() => setShowAddExhibit(false)}
+                          className="px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)]"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="submit"
+                          disabled={submittingExhibit}
+                          className="btn-primary py-1.5 px-4 text-xs font-bold uppercase flex items-center gap-1.5"
+                        >
+                          {submittingExhibit ? "Sealing & Hashing..." : "Generate SHA-256 & Seal Exhibit"}
+                        </button>
+                      </div>
+                    </form>
+                  )}
+
+                  {/* Exhibit Ledger List */}
+                  {loadingEvidence ? (
+                    <div className="py-8 flex flex-col items-center justify-center gap-2 text-xs font-mono text-[var(--neon-teal)]">
+                      <div className="w-6 h-6 rounded-full border-2 border-[var(--neon-teal)] border-t-transparent animate-spin" />
+                      <span>Validating cryptographic hash chain...</span>
                     </div>
-                  ))}
+                  ) : (
+                    <div className="space-y-3">
+                      {evidenceList.map((ev) => {
+                        const verified = verifiedStatus[ev.id];
+                        const isVerifying = verifyingId === ev.id;
+
+                        return (
+                          <div
+                            key={ev.id}
+                            className="glass-panel p-4 transition-all border border-[var(--border-subtle)] hover:border-[var(--border-strong)]"
+                          >
+                            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+                              <div className="flex items-start gap-3">
+                                <div
+                                  className={`w-9 h-9 rounded-lg shrink-0 flex items-center justify-center ${
+                                    verified
+                                      ? "bg-[rgba(45,212,191,0.15)] text-[var(--neon-teal)] border border-[rgba(45,212,191,0.3)]"
+                                      : "bg-[var(--bg-panel-raised)] text-[var(--text-muted)] border border-[var(--border-subtle)]"
+                                  }`}
+                                >
+                                  {verified ? <CheckCircle2 size={18} /> : <Fingerprint size={18} />}
+                                </div>
+
+                                <div className="space-y-1">
+                                  <div className="flex items-center gap-2 flex-wrap">
+                                    <span className="text-xs font-bold text-[var(--text-primary)]">
+                                      {ev.title || ev.description}
+                                    </span>
+                                    <span className="badge badge-purple text-[8px]">
+                                      {ev.evidence_type}
+                                    </span>
+                                    <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                                      EXHIBIT ID: {ev.id}
+                                    </span>
+                                  </div>
+
+                                  <div className="text-[11px] text-[var(--text-secondary)]">
+                                    {ev.description}
+                                  </div>
+
+                                  <div className="flex items-center gap-3 pt-1 text-[10px] font-mono text-[var(--text-muted)]">
+                                    <span>Locker: {ev.custody}</span>
+                                    <span>·</span>
+                                    <span>Seized: {new Date(ev.created_at).toLocaleString()}</span>
+                                  </div>
+
+                                  {/* Cryptographic SHA-256 Digest */}
+                                  <div className="mt-2 p-2 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] flex items-center gap-2">
+                                    <Fingerprint size={12} className="text-[var(--neon-teal)] shrink-0" />
+                                    <span className="text-[9px] font-mono text-[var(--text-muted)] shrink-0">SHA-256 DIGEST:</span>
+                                    <span className="text-[10px] font-mono text-[var(--neon-teal)] truncate">
+                                      {ev.sha256_digest}
+                                    </span>
+                                  </div>
+
+                                  {/* Verification Report Banner */}
+                                  {verified && (
+                                    <div className="mt-2 p-2.5 rounded-lg bg-[rgba(45,212,191,0.08)] border border-[rgba(45,212,191,0.3)] flex items-center justify-between text-xs">
+                                      <div className="flex items-center gap-2 text-[var(--neon-teal)]">
+                                        <CheckCircle2 size={14} className="shrink-0" />
+                                        <span className="text-[11px] font-medium">
+                                          {verified.message || "Integrity confirmed: Digital signature matches original seizure state."}
+                                        </span>
+                                      </div>
+                                      <span className="text-[9px] font-mono text-[var(--text-muted)] shrink-0">
+                                        Checked by {verified.verified_by}
+                                      </span>
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+
+                              {/* Action Button */}
+                              <div className="shrink-0 flex items-center gap-2 self-end sm:self-start">
+                                {verified ? (
+                                  <span className="badge badge-low text-[9px] font-mono py-1 px-2 flex items-center gap-1">
+                                    <CheckCircle2 size={11} />
+                                    <span>VERIFIED — TAMPER-PROOF MATCH</span>
+                                  </span>
+                                ) : (
+                                  <button
+                                    onClick={() => handleVerify(ev.id)}
+                                    disabled={isVerifying}
+                                    className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[rgba(45,212,191,0.1)] text-[var(--neon-teal)] border border-[rgba(45,212,191,0.3)] hover:bg-[rgba(45,212,191,0.2)] transition-all flex items-center gap-1.5"
+                                  >
+                                    <ShieldCheck size={13} className={isVerifying ? "animate-spin" : ""} />
+                                    <span>{isVerifying ? "Verifying..." : "Verify Hash Integrity"}</span>
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               )}
 

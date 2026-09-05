@@ -1,3 +1,5 @@
+import { useAuth } from "../store/auth";
+
 const BASE = import.meta.env.VITE_API_BASE || "http://localhost:8000";
 
 function getToken() {
@@ -12,6 +14,13 @@ async function request(path: string, opts: RequestInit = {}) {
     headers["Content-Type"] = "application/json";
   }
   const res = await fetch(`${BASE}${path}`, { ...opts, headers });
+  if (res.status === 401) {
+    useAuth.getState().logout("Your session has expired. Please sign in again.");
+    if (window.location.pathname !== "/login") {
+      window.location.href = "/login";
+    }
+    throw new Error("401 Unauthorized: Session expired");
+  }
   if (!res.ok) {
     const text = await res.text();
     throw new Error(`${res.status} ${text}`);
@@ -103,6 +112,14 @@ export const api = {
 
   generateReport: (entityId: string | undefined, reportType: string) =>
     request("/api/v2/reports/generate", { method: "POST", body: JSON.stringify({ entity_id: entityId, report_type: reportType }) }),
+
+  // Evidence & Tamper-Evident Ledger
+  evidence: (caseId?: string) =>
+    request(caseId ? `/api/v2/evidence?case_id=${encodeURIComponent(caseId)}` : "/api/v2/evidence"),
+  verifyEvidence: (evidenceId: string) =>
+    request(`/api/v2/evidence/${evidenceId}/verify`, { method: "POST" }),
+  registerEvidence: (payload: any) =>
+    request("/api/v2/evidence", { method: "POST", body: JSON.stringify(payload) }),
 
   auditLog: () => request("/api/v2/audit"),
 };
