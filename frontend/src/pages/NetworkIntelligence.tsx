@@ -216,8 +216,8 @@ export default function NetworkIntelligence() {
           </div>
 
           {/* Search Node */}
-          <div className="relative w-52">
-            <Search size={12} className="absolute left-2.5 top-2.5 text-[var(--text-muted)]" />
+          <div className="relative w-56 flex items-center">
+            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none z-10" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -227,7 +227,8 @@ export default function NetworkIntelligence() {
                 }
               }}
               placeholder="Filter or find entity..."
-              className="workstation-input pl-7 text-xs"
+              style={{ paddingLeft: "2.35rem" }}
+              className="workstation-input text-xs"
             />
           </div>
 

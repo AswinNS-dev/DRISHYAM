@@ -41,13 +41,25 @@ def seed_all(db: Session):
     db.commit()
 
     # --- Locations ---
+    district_centers = {
+        "Salem": (11.6643, 78.1460),
+        "Coimbatore": (11.0168, 76.9558),
+        "Madurai": (9.9252, 78.1198),
+        "Trichy": (10.7905, 78.7047),
+        "Chennai South": (12.9820, 80.2180),
+        "Chengalpattu": (12.6840, 79.9830),
+    }
     locations = []
     for i in range(24):
+        dist = random.choice(DISTRICTS)
+        center = district_centers.get(dist, (11.6643, 78.1460))
+        lat = round(center[0] + (random.random() - 0.5) * 0.12, 5)
+        lng = round(center[1] + (random.random() - 0.5) * 0.12, 5)
         loc = m.Location(
             name=f"{fake.street_name()} {'Market' if i % 5 == 0 else 'Junction'}",
-            district=random.choice(DISTRICTS),
-            latitude=round(12.5 + random.random() * 1.5, 5),
-            longitude=round(79.5 + random.random() * 1.5, 5),
+            district=dist,
+            latitude=lat,
+            longitude=lng,
             data_source="SYNTHETIC",
         )
         db.add(loc)
