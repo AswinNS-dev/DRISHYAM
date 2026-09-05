@@ -2,14 +2,53 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../lib/api";
 import { useAuth } from "../store/auth";
-import { useTheme } from "../store/theme";
-import { Eye, EyeOff, Shield, AlertTriangle, Lock, Mail, ArrowRight, Sun, Moon } from "lucide-react";
-import ParticleNetwork from "../components/ParticleNetwork";
+import {
+  Eye, EyeOff, AlertTriangle, ShieldCheck,
+  Brain, Sliders, CheckCircle2, ArrowRight
+} from "lucide-react";
 
-const DEMO_ACCOUNTS = [
-  { role: "Investigator", email: "investigator@drishyam.demo", label: "Lead Investigator", badge: "BADGE #8821", icon: "🔍" },
-  { role: "Analyst", email: "analyst@drishyam.demo", label: "Intelligence Analyst", badge: "UNIT #04", icon: "📊" },
-  { role: "Admin", email: "admin@drishyam.demo", label: "System Administrator", badge: "ROOT ACCESS", icon: "⚡" },
+interface RbacTier {
+  role: string;
+  title: string;
+  badge: string;
+  clearanceLevel: string;
+  email: string;
+  summary: string;
+  features: string[];
+  icon: typeof ShieldCheck;
+}
+
+const RBAC_TIERS: RbacTier[] = [
+  {
+    role: "investigator",
+    title: "Lead Investigator",
+    badge: "OPERATIONAL",
+    clearanceLevel: "SEC-LEVEL 4",
+    email: "investigator@drishyam.demo",
+    summary: "Case workspaces, FIR complaints, seized physical exhibits, and subject profiles.",
+    features: ["FIR Statement Registry", "Evidence Chain of Custody", "Warrant & Case Worklists"],
+    icon: ShieldCheck,
+  },
+  {
+    role: "analyst",
+    title: "Crime Analyst",
+    badge: "ANALYTICS",
+    clearanceLevel: "SEC-LEVEL 3",
+    email: "analyst@drishyam.demo",
+    summary: "Graph association analysis, centrality scoring, temporal timelines, and AI suggestions.",
+    features: ["Network Link Analysis", "PageRank Key Influencers", "Chronology Event Reconstruction"],
+    icon: Brain,
+  },
+  {
+    role: "admin",
+    title: "System Administrator",
+    badge: "GOVERNANCE",
+    clearanceLevel: "SEC-LEVEL 5",
+    email: "admin@drishyam.demo",
+    summary: "System audit trails, officer RBAC provisioning, and AI calibration parameters.",
+    features: ["Officer Access Control", "Cryptographic Audit Ledger", "Model Inference Calibration"],
+    icon: Sliders,
+  },
 ];
 
 export default function Login() {
@@ -20,8 +59,9 @@ export default function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { login, sessionExpiredMessage, clearExpiredMessage } = useAuth();
-  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
+
+  const selectedTier = RBAC_TIERS.find((t) => t.email === email) || RBAC_TIERS[0];
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -30,255 +70,248 @@ export default function Login() {
     setLoading(true);
     try {
       const res = await api.login(email, password);
+      if (keepSignedIn) {
+        localStorage.setItem("drishyam_keep_signed_in", "true");
+      }
       login(res.access_token, res.user);
       navigate("/dashboard");
     } catch (err: any) {
-      setError("Authentication failed. Invalid clearance or credentials.");
+      setError("Clearance authorization failed. Invalid security credentials.");
     } finally {
       setLoading(false);
     }
   }
 
-  function quickSelect(demoEmail: string) {
-    setEmail(demoEmail);
+  function handleSelectTier(tier: RbacTier) {
+    setEmail(tier.email);
     setPassword("demo1234");
     setError("");
     clearExpiredMessage();
   }
 
   return (
-    <div className="relative w-full h-screen flex items-center justify-center overflow-hidden"
-         style={{ background: "var(--bg-void)" }}>
-      {/* Theme Toggle in top right */}
-      <div className="absolute top-5 right-5 z-20">
-        <button
-          type="button"
-          onClick={toggleTheme}
-          title={`Switch to ${theme === "dark" ? "Light" : "Dark"} Mode`}
-          className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] hover:border-[var(--neon-teal)] text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer shadow-lg"
-        >
-          {theme === "dark" ? (
-            <>
-              <Sun size={14} className="text-[var(--neon-amber)]" />
-              <span className="font-mono text-[11px]">Light Mode</span>
-            </>
-          ) : (
-            <>
-              <Moon size={14} className="text-[var(--neon-teal)]" />
-              <span className="font-mono text-[11px]">Dark Mode</span>
-            </>
-          )}
-        </button>
-      </div>
-
-      {/* Dynamic interactive particle network background */}
-      <ParticleNetwork />
-
-      {/* Radial vignette glow */}
-      <div style={{
-        position: "absolute", inset: 0,
-        background: "radial-gradient(circle at 50% 50%, transparent 10%, rgba(6, 9, 15, 0.85) 80%)",
-        pointerEvents: "none",
-      }} />
-
-      {/* Centered Login Card */}
-      <div className="relative z-10 w-full max-w-lg px-4">
-        <form onSubmit={handleSubmit}
-          className="glass-panel p-8 relative overflow-hidden"
-          style={{
-            borderColor: "rgba(45, 212, 191, 0.25)",
-            boxShadow: "0 20px 80px rgba(0,0,0,0.8), 0 0 40px rgba(45,212,191,0.08)",
-            borderRadius: 16
-          }}
-        >
-          {/* Cyber scanline texture */}
-          <div style={{
-            position: "absolute", inset: 0, pointerEvents: "none",
-            background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px)",
-          }} />
-
-          {/* Tactical Corner brackets */}
-          <div style={{ position: "absolute", top: 10, left: 10, width: 14, height: 14,
-            borderTop: "2px solid var(--neon-teal)", borderLeft: "2px solid var(--neon-teal)", opacity: 0.7 }} />
-          <div style={{ position: "absolute", top: 10, right: 10, width: 14, height: 14,
-            borderTop: "2px solid var(--neon-teal)", borderRight: "2px solid var(--neon-teal)", opacity: 0.7 }} />
-          <div style={{ position: "absolute", bottom: 10, left: 10, width: 14, height: 14,
-            borderBottom: "2px solid var(--neon-teal)", borderLeft: "2px solid var(--neon-teal)", opacity: 0.7 }} />
-          <div style={{ position: "absolute", bottom: 10, right: 10, width: 14, height: 14,
-            borderBottom: "2px solid var(--neon-teal)", borderRight: "2px solid var(--neon-teal)", opacity: 0.7 }} />
-
-          {/* DRISHYAM Brand Header */}
-          <div className="flex flex-col items-center mb-6 relative">
-            <div
-              className="flex items-center justify-center mb-3"
-              style={{
-                width: 58, height: 58, borderRadius: 16,
-                background: "linear-gradient(135deg, rgba(45,212,191,0.2), rgba(0,255,255,0.08))",
-                border: "1px solid rgba(45,212,191,0.4)",
-                boxShadow: "0 0 32px rgba(0,255,255,0.2)",
-              }}
-            >
-              <Eye size={28} color="var(--neon-teal)"
-                style={{ filter: "drop-shadow(0 0 8px rgba(0,255,255,0.7))" }} />
+    <div className="min-h-screen w-full flex items-center justify-center p-6 lg:p-12 bg-black select-none">
+      <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        
+        {/* ── Left Side: Prominent & Eye-Catching RBAC Clearance Showcase ── */}
+        <div className="lg:col-span-7 space-y-6">
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-[10px] font-mono tracking-wider uppercase text-zinc-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Role-Based Access Control (RBAC)</span>
             </div>
-            <h1 className="text-2xl font-black tracking-widest text-center"
-                style={{ color: "var(--neon-teal)", textShadow: "0 0 20px rgba(45,212,191,0.4)" }}>
-              DRISHYAM
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+              Law-Enforcement Clearance Tiers
             </h1>
-            <p className="hud-label mt-1 text-center" style={{ fontSize: 9, color: "var(--text-secondary)", letterSpacing: "0.14em" }}>
-              SIH26189 · AI CRIMINAL NETWORK INTELLIGENCE TERMINAL
+            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-xl">
+              Select an authorized clearance level below to inspect role-restricted permissions, sensitive case intelligence, and chain-of-custody controls.
             </p>
           </div>
 
-          {/* Three-up provider/role authentication row */}
-          <div className="mb-5">
-            <div className="flex items-center justify-between mb-2">
-              <span className="hud-label text-[9px] text-[var(--text-muted)]">QUICK CREDENTIAL PRESETS</span>
-              <span className="text-[9px] font-mono text-[var(--neon-teal)]">AUTHORIZED ACCESS</span>
-            </div>
-            <div className="grid grid-cols-3 gap-2">
-              {DEMO_ACCOUNTS.map((acc) => {
-                const active = email === acc.email;
-                return (
-                  <button
-                    key={acc.email}
-                    type="button"
-                    onClick={() => quickSelect(acc.email)}
-                    className="p-2.5 rounded-xl text-left transition-all relative overflow-hidden"
-                    style={{
-                      background: active ? "rgba(45,212,191,0.12)" : "var(--bg-panel-raised)",
-                      border: active ? "1px solid var(--neon-teal)" : "1px solid var(--border-subtle)",
-                      boxShadow: active ? "0 0 16px rgba(45,212,191,0.15)" : "none",
-                      cursor: "pointer",
-                    }}
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm">{acc.icon}</span>
-                      <span className={`badge ${active ? "badge-low" : "badge-demo"}`} style={{ fontSize: 7, padding: "1px 4px" }}>
-                        {acc.role}
-                      </span>
+          {/* Large, Rich RBAC Cards */}
+          <div className="space-y-3">
+            {RBAC_TIERS.map((tier) => {
+              const isSelected = email === tier.email;
+              const Icon = tier.icon;
+              return (
+                <div
+                  key={tier.role}
+                  onClick={() => handleSelectTier(tier)}
+                  className={`p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer relative overflow-hidden group ${
+                    isSelected
+                      ? "bg-[#121215] border-zinc-400 shadow-2xl ring-1 ring-zinc-500/50"
+                      : "bg-[#0c0c0e] border-zinc-800/80 hover:border-zinc-700 hover:bg-[#101013]"
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-start gap-3.5 min-w-0">
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border transition-colors ${
+                        isSelected
+                          ? "bg-white text-black border-white"
+                          : "bg-zinc-900 text-zinc-400 border-zinc-800 group-hover:text-zinc-200"
+                      }`}>
+                        <Icon size={18} />
+                      </div>
+
+                      <div className="min-w-0 space-y-1">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h3 className="text-sm font-semibold text-white tracking-tight">
+                            {tier.title}
+                          </h3>
+                          <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700 font-medium">
+                            {tier.clearanceLevel}
+                          </span>
+                          <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded ${
+                            isSelected
+                              ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30"
+                              : "bg-zinc-900 text-zinc-500"
+                          }`}>
+                            {tier.badge}
+                          </span>
+                        </div>
+
+                        <p className="text-xs text-zinc-400 leading-normal">
+                          {tier.summary}
+                        </p>
+
+                        <div className="flex flex-wrap items-center gap-2 pt-1">
+                          {tier.features.map((f, idx) => (
+                            <span
+                              key={idx}
+                              className="inline-flex items-center gap-1 text-[10px] text-zinc-500 font-mono"
+                            >
+                              <CheckCircle2 size={10} className={isSelected ? "text-emerald-400" : "text-zinc-600"} />
+                              <span>{f}</span>
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                    <div className="text-[11px] font-bold text-[var(--text-primary)] truncate">{acc.label}</div>
-                    <div className="text-[8px] font-mono text-[var(--text-muted)] mt-0.5">{acc.badge}</div>
-                  </button>
-                );
-              })}
-            </div>
+
+                    <div className="shrink-0 pt-0.5">
+                      <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
+                        isSelected
+                          ? "border-white bg-white text-black"
+                          : "border-zinc-700 bg-transparent"
+                      }`}>
+                        {isSelected && <div className="w-2 h-2 rounded-full bg-black" />}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
-          {/* Form Inputs */}
-          <div className="space-y-4 mb-4">
-            <div>
-              <label className="hud-label block mb-1.5 text-[9px] flex items-center justify-between">
-                <span>OFFICER IDENTITY / EMAIL</span>
-                <span className="font-mono text-[var(--text-muted)]">SECURE DOMAIN</span>
-              </label>
-              <div className="relative flex items-center">
-                <Mail size={16} className="absolute left-3.5 text-[var(--neon-teal)] opacity-80 pointer-events-none z-10" />
+          <div className="flex items-center gap-4 text-xs text-zinc-500 pt-2">
+            <span>Official Police Department Clearance</span>
+            <span>•</span>
+            <span>Zero-Trust Cryptographic Audit</span>
+          </div>
+        </div>
+
+        {/* ── Right Side: Sleek Sign-In Card (Exact Theme Alignment) ── */}
+        <div className="lg:col-span-5 w-full max-w-[420px] mx-auto">
+          <div className="bg-[#0c0c0e] border border-zinc-800/80 rounded-2xl p-7 sm:p-8 shadow-2xl space-y-6">
+            {/* Header with Department Icon */}
+            <div className="text-center space-y-2">
+              <div className="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 text-white font-bold text-xs flex items-center justify-center mx-auto shadow-sm">
+                CI
+              </div>
+              <div>
+                <h2 className="text-xl font-semibold tracking-tight text-white">
+                  Sign in
+                </h2>
+                <p className="text-xs text-zinc-400 mt-1">
+                  Access the CrimeIntel investigation suite
+                </p>
+              </div>
+            </div>
+
+            {/* Active Clearance Badge Notification */}
+            <div className="p-3 rounded-xl bg-zinc-900/80 border border-zinc-800 flex items-center justify-between text-xs">
+              <span className="text-zinc-400">Target Clearance:</span>
+              <span className="font-semibold text-white font-mono flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                {selectedTier.title}
+              </span>
+            </div>
+
+            {/* Error / Expiration notices */}
+            {sessionExpiredMessage && (
+              <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-xs text-red-400 flex items-center gap-2">
+                <AlertTriangle size={14} className="shrink-0" />
+                <span>{sessionExpiredMessage}</span>
+              </div>
+            )}
+
+            {error && (
+              <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-xs text-red-400 flex items-center gap-2">
+                <AlertTriangle size={14} className="shrink-0" />
+                <span>{error}</span>
+              </div>
+            )}
+
+            {/* Form */}
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-xs font-medium text-zinc-300 mb-1.5">
+                  Department Email or Officer ID
+                </label>
                 <input
-                  type="email"
+                  type="text"
+                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="officer@drishyam.demo"
-                  className="input-cyber input-cyber-icon-left text-xs"
-                  required
+                  placeholder="officer@police.gov.in"
+                  className="w-full h-10 px-3.5 rounded-lg bg-[#08080a] border border-zinc-800 text-xs text-white placeholder:text-zinc-600 focus:border-zinc-500 focus:outline-none transition-colors"
                 />
               </div>
-            </div>
 
-            <div>
-              <label className="hud-label block mb-1.5 text-[9px] flex items-center justify-between">
-                <span>SECURITY CLEARANCE PIN</span>
-                <span className="font-mono text-[var(--text-muted)]">AES-256</span>
-              </label>
-              <div className="relative flex items-center">
-                <Lock size={16} className="absolute left-3.5 text-[var(--neon-teal)] opacity-80 pointer-events-none z-10" />
-                <input
-                  type={showPassword ? "text" : "password"}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="input-cyber input-cyber-icon-left input-cyber-icon-right text-xs"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 text-[var(--text-muted)] hover:text-[var(--neon-teal)] transition-colors p-1 z-10 cursor-pointer"
-                >
-                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-                </button>
+              <div>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="text-xs font-medium text-zinc-300">
+                    Security Passcode
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => alert("Contact Station Administrator or Cyber Cell to reset cryptographic tokens.")}
+                    className="text-xs text-zinc-400 hover:text-white transition-colors cursor-pointer"
+                  >
+                    Forgot passcode?
+                  </button>
+                </div>
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="••••••••"
+                    className="w-full h-10 pl-3.5 pr-10 rounded-lg bg-[#08080a] border border-zinc-800 text-xs text-white placeholder:text-zinc-600 focus:border-zinc-500 focus:outline-none transition-colors"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-2.5 p-1 text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer"
+                    title={showPassword ? "Hide password" : "Show password"}
+                  >
+                    {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
+                  </button>
+                </div>
               </div>
-            </div>
-          </div>
 
-          {/* Keep me signed in toggle switch & Forgot */}
-          <div className="flex items-center justify-between mb-5 pt-1">
-            <label className="cyber-switch">
-              <input
-                type="checkbox"
-                checked={keepSignedIn}
-                onChange={(e) => setKeepSignedIn(e.target.checked)}
-              />
-              <span className="cyber-switch-slider" />
-              <span className="text-[11px] font-medium text-[var(--text-secondary)]">Keep terminal session active</span>
-            </label>
+              {/* Keep me signed in */}
+              <div className="flex items-center justify-between pt-0.5">
+                <label className="flex items-center gap-2 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    checked={keepSignedIn}
+                    onChange={(e) => setKeepSignedIn(e.target.checked)}
+                    className="w-4 h-4 rounded border-zinc-700 bg-[#08080a] text-white focus:ring-0 focus:ring-offset-0 cursor-pointer accent-white"
+                  />
+                  <span className="text-xs text-zinc-400">Keep me signed in for 30 days</span>
+                </label>
+              </div>
 
-            <span className="text-[10px] font-mono text-[var(--neon-teal)] opacity-80 hover:opacity-100 cursor-pointer">
-              Forgot PIN?
-            </span>
-          </div>
-
-          {/* Session Inactivity Expired Alert Banner */}
-          {sessionExpiredMessage && (
-            <div className="flex items-center gap-2 mb-4 p-3 rounded-lg bg-[rgba(245,158,11,0.12)] border border-[rgba(245,158,11,0.4)] text-[var(--neon-amber)] text-xs">
-              <AlertTriangle size={15} className="shrink-0 text-[var(--neon-amber)]" />
-              <div className="flex-1 font-medium">{sessionExpiredMessage}</div>
+              {/* Stark White Submit Action */}
               <button
-                type="button"
-                onClick={clearExpiredMessage}
-                className="text-[10px] font-mono opacity-70 hover:opacity-100 uppercase"
+                type="submit"
+                disabled={loading}
+                className="w-full h-10 rounded-lg bg-white text-black font-semibold text-xs hover:bg-zinc-200 transition-colors cursor-pointer shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"
               >
-                Dismiss
-              </button>
-            </div>
-          )}
-
-          {/* Error Banner */}
-          {error && (
-            <div className="flex items-center gap-2 mb-4 p-3 rounded-lg bg-[rgba(255,59,92,0.1)] border border-[rgba(255,59,92,0.3)] text-[var(--neon-red)] text-xs animate-shake">
-              <AlertTriangle size={14} className="shrink-0" />
-              <span>{error}</span>
-            </div>
-          )}
-
-          {/* Submit Button */}
-          <button
-            type="submit"
-            disabled={loading || !email}
-            className="btn-primary w-full py-3 text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(45,212,191,0.2)] hover:shadow-[0_0_30px_rgba(45,212,191,0.4)]"
-          >
-            {loading ? (
-              <span className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full border-2 border-[#08211d] border-t-transparent animate-spin" />
-                VERIFYING ENCRYPTED CLEARANCE...
-              </span>
-            ) : (
-              <>
-                <span>INITIALIZE INVESTIGATION WORKSPACE</span>
+                <span>{loading ? "Verifying Clearance..." : "Authorize & Enter Workstation"}</span>
                 <ArrowRight size={14} />
-              </>
-            )}
-          </button>
+              </button>
+            </form>
 
-          {/* Security Classification Footer */}
-          <div className="text-center mt-5 pt-4 border-t border-[var(--border-subtle)]">
-            <div className="flex items-center justify-center gap-2 text-[9px] font-mono text-[var(--text-muted)]">
-              <Shield size={11} className="text-[var(--neon-teal)]" />
-              <span>OFFICIAL USE ONLY · SIH26189 · EVIDENCE STANDARDS RETAINED</span>
+            {/* Legal / Security Footer */}
+            <div className="pt-2 text-center text-[10px] text-zinc-500 leading-relaxed font-mono">
+              Authorized personnel only. All access attempts are cryptographically timestamped and signed.
             </div>
           </div>
-        </form>
+        </div>
+
       </div>
     </div>
   );
