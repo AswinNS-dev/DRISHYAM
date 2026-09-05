@@ -43,6 +43,8 @@ export const api = {
 
   entities: (entityType = "PERSON", q = "") =>
     request(`/api/v2/entities?${new URLSearchParams({ entity_type: entityType, q })}`),
+  globalSearch: (q: string) =>
+    request(`/api/v2/entities/global-search?${new URLSearchParams({ q })}`),
   dossier: (id: string) => request(`/api/v2/entities/${id}`),
 
   cases: () => request("/api/v2/cases"),

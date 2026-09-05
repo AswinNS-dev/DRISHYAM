@@ -2,18 +2,20 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../lib/api";
 import { useAuth } from "../store/auth";
-import { Eye, Shield, AlertTriangle } from "lucide-react";
+import { Eye, EyeOff, Shield, AlertTriangle, Lock, Mail, ArrowRight } from "lucide-react";
 import ParticleNetwork from "../components/ParticleNetwork";
 
 const DEMO_ACCOUNTS = [
-  { label: "Investigator", email: "investigator@drishyam.demo", icon: "🔍" },
-  { label: "Admin", email: "admin@drishyam.demo", icon: "⚡" },
-  { label: "Analyst", email: "analyst@drishyam.demo", icon: "📊" },
+  { role: "Investigator", email: "investigator@drishyam.demo", label: "Lead Investigator", badge: "BADGE #8821", icon: "🔍" },
+  { role: "Analyst", email: "analyst@drishyam.demo", label: "Intelligence Analyst", badge: "UNIT #04", icon: "📊" },
+  { role: "Admin", email: "admin@drishyam.demo", label: "System Administrator", badge: "ROOT ACCESS", icon: "⚡" },
 ];
 
 export default function Login() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("investigator@drishyam.demo");
   const [password, setPassword] = useState("demo1234");
+  const [showPassword, setShowPassword] = useState(false);
+  const [keepSignedIn, setKeepSignedIn] = useState(true);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
@@ -28,7 +30,7 @@ export default function Login() {
       login(res.access_token, res.user);
       navigate("/dashboard");
     } catch (err: any) {
-      setError("Authentication failed. Check credentials.");
+      setError("Authentication failed. Invalid clearance or credentials.");
     } finally {
       setLoading(false);
     }
@@ -37,171 +39,203 @@ export default function Login() {
   function quickSelect(demoEmail: string) {
     setEmail(demoEmail);
     setPassword("demo1234");
+    setError("");
   }
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center overflow-hidden"
          style={{ background: "var(--bg-void)" }}>
-      {/* Particle network background */}
+      {/* Dynamic interactive particle network background */}
       <ParticleNetwork />
 
-      {/* Radial gradient overlay */}
+      {/* Radial vignette glow */}
       <div style={{
         position: "absolute", inset: 0,
-        background: "radial-gradient(circle at 50% 50%, transparent 0%, var(--bg-void) 70%)",
+        background: "radial-gradient(circle at 50% 50%, transparent 10%, rgba(6, 9, 15, 0.85) 80%)",
         pointerEvents: "none",
       }} />
 
-      {/* Login card */}
-      <div className="relative z-10 w-full max-w-md px-4">
+      {/* Centered Login Card */}
+      <div className="relative z-10 w-full max-w-lg px-4">
         <form onSubmit={handleSubmit}
           className="glass-panel p-8 relative overflow-hidden"
-          style={{ borderColor: "rgba(45, 212, 191, 0.15)" }}
+          style={{
+            borderColor: "rgba(45, 212, 191, 0.25)",
+            boxShadow: "0 20px 80px rgba(0,0,0,0.8), 0 0 40px rgba(45,212,191,0.08)",
+            borderRadius: 16
+          }}
         >
-          {/* Scanline effect */}
+          {/* Cyber scanline texture */}
           <div style={{
             position: "absolute", inset: 0, pointerEvents: "none",
-            background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px)",
+            background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px)",
           }} />
 
-          {/* Corner brackets */}
-          <div style={{ position: "absolute", top: 8, left: 8, width: 16, height: 16,
-            borderTop: "2px solid var(--neon-teal)", borderLeft: "2px solid var(--neon-teal)", opacity: 0.4 }} />
-          <div style={{ position: "absolute", top: 8, right: 8, width: 16, height: 16,
-            borderTop: "2px solid var(--neon-teal)", borderRight: "2px solid var(--neon-teal)", opacity: 0.4 }} />
-          <div style={{ position: "absolute", bottom: 8, left: 8, width: 16, height: 16,
-            borderBottom: "2px solid var(--neon-teal)", borderLeft: "2px solid var(--neon-teal)", opacity: 0.4 }} />
-          <div style={{ position: "absolute", bottom: 8, right: 8, width: 16, height: 16,
-            borderBottom: "2px solid var(--neon-teal)", borderRight: "2px solid var(--neon-teal)", opacity: 0.4 }} />
+          {/* Tactical Corner brackets */}
+          <div style={{ position: "absolute", top: 10, left: 10, width: 14, height: 14,
+            borderTop: "2px solid var(--neon-teal)", borderLeft: "2px solid var(--neon-teal)", opacity: 0.7 }} />
+          <div style={{ position: "absolute", top: 10, right: 10, width: 14, height: 14,
+            borderTop: "2px solid var(--neon-teal)", borderRight: "2px solid var(--neon-teal)", opacity: 0.7 }} />
+          <div style={{ position: "absolute", bottom: 10, left: 10, width: 14, height: 14,
+            borderBottom: "2px solid var(--neon-teal)", borderLeft: "2px solid var(--neon-teal)", opacity: 0.7 }} />
+          <div style={{ position: "absolute", bottom: 10, right: 10, width: 14, height: 14,
+            borderBottom: "2px solid var(--neon-teal)", borderRight: "2px solid var(--neon-teal)", opacity: 0.7 }} />
 
-          {/* Logo */}
-          <div className="flex flex-col items-center mb-8 relative">
+          {/* DRISHYAM Brand Header */}
+          <div className="flex flex-col items-center mb-6 relative">
             <div
-              className="flex items-center justify-center mb-4"
+              className="flex items-center justify-center mb-3"
               style={{
-                width: 56, height: 56, borderRadius: 14,
-                background: "linear-gradient(135deg, rgba(45,212,191,0.12), rgba(0,255,255,0.06))",
-                border: "1px solid rgba(45,212,191,0.3)",
-                boxShadow: "0 0 30px rgba(0,255,255,0.12)",
+                width: 58, height: 58, borderRadius: 16,
+                background: "linear-gradient(135deg, rgba(45,212,191,0.2), rgba(0,255,255,0.08))",
+                border: "1px solid rgba(45,212,191,0.4)",
+                boxShadow: "0 0 32px rgba(0,255,255,0.2)",
               }}
             >
-              <Eye size={26} color="var(--neon-teal)"
-                style={{ filter: "drop-shadow(0 0 8px rgba(0,255,255,0.5))" }} />
+              <Eye size={28} color="var(--neon-teal)"
+                style={{ filter: "drop-shadow(0 0 8px rgba(0,255,255,0.7))" }} />
             </div>
-            <h1 className="text-xl font-bold tracking-widest"
-                style={{ color: "var(--neon-teal)", textShadow: "0 0 20px rgba(45,212,191,0.3)" }}>
+            <h1 className="text-2xl font-black tracking-widest text-center"
+                style={{ color: "var(--neon-teal)", textShadow: "0 0 20px rgba(45,212,191,0.4)" }}>
               DRISHYAM
             </h1>
-            <p className="hud-label mt-1" style={{ fontSize: 9, color: "var(--text-muted)" }}>
-              AI-Powered Criminal Network Intelligence
+            <p className="hud-label mt-1 text-center" style={{ fontSize: 9, color: "var(--text-secondary)", letterSpacing: "0.14em" }}>
+              SIH26189 · AI CRIMINAL NETWORK INTELLIGENCE TERMINAL
             </p>
           </div>
 
-          {/* HUD status indicators */}
-          <div className="flex justify-center gap-6 mb-6">
-            {[
-              { label: "NETWORK", status: "ONLINE" },
-              { label: "AI ENGINE", status: "READY" },
-              { label: "DATABASE", status: "ACTIVE" },
-            ].map(({ label, status }) => (
-              <div key={label} className="flex items-center gap-1.5">
-                <div className="glow-dot glow-dot-teal" style={{ width: 5, height: 5 }} />
-                <span className="hud-label" style={{ fontSize: 8 }}>{label}: {status}</span>
+          {/* Three-up provider/role authentication row */}
+          <div className="mb-5">
+            <div className="flex items-center justify-between mb-2">
+              <span className="hud-label text-[9px] text-[var(--text-muted)]">QUICK CREDENTIAL PRESETS</span>
+              <span className="text-[9px] font-mono text-[var(--neon-teal)]">AUTHORIZED ACCESS</span>
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              {DEMO_ACCOUNTS.map((acc) => {
+                const active = email === acc.email;
+                return (
+                  <button
+                    key={acc.email}
+                    type="button"
+                    onClick={() => quickSelect(acc.email)}
+                    className="p-2.5 rounded-xl text-left transition-all relative overflow-hidden"
+                    style={{
+                      background: active ? "rgba(45,212,191,0.12)" : "var(--bg-panel-raised)",
+                      border: active ? "1px solid var(--neon-teal)" : "1px solid var(--border-subtle)",
+                      boxShadow: active ? "0 0 16px rgba(45,212,191,0.15)" : "none",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm">{acc.icon}</span>
+                      <span className={`badge ${active ? "badge-low" : "badge-demo"}`} style={{ fontSize: 7, padding: "1px 4px" }}>
+                        {acc.role}
+                      </span>
+                    </div>
+                    <div className="text-[11px] font-bold text-[var(--text-primary)] truncate">{acc.label}</div>
+                    <div className="text-[8px] font-mono text-[var(--text-muted)] mt-0.5">{acc.badge}</div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Form Inputs */}
+          <div className="space-y-4 mb-4">
+            <div>
+              <label className="hud-label block mb-1.5 text-[9px] flex items-center justify-between">
+                <span>OFFICER IDENTITY / EMAIL</span>
+                <span className="font-mono text-[var(--text-muted)]">SECURE DOMAIN</span>
+              </label>
+              <div className="relative">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="officer@drishyam.demo"
+                  className="input-cyber w-full pl-9 pr-3 text-xs"
+                  required
+                />
+                <Mail size={14} className="absolute left-3 top-3 text-[var(--text-muted)]" />
               </div>
-            ))}
-          </div>
-
-          {/* System access label */}
-          <div className="flex items-center gap-2 mb-5">
-            <Shield size={12} color="var(--text-muted)" />
-            <span className="hud-label" style={{ fontSize: 9 }}>System Access</span>
-            <div style={{ flex: 1, height: 1, background: "var(--border-subtle)" }} />
-          </div>
-
-          {/* Demo account quick-select */}
-          <div className="flex gap-2 mb-5">
-            {DEMO_ACCOUNTS.map((acc) => (
-              <button
-                key={acc.email}
-                type="button"
-                onClick={() => quickSelect(acc.email)}
-                className="flex-1 py-2.5 rounded-lg text-center transition-all"
-                style={{
-                  background: email === acc.email ? "rgba(45,212,191,0.1)" : "var(--bg-input)",
-                  border: email === acc.email
-                    ? "1px solid rgba(45,212,191,0.35)"
-                    : "1px solid var(--border-input)",
-                  boxShadow: email === acc.email ? "0 0 12px rgba(0,255,255,0.08)" : "none",
-                  cursor: "pointer",
-                }}
-              >
-                <div style={{ fontSize: 16 }}>{acc.icon}</div>
-                <div className="hud-label mt-1" style={{
-                  fontSize: 9,
-                  color: email === acc.email ? "var(--neon-teal)" : "var(--text-muted)",
-                }}>
-                  {acc.label}
-                </div>
-              </button>
-            ))}
-          </div>
-
-          {/* Inputs */}
-          <div className="space-y-3 mb-5">
-            <div>
-              <label className="hud-label block mb-1.5" style={{ fontSize: 9 }}>Email</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="operator@drishyam.demo"
-                className="input-cyber"
-                required
-              />
             </div>
+
             <div>
-              <label className="hud-label block mb-1.5" style={{ fontSize: 9 }}>Password</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="input-cyber"
-                required
-              />
+              <label className="hud-label block mb-1.5 text-[9px] flex items-center justify-between">
+                <span>SECURITY CLEARANCE PIN</span>
+                <span className="font-mono text-[var(--text-muted)]">AES-256</span>
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="input-cyber w-full pl-9 pr-10 text-xs"
+                  required
+                />
+                <Lock size={14} className="absolute left-3 top-3 text-[var(--text-muted)]" />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-2.5 text-[var(--text-muted)] hover:text-[var(--neon-teal)] transition-colors p-1"
+                >
+                  {showPassword ? <EyeOff size={14} /> : <Eye size={14} />}
+                </button>
+              </div>
             </div>
           </div>
 
-          {/* Error */}
+          {/* Keep me signed in toggle switch & Forgot */}
+          <div className="flex items-center justify-between mb-5 pt-1">
+            <label className="cyber-switch">
+              <input
+                type="checkbox"
+                checked={keepSignedIn}
+                onChange={(e) => setKeepSignedIn(e.target.checked)}
+              />
+              <span className="cyber-switch-slider" />
+              <span className="text-[11px] font-medium text-[var(--text-secondary)]">Keep terminal session active</span>
+            </label>
+
+            <span className="text-[10px] font-mono text-[var(--neon-teal)] opacity-80 hover:opacity-100 cursor-pointer">
+              Forgot PIN?
+            </span>
+          </div>
+
+          {/* Error Banner */}
           {error && (
-            <div className="flex items-center gap-2 mb-4 p-3 rounded-lg"
-                 style={{ background: "rgba(255,59,92,0.08)", border: "1px solid rgba(255,59,92,0.2)" }}>
-              <AlertTriangle size={14} color="var(--neon-red)" />
-              <span className="text-xs" style={{ color: "var(--neon-red)" }}>{error}</span>
+            <div className="flex items-center gap-2 mb-4 p-3 rounded-lg bg-[rgba(255,59,92,0.1)] border border-[rgba(255,59,92,0.3)] text-[var(--neon-red)] text-xs animate-shake">
+              <AlertTriangle size={14} className="shrink-0" />
+              <span>{error}</span>
             </div>
           )}
 
-          {/* Submit */}
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={loading || !email}
-            className="btn-primary w-full"
-            style={{ padding: "12px 24px" }}
+            className="btn-primary w-full py-3 text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(45,212,191,0.2)] hover:shadow-[0_0_30px_rgba(45,212,191,0.4)]"
           >
             {loading ? (
-              <span className="flex items-center justify-center gap-2">
-                <span className="pulse-dot">●</span> AUTHENTICATING...
+              <span className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded-full border-2 border-[#08211d] border-t-transparent animate-spin" />
+                VERIFYING ENCRYPTED CLEARANCE...
               </span>
             ) : (
-              "INITIALIZE SESSION"
+              <>
+                <span>INITIALIZE INVESTIGATION WORKSPACE</span>
+                <ArrowRight size={14} />
+              </>
             )}
           </button>
 
-          {/* Footer */}
-          <div className="text-center mt-5">
-            <span className="hud-label" style={{ fontSize: 8, color: "var(--text-muted)" }}>
-              SIH26189 · MINISTRY OF HOME AFFAIRS · DEMO BUILD
-            </span>
+          {/* Security Classification Footer */}
+          <div className="text-center mt-5 pt-4 border-t border-[var(--border-subtle)]">
+            <div className="flex items-center justify-center gap-2 text-[9px] font-mono text-[var(--text-muted)]">
+              <Shield size={11} className="text-[var(--neon-teal)]" />
+              <span>OFFICIAL USE ONLY · SIH26189 · EVIDENCE STANDARDS RETAINED</span>
+            </div>
           </div>
         </form>
       </div>

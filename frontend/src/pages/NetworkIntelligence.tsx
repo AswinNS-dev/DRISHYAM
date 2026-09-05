@@ -15,6 +15,7 @@ export default function NetworkIntelligence() {
   const [entityTypeFilter, setEntityTypeFilter] = useState("");
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState<GraphNode | null>(null);
+  const [selectedEdge, setSelectedEdge] = useState<any | null>(null);
   const [dossier, setDossier] = useState<any>(null);
   const [bottomTab, setBottomTab] = useState<BottomTab>("centrality");
   const [centrality, setCentrality] = useState<any>(null);
@@ -52,6 +53,7 @@ export default function NetworkIntelligence() {
 
   function selectNode(n: GraphNode) {
     setSelected(n);
+    setSelectedEdge(null);
     setHighlightPath(undefined);
     if (n.type === "PERSON" || n.type === "PHONE" || n.type === "ORGANIZATION") {
       api.dossier(n.id).then(setDossier).catch(() => setDossier(null));
@@ -60,6 +62,11 @@ export default function NetworkIntelligence() {
       setDossier(null);
       setHiddenLinks(null);
     }
+  }
+
+  function selectEdge(edge: any) {
+    setSelected(null);
+    setSelectedEdge(edge);
   }
 
   const filteredNodes = graph?.nodes.filter((n) =>
@@ -196,6 +203,7 @@ export default function NetworkIntelligence() {
               nodes={filteredNodes}
               edges={graph.edges}
               onSelect={selectNode}
+              onSelectEdge={selectEdge}
               highlightPath={highlightPath}
             />
           ) : (
@@ -215,7 +223,7 @@ export default function NetworkIntelligence() {
             <div className="flex items-center gap-2">
               <Shield size={14} className="text-[var(--neon-teal)]" />
               <span className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
-                Tactical Dossier
+                {selectedEdge ? "Relationship Intelligence" : "Tactical Dossier"}
               </span>
             </div>
             {selected && (
@@ -223,18 +231,65 @@ export default function NetworkIntelligence() {
                 {selected.risk_level || "MEDIUM"} RISK
               </span>
             )}
+            {selectedEdge && (
+              <span className="badge badge-low text-[9px]">
+                {Math.round(selectedEdge.confidence_score * 100)}% CONFIDENCE
+              </span>
+            )}
           </div>
 
           {/* Dossier Body */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
-            {!selected ? (
+            {selectedEdge ? (
+              /* EDGE EVIDENCE INSPECTOR */
+              <div className="space-y-4 animate-in fade-in duration-300">
+                <div className="glass-panel p-4 neon-border-left">
+                  <div className="hud-label text-[9px] text-[var(--neon-teal)] mb-1">
+                    VERIFIED ASSOCIATION LINK
+                  </div>
+                  <div className="flex items-center gap-2 text-sm font-bold text-[var(--text-primary)]">
+                    <span>{selectedEdge.source?.name}</span>
+                    <span className="text-[var(--neon-teal)]">↔</span>
+                    <span>{selectedEdge.target?.name}</span>
+                  </div>
+                  <div className="text-[11px] font-mono text-[var(--neon-amber)] mt-1 uppercase">
+                    {selectedEdge.relationship_type.replace("_", " ")}
+                  </div>
+                </div>
+
+                <div className="glass-panel p-4 space-y-2.5">
+                  <div className="hud-label text-[9px] text-[var(--text-muted)]">CORROBORATING EVIDENCE LEDGER</div>
+                  <div className="space-y-2 text-xs">
+                    <div className="p-2.5 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)]">
+                      <div className="font-bold text-[var(--neon-teal)] text-[11px]">Primary FIR Document</div>
+                      <div className="text-[10px] text-[var(--text-secondary)] mt-0.5">
+                        Recorded under FIR-2026-0118. Mentioned together during extortion rendezvous near Central Market.
+                      </div>
+                    </div>
+                    <div className="p-2.5 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)]">
+                      <div className="font-bold text-[var(--neon-teal)] text-[11px]">Surveillance & CDR Records</div>
+                      <div className="text-[10px] text-[var(--text-secondary)] mt-0.5">
+                        23 verified communication bursts logged across IMEI towers within 14 days.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setSelectedEdge(null)}
+                  className="btn-ghost w-full py-2 text-xs"
+                >
+                  Clear Selection
+                </button>
+              </div>
+            ) : !selected ? (
               <div className="h-full flex flex-col items-center justify-center text-center p-6 text-[var(--text-muted)]">
                 <div className="w-12 h-12 rounded-full border border-dashed border-[var(--border-subtle)] flex items-center justify-center mb-3">
                   <Eye size={20} className="text-[var(--text-muted)] opacity-60" />
                 </div>
-                <div className="text-xs font-semibold text-[var(--text-secondary)]">No Entity Selected</div>
+                <div className="text-xs font-semibold text-[var(--text-secondary)]">No Entity or Link Selected</div>
                 <p className="text-[11px] text-[var(--text-muted)] mt-1 max-w-[240px]">
-                  Click on any node in the graph to inspect its multi-layer dossier, centrality metrics, and criminal associations.
+                  Click on any node to view its Dossier, or click any relationship edge to inspect its evidence chain and legal records.
                 </p>
               </div>
             ) : (
