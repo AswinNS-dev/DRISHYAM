@@ -30,6 +30,55 @@ def list_entities(db: Session = Depends(get_db), user=Depends(get_current_user),
     return {"entities": nodes[:limit]}
 
 
+@router.get("/global-search")
+def global_search(
+    q: str,
+    limit: int = 15,
+    db: Session = Depends(get_db),
+    user=Depends(get_current_user),
+):
+    """Global multi-entity search across persons, cases, phones, vehicles, locations, gangs."""
+    if not q or len(q.strip()) < 1:
+        return {"results": []}
+    
+    term = f"%{q.strip()}%"
+    results = []
+    
+    # 1. Search Entities
+    matching_entities = db.query(m.Entity).filter(
+        (m.Entity.name.ilike(term)) | (m.Entity.primary_phone.ilike(term)) | (m.Entity.primary_vehicle.ilike(term))
+    ).limit(limit).all()
+    
+    for e in matching_entities:
+        results.append({
+            "id": e.id,
+            "category": "ENTITY",
+            "type": e.entity_type,
+            "title": e.name,
+            "subtitle": f"{e.entity_type} · Risk: {int(e.risk_score * 100)}%",
+            "route": f"/network",
+            "entity_id": e.id,
+        })
+
+    # 2. Search Cases
+    matching_cases = db.query(m.Case).filter(
+        (m.Case.case_number.ilike(term)) | (m.Case.title.ilike(term)) | (m.Case.crime_type.ilike(term))
+    ).limit(6).all()
+    
+    for c in matching_cases:
+        results.append({
+            "id": c.id,
+            "category": "CASE",
+            "type": "CASE",
+            "title": f"{c.case_number}: {c.title}",
+            "subtitle": f"{c.crime_type} · {c.status.upper()} · {c.district}",
+            "route": f"/cases",
+            "case_id": c.id,
+        })
+        
+    return {"results": results[:limit]}
+
+
 @router.get("/{entity_id}")
 def entity_dossier(entity_id: str, db: Session = Depends(get_db), user=Depends(get_current_user)):
     """Dossier 360 — full intelligence overview for a single entity."""

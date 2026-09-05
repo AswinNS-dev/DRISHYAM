@@ -597,6 +597,118 @@ body {
   box-shadow: inset 3px 0 12px rgba(251, 191, 36, 0.06);
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   CYBER CONTROLS & HUD ELEMENTS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Tactical Checkbox / Switch */
+.cyber-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+.cyber-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.cyber-switch-slider {
+  width: 32px;
+  height: 18px;
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid var(--border-input);
+  border-radius: 9px;
+  position: relative;
+  transition: all 0.25s ease;
+}
+.cyber-switch-slider::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: all 0.25s var(--ease-spring);
+}
+.cyber-switch input:checked + .cyber-switch-slider {
+  background: rgba(45, 212, 191, 0.25);
+  border-color: var(--neon-teal);
+  box-shadow: 0 0 10px rgba(45, 212, 191, 0.3);
+}
+.cyber-switch input:checked + .cyber-switch-slider::before {
+  transform: translateX(14px);
+  background: var(--neon-teal);
+  box-shadow: 0 0 8px var(--neon-teal);
+}
+
+/* Global Search Modal Overlay */
+.cmd-palette-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 7, 13, 0.82);
+  backdrop-filter: blur(16px) saturate(1.8);
+  -webkit-backdrop-filter: blur(16px) saturate(1.8);
+  z-index: 9999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+  animation: fadeIn 0.2s var(--ease-out-expo);
+}
+
+.cmd-palette-modal {
+  width: 100%;
+  max-width: 640px;
+  background: var(--bg-panel-solid);
+  border: 1px solid var(--border-glow);
+  border-radius: 14px;
+  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(45, 212, 191, 0.15);
+  overflow: hidden;
+  animation: modalScale 0.22s var(--ease-out-expo);
+}
+
+@keyframes modalScale {
+  from { opacity: 0; transform: scale(0.96) translateY(-10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Radar ping micro-animation */
+.radar-beacon {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon-teal);
+}
+.radar-beacon::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--neon-teal);
+  animation: beaconPing 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+@keyframes beaconPing {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
 /* ── Transition helpers ── */
 .transition-all { transition: all 0.2s ease; }
 .transition-colors { transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease; }

@@ -44,11 +44,12 @@ function hexToRgba(hex: string, alpha: number): string {
 }
 
 export default function NetworkGraph({
-  nodes, edges, onSelect, highlightPath,
+  nodes, edges, onSelect, onSelectEdge, highlightPath,
 }: {
   nodes: GraphNode[];
   edges: GraphEdge[];
   onSelect: (n: GraphNode) => void;
+  onSelectEdge?: (edge: SimLink) => void;
   highlightPath?: string[];
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -60,6 +61,7 @@ export default function NetworkGraph({
   const linksRef = useRef<SimLink[]>([]);
   const hoveredRef = useRef<SimNode | null>(null);
   const selectedRef = useRef<SimNode | null>(null);
+  const selectedEdgeRef = useRef<SimLink | null>(null);
   const animRef = useRef(0);
   const pulseRef = useRef(0);
   const particleRef = useRef(0);
@@ -447,12 +449,43 @@ export default function NetworkGraph({
       dragRef.current = { node: null, active: false };
     };
 
+    const getEdgeAt = (mx: number, my: number): SimLink | null => {
+      const t = transformRef.current;
+      const x = (mx - t.x) / t.k;
+      const y = (my - t.y) / t.k;
+      let closest: SimLink | null = null;
+      let closestDist = 8;
+      for (const link of linksRef.current) {
+        const x1 = link.source.x, y1 = link.source.y;
+        const x2 = link.target.x, y2 = link.target.y;
+        const l2 = (x2 - x1) ** 2 + (y2 - y1) ** 2;
+        if (l2 === 0) continue;
+        const tt = Math.max(0, Math.min(1, ((x - x1) * (x2 - x1) + (y - y1) * (y2 - y1)) / l2));
+        const px = x1 + tt * (x2 - x1);
+        const py = y1 + tt * (y2 - y1);
+        const dist = Math.sqrt((x - px) ** 2 + (y - py) ** 2);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closest = link;
+        }
+      }
+      return closest;
+    };
+
     const handleClick = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
       const node = getNodeAt(e.clientX - rect.left, e.clientY - rect.top);
       if (node) {
         selectedRef.current = node;
+        selectedEdgeRef.current = null;
         onSelect(node);
+        return;
+      }
+
+      const edge = getEdgeAt(e.clientX - rect.left, e.clientY - rect.top);
+      if (edge && onSelectEdge) {
+        selectedEdgeRef.current = edge;
+        onSelectEdge(edge);
       }
     };
 
