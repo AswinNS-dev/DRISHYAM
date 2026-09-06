@@ -12,7 +12,7 @@ router = APIRouter(prefix="/api/v2/entities", tags=["entities"])
 
 @router.get("")
 def list_entities(db: Session = Depends(get_db), user=Depends(get_current_user),
-                   entity_type: str = Query("PERSON"), q: str = Query(None), limit: int = 100):
+                   entity_type: str = Query("PERSON"), q: str = Query(None), limit: int = 200):
     if entity_type == "PERSON":
         query = db.query(m.Person)
         if q:
@@ -24,9 +24,12 @@ def list_entities(db: Session = Depends(get_db), user=Depends(get_current_user),
              "aliases": [a.alias_name for a in p.aliases]}
             for p in rows
         ]}
-    nodes = [n for n in graph_data.load_all_nodes(db) if n["type"] == entity_type]
+    if not entity_type or entity_type.upper() == "ALL":
+        nodes = graph_data.load_all_nodes(db)
+    else:
+        nodes = [n for n in graph_data.load_all_nodes(db) if n["type"] == entity_type.upper()]
     if q:
-        nodes = [n for n in nodes if q.lower() in n["name"].lower()]
+        nodes = [n for n in nodes if q.lower() in n.get("name", "").lower()]
     return {"entities": nodes[:limit]}
 
 
