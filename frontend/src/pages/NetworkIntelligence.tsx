@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { api } from "../lib/api";
 import NetworkGraph, { type GraphNode } from "../components/NetworkGraph";
 import { getEntityColor, getPoliceRelationLabel } from "../components/Network3DGraph";
@@ -18,16 +18,26 @@ import {
   ChevronRight,
   Sparkles,
   Share2,
+  FolderOpen,
+  Radio,
+  CreditCard,
+  X,
 } from "lucide-react";
 
 type BottomTab = "centrality" | "communities" | "paths" | "anomalies";
 
 export default function NetworkIntelligence() {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const paramEntityId = searchParams.get("entity_id") || "";
+  const paramCaseId = searchParams.get("case_id") || "";
 
   const [graph, setGraph] = useState<{ nodes: GraphNode[]; edges: any[] } | null>(null);
   const [loading, setLoading] = useState(true);
   const [entityTypeFilter, setEntityTypeFilter] = useState("");
+  const [selectedCaseId, setSelectedCaseId] = useState<string>(paramCaseId);
+  const [scopeEntityId, setScopeEntityId] = useState<string>(paramEntityId);
+  const [caseList, setCaseList] = useState<any[]>([]);
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState<GraphNode | null>(null);
   const [selectedEdge, setSelectedEdge] = useState<any | null>(null);
@@ -57,17 +67,38 @@ export default function NetworkIntelligence() {
   const [pathLoading, setPathLoading] = useState(false);
   const [highlightPath, setHighlightPath] = useState<string[] | undefined>(undefined);
 
+  useEffect(() => {
+    api.cases().then((res) => setCaseList(res.cases || [])).catch(() => {});
+  }, []);
+
   function loadGraph() {
     setLoading(true);
-    api.networkGraph(entityTypeFilter ? { entity_type: entityTypeFilter } : {})
+    const params: Record<string, string> = {};
+    if (entityTypeFilter) params.entity_type = entityTypeFilter;
+    if (selectedCaseId) params.case_id = selectedCaseId;
+    if (scopeEntityId) {
+      params.entity_id = scopeEntityId;
+      params.depth = focusDegree.toString();
+    }
+
+    api.networkGraph(params)
       .then((data) => {
         setGraph(data);
         setLoading(false);
+        // If scoped to entity, auto-select that node
+        if (scopeEntityId && data?.nodes) {
+          const matched = data.nodes.find((n: any) => n.id === scopeEntityId);
+          if (matched) {
+            selectNode(matched);
+          }
+        }
       })
       .catch(() => setLoading(false));
   }
 
-  useEffect(loadGraph, [entityTypeFilter]);
+  useEffect(() => {
+    loadGraph();
+  }, [entityTypeFilter, selectedCaseId, scopeEntityId, focusDegree]);
 
   useEffect(() => {
     api.centrality().then(setCentrality).catch(() => {});
@@ -175,14 +206,14 @@ export default function NetworkIntelligence() {
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-xs font-bold tracking-wider text-[var(--text-primary)] uppercase">
-                Criminal Network Analysis Workspace
+                Entity Network Analysis Workspace
               </h1>
               <span className="badge badge-low text-[8px] bg-sky-950/80 text-sky-300 border border-sky-800/60">
                 {viewMode === "3d" ? "3D NEURAL GRAPH" : "2D PLANAR GRAPH"}
               </span>
             </div>
             <p className="text-[11px] text-[var(--text-muted)]">
-              Multi-hop associative clustering, key influencers, and co-conspirator neural maps
+              Multi-hop associative clustering, key connectors, and neural relationship maps
             </p>
           </div>
         </div>
@@ -232,6 +263,32 @@ export default function NetworkIntelligence() {
             />
           </div>
 
+          {/* Case Filter */}
+          <div className="flex items-center gap-1.5 bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] rounded-lg px-2.5 py-1">
+            <FolderOpen size={12} className="text-[var(--text-muted)]" />
+            <select
+              value={selectedCaseId}
+              onChange={(e) => {
+                const val = e.target.value;
+                setSelectedCaseId(val);
+                setSearchParams((prev) => {
+                  const next = new URLSearchParams(prev);
+                  if (val) next.set("case_id", val);
+                  else next.delete("case_id");
+                  return next;
+                });
+              }}
+              className="bg-transparent text-xs text-[var(--text-secondary)] outline-none cursor-pointer max-w-[150px] truncate"
+            >
+              <option value="" className="bg-[var(--bg-panel-solid)]">All Cases (Global)</option>
+              {caseList.map((c) => (
+                <option key={c.id} value={c.id} className="bg-[var(--bg-panel-solid)]">
+                  {c.case_number}: {c.title}
+                </option>
+              ))}
+            </select>
+          </div>
+
           {/* Entity Type Filter */}
           <div className="flex items-center gap-1.5 bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] rounded-lg px-2.5 py-1">
             <Filter size={12} className="text-[var(--text-muted)]" />
@@ -270,6 +327,36 @@ export default function NetworkIntelligence() {
           )}
         </div>
       </div>
+
+      {/* Active Scope Sub-Strip */}
+      {(selectedCaseId || scopeEntityId) && (
+        <div className="px-5 py-1.5 bg-sky-950/40 border-b border-sky-800/40 flex items-center justify-between text-xs text-sky-200">
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-[10px] uppercase text-sky-400">Scoped Context:</span>
+            {selectedCaseId && (
+              <span className="badge badge-low text-[9px] bg-sky-900/60 text-sky-200 border border-sky-700/60">
+                Case: {caseList.find((c) => c.id === selectedCaseId)?.case_number || selectedCaseId.slice(0, 8)}
+              </span>
+            )}
+            {scopeEntityId && (
+              <span className="badge badge-low text-[9px] bg-sky-900/60 text-sky-200 border border-sky-700/60">
+                Subject: {graph?.nodes.find((n) => n.id === scopeEntityId)?.name || scopeEntityId.slice(0, 8)} ({focusDegree}° depth)
+              </span>
+            )}
+          </div>
+          <button
+            onClick={() => {
+              setSelectedCaseId("");
+              setScopeEntityId("");
+              setSearchParams({});
+            }}
+            className="flex items-center gap-1 text-[11px] text-sky-400 hover:text-sky-200 font-medium cursor-pointer"
+          >
+            <X size={12} />
+            <span>Reset Scoped View</span>
+          </button>
+        </div>
+      )}
 
       {/* ── Main Workspace: 3D/2D Graph Canvas + Entity Dossier ── */}
       <div className="flex-1 flex min-h-0 relative">
@@ -461,23 +548,52 @@ export default function NetworkIntelligence() {
                 )}
 
                 {/* Action Toolbar */}
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    onClick={() => setFocusDegree((d) => (d === 1 ? 2 : 1))}
-                    className="flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-950/60 border border-sky-800/60 text-sky-300 text-xs hover:bg-sky-900/60 transition-all font-medium"
-                    title="Toggle 1st / 2nd Degree connections"
-                  >
-                    <Share2 size={12} />
-                    <span>{focusDegree === 1 ? "Expand 2° Hops" : "Collapse to 1°"}</span>
-                  </button>
+                <div className="space-y-1.5">
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => {
+                        const nextDeg = (focusDegree === 1 ? 2 : 1) as 1 | 2;
+                        setFocusDegree(nextDeg);
+                        if (selected) {
+                          setScopeEntityId(selected.id);
+                        }
+                      }}
+                      className="flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-sky-950/60 border border-sky-800/60 text-sky-300 text-xs hover:bg-sky-900/60 transition-all font-medium"
+                      title="Expand or collapse network hops around this subject"
+                    >
+                      <Share2 size={12} />
+                      <span>{focusDegree === 1 ? "Expand 2° Hops" : "Collapse to 1°"}</span>
+                    </button>
 
-                  <button
-                    onClick={() => navigate(`/timeline`)}
-                    className="flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-slate-200 text-xs hover:bg-slate-700 transition-all font-medium"
-                  >
-                    <Clock size={12} />
-                    <span>View Timeline</span>
-                  </button>
+                    <button
+                      onClick={() => navigate(`/timeline?entity_id=${selected.id}${selectedCaseId ? `&case_id=${selectedCaseId}` : ""}`)}
+                      className="flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-slate-200 text-xs hover:bg-slate-700 transition-all font-medium"
+                      title="View chronological timeline for this entity"
+                    >
+                      <Clock size={12} />
+                      <span>Timeline</span>
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => navigate(`/communications?entity_id=${selected.id}${selectedCaseId ? `&case_id=${selectedCaseId}` : ""}`)}
+                      className="flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-slate-200 text-xs hover:bg-slate-700 transition-all font-medium"
+                      title="Inspect telephony and CDR traces for this entity"
+                    >
+                      <Radio size={12} />
+                      <span>Communications</span>
+                    </button>
+
+                    <button
+                      onClick={() => navigate(`/transactions?entity_id=${selected.id}${selectedCaseId ? `&case_id=${selectedCaseId}` : ""}`)}
+                      className="flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-slate-200 text-xs hover:bg-slate-700 transition-all font-medium"
+                      title="Inspect financial transactions for this entity"
+                    >
+                      <CreditCard size={12} />
+                      <span>Transactions</span>
+                    </button>
+                  </div>
                 </div>
 
                 {/* Corroborated Relationships List */}
