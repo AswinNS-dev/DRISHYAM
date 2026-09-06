@@ -114,8 +114,20 @@ export const api = {
     request("/api/v2/reports/generate", { method: "POST", body: JSON.stringify({ entity_id: entityId, report_type: reportType }) }),
 
   // Evidence & Tamper-Evident Ledger
-  evidence: (caseId?: string) =>
-    request(caseId ? `/api/v2/evidence?case_id=${encodeURIComponent(caseId)}` : "/api/v2/evidence"),
+  evidence: (paramsOrCaseId?: string | { case_id?: string; q?: string; evidence_type?: string; status?: string; page?: number; page_size?: number }) => {
+    if (typeof paramsOrCaseId === "string") {
+      return request(paramsOrCaseId ? `/api/v2/evidence?case_id=${encodeURIComponent(paramsOrCaseId)}` : "/api/v2/evidence");
+    }
+    const p: Record<string, string> = {};
+    if (paramsOrCaseId?.case_id) p.case_id = paramsOrCaseId.case_id;
+    if (paramsOrCaseId?.q) p.q = paramsOrCaseId.q;
+    if (paramsOrCaseId?.evidence_type && paramsOrCaseId.evidence_type !== "ALL") p.evidence_type = paramsOrCaseId.evidence_type;
+    if (paramsOrCaseId?.status && paramsOrCaseId.status !== "ALL") p.status = paramsOrCaseId.status;
+    if (paramsOrCaseId?.page) p.page = paramsOrCaseId.page.toString();
+    if (paramsOrCaseId?.page_size) p.page_size = paramsOrCaseId.page_size.toString();
+    const qs = new URLSearchParams(p).toString();
+    return request(qs ? `/api/v2/evidence?${qs}` : "/api/v2/evidence");
+  },
   verifyEvidence: (evidenceId: string) =>
     request(`/api/v2/evidence/${evidenceId}/verify`, { method: "POST" }),
   registerEvidence: (payload: any) =>
