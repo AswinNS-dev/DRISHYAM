@@ -354,11 +354,20 @@ body {
   background: var(--bg-input);
   border: 1px solid var(--border-input);
   border-radius: 8px;
-  padding: 9px 13px;
+  padding: 8px 12px;
   font-size: 13px;
   color: var(--text-primary);
   outline: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.input-cyber.pl-7, .workstation-input.pl-7 {
+  padding-left: 1.75rem !important;
+}
+.input-cyber.pl-8, .workstation-input.pl-8 {
+  padding-left: 2rem !important;
+}
+.input-cyber.pl-9, .workstation-input.pl-9 {
+  padding-left: 2.25rem !important;
 }
 .input-cyber:focus, .workstation-input:focus {
   border-color: var(--border-focus);

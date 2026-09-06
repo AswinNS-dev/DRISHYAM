@@ -218,20 +218,21 @@ export default function Entities() {
             </div>
 
             {/* Quick Search & View Toggle */}
-            <div className="flex items-center gap-2">
-              <div className="relative w-64">
+            <div className="flex items-center gap-2.5">
+              <div className="relative flex items-center w-80">
+                <Search size={13} className="absolute left-3 text-zinc-400 pointer-events-none shrink-0" />
                 <input
                   type="text"
                   value={q}
                   onChange={(e) => setQ(e.target.value)}
                   placeholder="Search aliases, IMEI, plates, names..."
-                  className="workstation-input pl-8 pr-7 text-xs"
+                  className="w-full bg-[#121216] border border-zinc-800 hover:border-zinc-700 focus:border-sky-500/70 focus:ring-1 focus:ring-sky-500/40 rounded-lg text-xs text-zinc-100 placeholder:text-zinc-500 outline-none transition-all py-2 pr-8 shadow-inner"
+                  style={{ paddingLeft: "36px" }}
                 />
-                <Search size={12} className="absolute left-2.5 top-2.5 text-[var(--text-muted)]" />
                 {q && (
                   <button
                     onClick={() => setQ("")}
-                    className="absolute right-2.5 top-2.5 text-zinc-500 hover:text-white text-xs"
+                    className="absolute right-2.5 text-zinc-400 hover:text-white p-0.5 rounded transition-colors cursor-pointer"
                     title="Clear search"
                   >
                     <X size={12} />
