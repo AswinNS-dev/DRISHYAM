@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { api } from "../lib/api";
 import { useAuth } from "../store/auth";
 import {
@@ -13,6 +13,8 @@ type CaseTab = "overview" | "firs" | "entities" | "evidence" | "leads";
 
 export default function Cases() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const targetParamId = searchParams.get("id") || searchParams.get("case");
   const { user } = useAuth();
   const [cases, setCases] = useState<any[]>([]);
   const [selectedCaseId, setSelectedCaseId] = useState<string | null>(null);
@@ -39,11 +41,20 @@ export default function Cases() {
     api.cases().then((r) => {
       const list = r.cases || [];
       setCases(list);
-      if (list.length > 0 && !selectedCaseId) {
-        openCase(list[0].id);
+      if (list.length > 0) {
+        if (targetParamId) {
+          const match = list.find((c: any) => c.id === targetParamId || c.case_number === targetParamId);
+          if (match) {
+            openCase(match.id);
+            return;
+          }
+        }
+        if (!selectedCaseId) {
+          openCase(list[0].id);
+        }
       }
     });
-  }, []);
+  }, [targetParamId]);
 
   useEffect(() => {
     if (activeTab === "evidence" && selectedCaseId) {
@@ -248,6 +259,14 @@ export default function Cases() {
                 </div>
 
                 <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => navigate(`/evidence?case=${encodeURIComponent(detail.case.case_number)}`)}
+                    className="btn-secondary py-1.5 px-3 text-xs flex items-center gap-1.5 text-sky-400 hover:text-sky-300"
+                    title="Open all forensic evidence for this case in Evidence Management Workspace"
+                  >
+                    <Fingerprint size={13} />
+                    <span>View Case Evidence</span>
+                  </button>
                   <button
                     onClick={() => navigate("/network")}
                     className="btn-secondary py-1.5 px-3 text-xs flex items-center gap-1.5"
