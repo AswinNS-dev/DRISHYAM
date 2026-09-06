@@ -1,10 +1,11 @@
 import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 import {
   LayoutDashboard, Network, Users, FolderKanban, Bell,
-  LogOut, FileText, Brain, Clock, MapPin, Settings,
+  LogOut, Brain, Clock, MapPin, Settings,
   Search, CornerDownLeft, Sun, Moon,
-  ChevronDown, PanelLeft, CheckSquare, Inbox, Activity,
-  CreditCard
+  ChevronDown, PanelLeft, ShieldCheck, Shield,
+  Database, PhoneCall, ArrowLeftRight, AlertTriangle,
+  FileDigit, FileCheck2, Terminal
 } from "lucide-react";
 import { useAuth } from "../store/auth";
 import { useTheme } from "../store/theme";
@@ -26,29 +27,50 @@ interface NavGroup {
 
 const NAV_GROUPS: NavGroup[] = [
   {
-    group: "WORKSPACE",
+    group: "INVESTIGATION",
     items: [
-      { to: "/dashboard", label: "Command center", icon: LayoutDashboard, badge: 8 },
-      { to: "/cases", label: "Inbox", icon: Inbox, badge: 12 },
-      { to: "/entities", label: "Approvals", icon: CheckSquare, badge: 5 },
-      { to: "/firs", label: "Automations", icon: FileText },
-      { to: "/network", label: "Projects", icon: Network },
+      { to: "/dashboard", label: "Investigation Command Center", icon: LayoutDashboard },
+      { to: "/cases", label: "Cases", icon: FolderKanban },
+      { to: "/entities", label: "Entities", icon: Users },
+      { to: "/data-workspace", label: "Data Workspace", icon: Database },
     ],
   },
   {
-    group: "INSIGHTS",
+    group: "ANALYSIS",
     items: [
-      { to: "/timeline", label: "Performance", icon: Activity },
-      { to: "/locations", label: "Usage", icon: MapPin },
-      { to: "/intelligence", label: "Activity log", icon: Brain },
+      { to: "/network", label: "Network", icon: Network },
+      { to: "/timeline", label: "Timeline", icon: Clock },
+      { to: "/communications", label: "Communications", icon: PhoneCall },
+      { to: "/transactions", label: "Transactions", icon: ArrowLeftRight },
+      { to: "/locations", label: "Locations & Hotspots", icon: MapPin },
+      { to: "/patterns", label: "Patterns & Anomalies", icon: AlertTriangle },
+      { to: "/intelligence", label: "AI Insights", icon: Brain },
     ],
   },
   {
-    group: "ACCOUNT",
+    group: "EVIDENCE",
     items: [
-      { to: "/alerts", label: "Notifications", icon: Bell, badge: 4 },
-      { to: "/evidence", label: "Billing & Ledger", icon: CreditCard },
-      { to: "/admin", label: "Members", icon: Users, adminOnly: true },
+      { to: "/evidence", label: "Evidence", icon: FileDigit },
+      { to: "/integrity", label: "Verification & Integrity", icon: ShieldCheck },
+    ],
+  },
+  {
+    group: "OUTPUT",
+    items: [
+      { to: "/reports", label: "Reports", icon: FileCheck2 },
+    ],
+  },
+  {
+    group: "SECURITY",
+    items: [
+      { to: "/audit", label: "Audit Log", icon: Terminal },
+      { to: "/alerts", label: "Notifications", icon: Bell },
+    ],
+  },
+  {
+    group: "SYSTEM",
+    items: [
+      { to: "/admin", label: "Access & Permissions", icon: Shield, adminOnly: true },
       { to: "/settings", label: "Settings", icon: Settings, adminOnly: true },
     ],
   },
@@ -249,37 +271,40 @@ export default function Layout() {
         </div>
       )}
 
-      {/* ── App Sidebar 1 Block (Exact Match to Screenshot 1) ── */}
+      {/* ── App Sidebar ── */}
       <aside
         className="shrink-0 flex flex-col relative z-20 select-none bg-black border-r border-[#18181b]"
         style={{
-          width: collapsed ? 64 : 224,
+          width: collapsed ? 64 : 240,
           transition: "width 0.2s var(--ease-out-expo)",
         }}
       >
-        {/* Workspace Brand Switcher */}
-        <div className="px-4 py-4 flex items-center gap-3">
-          <div className="w-7 h-7 rounded-lg bg-white text-black font-bold text-xs flex items-center justify-center shrink-0 shadow-sm">
-            M
+        {/* CrimeIntel Investigation Brand Header */}
+        <div className="px-3.5 py-3.5 flex items-center gap-3 border-b border-[#18181b]">
+          <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-700/80 text-sky-400 font-bold text-xs flex items-center justify-center shrink-0 shadow-sm">
+            <Shield size={16} className="text-sky-400" />
           </div>
           {!collapsed && (
             <div className="min-w-0 flex-1">
-              <div className="text-xs font-semibold tracking-tight text-white truncate leading-tight">
-                Meridian
+              <div className="flex items-center gap-1.5">
+                <span className="text-xs font-bold tracking-wider text-white truncate leading-tight font-mono">
+                  CRIMEINTEL
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" title="DRISHYAM Online" />
               </div>
-              <div className="text-[11px] text-zinc-500 truncate">
-                Operations
+              <div className="text-[10px] font-mono text-zinc-500 truncate tracking-tight">
+                INVESTIGATION SUITE
               </div>
             </div>
           )}
         </div>
 
         {/* Grouped Nav Sections */}
-        <nav className="flex-1 px-2.5 space-y-4 overflow-y-auto overflow-x-hidden pt-1">
+        <nav className="flex-1 px-2.5 space-y-3.5 overflow-y-auto overflow-x-hidden pt-2">
           {visibleNavGroups.map((group) => (
             <div key={group.group} className="space-y-0.5">
               {!collapsed && (
-                <div className="px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
+                <div className="px-2.5 py-1 text-[9px] font-mono font-semibold uppercase tracking-wider text-zinc-500">
                   {group.group}
                 </div>
               )}
@@ -291,17 +316,17 @@ export default function Layout() {
                   className={({ isActive }) =>
                     `flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors ${
                       isActive
-                        ? "bg-[#1c1c20] text-white font-medium"
+                        ? "bg-[#1c1c20] text-white font-medium shadow-sm"
                         : "text-zinc-400 hover:text-zinc-100 hover:bg-[#121214]"
                     }`
                   }
                 >
                   <div className="flex items-center gap-2.5 truncate">
-                    <Icon size={15} className="shrink-0 text-zinc-400" />
+                    <Icon size={14} className="shrink-0 text-zinc-400" />
                     {!collapsed && <span className="truncate">{label}</span>}
                   </div>
                   {!collapsed && badge !== undefined && (
-                    <span className="text-xs font-mono text-zinc-500 pl-2">
+                    <span className="text-[11px] font-mono text-zinc-500 pl-2">
                       {badge}
                     </span>
                   )}
@@ -330,16 +355,22 @@ export default function Layout() {
               className="w-full flex items-center justify-between p-1.5 rounded-lg hover:bg-[#121214] transition-colors cursor-pointer text-left"
             >
               <div className="flex items-center gap-2.5 min-w-0">
-                <div className="w-7 h-7 rounded-full bg-zinc-800 text-zinc-300 font-medium text-[11px] flex items-center justify-center shrink-0 border border-zinc-700/50">
+                <div className="w-7 h-7 rounded-full bg-zinc-800 text-zinc-300 font-medium text-[11px] flex items-center justify-center shrink-0 border border-zinc-700/50 font-mono">
                   {initials}
                 </div>
                 {!collapsed && (
                   <div className="min-w-0">
                     <div className="text-xs font-medium text-white truncate leading-tight">
-                      {user?.full_name || "Iris Renner"}
+                      {user?.full_name || "Investigating Officer"}
                     </div>
-                    <div className="text-[11px] text-zinc-500 truncate">
-                      {user?.role === "admin" ? "Operations lead" : "Operations lead"}
+                    <div className="text-[10px] font-mono text-zinc-500 truncate">
+                      {userRole === "admin"
+                        ? "System Administrator"
+                        : userRole === "investigator"
+                        ? "Lead Investigator"
+                        : userRole === "analyst" || userRole === "crime_analyst"
+                        ? "Crime Analyst"
+                        : "Authorized Officer"}
                     </div>
                   </div>
                 )}
@@ -356,10 +387,10 @@ export default function Layout() {
               >
                 <div className="px-2.5 py-2 border-b border-zinc-800/80 mb-1">
                   <div className="text-xs font-semibold text-white truncate">
-                    {user?.full_name || "Iris Renner"}
+                    {user?.full_name || "Investigating Officer"}
                   </div>
                   <div className="text-[11px] text-zinc-500 font-mono truncate">
-                    {user?.email || "iris@northwind.com"}
+                    {user?.email || "officer@crimeintel.gov.in"}
                   </div>
                 </div>
 

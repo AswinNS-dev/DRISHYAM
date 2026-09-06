@@ -14,6 +14,11 @@ import DataImport from "./pages/DataImport";
 import Alerts from "./pages/Alerts";
 import Evidence from "./pages/Evidence";
 import Reports from "./pages/Reports";
+import Communications from "./pages/Communications";
+import Transactions from "./pages/Transactions";
+import Patterns from "./pages/Patterns";
+import Integrity from "./pages/Integrity";
+import AuditLog from "./pages/AuditLog";
 import Admin from "./pages/Admin";
 import Settings from "./pages/Settings";
 
@@ -29,18 +34,35 @@ export default function App() {
             </RequireAuth>
           }
         >
+          {/* ── INVESTIGATION ── */}
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/cases" element={<Cases />} />
           <Route path="/entities" element={<Entities />} />
+          <Route path="/data-workspace" element={<DataImport />} />
+          <Route path="/data-import" element={<DataImport />} />
           <Route path="/firs" element={<FIRs />} />
+
+          {/* ── ANALYSIS ── */}
           <Route path="/network" element={<NetworkIntelligence />} />
           <Route path="/timeline" element={<Timeline />} />
+          <Route path="/communications" element={<Communications />} />
+          <Route path="/transactions" element={<Transactions />} />
           <Route path="/locations" element={<Locations />} />
+          <Route path="/patterns" element={<Patterns />} />
           <Route path="/intelligence" element={<Intelligence />} />
-          <Route path="/alerts" element={<Alerts />} />
+
+          {/* ── EVIDENCE ── */}
           <Route path="/evidence" element={<Evidence />} />
-          <Route path="/data-import" element={<DataImport />} />
+          <Route path="/integrity" element={<Integrity />} />
+
+          {/* ── OUTPUT ── */}
           <Route path="/reports" element={<Reports />} />
+
+          {/* ── SECURITY ── */}
+          <Route path="/audit" element={<AuditLog />} />
+          <Route path="/alerts" element={<Alerts />} />
+
+          {/* ── SYSTEM (RBAC Clearances) ── */}
           <Route
             path="/admin"
             element={
