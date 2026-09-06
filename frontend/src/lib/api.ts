@@ -78,10 +78,24 @@ export const api = {
   intelligenceHiddenLinks: () => request("/api/v2/intelligence/hidden-links"),
 
   // Timeline
-  timeline: (params: { entity_id?: string; event_type?: string; limit?: number } = {}) => {
+  timeline: (params: {
+    entity_id?: string;
+    case_id?: string;
+    event_type?: string;
+    from_date?: string;
+    to_date?: string;
+    anchor_date?: string;
+    window_days?: number;
+    limit?: number;
+  } = {}) => {
     const q: Record<string, string> = {};
     if (params.entity_id) q.entity_id = params.entity_id;
+    if (params.case_id) q.case_id = params.case_id;
     if (params.event_type) q.event_type = params.event_type;
+    if (params.from_date) q.from_date = params.from_date;
+    if (params.to_date) q.to_date = params.to_date;
+    if (params.anchor_date) q.anchor_date = params.anchor_date;
+    if (params.window_days !== undefined && params.window_days !== null) q.window_days = params.window_days.toString();
     if (params.limit) q.limit = params.limit.toString();
     return request(`/api/v2/timeline?${new URLSearchParams(q)}`);
   },
@@ -134,17 +148,38 @@ export const api = {
     request("/api/v2/evidence", { method: "POST", body: JSON.stringify(payload) }),
 
   // Analysis: Communications & Transactions
-  communications: (params: { entity_id?: string; q?: string; limit?: number } = {}) => {
+  communications: (params: {
+    entity_id?: string;
+    case_id?: string;
+    q?: string;
+    from_date?: string;
+    to_date?: string;
+    limit?: number;
+  } = {}) => {
     const q: Record<string, string> = {};
     if (params.entity_id) q.entity_id = params.entity_id;
+    if (params.case_id) q.case_id = params.case_id;
     if (params.q) q.q = params.q;
+    if (params.from_date) q.from_date = params.from_date;
+    if (params.to_date) q.to_date = params.to_date;
     if (params.limit) q.limit = params.limit.toString();
     return request(`/api/v2/analysis/communications?${new URLSearchParams(q)}`);
   },
-  transactions: (params: { entity_id?: string; q?: string; min_amount?: number; limit?: number } = {}) => {
+  transactions: (params: {
+    entity_id?: string;
+    case_id?: string;
+    q?: string;
+    from_date?: string;
+    to_date?: string;
+    min_amount?: number;
+    limit?: number;
+  } = {}) => {
     const q: Record<string, string> = {};
     if (params.entity_id) q.entity_id = params.entity_id;
+    if (params.case_id) q.case_id = params.case_id;
     if (params.q) q.q = params.q;
+    if (params.from_date) q.from_date = params.from_date;
+    if (params.to_date) q.to_date = params.to_date;
     if (params.min_amount) q.min_amount = params.min_amount.toString();
     if (params.limit) q.limit = params.limit.toString();
     return request(`/api/v2/analysis/transactions?${new URLSearchParams(q)}`);
