@@ -479,6 +479,55 @@ export default function Evidence() {
 
         {/* ── Main Data Viewport (Asset Grid vs Table) ── */}
         <div className="flex-1 overflow-y-auto p-6 relative">
+          {/* Active Case Scope Focus Banner */}
+          {selectedCase !== "ALL" && (
+            <div className="mb-5 p-4 rounded-xl bg-gradient-to-r from-sky-950/50 via-zinc-900/80 to-zinc-950 border border-sky-600/50 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-lg bg-sky-500/10 border border-sky-500/40 flex items-center justify-center text-sky-400 shrink-0">
+                  <Shield size={20} />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-sky-400 font-bold">
+                      Case Evidence Scope
+                    </span>
+                    <span className="badge badge-purple text-[9px]">{currentCaseObj?.case_number || selectedCase}</span>
+                    {currentCaseObj?.district && (
+                      <span className="badge badge-low text-[9px]">{currentCaseObj.district} District</span>
+                    )}
+                  </div>
+                  <h2 className="text-sm font-bold text-zinc-100 mt-0.5">
+                    {currentCaseObj?.title || `Investigation ${selectedCase}`}
+                  </h2>
+                  <div className="text-[11px] font-mono text-zinc-400 flex items-center gap-3 mt-0.5">
+                    <span>Associated FIRs: <strong className="text-amber-400">{currentCaseObj?.fir_count || 1}</strong></span>
+                    <span>·</span>
+                    <span>Seized Exhibits: <strong className="text-emerald-400">{filteredEvidence.length}</strong></span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 shrink-0">
+                {currentCaseObj && (
+                  <button
+                    onClick={() => navigate(`/cases?id=${currentCaseObj.id}`)}
+                    className="btn-secondary py-1.5 px-3 text-xs flex items-center gap-1.5 text-sky-300 hover:text-white transition-all cursor-pointer"
+                  >
+                    <span>View Case File</span>
+                    <ExternalLink size={12} />
+                  </button>
+                )}
+                <button
+                  onClick={() => handleCaseChange("ALL")}
+                  className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-xs font-mono flex items-center gap-1 transition-colors cursor-pointer"
+                  title="View all exhibits across all cases"
+                >
+                  <X size={12} />
+                  <span>Show All Evidence</span>
+                </button>
+              </div>
+            </div>
+          )}
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
