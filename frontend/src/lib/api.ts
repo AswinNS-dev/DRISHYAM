@@ -121,5 +121,22 @@ export const api = {
   registerEvidence: (payload: any) =>
     request("/api/v2/evidence", { method: "POST", body: JSON.stringify(payload) }),
 
+  // Analysis: Communications & Transactions
+  communications: (params: { entity_id?: string; q?: string; limit?: number } = {}) => {
+    const q: Record<string, string> = {};
+    if (params.entity_id) q.entity_id = params.entity_id;
+    if (params.q) q.q = params.q;
+    if (params.limit) q.limit = params.limit.toString();
+    return request(`/api/v2/analysis/communications?${new URLSearchParams(q)}`);
+  },
+  transactions: (params: { entity_id?: string; q?: string; min_amount?: number; limit?: number } = {}) => {
+    const q: Record<string, string> = {};
+    if (params.entity_id) q.entity_id = params.entity_id;
+    if (params.q) q.q = params.q;
+    if (params.min_amount) q.min_amount = params.min_amount.toString();
+    if (params.limit) q.limit = params.limit.toString();
+    return request(`/api/v2/analysis/transactions?${new URLSearchParams(q)}`);
+  },
+
   auditLog: () => request("/api/v2/audit"),
 };

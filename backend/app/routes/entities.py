@@ -44,25 +44,25 @@ def global_search(
     term = f"%{q.strip()}%"
     results = []
     
-    # 1. Search Entities
-    matching_entities = db.query(m.Entity).filter(
-        (m.Entity.name.ilike(term)) | (m.Entity.primary_phone.ilike(term)) | (m.Entity.primary_vehicle.ilike(term))
+    # 1. Search Persons
+    matching_persons = db.query(m.Person).filter(
+        m.Person.full_name.ilike(term)
     ).limit(limit).all()
     
-    for e in matching_entities:
+    for p in matching_persons:
         results.append({
-            "id": e.id,
+            "id": p.id,
             "category": "ENTITY",
-            "type": e.entity_type,
-            "title": e.name,
-            "subtitle": f"{e.entity_type} · Risk: {int(e.risk_score * 100)}%",
-            "route": f"/network",
-            "entity_id": e.id,
+            "type": "PERSON",
+            "title": p.full_name,
+            "subtitle": f"{p.person_role.upper() if p.person_role else 'SUBJECT'} · Risk: {p.risk_band or 'unknown'}",
+            "route": f"/entities",
+            "entity_id": p.id,
         })
 
     # 2. Search Cases
-    matching_cases = db.query(m.Case).filter(
-        (m.Case.case_number.ilike(term)) | (m.Case.title.ilike(term)) | (m.Case.crime_type.ilike(term))
+    matching_cases = db.query(m.CrimeCase).filter(
+        (m.CrimeCase.case_number.ilike(term)) | (m.CrimeCase.title.ilike(term)) | (m.CrimeCase.crime_type.ilike(term))
     ).limit(6).all()
     
     for c in matching_cases:
@@ -71,7 +71,7 @@ def global_search(
             "category": "CASE",
             "type": "CASE",
             "title": f"{c.case_number}: {c.title}",
-            "subtitle": f"{c.crime_type} · {c.status.upper()} · {c.district}",
+            "subtitle": f"{c.crime_type} · {(c.status or 'OPEN').upper()} · {c.district}",
             "route": f"/cases",
             "case_id": c.id,
         })

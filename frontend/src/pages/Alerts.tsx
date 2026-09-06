@@ -1,126 +1,94 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../lib/api";
 import {
-  Check, AtSign, GitPullRequest, MessageSquare,
-  UserPlus, ShieldCheck, AlertTriangle
+  Bell, Check, AlertTriangle, ShieldCheck,
+  RefreshCw, Users, ChevronRight
 } from "lucide-react";
 
 export default function Alerts() {
+  const navigate = useNavigate();
   const [alerts, setAlerts] = useState<any[]>([]);
-  const [filter, setFilter] = useState<"all" | "unread" | "mentions">("all");
-  const [markedRead, setMarkedRead] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState<"all" | "priority" | "network">("all");
+  const [acknowledgedMap, setAcknowledgedMap] = useState<Record<string, boolean>>({});
+
+  function loadAlerts() {
+    setLoading(true);
+    api.alerts()
+      .then((r) => {
+        setAlerts(r.alerts || []);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }
 
   useEffect(() => {
-    api.alerts()
-      .then((r) => setAlerts(r.alerts || []))
-      .catch(() => {});
+    loadAlerts();
   }, []);
 
-  const totalCount = alerts.length || 8;
-  const unreadCount = markedRead ? 0 : 4;
-  const mentionsCount = 2;
+  function handleAcknowledge(id: string) {
+    setAcknowledgedMap((prev) => ({ ...prev, [id]: !prev[id] }));
+  }
 
-  // Mocked/adapted structured notifications matching Screenshot 3
-  const notificationsList = [
-    {
-      id: "n1",
-      section: "TODAY",
-      icon: AtSign,
-      title: "Ana Reyes",
-      action: "mentioned you in Q3 rollout plan",
-      body: "Can you confirm the migration window before we lock the schedule with Northwind?",
-      time: "12m",
-      unread: true,
-      category: "mentions",
-    },
-    {
-      id: "n2",
-      section: "TODAY",
-      icon: GitPullRequest,
-      title: "Wei Chen",
-      action: "requested review on Billing usage meter",
-      body: "14 files changed across the metering service and the invoice job.",
-      time: "48m",
-      unread: true,
-      category: "unread",
-    },
-    {
-      id: "n3",
-      section: "TODAY",
-      icon: MessageSquare,
-      title: "Marco Silva",
-      action: "replied in Onboarding checklist",
-      body: "Moved the workspace step ahead of the invite step. Looks cleaner.",
-      time: "2h",
-      unread: false,
-      category: "all",
-    },
-    {
-      id: "n4",
-      section: "TODAY",
-      icon: UserPlus,
-      title: "Priya Nandakumar",
-      action: "joined Cedar Labs",
-      body: "Invited by you as an editor.",
-      time: "5h",
-      unread: false,
-      category: "all",
-    },
-    {
-      id: "n5",
-      section: "YESTERDAY",
-      icon: ShieldCheck,
-      title: "Halcyon",
-      action: "signed in from a new device on macOS • Lisbon",
-      body: "If this was not you, revoke the session and rotate your keys.",
-      time: "Yesterday",
-      unread: false,
-      category: "unread",
-    },
-    {
-      id: "n6",
-      section: "YESTERDAY",
-      icon: AtSign,
-      title: "Sofia Alvarez",
-      action: "mentioned you in Retention teardown",
-      body: "Pulled your cohort chart into the summary. Shout if that is stale.",
-      time: "Yesterday",
-      unread: false,
-      category: "mentions",
-    },
-  ];
+  function handleMarkAllRead() {
+    const allAck: Record<string, boolean> = {};
+    alerts.forEach((a) => {
+      allAck[a.id] = true;
+    });
+    setAcknowledgedMap(allAck);
+  }
 
-  const filtered = notificationsList.filter((n) => {
-    if (filter === "unread") return n.unread && !markedRead;
-    if (filter === "mentions") return n.category === "mentions";
+  const filtered = alerts.filter((a) => {
+    if (filter === "priority") return (a.confidence || 0.8) >= 0.85;
+    if (filter === "network") return a.alert_type?.includes("BRIDGE") || a.alert_type?.includes("DISTRICT");
     return true;
   });
 
-  const todayItems = filtered.filter((n) => n.section === "TODAY");
-  const yesterdayItems = filtered.filter((n) => n.section === "YESTERDAY");
+  const unreadCount = alerts.filter((a) => !acknowledgedMap[a.id]).length;
 
   return (
     <div className="w-full max-w-5xl mx-auto page-enter py-4">
-      {/* ── Exact Match to Screenshot 3 (Notifications Container) ── */}
       <div className="bg-[#0c0c0e] border border-zinc-800/80 rounded-2xl p-6 sm:p-7 shadow-2xl space-y-6">
         {/* Header Strip */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <h1 className="text-base font-semibold text-white tracking-tight">
-              Notifications
-            </h1>
-            <span className="bg-white text-black font-bold text-xs px-2 py-0.5 rounded-full leading-none">
-              {unreadCount}
-            </span>
+        <div className="flex items-center justify-between pb-2 border-b border-zinc-800/60">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300">
+              <Bell size={16} />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="text-sm font-bold uppercase tracking-wider text-white">
+                  Investigative Notifications & Tactical Alerts
+                </h1>
+                {unreadCount > 0 && (
+                  <span className="bg-amber-500 text-black font-bold text-[10px] px-2 py-0.5 rounded-full leading-none">
+                    {unreadCount} PENDING
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-zinc-500">
+                Action items requiring investigator review, syndicate flags, and anomaly notifications
+              </p>
+            </div>
           </div>
 
-          <button
-            onClick={() => setMarkedRead(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-zinc-800 hover:bg-zinc-900 text-xs text-zinc-300 transition-colors cursor-pointer"
-          >
-            <Check size={13} className="text-zinc-400" />
-            <span>Mark all read</span>
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleMarkAllRead}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-zinc-800 hover:bg-zinc-900 text-xs text-zinc-300 transition-colors cursor-pointer"
+            >
+              <Check size={13} className="text-zinc-400" />
+              <span>Acknowledge all</span>
+            </button>
+            <button
+              onClick={loadAlerts}
+              className="p-1.5 rounded-lg border border-zinc-800 hover:bg-zinc-900 text-zinc-400 hover:text-white transition-colors cursor-pointer"
+              title="Refresh alerts"
+            >
+              <RefreshCw size={13} className={loading ? "animate-spin text-[var(--intel-sky)]" : ""} />
+            </button>
+          </div>
         </div>
 
         {/* Filter Pills */}
@@ -133,146 +101,131 @@ export default function Alerts() {
                 : "text-zinc-400 hover:text-white"
             }`}
           >
-            All {totalCount}
+            All Alerts ({alerts.length})
           </button>
 
           <button
-            onClick={() => setFilter("unread")}
+            onClick={() => setFilter("priority")}
             className={`px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${
-              filter === "unread"
+              filter === "priority"
                 ? "border border-zinc-700 bg-zinc-800/60 text-white"
                 : "text-zinc-400 hover:text-white"
             }`}
           >
-            Unread {unreadCount}
+            Priority Review (≥85%)
           </button>
 
           <button
-            onClick={() => setFilter("mentions")}
+            onClick={() => setFilter("network")}
             className={`px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${
-              filter === "mentions"
+              filter === "network"
                 ? "border border-zinc-700 bg-zinc-800/60 text-white"
                 : "text-zinc-400 hover:text-white"
             }`}
           >
-            Mentions {mentionsCount}
+            Network & Cross-District
           </button>
         </div>
 
-        {/* List Section: TODAY */}
-        {todayItems.length > 0 && (
-          <div className="space-y-1">
-            <div className="text-[10px] font-mono font-semibold uppercase tracking-wider text-zinc-500 px-1 pt-1 pb-1">
-              TODAY
-            </div>
-            <div className="space-y-1">
-              {todayItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={item.id}
-                    className="flex items-start justify-between py-3 px-2 rounded-xl hover:bg-zinc-900/40 transition-colors group cursor-pointer"
-                  >
-                    <div className="flex items-start gap-3 min-w-0">
-                      <div className="w-7 h-7 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 shrink-0 mt-0.5">
-                        <Icon size={14} />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-xs leading-normal">
-                          <span className="font-semibold text-white">{item.title}</span>{" "}
-                          <span className="text-zinc-300">{item.action}</span>
-                        </div>
-                        <p className="text-xs text-zinc-500 mt-0.5 leading-normal">
-                          {item.body}
-                        </p>
-                      </div>
-                    </div>
-                    <span className="text-xs font-mono text-zinc-500 shrink-0 ml-4">
-                      {item.time}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
+        {/* Alerts List */}
+        {loading ? (
+          <div className="space-y-3">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="skeleton h-20 rounded-xl" />
+            ))}
           </div>
-        )}
-
-        {/* List Section: YESTERDAY */}
-        {yesterdayItems.length > 0 && (
-          <div className="space-y-1 pt-2">
-            <div className="text-[10px] font-mono font-semibold uppercase tracking-wider text-zinc-500 px-1 pt-1 pb-1">
-              YESTERDAY
-            </div>
-            <div className="space-y-1">
-              {yesterdayItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={item.id}
-                    className="flex items-start justify-between py-3 px-2 rounded-xl hover:bg-zinc-900/40 transition-colors group cursor-pointer"
-                  >
-                    <div className="flex items-start gap-3 min-w-0">
-                      <div className="w-7 h-7 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 shrink-0 mt-0.5">
-                        <Icon size={14} />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-xs leading-normal">
-                          <span className="font-semibold text-white">{item.title}</span>{" "}
-                          <span className="text-zinc-300">{item.action}</span>
-                        </div>
-                        <p className="text-xs text-zinc-500 mt-0.5 leading-normal">
-                          {item.body}
-                        </p>
-                      </div>
-                    </div>
-                    <span className="text-xs font-mono text-zinc-500 shrink-0 ml-4">
-                      {item.time}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
+        ) : filtered.length === 0 ? (
+          <div className="py-12 text-center text-xs text-zinc-500">
+            <ShieldCheck size={32} className="mx-auto mb-2 opacity-30 text-emerald-400" />
+            <div className="font-semibold text-zinc-400 uppercase">No active notifications</div>
+            <p className="mt-1 text-[11px]">All tactical alerts have been reviewed by the investigating team.</p>
           </div>
-        )}
+        ) : (
+          <div className="space-y-3">
+            {filtered.map((item) => {
+              const isAcknowledged = acknowledgedMap[item.id];
+              const confPct = Math.round((item.confidence || 0.8) * 100);
 
-        {/* Dynamic Backend Alerts Integration */}
-        {alerts.length > 0 && (
-          <div className="space-y-1 pt-3 border-t border-zinc-800/60">
-            <div className="text-[10px] font-mono font-semibold uppercase tracking-wider text-zinc-500 px-1 pt-1 pb-1">
-              TACTICAL FLAGS
-            </div>
-            <div className="space-y-1">
-              {alerts.slice(0, 3).map((a) => (
+              return (
                 <div
-                  key={a.id}
-                  className="flex items-start justify-between py-3 px-2 rounded-xl hover:bg-zinc-900/40 transition-colors cursor-pointer"
+                  key={item.id}
+                  className={`p-4 rounded-xl border transition-all ${
+                    isAcknowledged
+                      ? "bg-zinc-950/50 border-zinc-800/50 opacity-70"
+                      : "bg-[#111114] border-zinc-800 hover:border-zinc-700 shadow-md"
+                  }`}
                 >
-                  <div className="flex items-start gap-3 min-w-0">
-                    <div className="w-7 h-7 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
-                      <AlertTriangle size={13} />
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-xs font-semibold text-white">
-                        {a.what_happened}
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                    <div className="flex items-start gap-3 min-w-0 flex-1">
+                      <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
+                        <AlertTriangle size={15} />
                       </div>
-                      <p className="text-xs text-zinc-500 mt-0.5">
-                        {a.why_it_matters}
-                      </p>
+
+                      <div className="space-y-1 min-w-0 flex-1">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-xs font-bold text-white">
+                            {item.what_happened}
+                          </span>
+                          <span className="badge badge-low text-[8px] font-mono">
+                            {item.alert_type?.replace(/_/g, " ")}
+                          </span>
+                          <span className="text-[10px] font-mono text-zinc-500">
+                            CONFIDENCE: {confPct}%
+                          </span>
+                        </div>
+
+                        <p className="text-xs text-zinc-400 leading-relaxed">
+                          {item.why_it_matters}
+                        </p>
+
+                        {item.affected_entities && item.affected_entities.length > 0 && (
+                          <div className="flex items-center gap-1.5 text-[11px] text-zinc-500 pt-1 flex-wrap">
+                            <Users size={12} className="text-zinc-400" />
+                            <span>Linked Subjects:</span>
+                            {item.affected_entities.map((e: any, idx: number) => {
+                              const name = typeof e === "string" ? e : e.name || e.id;
+                              return (
+                                <span
+                                  key={idx}
+                                  onClick={() => navigate(`/entities?q=${encodeURIComponent(name)}`)}
+                                  className="px-1.5 py-0.5 rounded bg-zinc-900 text-sky-400 font-mono text-[10px] hover:underline cursor-pointer border border-zinc-800"
+                                >
+                                  {name}
+                                </span>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-zinc-800">
+                      <button
+                        onClick={() => handleAcknowledge(item.id)}
+                        className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+                          isAcknowledged
+                            ? "bg-zinc-900 text-emerald-400 border border-emerald-500/30"
+                            : "bg-zinc-800 hover:bg-zinc-700 text-zinc-200"
+                        }`}
+                      >
+                        {isAcknowledged ? "Acknowledged ✓" : "Acknowledge"}
+                      </button>
+
+                      <button
+                        onClick={() => navigate("/network")}
+                        className="btn-primary py-1 px-2.5 text-xs flex items-center gap-1"
+                        title="View in Network Graph"
+                      >
+                        <span>Analyze</span>
+                        <ChevronRight size={12} />
+                      </button>
                     </div>
                   </div>
-                  <span className="text-xs font-mono text-zinc-500 shrink-0 ml-4">
-                    {Math.round((a.confidence || 0.8) * 100)}% match
-                  </span>
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         )}
-
-        {/* Footer Sub-header */}
-        <div className="text-[10px] font-mono font-semibold uppercase tracking-wider text-zinc-600 px-1 pt-1">
-          EARLIER
-        </div>
       </div>
     </div>
   );

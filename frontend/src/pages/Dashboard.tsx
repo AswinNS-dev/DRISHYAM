@@ -35,17 +35,20 @@ export default function Dashboard() {
   const [summary, setSummary] = useState<Record<string, number> | null>(null);
   const [alerts, setAlerts] = useState<any[]>([]);
   const [recentCases, setRecentCases] = useState<any[]>([]);
+  const [evidenceCount, setEvidenceCount] = useState<number>(0);
   const navigate = useNavigate();
 
   useEffect(() => {
     api.dashboardSummary().then(setSummary).catch(() => {});
     api.alerts().then((r) => setAlerts(r.alerts?.slice(0, 4) || [])).catch(() => {});
     api.cases().then((r) => setRecentCases(r.cases?.slice(0, 5) || [])).catch(() => {});
+    api.evidence().then((r) => setEvidenceCount((r.evidence || []).length)).catch(() => {});
   }, []);
 
   const countCases = useCounter(summary?.active_investigations || 12);
   const countEntities = useCounter(summary?.connected_entities || 84);
   const countRelationships = useCounter(summary?.discovered_relationships || 192);
+  const countEvidence = useCounter(evidenceCount || 4);
 
   const riskData = [
     { name: "Priority Review", value: summary?.anomalies || 4, color: "#ef4444" },
@@ -149,19 +152,19 @@ export default function Dashboard() {
 
         {/* Metric 4 */}
         <div
-          onClick={() => navigate("/evidence")}
+          onClick={() => navigate("/integrity")}
           className="panel p-4 cursor-pointer hover:border-[var(--intel-sky)] transition-all"
         >
           <div className="flex items-center justify-between text-xs text-[var(--text-muted)]">
-            <span className="hud-label text-[10px]">Evidence Integrity Ledger</span>
+            <span className="hud-label text-[10px]">Tamper-Evident Ledger</span>
             <ShieldCheck size={16} className="text-[var(--status-verified)]" />
           </div>
           <div className="text-2xl font-bold text-[var(--text-bright)] font-mono mt-2">
-            100%
+            {countEvidence}
           </div>
           <div className="text-[11px] text-[var(--text-secondary)] mt-1 flex items-center justify-between">
-            <span>SHA-256 Vault Verified</span>
-            <span className="text-[var(--status-verified)] font-mono">Vault →</span>
+            <span>SHA-256 Sealed Exhibits</span>
+            <span className="text-[var(--status-verified)] font-mono">Ledger →</span>
           </div>
         </div>
       </div>

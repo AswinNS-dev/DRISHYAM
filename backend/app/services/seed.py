@@ -115,6 +115,17 @@ def seed_all(db: Session):
             accounts.append(acc)
     db.commit()
 
+    # --- Transactions ---
+    if len(accounts) >= 2:
+        for _ in range(35):
+            a1, a2 = random.sample(accounts, 2)
+            amt = random.choice([25000, 48000, 95000, 140000, 185000, 240000, 310000, 420000])
+            days_ago = random.randint(1, 60)
+            txn_date = dt.datetime.utcnow() - dt.timedelta(days=days_ago, hours=random.randint(1, 23))
+            t = m.Transaction(from_account_id=a1.id, to_account_id=a2.id, amount=float(amt), txn_date=txn_date, data_source="SYNTHETIC")
+            db.add(t)
+        db.commit()
+
     # --- Cases + FIRs ---
     cases = []
     for i in range(18):
