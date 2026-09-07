@@ -196,135 +196,148 @@ export default function NetworkIntelligence() {
   }, [selected, dossier]);
 
   return (
-    <div className="flex flex-col h-full overflow-hidden bg-[var(--bg-void)]">
+    <div className="flex flex-col h-full overflow-hidden bg-[#020617]">
       {/* ── Top HUD Control Strip ── */}
-      <div className="px-5 py-2.5 border-b border-[var(--border-subtle)] flex flex-wrap items-center justify-between gap-3 bg-[var(--bg-panel-solid)] shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-sky-950/60 text-sky-400 border border-sky-800/50 flex items-center justify-center shadow-inner">
-            <Network size={16} />
+      <div className="px-5 py-3 border-b border-slate-800/90 flex flex-col gap-2.5 bg-slate-900/95 backdrop-blur-md shadow-md">
+        {/* Module Metadata Line */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="badge badge-info text-[10px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
+              STATE NETWORK INTELLIGENCE & SYNDICATE TOPOLOGY
+            </span>
+            <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1 text-glow-emerald">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              LIVE DATABASE SYNCHRONIZED
+            </span>
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-xs font-bold tracking-wider text-[var(--text-primary)] uppercase">
-                Entity Network Analysis Workspace
-              </h1>
-              <span className="badge badge-low text-[8px] bg-sky-950/80 text-sky-300 border border-sky-800/60">
-                {viewMode === "3d" ? "3D NEURAL GRAPH" : "2D PLANAR GRAPH"}
-              </span>
-            </div>
-            <p className="text-[11px] text-[var(--text-muted)]">
-              Multi-hop associative clustering, key connectors, and neural relationship maps
-            </p>
-          </div>
-        </div>
-
-        {/* View Mode Toggle & Filters */}
-        <div className="flex items-center gap-2.5 flex-wrap">
-          {/* 3D vs 2D Toggle */}
-          <div className="flex items-center bg-slate-900 border border-slate-700/70 rounded-lg p-0.5 text-xs">
-            <button
-              onClick={() => setViewMode("3d")}
-              className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-all font-medium ${
-                viewMode === "3d"
-                  ? "bg-sky-600 text-white shadow-sm font-semibold"
-                  : "text-slate-400 hover:text-white"
-              }`}
-            >
-              <Sparkles size={11} />
-              <span>3D Neural</span>
-            </button>
-            <button
-              onClick={() => setViewMode("2d")}
-              className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-all font-medium ${
-                viewMode === "2d"
-                  ? "bg-slate-700 text-white shadow-sm font-semibold"
-                  : "text-slate-400 hover:text-white"
-              }`}
-            >
-              <Layers size={11} />
-              <span>2D Planar</span>
-            </button>
-          </div>
-
-          {/* Search Node */}
-          <div className="relative w-56 flex items-center">
-            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none z-10" />
-            <input
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && filteredNodes.length > 0) {
-                  selectNode(filteredNodes[0]);
-                }
-              }}
-              placeholder="Filter or find entity..."
-              style={{ paddingLeft: "2.35rem" }}
-              className="workstation-input text-xs"
-            />
-          </div>
-
-          {/* Case Filter */}
-          <div className="flex items-center gap-1.5 bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] rounded-lg px-2.5 py-1">
-            <FolderOpen size={12} className="text-[var(--text-muted)]" />
-            <select
-              value={selectedCaseId}
-              onChange={(e) => {
-                const val = e.target.value;
-                setSelectedCaseId(val);
-                setSearchParams((prev) => {
-                  const next = new URLSearchParams(prev);
-                  if (val) next.set("case_id", val);
-                  else next.delete("case_id");
-                  return next;
-                });
-              }}
-              className="bg-transparent text-xs text-[var(--text-secondary)] outline-none cursor-pointer max-w-[150px] truncate"
-            >
-              <option value="" className="bg-[var(--bg-panel-solid)]">All Cases (Global)</option>
-              {caseList.map((c) => (
-                <option key={c.id} value={c.id} className="bg-[var(--bg-panel-solid)]">
-                  {c.case_number}: {c.title}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Entity Type Filter */}
-          <div className="flex items-center gap-1.5 bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] rounded-lg px-2.5 py-1">
-            <Filter size={12} className="text-[var(--text-muted)]" />
-            <select
-              value={entityTypeFilter}
-              onChange={(e) => setEntityTypeFilter(e.target.value)}
-              className="bg-transparent text-xs text-[var(--text-secondary)] outline-none cursor-pointer"
-            >
-              <option value="" className="bg-[var(--bg-panel-solid)]">All Entity Types</option>
-              <option value="PERSON" className="bg-[var(--bg-panel-solid)]">Persons</option>
-              <option value="PHONE" className="bg-[var(--bg-panel-solid)]">Phones</option>
-              <option value="VEHICLE" className="bg-[var(--bg-panel-solid)]">Vehicles</option>
-              <option value="LOCATION" className="bg-[var(--bg-panel-solid)]">Locations</option>
-              <option value="GANG" className="bg-[var(--bg-panel-solid)]">Syndicates</option>
-              <option value="BANK_ACCOUNT" className="bg-[var(--bg-panel-solid)]">Bank Accounts</option>
-              <option value="CASE" className="bg-[var(--bg-panel-solid)]">Cases</option>
-            </select>
-          </div>
-
-          {/* Refresh Simulation */}
-          <button
-            onClick={loadGraph}
-            title="Refresh network simulation"
-            className="p-1.5 rounded-lg border border-[var(--border-subtle)] hover:border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--bg-panel-raised)] transition-all"
-          >
-            <RefreshCw size={13} className={loading ? "animate-spin text-[var(--intel-sky)]" : ""} />
-          </button>
-
-          {/* Status Counter */}
           {graph && (
-            <div className="flex items-center gap-2 px-3 py-1 rounded-lg bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] text-[10px] font-mono text-[var(--text-secondary)]">
-              <span className="font-semibold text-slate-300">{graph.nodes.length} Nodes</span>
+            <div className="flex items-center gap-2 px-2.5 py-0.5 rounded-lg bg-slate-950 border border-slate-800 text-[10px] font-mono text-slate-400">
+              <span className="font-bold text-sky-300 text-glow-sky">{graph.nodes.length} Nodes</span>
               <span>·</span>
-              <span className="text-slate-400">{graph.edges.length} Links</span>
+              <span className="text-slate-300">{graph.edges.length} Corroborated Links</span>
             </div>
           )}
+        </div>
+
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
+              <Network size={16} />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="text-sm font-black tracking-wide text-white uppercase text-glow-white">
+                  Entity Network Analysis Workspace
+                </h1>
+                <span className="badge badge-low text-[8px] bg-sky-950/80 text-sky-300 border border-sky-800/60 font-mono">
+                  {viewMode === "3d" ? "3D NEURAL GRAPH" : "2D PLANAR GRAPH"}
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-400">
+                Multi-hop associative clustering, key connectors, and neural relationship maps
+              </p>
+            </div>
+          </div>
+
+          {/* View Mode Toggle & Filters */}
+          <div className="flex items-center gap-2.5 flex-wrap">
+            {/* 3D vs 2D Toggle */}
+            <div className="flex items-center bg-slate-950 border border-slate-800 rounded-xl p-0.5 text-xs shadow-inner">
+              <button
+                onClick={() => setViewMode("3d")}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg transition-all font-mono text-xs ${
+                  viewMode === "3d"
+                    ? "bg-slate-800 text-sky-300 border border-sky-500/40 text-glow-sky font-bold shadow-sm"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                <Sparkles size={11} />
+                <span>3D Neural</span>
+              </button>
+              <button
+                onClick={() => setViewMode("2d")}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg transition-all font-mono text-xs ${
+                  viewMode === "2d"
+                    ? "bg-slate-800 text-sky-300 border border-sky-500/40 text-glow-sky font-bold shadow-sm"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                <Layers size={11} />
+                <span>2D Planar</span>
+              </button>
+            </div>
+
+            {/* Search Node */}
+            <div className="relative w-56 flex items-center">
+              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none z-10" />
+              <input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && filteredNodes.length > 0) {
+                    selectNode(filteredNodes[0]);
+                  }
+                }}
+                placeholder="Filter or find entity..."
+                style={{ paddingLeft: "2.35rem" }}
+                className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-sky-500 text-slate-100 placeholder-slate-500 rounded-xl py-1.5 text-xs font-mono outline-none"
+              />
+            </div>
+
+            {/* Case Filter */}
+            <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-1">
+              <FolderOpen size={12} className="text-slate-400" />
+              <select
+                value={selectedCaseId}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setSelectedCaseId(val);
+                  setSearchParams((prev) => {
+                    const next = new URLSearchParams(prev);
+                    if (val) next.set("case_id", val);
+                    else next.delete("case_id");
+                    return next;
+                  });
+                }}
+                className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer max-w-[150px] truncate font-mono"
+              >
+                <option value="" className="bg-slate-900">All Cases (Global)</option>
+                {caseList.map((c) => (
+                  <option key={c.id} value={c.id} className="bg-slate-900">
+                    {c.case_number}: {c.title}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Entity Type Filter */}
+            <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-1">
+              <Filter size={12} className="text-slate-400" />
+              <select
+                value={entityTypeFilter}
+                onChange={(e) => setEntityTypeFilter(e.target.value)}
+                className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer font-mono"
+              >
+                <option value="" className="bg-slate-900">All Entity Types</option>
+                <option value="PERSON" className="bg-slate-900">Persons</option>
+                <option value="PHONE" className="bg-slate-900">Phones</option>
+                <option value="VEHICLE" className="bg-slate-900">Vehicles</option>
+                <option value="LOCATION" className="bg-slate-900">Locations</option>
+                <option value="GANG" className="bg-slate-900">Syndicates</option>
+                <option value="BANK_ACCOUNT" className="bg-slate-900">Bank Accounts</option>
+                <option value="CASE" className="bg-slate-900">Cases</option>
+              </select>
+            </div>
+
+            {/* Refresh Simulation */}
+            <button
+              onClick={loadGraph}
+              title="Refresh network simulation"
+              className="p-2 rounded-xl border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-white bg-slate-950 transition-all shadow-sm"
+            >
+              <RefreshCw size={13} className={loading ? "animate-spin text-sky-400" : ""} />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -395,12 +408,12 @@ export default function NetworkIntelligence() {
         </div>
 
         {/* ── Right Inspection Drawer (The Redesigned Entity Dossier) ── */}
-        <div className="w-96 shrink-0 border-l border-[var(--border-subtle)] flex flex-col min-h-0 bg-[var(--bg-panel-solid)] shadow-2xl">
+        <div className="w-96 shrink-0 border-l border-slate-800/90 flex flex-col min-h-0 bg-slate-900/95 shadow-2xl backdrop-blur-md">
           {/* Header */}
-          <div className="px-4 py-3 border-b border-[var(--border-subtle)] flex items-center justify-between bg-slate-900/40">
+          <div className="px-4 py-3 border-b border-slate-800/80 flex items-center justify-between bg-slate-950/60">
             <div className="flex items-center gap-2">
-              <ShieldCheck size={14} className="text-[var(--intel-sky)]" />
-              <span className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+              <ShieldCheck size={14} className="text-sky-400 text-glow-sky" />
+              <span className="text-xs font-bold uppercase tracking-wider text-white text-glow-white">
                 {selectedEdge ? "Relationship Record" : "Entity Dossier"}
               </span>
             </div>
@@ -419,7 +432,7 @@ export default function NetworkIntelligence() {
             )}
 
             {selectedEdge && (
-              <span className="badge badge-low text-[9px]">
+              <span className="badge badge-low text-[9px] font-mono">
                 {Math.round((selectedEdge.confidence_score || 0.8) * 100)}% Corroborated
               </span>
             )}
@@ -430,47 +443,47 @@ export default function NetworkIntelligence() {
             {/* Edge Selection View */}
             {selectedEdge ? (
               <div className="space-y-3">
-                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] space-y-1.5 border border-slate-700/50">
-                  <div className="hud-label text-[9px] text-[var(--intel-sky)]">
+                <div className="p-3.5 rounded-xl bg-slate-950/70 space-y-1.5 border border-slate-800 shadow-md">
+                  <div className="text-[9px] font-mono text-sky-400 uppercase tracking-wider text-glow-sky">
                     CORROBORATED CONNECTION RECORD
                   </div>
-                  <div className="flex items-center gap-2 text-xs font-bold text-[var(--text-primary)]">
+                  <div className="flex items-center gap-2 text-xs font-bold text-white">
                     <span className="truncate">{selectedEdge.source?.name}</span>
-                    <span className="text-[var(--intel-sky)]">↔</span>
+                    <span className="text-sky-400">↔</span>
                     <span className="truncate">{selectedEdge.target?.name}</span>
                   </div>
-                  <div className="text-[10px] font-mono text-amber-400 font-semibold uppercase">
+                  <div className="text-[10px] font-mono text-amber-300 font-semibold uppercase">
                     {getPoliceRelationLabel(selectedEdge.relationship_type)}
                   </div>
                 </div>
 
-                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] space-y-2 border border-slate-700/50">
-                  <div className="hud-label text-[9px] text-[var(--text-muted)]">SUPPORTING EVIDENCE SOURCE</div>
-                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                <div className="p-3.5 rounded-xl bg-slate-950/70 space-y-2 border border-slate-800 shadow-md">
+                  <div className="text-[9px] font-mono text-slate-400 uppercase">SUPPORTING EVIDENCE SOURCE</div>
+                  <p className="text-xs text-slate-300 leading-relaxed">
                     Association verified under primary case records and validated intelligence logs.
                   </p>
                   {selectedEdge.evidence_id && (
                     <div className="text-[10px] font-mono text-slate-400">
-                      Evidence Ref: {selectedEdge.evidence_id}
+                      Evidence Ref: <span className="text-sky-300">{selectedEdge.evidence_id}</span>
                     </div>
                   )}
                 </div>
 
                 <button
                   onClick={() => setSelectedEdge(null)}
-                  className="btn-ghost w-full text-xs py-1.5 border border-slate-700/60"
+                  className="btn-ghost w-full text-xs py-1.5 border border-slate-800 text-slate-300 hover:text-white"
                 >
                   Clear Selection
                 </button>
               </div>
             ) : !selected ? (
               /* Empty State when No Entity is Selected */
-              <div className="h-full flex flex-col items-center justify-center text-center p-6 text-[var(--text-muted)] space-y-2">
-                <div className="w-12 h-12 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-500">
-                  <Compass size={24} className="opacity-50" />
+              <div className="h-full flex flex-col items-center justify-center text-center p-6 text-slate-500 space-y-2">
+                <div className="w-12 h-12 rounded-full bg-slate-950 border border-slate-800 flex items-center justify-center text-slate-400">
+                  <Compass size={24} className="opacity-50 text-sky-400" />
                 </div>
-                <div className="text-xs font-semibold text-[var(--text-secondary)]">No Entity Selected</div>
-                <p className="text-[11px] text-[var(--text-muted)] max-w-[220px] leading-relaxed">
+                <div className="text-xs font-semibold text-slate-200">No Entity Selected</div>
+                <p className="text-[11px] text-slate-400 max-w-[220px] leading-relaxed font-mono">
                   Click any node in the 3D neural map or search above to isolate its direct relationships,
                   examine case ties, and review timeline records.
                 </p>

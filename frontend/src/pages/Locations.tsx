@@ -242,79 +242,97 @@ export default function Locations() {
   }
 
   return (
-    <div className="flex flex-col h-full bg-[var(--bg-void)]">
+    <div className="flex flex-col h-full bg-[#020617]">
       {/* ── Top Header Strip ── */}
-      <div className="px-5 py-3 border-b border-[var(--border-subtle)] flex flex-wrap items-center justify-between gap-3 bg-[var(--bg-panel-solid)] shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-sky-950/70 text-sky-400 border border-sky-800/60 flex items-center justify-center shadow-inner">
-            <MapPin size={16} />
+      <div className="px-5 py-3 border-b border-slate-800/90 space-y-3 bg-slate-900/95 backdrop-blur-md shadow-md">
+        {/* Module Metadata Line */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="badge badge-info text-[10px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
+              STATE GEOGRAPHIC INTELLIGENCE & JURISDICTION MAP
+            </span>
+            <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1 text-glow-emerald">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              LIVE DATABASE SYNCHRONIZED
+            </span>
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-xs font-bold tracking-wider uppercase text-[var(--text-primary)]">
-                Geographic Intelligence & Investigation Hotspots
-              </h1>
-              <span className="badge badge-low text-[8px] bg-sky-950/80 text-sky-300 border border-sky-800/60">
-                INDIA ADMINISTRATIVE JURISDICTION
-              </span>
-            </div>
-            <p className="text-[11px] text-[var(--text-muted)]">
-              Administrative polygon correlation, verified incident density, and territorial activity tracking
-            </p>
+          <div className="text-[11px] font-mono text-slate-400">
+            Active Scoped Jurisdictions: <span className="text-white font-bold">{filteredLocations.length}</span> Territorial Nodes
           </div>
         </div>
 
-        {/* Search & Actions */}
-        <div className="flex items-center gap-2.5 flex-wrap">
-          <div className="relative w-72 flex items-center">
-            <Search
-              size={14}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none z-10"
-            />
-            <input
-              value={search}
-              onChange={(e) => handleSearchChange(e.target.value)}
-              placeholder="Search state, district, or location..."
-              style={{ paddingLeft: "2.35rem" }}
-              className="workstation-input text-xs"
-            />
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
+              <MapPin size={18} />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="text-sm md:text-base font-black tracking-wide uppercase text-white text-glow-white">
+                  Geographic Intelligence & Investigation Hotspots
+                </h1>
+                <span className="badge badge-low text-[8px] bg-sky-950/80 text-sky-300 border border-sky-800/60 font-mono">
+                  INDIA ADMINISTRATIVE JURISDICTION
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-400">
+                Administrative polygon correlation, verified incident density, and territorial activity tracking
+              </p>
+            </div>
           </div>
 
-          <button
-            onClick={() => {
-              setSelectedState("");
-              setSelectedDistrict("");
-              setSelectedLoc(null);
-              setSearch("");
-            }}
-            className="btn-ghost text-xs py-1.5 px-3 border border-slate-700/80 text-slate-300 hover:text-white"
-            title="Reset map view to All India"
-          >
-            All India View
-          </button>
+          {/* Search & Actions */}
+          <div className="flex items-center gap-2.5 flex-wrap">
+            <div className="relative w-72 flex items-center">
+              <Search
+                size={14}
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none z-10"
+              />
+              <input
+                value={search}
+                onChange={(e) => handleSearchChange(e.target.value)}
+                placeholder="Search state, district, or location..."
+                style={{ paddingLeft: "2.35rem" }}
+                className="w-full bg-slate-950 border border-slate-800 text-slate-100 placeholder-slate-500 rounded-xl py-1.5 text-xs font-mono outline-none focus:border-sky-500"
+              />
+            </div>
 
-          <button
-            onClick={loadLocations}
-            title="Refresh location telemetry"
-            className="p-1.5 rounded-lg border border-[var(--border-subtle)] hover:border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--bg-panel-raised)] transition-all"
-          >
-            <RefreshCw size={13} className={loading ? "animate-spin text-sky-400" : ""} />
-          </button>
+            <button
+              onClick={() => {
+                setSelectedState("");
+                setSelectedDistrict("");
+                setSelectedLoc(null);
+                setSearch("");
+              }}
+              className="px-3 py-1.5 rounded-xl border border-slate-800 bg-slate-950 hover:bg-slate-900 text-slate-300 hover:text-white text-xs font-mono shadow-sm cursor-pointer"
+              title="Reset map view to All India"
+            >
+              All India View
+            </button>
+
+            <button
+              onClick={loadLocations}
+              title="Refresh location telemetry"
+              className="p-2 rounded-xl border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-white bg-slate-950 transition-all shadow-sm"
+            >
+              <RefreshCw size={13} className={loading ? "animate-spin text-sky-400" : ""} />
+            </button>
+          </div>
         </div>
       </div>
 
       {/* ── Main Workspace ── */}
       <div className="flex-1 flex min-h-0 relative">
         {/* Left Side: Geographic Filters & Hotspots Directory */}
-        <div className="w-80 shrink-0 border-r border-[var(--border-subtle)] flex flex-col min-h-0 bg-[var(--bg-panel-solid)]">
+        <div className="w-80 shrink-0 border-r border-slate-800/90 flex flex-col min-h-0 bg-slate-900/95">
           {/* Cascading Filter Controls */}
-          <div className="p-3.5 border-b border-[var(--border-subtle)] bg-slate-900/40 space-y-2.5">
+          <div className="p-3.5 border-b border-slate-800/80 bg-slate-950/60 space-y-2.5">
             <div className="flex items-center justify-between text-[10px] font-mono font-bold text-slate-300 uppercase tracking-wider">
               <div className="flex items-center gap-1.5">
                 <Filter size={12} className="text-sky-400" />
                 <span>Geographic Scoping</span>
               </div>
-              <span className="text-sky-400">{filteredLocations.length} LOCATIONS</span>
+              <span className="text-sky-300 text-glow-sky">{filteredLocations.length} LOCATIONS</span>
             </div>
 
             {/* State Selector */}

@@ -6,7 +6,11 @@
             "name": "b.ai",
             "options": {
                 "baseURL": "https://api.b.ai/v1",
+<<<<<<< HEAD
                 "apiKey": "sk-1dlv96wtyxb02q9wivf2slyhrkpeofx5"
+=======
+                "apiKey": "sk-1e8y9p3vqry65rppqykchdfbnuyw703c"
+>>>>>>> 687693357021bc3f9bb76d80d6ab188223ff6479
             },
             "models": {
                 "glm-5.3-flash": {

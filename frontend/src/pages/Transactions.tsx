@@ -85,100 +85,118 @@ export default function Transactions() {
   };
 
   return (
-    <div className="flex flex-col h-full bg-[var(--bg-void)]">
+    <div className="flex flex-col h-full bg-[#020617]">
       {/* ── Top Header Strip ── */}
-      <div className="px-6 py-4 border-b border-[var(--border-subtle)] flex flex-wrap items-center justify-between gap-4 bg-[var(--bg-panel-solid)]">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-emerald-950/80 text-emerald-400 border border-emerald-700/60 flex items-center justify-center shadow-[0_0_12px_rgba(16,185,129,0.2)]">
-            <CreditCard size={18} />
+      <div className="px-6 py-4 border-b border-slate-800/90 space-y-3 bg-slate-900/95 backdrop-blur-md">
+        {/* Module Metadata Line */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="badge badge-info text-[10px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
+              STATE FINANCIAL INTELLIGENCE & TRANSACTION LEDGER
+            </span>
+            <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1 text-glow-emerald">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              LIVE DATABASE SYNCHRONIZED
+            </span>
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-sm font-bold tracking-wide uppercase text-[var(--text-primary)]">
-                Financial Transaction Intelligence
-              </h1>
-              <span className="badge bg-emerald-950/80 border-emerald-800/80 text-emerald-300 text-[8px] font-mono">
-                FIU LINKAGE ACTIVE
-              </span>
-            </div>
-            <p className="text-[11px] text-[var(--text-muted)]">
-              Audited banking conduits, institutional ledgers, and monitored account-to-account capital transfers
-            </p>
+          <div className="text-[11px] font-mono text-slate-400">
+            Financial Ledger: <span className="text-white font-bold">{stats.totalRecords}</span> Audited Transactions
           </div>
         </div>
 
-        <div className="flex items-center gap-2.5">
-          <button
-            onClick={() => setShowChart((v) => !v)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-medium transition-all cursor-pointer ${
-              showChart
-                ? "bg-sky-950/70 text-sky-300 border-sky-700 shadow-sm"
-                : "bg-[var(--bg-panel-raised)] text-[var(--text-muted)] border-[var(--border-subtle)] hover:text-slate-200"
-            }`}
-            title="Toggle Volume Trend Chart"
-          >
-            <BarChart2 size={13} />
-            <span>{showChart ? "Hide Trend Chart" : "Show Trend Chart"}</span>
-          </button>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-slate-950 text-emerald-400 border border-slate-800 flex items-center justify-center shadow-md">
+              <CreditCard size={18} />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="text-xl md:text-2xl font-black tracking-wide text-white uppercase text-glow-white">
+                  Financial Transaction Intelligence
+                </h1>
+                <span className="badge bg-emerald-950/80 border-emerald-800/80 text-emerald-300 text-[8px] font-mono">
+                  FIU LINKAGE ACTIVE
+                </span>
+              </div>
+              <p className="text-xs text-slate-300 font-medium">
+                Audited banking conduits, institutional ledgers, and monitored account-to-account capital transfers
+              </p>
+            </div>
+          </div>
 
-          <button
-            onClick={loadTransactions}
-            className="p-2 rounded-lg border border-[var(--border-subtle)] hover:border-emerald-500 text-[var(--text-muted)] hover:text-emerald-400 bg-[var(--bg-panel-raised)] transition-all cursor-pointer shadow-sm"
-            title="Refresh Transactions"
-          >
-            <RefreshCw size={13} className={loading ? "animate-spin text-emerald-400" : ""} />
-          </button>
+          <div className="flex items-center gap-2.5">
+            <button
+              onClick={() => setShowChart((v) => !v)}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-mono transition-all cursor-pointer shadow-sm ${
+                showChart
+                  ? "bg-slate-800 text-emerald-300 border-emerald-500/40 text-glow-emerald font-bold"
+                  : "bg-slate-950 text-slate-400 border-slate-800 hover:text-slate-200"
+              }`}
+              title="Toggle Volume Trend Chart"
+            >
+              <BarChart2 size={13} />
+              <span>{showChart ? "Hide Trend Chart" : "Show Trend Chart"}</span>
+            </button>
+
+            <button
+              onClick={loadTransactions}
+              className="p-2.5 rounded-xl border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white bg-slate-950 transition-all cursor-pointer shadow-sm"
+              title="Refresh Transactions"
+            >
+              <RefreshCw size={13} className={loading ? "animate-spin text-emerald-400" : ""} />
+            </button>
+          </div>
         </div>
       </div>
 
       {/* ── Financial Metrics Visual KPI Row ── */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 px-6 py-3 border-b border-[var(--border-subtle)] bg-[var(--bg-panel)]">
-        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/40 border border-slate-800 rounded-lg">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 px-6 py-3 border-b border-slate-800/90 bg-slate-900/90">
+        <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Total Indexed Ledger</span>
-            <Building2 size={13} className="text-indigo-400" />
+            <span className="text-[10px] font-mono text-sky-400 uppercase tracking-wider font-semibold">Total Indexed Ledger</span>
+            <Building2 size={13} className="text-sky-400" />
           </div>
-          <div className="text-lg font-bold font-mono text-slate-100 mt-1">{stats.totalRecords}</div>
-          <div className="text-[10px] font-mono text-indigo-400/80 mt-0.5">Audited records</div>
+          <div className="text-xl font-black font-mono text-white text-glow-white mt-1">{stats.totalRecords}</div>
+          <div className="text-[10px] font-mono text-slate-400 mt-0.5">Audited records</div>
         </div>
 
-        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/40 border border-emerald-900/40 rounded-lg shadow-[0_0_15px_rgba(16,185,129,0.05)]">
+        <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-emerald-400/90 uppercase tracking-wider">Total Monitored Flow</span>
+            <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider font-semibold">Total Monitored Flow</span>
             <TrendingUp size={13} className="text-emerald-400" />
           </div>
-          <div className="text-lg font-bold font-mono text-emerald-300 mt-1">
+          <div className="text-xl font-black font-mono text-emerald-300 text-glow-emerald mt-1">
             ₹{stats.totalVolume.toLocaleString("en-IN", { maximumFractionDigits: 0 })}
           </div>
-          <div className="text-[10px] font-mono text-emerald-400/70 mt-0.5">Aggregate volume</div>
+          <div className="text-[10px] font-mono text-emerald-400/80 mt-0.5">Aggregate volume</div>
         </div>
 
-        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/40 border border-amber-900/40 rounded-lg shadow-[0_0_15px_rgba(245,158,11,0.05)]">
+        <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-amber-400/90 uppercase tracking-wider">High Volume Triggers</span>
+            <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider font-semibold">High Volume Triggers</span>
             <ShieldAlert size={13} className="text-amber-400" />
           </div>
-          <div className="text-lg font-bold font-mono text-amber-300 mt-1">
+          <div className="text-xl font-black font-mono text-amber-300 text-glow-amber mt-1">
             {stats.flaggedCount} Transfers
           </div>
           <div className="text-[10px] font-mono text-amber-400/80 mt-0.5">≥ ₹1,50,000 threshold</div>
         </div>
 
-        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/40 border border-cyan-900/40 rounded-lg">
+        <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-cyan-400/90 uppercase tracking-wider">Compliance Filter</span>
+            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-wider font-semibold">Compliance Filter</span>
             <CheckCircle2 size={13} className="text-cyan-400" />
           </div>
-          <div className="text-xs font-mono font-bold text-cyan-300 mt-1">PMLA CTR/STR Standard</div>
+          <div className="text-xs font-mono font-bold text-cyan-300 text-glow-cyan mt-1.5">PMLA CTR/STR Standard</div>
           <div className="text-[10px] font-mono text-slate-400 mt-0.5">Automated surveillance</div>
         </div>
       </div>
 
       {/* ── Real Capital Flow Chart (Recharts) ── */}
       {showChart && chartData.length > 0 && (
-        <div className="px-6 py-3 border-b border-[var(--border-subtle)] bg-[var(--bg-panel-solid)]">
+        <div className="px-6 py-3 border-b border-slate-800/90 bg-slate-900/95">
           <div className="flex items-center justify-between mb-2">
-            <div className="text-[10px] font-mono uppercase text-emerald-400 font-semibold tracking-wider flex items-center gap-1.5">
+            <div className="text-[10px] font-mono uppercase text-emerald-400 font-semibold tracking-wider flex items-center gap-1.5 text-glow-emerald">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <span>Capital Transfer Volume Over Time (Real Ingested Ledger Data)</span>
             </div>
@@ -206,7 +224,7 @@ export default function Transactions() {
                   tickFormatter={(val) => `₹${(val / 1000).toFixed(0)}k`}
                 />
                 <RechartsTooltip
-                  contentStyle={{ backgroundColor: "#0f172a", border: "1px solid #10b981", borderRadius: 6, fontSize: 11 }}
+                  contentStyle={{ backgroundColor: "#020617", border: "1px solid #10b981", borderRadius: 8, fontSize: 11 }}
                   formatter={(val: any) => [`₹${Number(val).toLocaleString("en-IN")}`, "Volume"]}
                 />
                 <Bar dataKey="volume" fill="url(#emeraldBarGradient)" radius={[4, 4, 0, 0]} />
@@ -217,20 +235,20 @@ export default function Transactions() {
       )}
 
       {/* ── Filter Controls ── */}
-      <div className="px-6 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-panel)] flex flex-wrap items-center justify-between gap-3">
+      <div className="px-6 py-2.5 border-b border-slate-800/90 bg-slate-900/95 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3 flex-1 min-w-[280px]">
           <div className="relative flex-1 max-w-md">
-            <Search size={12} className="absolute left-3 top-2.5 text-[var(--text-muted)]" />
+            <Search size={13} className="absolute left-3 top-2.5 text-slate-400" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by holder name, masked account (XXXX7788), bank..."
-              className="workstation-input pl-8 pr-3 text-xs"
+              className="w-full pl-8 pr-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono text-slate-100 placeholder-slate-500 outline-none focus:border-emerald-500"
             />
           </div>
 
           {/* Case Filter */}
-          <div className="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/80 rounded-lg px-2.5 py-1">
+          <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-1">
             <FolderOpen size={12} className="text-sky-400" />
             <select
               value={selectedCaseId}
@@ -244,7 +262,7 @@ export default function Transactions() {
                   return next;
                 });
               }}
-              className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer max-w-[150px] truncate"
+              className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer max-w-[150px] truncate font-mono"
             >
               <option value="" className="bg-slate-900 text-slate-300">All Cases (Global)</option>
               {caseList.map((c) => (
@@ -434,7 +452,7 @@ export default function Transactions() {
                     <div
                       className={`font-mono font-bold text-sm inline-block px-2.5 py-1 rounded-md ${
                         txn.flagged
-                          ? "text-amber-300 bg-amber-950/60 border border-amber-600/60 shadow-[0_0_12px_rgba(245,158,11,0.15)]"
+                          ? "text-amber-300 bg-amber-950/60 border border-amber-600/60"
                           : "text-emerald-400 bg-emerald-950/40 border border-emerald-800/40"
                       }`}
                     >
