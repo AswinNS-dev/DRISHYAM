@@ -96,14 +96,14 @@ export default function Login() {
         {/* ── Left Side: Prominent & Eye-Catching RBAC Clearance Showcase ── */}
         <div className="lg:col-span-7 space-y-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/80 border border-slate-800 text-[10px] font-mono tracking-wider uppercase text-sky-400">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/80 border border-slate-800 text-xs font-mono tracking-wider uppercase text-sky-400">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               <span>Role-Based Access Control (RBAC) Governance</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white uppercase text-glow-white">
               Law-Enforcement Clearance Tiers
             </h1>
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-xl">
+            <p className="text-sm text-slate-300 leading-relaxed max-w-xl font-medium">
               Select an authorized clearance level below to inspect role-restricted permissions, sensitive case intelligence, and chain-of-custody controls.
             </p>
           </div>
@@ -117,7 +117,7 @@ export default function Login() {
                 <div
                   key={tier.role}
                   onClick={() => handleSelectTier(tier)}
-                  className={`p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer relative overflow-hidden group ${
+                  className={`p-4.5 sm:p-5 rounded-2xl border transition-all cursor-pointer relative overflow-hidden group ${
                     isSelected
                       ? "bg-sky-950/30 border-sky-500/60 shadow-xl shadow-sky-950/40 ring-1 ring-sky-500/40"
                       : "bg-slate-900/80 border-slate-800/80 hover:border-slate-700 hover:bg-slate-900"
@@ -125,42 +125,42 @@ export default function Login() {
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-start gap-3.5 min-w-0">
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border transition-colors ${
+                      <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 border transition-colors shadow-md ${
                         isSelected
                           ? "bg-sky-500 text-slate-950 border-sky-400"
                           : "bg-slate-950 text-slate-400 border-slate-800 group-hover:text-slate-200"
                       }`}>
-                        <Icon size={18} />
+                        <Icon size={20} />
                       </div>
 
-                      <div className="min-w-0 space-y-1">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className={`text-sm font-bold tracking-tight ${isSelected ? "text-white text-glow-white" : "text-slate-200"}`}>
+                      <div className="min-w-0 space-y-1.5">
+                        <div className="flex items-center gap-2.5 flex-wrap">
+                          <h3 className={`text-base font-bold tracking-tight ${isSelected ? "text-white text-glow-white" : "text-slate-200"}`}>
                             {tier.title}
                           </h3>
-                          <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-slate-800 font-bold">
+                          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-slate-950 text-slate-300 border border-slate-800 font-bold">
                             {tier.clearanceLevel}
                           </span>
-                          <span className={`text-[9px] font-mono px-2 py-0.5 rounded font-bold uppercase ${
+                          <span className={`text-xs font-mono px-2.5 py-0.5 rounded font-bold uppercase ${
                             isSelected
                               ? "bg-emerald-950/60 text-emerald-300 border border-emerald-800/60"
-                              : "bg-slate-950 text-slate-500 border border-slate-800"
+                              : "bg-slate-950 text-slate-400 border border-slate-800"
                           }`}>
                             {tier.badge}
                           </span>
                         </div>
 
-                        <p className="text-xs text-slate-400 leading-normal">
+                        <p className="text-sm text-slate-300 leading-relaxed">
                           {tier.summary}
                         </p>
 
-                        <div className="flex flex-wrap items-center gap-2 pt-1">
+                        <div className="flex flex-wrap items-center gap-3 pt-1">
                           {tier.features.map((f, idx) => (
                             <span
                               key={idx}
-                              className="inline-flex items-center gap-1 text-[10px] text-slate-400 font-mono"
+                              className="inline-flex items-center gap-1.5 text-xs text-slate-300 font-mono"
                             >
-                              <CheckCircle2 size={11} className={isSelected ? "text-emerald-400" : "text-slate-600"} />
+                              <CheckCircle2 size={13} className={isSelected ? "text-emerald-400" : "text-slate-600"} />
                               <span>{f}</span>
                             </span>
                           ))}
@@ -183,7 +183,7 @@ export default function Login() {
             })}
           </div>
 
-          <div className="flex items-center gap-4 text-xs text-slate-500 pt-2 font-mono">
+          <div className="flex items-center gap-4 text-xs text-slate-400 pt-2 font-mono">
             <span>Official Police Department Clearance</span>
             <span>•</span>
             <span>Zero-Trust Cryptographic Audit</span>
@@ -195,23 +195,23 @@ export default function Login() {
           <div className="bg-slate-900/95 border border-slate-800/90 rounded-2xl p-7 sm:p-8 shadow-2xl space-y-6 backdrop-blur-md">
             {/* Header with Department Icon */}
             <div className="text-center space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-sky-950/50 border border-sky-500/40 text-sky-400 font-black text-xs flex items-center justify-center mx-auto">
+              <div className="w-11 h-11 rounded-xl bg-sky-950/50 border border-sky-500/40 text-sky-400 font-black text-sm flex items-center justify-center mx-auto shadow-md">
                 CI
               </div>
               <div>
-                <h2 className="text-xl font-bold tracking-tight text-white uppercase text-glow-white">
+                <h2 className="text-2xl font-black tracking-tight text-white uppercase text-glow-white">
                   Officer Sign In
                 </h2>
-                <p className="text-xs text-slate-400 mt-1">
+                <p className="text-sm text-slate-300 mt-1 leading-relaxed">
                   Access the CrimeIntel AI Investigation Suite
                 </p>
               </div>
             </div>
 
             {/* Active Clearance Badge Notification */}
-            <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center justify-between text-xs">
+            <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center justify-between text-xs md:text-sm">
               <span className="text-slate-400">Target Clearance:</span>
-              <span className="font-semibold text-white font-mono flex items-center gap-1.5">
+              <span className="font-bold text-white font-mono flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 {selectedTier.title}
               </span>
@@ -219,15 +219,15 @@ export default function Login() {
 
             {/* Error / Expiration notices */}
             {sessionExpiredMessage && (
-              <div className="p-3 rounded-xl bg-rose-950/40 border border-rose-800/60 text-xs text-rose-300 flex items-center gap-2">
-                <AlertTriangle size={14} className="shrink-0 text-rose-400" />
+              <div className="p-3 rounded-xl bg-rose-950/40 border border-rose-800/60 text-xs md:text-sm text-rose-300 flex items-center gap-2">
+                <AlertTriangle size={16} className="shrink-0 text-rose-400" />
                 <span>{sessionExpiredMessage}</span>
               </div>
             )}
 
             {error && (
-              <div className="p-3 rounded-xl bg-rose-950/40 border border-rose-800/60 text-xs text-rose-300 flex items-center gap-2">
-                <AlertTriangle size={14} className="shrink-0 text-rose-400" />
+              <div className="p-3 rounded-xl bg-rose-950/40 border border-rose-800/60 text-xs md:text-sm text-rose-300 flex items-center gap-2">
+                <AlertTriangle size={16} className="shrink-0 text-rose-400" />
                 <span>{error}</span>
               </div>
             )}
@@ -235,7 +235,7 @@ export default function Login() {
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-sm font-bold text-slate-200 mb-1.5">
                   Department Email or Officer ID
                 </label>
                 <input
@@ -244,19 +244,19 @@ export default function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="officer@police.gov.in"
-                  className="w-full h-10 px-3.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-white placeholder:text-slate-600 focus:border-sky-500 focus:outline-none transition-colors"
+                  className="w-full h-11 px-3.5 rounded-lg bg-slate-950 border border-slate-800 text-sm font-mono text-white placeholder:text-slate-600 focus:border-sky-500 focus:outline-none transition-colors"
                 />
               </div>
 
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label className="text-xs font-semibold text-slate-300">
+                  <label className="text-sm font-bold text-slate-200">
                     Security Passcode
                   </label>
                   <button
                     type="button"
                     onClick={() => alert("Contact Station Administrator or Cyber Cell to reset cryptographic tokens.")}
-                    className="text-xs text-sky-400 hover:text-sky-300 transition-colors cursor-pointer"
+                    className="text-xs font-medium text-sky-400 hover:text-sky-300 transition-colors cursor-pointer"
                   >
                     Forgot passcode?
                   </button>
@@ -268,15 +268,15 @@ export default function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full h-10 pl-3.5 pr-10 rounded-lg bg-slate-950 border border-slate-800 text-xs text-white placeholder:text-slate-600 focus:border-sky-500 focus:outline-none transition-colors"
+                    className="w-full h-11 pl-3.5 pr-10 rounded-lg bg-slate-950 border border-slate-800 text-sm text-white placeholder:text-slate-600 focus:border-sky-500 focus:outline-none transition-colors font-mono"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-2.5 p-1 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
+                    className="absolute right-3 top-3 p-1 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
                     title={showPassword ? "Hide password" : "Show password"}
                   >
-                    {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
+                    {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
                 </div>
               </div>
@@ -290,7 +290,7 @@ export default function Login() {
                     onChange={(e) => setKeepSignedIn(e.target.checked)}
                     className="w-4 h-4 rounded border-slate-700 bg-slate-950 text-sky-500 focus:ring-0 focus:ring-offset-0 cursor-pointer accent-sky-500"
                   />
-                  <span className="text-xs text-slate-400">Keep me signed in for 30 days</span>
+                  <span className="text-xs md:text-sm text-slate-300">Keep me signed in for 30 days</span>
                 </label>
               </div>
 
@@ -298,15 +298,15 @@ export default function Login() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full h-10 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-colors cursor-pointer shadow-lg shadow-sky-950/50 flex items-center justify-center gap-2 disabled:opacity-50 active:scale-[0.98]"
+                className="w-full h-11 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-bold text-sm transition-colors cursor-pointer shadow-lg shadow-sky-950/50 flex items-center justify-center gap-2 disabled:opacity-50 active:scale-[0.98]"
               >
                 <span>{loading ? "Verifying Clearance..." : "Authorize & Enter Workstation"}</span>
-                <ArrowRight size={14} />
+                <ArrowRight size={15} />
               </button>
             </form>
 
             {/* Legal / Security Footer */}
-            <div className="pt-2 text-center text-[10px] text-slate-500 leading-relaxed font-mono">
+            <div className="pt-2 text-center text-xs text-slate-400 leading-relaxed font-mono">
               Authorized personnel only. All access attempts are cryptographically timestamped and signed.
             </div>
           </div>
