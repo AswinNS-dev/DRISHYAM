@@ -12,9 +12,19 @@ router = APIRouter(prefix="/api/v2/auth", tags=["auth"])
 def login(form: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     user = db.query(m.User).filter(m.User.email == form.username).first()
     if not user or not verify_password(form.password, user.hashed_password):
+        db.add(m.AuditLog(
+            user_id=None,
+            action="LOGIN_FAILED",
+            details={"attempted_email": form.username, "reason": "Invalid credentials", "client": "Web Console"}
+        ))
+        db.commit()
         raise HTTPException(status_code=401, detail="Incorrect email or password")
     token = create_access_token(user.id, user.role)
-    db.add(m.AuditLog(user_id=user.id, action="LOGIN", details={"email": user.email}))
+    db.add(m.AuditLog(
+        user_id=user.id,
+        action="LOGIN",
+        details={"email": user.email, "role": user.role, "status": "SUCCESS", "auth_method": "Password / OAuth2"}
+    ))
     db.commit()
     return {
         "access_token": token, "token_type": "bearer",

@@ -7,7 +7,7 @@ import {
   FileDigit, Fingerprint, Lock, Copy, Check, X, ChevronRight,
   Upload, Download, FileText, PhoneCall, DollarSign, Video,
   LayoutGrid, List, ExternalLink, FileCheck,
-  Shield
+  Shield, ShieldAlert
 } from "lucide-react";
 
 // Evidence type metadata and category classification
@@ -65,6 +65,7 @@ export default function Evidence() {
     description: "",
   });
   const [uploadSubmitting, setUploadSubmitting] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   // Sync state if URL query changes
   useEffect(() => {
@@ -128,22 +129,6 @@ export default function Evidence() {
     setSelectedIds(new Set());
   }
 
-  // Verification
-  async function handleVerify(ev: any) {
-    setVerifyingId(ev.id);
-    try {
-      const res = await api.verifyEvidence(ev.id);
-      setVerifiedMap((prev) => ({ ...prev, [ev.id]: res }));
-      setVerificationModal({
-        exhibit: ev,
-        result: res,
-      });
-    } catch (e: any) {
-      alert("Verification failed: " + e.message);
-    } finally {
-      setVerifyingId(null);
-    }
-  }
 
   // Batch Verify for selection bar
   async function handleBatchVerify() {
@@ -212,20 +197,60 @@ export default function Evidence() {
     }
   }
 
+  // Integrity Verification & Tamper Detection Handler
+  async function handleVerify(exhibit: any, simulateTamper = false) {
+    if (!exhibit) return;
+    setVerifyingId(exhibit.id);
+    try {
+      const res = await api.verifyEvidence(exhibit.id, simulateTamper);
+      setVerifiedMap((prev) => ({ ...prev, [exhibit.id]: res }));
+      setVerificationModal({
+        exhibit,
+        result: res,
+      });
+      loadEvidence();
+    } catch (err: any) {
+      alert("Integrity verification failed: " + err.message);
+    } finally {
+      setVerifyingId(null);
+    }
+  }
+
   // Upload/Register Exhibit
   async function handleRegisterExhibit(e: React.FormEvent) {
     e.preventDefault();
-    if (!uploadForm.description && !uploadForm.title) return;
+    if (!uploadForm.description && !uploadForm.title && !selectedFile) return;
     setUploadSubmitting(true);
     try {
-      await api.registerEvidence({
-        evidence_type: uploadForm.evidence_type,
-        description: uploadForm.title ? `${uploadForm.title} — ${uploadForm.description}` : uploadForm.description,
-        custodian_division: uploadForm.custodian_division,
-        case_id: uploadForm.case_id || (selectedCase !== "ALL" ? selectedCase : undefined),
-      });
+      const targetCaseId = uploadForm.case_id || (selectedCase !== "ALL" ? selectedCase : "");
+      const fullDescription = uploadForm.title
+        ? `${uploadForm.title} — ${uploadForm.description}`
+        : uploadForm.description || (selectedFile ? selectedFile.name : "Forensic Exhibit");
+
+      if (selectedFile) {
+        // Physical file upload with binary SHA-256 computation
+        const formData = new FormData();
+        formData.append("file", selectedFile);
+        formData.append("evidence_type", uploadForm.evidence_type);
+        formData.append("description", fullDescription);
+        if (targetCaseId) {
+          formData.append("case_id", targetCaseId);
+        }
+        formData.append("custodian_division", uploadForm.custodian_division);
+        await api.uploadEvidenceFile(formData);
+      } else {
+        // Metadata registration
+        await api.registerEvidence({
+          evidence_type: uploadForm.evidence_type,
+          description: fullDescription,
+          custodian_division: uploadForm.custodian_division,
+          case_id: targetCaseId || undefined,
+        });
+      }
+
       setShowUploadModal(false);
       setShowManualModal(false);
+      setSelectedFile(null);
       setUploadForm({
         title: "",
         evidence_type: "DIGITAL_EXTRACTION",
@@ -998,14 +1023,24 @@ export default function Evidence() {
                 </button>
               </div>
 
-              <button
-                onClick={() => handleVerify(selectedExhibit)}
-                disabled={verifyingId === selectedExhibit.id}
-                className="w-full btn-primary py-1.5 text-xs flex items-center justify-center gap-1.5"
-              >
-                <CheckCircle2 size={13} className={verifyingId === selectedExhibit.id ? "animate-spin" : ""} />
-                <span>{verifyingId === selectedExhibit.id ? "Recomputing SHA-256 Hash..." : "Verify Digital Seal Now"}</span>
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleVerify(selectedExhibit, false)}
+                  disabled={verifyingId === selectedExhibit.id}
+                  className="flex-1 btn-primary py-1.5 text-xs flex items-center justify-center gap-1.5"
+                >
+                  <CheckCircle2 size={13} className={verifyingId === selectedExhibit.id ? "animate-spin" : ""} />
+                  <span>{verifyingId === selectedExhibit.id ? "Verifying..." : "Verify Digital Seal"}</span>
+                </button>
+                <button
+                  onClick={() => handleVerify(selectedExhibit, true)}
+                  disabled={verifyingId === selectedExhibit.id}
+                  className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-rose-950 hover:text-rose-300 text-zinc-400 border border-zinc-700 hover:border-rose-700 text-xs font-mono transition-colors"
+                  title="Simulate altered file to test tamper detection"
+                >
+                  Test Tamper
+                </button>
+              </div>
             </div>
 
             {/* Chain of Custody & Telemetry */}
@@ -1077,21 +1112,50 @@ export default function Evidence() {
             </div>
 
             <form onSubmit={handleRegisterExhibit} className="py-4 space-y-4 text-xs">
-              {/* Drag-and-drop intake zone */}
-              <div className="border-2 border-dashed border-zinc-700 hover:border-sky-500/80 rounded-xl p-6 text-center bg-[#13131a] transition-all flex flex-col items-center justify-center space-y-2 cursor-pointer">
-                <Upload size={28} className="text-sky-400 mb-1" />
-                <div className="font-bold text-zinc-200">
-                  Drop digital forensic dumps, CDR logs, or CCTV feeds here
-                </div>
-                <p className="text-[11px] text-zinc-500 max-w-xs">
-                  Supports UFED extractions, PCAP, RAW, MP4, PDF, CSV, and encrypted archives up to 5GB
-                </p>
-                <div className="pt-2">
-                  <span className="px-3 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-[11px] font-mono text-sky-300">
-                    Browse Local File
-                  </span>
-                </div>
-              </div>
+              {/* Drag-and-drop intake zone with real file input */}
+              <label htmlFor="evidence-file-upload" className="border-2 border-dashed border-zinc-700 hover:border-sky-500/80 rounded-xl p-6 text-center bg-[#13131a] transition-all flex flex-col items-center justify-center space-y-2 cursor-pointer block">
+                <input
+                  id="evidence-file-upload"
+                  type="file"
+                  className="hidden"
+                  onChange={(e) => {
+                    const f = e.target.files?.[0];
+                    if (f) {
+                      setSelectedFile(f);
+                      setUploadForm((prev) => ({
+                        ...prev,
+                        title: prev.title || f.name,
+                      }));
+                    }
+                  }}
+                />
+                <Upload size={28} className="text-sky-400 mb-1 mx-auto" />
+                {selectedFile ? (
+                  <div className="space-y-1">
+                    <div className="font-bold text-emerald-400 flex items-center justify-center gap-1.5">
+                      <CheckCircle2 size={14} />
+                      <span>{selectedFile.name}</span>
+                    </div>
+                    <div className="text-[11px] font-mono text-zinc-400">
+                      Size: {(selectedFile.size / 1024).toFixed(1)} KB • Ready for SHA-256 Bit Fingerprinting
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <div className="font-bold text-zinc-200">
+                      Drop digital forensic dumps, CDR logs, or CCTV feeds here
+                    </div>
+                    <p className="text-[11px] text-zinc-500 max-w-xs mx-auto">
+                      Supports UFED extractions, PCAP, RAW, MP4, PDF, CSV, and encrypted archives
+                    </p>
+                    <div className="pt-2">
+                      <span className="px-3 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-[11px] font-mono text-sky-300">
+                        Browse Local File
+                      </span>
+                    </div>
+                  </>
+                )}
+              </label>
 
               {/* Case & Exhibit Metadata */}
               <div className="grid grid-cols-2 gap-3">
@@ -1298,10 +1362,21 @@ export default function Evidence() {
           <div className="cmd-palette-modal max-w-lg p-5 bg-[#0e0e12] border border-zinc-700 rounded-2xl shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between pb-3 border-b border-zinc-800">
               <div className="flex items-center gap-2">
-                <CheckCircle2 size={18} className="text-emerald-400" />
-                <h2 className="text-xs font-bold uppercase tracking-wider text-white">
-                  Cryptographic Integrity Verification Audit
-                </h2>
+                {verificationModal.result?.verified ? (
+                  <>
+                    <CheckCircle2 size={18} className="text-emerald-400" />
+                    <h2 className="text-xs font-bold uppercase tracking-wider text-white">
+                      Cryptographic Integrity Verification Audit
+                    </h2>
+                  </>
+                ) : (
+                  <>
+                    <ShieldAlert size={18} className="text-rose-400" />
+                    <h2 className="text-xs font-bold uppercase tracking-wider text-rose-400">
+                      Integrity Failure: Tampering Detected
+                    </h2>
+                  </>
+                )}
               </div>
               <button
                 onClick={() => setVerificationModal(null)}
@@ -1312,19 +1387,35 @@ export default function Evidence() {
             </div>
 
             <div className="py-4 space-y-3 font-mono text-xs">
-              <div className="p-3 rounded-lg bg-emerald-950/30 border border-emerald-700/50 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-emerald-500 text-black flex items-center justify-center font-bold">
-                  ✓
-                </div>
-                <div>
-                  <div className="text-xs font-bold text-emerald-300">
-                    Evidence Integrity 100% Validated
+              {verificationModal.result?.verified ? (
+                <div className="p-3 rounded-lg bg-emerald-950/30 border border-emerald-700/50 flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-emerald-500 text-black flex items-center justify-center font-bold">
+                    ✓
                   </div>
-                  <p className="text-[11px] text-zinc-400 mt-0.5">
-                    Live hash match confirms zero byte alteration since forensic seizure.
-                  </p>
+                  <div>
+                    <div className="text-xs font-bold text-emerald-300">
+                      Evidence Integrity 100% Validated
+                    </div>
+                    <p className="text-[11px] text-zinc-400 mt-0.5">
+                      Live hash match confirms zero byte alteration since forensic seizure.
+                    </p>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="p-3 rounded-lg bg-rose-950/40 border border-rose-700/60 flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-rose-500 text-white flex items-center justify-center font-bold">
+                    !
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-rose-300">
+                      CRITICAL: Cryptographic Mismatch Detected
+                    </div>
+                    <p className="text-[11px] text-rose-200/80 mt-0.5">
+                      Recomputed digest does not match original seal. Exhibit bytes have been altered or corrupted!
+                    </p>
+                  </div>
+                </div>
+              )}
 
               <div className="space-y-2 text-[11px]">
                 <div className="flex justify-between">
@@ -1340,16 +1431,44 @@ export default function Evidence() {
                   <span className="text-zinc-200">{verificationModal.result?.verified_by || user?.email}</span>
                 </div>
                 <div className="flex justify-between">
+                  <span className="text-zinc-500">Verification Result:</span>
+                  <span className={verificationModal.result?.verified ? "text-emerald-400 font-bold" : "text-rose-400 font-bold"}>
+                    {verificationModal.result?.status || (verificationModal.result?.verified ? "VERIFIED" : "TAMPER_DETECTED")}
+                  </span>
+                </div>
+                <div className="flex justify-between">
                   <span className="text-zinc-500">Timestamp:</span>
                   <span className="text-zinc-300">{new Date().toLocaleString()}</span>
                 </div>
               </div>
 
-              <div>
-                <div className="text-[10px] text-zinc-500 mb-1">Calculated SHA-256 Digest:</div>
-                <div className="p-2 rounded bg-black border border-zinc-800 text-[10px] text-emerald-400 break-all select-all">
-                  {verificationModal.result?.calculated_hash || verificationModal.exhibit.sha256_digest}
+              {verificationModal.result?.verified ? (
+                <div>
+                  <div className="text-[10px] text-zinc-500 mb-1">Calculated SHA-256 Digest:</div>
+                  <div className="p-2 rounded bg-black border border-zinc-800 text-[10px] text-emerald-400 break-all select-all">
+                    {verificationModal.result?.calculated_hash || verificationModal.exhibit.sha256_digest}
+                  </div>
                 </div>
+              ) : (
+                <div className="space-y-2">
+                  <div>
+                    <div className="text-[10px] text-zinc-400 mb-1">Recorded Original Digital Seal:</div>
+                    <div className="p-2 rounded bg-zinc-900 border border-zinc-700 text-[10px] text-zinc-300 break-all select-all">
+                      {verificationModal.result?.recorded_hash || verificationModal.exhibit.sha256_digest}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-rose-400 mb-1">Recalculated Altered Digest:</div>
+                    <div className="p-2 rounded bg-rose-950/40 border border-rose-800 text-[10px] text-rose-300 break-all select-all">
+                      {verificationModal.result?.calculated_hash}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Forensic Integrity vs Authenticity Legal Disclaimer */}
+              <div className="p-2 rounded bg-zinc-900/60 border border-zinc-800 text-[10px] text-zinc-400 leading-relaxed">
+                <strong>Forensic Notice:</strong> {verificationModal.result?.disclaimer || "Cryptographic verification proves data integrity (unaltered byte state since acquisition), not external authenticity of real-world claims."}
               </div>
             </div>
 

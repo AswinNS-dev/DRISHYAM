@@ -3,12 +3,13 @@ import { api } from "../lib/api";
 import { useAuth } from "../store/auth";
 import {
   ShieldCheck, Search, Filter, RefreshCw, CheckCircle2,
-  Lock, Copy, Check, Fingerprint
+  Lock, Copy, Check, Fingerprint, AlertTriangle, ShieldAlert
 } from "lucide-react";
 
 export default function Integrity() {
   const { user } = useAuth();
   const [evidenceList, setEvidenceList] = useState<any[]>([]);
+  const [ledgerMeta, setLedgerMeta] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState("ALL");
@@ -21,9 +22,15 @@ export default function Integrity() {
 
   function loadEvidence() {
     setLoading(true);
-    api.evidence()
-      .then((res) => {
-        setEvidenceList(res.evidence || []);
+    Promise.all([
+      api.evidence(),
+      api.evidenceLedger().catch(() => null)
+    ])
+      .then(([evRes, ledgerRes]) => {
+        setEvidenceList(evRes.evidence || []);
+        if (ledgerRes) {
+          setLedgerMeta(ledgerRes);
+        }
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -33,17 +40,17 @@ export default function Integrity() {
     loadEvidence();
   }, []);
 
-  async function handleVerify(ev: any) {
+  async function handleVerify(ev: any, simulateTamper = false) {
     setVerifyingId(ev.id);
     try {
-      const res = await api.verifyEvidence(ev.id);
+      const res = await api.verifyEvidence(ev.id, simulateTamper);
       setVerifiedMap((prev) => ({ ...prev, [ev.id]: res }));
       setVerificationModal({
         exhibit: ev,
         result: res,
       });
     } catch (e: any) {
-      alert("Verification failed: " + e.message);
+      alert("Verification request failed: " + e.message);
     } finally {
       setVerifyingId(null);
     }
@@ -69,7 +76,8 @@ export default function Integrity() {
   });
 
   const totalExhibits = evidenceList.length;
-  const verifiedCount = Object.keys(verifiedMap).length;
+  const verifiedCount = Object.values(verifiedMap).filter((v) => v.verified).length;
+  const tamperCount = Object.values(verifiedMap).filter((v) => !v.verified).length;
 
   return (
     <div className="flex flex-col h-full bg-[var(--bg-void)]">
@@ -103,12 +111,19 @@ export default function Integrity() {
         </div>
       </div>
 
-      {/* ── Accurate Forensic Disclosure Notice ── */}
-      <div className="px-6 py-2.5 bg-[rgba(59,130,246,0.06)] border-b border-[rgba(59,130,246,0.2)] text-[11px] text-[var(--text-secondary)] flex items-center gap-2">
-        <Lock size={13} className="text-[var(--intel-sky)] shrink-0" />
-        <span>
-          <strong>CRYPTOGRAPHIC SEAL GUARANTEE:</strong> SHA-256 verification confirms that seized digital records have not been altered or tampered with since acquisition. It provides mathematical proof of bit-level custody integrity.
-        </span>
+      {/* ── Strict Forensic Disclosure Notice ── */}
+      <div className="px-6 py-2.5 bg-blue-950/20 border-b border-blue-900/30 text-[11px] text-[var(--text-secondary)] flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <Lock size={13} className="text-[var(--intel-sky)] shrink-0" />
+          <span>
+            <strong>INTEGRITY VS. AUTHENTICITY NOTICE:</strong> SHA-256 integrity verification mathematically confirms that stored file bytes have not been altered or tampered with since acquisition. It proves <em>data integrity</em>, not the external truthfulness or source legitimacy of the document.
+          </span>
+        </div>
+        {ledgerMeta?.chain_valid && (
+          <span className="badge badge-verified text-[8px] whitespace-nowrap shrink-0">
+            CHAIN VERIFIED INTACT ({ledgerMeta.total_blocks} BLOCKS)
+          </span>
+        )}
       </div>
 
       {/* ── Status Metrics Strip ── */}
@@ -118,12 +133,16 @@ export default function Integrity() {
           <div className="text-base font-bold font-mono text-[var(--text-bright)] mt-0.5">{totalExhibits}</div>
         </div>
         <div className="panel p-2.5 bg-[var(--bg-panel-raised)]">
-          <div className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Active Session Verifications</div>
-          <div className="text-base font-bold font-mono text-[var(--status-verified)] mt-0.5">{verifiedCount} passed</div>
+          <div className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Session Verifications</div>
+          <div className="text-base font-bold font-mono text-[var(--status-verified)] mt-0.5">
+            {verifiedCount} passed {tamperCount > 0 && <span className="text-rose-400 font-bold ml-1">({tamperCount} tampered)</span>}
+          </div>
         </div>
         <div className="panel p-2.5 bg-[var(--bg-panel-raised)]">
-          <div className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Hashing Algorithm</div>
-          <div className="text-xs font-mono text-[var(--intel-sky)] mt-1">SHA-256 Digest Engine</div>
+          <div className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Genesis Anchor</div>
+          <div className="text-xs font-mono text-[var(--intel-sky)] mt-1 truncate" title={ledgerMeta?.genesis_hash || ""}>
+            {ledgerMeta?.genesis_hash ? ledgerMeta.genesis_hash.slice(0, 14) + "..." : "SHA-256 Root"}
+          </div>
         </div>
         <div className="panel p-2.5 bg-[var(--bg-panel-raised)]">
           <div className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Ledger Structure</div>
@@ -185,17 +204,24 @@ export default function Integrity() {
               const verified = verifiedMap[ev.id];
               const isVerifying = verifyingId === ev.id;
               const isCopied = copiedHashId === ev.id;
+              const hasFailed = (verified && !verified.verified) || ev.is_tampered;
 
               return (
                 <div
                   key={ev.id}
-                  className="panel p-4 bg-[var(--bg-panel-solid)] hover:border-[var(--border-strong)] transition-all"
+                  className={`panel p-4 bg-[var(--bg-panel-solid)] transition-all ${
+                    hasFailed ? "border-rose-700/60 bg-rose-950/10" : "hover:border-[var(--border-strong)]"
+                  }`}
                 >
                   <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                     {/* Left: Exhibit Details */}
                     <div className="flex items-start gap-3.5 flex-1 min-w-0">
-                      <div className="w-9 h-9 rounded flex items-center justify-center bg-[var(--bg-panel-raised)] border border-[var(--border-strong)] text-[var(--intel-sky)] shrink-0 mt-0.5">
-                        <Fingerprint size={18} />
+                      <div className={`w-9 h-9 rounded flex items-center justify-center border shrink-0 mt-0.5 ${
+                        hasFailed
+                          ? "bg-rose-950/60 border-rose-700 text-rose-400"
+                          : "bg-[var(--bg-panel-raised)] border-[var(--border-strong)] text-[var(--intel-sky)]"
+                      }`}>
+                        {hasFailed ? <AlertTriangle size={18} /> : <Fingerprint size={18} />}
                       </div>
 
                       <div className="space-y-1 min-w-0 flex-1">
@@ -241,14 +267,23 @@ export default function Integrity() {
                           </button>
                         </div>
 
-                        <div className="p-2 rounded bg-[var(--bg-void)] border border-[var(--border-subtle)] font-mono text-[10px] text-[var(--text-secondary)] break-all select-all leading-tight">
+                        <div className={`p-2 rounded font-mono text-[10px] break-all select-all leading-tight border ${
+                          hasFailed
+                            ? "bg-rose-950/40 border-rose-800 text-rose-300"
+                            : "bg-[var(--bg-void)] border-[var(--border-subtle)] text-[var(--text-secondary)]"
+                        }`}>
                           {ev.sha256_digest || "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"}
                         </div>
                       </div>
 
                       <div className="flex items-center justify-between gap-2 pt-1">
                         <div>
-                          {verified ? (
+                          {hasFailed ? (
+                            <span className="badge badge-critical text-[9px] text-rose-300 border-rose-800 bg-rose-950/60 flex items-center gap-1">
+                              <AlertTriangle size={11} />
+                              <span>TAMPER DETECTED / HASH MISMATCH</span>
+                            </span>
+                          ) : verified?.verified ? (
                             <span className="badge badge-verified text-[9px] flex items-center gap-1">
                               <CheckCircle2 size={11} />
                               <span>ZERO ALTERATIONS CONFIRMED</span>
@@ -260,14 +295,25 @@ export default function Integrity() {
                           )}
                         </div>
 
-                        <button
-                          onClick={() => handleVerify(ev)}
-                          disabled={isVerifying}
-                          className="btn-primary py-1 px-3 text-xs flex items-center gap-1.5"
-                        >
-                          <ShieldCheck size={13} className={isVerifying ? "animate-spin" : ""} />
-                          <span>{isVerifying ? "Recalculating..." : "Verify Hash"}</span>
-                        </button>
+                        <div className="flex items-center gap-1.5">
+                          <button
+                            onClick={() => handleVerify(ev, false)}
+                            disabled={isVerifying}
+                            className="btn-primary py-1 px-2.5 text-[11px] flex items-center gap-1"
+                            title="Verify unaltered byte status"
+                          >
+                            <ShieldCheck size={12} className={isVerifying ? "animate-spin" : ""} />
+                            <span>{isVerifying ? "Verifying..." : "Verify Hash"}</span>
+                          </button>
+                          <button
+                            onClick={() => handleVerify(ev, true)}
+                            disabled={isVerifying}
+                            className="p-1 text-[10px] font-mono rounded bg-zinc-800 hover:bg-rose-950 hover:text-rose-300 text-zinc-400 border border-zinc-700 hover:border-rose-700 transition-colors"
+                            title="Simulate altered content to test tamper detection"
+                          >
+                            Test Tamper
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -284,10 +330,21 @@ export default function Integrity() {
           <div className="cmd-palette-modal max-w-lg p-5" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
               <div className="flex items-center gap-2">
-                <CheckCircle2 size={18} className="text-[var(--status-verified)]" />
-                <h2 className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
-                  Cryptographic Integrity Verification Passed
-                </h2>
+                {verificationModal.result.verified ? (
+                  <>
+                    <CheckCircle2 size={18} className="text-[var(--status-verified)]" />
+                    <h2 className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+                      Cryptographic Integrity Verification Passed
+                    </h2>
+                  </>
+                ) : (
+                  <>
+                    <ShieldAlert size={18} className="text-rose-400" />
+                    <h2 className="text-xs font-bold uppercase tracking-wider text-rose-400">
+                      Integrity Failure: Tampering Detected
+                    </h2>
+                  </>
+                )}
               </div>
               <button onClick={() => setVerificationModal(null)} className="text-xs font-mono text-[var(--text-muted)]">
                 ✕
@@ -301,22 +358,55 @@ export default function Integrity() {
                 <div className="text-[11px] text-[var(--text-secondary)]">ID: {verificationModal.exhibit.id}</div>
               </div>
 
-              <div className="space-y-1">
-                <div className="text-[10px] font-mono text-[var(--text-muted)]">VERIFIED SHA-256 DIGEST</div>
-                <div className="p-2 rounded bg-[var(--bg-panel-raised)] font-mono text-[10px] text-[var(--status-verified)] break-all border border-[var(--border-subtle)]">
-                  {verificationModal.result.calculated_hash}
+              {verificationModal.result.verified ? (
+                <div className="space-y-1">
+                  <div className="text-[10px] font-mono text-[var(--text-muted)]">VERIFIED SHA-256 DIGEST</div>
+                  <div className="p-2 rounded bg-[var(--bg-panel-raised)] font-mono text-[10px] text-[var(--status-verified)] break-all border border-[var(--border-subtle)]">
+                    {verificationModal.result.calculated_hash}
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="space-y-2">
+                  <div className="space-y-1">
+                    <div className="text-[10px] font-mono text-zinc-400">RECORDED ORIGINAL SEAL</div>
+                    <div className="p-2 rounded bg-zinc-900 font-mono text-[10px] text-zinc-300 break-all border border-zinc-700">
+                      {verificationModal.result.recorded_hash}
+                    </div>
+                  </div>
+                  <div className="space-y-1">
+                    <div className="text-[10px] font-mono text-rose-400">RECALCULATED HASH (ALTERED BYTES DETECTED)</div>
+                    <div className="p-2 rounded bg-rose-950/40 font-mono text-[10px] text-rose-300 break-all border border-rose-800">
+                      {verificationModal.result.calculated_hash}
+                    </div>
+                  </div>
+                </div>
+              )}
 
               <div className="grid grid-cols-2 gap-2 text-[11px] font-mono text-[var(--text-secondary)] pt-1">
                 <div>Verified By: <strong>{verificationModal.result.verified_by || user?.full_name || "Investigating Officer"}</strong></div>
                 <div>Algorithm: <strong>SHA-256 Digest</strong></div>
-                <div>Status: <span className="text-[var(--status-verified)] font-bold">BIT-ACCURATE</span></div>
+                <div>
+                  Status:{" "}
+                  {verificationModal.result.verified ? (
+                    <span className="text-[var(--status-verified)] font-bold">BIT-ACCURATE</span>
+                  ) : (
+                    <span className="text-rose-400 font-bold">TAMPER DETECTED</span>
+                  )}
+                </div>
                 <div>Timestamp: <strong>{new Date().toLocaleTimeString()} IST</strong></div>
               </div>
 
-              <div className="p-2.5 rounded bg-[rgba(16,185,129,0.06)] border border-[rgba(16,185,129,0.2)] text-[11px] text-[var(--text-secondary)]">
-                {verificationModal.result.message || "Integrity confirmed: Digital hash matches original forensic seizure state. Zero byte alterations detected."}
+              <div className={`p-2.5 rounded border text-[11px] leading-relaxed ${
+                verificationModal.result.verified
+                  ? "bg-[rgba(16,185,129,0.06)] border-[rgba(16,185,129,0.2)] text-[var(--text-secondary)]"
+                  : "bg-rose-950/30 border-rose-800/40 text-rose-300"
+              }`}>
+                {verificationModal.result.message}
+              </div>
+
+              {/* Forensic Disclaimer */}
+              <div className="p-2 rounded bg-zinc-900/60 border border-zinc-800 text-[10px] font-mono text-zinc-400">
+                <strong>Forensic Disclaimer:</strong> {verificationModal.result.disclaimer || "Cryptographic check proves bit-level data integrity (unaltered state), not external authenticity of real-world claims."}
               </div>
             </div>
 
