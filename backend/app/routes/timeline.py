@@ -86,9 +86,21 @@ def get_timeline_feed(
                 "meta": {"fir_id": f.id, "fir_number": f.fir_number, "case_id": f.case_id},
             })
 
-    # 2. Financial Transactions
-    txns = db.query(m.Transaction).all()
-    accounts = {a.id: a for a in db.query(m.FinancialAccount).all()}
+    # 2. Financial Transactions (limited to the 400 most recent; filtered queries
+    # stay fully accurate because filters are applied in SQL where possible)
+    txn_query = db.query(m.Transaction).order_by(m.Transaction.txn_date.desc()).limit(400)
+    if entity_id:
+        acc_ids = {a.id for a in db.query(m.FinancialAccount)
+                   .filter(m.FinancialAccount.owner_person_id == entity_id).all()}
+        if acc_ids:
+            txn_query = db.query(m.Transaction).filter(
+                m.Transaction.from_account_id.in_(acc_ids) |
+                m.Transaction.to_account_id.in_(acc_ids)
+            ).order_by(m.Transaction.txn_date.desc()).limit(400)
+    txns = txn_query.all()
+    acc_rows = db.query(m.FinancialAccount).all()
+    accounts = {a.id: a for a in acc_rows}
+    owner_ids = {a.owner_person_id for a in acc_rows if a.owner_person_id}
     for t in txns:
         from_acc = accounts.get(t.from_account_id)
         to_acc = accounts.get(t.to_account_id)
@@ -119,11 +131,17 @@ def get_timeline_feed(
                 "meta": {"amount": t.amount, "from_account": t.from_account_id, "to_account": t.to_account_id},
             })
 
-    # 3. Communications (CDR Events)
-    comm_rels = db.query(m.RelationshipRecord).filter(
+    # 3. Communications (CDR Events) - index-friendly: filter in SQL by entity,
+    # limit to the 300 most recent otherwise.
+    comm_q = db.query(m.RelationshipRecord).filter(
         (m.RelationshipRecord.relationship_type.in_(["COMMUNICATED_WITH", "USED_PHONE"])) |
         (m.RelationshipRecord.source_record_type == "CDR")
-    ).all()
+    )
+    if entity_id:
+        comm_q = comm_q.filter(
+            (m.RelationshipRecord.source_entity_id == entity_id) |
+            (m.RelationshipRecord.target_entity_id == entity_id))
+    comm_rels = comm_q.order_by(m.RelationshipRecord.last_seen_at.desc()).limit(300).all()
     for r in comm_rels:
         src_id = r.source_entity_id
         tgt_id = r.target_entity_id

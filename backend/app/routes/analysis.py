@@ -26,12 +26,14 @@ def _communications_from_cdr(db, lookup, phones, case_entity_ids,
             phone_owner.setdefault(p.owner_person_id, []).append(p)
 
     # pair frequencies (one aggregate query)
-    pair_counts = dict(
+    pair_rows = (
         db.query(
-            m.CDRRecord.phone_id, m.CDRRecord.counterparty_number,
+            m.CDRRecord.phone_id,
+            m.CDRRecord.counterparty_number,
             func.count(m.CDRRecord.id),
         ).group_by(m.CDRRecord.phone_id, m.CDRRecord.counterparty_number).all()
     )
+    pair_counts = {(pid, cp): n for pid, cp, n in pair_rows}
 
     query = db.query(m.CDRRecord).order_by(m.CDRRecord.call_time.desc())
     if from_date:

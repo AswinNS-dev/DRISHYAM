@@ -202,21 +202,33 @@ def get_hidden_links(db: Session = Depends(get_db), user=Depends(get_current_use
     lookup = graph_data.node_lookup(db)
 
     persons = [n["id"] for n in nodes if n.get("type") == "PERSON"]
-    findings = []
+    # Prefer already-flagged chain sources / high-centrality persons so the
+    # pairwise search stays bounded (~40 persons instead of all of them).
+    centrality, _ = graph_data.load_cached_analytics(db)
+    if centrality:
+        ranked = sorted(
+            ((pid, centrality.get(pid, {}).get("betweenness_centrality", 0)) for pid in persons),
+            key=lambda kv: -kv[1])
+        persons = [pid for pid, _ in ranked[:40]]
+    else:
+        persons = persons[:40]
 
-    # Run pairwise shortest paths for select key persons
+    findings = []
     import networkx as nx
+    ug = nx.Graph(g)
     checked_pairs = set()
     for i, p1 in enumerate(persons[:15]):
-        for p2 in persons[i+1:15]:
+        for p2 in persons[i+1:40]:
+            if len(findings) >= 10:
+                break
             pair_key = tuple(sorted([p1, p2]))
             if pair_key in checked_pairs:
                 continue
             checked_pairs.add(pair_key)
-            if not g.has_edge(p1, p2) and nx.has_path(g, p1, p2):
+            if not g.has_edge(p1, p2) and nx.has_path(ug, p1, p2):
                 try:
-                    path = nx.shortest_path(g, p1, p2)
-                    if 2 < len(path) <= 5:
+                    path = nx.shortest_path(ug, p1, p2)
+                    if 2 < len(path) <= 6:
                         path_names = [lookup.get(step, {}).get("name", step) for step in path]
                         findings.append({
                             "source_id": p1,
@@ -230,6 +242,8 @@ def get_hidden_links(db: Session = Depends(get_db), user=Depends(get_current_use
                         })
                 except Exception:
                     pass
+        if len(findings) >= 10:
+            break
 
     return {"findings": findings[:10]}
 
