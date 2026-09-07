@@ -1,0 +1,9 @@
+id,job_type,filename,status,entities_extracted,relationships_created,created_at
+IJ000001,fir,synthetic_fir_batch_01.json,completed,92,196,2026-06-26T05:02:22Z
+IJ000002,cdr,synthetic_cdr_batch_02.json,completed,68,130,2026-05-20T16:18:52Z
+IJ000003,financial,synthetic_financial_batch_03.json,completed,313,40,2024-02-17T18:39:58Z
+IJ000004,surveillance,synthetic_surveillance_batch_04.json,completed,236,174,2024-05-03T11:22:55Z
+IJ000005,fir,synthetic_fir_batch_05.json,completed,200,97,2024-01-19T02:05:07Z
+IJ000006,cdr,synthetic_cdr_batch_06.json,completed,271,170,2024-08-21T22:41:51Z
+IJ000007,financial,synthetic_financial_batch_07.json,completed,258,60,2024-09-19T13:49:06Z
+IJ000008,surveillance,synthetic_surveillance_batch_08.json,completed,275,65,2024-01-29T07:06:12Z

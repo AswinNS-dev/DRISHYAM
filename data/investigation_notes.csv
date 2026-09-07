@@ -1,0 +1,174 @@
+id,case_id,author_officer_id,note_text,created_at
+IN000001,CS000001,OF000008,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-11-15T10:23:03Z
+IN000002,CS000002,OF000004,Reviewed CDR batch for CASE-0002; repeated contact between prime accused and an unlisted number flagged for follow-up.,2026-01-08T09:06:04Z
+IN000003,CS000002,OF000002,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-01-29T09:06:04Z
+IN000004,CS000003,OF000001,Reviewed CDR batch for CASE-0003; repeated contact between prime accused and an unlisted number flagged for follow-up.,2025-08-12T18:14:31Z
+IN000005,CS000003,OF000004,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2025-08-08T18:14:31Z
+IN000006,CS000003,OF000008,Interview with complainant recorded; statement consistent with the FIR narrative.,2025-09-23T18:14:31Z
+IN000007,CS000004,OF000005,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-09-29T08:03:34Z
+IN000008,CS000004,OF000006,Interview with complainant recorded; statement consistent with the FIR narrative.,2024-11-02T08:03:34Z
+IN000009,CS000004,OF000007,Interview with complainant recorded; statement consistent with the FIR narrative.,2024-10-05T08:03:34Z
+IN000010,CS000005,OF000006,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-12-16T20:41:01Z
+IN000011,CS000005,OF000006,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2025-01-19T20:41:01Z
+IN000012,CS000006,OF000006,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-11-10T09:23:35Z
+IN000013,CS000007,OF000007,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2025-08-08T16:40:35Z
+IN000014,CS000007,OF000007,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2025-08-04T16:40:35Z
+IN000015,CS000007,OF000006,Financial forensics traced layered transfers originating from the accounts named in this case.,2025-08-19T16:40:35Z
+IN000016,CS000008,OF000002,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-08-22T04:25:44Z
+IN000017,CS000008,OF000004,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-08-11T04:25:44Z
+IN000018,CS000009,OF000008,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2024-03-26T06:06:31Z
+IN000019,CS000009,OF000002,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2024-04-09T06:06:31Z
+IN000020,CS000009,OF000007,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2024-03-16T06:06:31Z
+IN000021,CS000010,OF000004,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-08-19T02:49:53Z
+IN000022,CS000010,OF000008,Reviewed CDR batch for CASE-0010; repeated contact between prime accused and an unlisted number flagged for follow-up.,2026-10-08T02:49:53Z
+IN000023,CS000010,OF000003,Reviewed CDR batch for CASE-0010; repeated contact between prime accused and an unlisted number flagged for follow-up.,2026-09-04T02:49:53Z
+IN000024,CS000011,OF000003,Reviewed CDR batch for CASE-0011; repeated contact between prime accused and an unlisted number flagged for follow-up.,2026-04-25T20:05:48Z
+IN000025,CS000011,OF000008,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-05-05T20:05:48Z
+IN000026,CS000012,OF000007,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-02-18T23:28:34Z
+IN000027,CS000013,OF000001,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2024-08-24T22:28:43Z
+IN000028,CS000013,OF000005,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2024-09-19T22:28:43Z
+IN000029,CS000014,OF000007,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2024-07-27T19:17:02Z
+IN000030,CS000014,OF000003,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2024-06-08T19:17:02Z
+IN000031,CS000015,OF000003,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2025-02-05T10:18:31Z
+IN000032,CS000015,OF000006,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2025-03-26T10:18:31Z
+IN000033,CS000016,OF000007,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-09-15T03:29:14Z
+IN000034,CS000017,OF000007,Reviewed CDR batch for CASE-0017; repeated contact between prime accused and an unlisted number flagged for follow-up.,2024-11-24T19:21:38Z
+IN000035,CS000017,OF000007,Reviewed CDR batch for CASE-0017; repeated contact between prime accused and an unlisted number flagged for follow-up.,2024-11-24T19:21:38Z
+IN000036,CS000018,OF000005,Financial forensics traced layered transfers originating from the accounts named in this case.,2026-04-11T19:47:56Z
+IN000037,CS000018,OF000004,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-04-23T19:47:56Z
+IN000038,CS000019,OF000008,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2025-08-15T04:26:24Z
+IN000039,CS000019,OF000005,Financial forensics traced layered transfers originating from the accounts named in this case.,2025-07-26T04:26:24Z
+IN000040,CS000019,OF000001,Interview with complainant recorded; statement consistent with the FIR narrative.,2025-07-31T04:26:24Z
+IN000041,CS000020,OF000008,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-01-07T21:36:35Z
+IN000042,CS000020,OF000007,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2025-12-31T21:36:35Z
+IN000043,CS000021,OF000008,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-04-20T19:32:41Z
+IN000044,CS000022,OF000005,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2024-09-11T18:41:53Z
+IN000045,CS000022,OF000006,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-07-25T18:41:53Z
+IN000046,CS000023,OF000004,Interview with complainant recorded; statement consistent with the FIR narrative.,2025-05-13T23:13:57Z
+IN000047,CS000024,OF000003,Reviewed CDR batch for CASE-0024; repeated contact between prime accused and an unlisted number flagged for follow-up.,2024-02-19T17:54:12Z
+IN000048,CS000024,OF000003,Interview with complainant recorded; statement consistent with the FIR narrative.,2024-02-18T17:54:12Z
+IN000049,CS000025,OF000007,Reviewed CDR batch for CASE-0025; repeated contact between prime accused and an unlisted number flagged for follow-up.,2025-07-06T11:35:52Z
+IN000050,CS000025,OF000008,Financial forensics traced layered transfers originating from the accounts named in this case.,2025-08-08T11:35:52Z
+IN000051,CS000026,OF000001,Reviewed CDR batch for CASE-0026; repeated contact between prime accused and an unlisted number flagged for follow-up.,2024-11-17T20:49:52Z
+IN000052,CS000027,OF000003,Reviewed CDR batch for CASE-0027; repeated contact between prime accused and an unlisted number flagged for follow-up.,2025-02-25T16:30:00Z
+IN000053,CS000027,OF000005,Financial forensics traced layered transfers originating from the accounts named in this case.,2025-04-03T16:30:00Z
+IN000054,CS000028,OF000005,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-04-14T03:40:50Z
+IN000055,CS000028,OF000002,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2026-03-12T03:40:50Z
+IN000056,CS000028,OF000004,Financial forensics traced layered transfers originating from the accounts named in this case.,2026-04-01T03:40:50Z
+IN000057,CS000029,OF000003,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2024-10-07T16:05:38Z
+IN000058,CS000029,OF000002,Interview with complainant recorded; statement consistent with the FIR narrative.,2024-10-20T16:05:38Z
+IN000059,CS000030,OF000008,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2026-04-21T06:13:12Z
+IN000060,CS000031,OF000003,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2026-08-15T04:56:20Z
+IN000061,CS000032,OF000005,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2026-06-19T04:05:40Z
+IN000062,CS000033,OF000006,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2024-11-21T20:54:19Z
+IN000063,CS000034,OF000003,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2024-11-30T13:54:19Z
+IN000064,CS000034,OF000004,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-11-30T13:54:19Z
+IN000065,CS000035,OF000005,Reviewed CDR batch for CASE-0035; repeated contact between prime accused and an unlisted number flagged for follow-up.,2024-05-16T06:06:52Z
+IN000066,CS000035,OF000001,Interview with complainant recorded; statement consistent with the FIR narrative.,2024-05-05T06:06:52Z
+IN000067,CS000036,OF000008,Interview with complainant recorded; statement consistent with the FIR narrative.,2025-05-10T02:41:28Z
+IN000068,CS000036,OF000005,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2025-05-27T02:41:28Z
+IN000069,CS000037,OF000003,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2025-10-31T13:44:16Z
+IN000070,CS000037,OF000005,Financial forensics traced layered transfers originating from the accounts named in this case.,2025-10-22T13:44:16Z
+IN000071,CS000038,OF000007,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-05-14T16:00:15Z
+IN000072,CS000039,OF000006,Interview with complainant recorded; statement consistent with the FIR narrative.,2024-06-06T08:40:23Z
+IN000073,CS000040,OF000005,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2025-04-09T03:15:34Z
+IN000074,CS000040,OF000003,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2025-04-03T03:15:34Z
+IN000075,CS000041,OF000004,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2025-03-03T10:51:27Z
+IN000076,CS000041,OF000007,Reviewed CDR batch for CASE-0041; repeated contact between prime accused and an unlisted number flagged for follow-up.,2025-02-10T10:51:27Z
+IN000077,CS000042,OF000006,Interview with complainant recorded; statement consistent with the FIR narrative.,2025-06-30T22:12:28Z
+IN000078,CS000043,OF000005,Interview with complainant recorded; statement consistent with the FIR narrative.,2025-10-29T13:23:21Z
+IN000079,CS000043,OF000003,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2025-10-16T13:23:21Z
+IN000080,CS000044,OF000004,Interview with complainant recorded; statement consistent with the FIR narrative.,2024-10-27T16:49:56Z
+IN000081,CS000045,OF000005,Financial forensics traced layered transfers originating from the accounts named in this case.,2026-07-01T17:18:39Z
+IN000082,CS000046,OF000004,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-07-23T00:44:01Z
+IN000083,CS000046,OF000006,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2026-07-12T00:44:01Z
+IN000084,CS000046,OF000005,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2026-07-22T00:44:01Z
+IN000085,CS000047,OF000001,Interview with complainant recorded; statement consistent with the FIR narrative.,2025-02-19T23:09:48Z
+IN000086,CS000047,OF000008,Reviewed CDR batch for CASE-0047; repeated contact between prime accused and an unlisted number flagged for follow-up.,2025-01-01T23:09:48Z
+IN000087,CS000047,OF000005,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2025-01-28T23:09:48Z
+IN000088,CS000048,OF000006,Reviewed CDR batch for CASE-0048; repeated contact between prime accused and an unlisted number flagged for follow-up.,2026-06-13T06:08:16Z
+IN000089,CS000048,OF000004,Financial forensics traced layered transfers originating from the accounts named in this case.,2026-05-16T06:08:16Z
+IN000090,CS000049,OF000003,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-01-02T17:57:25Z
+IN000091,CS000050,OF000002,Financial forensics traced layered transfers originating from the accounts named in this case.,2025-12-11T00:23:15Z
+IN000092,CS000050,OF000005,Reviewed CDR batch for CASE-0050; repeated contact between prime accused and an unlisted number flagged for follow-up.,2025-11-25T00:23:15Z
+IN000093,CS000051,OF000001,Interview with complainant recorded; statement consistent with the FIR narrative.,2024-11-17T13:19:52Z
+IN000094,CS000051,OF000001,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2024-12-11T13:19:52Z
+IN000095,CS000051,OF000008,Reviewed CDR batch for CASE-0051; repeated contact between prime accused and an unlisted number flagged for follow-up.,2024-11-28T13:19:52Z
+IN000096,CS000052,OF000008,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-02-24T06:05:05Z
+IN000097,CS000053,OF000002,Interview with complainant recorded; statement consistent with the FIR narrative.,2025-12-03T14:38:31Z
+IN000098,CS000053,OF000004,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2025-12-23T14:38:31Z
+IN000099,CS000053,OF000006,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-01-22T14:38:31Z
+IN000100,CS000054,OF000008,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2026-03-18T11:33:00Z
+IN000101,CS000054,OF000001,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2026-05-02T11:33:00Z
+IN000102,CS000055,OF000008,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-10-10T12:02:45Z
+IN000103,CS000055,OF000007,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-10-22T12:02:45Z
+IN000104,CS000056,OF000005,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2024-05-30T00:35:46Z
+IN000105,CS000057,OF000006,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2026-01-27T04:16:44Z
+IN000106,CS000057,OF000005,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2026-01-10T04:16:44Z
+IN000107,CS000058,OF000001,Reviewed CDR batch for CASE-0058; repeated contact between prime accused and an unlisted number flagged for follow-up.,2026-02-27T05:58:39Z
+IN000108,CS000058,OF000003,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2026-03-22T05:58:39Z
+IN000109,CS000058,OF000003,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2026-03-01T05:58:39Z
+IN000110,CS000059,OF000007,Reviewed CDR batch for CASE-0059; repeated contact between prime accused and an unlisted number flagged for follow-up.,2026-01-14T12:33:24Z
+IN000111,CS000059,OF000002,Financial forensics traced layered transfers originating from the accounts named in this case.,2025-12-21T12:33:24Z
+IN000112,CS000059,OF000003,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2026-01-26T12:33:24Z
+IN000113,CS000060,OF000002,Reviewed CDR batch for CASE-0060; repeated contact between prime accused and an unlisted number flagged for follow-up.,2025-09-15T06:23:28Z
+IN000114,CS000060,OF000001,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2025-09-06T06:23:28Z
+IN000115,CS000061,OF000006,Financial forensics traced layered transfers originating from the accounts named in this case.,2025-04-26T20:32:19Z
+IN000116,CS000062,OF000005,Interview with complainant recorded; statement consistent with the FIR narrative.,2025-07-28T01:18:42Z
+IN000117,CS000062,OF000003,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2025-07-17T01:18:42Z
+IN000118,CS000063,OF000003,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2026-01-06T18:11:40Z
+IN000119,CS000064,OF000008,Reviewed CDR batch for CASE-0064; repeated contact between prime accused and an unlisted number flagged for follow-up.,2026-07-27T16:48:53Z
+IN000120,CS000065,OF000008,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-10-08T10:57:18Z
+IN000121,CS000065,OF000005,Reviewed CDR batch for CASE-0065; repeated contact between prime accused and an unlisted number flagged for follow-up.,2024-10-26T10:57:18Z
+IN000122,CS000066,OF000001,Reviewed CDR batch for CASE-0066; repeated contact between prime accused and an unlisted number flagged for follow-up.,2024-03-16T17:31:50Z
+IN000123,CS000066,OF000002,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-04-01T17:31:50Z
+IN000124,CS000066,OF000003,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2024-05-01T17:31:50Z
+IN000125,CS000067,OF000001,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-08-14T00:46:13Z
+IN000126,CS000068,OF000001,Reviewed CDR batch for CASE-0068; repeated contact between prime accused and an unlisted number flagged for follow-up.,2024-11-09T19:11:32Z
+IN000127,CS000068,OF000008,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-10-17T19:11:32Z
+IN000128,CS000068,OF000005,Interview with complainant recorded; statement consistent with the FIR narrative.,2024-11-16T19:11:32Z
+IN000129,CS000069,OF000008,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2025-09-19T18:17:22Z
+IN000130,CS000069,OF000004,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2025-09-17T18:17:22Z
+IN000131,CS000069,OF000003,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2025-09-14T18:17:22Z
+IN000132,CS000070,OF000003,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2024-12-27T08:56:44Z
+IN000133,CS000070,OF000001,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2024-12-08T08:56:44Z
+IN000134,CS000071,OF000003,Interview with complainant recorded; statement consistent with the FIR narrative.,2024-10-06T07:19:36Z
+IN000135,CS000071,OF000001,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2024-09-21T07:19:36Z
+IN000136,CS000072,OF000002,Reviewed CDR batch for CASE-0072; repeated contact between prime accused and an unlisted number flagged for follow-up.,2026-08-13T17:54:49Z
+IN000137,CS000072,OF000001,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2026-08-02T17:54:49Z
+IN000138,CS000073,OF000001,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2025-08-06T13:50:25Z
+IN000139,CS000074,OF000004,Financial forensics traced layered transfers originating from the accounts named in this case.,2026-07-14T03:06:22Z
+IN000140,CS000074,OF000006,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-07-15T03:06:22Z
+IN000141,CS000075,OF000003,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2025-12-18T05:10:32Z
+IN000142,CS000075,OF000005,Reviewed CDR batch for CASE-0075; repeated contact between prime accused and an unlisted number flagged for follow-up.,2025-12-04T05:10:32Z
+IN000143,CS000076,OF000002,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2025-07-30T12:36:23Z
+IN000144,CS000076,OF000004,Reviewed CDR batch for CASE-0076; repeated contact between prime accused and an unlisted number flagged for follow-up.,2025-07-09T12:36:23Z
+IN000145,CS000077,OF000008,Interview with complainant recorded; statement consistent with the FIR narrative.,2024-12-30T01:08:34Z
+IN000146,CS000078,OF000008,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2026-07-20T04:49:40Z
+IN000147,CS000078,OF000007,Interview with complainant recorded; statement consistent with the FIR narrative.,2026-07-13T04:49:40Z
+IN000148,CS000079,OF000006,Interview with complainant recorded; statement consistent with the FIR narrative.,2025-05-31T17:20:53Z
+IN000149,CS000079,OF000008,Financial forensics traced layered transfers originating from the accounts named in this case.,2025-05-26T17:20:53Z
+IN000150,CS000080,OF000005,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2024-10-22T21:53:58Z
+IN000151,CS000080,OF000001,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2024-11-28T21:53:58Z
+IN000152,CS000080,OF000001,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-11-22T21:53:58Z
+IN000153,CS000081,OF000008,Financial forensics traced layered transfers originating from the accounts named in this case.,2025-09-27T14:04:40Z
+IN000154,CS000082,OF000008,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2025-09-02T02:41:59Z
+IN000155,CS000083,OF000007,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2026-06-13T21:57:14Z
+IN000156,CS000083,OF000007,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2026-06-27T21:57:14Z
+IN000157,CS000083,OF000008,Financial forensics traced layered transfers originating from the accounts named in this case.,2026-05-25T21:57:14Z
+IN000158,CS000084,OF000004,Reviewed CDR batch for CASE-0084; repeated contact between prime accused and an unlisted number flagged for follow-up.,2026-07-10T06:34:34Z
+IN000159,CS000084,OF000003,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2026-06-22T06:34:34Z
+IN000160,CS000085,OF000003,Reviewed CDR batch for CASE-0085; repeated contact between prime accused and an unlisted number flagged for follow-up.,2025-02-15T02:21:39Z
+IN000161,CS000086,OF000001,Financial forensics traced layered transfers originating from the accounts named in this case.,2025-09-25T07:20:31Z
+IN000162,CS000086,OF000007,Cross-verified ANPR trail with toll plaza logs; corridor timing matches witness account.,2025-09-16T07:20:31Z
+IN000163,CS000086,OF000003,Reviewed CDR batch for CASE-0086; repeated contact between prime accused and an unlisted number flagged for follow-up.,2025-09-28T07:20:31Z
+IN000164,CS000087,OF000002,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-08-11T15:45:12Z
+IN000165,CS000087,OF000003,Interview with complainant recorded; statement consistent with the FIR narrative.,2024-07-27T15:45:12Z
+IN000166,CS000087,OF000006,Financial forensics traced layered transfers originating from the accounts named in this case.,2024-08-27T15:45:12Z
+IN000167,CS000088,OF000004,Interview with complainant recorded; statement consistent with the FIR narrative.,2025-12-21T07:38:20Z
+IN000168,CS000089,OF000001,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2025-12-15T14:07:42Z
+IN000169,CS000089,OF000002,Interview with complainant recorded; statement consistent with the FIR narrative.,2025-12-18T14:07:42Z
+IN000170,CS000089,OF000006,Financial forensics traced layered transfers originating from the accounts named in this case.,2025-12-16T14:07:42Z
+IN000171,CS000090,OF000008,Surveillance team confirmed subject movements near the corridor on the night of the incident.,2024-03-16T05:00:50Z
+IN000172,CS000091,OF000006,Interim progress note: awaiting forensic analysis results from the digital extraction unit.,2024-11-04T06:15:34Z
+IN000173,CS000091,OF000001,Interview with complainant recorded; statement consistent with the FIR narrative.,2024-12-04T06:15:34Z

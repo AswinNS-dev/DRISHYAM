@@ -1,0 +1,9 @@
+id,user_id,badge_number,rank,district,created_at
+OF000001,US000001,TNPLC-3891,Inspector,Chennai,2024-01-02T09:00:00Z
+OF000002,US000002,TNPLC-1087,Sub-Inspector,Chengalpattu,2024-01-02T09:00:00Z
+OF000003,US000003,TNPLC-9376,Deputy Superintendent of Police,Kancheepuram,2024-01-02T09:00:00Z
+OF000004,,TNPLC-9169,Assistant Commissioner,Thiruvallur,2024-01-02T09:00:00Z
+OF000005,,TNPLC-7702,Constable,Vellore,2024-01-02T09:00:00Z
+OF000006,,TNPLC-2794,Inspector,Tiruvannamalai,2024-01-02T09:00:00Z
+OF000007,,TNPLC-9030,Sub-Inspector,Villupuram,2024-01-02T09:00:00Z
+OF000008,,TNPLC-9659,Deputy Superintendent of Police,Cuddalore,2024-01-02T09:00:00Z

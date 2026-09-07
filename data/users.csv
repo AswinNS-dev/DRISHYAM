@@ -1,0 +1,4 @@
+id,email,full_name,hashed_password,role,is_active,created_at
+US000001,investigator@drishyam.demo,Investigator Demo,$2b$12$4jpwwFIZaSo5Y5ZJhXNEx.GjIbiBbgVv30ozJW9HVUfSHvWSS3B6W,investigator,True,2024-01-02T09:00:00Z
+US000002,admin@drishyam.demo,Admin Demo,$2b$12$4jpwwFIZaSo5Y5ZJhXNEx.GjIbiBbgVv30ozJW9HVUfSHvWSS3B6W,admin,True,2024-01-02T09:00:00Z
+US000003,analyst@drishyam.demo,Analyst Demo,$2b$12$4jpwwFIZaSo5Y5ZJhXNEx.GjIbiBbgVv30ozJW9HVUfSHvWSS3B6W,crime_analyst,True,2024-01-02T09:00:00Z

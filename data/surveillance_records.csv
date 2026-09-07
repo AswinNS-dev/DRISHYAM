@@ -1,0 +1,1460 @@
+id,location_id,person_id,vehicle_id,observed_at,notes,data_source
+SR000001,LOC000061,P000625,,2024-10-18T08:15:34Z,Signature chain surveillance sighting #1 near Central Market Junction,SYNTHETIC
+SR000002,LOC000061,P000626,,2024-10-18T10:15:34Z,Signature chain surveillance sighting #2 near Central Market Junction,SYNTHETIC
+SR000003,LOC000061,P000626,VH000235,2024-10-18T07:15:34Z,Signature chain surveillance sighting #3 near Central Market Junction,SYNTHETIC
+SR000004,LOC000050,P000395,,2024-09-29T19:43:15Z,Subject met unidentified associate at Ganapathy Bus Terminus,SYNTHETIC
+SR000005,LOC000061,P000576,VH000193,2024-05-02T23:16:58Z,Routine patrol log entry - Central Market Junction,SYNTHETIC
+SR000006,LOC000012,P000169,,2026-06-05T17:09:53Z,Vehicle sighting captured by ANPR at KK Nagar Night Bazaar,SYNTHETIC
+SR000007,LOC000042,P000533,,2024-12-04T22:09:12Z,Routine patrol log entry - Chromepet Agro Market,SYNTHETIC
+SR000008,LOC000041,P000511,,2024-02-19T02:02:38Z,Subject used phone while parked near Vilachery Cold Storage,SYNTHETIC
+SR000009,LOC000023,P000483,,2024-08-13T21:07:54Z,Subject met unidentified associate at Sundarankottai Fuel Station,SYNTHETIC
+SR000010,LOC000044,P000093,,2026-04-15T15:06:48Z,CCTV frame captured at Sulur Check Post toll plaza,SYNTHETIC
+SR000011,LOC000021,P000437,,2025-06-12T13:36:06Z,Subject used phone while parked near Valluvar Layout Harbour Gate,SYNTHETIC
+SR000012,LOC000022,P000381,,2024-04-29T22:15:19Z,Vehicle sighting captured by ANPR at Nellithope Cold Storage,SYNTHETIC
+SR000013,LOC000015,P000461,,2024-04-08T11:59:06Z,Subject used phone while parked near Valluvar Layout Night Bazaar,SYNTHETIC
+SR000014,LOC000047,P000368,VH000186,2025-05-18T07:58:33Z,Vehicle sighting captured by ANPR at Azhagar Koil Road Junction,SYNTHETIC
+SR000015,LOC000009,P000617,,2025-01-24T01:06:54Z,CCTV frame captured at Chokkanadar Pettai Oil Depot toll plaza,SYNTHETIC
+SR000016,LOC000058,P000339,VH000179,2024-05-30T03:01:01Z,Vehicle TN25 YH 7757 (van) recorded entering Anna Nagar Lorry Park,SYNTHETIC
+SR000017,LOC000061,P000586,,2025-08-31T13:14:10Z,CCTV frame captured at Central Market Junction toll plaza,SYNTHETIC
+SR000018,LOC000014,P000295,,2024-12-20T20:52:57Z,Subject met unidentified associate at Estancia Bridge End,SYNTHETIC
+SR000019,LOC000031,P000393,VH000194,2025-10-16T15:03:50Z,Vehicle TN25 WF 5908 (van) recorded entering Peelamedu Textile Mill,SYNTHETIC
+SR000020,LOC000050,P000203,,2024-03-04T22:27:53Z,Subject observed on foot near Ganapathy Bus Terminus,SYNTHETIC
+SR000021,LOC000020,P000293,VH000166,2025-03-30T18:23:48Z,Vehicle sighting captured by ANPR at Mylapore City Police Station,SYNTHETIC
+SR000022,LOC000012,P000605,,2025-07-23T23:58:14Z,Subject used phone while parked near KK Nagar Night Bazaar,SYNTHETIC
+SR000023,LOC000031,P000046,,2025-04-23T23:15:52Z,Subject observed on foot near Peelamedu Textile Mill,SYNTHETIC
+SR000024,LOC000050,P000302,,2025-07-06T05:02:22Z,Subject used phone while parked near Ganapathy Bus Terminus,SYNTHETIC
+SR000025,LOC000052,P000168,VH000171,2026-08-08T14:43:54Z,Subject observed on foot near Coimbatore Junction Construction Site,SYNTHETIC
+SR000026,LOC000039,P000425,,2025-12-02T10:36:44Z,Routine patrol log entry - Thirunagar Industrial Estate,SYNTHETIC
+SR000027,LOC000049,P000186,VH000125,2025-11-30T14:49:14Z,Subject met unidentified associate at Gandhipuram Warehouse Complex,SYNTHETIC
+SR000028,LOC000024,P000456,,2024-01-11T03:31:30Z,Vehicle sighting captured by ANPR at Palladam Check Post,SYNTHETIC
+SR000029,LOC000039,P000455,,2026-04-05T17:22:00Z,Vehicle sighting captured by ANPR at Thirunagar Industrial Estate,SYNTHETIC
+SR000030,LOC000033,P000138,,2025-08-14T20:58:16Z,Vehicle sighting captured by ANPR at Ukkadam Toll Plaza,SYNTHETIC
+SR000031,LOC000034,P000005,,2025-06-06T16:56:24Z,Subject met unidentified associate at Mattuthavani Junction,SYNTHETIC
+SR000032,LOC000008,P000432,,2025-09-08T20:22:43Z,Subject met unidentified associate at Ambattur Warehouse Complex,SYNTHETIC
+SR000033,LOC000023,P000015,,2024-09-21T15:43:39Z,Subject used phone while parked near Sundarankottai Fuel Station,SYNTHETIC
+SR000034,LOC000003,P000054,,2025-08-03T22:08:30Z,Vehicle sighting captured by ANPR at Thirunagar Cold Storage,SYNTHETIC
+SR000035,LOC000047,P000517,,2026-05-04T16:01:55Z,CCTV frame captured at Azhagar Koil Road Junction toll plaza,SYNTHETIC
+SR000036,LOC000003,P000094,VH000229,2024-01-20T22:31:57Z,Subject observed on foot near Thirunagar Cold Storage,SYNTHETIC
+SR000037,LOC000057,P000538,VH000220,2025-11-12T01:48:32Z,Routine patrol log entry - Azhagar Koil Road Fuel Station,SYNTHETIC
+SR000038,LOC000028,P000385,VH000191,2025-09-08T07:06:56Z,Vehicle TN39 UB 2519 (motorcycle) recorded entering Ganapathy Mandi,SYNTHETIC
+SR000039,LOC000033,P000556,,2026-01-19T18:12:14Z,Subject met unidentified associate at Ukkadam Toll Plaza,SYNTHETIC
+SR000040,LOC000031,P000256,,2026-05-16T06:15:17Z,CCTV frame captured at Peelamedu Textile Mill toll plaza,SYNTHETIC
+SR000041,LOC000013,P000344,VH000181,2025-08-04T21:46:11Z,Vehicle TN62 AN 8539 (SUV) recorded entering Bharathi Bazaar Wholesale Market,SYNTHETIC
+SR000042,LOC000009,P000086,,2024-01-28T07:58:55Z,Subject met unidentified associate at Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000043,LOC000059,P000381,,2025-09-09T11:23:07Z,Subject observed on foot near RS Puram Agro Market,SYNTHETIC
+SR000044,LOC000008,P000191,,2025-09-15T09:18:08Z,Routine patrol log entry - Ambattur Warehouse Complex,SYNTHETIC
+SR000045,LOC000002,P000232,,2024-06-14T20:36:40Z,Routine patrol log entry - Velachery Oil Depot,SYNTHETIC
+SR000046,LOC000027,P000223,,2024-07-08T06:19:13Z,Subject used phone while parked near Mettupalayam Cold Storage,SYNTHETIC
+SR000047,LOC000059,P000290,VH000164,2025-02-01T22:54:41Z,Subject observed on foot near RS Puram Agro Market,SYNTHETIC
+SR000048,LOC000003,P000074,,2024-05-30T19:44:10Z,Subject observed on foot near Thirunagar Cold Storage,SYNTHETIC
+SR000049,LOC000058,P000413,,2026-07-22T11:23:38Z,CCTV frame captured at Anna Nagar Lorry Park toll plaza,SYNTHETIC
+SR000050,LOC000007,P000259,VH000041,2025-12-28T10:46:33Z,Subject met unidentified associate at Muthialpet Check Post,SYNTHETIC
+SR000051,LOC000005,P000437,,2025-06-01T02:56:28Z,Subject observed on foot near Kajamalai Junction,SYNTHETIC
+SR000052,LOC000047,P000118,VH000080,2024-04-21T23:22:26Z,Subject observed on foot near Azhagar Koil Road Junction,SYNTHETIC
+SR000053,LOC000042,P000618,,2025-12-29T08:13:10Z,CCTV frame captured at Chromepet Agro Market toll plaza,SYNTHETIC
+SR000054,LOC000034,P000145,,2024-09-08T18:36:32Z,Subject observed on foot near Mattuthavani Junction,SYNTHETIC
+SR000055,LOC000006,P000130,VH000087,2024-08-24T11:45:24Z,CCTV frame captured at Pappanaickenpalayam Bridge End toll plaza,SYNTHETIC
+SR000056,LOC000039,P000401,,2024-11-29T01:47:16Z,Subject observed on foot near Thirunagar Industrial Estate,SYNTHETIC
+SR000057,LOC000061,P000296,,2025-07-23T02:34:49Z,CCTV frame captured at Central Market Junction toll plaza,SYNTHETIC
+SR000058,LOC000034,P000347,,2024-01-23T20:03:00Z,Subject met unidentified associate at Mattuthavani Junction,SYNTHETIC
+SR000059,LOC000053,P000179,,2024-03-08T00:06:43Z,Subject observed on foot near Mettupalayam Wholesale Market,SYNTHETIC
+SR000060,LOC000054,P000329,,2024-12-04T15:12:07Z,Subject observed on foot near Kallamadu Agro Market,SYNTHETIC
+SR000061,LOC000044,P000405,,2024-09-25T01:13:14Z,Subject used phone while parked near Sulur Check Post,SYNTHETIC
+SR000062,LOC000042,P000222,VH000145,2026-02-23T05:07:14Z,Subject used phone while parked near Chromepet Agro Market,SYNTHETIC
+SR000063,LOC000007,P000473,VH000208,2024-03-19T17:13:20Z,Subject observed on foot near Muthialpet Check Post,SYNTHETIC
+SR000064,LOC000059,P000417,,2026-05-18T03:28:55Z,Subject observed on foot near RS Puram Agro Market,SYNTHETIC
+SR000065,LOC000022,P000432,,2025-01-24T13:20:14Z,Vehicle sighting captured by ANPR at Nellithope Cold Storage,SYNTHETIC
+SR000066,LOC000040,P000555,VH000221,2026-07-16T06:10:16Z,Subject met unidentified associate at Gandhipuram Textile Mill,SYNTHETIC
+SR000067,LOC000001,P000619,,2026-05-01T03:28:22Z,Subject met unidentified associate at Ganapathy City Police Station,SYNTHETIC
+SR000068,LOC000017,P000034,,2026-01-09T03:27:05Z,Subject met unidentified associate at Egmore Cold Storage,SYNTHETIC
+SR000069,LOC000046,P000389,,2025-05-14T10:28:26Z,Subject observed on foot near Royapuram Fuel Station,SYNTHETIC
+SR000070,LOC000015,P000273,,2026-03-14T13:13:43Z,Vehicle sighting captured by ANPR at Valluvar Layout Night Bazaar,SYNTHETIC
+SR000071,LOC000009,P000069,VH000046,2024-05-22T16:35:17Z,Routine patrol log entry - Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000072,LOC000030,P000010,VH000008,2025-12-12T18:29:56Z,Vehicle sighting captured by ANPR at Ganapathy Junction,SYNTHETIC
+SR000073,LOC000054,P000358,,2026-01-15T17:35:35Z,Subject used phone while parked near Kallamadu Agro Market,SYNTHETIC
+SR000074,LOC000006,P000042,VH000029,2024-07-27T10:57:54Z,CCTV frame captured at Pappanaickenpalayam Bridge End toll plaza,SYNTHETIC
+SR000075,LOC000009,P000448,VH000167,2025-08-09T18:08:45Z,CCTV frame captured at Chokkanadar Pettai Oil Depot toll plaza,SYNTHETIC
+SR000076,LOC000055,P000122,,2024-12-23T23:43:05Z,Subject met unidentified associate at Kuruvikulam Construction Site,SYNTHETIC
+SR000077,LOC000005,P000551,,2026-08-29T03:10:30Z,Routine patrol log entry - Kajamalai Junction,SYNTHETIC
+SR000078,LOC000056,P000601,,2025-04-05T23:09:02Z,Subject observed on foot near Kallamadu Industrial Estate,SYNTHETIC
+SR000079,LOC000049,P000593,,2025-09-18T10:03:11Z,Routine patrol log entry - Gandhipuram Warehouse Complex,SYNTHETIC
+SR000080,LOC000048,P000408,,2025-08-04T19:00:18Z,Subject met unidentified associate at Sulur Railway Yard,SYNTHETIC
+SR000081,LOC000036,P000149,,2024-01-21T18:59:15Z,Subject met unidentified associate at Pothigai Nagar Oil Depot,SYNTHETIC
+SR000082,LOC000041,P000435,,2024-05-06T08:27:03Z,Subject observed on foot near Vilachery Cold Storage,SYNTHETIC
+SR000083,LOC000040,P000415,,2024-11-29T14:53:38Z,Subject met unidentified associate at Gandhipuram Textile Mill,SYNTHETIC
+SR000084,LOC000042,P000159,VH000106,2026-08-18T11:48:36Z,Subject used phone while parked near Chromepet Agro Market,SYNTHETIC
+SR000085,LOC000033,P000460,,2024-05-12T09:36:13Z,Routine patrol log entry - Ukkadam Toll Plaza,SYNTHETIC
+SR000086,LOC000010,P000366,,2024-01-12T00:52:29Z,Subject observed on foot near Kuruvikulam Residential Layout,SYNTHETIC
+SR000087,LOC000011,P000234,,2024-08-23T10:26:35Z,Subject observed on foot near Peelamedu Harbour Gate,SYNTHETIC
+SR000088,LOC000023,P000347,,2024-01-30T01:20:31Z,Subject observed on foot near Sundarankottai Fuel Station,SYNTHETIC
+SR000089,LOC000058,P000613,,2024-08-03T18:49:11Z,Subject observed on foot near Anna Nagar Lorry Park,SYNTHETIC
+SR000090,LOC000059,P000356,,2026-04-17T13:24:34Z,CCTV frame captured at RS Puram Agro Market toll plaza,SYNTHETIC
+SR000091,LOC000015,P000215,,2024-04-08T11:29:24Z,Routine patrol log entry - Valluvar Layout Night Bazaar,SYNTHETIC
+SR000092,LOC000052,P000196,,2024-09-30T10:54:29Z,Vehicle sighting captured by ANPR at Coimbatore Junction Construction Site,SYNTHETIC
+SR000093,LOC000006,P000323,,2025-11-03T04:41:06Z,Subject used phone while parked near Pappanaickenpalayam Bridge End,SYNTHETIC
+SR000094,LOC000054,P000174,VH000118,2025-05-21T20:53:08Z,CCTV frame captured at Kallamadu Agro Market toll plaza,SYNTHETIC
+SR000095,LOC000039,P000109,VH000074,2025-07-19T10:07:33Z,Vehicle TN25 DN 5476 (SUV) recorded entering Thirunagar Industrial Estate,SYNTHETIC
+SR000096,LOC000021,P000452,,2024-03-11T15:54:01Z,Routine patrol log entry - Valluvar Layout Harbour Gate,SYNTHETIC
+SR000097,LOC000053,P000545,,2025-10-29T08:26:55Z,Vehicle sighting captured by ANPR at Mettupalayam Wholesale Market,SYNTHETIC
+SR000098,LOC000011,P000412,,2024-08-03T09:32:49Z,Vehicle sighting captured by ANPR at Peelamedu Harbour Gate,SYNTHETIC
+SR000099,LOC000012,P000439,VH000201,2025-11-10T09:50:57Z,Vehicle sighting captured by ANPR at KK Nagar Night Bazaar,SYNTHETIC
+SR000100,LOC000022,P000526,,2025-07-28T22:37:31Z,Subject observed on foot near Nellithope Cold Storage,SYNTHETIC
+SR000101,LOC000034,P000620,,2025-04-20T14:58:23Z,CCTV frame captured at Mattuthavani Junction toll plaza,SYNTHETIC
+SR000102,LOC000018,P000232,,2025-04-16T15:10:18Z,CCTV frame captured at Anna Nagar Bus Terminus toll plaza,SYNTHETIC
+SR000103,LOC000006,P000518,VH000050,2026-03-17T15:14:52Z,Subject used phone while parked near Pappanaickenpalayam Bridge End,SYNTHETIC
+SR000104,LOC000045,P000455,,2024-12-06T05:28:49Z,Subject observed on foot near Pothigai Nagar Toll Plaza,SYNTHETIC
+SR000105,LOC000030,P000157,VH000169,2025-05-19T16:40:53Z,Routine patrol log entry - Ganapathy Junction,SYNTHETIC
+SR000106,LOC000011,P000276,,2025-01-16T14:21:52Z,Subject used phone while parked near Peelamedu Harbour Gate,SYNTHETIC
+SR000107,LOC000038,P000570,VH000224,2025-05-01T09:07:18Z,Vehicle TN23 FE 9296 (SUV) recorded entering Tambaram Toll Plaza,SYNTHETIC
+SR000108,LOC000012,P000309,,2024-07-24T07:35:48Z,Subject used phone while parked near KK Nagar Night Bazaar,SYNTHETIC
+SR000109,LOC000030,P000421,,2025-05-20T03:30:20Z,Subject met unidentified associate at Ganapathy Junction,SYNTHETIC
+SR000110,LOC000009,P000520,,2024-06-26T01:33:56Z,Subject used phone while parked near Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000111,LOC000025,P000035,VH000024,2025-01-14T09:13:44Z,Subject met unidentified associate at Anna Nagar Check Post,SYNTHETIC
+SR000112,LOC000022,P000575,VH000003,2024-02-29T17:56:52Z,Subject met unidentified associate at Nellithope Cold Storage,SYNTHETIC
+SR000113,LOC000004,P000052,,2026-02-23T11:36:30Z,CCTV frame captured at Chokkanadar Harbour Police Station toll plaza,SYNTHETIC
+SR000114,LOC000035,P000492,,2024-02-11T00:15:32Z,Routine patrol log entry - Arumbakkam Godown Compound,SYNTHETIC
+SR000115,LOC000049,P000419,,2024-11-21T06:14:26Z,Subject met unidentified associate at Gandhipuram Warehouse Complex,SYNTHETIC
+SR000116,LOC000009,P000172,VH000117,2024-01-01T20:03:51Z,Subject observed on foot near Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000117,LOC000048,P000421,VH000220,2025-12-27T06:22:10Z,Subject used phone while parked near Sulur Railway Yard,SYNTHETIC
+SR000118,LOC000060,P000556,VH000084,2025-03-30T11:49:44Z,Routine patrol log entry - Ukkadam Cold Storage,SYNTHETIC
+SR000119,LOC000015,P000519,,2025-07-02T02:10:44Z,Routine patrol log entry - Valluvar Layout Night Bazaar,SYNTHETIC
+SR000120,LOC000030,P000551,,2025-07-19T14:06:13Z,Subject observed on foot near Ganapathy Junction,SYNTHETIC
+SR000121,LOC000053,P000219,,2025-04-16T02:35:56Z,Subject observed on foot near Mettupalayam Wholesale Market,SYNTHETIC
+SR000122,LOC000014,P000055,,2024-05-27T10:57:30Z,Subject met unidentified associate at Estancia Bridge End,SYNTHETIC
+SR000123,LOC000011,P000444,,2025-11-06T13:31:28Z,Vehicle sighting captured by ANPR at Peelamedu Harbour Gate,SYNTHETIC
+SR000124,LOC000007,P000216,,2025-06-24T10:06:17Z,Subject used phone while parked near Muthialpet Check Post,SYNTHETIC
+SR000125,LOC000039,P000591,VH000161,2024-04-16T17:25:12Z,Vehicle TN27 VW 1054 (sedan) recorded entering Thirunagar Industrial Estate,SYNTHETIC
+SR000126,LOC000025,P000277,VH000157,2024-11-19T10:54:01Z,Routine patrol log entry - Anna Nagar Check Post,SYNTHETIC
+SR000127,LOC000050,P000332,,2024-01-12T10:05:13Z,CCTV frame captured at Ganapathy Bus Terminus toll plaza,SYNTHETIC
+SR000128,LOC000015,P000203,,2025-10-24T21:43:11Z,CCTV frame captured at Valluvar Layout Night Bazaar toll plaza,SYNTHETIC
+SR000129,LOC000059,P000450,,2026-06-10T14:03:00Z,Routine patrol log entry - RS Puram Agro Market,SYNTHETIC
+SR000130,LOC000013,P000402,VH000195,2025-10-18T04:27:13Z,Vehicle TN46 DT 5701 (van) recorded entering Bharathi Bazaar Wholesale Market,SYNTHETIC
+SR000131,LOC000055,P000284,,2025-05-14T09:10:19Z,Subject met unidentified associate at Kuruvikulam Construction Site,SYNTHETIC
+SR000132,LOC000046,P000532,,2024-05-05T18:13:57Z,Vehicle sighting captured by ANPR at Royapuram Fuel Station,SYNTHETIC
+SR000133,LOC000012,P000031,VH000021,2026-03-03T04:10:44Z,CCTV frame captured at KK Nagar Night Bazaar toll plaza,SYNTHETIC
+SR000134,LOC000035,P000041,VH000028,2025-09-21T14:31:16Z,CCTV frame captured at Arumbakkam Godown Compound toll plaza,SYNTHETIC
+SR000135,LOC000040,P000246,,2024-08-25T16:09:14Z,Vehicle sighting captured by ANPR at Gandhipuram Textile Mill,SYNTHETIC
+SR000136,LOC000030,P000007,,2024-12-22T05:20:11Z,Subject met unidentified associate at Ganapathy Junction,SYNTHETIC
+SR000137,LOC000040,P000489,,2026-06-19T09:17:07Z,Routine patrol log entry - Gandhipuram Textile Mill,SYNTHETIC
+SR000138,LOC000042,P000502,,2026-07-26T00:43:54Z,Vehicle sighting captured by ANPR at Chromepet Agro Market,SYNTHETIC
+SR000139,LOC000055,P000116,VH000078,2024-03-02T07:09:45Z,Routine patrol log entry - Kuruvikulam Construction Site,SYNTHETIC
+SR000140,LOC000054,P000545,,2024-03-11T19:49:38Z,Vehicle sighting captured by ANPR at Kallamadu Agro Market,SYNTHETIC
+SR000141,LOC000054,P000387,VH000193,2026-05-05T05:08:05Z,Subject observed on foot near Kallamadu Agro Market,SYNTHETIC
+SR000142,LOC000059,P000307,,2026-05-07T00:25:36Z,Subject used phone while parked near RS Puram Agro Market,SYNTHETIC
+SR000143,LOC000021,P000320,,2026-08-15T03:41:16Z,Routine patrol log entry - Valluvar Layout Harbour Gate,SYNTHETIC
+SR000144,LOC000044,P000253,VH000153,2024-12-03T16:39:53Z,Vehicle sighting captured by ANPR at Sulur Check Post,SYNTHETIC
+SR000145,LOC000056,P000561,,2026-01-10T17:25:25Z,Routine patrol log entry - Kallamadu Industrial Estate,SYNTHETIC
+SR000146,LOC000025,P000018,VH000011,2025-06-13T06:12:00Z,Subject met unidentified associate at Anna Nagar Check Post,SYNTHETIC
+SR000147,LOC000020,P000478,,2025-07-20T10:44:17Z,CCTV frame captured at Mylapore City Police Station toll plaza,SYNTHETIC
+SR000148,LOC000058,P000073,,2025-11-02T00:48:37Z,CCTV frame captured at Anna Nagar Lorry Park toll plaza,SYNTHETIC
+SR000149,LOC000036,P000110,,2026-01-09T02:16:21Z,CCTV frame captured at Pothigai Nagar Oil Depot toll plaza,SYNTHETIC
+SR000150,LOC000005,P000027,VH000017,2025-04-24T20:31:38Z,Vehicle TN25 MB 7551 (sedan) recorded entering Kajamalai Junction,SYNTHETIC
+SR000151,LOC000016,P000401,,2025-03-10T06:03:29Z,Routine patrol log entry - Ukkadam Harbour Police Station,SYNTHETIC
+SR000152,LOC000024,P000243,,2024-09-30T04:30:19Z,Subject observed on foot near Palladam Check Post,SYNTHETIC
+SR000153,LOC000034,P000523,VH000213,2024-02-04T13:31:20Z,Subject observed on foot near Mattuthavani Junction,SYNTHETIC
+SR000154,LOC000014,P000216,,2024-05-05T06:23:41Z,Vehicle sighting captured by ANPR at Estancia Bridge End,SYNTHETIC
+SR000155,LOC000009,P000447,,2025-08-11T02:27:14Z,CCTV frame captured at Chokkanadar Pettai Oil Depot toll plaza,SYNTHETIC
+SR000156,LOC000036,P000235,,2024-01-24T15:45:44Z,Subject used phone while parked near Pothigai Nagar Oil Depot,SYNTHETIC
+SR000157,LOC000043,P000496,,2025-08-09T20:50:53Z,Subject met unidentified associate at Sowdambika Layout Night Bazaar,SYNTHETIC
+SR000158,LOC000029,P000126,,2026-06-01T04:59:16Z,Subject met unidentified associate at Estancia Fuel Station,SYNTHETIC
+SR000159,LOC000035,P000447,,2025-10-13T23:53:00Z,CCTV frame captured at Arumbakkam Godown Compound toll plaza,SYNTHETIC
+SR000160,LOC000027,P000525,,2026-08-22T05:31:30Z,Vehicle sighting captured by ANPR at Mettupalayam Cold Storage,SYNTHETIC
+SR000161,LOC000019,P000199,VH000134,2024-01-03T23:35:32Z,Subject met unidentified associate at Meenakshi Nagar Agro Market,SYNTHETIC
+SR000162,LOC000008,P000538,,2026-02-28T22:12:40Z,CCTV frame captured at Ambattur Warehouse Complex toll plaza,SYNTHETIC
+SR000163,LOC000033,P000035,,2026-05-08T12:23:01Z,Subject observed on foot near Ukkadam Toll Plaza,SYNTHETIC
+SR000164,LOC000034,P000091,,2024-02-04T10:21:37Z,Vehicle sighting captured by ANPR at Mattuthavani Junction,SYNTHETIC
+SR000165,LOC000021,P000230,,2026-01-25T04:50:44Z,Vehicle sighting captured by ANPR at Valluvar Layout Harbour Gate,SYNTHETIC
+SR000166,LOC000017,P000539,,2025-06-03T10:13:14Z,Vehicle sighting captured by ANPR at Egmore Cold Storage,SYNTHETIC
+SR000167,LOC000050,P000179,VH000122,2025-09-14T23:11:05Z,CCTV frame captured at Ganapathy Bus Terminus toll plaza,SYNTHETIC
+SR000168,LOC000005,P000192,,2024-07-17T13:31:54Z,Routine patrol log entry - Kajamalai Junction,SYNTHETIC
+SR000169,LOC000021,P000479,VH000209,2024-09-06T09:15:07Z,Routine patrol log entry - Valluvar Layout Harbour Gate,SYNTHETIC
+SR000170,LOC000052,P000478,,2024-01-08T11:32:53Z,Subject used phone while parked near Coimbatore Junction Construction Site,SYNTHETIC
+SR000171,LOC000003,P000477,,2024-07-17T15:45:04Z,Subject used phone while parked near Thirunagar Cold Storage,SYNTHETIC
+SR000172,LOC000046,P000196,,2024-07-25T20:25:50Z,CCTV frame captured at Royapuram Fuel Station toll plaza,SYNTHETIC
+SR000173,LOC000026,P000129,VH000086,2024-07-28T15:38:42Z,Vehicle sighting captured by ANPR at Kajamalai Industrial Estate,SYNTHETIC
+SR000174,LOC000030,P000533,,2026-05-16T04:17:26Z,CCTV frame captured at Ganapathy Junction toll plaza,SYNTHETIC
+SR000175,LOC000014,P000079,VH000052,2025-09-18T05:51:01Z,Routine patrol log entry - Estancia Bridge End,SYNTHETIC
+SR000176,LOC000061,P000405,,2025-03-18T04:29:43Z,Subject observed on foot near Central Market Junction,SYNTHETIC
+SR000177,LOC000056,P000033,,2024-03-11T23:11:05Z,Vehicle sighting captured by ANPR at Kallamadu Industrial Estate,SYNTHETIC
+SR000178,LOC000051,P000596,VH000179,2025-11-17T08:35:00Z,Routine patrol log entry - Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR000179,LOC000021,P000195,VH000131,2025-12-23T22:54:38Z,Subject observed on foot near Valluvar Layout Harbour Gate,SYNTHETIC
+SR000180,LOC000009,P000363,,2026-01-07T17:40:53Z,Subject met unidentified associate at Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000181,LOC000011,P000426,,2024-12-28T15:35:04Z,CCTV frame captured at Peelamedu Harbour Gate toll plaza,SYNTHETIC
+SR000182,LOC000044,P000622,,2026-02-22T00:23:55Z,Routine patrol log entry - Sulur Check Post,SYNTHETIC
+SR000183,LOC000039,P000249,,2025-06-11T17:10:32Z,Subject observed on foot near Thirunagar Industrial Estate,SYNTHETIC
+SR000184,LOC000038,P000231,,2024-09-24T01:11:46Z,Subject used phone while parked near Tambaram Toll Plaza,SYNTHETIC
+SR000185,LOC000022,P000257,,2024-07-30T08:13:03Z,Subject met unidentified associate at Nellithope Cold Storage,SYNTHETIC
+SR000186,LOC000028,P000554,,2026-02-22T14:12:06Z,CCTV frame captured at Ganapathy Mandi toll plaza,SYNTHETIC
+SR000187,LOC000020,P000170,,2024-05-13T07:29:02Z,Subject used phone while parked near Mylapore City Police Station,SYNTHETIC
+SR000188,LOC000030,P000157,VH000196,2024-03-02T15:36:13Z,Subject used phone while parked near Ganapathy Junction,SYNTHETIC
+SR000189,LOC000059,P000022,VH000036,2024-04-25T11:41:15Z,Vehicle sighting captured by ANPR at RS Puram Agro Market,SYNTHETIC
+SR000190,LOC000008,P000526,,2025-09-11T16:18:38Z,Subject used phone while parked near Ambattur Warehouse Complex,SYNTHETIC
+SR000191,LOC000019,P000364,,2026-04-12T14:17:04Z,CCTV frame captured at Meenakshi Nagar Agro Market toll plaza,SYNTHETIC
+SR000192,LOC000026,P000307,,2024-05-17T09:48:38Z,Subject used phone while parked near Kajamalai Industrial Estate,SYNTHETIC
+SR000193,LOC000045,P000064,VH000006,2025-03-30T23:42:30Z,Subject met unidentified associate at Pothigai Nagar Toll Plaza,SYNTHETIC
+SR000194,LOC000012,P000318,VH000187,2025-09-18T23:59:17Z,Subject met unidentified associate at KK Nagar Night Bazaar,SYNTHETIC
+SR000195,LOC000052,P000197,,2025-02-20T04:37:53Z,Subject observed on foot near Coimbatore Junction Construction Site,SYNTHETIC
+SR000196,LOC000030,P000378,,2024-04-04T19:23:45Z,Vehicle sighting captured by ANPR at Ganapathy Junction,SYNTHETIC
+SR000197,LOC000061,P000103,VH000222,2024-03-13T08:51:59Z,Subject used phone while parked near Central Market Junction,SYNTHETIC
+SR000198,LOC000035,P000362,,2026-08-25T05:22:54Z,CCTV frame captured at Arumbakkam Godown Compound toll plaza,SYNTHETIC
+SR000199,LOC000021,P000176,,2024-01-17T11:16:22Z,Subject met unidentified associate at Valluvar Layout Harbour Gate,SYNTHETIC
+SR000200,LOC000051,P000370,VH000196,2025-09-15T08:06:49Z,Routine patrol log entry - Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR000201,LOC000030,P000057,VH000037,2024-11-19T06:00:50Z,Subject used phone while parked near Ganapathy Junction,SYNTHETIC
+SR000202,LOC000040,P000284,VH000162,2025-08-16T23:40:40Z,CCTV frame captured at Gandhipuram Textile Mill toll plaza,SYNTHETIC
+SR000203,LOC000002,P000107,VH000072,2024-06-19T13:38:43Z,Vehicle sighting captured by ANPR at Velachery Oil Depot,SYNTHETIC
+SR000204,LOC000009,P000252,,2026-08-15T02:26:24Z,Subject used phone while parked near Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000205,LOC000058,P000508,,2024-09-24T13:59:56Z,Vehicle sighting captured by ANPR at Anna Nagar Lorry Park,SYNTHETIC
+SR000206,LOC000035,P000098,VH000066,2024-07-25T14:58:32Z,Vehicle TN58 YJ 4817 (sedan) recorded entering Arumbakkam Godown Compound,SYNTHETIC
+SR000207,LOC000019,P000038,,2024-06-28T15:45:49Z,Subject met unidentified associate at Meenakshi Nagar Agro Market,SYNTHETIC
+SR000208,LOC000030,P000513,,2025-02-23T01:09:46Z,Vehicle sighting captured by ANPR at Ganapathy Junction,SYNTHETIC
+SR000209,LOC000031,P000046,,2024-02-15T16:20:55Z,Vehicle sighting captured by ANPR at Peelamedu Textile Mill,SYNTHETIC
+SR000210,LOC000050,P000530,,2026-07-03T20:30:47Z,Routine patrol log entry - Ganapathy Bus Terminus,SYNTHETIC
+SR000211,LOC000021,P000217,,2026-01-14T21:14:12Z,Vehicle sighting captured by ANPR at Valluvar Layout Harbour Gate,SYNTHETIC
+SR000212,LOC000036,P000519,VH000211,2026-01-10T17:52:11Z,Vehicle sighting captured by ANPR at Pothigai Nagar Oil Depot,SYNTHETIC
+SR000213,LOC000043,P000217,,2025-09-12T23:37:51Z,Subject met unidentified associate at Sowdambika Layout Night Bazaar,SYNTHETIC
+SR000214,LOC000042,P000534,,2026-04-11T16:19:30Z,Subject used phone while parked near Chromepet Agro Market,SYNTHETIC
+SR000215,LOC000038,P000092,,2025-12-15T01:13:53Z,CCTV frame captured at Tambaram Toll Plaza toll plaza,SYNTHETIC
+SR000216,LOC000043,P000357,,2025-03-01T21:43:18Z,Vehicle sighting captured by ANPR at Sowdambika Layout Night Bazaar,SYNTHETIC
+SR000217,LOC000057,P000493,,2026-01-24T00:08:42Z,Subject observed on foot near Azhagar Koil Road Fuel Station,SYNTHETIC
+SR000218,LOC000002,P000575,VH000135,2024-11-21T12:18:14Z,CCTV frame captured at Velachery Oil Depot toll plaza,SYNTHETIC
+SR000219,LOC000043,P000541,,2026-03-13T00:37:25Z,Vehicle sighting captured by ANPR at Sowdambika Layout Night Bazaar,SYNTHETIC
+SR000220,LOC000050,P000152,,2025-03-02T11:58:08Z,Subject observed on foot near Ganapathy Bus Terminus,SYNTHETIC
+SR000221,LOC000060,P000013,,2026-02-15T11:28:26Z,Routine patrol log entry - Ukkadam Cold Storage,SYNTHETIC
+SR000222,LOC000023,P000438,VH000098,2026-05-16T15:40:16Z,CCTV frame captured at Sundarankottai Fuel Station toll plaza,SYNTHETIC
+SR000223,LOC000018,P000446,,2026-07-01T16:56:10Z,Subject observed on foot near Anna Nagar Bus Terminus,SYNTHETIC
+SR000224,LOC000059,P000598,,2025-09-16T05:34:42Z,CCTV frame captured at RS Puram Agro Market toll plaza,SYNTHETIC
+SR000225,LOC000023,P000285,,2026-01-28T05:03:52Z,Vehicle sighting captured by ANPR at Sundarankottai Fuel Station,SYNTHETIC
+SR000226,LOC000004,P000516,,2024-01-18T13:12:11Z,Vehicle sighting captured by ANPR at Chokkanadar Harbour Police Station,SYNTHETIC
+SR000227,LOC000031,P000028,,2024-06-09T19:26:37Z,Subject met unidentified associate at Peelamedu Textile Mill,SYNTHETIC
+SR000228,LOC000008,P000225,,2026-04-24T11:08:48Z,CCTV frame captured at Ambattur Warehouse Complex toll plaza,SYNTHETIC
+SR000229,LOC000030,P000284,VH000162,2026-05-06T11:34:13Z,Routine patrol log entry - Ganapathy Junction,SYNTHETIC
+SR000230,LOC000032,P000234,VH000096,2025-10-20T09:19:00Z,Subject used phone while parked near Bharathi Bazaar Agro Market,SYNTHETIC
+SR000231,LOC000028,P000223,,2025-01-30T17:01:34Z,Subject used phone while parked near Ganapathy Mandi,SYNTHETIC
+SR000232,LOC000026,P000241,,2024-12-21T12:32:03Z,Routine patrol log entry - Kajamalai Industrial Estate,SYNTHETIC
+SR000233,LOC000005,P000351,,2024-09-21T13:47:00Z,Vehicle sighting captured by ANPR at Kajamalai Junction,SYNTHETIC
+SR000234,LOC000009,P000172,,2024-08-10T08:00:57Z,CCTV frame captured at Chokkanadar Pettai Oil Depot toll plaza,SYNTHETIC
+SR000235,LOC000006,P000397,,2024-04-21T20:17:18Z,CCTV frame captured at Pappanaickenpalayam Bridge End toll plaza,SYNTHETIC
+SR000236,LOC000021,P000150,,2026-07-26T09:17:48Z,CCTV frame captured at Valluvar Layout Harbour Gate toll plaza,SYNTHETIC
+SR000237,LOC000009,P000574,VH000226,2025-05-10T07:14:09Z,Subject observed on foot near Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000238,LOC000016,P000066,,2025-10-14T08:33:09Z,Subject used phone while parked near Ukkadam Harbour Police Station,SYNTHETIC
+SR000239,LOC000033,P000556,,2024-05-24T11:31:16Z,Subject observed on foot near Ukkadam Toll Plaza,SYNTHETIC
+SR000240,LOC000024,P000113,,2026-02-11T03:03:50Z,Subject met unidentified associate at Palladam Check Post,SYNTHETIC
+SR000241,LOC000022,P000251,,2024-09-26T04:26:51Z,Routine patrol log entry - Nellithope Cold Storage,SYNTHETIC
+SR000242,LOC000002,P000528,VH000202,2024-07-16T01:46:40Z,Subject used phone while parked near Velachery Oil Depot,SYNTHETIC
+SR000243,LOC000015,P000595,,2024-07-25T18:32:20Z,Routine patrol log entry - Valluvar Layout Night Bazaar,SYNTHETIC
+SR000244,LOC000008,P000213,,2025-04-05T06:38:25Z,CCTV frame captured at Ambattur Warehouse Complex toll plaza,SYNTHETIC
+SR000245,LOC000004,P000166,,2026-03-01T19:36:12Z,Subject observed on foot near Chokkanadar Harbour Police Station,SYNTHETIC
+SR000246,LOC000022,P000483,VH000152,2026-02-23T02:10:24Z,Vehicle sighting captured by ANPR at Nellithope Cold Storage,SYNTHETIC
+SR000247,LOC000026,P000158,VH000199,2025-07-13T07:30:19Z,Vehicle TN39 VL 9163 (sedan) recorded entering Kajamalai Industrial Estate,SYNTHETIC
+SR000248,LOC000014,P000359,,2024-07-14T13:33:53Z,CCTV frame captured at Estancia Bridge End toll plaza,SYNTHETIC
+SR000249,LOC000005,P000055,,2024-11-15T18:43:51Z,Subject used phone while parked near Kajamalai Junction,SYNTHETIC
+SR000250,LOC000030,P000330,,2026-02-20T10:58:33Z,Subject used phone while parked near Ganapathy Junction,SYNTHETIC
+SR000251,LOC000003,P000253,VH000153,2024-01-25T01:16:25Z,Subject used phone while parked near Thirunagar Cold Storage,SYNTHETIC
+SR000252,LOC000053,P000236,,2026-01-30T06:19:19Z,Routine patrol log entry - Mettupalayam Wholesale Market,SYNTHETIC
+SR000253,LOC000052,P000324,,2024-10-20T19:23:58Z,CCTV frame captured at Coimbatore Junction Construction Site toll plaza,SYNTHETIC
+SR000254,LOC000042,P000622,,2026-01-25T07:43:36Z,Subject observed on foot near Chromepet Agro Market,SYNTHETIC
+SR000255,LOC000041,P000509,,2026-05-02T01:51:44Z,Subject used phone while parked near Vilachery Cold Storage,SYNTHETIC
+SR000256,LOC000028,P000440,VH000202,2024-12-17T16:43:36Z,Routine patrol log entry - Ganapathy Mandi,SYNTHETIC
+SR000257,LOC000031,P000046,,2024-04-24T11:39:24Z,Subject met unidentified associate at Peelamedu Textile Mill,SYNTHETIC
+SR000258,LOC000002,P000037,VH000025,2024-01-04T16:36:06Z,Routine patrol log entry - Velachery Oil Depot,SYNTHETIC
+SR000259,LOC000027,P000430,VH000080,2025-11-23T02:22:04Z,Subject met unidentified associate at Mettupalayam Cold Storage,SYNTHETIC
+SR000260,LOC000025,P000362,,2024-01-20T01:20:01Z,Routine patrol log entry - Anna Nagar Check Post,SYNTHETIC
+SR000261,LOC000061,P000571,VH000225,2024-11-05T04:22:30Z,CCTV frame captured at Central Market Junction toll plaza,SYNTHETIC
+SR000262,LOC000052,P000287,,2026-02-20T06:49:26Z,Subject met unidentified associate at Coimbatore Junction Construction Site,SYNTHETIC
+SR000263,LOC000055,P000507,,2024-09-28T00:02:00Z,CCTV frame captured at Kuruvikulam Construction Site toll plaza,SYNTHETIC
+SR000264,LOC000044,P000432,,2024-09-18T07:40:38Z,Routine patrol log entry - Sulur Check Post,SYNTHETIC
+SR000265,LOC000011,P000212,,2026-02-12T18:55:26Z,Subject used phone while parked near Peelamedu Harbour Gate,SYNTHETIC
+SR000266,LOC000041,P000436,VH000072,2025-04-02T06:19:15Z,Subject used phone while parked near Vilachery Cold Storage,SYNTHETIC
+SR000267,LOC000010,P000510,,2025-03-27T11:58:19Z,Subject observed on foot near Kuruvikulam Residential Layout,SYNTHETIC
+SR000268,LOC000039,P000409,,2025-11-21T06:37:20Z,Vehicle sighting captured by ANPR at Thirunagar Industrial Estate,SYNTHETIC
+SR000269,LOC000061,P000409,VH000163,2024-04-23T06:29:36Z,Subject used phone while parked near Central Market Junction,SYNTHETIC
+SR000270,LOC000019,P000038,,2025-02-01T05:07:57Z,Routine patrol log entry - Meenakshi Nagar Agro Market,SYNTHETIC
+SR000271,LOC000046,P000478,,2025-06-09T15:11:24Z,CCTV frame captured at Royapuram Fuel Station toll plaza,SYNTHETIC
+SR000272,LOC000041,P000509,,2026-07-07T12:50:22Z,Subject used phone while parked near Vilachery Cold Storage,SYNTHETIC
+SR000273,LOC000057,P000204,,2025-04-04T14:12:59Z,Subject used phone while parked near Azhagar Koil Road Fuel Station,SYNTHETIC
+SR000274,LOC000051,P000059,VH000039,2024-11-05T23:23:37Z,Vehicle sighting captured by ANPR at Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR000275,LOC000050,P000148,VH000070,2026-05-03T16:12:44Z,CCTV frame captured at Ganapathy Bus Terminus toll plaza,SYNTHETIC
+SR000276,LOC000029,P000506,,2024-02-05T00:38:59Z,Subject observed on foot near Estancia Fuel Station,SYNTHETIC
+SR000277,LOC000035,P000376,,2025-07-06T19:05:20Z,Subject used phone while parked near Arumbakkam Godown Compound,SYNTHETIC
+SR000278,LOC000025,P000400,,2024-07-29T09:15:46Z,Vehicle sighting captured by ANPR at Anna Nagar Check Post,SYNTHETIC
+SR000279,LOC000052,P000291,VH000001,2024-05-08T15:34:37Z,Subject observed on foot near Coimbatore Junction Construction Site,SYNTHETIC
+SR000280,LOC000033,P000178,VH000056,2025-11-19T08:49:51Z,Vehicle TN43 LD 6507 (autorickshaw) recorded entering Ukkadam Toll Plaza,SYNTHETIC
+SR000281,LOC000023,P000456,,2025-04-07T21:57:48Z,Routine patrol log entry - Sundarankottai Fuel Station,SYNTHETIC
+SR000282,LOC000011,P000589,,2024-11-24T18:41:00Z,Vehicle sighting captured by ANPR at Peelamedu Harbour Gate,SYNTHETIC
+SR000283,LOC000014,P000145,,2025-03-24T22:22:27Z,Routine patrol log entry - Estancia Bridge End,SYNTHETIC
+SR000284,LOC000011,P000082,,2025-08-14T00:31:24Z,Subject observed on foot near Peelamedu Harbour Gate,SYNTHETIC
+SR000285,LOC000054,P000558,,2026-04-23T00:05:02Z,Routine patrol log entry - Kallamadu Agro Market,SYNTHETIC
+SR000286,LOC000019,P000281,VH000160,2024-06-18T10:24:22Z,Subject observed on foot near Meenakshi Nagar Agro Market,SYNTHETIC
+SR000287,LOC000037,P000142,,2024-10-15T21:32:29Z,Routine patrol log entry - Chokkanadar Pettai Textile Mill,SYNTHETIC
+SR000288,LOC000058,P000493,VH000219,2026-02-22T13:52:07Z,Vehicle sighting captured by ANPR at Anna Nagar Lorry Park,SYNTHETIC
+SR000289,LOC000034,P000422,,2024-08-04T12:35:19Z,CCTV frame captured at Mattuthavani Junction toll plaza,SYNTHETIC
+SR000290,LOC000045,P000124,,2025-03-19T07:16:21Z,Subject met unidentified associate at Pothigai Nagar Toll Plaza,SYNTHETIC
+SR000291,LOC000040,P000366,,2026-05-10T15:47:17Z,Subject observed on foot near Gandhipuram Textile Mill,SYNTHETIC
+SR000292,LOC000055,P000305,,2025-05-05T07:48:22Z,Routine patrol log entry - Kuruvikulam Construction Site,SYNTHETIC
+SR000293,LOC000015,P000420,VH000197,2024-12-19T04:03:18Z,CCTV frame captured at Valluvar Layout Night Bazaar toll plaza,SYNTHETIC
+SR000294,LOC000060,P000125,VH000084,2025-04-25T03:01:22Z,Subject observed on foot near Ukkadam Cold Storage,SYNTHETIC
+SR000295,LOC000035,P000139,VH000093,2026-04-28T01:32:45Z,CCTV frame captured at Arumbakkam Godown Compound toll plaza,SYNTHETIC
+SR000296,LOC000019,P000394,,2025-03-17T00:26:02Z,CCTV frame captured at Meenakshi Nagar Agro Market toll plaza,SYNTHETIC
+SR000297,LOC000039,P000445,VH000205,2024-08-21T00:58:05Z,Subject observed on foot near Thirunagar Industrial Estate,SYNTHETIC
+SR000298,LOC000027,P000420,,2024-04-19T10:29:59Z,Subject met unidentified associate at Mettupalayam Cold Storage,SYNTHETIC
+SR000299,LOC000054,P000331,,2025-11-07T22:20:11Z,Subject observed on foot near Kallamadu Agro Market,SYNTHETIC
+SR000300,LOC000021,P000598,,2026-06-12T22:33:43Z,Routine patrol log entry - Valluvar Layout Harbour Gate,SYNTHETIC
+SR000301,LOC000041,P000463,,2024-01-14T02:10:30Z,CCTV frame captured at Vilachery Cold Storage toll plaza,SYNTHETIC
+SR000302,LOC000047,P000611,VH000227,2026-07-30T08:27:35Z,Routine patrol log entry - Azhagar Koil Road Junction,SYNTHETIC
+SR000303,LOC000023,P000164,VH000198,2026-08-29T04:27:22Z,Subject used phone while parked near Sundarankottai Fuel Station,SYNTHETIC
+SR000304,LOC000020,P000083,,2024-10-24T14:06:58Z,Vehicle sighting captured by ANPR at Mylapore City Police Station,SYNTHETIC
+SR000305,LOC000025,P000240,,2025-07-06T09:30:18Z,Vehicle sighting captured by ANPR at Anna Nagar Check Post,SYNTHETIC
+SR000306,LOC000019,P000355,,2026-03-17T08:49:13Z,Subject used phone while parked near Meenakshi Nagar Agro Market,SYNTHETIC
+SR000307,LOC000001,P000281,VH000002,2026-03-18T11:00:09Z,Subject met unidentified associate at Ganapathy City Police Station,SYNTHETIC
+SR000308,LOC000014,P000430,,2026-03-02T09:55:06Z,Subject met unidentified associate at Estancia Bridge End,SYNTHETIC
+SR000309,LOC000033,P000586,VH000021,2024-05-28T00:38:09Z,CCTV frame captured at Ukkadam Toll Plaza toll plaza,SYNTHETIC
+SR000310,LOC000008,P000257,VH000154,2024-02-14T00:38:03Z,Routine patrol log entry - Ambattur Warehouse Complex,SYNTHETIC
+SR000311,LOC000040,P000008,VH000006,2025-06-04T00:56:58Z,Subject observed on foot near Gandhipuram Textile Mill,SYNTHETIC
+SR000312,LOC000020,P000083,VH000055,2024-03-17T06:33:15Z,Subject observed on foot near Mylapore City Police Station,SYNTHETIC
+SR000313,LOC000022,P000115,,2026-03-06T14:52:20Z,Routine patrol log entry - Nellithope Cold Storage,SYNTHETIC
+SR000314,LOC000038,P000135,,2025-05-20T12:30:49Z,Vehicle sighting captured by ANPR at Tambaram Toll Plaza,SYNTHETIC
+SR000315,LOC000024,P000507,,2026-04-24T06:01:32Z,Subject met unidentified associate at Palladam Check Post,SYNTHETIC
+SR000316,LOC000043,P000271,,2026-01-17T00:19:26Z,Routine patrol log entry - Sowdambika Layout Night Bazaar,SYNTHETIC
+SR000317,LOC000022,P000587,,2024-07-12T17:58:11Z,Routine patrol log entry - Nellithope Cold Storage,SYNTHETIC
+SR000318,LOC000054,P000322,,2025-02-21T09:02:45Z,CCTV frame captured at Kallamadu Agro Market toll plaza,SYNTHETIC
+SR000319,LOC000015,P000487,,2026-06-26T14:07:47Z,CCTV frame captured at Valluvar Layout Night Bazaar toll plaza,SYNTHETIC
+SR000320,LOC000053,P000245,,2026-05-29T11:24:58Z,Vehicle sighting captured by ANPR at Mettupalayam Wholesale Market,SYNTHETIC
+SR000321,LOC000008,P000265,,2024-08-20T22:57:02Z,Vehicle sighting captured by ANPR at Ambattur Warehouse Complex,SYNTHETIC
+SR000322,LOC000037,P000505,,2025-07-31T19:43:31Z,Subject used phone while parked near Chokkanadar Pettai Textile Mill,SYNTHETIC
+SR000323,LOC000051,P000008,VH000006,2024-07-14T09:39:20Z,CCTV frame captured at Chokkanadar Pettai Outer Ring Road toll plaza,SYNTHETIC
+SR000324,LOC000042,P000231,,2024-03-27T14:54:37Z,CCTV frame captured at Chromepet Agro Market toll plaza,SYNTHETIC
+SR000325,LOC000043,P000105,VH000070,2025-03-17T19:52:44Z,Vehicle sighting captured by ANPR at Sowdambika Layout Night Bazaar,SYNTHETIC
+SR000326,LOC000046,P000084,VH000056,2025-08-12T09:06:13Z,Vehicle sighting captured by ANPR at Royapuram Fuel Station,SYNTHETIC
+SR000327,LOC000019,P000185,,2025-09-20T14:51:12Z,Routine patrol log entry - Meenakshi Nagar Agro Market,SYNTHETIC
+SR000328,LOC000022,P000420,VH000197,2025-11-09T23:29:53Z,CCTV frame captured at Nellithope Cold Storage toll plaza,SYNTHETIC
+SR000329,LOC000061,P000280,VH000159,2026-06-13T06:43:19Z,CCTV frame captured at Central Market Junction toll plaza,SYNTHETIC
+SR000330,LOC000008,P000213,,2025-07-26T14:48:21Z,Subject used phone while parked near Ambattur Warehouse Complex,SYNTHETIC
+SR000331,LOC000015,P000203,VH000137,2026-06-29T15:09:34Z,Subject observed on foot near Valluvar Layout Night Bazaar,SYNTHETIC
+SR000332,LOC000008,P000391,,2024-01-20T00:24:16Z,Vehicle sighting captured by ANPR at Ambattur Warehouse Complex,SYNTHETIC
+SR000333,LOC000021,P000103,VH000146,2025-11-09T02:07:05Z,Subject met unidentified associate at Valluvar Layout Harbour Gate,SYNTHETIC
+SR000334,LOC000008,P000265,,2025-11-13T20:09:54Z,Vehicle sighting captured by ANPR at Ambattur Warehouse Complex,SYNTHETIC
+SR000335,LOC000030,P000378,,2024-04-18T15:56:41Z,Subject met unidentified associate at Ganapathy Junction,SYNTHETIC
+SR000336,LOC000024,P000544,,2025-02-03T22:55:25Z,Subject met unidentified associate at Palladam Check Post,SYNTHETIC
+SR000337,LOC000048,P000474,,2024-09-26T21:01:13Z,Subject observed on foot near Sulur Railway Yard,SYNTHETIC
+SR000338,LOC000058,P000619,,2026-04-18T06:58:52Z,Routine patrol log entry - Anna Nagar Lorry Park,SYNTHETIC
+SR000339,LOC000033,P000062,,2024-01-29T16:11:19Z,Subject used phone while parked near Ukkadam Toll Plaza,SYNTHETIC
+SR000340,LOC000019,P000038,,2026-01-11T22:13:23Z,Vehicle sighting captured by ANPR at Meenakshi Nagar Agro Market,SYNTHETIC
+SR000341,LOC000022,P000531,,2024-06-05T00:39:36Z,Subject met unidentified associate at Nellithope Cold Storage,SYNTHETIC
+SR000342,LOC000045,P000247,,2024-11-23T08:49:18Z,Subject observed on foot near Pothigai Nagar Toll Plaza,SYNTHETIC
+SR000343,LOC000040,P000360,,2025-09-29T05:11:19Z,CCTV frame captured at Gandhipuram Textile Mill toll plaza,SYNTHETIC
+SR000344,LOC000012,P000605,,2024-01-09T18:58:26Z,Subject observed on foot near KK Nagar Night Bazaar,SYNTHETIC
+SR000345,LOC000051,P000615,,2025-08-16T16:56:13Z,Subject observed on foot near Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR000346,LOC000024,P000035,VH000024,2025-05-12T02:31:56Z,Subject met unidentified associate at Palladam Check Post,SYNTHETIC
+SR000347,LOC000034,P000240,,2024-11-03T07:08:35Z,Subject used phone while parked near Mattuthavani Junction,SYNTHETIC
+SR000348,LOC000058,P000055,,2026-06-08T15:20:58Z,Vehicle sighting captured by ANPR at Anna Nagar Lorry Park,SYNTHETIC
+SR000349,LOC000029,P000331,VH000177,2026-02-20T04:24:31Z,Routine patrol log entry - Estancia Fuel Station,SYNTHETIC
+SR000350,LOC000027,P000521,,2025-12-10T04:25:46Z,Subject met unidentified associate at Mettupalayam Cold Storage,SYNTHETIC
+SR000351,LOC000016,P000278,VH000158,2025-08-22T04:41:15Z,Subject met unidentified associate at Ukkadam Harbour Police Station,SYNTHETIC
+SR000352,LOC000058,P000581,,2025-10-14T02:43:06Z,Routine patrol log entry - Anna Nagar Lorry Park,SYNTHETIC
+SR000353,LOC000022,P000567,VH000228,2025-02-19T06:56:52Z,Vehicle TN01 JC 8318 (motorcycle) recorded entering Nellithope Cold Storage,SYNTHETIC
+SR000354,LOC000032,P000505,,2025-03-20T19:22:17Z,Routine patrol log entry - Bharathi Bazaar Agro Market,SYNTHETIC
+SR000355,LOC000049,P000504,,2024-12-10T23:38:19Z,CCTV frame captured at Gandhipuram Warehouse Complex toll plaza,SYNTHETIC
+SR000356,LOC000021,P000279,,2026-04-20T13:26:57Z,Subject used phone while parked near Valluvar Layout Harbour Gate,SYNTHETIC
+SR000357,LOC000023,P000301,VH000171,2025-07-04T02:42:18Z,Subject observed on foot near Sundarankottai Fuel Station,SYNTHETIC
+SR000358,LOC000004,P000448,VH000027,2024-03-15T11:11:58Z,Subject used phone while parked near Chokkanadar Harbour Police Station,SYNTHETIC
+SR000359,LOC000055,P000182,,2025-09-28T20:32:40Z,Subject used phone while parked near Kuruvikulam Construction Site,SYNTHETIC
+SR000360,LOC000004,P000041,VH000028,2024-08-29T00:42:48Z,Subject met unidentified associate at Chokkanadar Harbour Police Station,SYNTHETIC
+SR000361,LOC000045,P000253,VH000153,2024-07-31T10:31:34Z,CCTV frame captured at Pothigai Nagar Toll Plaza toll plaza,SYNTHETIC
+SR000362,LOC000008,P000531,,2026-01-13T20:32:47Z,Subject observed on foot near Ambattur Warehouse Complex,SYNTHETIC
+SR000363,LOC000009,P000593,,2025-11-20T15:42:56Z,Subject observed on foot near Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000364,LOC000018,P000550,,2024-03-24T18:01:24Z,Subject used phone while parked near Anna Nagar Bus Terminus,SYNTHETIC
+SR000365,LOC000003,P000288,,2026-06-20T19:26:28Z,Vehicle sighting captured by ANPR at Thirunagar Cold Storage,SYNTHETIC
+SR000366,LOC000050,P000342,,2025-08-05T09:46:51Z,Subject met unidentified associate at Ganapathy Bus Terminus,SYNTHETIC
+SR000367,LOC000054,P000384,,2025-12-14T23:49:56Z,Vehicle sighting captured by ANPR at Kallamadu Agro Market,SYNTHETIC
+SR000368,LOC000021,P000109,VH000095,2026-08-07T08:45:56Z,Subject met unidentified associate at Valluvar Layout Harbour Gate,SYNTHETIC
+SR000369,LOC000021,P000590,,2024-04-20T06:24:09Z,Subject observed on foot near Valluvar Layout Harbour Gate,SYNTHETIC
+SR000370,LOC000004,P000367,,2026-07-22T17:55:48Z,Vehicle sighting captured by ANPR at Chokkanadar Harbour Police Station,SYNTHETIC
+SR000371,LOC000033,P000290,,2026-02-27T00:20:42Z,Routine patrol log entry - Ukkadam Toll Plaza,SYNTHETIC
+SR000372,LOC000040,P000425,VH000198,2026-05-21T10:43:46Z,Vehicle sighting captured by ANPR at Gandhipuram Textile Mill,SYNTHETIC
+SR000373,LOC000040,P000517,VH000091,2024-04-29T10:08:07Z,CCTV frame captured at Gandhipuram Textile Mill toll plaza,SYNTHETIC
+SR000374,LOC000050,P000242,VH000150,2026-08-21T08:42:50Z,CCTV frame captured at Ganapathy Bus Terminus toll plaza,SYNTHETIC
+SR000375,LOC000008,P000090,,2024-04-13T22:31:30Z,CCTV frame captured at Ambattur Warehouse Complex toll plaza,SYNTHETIC
+SR000376,LOC000020,P000077,,2024-08-22T03:24:58Z,CCTV frame captured at Mylapore City Police Station toll plaza,SYNTHETIC
+SR000377,LOC000003,P000238,,2024-12-11T18:43:46Z,Subject met unidentified associate at Thirunagar Cold Storage,SYNTHETIC
+SR000378,LOC000017,P000275,,2024-08-07T17:49:03Z,Subject used phone while parked near Egmore Cold Storage,SYNTHETIC
+SR000379,LOC000058,P000248,,2024-07-27T22:36:26Z,Subject observed on foot near Anna Nagar Lorry Park,SYNTHETIC
+SR000380,LOC000030,P000431,,2025-05-04T04:36:17Z,Subject met unidentified associate at Ganapathy Junction,SYNTHETIC
+SR000381,LOC000015,P000005,,2025-08-23T05:37:18Z,Subject observed on foot near Valluvar Layout Night Bazaar,SYNTHETIC
+SR000382,LOC000026,P000254,,2024-11-07T10:01:14Z,Subject met unidentified associate at Kajamalai Industrial Estate,SYNTHETIC
+SR000383,LOC000010,P000596,,2026-05-30T22:09:17Z,Routine patrol log entry - Kuruvikulam Residential Layout,SYNTHETIC
+SR000384,LOC000042,P000513,,2026-08-24T22:54:18Z,Routine patrol log entry - Chromepet Agro Market,SYNTHETIC
+SR000385,LOC000015,P000573,,2025-06-07T13:25:59Z,Routine patrol log entry - Valluvar Layout Night Bazaar,SYNTHETIC
+SR000386,LOC000042,P000346,,2025-10-30T17:18:35Z,Subject used phone while parked near Chromepet Agro Market,SYNTHETIC
+SR000387,LOC000059,P000370,,2026-06-18T14:02:51Z,Vehicle sighting captured by ANPR at RS Puram Agro Market,SYNTHETIC
+SR000388,LOC000040,P000303,VH000177,2026-01-31T03:54:38Z,Subject met unidentified associate at Gandhipuram Textile Mill,SYNTHETIC
+SR000389,LOC000041,P000528,VH000214,2024-07-11T14:05:44Z,Subject used phone while parked near Vilachery Cold Storage,SYNTHETIC
+SR000390,LOC000035,P000235,,2025-02-20T18:31:17Z,Routine patrol log entry - Arumbakkam Godown Compound,SYNTHETIC
+SR000391,LOC000021,P000579,,2026-06-08T22:52:59Z,Subject used phone while parked near Valluvar Layout Harbour Gate,SYNTHETIC
+SR000392,LOC000059,P000442,VH000203,2025-02-12T16:10:01Z,Subject observed on foot near RS Puram Agro Market,SYNTHETIC
+SR000393,LOC000036,P000557,VH000085,2024-07-02T15:53:06Z,CCTV frame captured at Pothigai Nagar Oil Depot toll plaza,SYNTHETIC
+SR000394,LOC000054,P000214,,2025-07-27T01:11:58Z,Routine patrol log entry - Kallamadu Agro Market,SYNTHETIC
+SR000395,LOC000020,P000101,VH000096,2026-05-27T08:00:36Z,Subject used phone while parked near Mylapore City Police Station,SYNTHETIC
+SR000396,LOC000024,P000140,,2025-08-19T01:45:20Z,Subject used phone while parked near Palladam Check Post,SYNTHETIC
+SR000397,LOC000049,P000446,,2026-05-08T03:25:15Z,CCTV frame captured at Gandhipuram Warehouse Complex toll plaza,SYNTHETIC
+SR000398,LOC000017,P000353,,2026-04-25T17:11:39Z,Routine patrol log entry - Egmore Cold Storage,SYNTHETIC
+SR000399,LOC000012,P000390,,2025-04-05T14:48:38Z,Routine patrol log entry - KK Nagar Night Bazaar,SYNTHETIC
+SR000400,LOC000006,P000376,,2024-11-27T13:53:36Z,Subject used phone while parked near Pappanaickenpalayam Bridge End,SYNTHETIC
+SR000401,LOC000001,P000595,,2026-03-11T08:12:54Z,Subject used phone while parked near Ganapathy City Police Station,SYNTHETIC
+SR000402,LOC000006,P000354,,2024-03-08T21:51:12Z,Subject met unidentified associate at Pappanaickenpalayam Bridge End,SYNTHETIC
+SR000403,LOC000044,P000064,,2025-01-19T20:44:05Z,Subject met unidentified associate at Sulur Check Post,SYNTHETIC
+SR000404,LOC000059,P000608,,2024-11-15T07:56:41Z,Routine patrol log entry - RS Puram Agro Market,SYNTHETIC
+SR000405,LOC000034,P000399,,2025-12-25T20:01:47Z,Subject observed on foot near Mattuthavani Junction,SYNTHETIC
+SR000406,LOC000011,P000156,,2026-07-18T09:46:32Z,Subject met unidentified associate at Peelamedu Harbour Gate,SYNTHETIC
+SR000407,LOC000027,P000140,,2024-08-11T18:07:31Z,Subject met unidentified associate at Mettupalayam Cold Storage,SYNTHETIC
+SR000408,LOC000004,P000248,,2026-04-04T10:07:05Z,Routine patrol log entry - Chokkanadar Harbour Police Station,SYNTHETIC
+SR000409,LOC000001,P000342,,2025-05-07T16:37:31Z,Routine patrol log entry - Ganapathy City Police Station,SYNTHETIC
+SR000410,LOC000061,P000436,,2025-01-03T08:06:41Z,Routine patrol log entry - Central Market Junction,SYNTHETIC
+SR000411,LOC000010,P000246,,2024-04-27T05:54:37Z,Subject met unidentified associate at Kuruvikulam Residential Layout,SYNTHETIC
+SR000412,LOC000003,P000477,,2026-04-11T05:50:38Z,Subject met unidentified associate at Thirunagar Cold Storage,SYNTHETIC
+SR000413,LOC000034,P000464,,2024-02-10T06:30:16Z,Routine patrol log entry - Mattuthavani Junction,SYNTHETIC
+SR000414,LOC000036,P000489,,2025-01-24T10:46:26Z,Subject observed on foot near Pothigai Nagar Oil Depot,SYNTHETIC
+SR000415,LOC000040,P000343,VH000180,2024-05-21T06:56:21Z,Vehicle sighting captured by ANPR at Gandhipuram Textile Mill,SYNTHETIC
+SR000416,LOC000021,P000103,VH000087,2024-02-28T02:52:01Z,CCTV frame captured at Valluvar Layout Harbour Gate toll plaza,SYNTHETIC
+SR000417,LOC000061,P000280,,2024-08-14T06:40:44Z,Subject observed on foot near Central Market Junction,SYNTHETIC
+SR000418,LOC000011,P000426,VH000131,2025-09-02T05:26:29Z,Subject used phone while parked near Peelamedu Harbour Gate,SYNTHETIC
+SR000419,LOC000046,P000532,VH000051,2026-01-18T12:19:55Z,Subject observed on foot near Royapuram Fuel Station,SYNTHETIC
+SR000420,LOC000061,P000436,,2026-02-08T11:38:44Z,CCTV frame captured at Central Market Junction toll plaza,SYNTHETIC
+SR000421,LOC000012,P000004,VH000004,2024-11-04T19:37:45Z,Vehicle sighting captured by ANPR at KK Nagar Night Bazaar,SYNTHETIC
+SR000422,LOC000011,P000026,VH000016,2024-08-20T03:20:28Z,Vehicle sighting captured by ANPR at Peelamedu Harbour Gate,SYNTHETIC
+SR000423,LOC000055,P000547,,2025-01-28T12:08:13Z,CCTV frame captured at Kuruvikulam Construction Site toll plaza,SYNTHETIC
+SR000424,LOC000011,P000523,VH000213,2024-08-28T01:31:43Z,Vehicle sighting captured by ANPR at Peelamedu Harbour Gate,SYNTHETIC
+SR000425,LOC000026,P000550,,2024-02-21T03:30:52Z,Subject used phone while parked near Kajamalai Industrial Estate,SYNTHETIC
+SR000426,LOC000020,P000299,,2025-10-21T07:49:41Z,Subject used phone while parked near Mylapore City Police Station,SYNTHETIC
+SR000427,LOC000042,P000503,,2025-07-09T01:18:10Z,Routine patrol log entry - Chromepet Agro Market,SYNTHETIC
+SR000428,LOC000023,P000067,VH000044,2024-01-27T16:34:49Z,Subject met unidentified associate at Sundarankottai Fuel Station,SYNTHETIC
+SR000429,LOC000057,P000098,VH000066,2025-03-07T20:29:13Z,Routine patrol log entry - Azhagar Koil Road Fuel Station,SYNTHETIC
+SR000430,LOC000023,P000234,VH000215,2025-03-09T02:36:10Z,Vehicle sighting captured by ANPR at Sundarankottai Fuel Station,SYNTHETIC
+SR000431,LOC000016,P000392,,2026-03-01T20:54:32Z,Subject met unidentified associate at Ukkadam Harbour Police Station,SYNTHETIC
+SR000432,LOC000061,P000436,,2024-05-02T02:11:43Z,CCTV frame captured at Central Market Junction toll plaza,SYNTHETIC
+SR000433,LOC000058,P000413,,2024-12-28T17:47:28Z,Subject met unidentified associate at Anna Nagar Lorry Park,SYNTHETIC
+SR000434,LOC000002,P000115,,2026-06-14T22:04:13Z,Subject met unidentified associate at Velachery Oil Depot,SYNTHETIC
+SR000435,LOC000012,P000097,,2024-06-20T15:35:28Z,Vehicle sighting captured by ANPR at KK Nagar Night Bazaar,SYNTHETIC
+SR000436,LOC000004,P000324,,2025-05-15T03:39:54Z,Subject used phone while parked near Chokkanadar Harbour Police Station,SYNTHETIC
+SR000437,LOC000013,P000539,,2026-04-14T20:46:53Z,Routine patrol log entry - Bharathi Bazaar Wholesale Market,SYNTHETIC
+SR000438,LOC000059,P000392,,2026-04-15T22:10:32Z,Subject used phone while parked near RS Puram Agro Market,SYNTHETIC
+SR000439,LOC000046,P000354,VH000213,2025-09-01T13:31:10Z,Vehicle TN28 KG 7589 (truck) recorded entering Royapuram Fuel Station,SYNTHETIC
+SR000440,LOC000053,P000072,,2026-05-14T01:19:44Z,Vehicle sighting captured by ANPR at Mettupalayam Wholesale Market,SYNTHETIC
+SR000441,LOC000002,P000004,VH000004,2026-06-30T21:42:58Z,Vehicle sighting captured by ANPR at Velachery Oil Depot,SYNTHETIC
+SR000442,LOC000035,P000492,,2025-05-28T11:34:49Z,Routine patrol log entry - Arumbakkam Godown Compound,SYNTHETIC
+SR000443,LOC000042,P000480,,2025-05-07T09:25:00Z,Subject met unidentified associate at Chromepet Agro Market,SYNTHETIC
+SR000444,LOC000012,P000144,,2024-09-02T16:11:42Z,Vehicle sighting captured by ANPR at KK Nagar Night Bazaar,SYNTHETIC
+SR000445,LOC000013,P000481,VH000173,2024-03-10T23:12:19Z,CCTV frame captured at Bharathi Bazaar Wholesale Market toll plaza,SYNTHETIC
+SR000446,LOC000021,P000509,,2025-02-18T03:23:13Z,Routine patrol log entry - Valluvar Layout Harbour Gate,SYNTHETIC
+SR000447,LOC000003,P000351,,2025-12-16T02:58:15Z,Subject used phone while parked near Thirunagar Cold Storage,SYNTHETIC
+SR000448,LOC000006,P000181,,2025-09-25T15:59:41Z,Subject met unidentified associate at Pappanaickenpalayam Bridge End,SYNTHETIC
+SR000449,LOC000037,P000555,VH000221,2024-03-19T15:08:08Z,Routine patrol log entry - Chokkanadar Pettai Textile Mill,SYNTHETIC
+SR000450,LOC000019,P000080,VH000173,2025-05-20T22:41:54Z,Vehicle TN50 TA 6046 (lorry) recorded entering Meenakshi Nagar Agro Market,SYNTHETIC
+SR000451,LOC000047,P000043,,2026-05-02T23:29:38Z,Subject met unidentified associate at Azhagar Koil Road Junction,SYNTHETIC
+SR000452,LOC000055,P000499,,2024-01-17T18:54:00Z,Subject observed on foot near Kuruvikulam Construction Site,SYNTHETIC
+SR000453,LOC000022,P000526,,2024-10-08T11:28:44Z,Vehicle sighting captured by ANPR at Nellithope Cold Storage,SYNTHETIC
+SR000454,LOC000032,P000481,,2025-03-09T03:40:41Z,Subject used phone while parked near Bharathi Bazaar Agro Market,SYNTHETIC
+SR000455,LOC000006,P000331,,2024-12-11T15:05:20Z,Subject observed on foot near Pappanaickenpalayam Bridge End,SYNTHETIC
+SR000456,LOC000004,P000442,VH000203,2025-12-15T00:30:18Z,Subject used phone while parked near Chokkanadar Harbour Police Station,SYNTHETIC
+SR000457,LOC000003,P000045,,2024-01-18T10:58:49Z,Subject met unidentified associate at Thirunagar Cold Storage,SYNTHETIC
+SR000458,LOC000052,P000374,VH000188,2025-07-12T10:36:39Z,Vehicle TN58 BJ 2700 (truck) recorded entering Coimbatore Junction Construction Site,SYNTHETIC
+SR000459,LOC000003,P000339,,2024-10-14T23:31:37Z,CCTV frame captured at Thirunagar Cold Storage toll plaza,SYNTHETIC
+SR000460,LOC000058,P000036,,2026-01-30T21:09:29Z,Routine patrol log entry - Anna Nagar Lorry Park,SYNTHETIC
+SR000461,LOC000006,P000182,,2026-04-18T01:16:09Z,CCTV frame captured at Pappanaickenpalayam Bridge End toll plaza,SYNTHETIC
+SR000462,LOC000004,P000134,,2024-02-06T18:02:13Z,Routine patrol log entry - Chokkanadar Harbour Police Station,SYNTHETIC
+SR000463,LOC000059,P000356,,2024-02-26T14:44:27Z,Vehicle sighting captured by ANPR at RS Puram Agro Market,SYNTHETIC
+SR000464,LOC000051,P000303,,2026-02-26T18:57:33Z,Subject met unidentified associate at Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR000465,LOC000038,P000573,VH000166,2025-01-30T10:54:03Z,Subject observed on foot near Tambaram Toll Plaza,SYNTHETIC
+SR000466,LOC000045,P000053,,2024-08-12T21:44:47Z,Subject used phone while parked near Pothigai Nagar Toll Plaza,SYNTHETIC
+SR000467,LOC000021,P000254,VH000190,2025-11-19T12:55:17Z,Subject observed on foot near Valluvar Layout Harbour Gate,SYNTHETIC
+SR000468,LOC000003,P000443,VH000204,2025-07-26T23:55:02Z,Vehicle TN75 KP 7782 (sedan) recorded entering Thirunagar Cold Storage,SYNTHETIC
+SR000469,LOC000002,P000024,,2024-02-19T09:25:33Z,Routine patrol log entry - Velachery Oil Depot,SYNTHETIC
+SR000470,LOC000044,P000445,,2026-04-30T18:39:14Z,Subject observed on foot near Sulur Check Post,SYNTHETIC
+SR000471,LOC000041,P000461,VH000037,2024-11-21T09:42:00Z,Subject met unidentified associate at Vilachery Cold Storage,SYNTHETIC
+SR000472,LOC000009,P000574,VH000226,2026-04-05T21:08:12Z,Vehicle TN62 NE 6317 (motorcycle) recorded entering Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000473,LOC000012,P000011,VH000009,2024-11-15T16:35:56Z,Subject met unidentified associate at KK Nagar Night Bazaar,SYNTHETIC
+SR000474,LOC000023,P000067,,2024-02-23T09:21:20Z,Subject met unidentified associate at Sundarankottai Fuel Station,SYNTHETIC
+SR000475,LOC000018,P000146,VH000098,2025-01-26T16:32:24Z,Vehicle sighting captured by ANPR at Anna Nagar Bus Terminus,SYNTHETIC
+SR000476,LOC000018,P000129,,2024-05-01T14:33:04Z,Subject met unidentified associate at Anna Nagar Bus Terminus,SYNTHETIC
+SR000477,LOC000061,P000340,,2025-02-15T03:18:11Z,Routine patrol log entry - Central Market Junction,SYNTHETIC
+SR000478,LOC000011,P000135,,2024-09-10T13:00:57Z,Vehicle sighting captured by ANPR at Peelamedu Harbour Gate,SYNTHETIC
+SR000479,LOC000023,P000301,,2024-06-15T16:20:10Z,Vehicle sighting captured by ANPR at Sundarankottai Fuel Station,SYNTHETIC
+SR000480,LOC000007,P000239,VH000149,2025-08-19T23:30:18Z,Subject met unidentified associate at Muthialpet Check Post,SYNTHETIC
+SR000481,LOC000008,P000385,VH000191,2024-05-29T11:49:50Z,Subject observed on foot near Ambattur Warehouse Complex,SYNTHETIC
+SR000482,LOC000006,P000601,,2025-10-18T00:31:47Z,Routine patrol log entry - Pappanaickenpalayam Bridge End,SYNTHETIC
+SR000483,LOC000023,P000371,,2024-12-05T18:48:54Z,Subject met unidentified associate at Sundarankottai Fuel Station,SYNTHETIC
+SR000484,LOC000050,P000224,,2024-06-05T12:03:37Z,Vehicle sighting captured by ANPR at Ganapathy Bus Terminus,SYNTHETIC
+SR000485,LOC000026,P000543,VH000218,2025-05-15T07:48:24Z,Vehicle sighting captured by ANPR at Kajamalai Industrial Estate,SYNTHETIC
+SR000486,LOC000009,P000226,,2025-12-19T21:48:23Z,Subject observed on foot near Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000487,LOC000030,P000210,,2025-11-15T17:27:21Z,Subject used phone while parked near Ganapathy Junction,SYNTHETIC
+SR000488,LOC000030,P000385,VH000191,2025-01-31T22:34:45Z,Subject observed on foot near Ganapathy Junction,SYNTHETIC
+SR000489,LOC000025,P000142,VH000096,2026-05-22T00:00:59Z,Routine patrol log entry - Anna Nagar Check Post,SYNTHETIC
+SR000490,LOC000007,P000402,VH000195,2025-04-17T02:35:41Z,Subject used phone while parked near Muthialpet Check Post,SYNTHETIC
+SR000491,LOC000024,P000616,,2026-01-20T13:55:56Z,Subject used phone while parked near Palladam Check Post,SYNTHETIC
+SR000492,LOC000019,P000437,,2024-03-08T06:26:55Z,Vehicle sighting captured by ANPR at Meenakshi Nagar Agro Market,SYNTHETIC
+SR000493,LOC000039,P000016,,2025-08-19T16:40:08Z,Subject met unidentified associate at Thirunagar Industrial Estate,SYNTHETIC
+SR000494,LOC000015,P000554,VH000175,2024-03-03T16:21:40Z,Routine patrol log entry - Valluvar Layout Night Bazaar,SYNTHETIC
+SR000495,LOC000020,P000197,VH000132,2025-01-07T09:37:54Z,CCTV frame captured at Mylapore City Police Station toll plaza,SYNTHETIC
+SR000496,LOC000054,P000529,VH000215,2025-09-25T17:40:00Z,Vehicle sighting captured by ANPR at Kallamadu Agro Market,SYNTHETIC
+SR000497,LOC000034,P000147,,2025-06-26T09:50:51Z,CCTV frame captured at Mattuthavani Junction toll plaza,SYNTHETIC
+SR000498,LOC000013,P000251,,2024-10-31T01:48:07Z,Routine patrol log entry - Bharathi Bazaar Wholesale Market,SYNTHETIC
+SR000499,LOC000012,P000310,VH000173,2026-07-12T01:36:33Z,Vehicle TN50 TA 6046 (lorry) recorded entering KK Nagar Night Bazaar,SYNTHETIC
+SR000500,LOC000036,P000256,,2024-04-28T20:23:26Z,Routine patrol log entry - Pothigai Nagar Oil Depot,SYNTHETIC
+SR000501,LOC000019,P000393,VH000195,2025-02-24T04:15:18Z,Vehicle sighting captured by ANPR at Meenakshi Nagar Agro Market,SYNTHETIC
+SR000502,LOC000034,P000528,,2024-02-10T17:07:15Z,Subject observed on foot near Mattuthavani Junction,SYNTHETIC
+SR000503,LOC000014,P000204,VH000138,2025-02-28T22:24:04Z,Routine patrol log entry - Estancia Bridge End,SYNTHETIC
+SR000504,LOC000050,P000582,,2024-12-27T23:10:39Z,Subject used phone while parked near Ganapathy Bus Terminus,SYNTHETIC
+SR000505,LOC000022,P000131,VH000088,2026-05-07T04:27:59Z,Vehicle TN45 XM 3135 (motorcycle) recorded entering Nellithope Cold Storage,SYNTHETIC
+SR000506,LOC000039,P000528,VH000172,2025-05-23T23:44:54Z,Subject met unidentified associate at Thirunagar Industrial Estate,SYNTHETIC
+SR000507,LOC000031,P000283,,2024-03-29T05:20:32Z,CCTV frame captured at Peelamedu Textile Mill toll plaza,SYNTHETIC
+SR000508,LOC000008,P000117,VH000079,2024-04-23T19:04:09Z,Subject used phone while parked near Ambattur Warehouse Complex,SYNTHETIC
+SR000509,LOC000034,P000237,,2024-03-26T15:20:26Z,Subject observed on foot near Mattuthavani Junction,SYNTHETIC
+SR000510,LOC000047,P000417,,2025-11-09T11:16:31Z,CCTV frame captured at Azhagar Koil Road Junction toll plaza,SYNTHETIC
+SR000511,LOC000046,P000562,,2025-12-13T15:38:24Z,Subject observed on foot near Royapuram Fuel Station,SYNTHETIC
+SR000512,LOC000030,P000010,VH000008,2024-07-22T03:46:36Z,Subject observed on foot near Ganapathy Junction,SYNTHETIC
+SR000513,LOC000050,P000560,,2024-03-21T11:03:36Z,Routine patrol log entry - Ganapathy Bus Terminus,SYNTHETIC
+SR000514,LOC000012,P000059,,2026-08-23T05:13:03Z,Subject met unidentified associate at KK Nagar Night Bazaar,SYNTHETIC
+SR000515,LOC000053,P000100,,2024-10-13T06:35:11Z,Subject met unidentified associate at Mettupalayam Wholesale Market,SYNTHETIC
+SR000516,LOC000022,P000594,VH000045,2024-03-29T18:32:37Z,Routine patrol log entry - Nellithope Cold Storage,SYNTHETIC
+SR000517,LOC000040,P000547,,2025-10-05T07:12:57Z,Vehicle sighting captured by ANPR at Gandhipuram Textile Mill,SYNTHETIC
+SR000518,LOC000030,P000475,,2025-11-19T10:07:50Z,Subject used phone while parked near Ganapathy Junction,SYNTHETIC
+SR000519,LOC000035,P000461,,2026-05-15T06:05:58Z,Subject used phone while parked near Arumbakkam Godown Compound,SYNTHETIC
+SR000520,LOC000045,P000584,VH000075,2024-08-21T13:56:53Z,Vehicle TN38 AC 6054 (sedan) recorded entering Pothigai Nagar Toll Plaza,SYNTHETIC
+SR000521,LOC000012,P000318,,2025-10-26T03:55:25Z,Routine patrol log entry - KK Nagar Night Bazaar,SYNTHETIC
+SR000522,LOC000007,P000437,,2024-05-14T09:04:24Z,Subject met unidentified associate at Muthialpet Check Post,SYNTHETIC
+SR000523,LOC000015,P000595,,2024-05-14T16:35:51Z,CCTV frame captured at Valluvar Layout Night Bazaar toll plaza,SYNTHETIC
+SR000524,LOC000023,P000507,,2026-01-20T14:41:57Z,Subject observed on foot near Sundarankottai Fuel Station,SYNTHETIC
+SR000525,LOC000016,P000281,VH000160,2024-08-23T10:55:27Z,Subject used phone while parked near Ukkadam Harbour Police Station,SYNTHETIC
+SR000526,LOC000026,P000312,,2026-02-28T16:16:52Z,Subject observed on foot near Kajamalai Industrial Estate,SYNTHETIC
+SR000527,LOC000043,P000223,,2025-11-29T17:32:16Z,Vehicle sighting captured by ANPR at Sowdambika Layout Night Bazaar,SYNTHETIC
+SR000528,LOC000012,P000309,,2024-11-26T14:09:58Z,Subject met unidentified associate at KK Nagar Night Bazaar,SYNTHETIC
+SR000529,LOC000003,P000443,VH000204,2025-09-18T15:41:28Z,Subject observed on foot near Thirunagar Cold Storage,SYNTHETIC
+SR000530,LOC000033,P000403,,2026-01-16T09:40:17Z,Subject met unidentified associate at Ukkadam Toll Plaza,SYNTHETIC
+SR000531,LOC000060,P000141,,2025-02-26T20:15:11Z,Vehicle sighting captured by ANPR at Ukkadam Cold Storage,SYNTHETIC
+SR000532,LOC000060,P000556,,2026-05-25T11:46:15Z,CCTV frame captured at Ukkadam Cold Storage toll plaza,SYNTHETIC
+SR000533,LOC000016,P000286,,2026-04-27T06:13:02Z,Routine patrol log entry - Ukkadam Harbour Police Station,SYNTHETIC
+SR000534,LOC000055,P000514,,2026-03-05T06:20:41Z,Routine patrol log entry - Kuruvikulam Construction Site,SYNTHETIC
+SR000535,LOC000030,P000316,VH000190,2026-03-17T07:35:00Z,Subject observed on foot near Ganapathy Junction,SYNTHETIC
+SR000536,LOC000022,P000282,VH000077,2026-06-20T14:08:39Z,Vehicle TN19 YJ 4812 (SUV) recorded entering Nellithope Cold Storage,SYNTHETIC
+SR000537,LOC000031,P000338,,2024-08-22T21:41:39Z,Subject used phone while parked near Peelamedu Textile Mill,SYNTHETIC
+SR000538,LOC000047,P000303,,2024-03-28T07:57:09Z,Routine patrol log entry - Azhagar Koil Road Junction,SYNTHETIC
+SR000539,LOC000009,P000051,,2025-10-06T17:13:46Z,Vehicle sighting captured by ANPR at Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000540,LOC000006,P000228,,2024-04-05T16:58:21Z,Subject met unidentified associate at Pappanaickenpalayam Bridge End,SYNTHETIC
+SR000541,LOC000030,P000015,,2026-01-01T10:04:25Z,Vehicle sighting captured by ANPR at Ganapathy Junction,SYNTHETIC
+SR000542,LOC000003,P000392,,2026-03-31T14:40:24Z,Subject used phone while parked near Thirunagar Cold Storage,SYNTHETIC
+SR000543,LOC000055,P000563,,2024-12-18T16:10:57Z,Vehicle sighting captured by ANPR at Kuruvikulam Construction Site,SYNTHETIC
+SR000544,LOC000055,P000214,,2025-03-02T04:07:46Z,Subject met unidentified associate at Kuruvikulam Construction Site,SYNTHETIC
+SR000545,LOC000012,P000451,,2025-01-24T08:30:14Z,Subject met unidentified associate at KK Nagar Night Bazaar,SYNTHETIC
+SR000546,LOC000057,P000079,VH000052,2024-07-08T21:11:23Z,Subject met unidentified associate at Azhagar Koil Road Fuel Station,SYNTHETIC
+SR000547,LOC000061,P000509,VH000180,2026-03-16T15:47:13Z,Routine patrol log entry - Central Market Junction,SYNTHETIC
+SR000548,LOC000007,P000127,VH000085,2025-01-12T14:34:44Z,Subject met unidentified associate at Muthialpet Check Post,SYNTHETIC
+SR000549,LOC000050,P000582,VH000229,2025-05-11T02:16:12Z,Routine patrol log entry - Ganapathy Bus Terminus,SYNTHETIC
+SR000550,LOC000024,P000043,VH000030,2025-03-30T02:52:36Z,CCTV frame captured at Palladam Check Post toll plaza,SYNTHETIC
+SR000551,LOC000006,P000345,VH000045,2024-09-17T21:57:08Z,Vehicle TN50 PT 1711 (van) recorded entering Pappanaickenpalayam Bridge End,SYNTHETIC
+SR000552,LOC000048,P000300,VH000170,2026-08-20T11:47:14Z,Subject met unidentified associate at Sulur Railway Yard,SYNTHETIC
+SR000553,LOC000024,P000141,VH000095,2024-01-16T02:32:44Z,Subject used phone while parked near Palladam Check Post,SYNTHETIC
+SR000554,LOC000018,P000446,,2025-07-26T02:35:40Z,Routine patrol log entry - Anna Nagar Bus Terminus,SYNTHETIC
+SR000555,LOC000019,P000028,VH000018,2024-09-08T17:49:58Z,Subject observed on foot near Meenakshi Nagar Agro Market,SYNTHETIC
+SR000556,LOC000026,P000452,,2025-01-08T23:22:47Z,CCTV frame captured at Kajamalai Industrial Estate toll plaza,SYNTHETIC
+SR000557,LOC000057,P000492,,2026-02-26T11:55:32Z,CCTV frame captured at Azhagar Koil Road Fuel Station toll plaza,SYNTHETIC
+SR000558,LOC000011,P000275,,2025-08-14T16:50:11Z,Subject observed on foot near Peelamedu Harbour Gate,SYNTHETIC
+SR000559,LOC000045,P000528,VH000214,2025-02-01T19:46:19Z,Vehicle TN19 HU 5231 (truck) recorded entering Pothigai Nagar Toll Plaza,SYNTHETIC
+SR000560,LOC000056,P000329,,2025-05-01T19:17:49Z,Vehicle sighting captured by ANPR at Kallamadu Industrial Estate,SYNTHETIC
+SR000561,LOC000034,P000147,,2026-04-18T15:58:56Z,Subject met unidentified associate at Mattuthavani Junction,SYNTHETIC
+SR000562,LOC000050,P000023,,2026-07-21T21:45:59Z,Subject met unidentified associate at Ganapathy Bus Terminus,SYNTHETIC
+SR000563,LOC000042,P000498,,2025-05-26T09:26:57Z,Subject observed on foot near Chromepet Agro Market,SYNTHETIC
+SR000564,LOC000057,P000287,,2026-08-21T10:38:15Z,Subject observed on foot near Azhagar Koil Road Fuel Station,SYNTHETIC
+SR000565,LOC000056,P000470,,2024-08-12T08:24:31Z,Subject used phone while parked near Kallamadu Industrial Estate,SYNTHETIC
+SR000566,LOC000011,P000296,VH000066,2025-09-20T11:17:07Z,Vehicle sighting captured by ANPR at Peelamedu Harbour Gate,SYNTHETIC
+SR000567,LOC000020,P000299,,2025-02-02T06:02:51Z,Routine patrol log entry - Mylapore City Police Station,SYNTHETIC
+SR000568,LOC000031,P000432,,2025-07-03T13:30:02Z,Routine patrol log entry - Peelamedu Textile Mill,SYNTHETIC
+SR000569,LOC000054,P000358,,2024-09-11T19:08:20Z,Subject met unidentified associate at Kallamadu Agro Market,SYNTHETIC
+SR000570,LOC000054,P000174,,2025-02-10T02:39:26Z,Subject met unidentified associate at Kallamadu Agro Market,SYNTHETIC
+SR000571,LOC000052,P000114,,2026-03-25T17:47:14Z,CCTV frame captured at Coimbatore Junction Construction Site toll plaza,SYNTHETIC
+SR000572,LOC000017,P000086,,2024-12-05T18:04:41Z,Subject used phone while parked near Egmore Cold Storage,SYNTHETIC
+SR000573,LOC000051,P000241,VH000120,2026-06-24T14:05:45Z,Routine patrol log entry - Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR000574,LOC000049,P000139,VH000093,2026-01-07T01:40:52Z,Vehicle TN75 TH 2925 (motorcycle) recorded entering Gandhipuram Warehouse Complex,SYNTHETIC
+SR000575,LOC000003,P000452,VH000072,2025-06-01T10:37:37Z,Subject met unidentified associate at Thirunagar Cold Storage,SYNTHETIC
+SR000576,LOC000051,P000510,,2025-09-07T10:33:25Z,Subject observed on foot near Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR000577,LOC000013,P000502,,2026-05-30T07:52:40Z,CCTV frame captured at Bharathi Bazaar Wholesale Market toll plaza,SYNTHETIC
+SR000578,LOC000054,P000358,,2026-08-22T06:19:33Z,CCTV frame captured at Kallamadu Agro Market toll plaza,SYNTHETIC
+SR000579,LOC000035,P000201,VH000209,2024-01-10T03:07:04Z,Subject met unidentified associate at Arumbakkam Godown Compound,SYNTHETIC
+SR000580,LOC000010,P000383,,2026-02-04T15:31:23Z,Routine patrol log entry - Kuruvikulam Residential Layout,SYNTHETIC
+SR000581,LOC000003,P000238,,2025-01-13T09:22:54Z,Subject used phone while parked near Thirunagar Cold Storage,SYNTHETIC
+SR000582,LOC000038,P000145,,2024-01-31T08:31:11Z,Subject observed on foot near Tambaram Toll Plaza,SYNTHETIC
+SR000583,LOC000061,P000411,,2025-08-02T23:23:41Z,Subject observed on foot near Central Market Junction,SYNTHETIC
+SR000584,LOC000051,P000624,,2026-06-30T22:36:03Z,Subject observed on foot near Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR000585,LOC000007,P000451,,2025-02-11T16:39:21Z,Vehicle sighting captured by ANPR at Muthialpet Check Post,SYNTHETIC
+SR000586,LOC000047,P000296,,2024-05-03T03:03:00Z,Subject observed on foot near Azhagar Koil Road Junction,SYNTHETIC
+SR000587,LOC000044,P000410,,2026-04-18T06:27:04Z,Vehicle sighting captured by ANPR at Sulur Check Post,SYNTHETIC
+SR000588,LOC000061,P000427,VH000199,2024-10-14T17:52:02Z,Vehicle sighting captured by ANPR at Central Market Junction,SYNTHETIC
+SR000589,LOC000061,P000320,,2025-01-26T18:15:14Z,Routine patrol log entry - Central Market Junction,SYNTHETIC
+SR000590,LOC000009,P000419,VH000196,2025-09-23T22:27:42Z,Subject observed on foot near Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000591,LOC000019,P000118,VH000080,2025-01-20T07:44:22Z,Routine patrol log entry - Meenakshi Nagar Agro Market,SYNTHETIC
+SR000592,LOC000030,P000157,,2024-07-31T10:44:14Z,Subject used phone while parked near Ganapathy Junction,SYNTHETIC
+SR000593,LOC000022,P000131,,2026-05-19T01:07:28Z,Routine patrol log entry - Nellithope Cold Storage,SYNTHETIC
+SR000594,LOC000041,P000344,VH000181,2025-03-16T08:50:57Z,Subject met unidentified associate at Vilachery Cold Storage,SYNTHETIC
+SR000595,LOC000050,P000148,,2026-08-20T15:15:48Z,Subject met unidentified associate at Ganapathy Bus Terminus,SYNTHETIC
+SR000596,LOC000060,P000086,VH000058,2025-06-03T17:25:14Z,Vehicle TN62 JG 6354 (lorry) recorded entering Ukkadam Cold Storage,SYNTHETIC
+SR000597,LOC000027,P000060,VH000072,2024-07-09T13:48:21Z,Subject used phone while parked near Mettupalayam Cold Storage,SYNTHETIC
+SR000598,LOC000017,P000550,,2025-10-16T07:28:08Z,Routine patrol log entry - Egmore Cold Storage,SYNTHETIC
+SR000599,LOC000023,P000136,,2024-01-14T08:29:39Z,Routine patrol log entry - Sundarankottai Fuel Station,SYNTHETIC
+SR000600,LOC000052,P000083,,2026-07-01T19:25:37Z,Subject used phone while parked near Coimbatore Junction Construction Site,SYNTHETIC
+SR000601,LOC000009,P000580,VH000132,2026-03-03T05:14:37Z,Subject used phone while parked near Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000602,LOC000055,P000450,,2025-03-04T20:51:15Z,Vehicle sighting captured by ANPR at Kuruvikulam Construction Site,SYNTHETIC
+SR000603,LOC000008,P000122,,2024-06-23T13:25:49Z,Vehicle sighting captured by ANPR at Ambattur Warehouse Complex,SYNTHETIC
+SR000604,LOC000012,P000318,,2025-03-12T20:03:17Z,Subject observed on foot near KK Nagar Night Bazaar,SYNTHETIC
+SR000605,LOC000021,P000195,,2025-01-03T04:42:54Z,Vehicle sighting captured by ANPR at Valluvar Layout Harbour Gate,SYNTHETIC
+SR000606,LOC000012,P000011,VH000009,2026-04-18T16:28:21Z,Subject met unidentified associate at KK Nagar Night Bazaar,SYNTHETIC
+SR000607,LOC000015,P000024,,2025-06-21T14:44:17Z,Vehicle sighting captured by ANPR at Valluvar Layout Night Bazaar,SYNTHETIC
+SR000608,LOC000008,P000575,VH000227,2026-07-11T13:46:56Z,Vehicle sighting captured by ANPR at Ambattur Warehouse Complex,SYNTHETIC
+SR000609,LOC000061,P000509,,2026-03-24T18:50:44Z,Subject met unidentified associate at Central Market Junction,SYNTHETIC
+SR000610,LOC000053,P000529,VH000062,2026-01-18T17:42:28Z,Vehicle sighting captured by ANPR at Mettupalayam Wholesale Market,SYNTHETIC
+SR000611,LOC000056,P000139,VH000093,2024-08-23T22:10:09Z,Vehicle TN75 TH 2925 (motorcycle) recorded entering Kallamadu Industrial Estate,SYNTHETIC
+SR000612,LOC000017,P000597,,2026-05-23T02:02:48Z,Subject observed on foot near Egmore Cold Storage,SYNTHETIC
+SR000613,LOC000012,P000605,,2024-03-23T17:55:40Z,Routine patrol log entry - KK Nagar Night Bazaar,SYNTHETIC
+SR000614,LOC000048,P000619,,2024-04-13T15:33:23Z,Subject used phone while parked near Sulur Railway Yard,SYNTHETIC
+SR000615,LOC000048,P000474,,2026-03-31T05:49:19Z,CCTV frame captured at Sulur Railway Yard toll plaza,SYNTHETIC
+SR000616,LOC000031,P000283,,2026-03-10T15:25:25Z,CCTV frame captured at Peelamedu Textile Mill toll plaza,SYNTHETIC
+SR000617,LOC000006,P000387,VH000193,2025-04-04T18:35:20Z,CCTV frame captured at Pappanaickenpalayam Bridge End toll plaza,SYNTHETIC
+SR000618,LOC000044,P000584,,2025-04-09T00:31:57Z,Subject used phone while parked near Sulur Check Post,SYNTHETIC
+SR000619,LOC000041,P000372,,2024-06-22T05:30:48Z,Subject observed on foot near Vilachery Cold Storage,SYNTHETIC
+SR000620,LOC000015,P000604,,2025-09-20T00:09:28Z,Subject met unidentified associate at Valluvar Layout Night Bazaar,SYNTHETIC
+SR000621,LOC000023,P000067,,2025-10-01T23:23:59Z,Subject met unidentified associate at Sundarankottai Fuel Station,SYNTHETIC
+SR000622,LOC000055,P000111,,2026-01-19T19:02:22Z,Subject met unidentified associate at Kuruvikulam Construction Site,SYNTHETIC
+SR000623,LOC000053,P000187,,2026-05-09T06:01:41Z,Subject used phone while parked near Mettupalayam Wholesale Market,SYNTHETIC
+SR000624,LOC000001,P000259,,2024-09-25T02:13:51Z,Subject met unidentified associate at Ganapathy City Police Station,SYNTHETIC
+SR000625,LOC000043,P000385,VH000191,2025-03-06T13:30:26Z,Routine patrol log entry - Sowdambika Layout Night Bazaar,SYNTHETIC
+SR000626,LOC000060,P000013,VH000182,2026-08-19T01:48:43Z,Vehicle TN49 UG 8413 (sedan) recorded entering Ukkadam Cold Storage,SYNTHETIC
+SR000627,LOC000014,P000161,,2024-06-10T18:13:09Z,Routine patrol log entry - Estancia Bridge End,SYNTHETIC
+SR000628,LOC000046,P000055,VH000131,2025-01-29T02:01:25Z,Vehicle sighting captured by ANPR at Royapuram Fuel Station,SYNTHETIC
+SR000629,LOC000054,P000384,,2025-10-29T04:21:42Z,Subject observed on foot near Kallamadu Agro Market,SYNTHETIC
+SR000630,LOC000046,P000084,VH000129,2024-06-26T11:09:51Z,CCTV frame captured at Royapuram Fuel Station toll plaza,SYNTHETIC
+SR000631,LOC000039,P000029,VH000019,2026-08-09T02:32:15Z,Routine patrol log entry - Thirunagar Industrial Estate,SYNTHETIC
+SR000632,LOC000012,P000605,,2025-02-01T14:43:38Z,Routine patrol log entry - KK Nagar Night Bazaar,SYNTHETIC
+SR000633,LOC000050,P000242,,2025-03-31T08:07:29Z,Subject observed on foot near Ganapathy Bus Terminus,SYNTHETIC
+SR000634,LOC000054,P000155,,2026-07-01T03:28:22Z,Routine patrol log entry - Kallamadu Agro Market,SYNTHETIC
+SR000635,LOC000039,P000489,,2025-04-29T20:47:40Z,CCTV frame captured at Thirunagar Industrial Estate toll plaza,SYNTHETIC
+SR000636,LOC000045,P000248,,2025-05-07T17:21:15Z,CCTV frame captured at Pothigai Nagar Toll Plaza toll plaza,SYNTHETIC
+SR000637,LOC000033,P000448,,2025-04-17T08:56:53Z,CCTV frame captured at Ukkadam Toll Plaza toll plaza,SYNTHETIC
+SR000638,LOC000053,P000558,VH000222,2025-08-19T01:28:15Z,CCTV frame captured at Mettupalayam Wholesale Market toll plaza,SYNTHETIC
+SR000639,LOC000003,P000477,,2025-03-19T09:38:36Z,Routine patrol log entry - Thirunagar Cold Storage,SYNTHETIC
+SR000640,LOC000045,P000407,,2024-12-25T15:17:10Z,Routine patrol log entry - Pothigai Nagar Toll Plaza,SYNTHETIC
+SR000641,LOC000011,P000285,VH000134,2024-01-13T23:44:18Z,Subject observed on foot near Peelamedu Harbour Gate,SYNTHETIC
+SR000642,LOC000041,P000195,VH000131,2025-02-14T21:36:12Z,CCTV frame captured at Vilachery Cold Storage toll plaza,SYNTHETIC
+SR000643,LOC000053,P000566,,2025-04-24T10:59:31Z,Subject met unidentified associate at Mettupalayam Wholesale Market,SYNTHETIC
+SR000644,LOC000021,P000473,,2026-01-20T13:30:19Z,Routine patrol log entry - Valluvar Layout Harbour Gate,SYNTHETIC
+SR000645,LOC000021,P000376,VH000025,2026-04-02T15:02:19Z,Subject met unidentified associate at Valluvar Layout Harbour Gate,SYNTHETIC
+SR000646,LOC000030,P000125,,2025-11-17T02:08:11Z,CCTV frame captured at Ganapathy Junction toll plaza,SYNTHETIC
+SR000647,LOC000059,P000298,,2026-04-01T15:59:41Z,CCTV frame captured at RS Puram Agro Market toll plaza,SYNTHETIC
+SR000648,LOC000050,P000035,,2026-01-24T13:03:43Z,Subject used phone while parked near Ganapathy Bus Terminus,SYNTHETIC
+SR000649,LOC000046,P000176,VH000120,2025-10-31T14:32:22Z,CCTV frame captured at Royapuram Fuel Station toll plaza,SYNTHETIC
+SR000650,LOC000057,P000288,,2026-08-27T06:19:00Z,Subject met unidentified associate at Azhagar Koil Road Fuel Station,SYNTHETIC
+SR000651,LOC000038,P000239,VH000149,2026-04-13T08:38:11Z,Subject observed on foot near Tambaram Toll Plaza,SYNTHETIC
+SR000652,LOC000007,P000087,VH000059,2025-07-15T07:22:07Z,CCTV frame captured at Muthialpet Check Post toll plaza,SYNTHETIC
+SR000653,LOC000046,P000551,,2026-01-01T11:06:46Z,Routine patrol log entry - Royapuram Fuel Station,SYNTHETIC
+SR000654,LOC000030,P000388,,2025-11-15T12:10:34Z,Routine patrol log entry - Ganapathy Junction,SYNTHETIC
+SR000655,LOC000022,P000090,,2025-01-23T21:22:00Z,Subject observed on foot near Nellithope Cold Storage,SYNTHETIC
+SR000656,LOC000021,P000175,,2024-11-13T08:37:58Z,CCTV frame captured at Valluvar Layout Harbour Gate toll plaza,SYNTHETIC
+SR000657,LOC000003,P000352,VH000002,2024-02-29T13:44:01Z,Vehicle TN46 GM 9740 (motorcycle) recorded entering Thirunagar Cold Storage,SYNTHETIC
+SR000658,LOC000060,P000130,VH000087,2025-03-20T17:11:37Z,Subject observed on foot near Ukkadam Cold Storage,SYNTHETIC
+SR000659,LOC000031,P000319,,2024-08-29T14:59:07Z,Subject met unidentified associate at Peelamedu Textile Mill,SYNTHETIC
+SR000660,LOC000031,P000333,VH000106,2024-12-10T04:17:46Z,Vehicle TN62 VM 5764 (lorry) recorded entering Peelamedu Textile Mill,SYNTHETIC
+SR000661,LOC000047,P000178,VH000121,2024-11-27T15:42:58Z,Subject met unidentified associate at Azhagar Koil Road Junction,SYNTHETIC
+SR000662,LOC000054,P000017,,2026-07-04T17:14:51Z,CCTV frame captured at Kallamadu Agro Market toll plaza,SYNTHETIC
+SR000663,LOC000034,P000465,VH000189,2026-03-30T10:17:11Z,Subject met unidentified associate at Mattuthavani Junction,SYNTHETIC
+SR000664,LOC000052,P000408,,2025-09-05T19:12:10Z,CCTV frame captured at Coimbatore Junction Construction Site toll plaza,SYNTHETIC
+SR000665,LOC000061,P000573,,2024-10-17T04:34:30Z,Subject observed on foot near Central Market Junction,SYNTHETIC
+SR000666,LOC000016,P000445,VH000205,2025-05-08T05:59:27Z,Routine patrol log entry - Ukkadam Harbour Police Station,SYNTHETIC
+SR000667,LOC000038,P000496,,2026-03-08T21:59:19Z,Subject observed on foot near Tambaram Toll Plaza,SYNTHETIC
+SR000668,LOC000033,P000421,,2025-02-02T10:46:48Z,CCTV frame captured at Ukkadam Toll Plaza toll plaza,SYNTHETIC
+SR000669,LOC000050,P000203,,2025-09-16T04:09:13Z,Subject met unidentified associate at Ganapathy Bus Terminus,SYNTHETIC
+SR000670,LOC000020,P000520,VH000212,2026-01-29T13:34:58Z,Subject used phone while parked near Mylapore City Police Station,SYNTHETIC
+SR000671,LOC000030,P000417,,2026-07-19T21:38:56Z,Routine patrol log entry - Ganapathy Junction,SYNTHETIC
+SR000672,LOC000053,P000377,,2026-05-26T00:23:24Z,Subject met unidentified associate at Mettupalayam Wholesale Market,SYNTHETIC
+SR000673,LOC000050,P000153,VH000104,2025-04-09T02:28:18Z,Routine patrol log entry - Ganapathy Bus Terminus,SYNTHETIC
+SR000674,LOC000061,P000476,,2024-07-02T18:00:36Z,CCTV frame captured at Central Market Junction toll plaza,SYNTHETIC
+SR000675,LOC000052,P000532,VH000092,2026-06-25T06:49:34Z,CCTV frame captured at Coimbatore Junction Construction Site toll plaza,SYNTHETIC
+SR000676,LOC000003,P000465,VH000173,2026-06-22T00:41:48Z,CCTV frame captured at Thirunagar Cold Storage toll plaza,SYNTHETIC
+SR000677,LOC000024,P000049,,2025-10-19T07:56:11Z,Vehicle sighting captured by ANPR at Palladam Check Post,SYNTHETIC
+SR000678,LOC000025,P000490,,2025-02-02T12:22:31Z,Subject met unidentified associate at Anna Nagar Check Post,SYNTHETIC
+SR000679,LOC000016,P000109,VH000189,2026-02-22T11:22:52Z,Vehicle sighting captured by ANPR at Ukkadam Harbour Police Station,SYNTHETIC
+SR000680,LOC000007,P000122,,2026-03-17T12:42:08Z,Vehicle sighting captured by ANPR at Muthialpet Check Post,SYNTHETIC
+SR000681,LOC000026,P000358,VH000235,2025-09-29T03:43:03Z,Subject observed on foot near Kajamalai Industrial Estate,SYNTHETIC
+SR000682,LOC000040,P000415,,2025-04-14T03:01:47Z,Subject observed on foot near Gandhipuram Textile Mill,SYNTHETIC
+SR000683,LOC000025,P000203,VH000137,2024-05-14T01:49:12Z,Subject observed on foot near Anna Nagar Check Post,SYNTHETIC
+SR000684,LOC000002,P000236,,2024-12-19T12:36:44Z,CCTV frame captured at Velachery Oil Depot toll plaza,SYNTHETIC
+SR000685,LOC000054,P000273,,2024-04-05T06:23:52Z,CCTV frame captured at Kallamadu Agro Market toll plaza,SYNTHETIC
+SR000686,LOC000021,P000436,,2024-05-18T17:43:23Z,CCTV frame captured at Valluvar Layout Harbour Gate toll plaza,SYNTHETIC
+SR000687,LOC000048,P000536,,2025-03-07T15:28:05Z,CCTV frame captured at Sulur Railway Yard toll plaza,SYNTHETIC
+SR000688,LOC000019,P000592,,2025-08-15T08:27:53Z,Subject used phone while parked near Meenakshi Nagar Agro Market,SYNTHETIC
+SR000689,LOC000014,P000519,VH000136,2024-11-06T21:41:56Z,Routine patrol log entry - Estancia Bridge End,SYNTHETIC
+SR000690,LOC000042,P000188,VH000126,2024-07-27T08:10:00Z,CCTV frame captured at Chromepet Agro Market toll plaza,SYNTHETIC
+SR000691,LOC000020,P000170,,2025-12-14T00:11:14Z,Subject observed on foot near Mylapore City Police Station,SYNTHETIC
+SR000692,LOC000006,P000361,,2025-04-04T07:33:08Z,Subject met unidentified associate at Pappanaickenpalayam Bridge End,SYNTHETIC
+SR000693,LOC000023,P000444,,2024-06-16T01:22:15Z,Routine patrol log entry - Sundarankottai Fuel Station,SYNTHETIC
+SR000694,LOC000038,P000481,,2025-02-08T08:30:46Z,Subject observed on foot near Tambaram Toll Plaza,SYNTHETIC
+SR000695,LOC000032,P000626,,2025-06-24T02:14:56Z,Subject used phone while parked near Bharathi Bazaar Agro Market,SYNTHETIC
+SR000696,LOC000043,P000380,,2024-10-04T08:10:41Z,Subject observed on foot near Sowdambika Layout Night Bazaar,SYNTHETIC
+SR000697,LOC000020,P000207,,2024-07-22T15:47:21Z,Routine patrol log entry - Mylapore City Police Station,SYNTHETIC
+SR000698,LOC000012,P000309,,2026-07-04T17:15:12Z,CCTV frame captured at KK Nagar Night Bazaar toll plaza,SYNTHETIC
+SR000699,LOC000030,P000621,VH000234,2024-02-03T02:12:43Z,Vehicle TN50 NV 7644 (sedan) recorded entering Ganapathy Junction,SYNTHETIC
+SR000700,LOC000031,P000380,,2024-11-08T22:49:05Z,CCTV frame captured at Peelamedu Textile Mill toll plaza,SYNTHETIC
+SR000701,LOC000053,P000290,VH000164,2024-03-21T04:41:16Z,Routine patrol log entry - Mettupalayam Wholesale Market,SYNTHETIC
+SR000702,LOC000054,P000322,VH000169,2024-04-07T23:48:09Z,Subject observed on foot near Kallamadu Agro Market,SYNTHETIC
+SR000703,LOC000058,P000317,VH000180,2025-10-14T02:38:57Z,Subject used phone while parked near Anna Nagar Lorry Park,SYNTHETIC
+SR000704,LOC000004,P000479,,2025-12-10T03:12:14Z,Subject met unidentified associate at Chokkanadar Harbour Police Station,SYNTHETIC
+SR000705,LOC000050,P000208,VH000139,2024-11-27T05:23:38Z,Subject observed on foot near Ganapathy Bus Terminus,SYNTHETIC
+SR000706,LOC000044,P000050,VH000033,2024-11-11T03:21:16Z,Vehicle sighting captured by ANPR at Sulur Check Post,SYNTHETIC
+SR000707,LOC000015,P000191,,2025-03-27T09:49:38Z,CCTV frame captured at Valluvar Layout Night Bazaar toll plaza,SYNTHETIC
+SR000708,LOC000038,P000466,,2024-02-08T20:41:55Z,Routine patrol log entry - Tambaram Toll Plaza,SYNTHETIC
+SR000709,LOC000021,P000059,,2024-08-19T21:26:09Z,Routine patrol log entry - Valluvar Layout Harbour Gate,SYNTHETIC
+SR000710,LOC000058,P000391,,2024-01-31T01:00:41Z,CCTV frame captured at Anna Nagar Lorry Park toll plaza,SYNTHETIC
+SR000711,LOC000058,P000508,VH000210,2025-01-03T19:45:47Z,Routine patrol log entry - Anna Nagar Lorry Park,SYNTHETIC
+SR000712,LOC000015,P000509,,2025-11-28T13:31:35Z,Subject observed on foot near Valluvar Layout Night Bazaar,SYNTHETIC
+SR000713,LOC000027,P000470,,2026-05-30T09:51:16Z,Vehicle sighting captured by ANPR at Mettupalayam Cold Storage,SYNTHETIC
+SR000714,LOC000040,P000227,,2025-03-30T20:42:01Z,Subject observed on foot near Gandhipuram Textile Mill,SYNTHETIC
+SR000715,LOC000034,P000470,,2025-10-12T00:50:08Z,CCTV frame captured at Mattuthavani Junction toll plaza,SYNTHETIC
+SR000716,LOC000058,P000317,VH000174,2024-08-02T08:22:29Z,Subject observed on foot near Anna Nagar Lorry Park,SYNTHETIC
+SR000717,LOC000052,P000478,,2025-08-29T10:23:54Z,Routine patrol log entry - Coimbatore Junction Construction Site,SYNTHETIC
+SR000718,LOC000045,P000127,VH000085,2026-08-20T10:29:38Z,Subject used phone while parked near Pothigai Nagar Toll Plaza,SYNTHETIC
+SR000719,LOC000030,P000480,,2026-02-16T19:19:58Z,Vehicle sighting captured by ANPR at Ganapathy Junction,SYNTHETIC
+SR000720,LOC000020,P000610,,2024-07-25T19:32:15Z,Routine patrol log entry - Mylapore City Police Station,SYNTHETIC
+SR000721,LOC000008,P000476,,2024-02-19T16:27:09Z,CCTV frame captured at Ambattur Warehouse Complex toll plaza,SYNTHETIC
+SR000722,LOC000011,P000456,,2024-06-02T08:34:26Z,Subject used phone while parked near Peelamedu Harbour Gate,SYNTHETIC
+SR000723,LOC000056,P000525,,2026-07-13T22:49:36Z,Subject observed on foot near Kallamadu Industrial Estate,SYNTHETIC
+SR000724,LOC000019,P000506,,2025-09-13T15:02:58Z,Routine patrol log entry - Meenakshi Nagar Agro Market,SYNTHETIC
+SR000725,LOC000019,P000166,VH000056,2025-04-30T22:14:14Z,Subject met unidentified associate at Meenakshi Nagar Agro Market,SYNTHETIC
+SR000726,LOC000054,P000214,VH000142,2024-09-12T07:10:19Z,CCTV frame captured at Kallamadu Agro Market toll plaza,SYNTHETIC
+SR000727,LOC000001,P000130,VH000087,2024-06-06T19:32:05Z,CCTV frame captured at Ganapathy City Police Station toll plaza,SYNTHETIC
+SR000728,LOC000005,P000561,,2026-05-04T02:46:12Z,Subject used phone while parked near Kajamalai Junction,SYNTHETIC
+SR000729,LOC000043,P000544,,2024-01-05T00:41:49Z,Routine patrol log entry - Sowdambika Layout Night Bazaar,SYNTHETIC
+SR000730,LOC000044,P000124,,2026-02-12T03:09:01Z,Subject used phone while parked near Sulur Check Post,SYNTHETIC
+SR000731,LOC000055,P000022,,2026-06-10T19:08:01Z,Subject observed on foot near Kuruvikulam Construction Site,SYNTHETIC
+SR000732,LOC000042,P000515,,2025-08-19T16:04:41Z,Subject used phone while parked near Chromepet Agro Market,SYNTHETIC
+SR000733,LOC000035,P000248,,2025-11-06T05:08:18Z,Vehicle sighting captured by ANPR at Arumbakkam Godown Compound,SYNTHETIC
+SR000734,LOC000002,P000001,,2025-03-17T16:23:54Z,Vehicle sighting captured by ANPR at Velachery Oil Depot,SYNTHETIC
+SR000735,LOC000045,P000064,,2026-05-02T10:06:46Z,Subject observed on foot near Pothigai Nagar Toll Plaza,SYNTHETIC
+SR000736,LOC000031,P000283,,2025-03-20T06:53:16Z,CCTV frame captured at Peelamedu Textile Mill toll plaza,SYNTHETIC
+SR000737,LOC000006,P000482,,2026-06-29T13:36:58Z,Subject used phone while parked near Pappanaickenpalayam Bridge End,SYNTHETIC
+SR000738,LOC000022,P000221,VH000061,2024-07-01T15:57:33Z,Vehicle TN30 EK 3992 (motorcycle) recorded entering Nellithope Cold Storage,SYNTHETIC
+SR000739,LOC000048,P000616,VH000008,2025-01-05T09:14:14Z,CCTV frame captured at Sulur Railway Yard toll plaza,SYNTHETIC
+SR000740,LOC000052,P000084,VH000056,2025-10-05T11:30:44Z,Subject observed on foot near Coimbatore Junction Construction Site,SYNTHETIC
+SR000741,LOC000042,P000304,,2026-04-25T06:31:21Z,Subject observed on foot near Chromepet Agro Market,SYNTHETIC
+SR000742,LOC000009,P000252,,2025-04-24T12:45:24Z,Subject used phone while parked near Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000743,LOC000025,P000041,VH000028,2026-05-27T15:16:28Z,Routine patrol log entry - Anna Nagar Check Post,SYNTHETIC
+SR000744,LOC000053,P000130,,2026-07-20T12:20:55Z,CCTV frame captured at Mettupalayam Wholesale Market toll plaza,SYNTHETIC
+SR000745,LOC000022,P000009,VH000128,2024-11-14T13:10:46Z,Routine patrol log entry - Nellithope Cold Storage,SYNTHETIC
+SR000746,LOC000041,P000262,,2024-06-12T04:00:53Z,CCTV frame captured at Vilachery Cold Storage toll plaza,SYNTHETIC
+SR000747,LOC000061,P000590,,2024-05-01T12:50:53Z,Subject met unidentified associate at Central Market Junction,SYNTHETIC
+SR000748,LOC000026,P000009,,2024-03-01T13:32:38Z,Subject observed on foot near Kajamalai Industrial Estate,SYNTHETIC
+SR000749,LOC000061,P000161,,2026-04-13T00:59:40Z,Subject met unidentified associate at Central Market Junction,SYNTHETIC
+SR000750,LOC000058,P000112,VH000076,2024-03-24T19:21:09Z,Vehicle TN31 HK 8133 (motorcycle) recorded entering Anna Nagar Lorry Park,SYNTHETIC
+SR000751,LOC000037,P000108,VH000073,2024-07-02T21:34:25Z,Vehicle sighting captured by ANPR at Chokkanadar Pettai Textile Mill,SYNTHETIC
+SR000752,LOC000012,P000318,,2025-05-09T06:12:52Z,Vehicle sighting captured by ANPR at KK Nagar Night Bazaar,SYNTHETIC
+SR000753,LOC000043,P000396,VH000111,2025-02-04T12:10:20Z,Vehicle TN20 LE 3366 (motorcycle) recorded entering Sowdambika Layout Night Bazaar,SYNTHETIC
+SR000754,LOC000057,P000381,,2025-07-25T09:35:20Z,Subject used phone while parked near Azhagar Koil Road Fuel Station,SYNTHETIC
+SR000755,LOC000015,P000021,,2025-10-05T16:49:07Z,Subject met unidentified associate at Valluvar Layout Night Bazaar,SYNTHETIC
+SR000756,LOC000059,P000410,,2024-02-23T16:33:24Z,Subject used phone while parked near RS Puram Agro Market,SYNTHETIC
+SR000757,LOC000050,P000373,,2025-12-20T22:46:47Z,Subject used phone while parked near Ganapathy Bus Terminus,SYNTHETIC
+SR000758,LOC000011,P000151,VH000102,2024-05-14T19:04:53Z,Routine patrol log entry - Peelamedu Harbour Gate,SYNTHETIC
+SR000759,LOC000039,P000455,VH000206,2025-03-06T14:26:08Z,CCTV frame captured at Thirunagar Industrial Estate toll plaza,SYNTHETIC
+SR000760,LOC000001,P000076,VH000051,2024-02-22T23:49:57Z,Vehicle TN28 SR 2719 (motorcycle) recorded entering Ganapathy City Police Station,SYNTHETIC
+SR000761,LOC000015,P000002,,2026-06-06T19:56:27Z,Routine patrol log entry - Valluvar Layout Night Bazaar,SYNTHETIC
+SR000762,LOC000055,P000429,VH000026,2024-06-21T10:19:28Z,Subject met unidentified associate at Kuruvikulam Construction Site,SYNTHETIC
+SR000763,LOC000053,P000384,,2024-06-13T12:03:52Z,Vehicle sighting captured by ANPR at Mettupalayam Wholesale Market,SYNTHETIC
+SR000764,LOC000019,P000483,,2024-10-03T13:50:32Z,Vehicle sighting captured by ANPR at Meenakshi Nagar Agro Market,SYNTHETIC
+SR000765,LOC000041,P000345,VH000182,2024-03-23T16:41:09Z,Subject used phone while parked near Vilachery Cold Storage,SYNTHETIC
+SR000766,LOC000048,P000331,VH000177,2024-09-28T05:04:35Z,Vehicle sighting captured by ANPR at Sulur Railway Yard,SYNTHETIC
+SR000767,LOC000061,P000436,,2026-04-19T18:56:46Z,Routine patrol log entry - Central Market Junction,SYNTHETIC
+SR000768,LOC000058,P000413,,2025-11-07T15:47:47Z,CCTV frame captured at Anna Nagar Lorry Park toll plaza,SYNTHETIC
+SR000769,LOC000015,P000484,,2024-03-28T03:34:46Z,Subject observed on foot near Valluvar Layout Night Bazaar,SYNTHETIC
+SR000770,LOC000061,P000411,VH000047,2025-07-21T19:53:06Z,Subject met unidentified associate at Central Market Junction,SYNTHETIC
+SR000771,LOC000042,P000020,,2025-05-20T01:30:33Z,Vehicle sighting captured by ANPR at Chromepet Agro Market,SYNTHETIC
+SR000772,LOC000034,P000137,VH000091,2024-06-23T11:28:33Z,Subject observed on foot near Mattuthavani Junction,SYNTHETIC
+SR000773,LOC000009,P000094,,2026-05-26T11:20:35Z,Subject observed on foot near Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000774,LOC000045,P000154,VH000105,2026-03-02T06:29:22Z,Vehicle TN01 ZH 4647 (SUV) recorded entering Pothigai Nagar Toll Plaza,SYNTHETIC
+SR000775,LOC000002,P000141,,2026-01-08T05:27:47Z,CCTV frame captured at Velachery Oil Depot toll plaza,SYNTHETIC
+SR000776,LOC000058,P000062,VH000041,2025-04-23T03:06:31Z,Subject observed on foot near Anna Nagar Lorry Park,SYNTHETIC
+SR000777,LOC000034,P000147,VH000062,2025-04-09T13:19:12Z,CCTV frame captured at Mattuthavani Junction toll plaza,SYNTHETIC
+SR000778,LOC000003,P000066,,2025-05-12T02:23:15Z,CCTV frame captured at Thirunagar Cold Storage toll plaza,SYNTHETIC
+SR000779,LOC000049,P000077,,2025-10-01T01:22:33Z,Vehicle sighting captured by ANPR at Gandhipuram Warehouse Complex,SYNTHETIC
+SR000780,LOC000011,P000156,,2026-05-08T07:06:54Z,Vehicle sighting captured by ANPR at Peelamedu Harbour Gate,SYNTHETIC
+SR000781,LOC000042,P000480,,2024-08-15T22:17:55Z,Subject used phone while parked near Chromepet Agro Market,SYNTHETIC
+SR000782,LOC000035,P000437,,2026-02-19T07:06:45Z,Vehicle sighting captured by ANPR at Arumbakkam Godown Compound,SYNTHETIC
+SR000783,LOC000014,P000554,,2025-08-17T06:04:27Z,Vehicle sighting captured by ANPR at Estancia Bridge End,SYNTHETIC
+SR000784,LOC000004,P000205,,2024-02-25T04:49:40Z,Subject used phone while parked near Chokkanadar Harbour Police Station,SYNTHETIC
+SR000785,LOC000051,P000461,,2026-02-16T04:47:44Z,Subject met unidentified associate at Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR000786,LOC000011,P000234,,2024-09-09T22:16:53Z,Routine patrol log entry - Peelamedu Harbour Gate,SYNTHETIC
+SR000787,LOC000003,P000381,,2024-08-19T12:29:06Z,Subject used phone while parked near Thirunagar Cold Storage,SYNTHETIC
+SR000788,LOC000020,P000385,,2025-07-29T00:03:55Z,Routine patrol log entry - Mylapore City Police Station,SYNTHETIC
+SR000789,LOC000061,P000500,,2024-11-01T03:25:51Z,Subject met unidentified associate at Central Market Junction,SYNTHETIC
+SR000790,LOC000028,P000076,VH000051,2025-05-24T03:03:58Z,Vehicle TN28 SR 2719 (motorcycle) recorded entering Ganapathy Mandi,SYNTHETIC
+SR000791,LOC000028,P000132,VH000141,2025-09-07T16:48:20Z,Routine patrol log entry - Ganapathy Mandi,SYNTHETIC
+SR000792,LOC000020,P000189,VH000127,2024-05-07T04:45:58Z,Subject observed on foot near Mylapore City Police Station,SYNTHETIC
+SR000793,LOC000031,P000179,,2026-05-14T00:17:44Z,Vehicle sighting captured by ANPR at Peelamedu Textile Mill,SYNTHETIC
+SR000794,LOC000004,P000399,,2025-05-19T11:40:51Z,Subject met unidentified associate at Chokkanadar Harbour Police Station,SYNTHETIC
+SR000795,LOC000018,P000555,VH000221,2026-03-17T02:32:36Z,Vehicle TN19 XC 4241 (van) recorded entering Anna Nagar Bus Terminus,SYNTHETIC
+SR000796,LOC000015,P000433,,2025-08-31T20:08:28Z,Subject observed on foot near Valluvar Layout Night Bazaar,SYNTHETIC
+SR000797,LOC000055,P000554,,2026-08-18T09:38:38Z,CCTV frame captured at Kuruvikulam Construction Site toll plaza,SYNTHETIC
+SR000798,LOC000028,P000343,,2024-03-22T21:48:52Z,Subject observed on foot near Ganapathy Mandi,SYNTHETIC
+SR000799,LOC000057,P000541,,2026-02-21T11:36:30Z,Subject observed on foot near Azhagar Koil Road Fuel Station,SYNTHETIC
+SR000800,LOC000052,P000057,VH000037,2026-04-19T00:10:29Z,Subject met unidentified associate at Coimbatore Junction Construction Site,SYNTHETIC
+SR000801,LOC000010,P000466,VH000162,2026-01-02T16:40:28Z,Subject observed on foot near Kuruvikulam Residential Layout,SYNTHETIC
+SR000802,LOC000011,P000156,,2025-04-03T21:12:12Z,Vehicle sighting captured by ANPR at Peelamedu Harbour Gate,SYNTHETIC
+SR000803,LOC000012,P000612,,2024-12-14T10:23:49Z,Routine patrol log entry - KK Nagar Night Bazaar,SYNTHETIC
+SR000804,LOC000052,P000532,,2024-03-14T04:05:03Z,CCTV frame captured at Coimbatore Junction Construction Site toll plaza,SYNTHETIC
+SR000805,LOC000043,P000244,VH000151,2024-05-14T20:35:23Z,Vehicle sighting captured by ANPR at Sowdambika Layout Night Bazaar,SYNTHETIC
+SR000806,LOC000053,P000340,,2025-10-21T04:17:18Z,Routine patrol log entry - Mettupalayam Wholesale Market,SYNTHETIC
+SR000807,LOC000012,P000183,,2025-02-01T22:37:37Z,CCTV frame captured at KK Nagar Night Bazaar toll plaza,SYNTHETIC
+SR000808,LOC000042,P000010,,2024-02-20T21:14:56Z,CCTV frame captured at Chromepet Agro Market toll plaza,SYNTHETIC
+SR000809,LOC000009,P000528,VH000214,2024-11-19T10:10:25Z,Routine patrol log entry - Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000810,LOC000042,P000316,,2025-07-10T13:08:01Z,Subject met unidentified associate at Chromepet Agro Market,SYNTHETIC
+SR000811,LOC000011,P000234,,2025-01-30T05:44:05Z,Subject used phone while parked near Peelamedu Harbour Gate,SYNTHETIC
+SR000812,LOC000006,P000454,,2024-07-29T07:01:30Z,Routine patrol log entry - Pappanaickenpalayam Bridge End,SYNTHETIC
+SR000813,LOC000061,P000435,,2026-03-08T21:19:01Z,CCTV frame captured at Central Market Junction toll plaza,SYNTHETIC
+SR000814,LOC000041,P000060,,2026-02-28T20:32:10Z,Vehicle sighting captured by ANPR at Vilachery Cold Storage,SYNTHETIC
+SR000815,LOC000038,P000581,,2026-07-09T13:16:40Z,CCTV frame captured at Tambaram Toll Plaza toll plaza,SYNTHETIC
+SR000816,LOC000056,P000490,,2026-07-23T22:28:50Z,Subject observed on foot near Kallamadu Industrial Estate,SYNTHETIC
+SR000817,LOC000036,P000149,VH000100,2024-05-27T17:54:13Z,Subject used phone while parked near Pothigai Nagar Oil Depot,SYNTHETIC
+SR000818,LOC000011,P000067,,2024-11-08T22:45:33Z,Subject observed on foot near Peelamedu Harbour Gate,SYNTHETIC
+SR000819,LOC000017,P000205,,2025-11-22T09:20:22Z,Subject observed on foot near Egmore Cold Storage,SYNTHETIC
+SR000820,LOC000002,P000225,VH000146,2025-09-07T16:42:55Z,Subject used phone while parked near Velachery Oil Depot,SYNTHETIC
+SR000821,LOC000011,P000445,VH000220,2026-02-16T00:02:19Z,CCTV frame captured at Peelamedu Harbour Gate toll plaza,SYNTHETIC
+SR000822,LOC000015,P000191,,2025-09-03T18:23:32Z,Subject observed on foot near Valluvar Layout Night Bazaar,SYNTHETIC
+SR000823,LOC000019,P000551,,2026-03-27T19:27:29Z,CCTV frame captured at Meenakshi Nagar Agro Market toll plaza,SYNTHETIC
+SR000824,LOC000003,P000328,VH000176,2026-06-04T08:01:02Z,CCTV frame captured at Thirunagar Cold Storage toll plaza,SYNTHETIC
+SR000825,LOC000034,P000323,,2025-03-01T19:30:33Z,Vehicle sighting captured by ANPR at Mattuthavani Junction,SYNTHETIC
+SR000826,LOC000030,P000228,,2025-09-11T18:46:16Z,Vehicle sighting captured by ANPR at Ganapathy Junction,SYNTHETIC
+SR000827,LOC000012,P000143,VH000097,2024-08-26T05:14:20Z,Vehicle sighting captured by ANPR at KK Nagar Night Bazaar,SYNTHETIC
+SR000828,LOC000032,P000110,,2025-01-01T21:42:49Z,CCTV frame captured at Bharathi Bazaar Agro Market toll plaza,SYNTHETIC
+SR000829,LOC000019,P000326,,2025-08-12T08:17:06Z,Subject met unidentified associate at Meenakshi Nagar Agro Market,SYNTHETIC
+SR000830,LOC000037,P000307,,2024-09-22T06:28:14Z,Subject met unidentified associate at Chokkanadar Pettai Textile Mill,SYNTHETIC
+SR000831,LOC000059,P000118,VH000080,2024-12-21T10:35:30Z,Subject met unidentified associate at RS Puram Agro Market,SYNTHETIC
+SR000832,LOC000055,P000066,,2025-05-11T03:10:35Z,CCTV frame captured at Kuruvikulam Construction Site toll plaza,SYNTHETIC
+SR000833,LOC000059,P000450,,2025-06-22T08:49:07Z,Subject observed on foot near RS Puram Agro Market,SYNTHETIC
+SR000834,LOC000039,P000286,VH000163,2024-03-01T05:43:46Z,Subject met unidentified associate at Thirunagar Industrial Estate,SYNTHETIC
+SR000835,LOC000016,P000357,,2025-01-04T02:44:40Z,CCTV frame captured at Ukkadam Harbour Police Station toll plaza,SYNTHETIC
+SR000836,LOC000033,P000256,,2026-05-15T23:33:33Z,Subject met unidentified associate at Ukkadam Toll Plaza,SYNTHETIC
+SR000837,LOC000003,P000290,VH000164,2026-08-09T12:17:14Z,Subject used phone while parked near Thirunagar Cold Storage,SYNTHETIC
+SR000838,LOC000022,P000536,,2025-11-06T17:02:16Z,Subject used phone while parked near Nellithope Cold Storage,SYNTHETIC
+SR000839,LOC000060,P000300,VH000170,2025-01-02T15:05:47Z,Subject met unidentified associate at Ukkadam Cold Storage,SYNTHETIC
+SR000840,LOC000040,P000425,VH000198,2024-08-05T14:20:07Z,Subject observed on foot near Gandhipuram Textile Mill,SYNTHETIC
+SR000841,LOC000028,P000098,,2025-01-15T02:42:39Z,Subject met unidentified associate at Ganapathy Mandi,SYNTHETIC
+SR000842,LOC000025,P000178,VH000206,2025-06-29T19:49:10Z,CCTV frame captured at Anna Nagar Check Post toll plaza,SYNTHETIC
+SR000843,LOC000006,P000570,VH000224,2026-06-21T09:11:49Z,Subject used phone while parked near Pappanaickenpalayam Bridge End,SYNTHETIC
+SR000844,LOC000009,P000125,VH000084,2026-02-08T11:12:44Z,Vehicle TN75 MR 8797 (truck) recorded entering Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000845,LOC000019,P000199,VH000134,2024-04-11T17:41:22Z,Vehicle sighting captured by ANPR at Meenakshi Nagar Agro Market,SYNTHETIC
+SR000846,LOC000002,P000257,VH000154,2024-06-04T14:53:00Z,Vehicle TN69 FN 4798 (SUV) recorded entering Velachery Oil Depot,SYNTHETIC
+SR000847,LOC000020,P000077,VH000201,2025-10-16T06:07:27Z,Vehicle sighting captured by ANPR at Mylapore City Police Station,SYNTHETIC
+SR000848,LOC000061,P000576,,2026-08-27T04:50:32Z,CCTV frame captured at Central Market Junction toll plaza,SYNTHETIC
+SR000849,LOC000029,P000424,,2024-03-06T03:44:13Z,Vehicle sighting captured by ANPR at Estancia Fuel Station,SYNTHETIC
+SR000850,LOC000001,P000009,VH000007,2026-05-25T08:51:34Z,Subject met unidentified associate at Ganapathy City Police Station,SYNTHETIC
+SR000851,LOC000039,P000247,,2025-02-16T01:48:01Z,CCTV frame captured at Thirunagar Industrial Estate toll plaza,SYNTHETIC
+SR000852,LOC000061,P000305,,2024-09-05T21:43:47Z,Subject met unidentified associate at Central Market Junction,SYNTHETIC
+SR000853,LOC000033,P000018,VH000011,2026-05-29T11:54:56Z,Vehicle TN51 ND 2201 (sedan) recorded entering Ukkadam Toll Plaza,SYNTHETIC
+SR000854,LOC000013,P000612,,2026-02-17T13:02:10Z,Subject met unidentified associate at Bharathi Bazaar Wholesale Market,SYNTHETIC
+SR000855,LOC000054,P000522,,2025-03-28T19:23:12Z,Subject observed on foot near Kallamadu Agro Market,SYNTHETIC
+SR000856,LOC000030,P000057,VH000037,2024-12-24T14:00:57Z,CCTV frame captured at Ganapathy Junction toll plaza,SYNTHETIC
+SR000857,LOC000031,P000080,,2024-12-16T16:14:28Z,CCTV frame captured at Peelamedu Textile Mill toll plaza,SYNTHETIC
+SR000858,LOC000049,P000259,,2024-06-27T08:31:07Z,Subject used phone while parked near Gandhipuram Warehouse Complex,SYNTHETIC
+SR000859,LOC000058,P000400,VH000233,2025-01-18T04:02:22Z,Routine patrol log entry - Anna Nagar Lorry Park,SYNTHETIC
+SR000860,LOC000012,P000595,,2026-06-28T10:54:35Z,CCTV frame captured at KK Nagar Night Bazaar toll plaza,SYNTHETIC
+SR000861,LOC000054,P000245,,2026-03-09T23:33:20Z,Routine patrol log entry - Kallamadu Agro Market,SYNTHETIC
+SR000862,LOC000061,P000454,,2025-05-04T16:34:42Z,CCTV frame captured at Central Market Junction toll plaza,SYNTHETIC
+SR000863,LOC000058,P000317,VH000174,2024-06-13T12:33:45Z,Subject observed on foot near Anna Nagar Lorry Park,SYNTHETIC
+SR000864,LOC000057,P000005,,2026-02-15T18:48:09Z,Subject met unidentified associate at Azhagar Koil Road Fuel Station,SYNTHETIC
+SR000865,LOC000041,P000329,,2025-10-06T17:09:09Z,Subject met unidentified associate at Vilachery Cold Storage,SYNTHETIC
+SR000866,LOC000006,P000600,,2026-01-14T08:59:34Z,Subject observed on foot near Pappanaickenpalayam Bridge End,SYNTHETIC
+SR000867,LOC000011,P000589,,2024-07-10T17:30:15Z,Vehicle sighting captured by ANPR at Peelamedu Harbour Gate,SYNTHETIC
+SR000868,LOC000002,P000288,,2025-11-23T22:17:14Z,Subject observed on foot near Velachery Oil Depot,SYNTHETIC
+SR000869,LOC000002,P000526,,2024-11-09T05:41:53Z,CCTV frame captured at Velachery Oil Depot toll plaza,SYNTHETIC
+SR000870,LOC000003,P000266,,2026-02-27T17:54:06Z,CCTV frame captured at Thirunagar Cold Storage toll plaza,SYNTHETIC
+SR000871,LOC000050,P000206,,2025-07-10T03:48:49Z,Subject used phone while parked near Ganapathy Bus Terminus,SYNTHETIC
+SR000872,LOC000002,P000115,VH000039,2025-04-25T23:55:30Z,Subject used phone while parked near Velachery Oil Depot,SYNTHETIC
+SR000873,LOC000018,P000041,VH000028,2024-09-03T19:23:59Z,Subject used phone while parked near Anna Nagar Bus Terminus,SYNTHETIC
+SR000874,LOC000034,P000204,,2025-01-13T12:58:19Z,Subject observed on foot near Mattuthavani Junction,SYNTHETIC
+SR000875,LOC000040,P000501,,2025-07-24T14:39:51Z,Vehicle sighting captured by ANPR at Gandhipuram Textile Mill,SYNTHETIC
+SR000876,LOC000048,P000327,,2025-08-21T01:32:24Z,Vehicle sighting captured by ANPR at Sulur Railway Yard,SYNTHETIC
+SR000877,LOC000019,P000202,VH000136,2026-07-11T05:06:57Z,Vehicle TN21 ZA 9473 (motorcycle) recorded entering Meenakshi Nagar Agro Market,SYNTHETIC
+SR000878,LOC000026,P000193,VH000129,2024-02-17T13:49:59Z,Routine patrol log entry - Kajamalai Industrial Estate,SYNTHETIC
+SR000879,LOC000034,P000240,,2024-04-04T21:50:43Z,Routine patrol log entry - Mattuthavani Junction,SYNTHETIC
+SR000880,LOC000018,P000066,,2025-01-21T20:37:42Z,CCTV frame captured at Anna Nagar Bus Terminus toll plaza,SYNTHETIC
+SR000881,LOC000042,P000515,,2024-12-17T20:58:42Z,Subject observed on foot near Chromepet Agro Market,SYNTHETIC
+SR000882,LOC000052,P000430,VH000086,2026-02-08T06:32:21Z,Subject used phone while parked near Coimbatore Junction Construction Site,SYNTHETIC
+SR000883,LOC000058,P000073,,2025-07-17T02:08:16Z,Subject observed on foot near Anna Nagar Lorry Park,SYNTHETIC
+SR000884,LOC000041,P000436,,2025-03-29T01:56:43Z,Subject observed on foot near Vilachery Cold Storage,SYNTHETIC
+SR000885,LOC000009,P000226,,2024-05-11T11:31:51Z,Vehicle sighting captured by ANPR at Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000886,LOC000047,P000416,,2024-04-14T23:32:57Z,Subject met unidentified associate at Azhagar Koil Road Junction,SYNTHETIC
+SR000887,LOC000061,P000320,VH000105,2025-09-09T05:52:51Z,Vehicle sighting captured by ANPR at Central Market Junction,SYNTHETIC
+SR000888,LOC000010,P000351,,2024-10-24T17:23:20Z,Subject met unidentified associate at Kuruvikulam Residential Layout,SYNTHETIC
+SR000889,LOC000030,P000534,VH000071,2026-04-13T00:32:13Z,Subject observed on foot near Ganapathy Junction,SYNTHETIC
+SR000890,LOC000009,P000094,,2025-03-19T14:41:24Z,CCTV frame captured at Chokkanadar Pettai Oil Depot toll plaza,SYNTHETIC
+SR000891,LOC000041,P000500,,2025-06-02T15:32:57Z,CCTV frame captured at Vilachery Cold Storage toll plaza,SYNTHETIC
+SR000892,LOC000022,P000335,,2024-07-29T14:07:59Z,Routine patrol log entry - Nellithope Cold Storage,SYNTHETIC
+SR000893,LOC000027,P000359,VH000130,2025-12-10T19:24:54Z,Subject observed on foot near Mettupalayam Cold Storage,SYNTHETIC
+SR000894,LOC000036,P000609,,2025-03-30T12:37:39Z,CCTV frame captured at Pothigai Nagar Oil Depot toll plaza,SYNTHETIC
+SR000895,LOC000026,P000447,,2024-01-18T03:28:33Z,Subject observed on foot near Kajamalai Industrial Estate,SYNTHETIC
+SR000896,LOC000022,P000615,,2026-07-03T16:34:41Z,CCTV frame captured at Nellithope Cold Storage toll plaza,SYNTHETIC
+SR000897,LOC000018,P000460,,2026-01-20T08:38:31Z,Vehicle sighting captured by ANPR at Anna Nagar Bus Terminus,SYNTHETIC
+SR000898,LOC000047,P000241,,2025-01-04T14:16:38Z,Subject used phone while parked near Azhagar Koil Road Junction,SYNTHETIC
+SR000899,LOC000050,P000099,VH000067,2025-05-30T10:30:58Z,Subject used phone while parked near Ganapathy Bus Terminus,SYNTHETIC
+SR000900,LOC000034,P000165,VH000111,2026-02-21T16:20:15Z,Routine patrol log entry - Mattuthavani Junction,SYNTHETIC
+SR000901,LOC000045,P000030,VH000020,2025-07-01T04:07:08Z,Routine patrol log entry - Pothigai Nagar Toll Plaza,SYNTHETIC
+SR000902,LOC000014,P000473,VH000208,2026-01-23T13:53:28Z,Vehicle TN43 UZ 7098 (bus) recorded entering Estancia Bridge End,SYNTHETIC
+SR000903,LOC000031,P000241,,2026-04-05T23:58:27Z,CCTV frame captured at Peelamedu Textile Mill toll plaza,SYNTHETIC
+SR000904,LOC000054,P000245,VH000152,2024-09-23T15:11:49Z,Routine patrol log entry - Kallamadu Agro Market,SYNTHETIC
+SR000905,LOC000028,P000280,VH000159,2025-02-07T05:34:21Z,Vehicle TN46 WF 9187 (motorcycle) recorded entering Ganapathy Mandi,SYNTHETIC
+SR000906,LOC000053,P000362,,2024-10-16T00:35:23Z,Subject used phone while parked near Mettupalayam Wholesale Market,SYNTHETIC
+SR000907,LOC000011,P000311,,2025-04-21T21:11:29Z,Subject met unidentified associate at Peelamedu Harbour Gate,SYNTHETIC
+SR000908,LOC000014,P000464,,2026-08-03T22:44:57Z,Vehicle sighting captured by ANPR at Estancia Bridge End,SYNTHETIC
+SR000909,LOC000028,P000033,,2025-02-19T01:15:44Z,Routine patrol log entry - Ganapathy Mandi,SYNTHETIC
+SR000910,LOC000031,P000333,,2024-01-10T16:59:19Z,Vehicle sighting captured by ANPR at Peelamedu Textile Mill,SYNTHETIC
+SR000911,LOC000028,P000072,,2024-07-01T08:01:50Z,Subject met unidentified associate at Ganapathy Mandi,SYNTHETIC
+SR000912,LOC000042,P000489,,2024-01-11T20:49:33Z,Subject observed on foot near Chromepet Agro Market,SYNTHETIC
+SR000913,LOC000050,P000148,,2025-04-04T05:24:41Z,Routine patrol log entry - Ganapathy Bus Terminus,SYNTHETIC
+SR000914,LOC000045,P000078,,2024-03-10T04:29:40Z,Subject met unidentified associate at Pothigai Nagar Toll Plaza,SYNTHETIC
+SR000915,LOC000010,P000133,VH000089,2024-04-16T21:39:53Z,Subject met unidentified associate at Kuruvikulam Residential Layout,SYNTHETIC
+SR000916,LOC000018,P000305,,2024-01-06T10:07:23Z,Subject observed on foot near Anna Nagar Bus Terminus,SYNTHETIC
+SR000917,LOC000049,P000368,VH000098,2026-06-03T01:02:20Z,Subject met unidentified associate at Gandhipuram Warehouse Complex,SYNTHETIC
+SR000918,LOC000021,P000150,VH000101,2024-03-05T10:04:02Z,Vehicle TN46 LW 5025 (motorcycle) recorded entering Valluvar Layout Harbour Gate,SYNTHETIC
+SR000919,LOC000048,P000138,,2026-01-27T06:11:49Z,Subject observed on foot near Sulur Railway Yard,SYNTHETIC
+SR000920,LOC000056,P000454,,2025-05-12T20:36:51Z,CCTV frame captured at Kallamadu Industrial Estate toll plaza,SYNTHETIC
+SR000921,LOC000023,P000414,,2024-11-14T02:12:30Z,Subject observed on foot near Sundarankottai Fuel Station,SYNTHETIC
+SR000922,LOC000048,P000574,VH000226,2025-12-14T01:36:34Z,Vehicle sighting captured by ANPR at Sulur Railway Yard,SYNTHETIC
+SR000923,LOC000061,P000500,,2024-12-18T17:53:53Z,Vehicle sighting captured by ANPR at Central Market Junction,SYNTHETIC
+SR000924,LOC000033,P000180,,2025-04-04T12:23:20Z,Routine patrol log entry - Ukkadam Toll Plaza,SYNTHETIC
+SR000925,LOC000040,P000139,,2024-10-28T21:32:24Z,Vehicle sighting captured by ANPR at Gandhipuram Textile Mill,SYNTHETIC
+SR000926,LOC000015,P000152,VH000103,2026-05-07T21:57:59Z,CCTV frame captured at Valluvar Layout Night Bazaar toll plaza,SYNTHETIC
+SR000927,LOC000022,P000340,,2024-04-03T01:21:12Z,Subject used phone while parked near Nellithope Cold Storage,SYNTHETIC
+SR000928,LOC000047,P000415,,2024-06-23T00:35:14Z,Subject met unidentified associate at Azhagar Koil Road Junction,SYNTHETIC
+SR000929,LOC000054,P000081,VH000054,2024-02-12T15:20:21Z,Vehicle TN60 VJ 8955 (sedan) recorded entering Kallamadu Agro Market,SYNTHETIC
+SR000930,LOC000056,P000263,,2025-03-06T04:50:16Z,Subject observed on foot near Kallamadu Industrial Estate,SYNTHETIC
+SR000931,LOC000030,P000518,,2024-07-09T23:54:57Z,Subject used phone while parked near Ganapathy Junction,SYNTHETIC
+SR000932,LOC000011,P000248,,2025-02-26T20:37:48Z,Subject observed on foot near Peelamedu Harbour Gate,SYNTHETIC
+SR000933,LOC000019,P000403,,2026-08-15T15:17:04Z,Subject used phone while parked near Meenakshi Nagar Agro Market,SYNTHETIC
+SR000934,LOC000016,P000331,VH000177,2025-08-30T08:34:17Z,Subject observed on foot near Ukkadam Harbour Police Station,SYNTHETIC
+SR000935,LOC000011,P000151,VH000102,2024-09-08T09:15:27Z,Vehicle sighting captured by ANPR at Peelamedu Harbour Gate,SYNTHETIC
+SR000936,LOC000019,P000470,,2026-07-12T02:04:03Z,Vehicle sighting captured by ANPR at Meenakshi Nagar Agro Market,SYNTHETIC
+SR000937,LOC000007,P000130,VH000087,2024-05-27T05:05:52Z,CCTV frame captured at Muthialpet Check Post toll plaza,SYNTHETIC
+SR000938,LOC000008,P000567,,2025-11-12T00:54:27Z,CCTV frame captured at Ambattur Warehouse Complex toll plaza,SYNTHETIC
+SR000939,LOC000060,P000447,,2024-02-21T17:56:01Z,Vehicle sighting captured by ANPR at Ukkadam Cold Storage,SYNTHETIC
+SR000940,LOC000028,P000471,,2025-02-25T21:39:09Z,Routine patrol log entry - Ganapathy Mandi,SYNTHETIC
+SR000941,LOC000003,P000275,,2024-03-13T05:49:25Z,Subject used phone while parked near Thirunagar Cold Storage,SYNTHETIC
+SR000942,LOC000047,P000365,,2026-02-25T21:58:59Z,Subject met unidentified associate at Azhagar Koil Road Junction,SYNTHETIC
+SR000943,LOC000015,P000302,,2026-05-09T21:18:58Z,Subject used phone while parked near Valluvar Layout Night Bazaar,SYNTHETIC
+SR000944,LOC000014,P000422,,2026-02-26T11:48:46Z,Vehicle sighting captured by ANPR at Estancia Bridge End,SYNTHETIC
+SR000945,LOC000037,P000072,,2025-02-12T19:16:24Z,Vehicle sighting captured by ANPR at Chokkanadar Pettai Textile Mill,SYNTHETIC
+SR000946,LOC000008,P000029,,2026-02-24T17:10:39Z,Subject met unidentified associate at Ambattur Warehouse Complex,SYNTHETIC
+SR000947,LOC000030,P000304,,2025-10-14T10:32:10Z,CCTV frame captured at Ganapathy Junction toll plaza,SYNTHETIC
+SR000948,LOC000058,P000161,VH000108,2025-12-04T13:45:28Z,Subject observed on foot near Anna Nagar Lorry Park,SYNTHETIC
+SR000949,LOC000012,P000058,VH000038,2024-03-25T13:52:37Z,Subject used phone while parked near KK Nagar Night Bazaar,SYNTHETIC
+SR000950,LOC000024,P000325,,2024-09-04T10:56:35Z,Subject met unidentified associate at Palladam Check Post,SYNTHETIC
+SR000951,LOC000053,P000017,,2026-03-07T22:45:25Z,Vehicle sighting captured by ANPR at Mettupalayam Wholesale Market,SYNTHETIC
+SR000952,LOC000045,P000078,,2024-11-28T16:41:47Z,Routine patrol log entry - Pothigai Nagar Toll Plaza,SYNTHETIC
+SR000953,LOC000051,P000119,VH000081,2025-05-30T05:16:15Z,Subject observed on foot near Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR000954,LOC000011,P000220,VH000087,2025-12-12T15:29:27Z,Vehicle sighting captured by ANPR at Peelamedu Harbour Gate,SYNTHETIC
+SR000955,LOC000057,P000613,,2025-05-15T15:04:28Z,CCTV frame captured at Azhagar Koil Road Fuel Station toll plaza,SYNTHETIC
+SR000956,LOC000005,P000300,,2025-02-01T19:51:07Z,Subject met unidentified associate at Kajamalai Junction,SYNTHETIC
+SR000957,LOC000061,P000033,,2025-03-28T22:16:12Z,Routine patrol log entry - Central Market Junction,SYNTHETIC
+SR000958,LOC000036,P000171,,2025-09-14T14:48:46Z,Subject used phone while parked near Pothigai Nagar Oil Depot,SYNTHETIC
+SR000959,LOC000011,P000128,,2025-08-22T20:37:56Z,Routine patrol log entry - Peelamedu Harbour Gate,SYNTHETIC
+SR000960,LOC000003,P000263,,2025-07-12T13:48:00Z,CCTV frame captured at Thirunagar Cold Storage toll plaza,SYNTHETIC
+SR000961,LOC000012,P000310,VH000173,2025-08-05T03:20:04Z,Subject observed on foot near KK Nagar Night Bazaar,SYNTHETIC
+SR000962,LOC000004,P000159,VH000106,2024-01-07T10:18:13Z,Vehicle TN62 VM 5764 (lorry) recorded entering Chokkanadar Harbour Police Station,SYNTHETIC
+SR000963,LOC000030,P000394,,2025-02-28T08:32:44Z,CCTV frame captured at Ganapathy Junction toll plaza,SYNTHETIC
+SR000964,LOC000012,P000011,VH000212,2025-04-19T11:35:58Z,Vehicle sighting captured by ANPR at KK Nagar Night Bazaar,SYNTHETIC
+SR000965,LOC000056,P000601,,2024-04-29T06:24:06Z,CCTV frame captured at Kallamadu Industrial Estate toll plaza,SYNTHETIC
+SR000966,LOC000008,P000194,VH000130,2025-04-16T10:53:03Z,Vehicle TN60 FG 2343 (motorcycle) recorded entering Ambattur Warehouse Complex,SYNTHETIC
+SR000967,LOC000036,P000601,,2025-07-31T14:31:40Z,Subject observed on foot near Pothigai Nagar Oil Depot,SYNTHETIC
+SR000968,LOC000059,P000155,,2025-08-13T03:35:58Z,Subject used phone while parked near RS Puram Agro Market,SYNTHETIC
+SR000969,LOC000028,P000452,,2024-03-07T05:14:36Z,Routine patrol log entry - Ganapathy Mandi,SYNTHETIC
+SR000970,LOC000042,P000448,VH000006,2024-06-16T22:16:53Z,Routine patrol log entry - Chromepet Agro Market,SYNTHETIC
+SR000971,LOC000022,P000347,VH000115,2024-07-26T06:09:17Z,Vehicle TN31 UA 5340 (pickup) recorded entering Nellithope Cold Storage,SYNTHETIC
+SR000972,LOC000023,P000054,VH000035,2024-08-23T13:33:57Z,Vehicle TN43 FM 9546 (sedan) recorded entering Sundarankottai Fuel Station,SYNTHETIC
+SR000973,LOC000011,P000136,VH000090,2025-09-12T12:25:00Z,Subject used phone while parked near Peelamedu Harbour Gate,SYNTHETIC
+SR000974,LOC000050,P000380,,2025-10-08T18:56:38Z,Subject used phone while parked near Ganapathy Bus Terminus,SYNTHETIC
+SR000975,LOC000023,P000151,,2024-10-15T21:03:55Z,CCTV frame captured at Sundarankottai Fuel Station toll plaza,SYNTHETIC
+SR000976,LOC000007,P000461,,2025-01-26T22:56:02Z,Subject observed on foot near Muthialpet Check Post,SYNTHETIC
+SR000977,LOC000045,P000163,VH000109,2024-07-05T00:39:28Z,Routine patrol log entry - Pothigai Nagar Toll Plaza,SYNTHETIC
+SR000978,LOC000058,P000568,VH000213,2024-11-05T05:29:58Z,CCTV frame captured at Anna Nagar Lorry Park toll plaza,SYNTHETIC
+SR000979,LOC000051,P000232,,2025-12-16T21:09:16Z,Routine patrol log entry - Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR000980,LOC000023,P000043,VH000030,2025-07-30T05:00:39Z,Routine patrol log entry - Sundarankottai Fuel Station,SYNTHETIC
+SR000981,LOC000021,P000599,,2026-03-31T09:56:20Z,Routine patrol log entry - Valluvar Layout Harbour Gate,SYNTHETIC
+SR000982,LOC000059,P000349,,2024-03-17T20:00:16Z,CCTV frame captured at RS Puram Agro Market toll plaza,SYNTHETIC
+SR000983,LOC000023,P000211,,2026-02-16T09:00:32Z,Subject observed on foot near Sundarankottai Fuel Station,SYNTHETIC
+SR000984,LOC000015,P000367,VH000185,2025-06-27T02:58:33Z,Subject observed on foot near Valluvar Layout Night Bazaar,SYNTHETIC
+SR000985,LOC000003,P000075,,2026-08-11T00:36:24Z,Vehicle sighting captured by ANPR at Thirunagar Cold Storage,SYNTHETIC
+SR000986,LOC000021,P000509,,2024-06-24T06:29:44Z,Vehicle sighting captured by ANPR at Valluvar Layout Harbour Gate,SYNTHETIC
+SR000987,LOC000037,P000110,,2026-01-16T05:00:59Z,Vehicle sighting captured by ANPR at Chokkanadar Pettai Textile Mill,SYNTHETIC
+SR000988,LOC000023,P000136,VH000090,2024-07-10T01:20:52Z,Routine patrol log entry - Sundarankottai Fuel Station,SYNTHETIC
+SR000989,LOC000042,P000208,,2025-12-30T22:35:13Z,Vehicle sighting captured by ANPR at Chromepet Agro Market,SYNTHETIC
+SR000990,LOC000041,P000438,VH000046,2024-09-11T19:38:31Z,Vehicle sighting captured by ANPR at Vilachery Cold Storage,SYNTHETIC
+SR000991,LOC000037,P000033,,2026-04-28T19:06:15Z,Subject used phone while parked near Chokkanadar Pettai Textile Mill,SYNTHETIC
+SR000992,LOC000030,P000010,,2025-11-03T15:45:59Z,Routine patrol log entry - Ganapathy Junction,SYNTHETIC
+SR000993,LOC000054,P000566,,2024-12-12T07:15:41Z,CCTV frame captured at Kallamadu Agro Market toll plaza,SYNTHETIC
+SR000994,LOC000050,P000546,,2025-09-06T11:24:46Z,Subject used phone while parked near Ganapathy Bus Terminus,SYNTHETIC
+SR000995,LOC000018,P000506,VH000155,2025-11-20T09:14:19Z,Subject used phone while parked near Anna Nagar Bus Terminus,SYNTHETIC
+SR000996,LOC000009,P000238,,2026-05-21T18:11:02Z,Subject observed on foot near Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR000997,LOC000005,P000474,,2026-08-15T06:10:05Z,Vehicle sighting captured by ANPR at Kajamalai Junction,SYNTHETIC
+SR000998,LOC000013,P000132,,2025-01-16T03:07:16Z,Subject met unidentified associate at Bharathi Bazaar Wholesale Market,SYNTHETIC
+SR000999,LOC000031,P000592,,2025-12-03T18:59:39Z,Subject met unidentified associate at Peelamedu Textile Mill,SYNTHETIC
+SR001000,LOC000034,P000406,,2024-07-27T01:45:41Z,Subject used phone while parked near Mattuthavani Junction,SYNTHETIC
+SR001001,LOC000015,P000143,VH000097,2024-01-02T10:42:34Z,Vehicle sighting captured by ANPR at Valluvar Layout Night Bazaar,SYNTHETIC
+SR001002,LOC000008,P000115,,2024-08-23T08:35:40Z,Routine patrol log entry - Ambattur Warehouse Complex,SYNTHETIC
+SR001003,LOC000019,P000441,VH000049,2025-08-21T12:11:48Z,Routine patrol log entry - Meenakshi Nagar Agro Market,SYNTHETIC
+SR001004,LOC000041,P000255,VH000167,2024-10-04T19:06:55Z,CCTV frame captured at Vilachery Cold Storage toll plaza,SYNTHETIC
+SR001005,LOC000009,P000065,VH000043,2025-01-05T02:46:51Z,Vehicle sighting captured by ANPR at Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR001006,LOC000020,P000196,,2024-06-09T11:35:44Z,Routine patrol log entry - Mylapore City Police Station,SYNTHETIC
+SR001007,LOC000045,P000233,,2025-04-26T23:42:01Z,Subject observed on foot near Pothigai Nagar Toll Plaza,SYNTHETIC
+SR001008,LOC000054,P000545,,2025-01-01T08:00:12Z,Subject used phone while parked near Kallamadu Agro Market,SYNTHETIC
+SR001009,LOC000040,P000417,,2026-04-15T04:15:26Z,Subject observed on foot near Gandhipuram Textile Mill,SYNTHETIC
+SR001010,LOC000058,P000400,,2025-05-30T22:30:17Z,Subject observed on foot near Anna Nagar Lorry Park,SYNTHETIC
+SR001011,LOC000049,P000484,,2025-11-10T13:37:03Z,Subject observed on foot near Gandhipuram Warehouse Complex,SYNTHETIC
+SR001012,LOC000053,P000237,VH000148,2025-11-19T17:12:49Z,Subject met unidentified associate at Mettupalayam Wholesale Market,SYNTHETIC
+SR001013,LOC000003,P000235,,2025-05-02T16:04:41Z,Subject met unidentified associate at Thirunagar Cold Storage,SYNTHETIC
+SR001014,LOC000010,P000366,,2026-04-01T19:56:56Z,Routine patrol log entry - Kuruvikulam Residential Layout,SYNTHETIC
+SR001015,LOC000053,P000545,,2024-10-03T13:14:54Z,Subject met unidentified associate at Mettupalayam Wholesale Market,SYNTHETIC
+SR001016,LOC000002,P000330,,2024-02-20T10:44:37Z,Subject used phone while parked near Velachery Oil Depot,SYNTHETIC
+SR001017,LOC000042,P000611,,2025-05-16T20:30:41Z,Routine patrol log entry - Chromepet Agro Market,SYNTHETIC
+SR001018,LOC000013,P000284,VH000162,2024-05-25T11:17:42Z,Routine patrol log entry - Bharathi Bazaar Wholesale Market,SYNTHETIC
+SR001019,LOC000045,P000162,,2024-07-14T04:16:58Z,Vehicle sighting captured by ANPR at Pothigai Nagar Toll Plaza,SYNTHETIC
+SR001020,LOC000030,P000621,,2025-02-08T12:40:03Z,Subject met unidentified associate at Ganapathy Junction,SYNTHETIC
+SR001021,LOC000048,P000096,,2024-03-09T08:24:06Z,Subject met unidentified associate at Sulur Railway Yard,SYNTHETIC
+SR001022,LOC000058,P000400,,2026-06-10T15:02:12Z,CCTV frame captured at Anna Nagar Lorry Park toll plaza,SYNTHETIC
+SR001023,LOC000029,P000087,VH000059,2025-08-14T17:10:57Z,Vehicle sighting captured by ANPR at Estancia Fuel Station,SYNTHETIC
+SR001024,LOC000031,P000403,VH000226,2024-12-03T22:33:31Z,CCTV frame captured at Peelamedu Textile Mill toll plaza,SYNTHETIC
+SR001025,LOC000039,P000085,,2024-08-26T21:07:14Z,Vehicle sighting captured by ANPR at Thirunagar Industrial Estate,SYNTHETIC
+SR001026,LOC000054,P000209,VH000111,2025-01-30T02:08:58Z,Subject met unidentified associate at Kallamadu Agro Market,SYNTHETIC
+SR001027,LOC000011,P000321,VH000015,2025-11-04T15:49:44Z,Subject used phone while parked near Peelamedu Harbour Gate,SYNTHETIC
+SR001028,LOC000023,P000321,VH000175,2025-05-02T22:40:21Z,Subject used phone while parked near Sundarankottai Fuel Station,SYNTHETIC
+SR001029,LOC000041,P000495,,2024-12-22T22:56:23Z,CCTV frame captured at Vilachery Cold Storage toll plaza,SYNTHETIC
+SR001030,LOC000028,P000324,,2026-07-26T16:34:13Z,CCTV frame captured at Ganapathy Mandi toll plaza,SYNTHETIC
+SR001031,LOC000041,P000279,,2026-05-18T15:00:31Z,Subject met unidentified associate at Vilachery Cold Storage,SYNTHETIC
+SR001032,LOC000001,P000406,,2024-04-01T20:27:15Z,Subject met unidentified associate at Ganapathy City Police Station,SYNTHETIC
+SR001033,LOC000006,P000563,,2024-12-06T18:08:17Z,Subject used phone while parked near Pappanaickenpalayam Bridge End,SYNTHETIC
+SR001034,LOC000022,P000213,,2026-06-12T18:15:57Z,Vehicle sighting captured by ANPR at Nellithope Cold Storage,SYNTHETIC
+SR001035,LOC000061,P000109,,2025-10-17T04:34:18Z,CCTV frame captured at Central Market Junction toll plaza,SYNTHETIC
+SR001036,LOC000002,P000037,VH000025,2025-03-18T00:21:42Z,Vehicle sighting captured by ANPR at Velachery Oil Depot,SYNTHETIC
+SR001037,LOC000026,P000511,,2025-10-15T17:26:08Z,Subject observed on foot near Kajamalai Industrial Estate,SYNTHETIC
+SR001038,LOC000061,P000619,VH000146,2024-03-12T05:07:26Z,Vehicle sighting captured by ANPR at Central Market Junction,SYNTHETIC
+SR001039,LOC000061,P000178,VH000121,2025-02-20T04:29:19Z,Subject used phone while parked near Central Market Junction,SYNTHETIC
+SR001040,LOC000053,P000245,VH000152,2024-03-27T00:50:08Z,Subject observed on foot near Mettupalayam Wholesale Market,SYNTHETIC
+SR001041,LOC000020,P000014,,2025-02-23T02:39:53Z,Vehicle sighting captured by ANPR at Mylapore City Police Station,SYNTHETIC
+SR001042,LOC000026,P000033,,2025-11-14T16:41:42Z,Subject observed on foot near Kajamalai Industrial Estate,SYNTHETIC
+SR001043,LOC000054,P000223,,2025-12-25T03:31:17Z,Subject observed on foot near Kallamadu Agro Market,SYNTHETIC
+SR001044,LOC000053,P000236,,2024-07-19T05:46:35Z,Routine patrol log entry - Mettupalayam Wholesale Market,SYNTHETIC
+SR001045,LOC000048,P000623,VH000048,2024-09-19T20:42:17Z,CCTV frame captured at Sulur Railway Yard toll plaza,SYNTHETIC
+SR001046,LOC000061,P000590,,2025-11-05T02:32:44Z,Subject observed on foot near Central Market Junction,SYNTHETIC
+SR001047,LOC000031,P000369,,2025-10-25T22:52:06Z,Subject met unidentified associate at Peelamedu Textile Mill,SYNTHETIC
+SR001048,LOC000011,P000301,VH000171,2024-11-07T08:14:10Z,Subject used phone while parked near Peelamedu Harbour Gate,SYNTHETIC
+SR001049,LOC000056,P000544,,2025-06-20T05:42:18Z,Subject used phone while parked near Kallamadu Industrial Estate,SYNTHETIC
+SR001050,LOC000012,P000058,VH000038,2026-03-15T03:11:16Z,Subject observed on foot near KK Nagar Night Bazaar,SYNTHETIC
+SR001051,LOC000008,P000194,VH000130,2024-06-20T11:42:37Z,CCTV frame captured at Ambattur Warehouse Complex toll plaza,SYNTHETIC
+SR001052,LOC000001,P000597,,2024-02-02T19:50:23Z,Vehicle sighting captured by ANPR at Ganapathy City Police Station,SYNTHETIC
+SR001053,LOC000016,P000295,,2026-05-23T07:23:53Z,Subject used phone while parked near Ukkadam Harbour Police Station,SYNTHETIC
+SR001054,LOC000019,P000168,VH000113,2024-02-22T12:42:29Z,CCTV frame captured at Meenakshi Nagar Agro Market toll plaza,SYNTHETIC
+SR001055,LOC000015,P000364,VH000135,2025-11-15T17:39:11Z,Subject used phone while parked near Valluvar Layout Night Bazaar,SYNTHETIC
+SR001056,LOC000048,P000049,,2025-03-25T07:44:17Z,Subject observed on foot near Sulur Railway Yard,SYNTHETIC
+SR001057,LOC000005,P000284,,2024-01-24T16:39:40Z,CCTV frame captured at Kajamalai Junction toll plaza,SYNTHETIC
+SR001058,LOC000053,P000442,VH000203,2025-07-09T20:43:42Z,Vehicle TN64 GZ 8997 (motorcycle) recorded entering Mettupalayam Wholesale Market,SYNTHETIC
+SR001059,LOC000045,P000394,,2025-03-13T19:05:07Z,CCTV frame captured at Pothigai Nagar Toll Plaza toll plaza,SYNTHETIC
+SR001060,LOC000023,P000212,VH000055,2025-09-02T21:49:56Z,Vehicle sighting captured by ANPR at Sundarankottai Fuel Station,SYNTHETIC
+SR001061,LOC000025,P000486,,2024-10-27T23:40:50Z,CCTV frame captured at Anna Nagar Check Post toll plaza,SYNTHETIC
+SR001062,LOC000038,P000507,,2024-01-08T16:48:33Z,Routine patrol log entry - Tambaram Toll Plaza,SYNTHETIC
+SR001063,LOC000050,P000148,VH000099,2024-09-05T01:21:36Z,Subject observed on foot near Ganapathy Bus Terminus,SYNTHETIC
+SR001064,LOC000024,P000210,,2025-09-03T08:38:45Z,CCTV frame captured at Palladam Check Post toll plaza,SYNTHETIC
+SR001065,LOC000038,P000473,VH000208,2024-03-15T05:17:20Z,CCTV frame captured at Tambaram Toll Plaza toll plaza,SYNTHETIC
+SR001066,LOC000039,P000113,,2024-07-24T17:16:40Z,Subject met unidentified associate at Thirunagar Industrial Estate,SYNTHETIC
+SR001067,LOC000025,P000619,,2026-04-03T05:43:41Z,Subject used phone while parked near Anna Nagar Check Post,SYNTHETIC
+SR001068,LOC000011,P000234,,2024-07-02T04:23:41Z,Vehicle sighting captured by ANPR at Peelamedu Harbour Gate,SYNTHETIC
+SR001069,LOC000053,P000322,,2024-10-01T14:22:33Z,Subject observed on foot near Mettupalayam Wholesale Market,SYNTHETIC
+SR001070,LOC000030,P000304,,2024-04-01T08:50:21Z,Subject used phone while parked near Ganapathy Junction,SYNTHETIC
+SR001071,LOC000033,P000325,VH000093,2025-06-16T04:03:40Z,Vehicle TN75 TH 2925 (motorcycle) recorded entering Ukkadam Toll Plaza,SYNTHETIC
+SR001072,LOC000060,P000565,,2024-12-28T04:22:10Z,Subject observed on foot near Ukkadam Cold Storage,SYNTHETIC
+SR001073,LOC000037,P000432,,2024-09-22T22:59:06Z,CCTV frame captured at Chokkanadar Pettai Textile Mill toll plaza,SYNTHETIC
+SR001074,LOC000035,P000309,,2026-02-23T15:40:03Z,Subject observed on foot near Arumbakkam Godown Compound,SYNTHETIC
+SR001075,LOC000009,P000172,VH000117,2025-01-03T08:47:42Z,Subject observed on foot near Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR001076,LOC000023,P000212,,2025-07-17T19:37:51Z,Subject observed on foot near Sundarankottai Fuel Station,SYNTHETIC
+SR001077,LOC000044,P000078,,2026-06-01T15:01:05Z,Subject met unidentified associate at Sulur Check Post,SYNTHETIC
+SR001078,LOC000046,P000357,,2024-08-05T17:51:52Z,Subject used phone while parked near Royapuram Fuel Station,SYNTHETIC
+SR001079,LOC000024,P000327,VH000088,2025-11-17T12:45:42Z,Subject met unidentified associate at Palladam Check Post,SYNTHETIC
+SR001080,LOC000039,P000551,,2026-01-15T10:10:56Z,Subject observed on foot near Thirunagar Industrial Estate,SYNTHETIC
+SR001081,LOC000060,P000623,,2025-06-26T16:44:41Z,CCTV frame captured at Ukkadam Cold Storage toll plaza,SYNTHETIC
+SR001082,LOC000008,P000265,,2026-06-09T12:10:37Z,Vehicle sighting captured by ANPR at Ambattur Warehouse Complex,SYNTHETIC
+SR001083,LOC000058,P000581,,2025-12-22T21:32:06Z,Subject observed on foot near Anna Nagar Lorry Park,SYNTHETIC
+SR001084,LOC000061,P000280,,2025-07-12T22:26:30Z,Subject observed on foot near Central Market Junction,SYNTHETIC
+SR001085,LOC000004,P000093,VH000062,2024-08-01T03:47:58Z,Vehicle TN58 DA 8604 (motorcycle) recorded entering Chokkanadar Harbour Police Station,SYNTHETIC
+SR001086,LOC000012,P000310,VH000173,2025-04-23T18:48:11Z,Subject used phone while parked near KK Nagar Night Bazaar,SYNTHETIC
+SR001087,LOC000011,P000301,,2024-02-17T16:35:01Z,Subject met unidentified associate at Peelamedu Harbour Gate,SYNTHETIC
+SR001088,LOC000019,P000338,,2026-04-14T15:36:07Z,Subject used phone while parked near Meenakshi Nagar Agro Market,SYNTHETIC
+SR001089,LOC000059,P000429,VH000067,2025-06-20T23:06:31Z,Vehicle TN63 HW 6269 (lorry) recorded entering RS Puram Agro Market,SYNTHETIC
+SR001090,LOC000026,P000039,,2026-02-25T02:18:13Z,Subject met unidentified associate at Kajamalai Industrial Estate,SYNTHETIC
+SR001091,LOC000039,P000410,,2025-10-03T15:40:58Z,Routine patrol log entry - Thirunagar Industrial Estate,SYNTHETIC
+SR001092,LOC000018,P000505,,2025-04-18T14:15:05Z,CCTV frame captured at Anna Nagar Bus Terminus toll plaza,SYNTHETIC
+SR001093,LOC000011,P000285,,2026-03-02T22:35:53Z,Subject observed on foot near Peelamedu Harbour Gate,SYNTHETIC
+SR001094,LOC000020,P000170,VH000115,2026-04-11T01:40:51Z,Subject used phone while parked near Mylapore City Police Station,SYNTHETIC
+SR001095,LOC000018,P000361,,2026-08-05T20:32:23Z,Subject used phone while parked near Anna Nagar Bus Terminus,SYNTHETIC
+SR001096,LOC000030,P000071,VH000048,2025-09-01T11:54:25Z,Vehicle sighting captured by ANPR at Ganapathy Junction,SYNTHETIC
+SR001097,LOC000013,P000394,,2025-02-05T07:55:27Z,Subject met unidentified associate at Bharathi Bazaar Wholesale Market,SYNTHETIC
+SR001098,LOC000021,P000280,VH000159,2025-11-13T15:28:07Z,CCTV frame captured at Valluvar Layout Harbour Gate toll plaza,SYNTHETIC
+SR001099,LOC000008,P000221,,2026-03-26T02:10:22Z,Subject observed on foot near Ambattur Warehouse Complex,SYNTHETIC
+SR001100,LOC000052,P000196,,2024-09-02T18:31:06Z,Subject used phone while parked near Coimbatore Junction Construction Site,SYNTHETIC
+SR001101,LOC000012,P000605,,2026-01-08T14:11:25Z,Subject met unidentified associate at KK Nagar Night Bazaar,SYNTHETIC
+SR001102,LOC000012,P000605,,2024-02-13T20:28:04Z,Subject met unidentified associate at KK Nagar Night Bazaar,SYNTHETIC
+SR001103,LOC000023,P000220,VH000188,2025-06-27T02:38:33Z,Vehicle sighting captured by ANPR at Sundarankottai Fuel Station,SYNTHETIC
+SR001104,LOC000012,P000438,,2025-02-08T11:46:52Z,Subject met unidentified associate at KK Nagar Night Bazaar,SYNTHETIC
+SR001105,LOC000021,P000043,VH000030,2026-05-08T09:58:37Z,Routine patrol log entry - Valluvar Layout Harbour Gate,SYNTHETIC
+SR001106,LOC000042,P000513,,2026-08-28T08:30:41Z,Routine patrol log entry - Chromepet Agro Market,SYNTHETIC
+SR001107,LOC000012,P000169,VH000114,2026-02-05T17:54:43Z,Routine patrol log entry - KK Nagar Night Bazaar,SYNTHETIC
+SR001108,LOC000060,P000537,,2025-03-25T22:27:09Z,CCTV frame captured at Ukkadam Cold Storage toll plaza,SYNTHETIC
+SR001109,LOC000031,P000563,VH000141,2024-06-21T14:56:17Z,Subject observed on foot near Peelamedu Textile Mill,SYNTHETIC
+SR001110,LOC000041,P000509,,2024-08-31T10:47:28Z,Subject used phone while parked near Vilachery Cold Storage,SYNTHETIC
+SR001111,LOC000042,P000441,,2025-11-24T17:06:21Z,Subject met unidentified associate at Chromepet Agro Market,SYNTHETIC
+SR001112,LOC000054,P000322,,2024-07-15T07:04:35Z,Routine patrol log entry - Kallamadu Agro Market,SYNTHETIC
+SR001113,LOC000033,P000371,,2024-05-04T14:20:31Z,Vehicle sighting captured by ANPR at Ukkadam Toll Plaza,SYNTHETIC
+SR001114,LOC000017,P000550,VH000006,2024-08-30T18:30:38Z,Vehicle TN39 ZD 1858 (SUV) recorded entering Egmore Cold Storage,SYNTHETIC
+SR001115,LOC000030,P000157,,2025-06-16T14:20:03Z,Vehicle sighting captured by ANPR at Ganapathy Junction,SYNTHETIC
+SR001116,LOC000045,P000078,,2025-12-23T09:21:02Z,Vehicle sighting captured by ANPR at Pothigai Nagar Toll Plaza,SYNTHETIC
+SR001117,LOC000006,P000242,VH000146,2025-04-30T07:56:00Z,Subject met unidentified associate at Pappanaickenpalayam Bridge End,SYNTHETIC
+SR001118,LOC000008,P000345,,2025-05-06T14:01:43Z,Subject used phone while parked near Ambattur Warehouse Complex,SYNTHETIC
+SR001119,LOC000015,P000097,VH000065,2025-04-23T19:44:14Z,Vehicle sighting captured by ANPR at Valluvar Layout Night Bazaar,SYNTHETIC
+SR001120,LOC000052,P000197,,2025-08-02T23:49:32Z,Subject observed on foot near Coimbatore Junction Construction Site,SYNTHETIC
+SR001121,LOC000054,P000566,,2026-02-27T22:53:23Z,Subject used phone while parked near Kallamadu Agro Market,SYNTHETIC
+SR001122,LOC000027,P000466,,2025-01-30T05:21:06Z,Vehicle sighting captured by ANPR at Mettupalayam Cold Storage,SYNTHETIC
+SR001123,LOC000054,P000174,,2026-02-03T09:54:58Z,Routine patrol log entry - Kallamadu Agro Market,SYNTHETIC
+SR001124,LOC000057,P000127,VH000085,2026-08-30T04:31:35Z,CCTV frame captured at Azhagar Koil Road Fuel Station toll plaza,SYNTHETIC
+SR001125,LOC000057,P000081,,2024-03-18T14:02:14Z,Subject met unidentified associate at Azhagar Koil Road Fuel Station,SYNTHETIC
+SR001126,LOC000029,P000101,,2025-08-27T12:00:38Z,Routine patrol log entry - Estancia Fuel Station,SYNTHETIC
+SR001127,LOC000010,P000376,,2025-02-12T03:51:17Z,Routine patrol log entry - Kuruvikulam Residential Layout,SYNTHETIC
+SR001128,LOC000016,P000584,,2026-06-28T22:53:25Z,Vehicle sighting captured by ANPR at Ukkadam Harbour Police Station,SYNTHETIC
+SR001129,LOC000024,P000481,,2025-10-28T21:42:14Z,CCTV frame captured at Palladam Check Post toll plaza,SYNTHETIC
+SR001130,LOC000012,P000309,,2025-09-04T19:10:20Z,Routine patrol log entry - KK Nagar Night Bazaar,SYNTHETIC
+SR001131,LOC000044,P000154,,2024-06-08T16:39:56Z,CCTV frame captured at Sulur Check Post toll plaza,SYNTHETIC
+SR001132,LOC000029,P000018,VH000011,2025-08-01T19:17:20Z,Subject met unidentified associate at Estancia Fuel Station,SYNTHETIC
+SR001133,LOC000032,P000493,,2024-10-03T20:32:27Z,Subject met unidentified associate at Bharathi Bazaar Agro Market,SYNTHETIC
+SR001134,LOC000012,P000612,,2025-01-07T14:22:21Z,Subject used phone while parked near KK Nagar Night Bazaar,SYNTHETIC
+SR001135,LOC000014,P000485,VH000054,2026-07-13T21:25:33Z,Subject observed on foot near Estancia Bridge End,SYNTHETIC
+SR001136,LOC000012,P000612,,2026-02-11T03:38:47Z,Vehicle sighting captured by ANPR at KK Nagar Night Bazaar,SYNTHETIC
+SR001137,LOC000011,P000456,,2024-10-23T06:00:42Z,Vehicle sighting captured by ANPR at Peelamedu Harbour Gate,SYNTHETIC
+SR001138,LOC000031,P000592,,2025-09-17T18:22:54Z,CCTV frame captured at Peelamedu Textile Mill toll plaza,SYNTHETIC
+SR001139,LOC000058,P000278,,2025-10-26T00:21:39Z,Subject observed on foot near Anna Nagar Lorry Park,SYNTHETIC
+SR001140,LOC000011,P000054,VH000035,2025-03-15T10:47:40Z,Subject observed on foot near Peelamedu Harbour Gate,SYNTHETIC
+SR001141,LOC000016,P000334,,2025-02-07T15:26:36Z,CCTV frame captured at Ukkadam Harbour Police Station toll plaza,SYNTHETIC
+SR001142,LOC000031,P000355,,2024-11-30T07:31:33Z,Subject observed on foot near Peelamedu Textile Mill,SYNTHETIC
+SR001143,LOC000014,P000358,,2025-09-19T15:24:11Z,Subject met unidentified associate at Estancia Bridge End,SYNTHETIC
+SR001144,LOC000006,P000428,VH000200,2026-06-24T08:02:21Z,Subject observed on foot near Pappanaickenpalayam Bridge End,SYNTHETIC
+SR001145,LOC000024,P000092,VH000061,2026-04-04T12:14:18Z,Subject met unidentified associate at Palladam Check Post,SYNTHETIC
+SR001146,LOC000061,P000435,,2025-07-13T16:18:06Z,Subject met unidentified associate at Central Market Junction,SYNTHETIC
+SR001147,LOC000013,P000204,,2026-04-27T14:06:35Z,Subject met unidentified associate at Bharathi Bazaar Wholesale Market,SYNTHETIC
+SR001148,LOC000012,P000080,,2025-03-17T15:27:17Z,Subject met unidentified associate at KK Nagar Night Bazaar,SYNTHETIC
+SR001149,LOC000023,P000371,,2024-01-20T11:58:09Z,Subject met unidentified associate at Sundarankottai Fuel Station,SYNTHETIC
+SR001150,LOC000061,P000279,,2025-08-05T19:34:27Z,Vehicle sighting captured by ANPR at Central Market Junction,SYNTHETIC
+SR001151,LOC000009,P000017,,2024-02-06T15:07:43Z,Subject used phone while parked near Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR001152,LOC000011,P000321,VH000175,2025-06-25T14:56:01Z,Vehicle TN28 KN 4640 (motorcycle) recorded entering Peelamedu Harbour Gate,SYNTHETIC
+SR001153,LOC000012,P000309,,2025-03-10T02:24:13Z,CCTV frame captured at KK Nagar Night Bazaar toll plaza,SYNTHETIC
+SR001154,LOC000044,P000538,,2024-09-22T07:30:20Z,Vehicle sighting captured by ANPR at Sulur Check Post,SYNTHETIC
+SR001155,LOC000058,P000588,VH000231,2026-06-03T07:55:33Z,Subject met unidentified associate at Anna Nagar Lorry Park,SYNTHETIC
+SR001156,LOC000017,P000033,,2024-06-14T20:24:48Z,Vehicle sighting captured by ANPR at Egmore Cold Storage,SYNTHETIC
+SR001157,LOC000008,P000090,,2026-01-28T18:05:21Z,CCTV frame captured at Ambattur Warehouse Complex toll plaza,SYNTHETIC
+SR001158,LOC000043,P000382,VH000190,2024-12-19T06:56:32Z,Subject observed on foot near Sowdambika Layout Night Bazaar,SYNTHETIC
+SR001159,LOC000002,P000500,,2024-06-11T10:50:04Z,Vehicle sighting captured by ANPR at Velachery Oil Depot,SYNTHETIC
+SR001160,LOC000058,P000568,,2024-09-14T02:58:06Z,Subject met unidentified associate at Anna Nagar Lorry Park,SYNTHETIC
+SR001161,LOC000059,P000356,,2025-11-03T17:22:43Z,Subject met unidentified associate at RS Puram Agro Market,SYNTHETIC
+SR001162,LOC000025,P000300,VH000170,2025-09-15T13:51:56Z,CCTV frame captured at Anna Nagar Check Post toll plaza,SYNTHETIC
+SR001163,LOC000017,P000126,,2025-07-23T12:38:39Z,CCTV frame captured at Egmore Cold Storage toll plaza,SYNTHETIC
+SR001164,LOC000057,P000092,VH000061,2025-11-06T20:38:29Z,CCTV frame captured at Azhagar Koil Road Fuel Station toll plaza,SYNTHETIC
+SR001165,LOC000045,P000394,,2025-07-16T00:53:34Z,Subject used phone while parked near Pothigai Nagar Toll Plaza,SYNTHETIC
+SR001166,LOC000012,P000268,,2024-01-12T03:58:52Z,Subject observed on foot near KK Nagar Night Bazaar,SYNTHETIC
+SR001167,LOC000018,P000470,VH000144,2026-04-29T08:50:37Z,Vehicle TN64 EC 9622 (van) recorded entering Anna Nagar Bus Terminus,SYNTHETIC
+SR001168,LOC000020,P000585,,2025-10-07T11:39:38Z,Vehicle sighting captured by ANPR at Mylapore City Police Station,SYNTHETIC
+SR001169,LOC000037,P000539,,2025-07-06T05:18:03Z,Subject used phone while parked near Chokkanadar Pettai Textile Mill,SYNTHETIC
+SR001170,LOC000060,P000548,,2024-08-20T10:50:48Z,Vehicle sighting captured by ANPR at Ukkadam Cold Storage,SYNTHETIC
+SR001171,LOC000060,P000096,VH000064,2024-01-16T18:01:07Z,Subject observed on foot near Ukkadam Cold Storage,SYNTHETIC
+SR001172,LOC000015,P000021,VH000014,2024-05-20T10:20:04Z,Subject met unidentified associate at Valluvar Layout Night Bazaar,SYNTHETIC
+SR001173,LOC000030,P000033,,2024-10-19T21:08:01Z,Vehicle sighting captured by ANPR at Ganapathy Junction,SYNTHETIC
+SR001174,LOC000012,P000100,,2026-04-30T23:47:37Z,Routine patrol log entry - KK Nagar Night Bazaar,SYNTHETIC
+SR001175,LOC000049,P000107,VH000072,2026-03-06T03:38:48Z,Subject observed on foot near Gandhipuram Warehouse Complex,SYNTHETIC
+SR001176,LOC000039,P000324,,2025-06-28T15:54:07Z,Subject met unidentified associate at Thirunagar Industrial Estate,SYNTHETIC
+SR001177,LOC000050,P000242,VH000150,2024-04-30T18:44:13Z,Subject observed on foot near Ganapathy Bus Terminus,SYNTHETIC
+SR001178,LOC000002,P000125,VH000084,2025-05-07T20:56:41Z,Vehicle TN75 MR 8797 (truck) recorded entering Velachery Oil Depot,SYNTHETIC
+SR001179,LOC000031,P000409,VH000174,2024-10-27T18:52:10Z,CCTV frame captured at Peelamedu Textile Mill toll plaza,SYNTHETIC
+SR001180,LOC000053,P000529,VH000075,2024-12-19T17:28:43Z,Subject observed on foot near Mettupalayam Wholesale Market,SYNTHETIC
+SR001181,LOC000008,P000090,,2024-07-07T00:45:30Z,Subject observed on foot near Ambattur Warehouse Complex,SYNTHETIC
+SR001182,LOC000010,P000389,,2025-06-09T02:55:05Z,CCTV frame captured at Kuruvikulam Residential Layout toll plaza,SYNTHETIC
+SR001183,LOC000053,P000291,VH000165,2024-11-05T17:15:30Z,Subject met unidentified associate at Mettupalayam Wholesale Market,SYNTHETIC
+SR001184,LOC000014,P000383,,2025-02-03T14:37:53Z,Routine patrol log entry - Estancia Bridge End,SYNTHETIC
+SR001185,LOC000060,P000050,,2026-07-24T19:08:35Z,Subject used phone while parked near Ukkadam Cold Storage,SYNTHETIC
+SR001186,LOC000002,P000598,,2025-02-17T13:29:09Z,Subject met unidentified associate at Velachery Oil Depot,SYNTHETIC
+SR001187,LOC000028,P000207,,2025-05-13T06:21:52Z,Vehicle sighting captured by ANPR at Ganapathy Mandi,SYNTHETIC
+SR001188,LOC000053,P000198,,2024-09-22T01:41:32Z,Subject observed on foot near Mettupalayam Wholesale Market,SYNTHETIC
+SR001189,LOC000051,P000597,,2025-03-14T16:11:10Z,Subject used phone while parked near Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR001190,LOC000009,P000226,VH000161,2024-02-08T18:43:05Z,Routine patrol log entry - Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR001191,LOC000023,P000345,,2026-06-06T02:25:41Z,Vehicle sighting captured by ANPR at Sundarankottai Fuel Station,SYNTHETIC
+SR001192,LOC000023,P000499,,2025-02-22T03:23:35Z,Vehicle sighting captured by ANPR at Sundarankottai Fuel Station,SYNTHETIC
+SR001193,LOC000037,P000160,,2026-01-15T22:09:58Z,Routine patrol log entry - Chokkanadar Pettai Textile Mill,SYNTHETIC
+SR001194,LOC000031,P000199,VH000134,2024-07-18T10:44:16Z,Subject used phone while parked near Peelamedu Textile Mill,SYNTHETIC
+SR001195,LOC000002,P000270,,2024-06-01T19:23:38Z,Vehicle sighting captured by ANPR at Velachery Oil Depot,SYNTHETIC
+SR001196,LOC000049,P000125,VH000084,2024-10-30T14:03:28Z,Vehicle TN75 MR 8797 (truck) recorded entering Gandhipuram Warehouse Complex,SYNTHETIC
+SR001197,LOC000007,P000076,,2026-04-01T07:28:33Z,Routine patrol log entry - Muthialpet Check Post,SYNTHETIC
+SR001198,LOC000001,P000141,VH000095,2025-03-09T16:06:42Z,Vehicle TN01 RZ 1811 (truck) recorded entering Ganapathy City Police Station,SYNTHETIC
+SR001199,LOC000055,P000286,VH000163,2024-04-29T02:30:53Z,Subject used phone while parked near Kuruvikulam Construction Site,SYNTHETIC
+SR001200,LOC000057,P000492,,2025-09-22T22:32:39Z,Subject met unidentified associate at Azhagar Koil Road Fuel Station,SYNTHETIC
+SR001201,LOC000058,P000588,VH000231,2024-07-02T21:32:36Z,Subject used phone while parked near Anna Nagar Lorry Park,SYNTHETIC
+SR001202,LOC000022,P000348,,2026-06-26T10:59:56Z,Subject met unidentified associate at Nellithope Cold Storage,SYNTHETIC
+SR001203,LOC000031,P000258,,2026-08-26T00:57:43Z,CCTV frame captured at Peelamedu Textile Mill toll plaza,SYNTHETIC
+SR001204,LOC000059,P000520,,2024-08-21T17:07:43Z,Vehicle sighting captured by ANPR at RS Puram Agro Market,SYNTHETIC
+SR001205,LOC000008,P000348,VH000054,2024-10-20T15:42:41Z,Subject met unidentified associate at Ambattur Warehouse Complex,SYNTHETIC
+SR001206,LOC000048,P000203,VH000137,2026-06-05T07:43:11Z,Subject used phone while parked near Sulur Railway Yard,SYNTHETIC
+SR001207,LOC000029,P000098,,2025-02-21T01:54:35Z,Vehicle sighting captured by ANPR at Estancia Fuel Station,SYNTHETIC
+SR001208,LOC000012,P000341,,2025-06-16T17:37:10Z,Routine patrol log entry - KK Nagar Night Bazaar,SYNTHETIC
+SR001209,LOC000010,P000540,VH000133,2025-09-17T11:26:20Z,Vehicle TN25 DG 7603 (truck) recorded entering Kuruvikulam Residential Layout,SYNTHETIC
+SR001210,LOC000004,P000489,,2025-11-27T12:01:49Z,Subject used phone while parked near Chokkanadar Harbour Police Station,SYNTHETIC
+SR001211,LOC000011,P000312,,2026-03-31T20:06:34Z,Subject observed on foot near Peelamedu Harbour Gate,SYNTHETIC
+SR001212,LOC000041,P000598,,2026-07-07T11:26:39Z,Subject observed on foot near Vilachery Cold Storage,SYNTHETIC
+SR001213,LOC000016,P000381,,2024-06-24T21:40:23Z,Subject observed on foot near Ukkadam Harbour Police Station,SYNTHETIC
+SR001214,LOC000022,P000587,,2026-03-06T09:07:08Z,Subject used phone while parked near Nellithope Cold Storage,SYNTHETIC
+SR001215,LOC000012,P000318,,2024-05-01T14:50:32Z,Vehicle sighting captured by ANPR at KK Nagar Night Bazaar,SYNTHETIC
+SR001216,LOC000031,P000387,,2025-06-23T22:02:49Z,CCTV frame captured at Peelamedu Textile Mill toll plaza,SYNTHETIC
+SR001217,LOC000036,P000444,,2024-01-15T14:39:38Z,Subject observed on foot near Pothigai Nagar Oil Depot,SYNTHETIC
+SR001218,LOC000003,P000075,VH000050,2024-08-23T02:07:34Z,Vehicle sighting captured by ANPR at Thirunagar Cold Storage,SYNTHETIC
+SR001219,LOC000055,P000368,VH000186,2026-03-30T18:26:38Z,CCTV frame captured at Kuruvikulam Construction Site toll plaza,SYNTHETIC
+SR001220,LOC000026,P000615,VH000233,2025-06-17T00:36:55Z,Subject used phone while parked near Kajamalai Industrial Estate,SYNTHETIC
+SR001221,LOC000015,P000302,,2024-01-25T13:41:18Z,CCTV frame captured at Valluvar Layout Night Bazaar toll plaza,SYNTHETIC
+SR001222,LOC000016,P000078,,2024-07-10T23:03:42Z,Routine patrol log entry - Ukkadam Harbour Police Station,SYNTHETIC
+SR001223,LOC000019,P000338,,2025-02-21T17:13:32Z,Subject observed on foot near Meenakshi Nagar Agro Market,SYNTHETIC
+SR001224,LOC000057,P000076,VH000051,2025-04-19T15:09:26Z,Subject met unidentified associate at Azhagar Koil Road Fuel Station,SYNTHETIC
+SR001225,LOC000018,P000233,,2024-11-26T07:52:09Z,Subject met unidentified associate at Anna Nagar Bus Terminus,SYNTHETIC
+SR001226,LOC000042,P000316,,2024-10-06T01:27:29Z,Subject observed on foot near Chromepet Agro Market,SYNTHETIC
+SR001227,LOC000058,P000255,VH000047,2024-08-08T16:09:36Z,CCTV frame captured at Anna Nagar Lorry Park toll plaza,SYNTHETIC
+SR001228,LOC000021,P000500,,2025-04-24T00:13:28Z,Routine patrol log entry - Valluvar Layout Harbour Gate,SYNTHETIC
+SR001229,LOC000038,P000155,,2025-04-18T18:30:27Z,Routine patrol log entry - Tambaram Toll Plaza,SYNTHETIC
+SR001230,LOC000017,P000082,,2026-04-13T20:35:30Z,Routine patrol log entry - Egmore Cold Storage,SYNTHETIC
+SR001231,LOC000054,P000495,,2024-02-13T10:25:54Z,Vehicle sighting captured by ANPR at Kallamadu Agro Market,SYNTHETIC
+SR001232,LOC000003,P000094,,2025-10-19T03:50:24Z,Routine patrol log entry - Thirunagar Cold Storage,SYNTHETIC
+SR001233,LOC000009,P000065,,2025-12-23T11:40:33Z,CCTV frame captured at Chokkanadar Pettai Oil Depot toll plaza,SYNTHETIC
+SR001234,LOC000010,P000398,,2026-07-23T10:22:02Z,Subject used phone while parked near Kuruvikulam Residential Layout,SYNTHETIC
+SR001235,LOC000024,P000035,VH000024,2025-05-09T04:08:23Z,Subject met unidentified associate at Palladam Check Post,SYNTHETIC
+SR001236,LOC000047,P000165,VH000111,2025-07-31T01:22:04Z,CCTV frame captured at Azhagar Koil Road Junction toll plaza,SYNTHETIC
+SR001237,LOC000010,P000596,,2024-06-25T11:34:51Z,Subject used phone while parked near Kuruvikulam Residential Layout,SYNTHETIC
+SR001238,LOC000030,P000540,,2025-04-26T11:35:45Z,CCTV frame captured at Ganapathy Junction toll plaza,SYNTHETIC
+SR001239,LOC000048,P000056,VH000036,2024-10-26T05:01:10Z,CCTV frame captured at Sulur Railway Yard toll plaza,SYNTHETIC
+SR001240,LOC000061,P000103,,2024-12-14T13:21:07Z,Subject observed on foot near Central Market Junction,SYNTHETIC
+SR001241,LOC000030,P000572,,2024-09-20T21:06:10Z,CCTV frame captured at Ganapathy Junction toll plaza,SYNTHETIC
+SR001242,LOC000056,P000060,,2024-11-25T07:18:47Z,Subject met unidentified associate at Kallamadu Industrial Estate,SYNTHETIC
+SR001243,LOC000042,P000293,VH000166,2025-11-13T11:47:14Z,Subject used phone while parked near Chromepet Agro Market,SYNTHETIC
+SR001244,LOC000061,P000495,VH000077,2024-07-19T03:51:43Z,Routine patrol log entry - Central Market Junction,SYNTHETIC
+SR001245,LOC000034,P000466,,2025-03-18T05:40:55Z,Subject used phone while parked near Mattuthavani Junction,SYNTHETIC
+SR001246,LOC000022,P000526,VH000192,2025-10-03T16:32:37Z,Vehicle sighting captured by ANPR at Nellithope Cold Storage,SYNTHETIC
+SR001247,LOC000050,P000024,,2024-05-01T04:13:37Z,CCTV frame captured at Ganapathy Bus Terminus toll plaza,SYNTHETIC
+SR001248,LOC000055,P000254,,2024-01-31T18:12:40Z,CCTV frame captured at Kuruvikulam Construction Site toll plaza,SYNTHETIC
+SR001249,LOC000058,P000273,,2024-01-02T19:03:30Z,Subject met unidentified associate at Anna Nagar Lorry Park,SYNTHETIC
+SR001250,LOC000049,P000359,,2024-11-30T04:19:34Z,Vehicle sighting captured by ANPR at Gandhipuram Warehouse Complex,SYNTHETIC
+SR001251,LOC000049,P000251,,2024-04-16T12:49:27Z,Subject met unidentified associate at Gandhipuram Warehouse Complex,SYNTHETIC
+SR001252,LOC000016,P000584,VH000155,2025-09-28T15:55:28Z,Subject observed on foot near Ukkadam Harbour Police Station,SYNTHETIC
+SR001253,LOC000051,P000624,,2024-08-06T12:27:47Z,Vehicle sighting captured by ANPR at Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR001254,LOC000056,P000484,,2025-03-22T05:06:34Z,Routine patrol log entry - Kallamadu Industrial Estate,SYNTHETIC
+SR001255,LOC000056,P000386,VH000192,2024-12-29T14:21:07Z,Vehicle TN20 YP 2758 (motorcycle) recorded entering Kallamadu Industrial Estate,SYNTHETIC
+SR001256,LOC000009,P000458,VH000056,2025-02-19T04:03:24Z,Subject used phone while parked near Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR001257,LOC000023,P000589,,2025-02-20T05:09:43Z,Vehicle sighting captured by ANPR at Sundarankottai Fuel Station,SYNTHETIC
+SR001258,LOC000006,P000092,VH000061,2026-08-11T20:12:37Z,Routine patrol log entry - Pappanaickenpalayam Bridge End,SYNTHETIC
+SR001259,LOC000040,P000416,,2025-06-06T21:25:38Z,Subject used phone while parked near Gandhipuram Textile Mill,SYNTHETIC
+SR001260,LOC000005,P000486,VH000002,2024-02-07T10:00:45Z,Subject met unidentified associate at Kajamalai Junction,SYNTHETIC
+SR001261,LOC000010,P000458,,2025-09-19T01:24:37Z,Subject observed on foot near Kuruvikulam Residential Layout,SYNTHETIC
+SR001262,LOC000034,P000042,VH000029,2026-02-16T08:50:24Z,CCTV frame captured at Mattuthavani Junction toll plaza,SYNTHETIC
+SR001263,LOC000041,P000576,,2026-08-29T23:25:57Z,Vehicle sighting captured by ANPR at Vilachery Cold Storage,SYNTHETIC
+SR001264,LOC000014,P000271,VH000186,2024-10-28T08:41:24Z,Vehicle TN64 BN 8347 (motorcycle) recorded entering Estancia Bridge End,SYNTHETIC
+SR001265,LOC000033,P000287,,2026-05-16T08:17:08Z,Routine patrol log entry - Ukkadam Toll Plaza,SYNTHETIC
+SR001266,LOC000050,P000395,,2024-12-22T12:07:48Z,Subject observed on foot near Ganapathy Bus Terminus,SYNTHETIC
+SR001267,LOC000056,P000105,VH000070,2024-06-01T21:13:09Z,Subject met unidentified associate at Kallamadu Industrial Estate,SYNTHETIC
+SR001268,LOC000028,P000564,,2024-03-28T02:16:45Z,Vehicle sighting captured by ANPR at Ganapathy Mandi,SYNTHETIC
+SR001269,LOC000051,P000547,VH000170,2025-07-10T05:23:37Z,Vehicle TN43 LJ 3518 (sedan) recorded entering Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR001270,LOC000023,P000456,,2024-09-02T04:45:14Z,Vehicle sighting captured by ANPR at Sundarankottai Fuel Station,SYNTHETIC
+SR001271,LOC000006,P000595,,2025-08-10T21:51:03Z,Subject met unidentified associate at Pappanaickenpalayam Bridge End,SYNTHETIC
+SR001272,LOC000032,P000113,,2024-12-16T03:19:37Z,Routine patrol log entry - Bharathi Bazaar Agro Market,SYNTHETIC
+SR001273,LOC000012,P000183,,2024-10-14T20:43:38Z,CCTV frame captured at KK Nagar Night Bazaar toll plaza,SYNTHETIC
+SR001274,LOC000051,P000476,VH000171,2025-04-24T15:34:17Z,Vehicle TN34 UW 7882 (SUV) recorded entering Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR001275,LOC000050,P000224,,2026-03-16T14:34:00Z,CCTV frame captured at Ganapathy Bus Terminus toll plaza,SYNTHETIC
+SR001276,LOC000047,P000061,VH000040,2025-04-16T22:57:26Z,CCTV frame captured at Azhagar Koil Road Junction toll plaza,SYNTHETIC
+SR001277,LOC000059,P000619,,2024-03-26T20:22:04Z,Vehicle sighting captured by ANPR at RS Puram Agro Market,SYNTHETIC
+SR001278,LOC000002,P000418,,2025-01-09T12:40:32Z,Subject used phone while parked near Velachery Oil Depot,SYNTHETIC
+SR001279,LOC000006,P000577,VH000228,2026-08-25T22:50:10Z,Subject observed on foot near Pappanaickenpalayam Bridge End,SYNTHETIC
+SR001280,LOC000011,P000426,,2025-05-07T23:37:09Z,Subject used phone while parked near Peelamedu Harbour Gate,SYNTHETIC
+SR001281,LOC000041,P000195,VH000131,2026-03-07T04:48:44Z,Subject observed on foot near Vilachery Cold Storage,SYNTHETIC
+SR001282,LOC000011,P000315,,2025-01-22T06:12:10Z,CCTV frame captured at Peelamedu Harbour Gate toll plaza,SYNTHETIC
+SR001283,LOC000041,P000014,VH000010,2025-12-02T21:40:14Z,Vehicle TN28 VU 8877 (truck) recorded entering Vilachery Cold Storage,SYNTHETIC
+SR001284,LOC000030,P000471,VH000180,2026-06-26T22:23:11Z,Subject used phone while parked near Ganapathy Junction,SYNTHETIC
+SR001285,LOC000053,P000419,VH000196,2024-08-29T08:09:15Z,Subject observed on foot near Mettupalayam Wholesale Market,SYNTHETIC
+SR001286,LOC000001,P000504,,2026-07-25T22:31:32Z,Routine patrol log entry - Ganapathy City Police Station,SYNTHETIC
+SR001287,LOC000005,P000034,,2024-04-30T17:13:37Z,Vehicle sighting captured by ANPR at Kajamalai Junction,SYNTHETIC
+SR001288,LOC000012,P000390,,2025-04-25T07:24:24Z,Vehicle sighting captured by ANPR at KK Nagar Night Bazaar,SYNTHETIC
+SR001289,LOC000052,P000457,VH000207,2025-01-25T05:33:42Z,Vehicle TN75 VE 4349 (truck) recorded entering Coimbatore Junction Construction Site,SYNTHETIC
+SR001290,LOC000047,P000014,VH000010,2024-06-08T02:47:03Z,Subject met unidentified associate at Azhagar Koil Road Junction,SYNTHETIC
+SR001291,LOC000047,P000427,VH000199,2025-02-04T18:58:40Z,Subject used phone while parked near Azhagar Koil Road Junction,SYNTHETIC
+SR001292,LOC000023,P000269,,2025-01-27T00:47:09Z,CCTV frame captured at Sundarankottai Fuel Station toll plaza,SYNTHETIC
+SR001293,LOC000047,P000470,,2025-12-30T01:33:41Z,Vehicle sighting captured by ANPR at Azhagar Koil Road Junction,SYNTHETIC
+SR001294,LOC000042,P000126,,2025-12-02T21:17:40Z,Subject observed on foot near Chromepet Agro Market,SYNTHETIC
+SR001295,LOC000037,P000593,,2024-01-24T09:03:35Z,CCTV frame captured at Chokkanadar Pettai Textile Mill toll plaza,SYNTHETIC
+SR001296,LOC000021,P000181,,2024-03-30T08:41:00Z,Subject met unidentified associate at Valluvar Layout Harbour Gate,SYNTHETIC
+SR001297,LOC000060,P000321,VH000175,2024-07-21T01:12:11Z,CCTV frame captured at Ukkadam Cold Storage toll plaza,SYNTHETIC
+SR001298,LOC000047,P000365,,2026-02-20T14:24:55Z,Subject observed on foot near Azhagar Koil Road Junction,SYNTHETIC
+SR001299,LOC000059,P000451,VH000120,2026-02-11T15:21:37Z,CCTV frame captured at RS Puram Agro Market toll plaza,SYNTHETIC
+SR001300,LOC000015,P000535,,2024-06-03T00:00:25Z,Subject used phone while parked near Valluvar Layout Night Bazaar,SYNTHETIC
+SR001301,LOC000050,P000364,,2026-06-18T15:30:25Z,Routine patrol log entry - Ganapathy Bus Terminus,SYNTHETIC
+SR001302,LOC000023,P000426,,2024-04-16T02:05:39Z,Routine patrol log entry - Sundarankottai Fuel Station,SYNTHETIC
+SR001303,LOC000043,P000601,,2026-05-04T06:13:59Z,Subject observed on foot near Sowdambika Layout Night Bazaar,SYNTHETIC
+SR001304,LOC000061,P000496,,2025-11-24T12:52:37Z,Vehicle sighting captured by ANPR at Central Market Junction,SYNTHETIC
+SR001305,LOC000012,P000612,,2024-10-27T18:08:13Z,Subject met unidentified associate at KK Nagar Night Bazaar,SYNTHETIC
+SR001306,LOC000023,P000453,VH000033,2026-06-12T17:13:57Z,Vehicle TN60 VU 3638 (pickup) recorded entering Sundarankottai Fuel Station,SYNTHETIC
+SR001307,LOC000009,P000423,,2026-06-17T08:07:18Z,CCTV frame captured at Chokkanadar Pettai Oil Depot toll plaza,SYNTHETIC
+SR001308,LOC000028,P000519,,2025-05-10T09:04:29Z,Routine patrol log entry - Ganapathy Mandi,SYNTHETIC
+SR001309,LOC000013,P000464,,2024-02-20T09:54:21Z,CCTV frame captured at Bharathi Bazaar Wholesale Market toll plaza,SYNTHETIC
+SR001310,LOC000026,P000516,,2025-08-09T14:55:00Z,Subject used phone while parked near Kajamalai Industrial Estate,SYNTHETIC
+SR001311,LOC000040,P000415,,2024-09-06T18:58:18Z,Routine patrol log entry - Gandhipuram Textile Mill,SYNTHETIC
+SR001312,LOC000011,P000285,,2025-02-13T03:24:09Z,Subject met unidentified associate at Peelamedu Harbour Gate,SYNTHETIC
+SR001313,LOC000001,P000145,,2024-05-29T15:27:01Z,Vehicle sighting captured by ANPR at Ganapathy City Police Station,SYNTHETIC
+SR001314,LOC000028,P000421,,2024-07-31T13:03:30Z,Vehicle sighting captured by ANPR at Ganapathy Mandi,SYNTHETIC
+SR001315,LOC000061,P000420,VH000197,2024-05-08T16:42:05Z,Subject observed on foot near Central Market Junction,SYNTHETIC
+SR001316,LOC000011,P000456,,2026-02-10T06:08:15Z,Routine patrol log entry - Peelamedu Harbour Gate,SYNTHETIC
+SR001317,LOC000052,P000255,,2025-09-12T15:41:00Z,Vehicle sighting captured by ANPR at Coimbatore Junction Construction Site,SYNTHETIC
+SR001318,LOC000002,P000587,,2026-06-14T05:47:27Z,Vehicle sighting captured by ANPR at Velachery Oil Depot,SYNTHETIC
+SR001319,LOC000022,P000344,VH000181,2024-08-31T17:43:48Z,Subject met unidentified associate at Nellithope Cold Storage,SYNTHETIC
+SR001320,LOC000024,P000035,VH000024,2024-01-27T11:10:37Z,Subject met unidentified associate at Palladam Check Post,SYNTHETIC
+SR001321,LOC000005,P000252,VH000098,2025-02-28T03:45:24Z,Vehicle TN38 KG 9141 (lorry) recorded entering Kajamalai Junction,SYNTHETIC
+SR001322,LOC000015,P000546,,2024-07-19T23:19:12Z,Subject used phone while parked near Valluvar Layout Night Bazaar,SYNTHETIC
+SR001323,LOC000036,P000380,,2026-05-13T06:33:54Z,CCTV frame captured at Pothigai Nagar Oil Depot toll plaza,SYNTHETIC
+SR001324,LOC000018,P000541,,2025-12-02T02:47:33Z,Subject met unidentified associate at Anna Nagar Bus Terminus,SYNTHETIC
+SR001325,LOC000026,P000092,,2024-01-20T02:24:25Z,CCTV frame captured at Kajamalai Industrial Estate toll plaza,SYNTHETIC
+SR001326,LOC000042,P000216,,2025-02-26T22:42:52Z,Vehicle sighting captured by ANPR at Chromepet Agro Market,SYNTHETIC
+SR001327,LOC000043,P000146,VH000098,2025-07-03T10:50:07Z,Subject used phone while parked near Sowdambika Layout Night Bazaar,SYNTHETIC
+SR001328,LOC000005,P000474,,2024-01-22T19:13:30Z,CCTV frame captured at Kajamalai Junction toll plaza,SYNTHETIC
+SR001329,LOC000030,P000378,,2025-01-18T08:57:55Z,Subject used phone while parked near Ganapathy Junction,SYNTHETIC
+SR001330,LOC000016,P000247,,2024-05-20T15:34:38Z,Subject met unidentified associate at Ukkadam Harbour Police Station,SYNTHETIC
+SR001331,LOC000022,P000553,VH000220,2026-07-19T06:49:33Z,Routine patrol log entry - Nellithope Cold Storage,SYNTHETIC
+SR001332,LOC000013,P000033,,2026-06-10T07:14:18Z,Vehicle sighting captured by ANPR at Bharathi Bazaar Wholesale Market,SYNTHETIC
+SR001333,LOC000043,P000332,,2025-04-15T00:20:45Z,Subject met unidentified associate at Sowdambika Layout Night Bazaar,SYNTHETIC
+SR001334,LOC000009,P000390,,2025-08-28T00:42:33Z,Subject used phone while parked near Chokkanadar Pettai Oil Depot,SYNTHETIC
+SR001335,LOC000056,P000552,,2026-05-26T00:57:27Z,Vehicle sighting captured by ANPR at Kallamadu Industrial Estate,SYNTHETIC
+SR001336,LOC000042,P000480,VH000143,2026-06-06T12:49:44Z,Vehicle sighting captured by ANPR at Chromepet Agro Market,SYNTHETIC
+SR001337,LOC000008,P000282,,2025-01-17T02:17:49Z,CCTV frame captured at Ambattur Warehouse Complex toll plaza,SYNTHETIC
+SR001338,LOC000050,P000276,,2025-06-23T13:13:43Z,CCTV frame captured at Ganapathy Bus Terminus toll plaza,SYNTHETIC
+SR001339,LOC000050,P000560,,2025-06-23T18:37:45Z,Routine patrol log entry - Ganapathy Bus Terminus,SYNTHETIC
+SR001340,LOC000024,P000490,,2024-12-03T02:04:47Z,CCTV frame captured at Palladam Check Post toll plaza,SYNTHETIC
+SR001341,LOC000042,P000539,,2025-09-11T10:27:42Z,Subject observed on foot near Chromepet Agro Market,SYNTHETIC
+SR001342,LOC000061,P000576,,2025-02-07T19:29:44Z,Vehicle sighting captured by ANPR at Central Market Junction,SYNTHETIC
+SR001343,LOC000048,P000135,,2024-07-11T09:56:15Z,Routine patrol log entry - Sulur Railway Yard,SYNTHETIC
+SR001344,LOC000039,P000489,,2024-11-28T21:06:29Z,Vehicle sighting captured by ANPR at Thirunagar Industrial Estate,SYNTHETIC
+SR001345,LOC000060,P000374,,2024-12-05T19:07:52Z,Subject met unidentified associate at Ukkadam Cold Storage,SYNTHETIC
+SR001346,LOC000044,P000518,,2026-02-20T00:39:59Z,Subject used phone while parked near Sulur Check Post,SYNTHETIC
+SR001347,LOC000017,P000084,,2025-08-08T19:24:05Z,Subject observed on foot near Egmore Cold Storage,SYNTHETIC
+SR001348,LOC000015,P000066,VH000186,2025-01-30T04:18:56Z,Vehicle sighting captured by ANPR at Valluvar Layout Night Bazaar,SYNTHETIC
+SR001349,LOC000050,P000546,VH000219,2025-03-03T22:08:19Z,CCTV frame captured at Ganapathy Bus Terminus toll plaza,SYNTHETIC
+SR001350,LOC000048,P000060,,2024-01-14T13:29:23Z,Subject used phone while parked near Sulur Railway Yard,SYNTHETIC
+SR001351,LOC000021,P000271,,2025-10-15T12:59:06Z,Vehicle sighting captured by ANPR at Valluvar Layout Harbour Gate,SYNTHETIC
+SR001352,LOC000033,P000066,,2024-12-26T00:11:28Z,CCTV frame captured at Ukkadam Toll Plaza toll plaza,SYNTHETIC
+SR001353,LOC000036,P000296,,2025-09-19T08:28:26Z,Subject used phone while parked near Pothigai Nagar Oil Depot,SYNTHETIC
+SR001354,LOC000058,P000391,,2025-09-22T15:42:37Z,Subject used phone while parked near Anna Nagar Lorry Park,SYNTHETIC
+SR001355,LOC000049,P000504,,2024-08-17T03:17:41Z,Subject observed on foot near Gandhipuram Warehouse Complex,SYNTHETIC
+SR001356,LOC000047,P000476,,2026-04-28T01:21:12Z,Routine patrol log entry - Azhagar Koil Road Junction,SYNTHETIC
+SR001357,LOC000019,P000028,,2024-11-22T01:26:31Z,Subject observed on foot near Meenakshi Nagar Agro Market,SYNTHETIC
+SR001358,LOC000047,P000517,,2026-08-13T16:11:13Z,Vehicle sighting captured by ANPR at Azhagar Koil Road Junction,SYNTHETIC
+SR001359,LOC000048,P000328,VH000176,2024-11-07T03:54:27Z,Routine patrol log entry - Sulur Railway Yard,SYNTHETIC
+SR001360,LOC000028,P000451,,2025-10-17T19:41:26Z,Vehicle sighting captured by ANPR at Ganapathy Mandi,SYNTHETIC
+SR001361,LOC000022,P000221,,2026-07-03T16:36:29Z,Routine patrol log entry - Nellithope Cold Storage,SYNTHETIC
+SR001362,LOC000005,P000012,,2026-02-25T19:45:13Z,Routine patrol log entry - Kajamalai Junction,SYNTHETIC
+SR001363,LOC000049,P000619,,2025-05-18T15:06:50Z,Routine patrol log entry - Gandhipuram Warehouse Complex,SYNTHETIC
+SR001364,LOC000024,P000410,VH000089,2025-07-26T03:06:29Z,Vehicle TN20 AW 2015 (van) recorded entering Palladam Check Post,SYNTHETIC
+SR001365,LOC000042,P000446,,2024-07-25T08:20:03Z,Subject met unidentified associate at Chromepet Agro Market,SYNTHETIC
+SR001366,LOC000003,P000465,,2026-03-17T10:45:18Z,Routine patrol log entry - Thirunagar Cold Storage,SYNTHETIC
+SR001367,LOC000039,P000253,,2025-05-25T15:09:54Z,Vehicle sighting captured by ANPR at Thirunagar Industrial Estate,SYNTHETIC
+SR001368,LOC000050,P000015,,2025-04-12T21:22:38Z,Subject observed on foot near Ganapathy Bus Terminus,SYNTHETIC
+SR001369,LOC000051,P000261,VH000155,2024-05-06T06:10:53Z,Subject observed on foot near Chokkanadar Pettai Outer Ring Road,SYNTHETIC
+SR001370,LOC000012,P000183,,2024-01-29T23:54:42Z,Routine patrol log entry - KK Nagar Night Bazaar,SYNTHETIC
+SR001371,LOC000041,P000280,,2025-09-01T14:18:55Z,CCTV frame captured at Vilachery Cold Storage toll plaza,SYNTHETIC
+SR001372,LOC000049,P000359,,2024-04-22T01:21:49Z,Subject observed on foot near Gandhipuram Warehouse Complex,SYNTHETIC
+SR001373,LOC000030,P000316,,2024-12-05T18:13:48Z,Subject observed on foot near Ganapathy Junction,SYNTHETIC
+SR001374,LOC000023,P000381,,2025-05-11T17:32:52Z,Routine patrol log entry - Sundarankottai Fuel Station,SYNTHETIC
+SR001375,LOC000012,P000011,VH000009,2024-10-04T04:50:59Z,Subject observed on foot near KK Nagar Night Bazaar,SYNTHETIC
+SR001376,LOC000061,P000343,VH000180,2025-02-22T23:13:30Z,Subject met unidentified associate at Central Market Junction,SYNTHETIC
+SR001377,LOC000053,P000358,,2024-10-20T13:57:51Z,Subject met unidentified associate at Mettupalayam Wholesale Market,SYNTHETIC
+SR001378,LOC000045,P000217,,2025-05-06T01:28:58Z,CCTV frame captured at Pothigai Nagar Toll Plaza toll plaza,SYNTHETIC
+SR001379,LOC000003,P000352,,2025-10-25T04:18:14Z,CCTV frame captured at Thirunagar Cold Storage toll plaza,SYNTHETIC
+SR001380,LOC000023,P000041,VH000028,2024-05-31T11:00:13Z,Subject met unidentified associate at Sundarankottai Fuel Station,SYNTHETIC
+SR001381,LOC000037,P000424,,2026-05-03T20:43:43Z,Subject observed on foot near Chokkanadar Pettai Textile Mill,SYNTHETIC
+SR001382,LOC000048,P000427,VH000199,2026-04-14T16:24:09Z,Subject observed on foot near Sulur Railway Yard,SYNTHETIC
+SR001383,LOC000018,P000471,,2024-05-22T04:04:33Z,Subject met unidentified associate at Anna Nagar Bus Terminus,SYNTHETIC
+SR001384,LOC000022,P000048,,2024-04-27T17:20:57Z,CCTV frame captured at Nellithope Cold Storage toll plaza,SYNTHETIC
+SR001385,LOC000023,P000061,VH000016,2024-12-08T04:55:24Z,Vehicle sighting captured by ANPR at Sundarankottai Fuel Station,SYNTHETIC
+SR001386,LOC000040,P000160,VH000107,2024-03-05T13:37:46Z,Subject met unidentified associate at Gandhipuram Textile Mill,SYNTHETIC
+SR001387,LOC000026,P000373,,2024-10-26T21:43:45Z,Routine patrol log entry - Kajamalai Industrial Estate,SYNTHETIC
+SR001388,LOC000009,P000391,,2024-01-07T11:43:50Z,CCTV frame captured at Chokkanadar Pettai Oil Depot toll plaza,SYNTHETIC
+SR001389,LOC000023,P000155,,2026-07-07T07:45:39Z,Subject used phone while parked near Sundarankottai Fuel Station,SYNTHETIC
+SR001390,LOC000014,P000146,VH000098,2025-11-14T08:51:37Z,CCTV frame captured at Estancia Bridge End toll plaza,SYNTHETIC
+SR001391,LOC000023,P000597,VH000196,2026-04-03T00:53:11Z,Subject observed on foot near Sundarankottai Fuel Station,SYNTHETIC
+SR001392,LOC000003,P000574,VH000226,2025-11-23T06:13:41Z,Subject met unidentified associate at Thirunagar Cold Storage,SYNTHETIC
+SR001393,LOC000013,P000468,,2025-09-27T21:51:03Z,Subject used phone while parked near Bharathi Bazaar Wholesale Market,SYNTHETIC
+SR001394,LOC000026,P000161,VH000108,2024-01-17T03:41:33Z,CCTV frame captured at Kajamalai Industrial Estate toll plaza,SYNTHETIC
+SR001395,LOC000030,P000336,,2025-01-25T13:19:58Z,Subject used phone while parked near Ganapathy Junction,SYNTHETIC
+SR001396,LOC000042,P000064,VH000042,2024-07-05T06:40:33Z,Routine patrol log entry - Chromepet Agro Market,SYNTHETIC
+SR001397,LOC000024,P000544,,2025-09-20T10:45:34Z,Routine patrol log entry - Palladam Check Post,SYNTHETIC
+SR001398,LOC000039,P000506,,2025-06-25T03:38:07Z,Subject observed on foot near Thirunagar Industrial Estate,SYNTHETIC
+SR001399,LOC000015,P000342,VH000204,2025-07-07T17:02:16Z,Vehicle sighting captured by ANPR at Valluvar Layout Night Bazaar,SYNTHETIC
+SR001400,LOC000023,P000301,VH000171,2026-08-26T05:25:01Z,CCTV frame captured at Sundarankottai Fuel Station toll plaza,SYNTHETIC
+SR001401,LOC000050,P000077,,2025-03-01T12:37:04Z,Routine patrol log entry - Ganapathy Bus Terminus,SYNTHETIC
+SR001402,LOC000045,P000541,,2024-09-14T22:55:45Z,Subject observed on foot near Pothigai Nagar Toll Plaza,SYNTHETIC
+SR001403,LOC000050,P000306,,2024-08-13T07:47:01Z,CCTV frame captured at Ganapathy Bus Terminus toll plaza,SYNTHETIC
+SR001404,LOC000012,P000301,VH000171,2024-07-20T15:33:15Z,ANPR trail: TN34 UW 7882 moving along corridor leg 1,SYNTHETIC
+SR001405,LOC000047,P000301,VH000171,2024-07-20T16:08:15Z,ANPR trail: TN34 UW 7882 moving along corridor leg 2,SYNTHETIC
+SR001406,LOC000014,P000301,VH000171,2024-07-20T16:49:15Z,ANPR trail: TN34 UW 7882 moving along corridor leg 3,SYNTHETIC
+SR001407,LOC000057,P000301,VH000171,2024-07-20T17:26:15Z,ANPR trail: TN34 UW 7882 moving along corridor leg 4,SYNTHETIC
+SR001408,LOC000007,P000178,VH000121,2024-07-26T07:07:34Z,ANPR trail: TN58 FB 3284 moving along corridor leg 1,SYNTHETIC
+SR001409,LOC000041,P000178,VH000121,2024-07-26T07:57:34Z,ANPR trail: TN58 FB 3284 moving along corridor leg 2,SYNTHETIC
+SR001410,LOC000061,P000178,VH000121,2024-07-26T08:34:34Z,ANPR trail: TN58 FB 3284 moving along corridor leg 3,SYNTHETIC
+SR001411,LOC000001,P000178,VH000121,2024-07-26T09:02:34Z,ANPR trail: TN58 FB 3284 moving along corridor leg 4,SYNTHETIC
+SR001412,LOC000041,P000167,VH000112,2025-06-08T14:11:15Z,ANPR trail: TN25 JD 3513 moving along corridor leg 1,SYNTHETIC
+SR001413,LOC000003,P000167,VH000112,2025-06-08T15:03:15Z,ANPR trail: TN25 JD 3513 moving along corridor leg 2,SYNTHETIC
+SR001414,LOC000057,P000167,VH000112,2025-06-08T15:43:15Z,ANPR trail: TN25 JD 3513 moving along corridor leg 3,SYNTHETIC
+SR001415,LOC000048,P000167,VH000112,2025-06-08T16:22:15Z,ANPR trail: TN25 JD 3513 moving along corridor leg 4,SYNTHETIC
+SR001416,LOC000061,P000253,VH000153,2026-03-08T00:25:06Z,ANPR trail: TN64 ZP 3247 moving along corridor leg 1,SYNTHETIC
+SR001417,LOC000027,P000253,VH000153,2026-03-08T01:16:06Z,ANPR trail: TN64 ZP 3247 moving along corridor leg 2,SYNTHETIC
+SR001418,LOC000043,P000253,VH000153,2026-03-08T01:57:06Z,ANPR trail: TN64 ZP 3247 moving along corridor leg 3,SYNTHETIC
+SR001419,LOC000013,P000253,VH000153,2026-03-08T02:26:06Z,ANPR trail: TN64 ZP 3247 moving along corridor leg 4,SYNTHETIC
+SR001420,LOC000009,P000174,VH000118,2026-07-23T02:46:50Z,ANPR trail: TN01 HL 6352 moving along corridor leg 1,SYNTHETIC
+SR001421,LOC000041,P000174,VH000118,2026-07-23T03:39:50Z,ANPR trail: TN01 HL 6352 moving along corridor leg 2,SYNTHETIC
+SR001422,LOC000053,P000174,VH000118,2026-07-23T04:13:50Z,ANPR trail: TN01 HL 6352 moving along corridor leg 3,SYNTHETIC
+SR001423,LOC000059,P000174,VH000118,2026-07-23T04:58:50Z,ANPR trail: TN01 HL 6352 moving along corridor leg 4,SYNTHETIC
+SR001424,LOC000043,P000030,VH000020,2026-03-10T03:14:07Z,ANPR trail: TN50 DT 3521 moving along corridor leg 1,SYNTHETIC
+SR001425,LOC000018,P000030,VH000020,2026-03-10T04:06:07Z,ANPR trail: TN50 DT 3521 moving along corridor leg 2,SYNTHETIC
+SR001426,LOC000045,P000030,VH000020,2026-03-10T04:32:07Z,ANPR trail: TN50 DT 3521 moving along corridor leg 3,SYNTHETIC
+SR001427,LOC000035,P000030,VH000020,2026-03-10T05:21:07Z,ANPR trail: TN50 DT 3521 moving along corridor leg 4,SYNTHETIC
+SR001428,LOC000028,P000575,VH000227,2024-06-10T20:53:56Z,ANPR trail: TN23 JK 1001 moving along corridor leg 1,SYNTHETIC
+SR001429,LOC000059,P000575,VH000227,2024-06-10T21:34:56Z,ANPR trail: TN23 JK 1001 moving along corridor leg 2,SYNTHETIC
+SR001430,LOC000010,P000575,VH000227,2024-06-10T22:07:56Z,ANPR trail: TN23 JK 1001 moving along corridor leg 3,SYNTHETIC
+SR001431,LOC000015,P000575,VH000227,2024-06-10T22:46:56Z,ANPR trail: TN23 JK 1001 moving along corridor leg 4,SYNTHETIC
+SR001432,LOC000005,P000387,VH000193,2024-11-08T20:23:23Z,ANPR trail: TN20 NG 3290 moving along corridor leg 1,SYNTHETIC
+SR001433,LOC000018,P000387,VH000193,2024-11-08T20:55:23Z,ANPR trail: TN20 NG 3290 moving along corridor leg 2,SYNTHETIC
+SR001434,LOC000031,P000387,VH000193,2024-11-08T21:47:23Z,ANPR trail: TN20 NG 3290 moving along corridor leg 3,SYNTHETIC
+SR001435,LOC000056,P000387,VH000193,2024-11-08T22:12:23Z,ANPR trail: TN20 NG 3290 moving along corridor leg 4,SYNTHETIC
+SR001436,LOC000036,P000069,VH000046,2024-09-26T16:16:36Z,ANPR trail: TN01 HX 8165 moving along corridor leg 1,SYNTHETIC
+SR001437,LOC000061,P000069,VH000046,2024-09-26T17:01:36Z,ANPR trail: TN01 HX 8165 moving along corridor leg 2,SYNTHETIC
+SR001438,LOC000035,P000069,VH000046,2024-09-26T17:43:36Z,ANPR trail: TN01 HX 8165 moving along corridor leg 3,SYNTHETIC
+SR001439,LOC000041,P000069,VH000046,2024-09-26T18:13:36Z,ANPR trail: TN01 HX 8165 moving along corridor leg 4,SYNTHETIC
+SR001440,LOC000010,P000571,VH000225,2026-01-19T09:28:36Z,ANPR trail: TN39 VL 7688 moving along corridor leg 1,SYNTHETIC
+SR001441,LOC000049,P000571,VH000225,2026-01-19T10:06:36Z,ANPR trail: TN39 VL 7688 moving along corridor leg 2,SYNTHETIC
+SR001442,LOC000022,P000571,VH000225,2026-01-19T10:46:36Z,ANPR trail: TN39 VL 7688 moving along corridor leg 3,SYNTHETIC
+SR001443,LOC000057,P000571,VH000225,2026-01-19T11:26:36Z,ANPR trail: TN39 VL 7688 moving along corridor leg 4,SYNTHETIC
+SR001444,LOC000002,P000150,VH000101,2025-06-05T15:31:20Z,ANPR trail: TN46 LW 5025 moving along corridor leg 1,SYNTHETIC
+SR001445,LOC000056,P000150,VH000101,2025-06-05T16:01:20Z,ANPR trail: TN46 LW 5025 moving along corridor leg 2,SYNTHETIC
+SR001446,LOC000038,P000150,VH000101,2025-06-05T16:40:20Z,ANPR trail: TN46 LW 5025 moving along corridor leg 3,SYNTHETIC
+SR001447,LOC000023,P000150,VH000101,2025-06-05T17:18:20Z,ANPR trail: TN46 LW 5025 moving along corridor leg 4,SYNTHETIC
+SR001448,LOC000007,P000367,VH000185,2024-03-10T11:27:20Z,ANPR trail: TN32 JN 1574 moving along corridor leg 1,SYNTHETIC
+SR001449,LOC000001,P000367,VH000185,2024-03-10T12:10:20Z,ANPR trail: TN32 JN 1574 moving along corridor leg 2,SYNTHETIC
+SR001450,LOC000031,P000367,VH000185,2024-03-10T12:42:20Z,ANPR trail: TN32 JN 1574 moving along corridor leg 3,SYNTHETIC
+SR001451,LOC000006,P000367,VH000185,2024-03-10T13:33:20Z,ANPR trail: TN32 JN 1574 moving along corridor leg 4,SYNTHETIC
+SR001452,LOC000021,P000180,VH000123,2024-04-28T11:27:18Z,ANPR trail: TN28 PF 6146 moving along corridor leg 1,SYNTHETIC
+SR001453,LOC000018,P000180,VH000123,2024-04-28T12:04:18Z,ANPR trail: TN28 PF 6146 moving along corridor leg 2,SYNTHETIC
+SR001454,LOC000057,P000180,VH000123,2024-04-28T12:43:18Z,ANPR trail: TN28 PF 6146 moving along corridor leg 3,SYNTHETIC
+SR001455,LOC000032,P000180,VH000123,2024-04-28T13:26:18Z,ANPR trail: TN28 PF 6146 moving along corridor leg 4,SYNTHETIC
+SR001456,LOC000054,P000373,VH000187,2026-01-02T08:54:12Z,ANPR trail: TN62 NE 8953 moving along corridor leg 1,SYNTHETIC
+SR001457,LOC000020,P000373,VH000187,2026-01-02T09:41:12Z,ANPR trail: TN62 NE 8953 moving along corridor leg 2,SYNTHETIC
+SR001458,LOC000023,P000373,VH000187,2026-01-02T10:10:12Z,ANPR trail: TN62 NE 8953 moving along corridor leg 3,SYNTHETIC
+SR001459,LOC000006,P000373,VH000187,2026-01-02T10:54:12Z,ANPR trail: TN62 NE 8953 moving along corridor leg 4,SYNTHETIC
