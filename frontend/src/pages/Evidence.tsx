@@ -4,7 +4,7 @@ import { api } from "../lib/api";
 import { useAuth } from "../store/auth";
 import {
   ShieldCheck, Search, Filter, RefreshCw, Plus, CheckCircle2,
-  FileDigit, Fingerprint, Lock, Copy, Check, X, ChevronRight,
+  FileDigit, Fingerprint, Lock, Copy, Check, X,
   Upload, Download, FileText, PhoneCall, DollarSign, Video,
   LayoutGrid, List, ExternalLink, FileCheck,
   Shield

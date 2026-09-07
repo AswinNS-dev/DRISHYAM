@@ -45,6 +45,16 @@ dmypy.json
 .pyre/
 .pytype/
 
+# ── Runtime data / user uploads ──────────────────────────────
+backend/storage/
+*.bin
+
+# ── Scratch / throwaway files ────────────────────────────────
+scratch/
+
+# ── Stray lockfiles outside package roots ────────────────────
+backend/app/package-lock.json
+
 # ── SQLite database files ─────────────────────────────────────
 *.db
 *.sqlite
