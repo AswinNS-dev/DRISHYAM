@@ -38,6 +38,8 @@ export const api = {
   demoAccounts: () => request("/api/v2/auth/demo-accounts"),
 
   dashboardSummary: () => request("/api/v2/dashboard/summary"),
+  dashboardIntelligence: (params: Record<string, string> = {}) =>
+    request(`/api/v2/dashboard/intelligence?${new URLSearchParams(params)}`),
 
   networkGraph: (params: Record<string, string> = {}) =>
     request(`/api/v2/network/graph?${new URLSearchParams(params)}`),
