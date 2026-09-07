@@ -244,38 +244,38 @@ export default function Locations() {
   return (
     <div className="flex flex-col h-full bg-[#020617]">
       {/* ── Top Header Strip ── */}
-      <div className="px-5 py-3 border-b border-slate-800/90 space-y-3 bg-slate-900/95 backdrop-blur-md shadow-md">
+      <div className="px-6 py-4 border-b border-slate-800/90 space-y-3 bg-slate-900/95 backdrop-blur-md shadow-md">
         {/* Module Metadata Line */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="badge badge-info text-[10px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
+            <span className="badge badge-info text-xs font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30">
               STATE GEOGRAPHIC INTELLIGENCE & JURISDICTION MAP
             </span>
-            <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1 text-glow-emerald">
+            <span className="text-xs font-mono text-emerald-400 flex items-center gap-1.5 font-semibold">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               LIVE DATABASE SYNCHRONIZED
             </span>
           </div>
-          <div className="text-[11px] font-mono text-slate-400">
+          <div className="text-xs font-mono text-slate-400">
             Active Scoped Jurisdictions: <span className="text-white font-bold">{filteredLocations.length}</span> Territorial Nodes
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
-              <MapPin size={18} />
+            <div className="w-10 h-10 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
+              <MapPin size={20} />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-sm md:text-base font-black tracking-wide uppercase text-white text-glow-white">
-                  Geographic Intelligence & Investigation Hotspots
+              <div className="flex items-center gap-2.5">
+                <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white uppercase">
+                  Geographic Intelligence & Hotspots
                 </h1>
-                <span className="badge badge-low text-[8px] bg-sky-950/80 text-sky-300 border border-sky-800/60 font-mono">
+                <span className="badge badge-low text-xs bg-sky-950/80 text-sky-300 border border-sky-800/60 font-mono font-bold">
                   INDIA ADMINISTRATIVE JURISDICTION
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400">
+              <p className="text-sm text-slate-300 font-medium">
                 Administrative polygon correlation, verified incident density, and territorial activity tracking
               </p>
             </div>
@@ -283,17 +283,17 @@ export default function Locations() {
 
           {/* Search & Actions */}
           <div className="flex items-center gap-2.5 flex-wrap">
-            <div className="relative w-72 flex items-center">
+            <div className="relative w-80 flex items-center">
               <Search
-                size={14}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none z-10"
+                size={15}
+                className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none z-10"
               />
               <input
                 value={search}
                 onChange={(e) => handleSearchChange(e.target.value)}
                 placeholder="Search state, district, or location..."
-                style={{ paddingLeft: "2.35rem" }}
-                className="w-full bg-slate-950 border border-slate-800 text-slate-100 placeholder-slate-500 rounded-xl py-1.5 text-xs font-mono outline-none focus:border-sky-500"
+                style={{ paddingLeft: "2.6rem" }}
+                className="w-full bg-slate-950 border border-slate-800 text-slate-100 placeholder-slate-500 rounded-xl py-2 text-sm font-mono outline-none focus:border-sky-500 transition-colors"
               />
             </div>
 
@@ -304,7 +304,7 @@ export default function Locations() {
                 setSelectedLoc(null);
                 setSearch("");
               }}
-              className="px-3 py-1.5 rounded-xl border border-slate-800 bg-slate-950 hover:bg-slate-900 text-slate-300 hover:text-white text-xs font-mono shadow-sm cursor-pointer"
+              className="px-3.5 py-2 rounded-xl border border-slate-800 bg-slate-950 hover:bg-slate-900 text-slate-300 hover:text-white text-xs md:text-sm font-mono font-semibold shadow-sm cursor-pointer transition-colors"
               title="Reset map view to All India"
             >
               All India View
@@ -313,9 +313,9 @@ export default function Locations() {
             <button
               onClick={loadLocations}
               title="Refresh location telemetry"
-              className="p-2 rounded-xl border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-white bg-slate-950 transition-all shadow-sm"
+              className="p-2.5 rounded-xl border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white bg-slate-950 transition-all shadow-sm cursor-pointer"
             >
-              <RefreshCw size={13} className={loading ? "animate-spin text-sky-400" : ""} />
+              <RefreshCw size={15} className={loading ? "animate-spin text-sky-400" : ""} />
             </button>
           </div>
         </div>
@@ -327,17 +327,17 @@ export default function Locations() {
         <div className="w-80 shrink-0 border-r border-slate-800/90 flex flex-col min-h-0 bg-slate-900/95">
           {/* Cascading Filter Controls */}
           <div className="p-3.5 border-b border-slate-800/80 bg-slate-950/60 space-y-2.5">
-            <div className="flex items-center justify-between text-[10px] font-mono font-bold text-slate-300 uppercase tracking-wider">
+            <div className="flex items-center justify-between text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">
               <div className="flex items-center gap-1.5">
-                <Filter size={12} className="text-sky-400" />
+                <Filter size={13} className="text-sky-400" />
                 <span>Geographic Scoping</span>
               </div>
-              <span className="text-sky-300 text-glow-sky">{filteredLocations.length} LOCATIONS</span>
+              <span className="text-sky-300">{filteredLocations.length} LOCATIONS</span>
             </div>
 
             {/* State Selector */}
             <div className="space-y-1">
-              <label className="text-[10px] font-mono text-slate-400 uppercase">State Jurisdiction</label>
+              <label className="text-xs font-mono text-slate-400 uppercase font-semibold">State Jurisdiction</label>
               <select
                 value={selectedState}
                 onChange={(e) => {
@@ -345,7 +345,7 @@ export default function Locations() {
                   setSelectedDistrict("");
                   setSelectedLoc(null);
                 }}
-                className="workstation-input text-xs w-full py-1.5 bg-slate-900 border-slate-700/80 text-slate-200"
+                className="workstation-input text-xs md:text-sm w-full py-1.5 bg-slate-900 border-slate-700/80 text-slate-200 font-mono"
               >
                 <option value="">All India</option>
                 {ALL_INDIAN_STATES.map((state) => (
@@ -358,14 +358,14 @@ export default function Locations() {
 
             {/* District Selector */}
             <div className="space-y-1">
-              <label className="text-[10px] font-mono text-slate-400 uppercase">District Sub-Division</label>
+              <label className="text-xs font-mono text-slate-400 uppercase font-semibold">District Sub-Division</label>
               <select
                 value={selectedDistrict}
                 onChange={(e) => {
                   setSelectedDistrict(e.target.value);
                   setSelectedLoc(null);
                 }}
-                className="workstation-input text-xs w-full py-1.5 bg-slate-900 border-slate-700/80 text-slate-200"
+                className="workstation-input text-xs md:text-sm w-full py-1.5 bg-slate-900 border-slate-700/80 text-slate-200 font-mono"
               >
                 <option value="">All Districts ({availableDistricts.length})</option>
                 {availableDistricts.map((dist) => (
@@ -379,11 +379,11 @@ export default function Locations() {
             {/* Activity Category & Time Range Row */}
             <div className="grid grid-cols-2 gap-2 pt-1">
               <div className="space-y-1">
-                <label className="text-[9px] font-mono text-slate-400 uppercase">Activity Type</label>
+                <label className="text-xs font-mono text-slate-400 uppercase font-semibold">Activity Type</label>
                 <select
                   value={activityCategory}
                   onChange={(e) => setActivityCategory(e.target.value as ActivityCategory)}
-                  className="workstation-input text-[11px] w-full py-1 bg-slate-900 border-slate-700 text-slate-300"
+                  className="workstation-input text-xs w-full py-1.5 bg-slate-900 border-slate-700 text-slate-300 font-mono"
                 >
                   <option value="ALL">All Activity</option>
                   <option value="FIRS">Cases / FIRs</option>
@@ -394,11 +394,11 @@ export default function Locations() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-[9px] font-mono text-slate-400 uppercase">Time Window</label>
+                <label className="text-xs font-mono text-slate-400 uppercase font-semibold">Time Window</label>
                 <select
                   value={timeRange}
                   onChange={(e) => setTimeRange(e.target.value as TimeRange)}
-                  className="workstation-input text-[11px] w-full py-1 bg-slate-900 border-slate-700 text-slate-300"
+                  className="workstation-input text-xs w-full py-1.5 bg-slate-900 border-slate-700 text-slate-300 font-mono"
                 >
                   <option value="ALL">All Time</option>
                   <option value="7D">Last 7 Days</option>
@@ -411,27 +411,27 @@ export default function Locations() {
 
           {/* Quick Metrics Summary */}
           <div className="p-3 border-b border-[var(--border-subtle)] grid grid-cols-2 gap-2 text-center bg-slate-900/20">
-            <div className="p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-              <div className="text-sm font-bold font-mono text-sky-400">{summaryStats.totalLocations}</div>
-              <div className="text-[9px] font-mono text-slate-400 uppercase">Mapped Locations</div>
+            <div className="p-2 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="text-xl md:text-2xl font-black font-mono text-sky-400">{summaryStats.totalLocations}</div>
+              <div className="text-xs font-mono text-slate-400 uppercase font-bold mt-0.5">Locations</div>
             </div>
-            <div className="p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-              <div className="text-sm font-bold font-mono text-amber-400">{summaryStats.totalFirs}</div>
-              <div className="text-[9px] font-mono text-slate-400 uppercase">Linked FIRs</div>
+            <div className="p-2 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="text-xl md:text-2xl font-black font-mono text-amber-400">{summaryStats.totalFirs}</div>
+              <div className="text-xs font-mono text-slate-400 uppercase font-bold mt-0.5">Linked FIRs</div>
             </div>
           </div>
 
           {/* Identified Hotspots List */}
-          <div className="flex-1 overflow-y-auto p-2.5 space-y-1.5">
+          <div className="flex-1 overflow-y-auto p-2.5 space-y-2">
             {loading ? (
               [1, 2, 3, 4].map((n) => (
                 <div key={n} className="skeleton h-14 rounded-lg bg-slate-800/50" />
               ))
             ) : filteredLocations.length === 0 ? (
-              <div className="text-center py-12 text-xs text-slate-500 space-y-1">
-                <MapPin size={24} className="mx-auto opacity-40 mb-2" />
-                <div>No investigation activity recorded in this jurisdiction.</div>
-                <div className="text-[10px] text-slate-600">
+              <div className="text-center py-12 text-sm text-slate-500 space-y-1">
+                <MapPin size={28} className="mx-auto opacity-40 mb-2" />
+                <div className="font-semibold text-slate-400">No investigation activity recorded in this jurisdiction.</div>
+                <div className="text-xs text-slate-500">
                   {selectedState && selectedState !== "Tamil Nadu"
                     ? `No active cases mapped in ${selectedState} for current dataset.`
                     : "Try broadening filters."}
@@ -447,16 +447,16 @@ export default function Locations() {
                   <div
                     key={loc.id}
                     onClick={() => selectLocation(loc)}
-                    className={`p-2.5 rounded-lg border transition-all cursor-pointer ${
+                    className={`p-3 rounded-lg border transition-all cursor-pointer ${
                       isSelected
                         ? "border-sky-500 bg-sky-950/40 shadow-sm"
                         : "border-slate-800/80 bg-slate-900/50 hover:border-slate-700 hover:bg-slate-900/90"
                     }`}
                   >
-                    <div className="flex items-center justify-between gap-1 mb-1">
-                      <span className="text-xs font-bold text-slate-200 truncate">{loc.name}</span>
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <span className="text-sm font-bold text-slate-100 truncate">{loc.name}</span>
                       <span
-                        className={`text-[8px] font-mono font-bold px-1.5 py-0.5 rounded uppercase ${
+                        className={`text-xs font-mono font-bold px-2 py-0.5 rounded uppercase ${
                           isHighActivity
                             ? "bg-red-950/80 text-red-300 border border-red-800/60"
                             : isModerate
@@ -468,9 +468,9 @@ export default function Locations() {
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between text-[10px] font-mono text-slate-400">
+                    <div className="flex items-center justify-between text-xs font-mono text-slate-400">
                       <span>{loc.district}</span>
-                      <span className="text-amber-400/90">{loc.fir_count} Linked FIRs</span>
+                      <span className="text-amber-400/90 font-semibold">{loc.fir_count} Linked FIRs</span>
                     </div>
                   </div>
                 );
@@ -501,15 +501,15 @@ export default function Locations() {
         <div className="w-88 shrink-0 border-l border-[var(--border-subtle)] flex flex-col min-h-0 bg-[var(--bg-panel-solid)] shadow-2xl">
           <div className="px-4 py-3 border-b border-[var(--border-subtle)] flex items-center justify-between bg-slate-900/40">
             <div className="flex items-center gap-2">
-              <ShieldCheck size={14} className="text-sky-400" />
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-200">
+              <ShieldCheck size={16} className="text-sky-400" />
+              <span className="text-xs md:text-sm font-bold uppercase tracking-wider text-slate-200">
                 {selectedLoc ? "Location Activity Dossier" : "Geographic Overview"}
               </span>
             </div>
 
             {selectedLoc && (
               <span
-                className={`text-[8px] font-mono font-bold px-2 py-0.5 rounded uppercase ${
+                className={`text-xs font-mono font-bold px-2.5 py-0.5 rounded uppercase ${
                   selectedLoc.threat_score >= 70
                     ? "bg-red-950 text-red-300 border border-red-800"
                     : selectedLoc.threat_score >= 40
@@ -526,78 +526,78 @@ export default function Locations() {
             )}
           </div>
 
-          <div className="flex-1 overflow-y-auto p-4 space-y-3.5">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {!selectedLoc ? (
               /* State or General Overview when no single location is selected */
               <div className="space-y-4">
-                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-1.5">
-                  <div className="hud-label text-[9px] text-sky-400">ADMINISTRATIVE JURISDICTION</div>
-                  <div className="text-sm font-bold text-slate-200">
+                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-2">
+                  <div className="hud-label text-xs font-mono text-sky-400 font-bold uppercase">ADMINISTRATIVE JURISDICTION</div>
+                  <div className="text-base font-bold text-slate-100">
                     {selectedDistrict
                       ? `${selectedDistrict} District, ${selectedState || "Tamil Nadu"}`
                       : selectedState
                       ? `${selectedState}, India`
                       : "India National Overview"}
                   </div>
-                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                  <p className="text-sm text-slate-300 leading-relaxed">
                     Jurisdiction tracking across active police station zones, registered complaint records,
                     and verified investigation activity.
                   </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 text-center text-xs font-mono">
-                  <div className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
-                    <div className="text-base font-bold text-sky-400">{summaryStats.totalLocations}</div>
-                    <div className="text-[9px] text-slate-400 uppercase">Active Locations</div>
+                  <div className="p-3 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <div className="text-2xl font-black font-mono text-sky-400">{summaryStats.totalLocations}</div>
+                    <div className="text-xs font-mono text-slate-400 uppercase font-bold mt-1">Active Locations</div>
                   </div>
-                  <div className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
-                    <div className="text-base font-bold text-amber-400">{summaryStats.totalFirs}</div>
-                    <div className="text-[9px] text-slate-400 uppercase">Total Linked FIRs</div>
+                  <div className="p-3 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <div className="text-2xl font-black font-mono text-amber-400">{summaryStats.totalFirs}</div>
+                    <div className="text-xs font-mono text-slate-400 uppercase font-bold mt-1">Total Linked FIRs</div>
                   </div>
                 </div>
 
-                <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs text-slate-400 space-y-1">
-                  <div className="font-semibold text-slate-300">Investigation Guidance:</div>
+                <div className="p-3.5 rounded-lg bg-slate-900/60 border border-slate-800 text-xs md:text-sm text-slate-300 space-y-1.5">
+                  <div className="font-bold text-slate-200">Investigation Guidance:</div>
                   <div>• Click any state or district polygon on the map to zoom to its boundary.</div>
                   <div>• Click a location marker to inspect its verified FIR complaints.</div>
                 </div>
               </div>
             ) : (
               /* Selected Hotspot Location Dossier */
-              <div className="space-y-3.5">
+              <div className="space-y-4">
                 {/* Header Card */}
-                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-1.5">
-                  <span className="text-[9px] font-mono text-sky-400 font-bold uppercase tracking-wider">
+                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-2">
+                  <span className="text-xs font-mono text-sky-400 font-bold uppercase tracking-wider">
                     {selectedLoc.district} DISTRICT JURISDICTION
                   </span>
-                  <h2 className="text-sm font-bold text-slate-100">{selectedLoc.name}</h2>
-                  <div className="text-[10px] font-mono text-slate-400 flex items-center justify-between">
+                  <h2 className="text-base md:text-lg font-bold text-white">{selectedLoc.name}</h2>
+                  <div className="text-xs font-mono text-slate-300 flex items-center justify-between">
                     <span>
                       COORDS: {selectedLoc.latitude.toFixed(4)}° N, {selectedLoc.longitude.toFixed(4)}° E
                     </span>
-                    <span>ID: {selectedLoc.id.slice(0, 8)}...</span>
+                    <span className="text-slate-400">ID: {selectedLoc.id.slice(0, 8)}...</span>
                   </div>
                 </div>
 
                 {/* Threat & Activity Index */}
                 <div className="grid grid-cols-2 gap-2 text-center text-xs font-mono">
-                  <div className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
-                    <div className="text-base font-bold text-amber-400">{selectedLoc.threat_score}%</div>
-                    <div className="text-[9px] text-slate-400 uppercase">Activity Level</div>
+                  <div className="p-3 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <div className="text-2xl font-black font-mono text-amber-400">{selectedLoc.threat_score}%</div>
+                    <div className="text-xs font-mono text-slate-400 uppercase font-bold mt-1">Activity Level</div>
                   </div>
-                  <div className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
-                    <div className="text-base font-bold text-sky-400">{selectedLoc.fir_count}</div>
-                    <div className="text-[9px] text-slate-400 uppercase">Linked FIRs</div>
+                  <div className="p-3 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <div className="text-2xl font-black font-mono text-sky-400">{selectedLoc.fir_count}</div>
+                    <div className="text-xs font-mono text-slate-400 uppercase font-bold mt-1">Linked FIRs</div>
                   </div>
                 </div>
 
                 {/* Linked FIR Complaints from Detail API */}
-                <div className="panel p-3 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-2">
+                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-2.5">
                   <div className="flex items-center justify-between">
-                    <div className="hud-label text-[9px] text-sky-400">
+                    <div className="hud-label text-xs font-mono text-sky-400 font-bold uppercase">
                       REGISTERED FIR COMPLAINTS ({detail?.firs?.length || selectedLoc.fir_count})
                     </div>
-                    {detailLoading && <RefreshCw size={11} className="animate-spin text-sky-400" />}
+                    {detailLoading && <RefreshCw size={13} className="animate-spin text-sky-400" />}
                   </div>
 
                   <div className="space-y-2 max-h-44 overflow-y-auto pr-1">
@@ -605,19 +605,19 @@ export default function Locations() {
                       detail.firs.map((fir: any) => (
                         <div
                           key={fir.id}
-                          className="p-2 rounded-lg bg-slate-900/70 border border-slate-800 text-xs space-y-1"
+                          className="p-2.5 rounded-lg bg-slate-900/70 border border-slate-800 text-xs space-y-1.5"
                         >
-                          <div className="flex items-center justify-between text-slate-200 font-bold text-[11px]">
+                          <div className="flex items-center justify-between text-slate-200 font-bold text-xs md:text-sm font-mono">
                             <span>{fir.fir_number}</span>
-                            <span className="badge badge-low text-[8px]">REGISTERED</span>
+                            <span className="badge badge-low text-xs font-mono font-bold">REGISTERED</span>
                           </div>
-                          <p className="text-[11px] text-slate-400 line-clamp-2 leading-relaxed">
+                          <p className="text-xs md:text-sm text-slate-300 line-clamp-2 leading-relaxed">
                             {fir.narrative}
                           </p>
                         </div>
                       ))
                     ) : (
-                      <div className="text-xs text-slate-500 py-2 text-center">
+                      <div className="text-xs md:text-sm text-slate-400 py-2 text-center">
                         {selectedLoc.fir_count > 0
                           ? `Recorded ${selectedLoc.fir_count} case complaint(s) linked to this location.`
                           : "No formal complaints logged for this coordinate."}
@@ -627,28 +627,28 @@ export default function Locations() {
                 </div>
 
                 {/* Corroborated Linked Entities */}
-                <div className="panel p-3 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-2">
-                  <div className="hud-label text-[9px] text-slate-400">
+                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-2.5">
+                  <div className="hud-label text-xs font-mono text-slate-400 font-bold uppercase">
                     CORROBORATED ENTITIES AT LOCATION
                   </div>
 
-                  <div className="space-y-1.5 max-h-36 overflow-y-auto">
+                  <div className="space-y-2 max-h-36 overflow-y-auto">
                     {detail?.linked_entities && detail.linked_entities.length > 0 ? (
                       detail.linked_entities.map((e: any, idx: number) => (
                         <div
                           key={e.id || idx}
                           onClick={() => navigate("/entities")}
-                          className="p-1.5 rounded bg-slate-900/60 hover:bg-slate-800/80 border border-slate-800 flex items-center justify-between text-xs cursor-pointer group transition-colors"
+                          className="p-2 rounded-lg bg-slate-900/60 hover:bg-slate-800/80 border border-slate-800 flex items-center justify-between cursor-pointer group transition-colors"
                         >
                           <div className="truncate">
-                            <span className="font-semibold text-slate-200 group-hover:text-sky-300">
+                            <span className="text-sm font-semibold text-slate-200 group-hover:text-sky-300">
                               {e.name}
                             </span>
-                            <span className="text-[10px] text-slate-400 font-mono ml-1.5">
+                            <span className="text-xs text-slate-400 font-mono ml-2">
                               ({e.type})
                             </span>
                           </div>
-                          <ChevronRight size={12} className="text-slate-500 group-hover:text-white shrink-0" />
+                          <ChevronRight size={14} className="text-slate-500 group-hover:text-white shrink-0" />
                         </div>
                       ))
                     ) : selectedLoc.linked_entities && selectedLoc.linked_entities.length > 0 ? (
@@ -656,21 +656,21 @@ export default function Locations() {
                         <div
                           key={e.id || idx}
                           onClick={() => navigate("/entities")}
-                          className="p-1.5 rounded bg-slate-900/60 hover:bg-slate-800/80 border border-slate-800 flex items-center justify-between text-xs cursor-pointer group transition-colors"
+                          className="p-2 rounded-lg bg-slate-900/60 hover:bg-slate-800/80 border border-slate-800 flex items-center justify-between cursor-pointer group transition-colors"
                         >
                           <div className="truncate">
-                            <span className="font-semibold text-slate-200 group-hover:text-sky-300">
+                            <span className="text-sm font-semibold text-slate-200 group-hover:text-sky-300">
                               {e.name}
                             </span>
-                            <span className="text-[10px] text-slate-400 font-mono ml-1.5">
+                            <span className="text-xs text-slate-400 font-mono ml-2">
                               ({e.type})
                             </span>
                           </div>
-                          <ChevronRight size={12} className="text-slate-500 group-hover:text-white shrink-0" />
+                          <ChevronRight size={14} className="text-slate-500 group-hover:text-white shrink-0" />
                         </div>
                       ))
                     ) : (
-                      <div className="text-xs text-slate-500 py-1 text-center">
+                      <div className="text-xs md:text-sm text-slate-500 py-1 text-center">
                         No corroborated entities linked directly to this location.
                       </div>
                     )}
@@ -681,17 +681,17 @@ export default function Locations() {
                 <div className="grid grid-cols-2 gap-2 pt-1">
                   <button
                     onClick={() => navigate("/cases")}
-                    className="btn-primary py-2 text-xs flex items-center justify-center gap-1.5"
+                    className="btn-primary py-2 text-xs md:text-sm font-semibold flex items-center justify-center gap-1.5 cursor-pointer"
                   >
-                    <FolderKanban size={13} />
+                    <FolderKanban size={15} />
                     <span>View Cases</span>
                   </button>
 
                   <button
                     onClick={() => navigate("/timeline")}
-                    className="btn-ghost py-2 text-xs flex items-center justify-center gap-1.5 border border-slate-700/80 text-slate-200 hover:text-white"
+                    className="btn-ghost py-2 text-xs md:text-sm font-semibold flex items-center justify-center gap-1.5 border border-slate-700/80 text-slate-200 hover:text-white cursor-pointer"
                   >
-                    <Clock size={13} />
+                    <Clock size={15} />
                     <span>Timeline</span>
                   </button>
                 </div>

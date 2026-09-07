@@ -270,36 +270,35 @@ export default function Evidence() {
     <div className="flex h-full min-h-0 bg-[#020617]">
       {/* ── Main Evidence Workspace Body ── */}
       <div className="flex-1 min-w-0 flex flex-col border-r border-slate-800/90 overflow-hidden">
-        
         {/* ── Standardized Header Strip ── */}
-        <div className="p-4 bg-slate-900/95 border-b border-slate-800/90 shadow-xl backdrop-blur-md shrink-0 space-y-3">
+        <div className="p-5 bg-slate-900/95 border-b border-slate-800/90 shadow-xl backdrop-blur-md shrink-0 space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="badge badge-info text-[10px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
+              <span className="badge badge-info text-xs font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30">
                 STATE FORENSIC EVIDENCE & CHAIN OF CUSTODY
               </span>
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-emerald-950/60 text-emerald-400 border border-emerald-800/50 shadow-sm shadow-emerald-950/40 text-glow-emerald">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-emerald-950/60 text-emerald-400 border border-emerald-800/50 shadow-sm shadow-emerald-950/40">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 LIVE DATABASE SYNCHRONIZED
               </span>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-[11px] font-mono text-slate-400">
-                SEIZED EXHIBITS: <strong className="text-white text-glow-white">{filteredEvidence.length}</strong> / <strong className="text-slate-400">{totalExhibits}</strong>
+              <span className="text-xs font-mono text-slate-400">
+                SEIZED EXHIBITS: <strong className="text-white">{filteredEvidence.length}</strong> / <strong className="text-slate-400">{totalExhibits}</strong>
               </span>
             </div>
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-slate-950 text-emerald-400 border border-slate-800 flex items-center justify-center shadow-md">
-                <ShieldCheck size={20} />
+              <div className="w-10 h-10 rounded-xl bg-slate-950 text-emerald-400 border border-slate-800 flex items-center justify-center shadow-md">
+                <ShieldCheck size={22} />
               </div>
               <div>
-                <h1 className="text-xl md:text-2xl font-black tracking-wide text-white uppercase text-glow-white">
+                <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white uppercase">
                   Evidence Management Workspace
                 </h1>
-                <p className="text-xs text-slate-300 font-medium">
+                <p className="text-sm text-slate-300 font-medium">
                   Cryptographically sealed forensic chain of custody & asset registry
                 </p>
               </div>
@@ -311,17 +310,17 @@ export default function Evidence() {
                 <>
                   <button
                     onClick={() => setShowUploadModal(true)}
-                    className="px-3.5 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold flex items-center gap-1.5 text-xs shadow-lg shadow-sky-500/20 transition-all cursor-pointer"
+                    className="px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold flex items-center gap-2 text-xs md:text-sm shadow-lg shadow-sky-500/20 transition-all cursor-pointer"
                     title="Open Secure Evidence Ingestion"
                   >
-                    <Upload size={13} />
+                    <Upload size={15} />
                     <span>+ Upload Evidence</span>
                   </button>
                   <button
                     onClick={() => setShowManualModal(true)}
-                    className="px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-900 border border-slate-800 text-slate-200 hover:text-white flex items-center gap-1.5 text-xs transition-all cursor-pointer"
+                    className="px-3.5 py-2 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 text-slate-200 hover:text-white flex items-center gap-1.5 text-xs md:text-sm font-semibold transition-all cursor-pointer"
                   >
-                    <Plus size={13} />
+                    <Plus size={15} />
                     <span>Record Exhibit</span>
                   </button>
                 </>
@@ -329,36 +328,36 @@ export default function Evidence() {
 
               <button
                 onClick={loadEvidence}
-                className="p-2 rounded-lg border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-white bg-slate-950 transition-all cursor-pointer"
+                className="p-2.5 rounded-xl border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white bg-slate-950 transition-all cursor-pointer"
                 title="Refresh Evidence Ledger"
               >
-                <RefreshCw size={13} className={loading ? "animate-spin text-sky-400" : ""} />
+                <RefreshCw size={15} className={loading ? "animate-spin text-sky-400" : ""} />
               </button>
             </div>
           </div>
         </div>
 
         {/* ── Search, Case Selector & Type Filters ── */}
-        <div className="px-6 py-3 border-b border-slate-800/90 bg-slate-900/90 space-y-3 shrink-0">
+        <div className="px-6 py-3.5 border-b border-slate-800/90 bg-slate-900/90 space-y-3 shrink-0">
           <div className="flex flex-wrap items-center justify-between gap-3">
             {/* Search Bar */}
             <div className="relative flex items-center flex-1 min-w-[280px] max-w-md">
-              <Search size={13} className="absolute left-3 text-slate-400 pointer-events-none shrink-0" />
+              <Search size={15} className="absolute left-3.5 text-slate-400 pointer-events-none shrink-0" />
               <input
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search by Exhibit ID, Case #, FIR, description, custody..."
-                className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-sky-500/70 focus:ring-1 focus:ring-sky-500/40 rounded-lg text-xs text-slate-100 placeholder:text-slate-500 outline-none transition-all py-2 pr-8 shadow-inner"
-                style={{ paddingLeft: "36px" }}
+                className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-sky-500/70 focus:ring-1 focus:ring-sky-500/40 rounded-xl text-sm font-mono text-slate-100 placeholder:text-slate-500 outline-none transition-all py-2 pr-8 shadow-inner"
+                style={{ paddingLeft: "40px" }}
               />
               {search && (
                 <button
                   onClick={() => setSearch("")}
-                  className="absolute right-2.5 text-slate-400 hover:text-white p-0.5 rounded transition-colors cursor-pointer"
+                  className="absolute right-3 text-slate-400 hover:text-white p-0.5 rounded transition-colors cursor-pointer"
                   title="Clear search"
                 >
-                  <X size={12} />
+                  <X size={14} />
                 </button>
               )}
             </div>
@@ -366,12 +365,12 @@ export default function Evidence() {
             {/* Case Filter Dropdown & Status Filter */}
             <div className="flex flex-wrap items-center gap-2">
               {/* Case Filter Dropdown */}
-              <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-lg px-2.5 py-1.5 transition-colors">
-                <span className="text-[10px] font-mono text-slate-400 uppercase">Case:</span>
+              <div className="flex items-center gap-2 bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-xl px-3 py-1.5 transition-colors">
+                <span className="text-xs font-mono text-slate-400 uppercase font-bold">Case:</span>
                 <select
                   value={selectedCase}
                   onChange={(e) => handleCaseChange(e.target.value)}
-                  className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer max-w-[200px] truncate"
+                  className="bg-transparent text-xs md:text-sm text-slate-200 outline-none cursor-pointer max-w-[220px] truncate font-mono"
                 >
                   <option value="ALL" className="bg-slate-950">All Active Cases ({casesList.length})</option>
                   {casesList.map((c) => (
@@ -383,12 +382,12 @@ export default function Evidence() {
               </div>
 
               {/* Status Filter */}
-              <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-lg px-2.5 py-1.5 transition-colors">
-                <Filter size={11} className="text-slate-400" />
+              <div className="flex items-center gap-2 bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-xl px-3 py-1.5 transition-colors">
+                <Filter size={13} className="text-slate-400" />
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer"
+                  className="bg-transparent text-xs md:text-sm text-slate-200 outline-none cursor-pointer font-mono"
                 >
                   <option value="ALL" className="bg-slate-950">All Status</option>
                   <option value="VERIFIED" className="bg-slate-950">Cryptographically Sealed</option>
@@ -397,12 +396,12 @@ export default function Evidence() {
               </div>
 
               {/* Sort Dropdown */}
-              <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-lg px-2.5 py-1.5 transition-colors">
-                <span className="text-[10px] font-mono text-slate-400 uppercase">Sort:</span>
+              <div className="flex items-center gap-2 bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-xl px-3 py-1.5 transition-colors">
+                <span className="text-xs font-mono text-slate-400 uppercase font-bold">Sort:</span>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer"
+                  className="bg-transparent text-xs md:text-sm text-slate-200 outline-none cursor-pointer font-mono"
                 >
                   <option value="newest" className="bg-slate-950">Newest Seizure</option>
                   <option value="oldest" className="bg-slate-950">Oldest Seizure</option>
@@ -412,35 +411,35 @@ export default function Evidence() {
               </div>
 
               {/* View Switcher: Grid vs Table */}
-              <div className="flex items-center bg-slate-950 border border-slate-800 rounded-lg p-0.5">
+              <div className="flex items-center bg-slate-950 border border-slate-800 rounded-xl p-0.5">
                 <button
                   onClick={() => setViewMode("grid")}
-                  className={`p-1.5 rounded text-xs transition-all ${
+                  className={`p-2 rounded-lg text-xs transition-all cursor-pointer ${
                     viewMode === "grid"
                       ? "bg-slate-800 text-white shadow-sm"
                       : "text-slate-500 hover:text-slate-300"
                   }`}
                   title="Evidence Asset Grid"
                 >
-                  <LayoutGrid size={13} />
+                  <LayoutGrid size={15} />
                 </button>
                 <button
                   onClick={() => setViewMode("table")}
-                  className={`p-1.5 rounded text-xs transition-all ${
+                  className={`p-2 rounded-lg text-xs transition-all cursor-pointer ${
                     viewMode === "table"
                       ? "bg-slate-800 text-white shadow-sm"
                       : "text-slate-500 hover:text-slate-300"
                   }`}
                   title="Detailed Audit Table"
                 >
-                  <List size={13} />
+                  <List size={15} />
                 </button>
               </div>
             </div>
           </div>
 
           {/* Type Filter Chips */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1">
             {Object.entries(EVIDENCE_TYPES).map(([typeKey, info]) => {
               const IconComp = info.icon;
               const isActive = typeFilter === typeKey;
@@ -448,19 +447,19 @@ export default function Evidence() {
                 <button
                   key={typeKey}
                   onClick={() => setTypeFilter(typeKey)}
-                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md font-mono text-[11px] border transition-all shrink-0 cursor-pointer ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-mono text-xs border transition-all shrink-0 cursor-pointer ${
                     isActive
-                      ? "bg-sky-950/80 border-sky-500/60 text-sky-200 font-semibold shadow-sm text-glow-sky"
-                      : "bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700"
+                      ? "bg-sky-950/80 border-sky-500/60 text-sky-200 font-bold shadow-sm"
+                      : "bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700 font-medium"
                   }`}
                 >
-                  <IconComp size={12} className={isActive ? "text-sky-400" : "text-slate-400"} />
+                  <IconComp size={14} className={isActive ? "text-sky-400" : "text-slate-400"} />
                   <span>{info.label}</span>
                 </button>
               );
             })}
 
-            <div className="ml-auto text-[11px] font-mono text-slate-400 shrink-0">
+            <div className="ml-auto text-xs font-mono text-slate-400 shrink-0">
               Showing <strong className="text-white">{filteredEvidence.length}</strong> of{" "}
               <strong className="text-slate-400">{totalExhibits}</strong> exhibits
             </div>
@@ -478,21 +477,21 @@ export default function Evidence() {
                 </div>
                 <div>
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-sky-400 font-bold text-glow-sky">
+                    <span className="text-xs font-mono uppercase tracking-wider text-sky-400 font-bold">
                       Case Evidence Scope
                     </span>
-                    <span className="badge badge-purple text-[9px]">{currentCaseObj?.case_number || selectedCase}</span>
+                    <span className="badge badge-purple text-xs font-mono font-bold">{currentCaseObj?.case_number || selectedCase}</span>
                     {currentCaseObj?.district && (
-                      <span className="badge badge-low text-[9px]">{currentCaseObj.district} District</span>
+                      <span className="badge badge-low text-xs font-mono">{currentCaseObj.district} District</span>
                     )}
                   </div>
-                  <h2 className="text-sm font-bold text-white mt-0.5">
+                  <h2 className="text-base font-bold text-white mt-1">
                     {currentCaseObj?.title || `Investigation ${selectedCase}`}
                   </h2>
-                  <div className="text-[11px] font-mono text-slate-400 flex items-center gap-3 mt-0.5">
-                    <span>Associated FIRs: <strong className="text-amber-400">{currentCaseObj?.fir_count || 1}</strong></span>
+                  <div className="text-xs font-mono text-slate-400 flex items-center gap-3 mt-1">
+                    <span>Associated FIRs: <strong className="text-amber-400 font-bold">{currentCaseObj?.fir_count || 1}</strong></span>
                     <span>·</span>
-                    <span>Seized Exhibits: <strong className="text-emerald-400">{filteredEvidence.length}</strong></span>
+                    <span>Seized Exhibits: <strong className="text-emerald-400 font-bold">{filteredEvidence.length}</strong></span>
                   </div>
                 </div>
               </div>
@@ -501,18 +500,18 @@ export default function Evidence() {
                 {currentCaseObj && (
                   <button
                     onClick={() => navigate(`/cases?id=${currentCaseObj.id}`)}
-                    className="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs flex items-center gap-1.5 text-sky-300 hover:text-white transition-all cursor-pointer"
+                    className="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs md:text-sm font-semibold flex items-center gap-1.5 text-sky-300 hover:text-white transition-all cursor-pointer"
                   >
                     <span>View Case File</span>
-                    <ExternalLink size={12} />
+                    <ExternalLink size={13} />
                   </button>
                 )}
                 <button
                   onClick={() => handleCaseChange("ALL")}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-mono flex items-center gap-1 transition-colors cursor-pointer"
+                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs md:text-sm font-mono flex items-center gap-1 transition-colors cursor-pointer"
                   title="View all exhibits across all cases"
                 >
-                  <X size={12} />
+                  <X size={13} />
                   <span>Show All Evidence</span>
                 </button>
               </div>
@@ -528,14 +527,14 @@ export default function Evidence() {
             /* Empty State */
             <div className="h-full flex flex-col items-center justify-center text-center p-8 text-slate-400 space-y-3">
               <FileDigit size={44} className="opacity-25 mb-1 text-slate-500" />
-              <div className="text-sm font-bold uppercase tracking-wider text-slate-300">
+              <div className="text-base font-bold uppercase tracking-wider text-slate-200">
                 {selectedCase !== "ALL"
                   ? "No evidence is currently associated with this case."
                   : search
                   ? "No matching evidence found."
                   : "No evidence records found."}
               </div>
-              <p className="text-xs text-slate-500 max-w-md">
+              <p className="text-xs text-slate-400 max-w-md">
                 {selectedCase !== "ALL"
                   ? `Case ${selectedCase} has no indexed exhibits yet. You can upload or register new evidence.`
                   : "Try clearing your search query or selecting a different exhibit category."}
@@ -548,9 +547,9 @@ export default function Evidence() {
                     setTypeFilter("ALL");
                     setStatusFilter("ALL");
                   }}
-                  className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 hover:text-white text-xs flex items-center gap-1.5 mt-2"
+                  className="px-3.5 py-2 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 hover:text-white text-xs md:text-sm font-mono flex items-center gap-1.5 mt-2 cursor-pointer"
                 >
-                  <RefreshCw size={12} />
+                  <RefreshCw size={13} />
                   <span>Reset All Filters</span>
                 </button>
               )}
@@ -586,16 +585,16 @@ export default function Evidence() {
                             e.stopPropagation();
                             toggleSelect(ev.id);
                           }}
-                          className="rounded bg-slate-900 border-slate-700 text-sky-500 focus:ring-0 cursor-pointer w-3.5 h-3.5"
+                          className="rounded bg-slate-900 border-slate-700 text-sky-500 focus:ring-0 cursor-pointer w-4 h-4"
                           title="Select exhibit for batch operations"
                         />
-                        <span className="text-[10px] font-mono text-slate-400 truncate">
+                        <span className="text-xs font-mono text-slate-400 truncate">
                           {ev.id.slice(0, 14)}...
                         </span>
                       </div>
 
                       <span
-                        className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[9px] font-mono uppercase font-semibold ${
+                        className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-xs font-mono uppercase font-bold ${
                           ev.evidence_type === "FINANCIAL"
                             ? "bg-amber-950/40 text-amber-300 border border-amber-800/40"
                             : ev.evidence_type === "CDR"
@@ -613,28 +612,28 @@ export default function Evidence() {
                     <div className="p-3 space-y-2.5 flex-1">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-lg bg-slate-950 border border-slate-800 flex items-center justify-center text-sky-400 shrink-0 group-hover:scale-105 transition-transform shadow-inner">
-                          <TypeIcon size={18} />
+                          <TypeIcon size={20} />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <h3 className="text-xs font-bold text-white truncate group-hover:text-sky-300 transition-colors">
+                          <h3 className="text-sm font-bold text-white truncate group-hover:text-sky-300 transition-colors">
                             {ev.title || ev.description}
                           </h3>
-                          <div className="text-[10px] font-mono text-slate-400 truncate">
+                          <div className="text-xs font-mono text-slate-400 truncate">
                             Custody: {ev.custody || "Forensic Vault"}
                           </div>
                         </div>
                       </div>
 
                       {/* Associated Case Tag */}
-                      <div className="p-2 rounded-lg bg-slate-950/80 border border-slate-800/90 text-[11px] font-mono flex items-center justify-between">
+                      <div className="p-2.5 rounded-lg bg-slate-950/80 border border-slate-800/90 text-xs font-mono flex items-center justify-between">
                         <span className="text-slate-300 truncate">
                           {ev.case_number ? (
-                            <span className="text-sky-400 font-semibold text-glow-sky">
+                            <span className="text-sky-400 font-bold">
                               Case: {ev.case_number}
                               {ev.fir_number && <span className="text-slate-500 ml-1">({ev.fir_number})</span>}
                             </span>
                           ) : ev.source_record_id ? (
-                            <span className="text-sky-400 font-semibold">
+                            <span className="text-sky-400 font-bold">
                               Source: {ev.source_record_id}
                             </span>
                           ) : (
@@ -648,42 +647,42 @@ export default function Evidence() {
                               e.stopPropagation();
                               navigate(`/cases?id=${ev.case_id}`);
                             }}
-                            className="text-slate-400 hover:text-sky-400 p-0.5 transition-colors"
+                            className="text-slate-400 hover:text-sky-400 p-0.5 transition-colors cursor-pointer"
                             title="Open Associated Case"
                           >
-                            <ExternalLink size={11} />
+                            <ExternalLink size={13} />
                           </button>
                         )}
                       </div>
 
-                      <p className="text-[11px] text-slate-300 line-clamp-2 leading-relaxed">
+                      <p className="text-xs md:text-sm text-slate-300 line-clamp-2 leading-relaxed">
                         {ev.description}
                       </p>
                     </div>
 
                     {/* Card Footer: SHA-256 Digest & Actions */}
                     <div className="p-3 pt-2 bg-slate-950/80 border-t border-slate-800/80 space-y-2">
-                      <div className="flex items-center justify-between text-[10px] font-mono">
-                        <span className="flex items-center gap-1 text-slate-400">
-                          <Lock size={10} className="text-emerald-400" />
-                          <span className="truncate max-w-[130px]">{ev.sha256_digest || "Sealed"}</span>
+                      <div className="flex items-center justify-between text-xs font-mono">
+                        <span className="flex items-center gap-1.5 text-slate-400">
+                          <Lock size={12} className="text-emerald-400" />
+                          <span className="truncate max-w-[140px]">{ev.sha256_digest || "Sealed"}</span>
                         </span>
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
                             copyToClipboard(ev.sha256_digest, ev.id);
                           }}
-                          className="text-slate-400 hover:text-white p-0.5"
+                          className="text-slate-400 hover:text-white p-0.5 cursor-pointer"
                           title="Copy SHA-256 Digest"
                         >
-                          {isCopied ? <Check size={11} className="text-emerald-400" /> : <Copy size={11} />}
+                          {isCopied ? <Check size={13} className="text-emerald-400" /> : <Copy size={13} />}
                         </button>
                       </div>
 
                       <div className="flex items-center justify-between gap-2 pt-1">
                         <span
-                          className={`inline-flex items-center gap-1 text-[9px] font-mono font-bold uppercase ${
-                            verified ? "text-emerald-400 text-glow-emerald" : "text-emerald-500/80"
+                          className={`inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase ${
+                            verified ? "text-emerald-400" : "text-emerald-500/90"
                           }`}
                         >
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
@@ -697,11 +696,11 @@ export default function Evidence() {
                               handleVerify(ev);
                             }}
                             disabled={isVerifying}
-                            className="px-2 py-1 rounded bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-[10px] font-mono text-slate-200 hover:text-white transition-colors"
+                            className="px-2.5 py-1 rounded bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-xs font-mono text-slate-200 hover:text-white transition-colors cursor-pointer"
                             title="Verify Tamper-Evident SHA-256 Hash"
                           >
                             {isVerifying ? (
-                              <RefreshCw size={10} className="animate-spin text-sky-400" />
+                              <RefreshCw size={11} className="animate-spin text-sky-400" />
                             ) : (
                               "Verify"
                             )}
@@ -712,7 +711,7 @@ export default function Evidence() {
                               e.stopPropagation();
                               setSelectedExhibit(ev);
                             }}
-                            className="px-2 py-1 rounded bg-sky-950/80 hover:bg-sky-900 border border-sky-600/60 text-[10px] font-mono text-sky-300 transition-colors"
+                            className="px-2.5 py-1 rounded bg-sky-950/80 hover:bg-sky-900 border border-sky-600/60 text-xs font-mono text-sky-300 font-bold transition-colors cursor-pointer"
                           >
                             Inspect →
                           </button>
@@ -727,15 +726,15 @@ export default function Evidence() {
             /* ── DETAILED TABLE VIEW (Compact Audit Ledger) ── */
             <div className="border border-slate-800/90 bg-slate-900/95 rounded-xl overflow-hidden shadow-2xl pb-20">
               <div className="overflow-x-auto">
-                <table className="investigation-table text-xs w-full">
+                <table className="investigation-table text-xs md:text-sm w-full">
                   <thead>
-                    <tr className="bg-slate-950/90 border-b border-slate-800 text-slate-400 font-mono text-[11px]">
+                    <tr className="bg-slate-950/90 border-b border-slate-800 text-slate-400 font-mono text-xs uppercase font-bold tracking-wider">
                       <th className="w-10">
                         <input
                           type="checkbox"
                           checked={selectedIds.size === filteredEvidence.length && filteredEvidence.length > 0}
                           onChange={selectAll}
-                          className="rounded bg-slate-900 border-slate-700 text-sky-500 focus:ring-0 cursor-pointer"
+                          className="rounded bg-slate-900 border-slate-700 text-sky-500 focus:ring-0 cursor-pointer w-4 h-4"
                         />
                       </th>
                       <th className="w-64">Exhibit & Description</th>
@@ -743,7 +742,7 @@ export default function Evidence() {
                       <th className="w-40">Associated Case</th>
                       <th>SHA-256 Digest</th>
                       <th className="w-32">Integrity Status</th>
-                      <th className="w-28 text-right">Actions</th>
+                      <th className="w-32 text-right">Actions</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-800/60">
@@ -766,19 +765,19 @@ export default function Evidence() {
                               type="checkbox"
                               checked={isSelected}
                               onChange={() => toggleSelect(ev.id)}
-                              className="rounded bg-slate-900 border-slate-700 text-sky-500 focus:ring-0 cursor-pointer"
+                              className="rounded bg-slate-900 border-slate-700 text-sky-500 focus:ring-0 cursor-pointer w-4 h-4"
                             />
                           </td>
                           <td>
-                            <div className="font-semibold text-white truncate hover:text-sky-300">
+                            <div className="font-bold text-white text-sm hover:text-sky-300 transition-colors">
                               {ev.title || ev.description}
                             </div>
-                            <div className="text-[10px] font-mono text-slate-400 truncate">
+                            <div className="text-xs font-mono text-slate-400 truncate mt-0.5">
                               ID: {ev.id.slice(0, 16)}...
                             </div>
                           </td>
                           <td>
-                            <span className="badge badge-low text-[9px] font-mono uppercase">
+                            <span className="badge badge-low text-xs font-mono uppercase font-bold">
                               {ev.evidence_type}
                             </span>
                           </td>
@@ -789,18 +788,18 @@ export default function Evidence() {
                                   e.stopPropagation();
                                   navigate(`/cases?id=${ev.case_id}`);
                                 }}
-                                className="text-sky-400 hover:underline font-mono text-[11px] flex items-center gap-1 text-glow-sky"
+                                className="text-sky-400 hover:underline font-mono text-xs font-bold flex items-center gap-1 cursor-pointer"
                               >
                                 <span>{ev.case_number}</span>
-                                <ExternalLink size={10} />
+                                <ExternalLink size={12} />
                               </button>
                             ) : (
-                              <span className="text-slate-400 font-mono text-[11px]">
+                              <span className="text-slate-400 font-mono text-xs">
                                 {ev.source_record_id || "—"}
                               </span>
                             )}
                           </td>
-                          <td className="font-mono text-[10px] text-slate-300 select-all truncate max-w-xs">
+                          <td className="font-mono text-xs text-slate-300 select-all truncate max-w-xs">
                             <div className="flex items-center gap-1.5">
                               <span className="truncate">{ev.sha256_digest}</span>
                               <button
@@ -808,15 +807,15 @@ export default function Evidence() {
                                   e.stopPropagation();
                                   copyToClipboard(ev.sha256_digest, ev.id);
                                 }}
-                                className="p-1 hover:text-white text-slate-400"
+                                className="p-1 hover:text-white text-slate-400 cursor-pointer"
                               >
-                                {isCopied ? <Check size={11} className="text-emerald-400" /> : <Copy size={11} />}
+                                {isCopied ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
                               </button>
                             </div>
                           </td>
                           <td>
                             <span
-                              className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[9px] font-mono font-bold uppercase ${
+                              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-bold uppercase ${
                                 verified ? "bg-emerald-950/40 text-emerald-300 border border-emerald-800/40" : "bg-slate-800 text-slate-300"
                               }`}
                             >
@@ -829,13 +828,13 @@ export default function Evidence() {
                               <button
                                 onClick={() => handleVerify(ev)}
                                 disabled={isVerifying}
-                                className="px-2 py-1 rounded bg-slate-900 hover:bg-slate-800 border border-slate-700 text-[10px] font-mono text-slate-300 hover:text-white"
+                                className="px-2.5 py-1 rounded bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-mono text-slate-200 hover:text-white transition-colors cursor-pointer"
                               >
                                 {isVerifying ? "Verifying..." : "Verify"}
                               </button>
                               <button
                                 onClick={() => setSelectedExhibit(ev)}
-                                className="px-2 py-1 rounded bg-sky-950/80 hover:bg-sky-900 text-[10px] font-mono text-sky-300 border border-sky-700/60"
+                                className="px-2.5 py-1 rounded bg-sky-950/80 hover:bg-sky-900 text-xs font-mono text-sky-300 font-bold border border-sky-700/60 transition-colors cursor-pointer"
                               >
                                 Dossier →
                               </button>
@@ -852,12 +851,12 @@ export default function Evidence() {
 
           {/* ── FLOATING SELECTION BAR ── */}
           {selectedIds.size > 0 && (
-            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-slate-950/95 border border-sky-500/50 rounded-xl px-5 py-3 shadow-2xl backdrop-blur-md flex items-center gap-4 text-xs font-mono text-slate-200 animate-in fade-in slide-in-from-bottom-3 duration-200">
+            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-slate-950/95 border border-sky-500/50 rounded-xl px-5 py-3 shadow-2xl backdrop-blur-md flex items-center gap-4 text-sm font-mono text-slate-200 animate-in fade-in slide-in-from-bottom-3 duration-200">
               <div className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-sky-500/20 border border-sky-500/60 text-sky-400 font-bold flex items-center justify-center text-[11px]">
+                <span className="w-6 h-6 rounded-full bg-sky-500/20 border border-sky-500/60 text-sky-400 font-bold flex items-center justify-center text-xs">
                   {selectedIds.size}
                 </span>
-                <span className="font-semibold text-white">Exhibits Selected</span>
+                <span className="font-bold text-white">Exhibits Selected</span>
               </div>
 
               <div className="h-4 w-px bg-slate-800" />
@@ -866,26 +865,26 @@ export default function Evidence() {
                 <button
                   onClick={handleBatchVerify}
                   disabled={verifyingId === "batch"}
-                  className="px-3 py-1.5 rounded-lg bg-emerald-950/60 hover:bg-emerald-900 border border-emerald-700/60 text-emerald-300 font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-sm text-glow-emerald"
+                  className="px-3.5 py-1.5 rounded-lg bg-emerald-950/60 hover:bg-emerald-900 border border-emerald-700/60 text-emerald-300 font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-sm text-xs md:text-sm"
                 >
-                  <CheckCircle2 size={13} className={verifyingId === "batch" ? "animate-spin" : ""} />
+                  <CheckCircle2 size={14} className={verifyingId === "batch" ? "animate-spin" : ""} />
                   <span>Verify All Selected</span>
                 </button>
 
                 <button
                   onClick={handleExportManifest}
-                  className="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 flex items-center gap-1.5 transition-all cursor-pointer"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 flex items-center gap-1.5 transition-all cursor-pointer text-xs md:text-sm font-semibold"
                 >
-                  <Download size={13} />
+                  <Download size={14} />
                   <span>Export Manifest (JSON)</span>
                 </button>
 
                 <button
                   onClick={clearSelection}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
                   title="Clear Selection"
                 >
-                  <X size={14} />
+                  <X size={16} />
                 </button>
               </div>
             </div>
@@ -899,22 +898,22 @@ export default function Evidence() {
           {/* Dossier Header */}
           <div className="p-5 border-b border-slate-800/90 bg-slate-950/80">
             <div className="flex items-start justify-between gap-3 mb-2">
-              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-sky-400 text-glow-sky">
-                <Fingerprint size={16} />
+              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-sky-400">
+                <Fingerprint size={18} />
                 <span>Forensic Evidence Dossier</span>
               </div>
               <button
                 onClick={() => setSelectedExhibit(null)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors"
+                className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"
               >
-                <X size={16} />
+                <X size={18} />
               </button>
             </div>
 
-            <h2 className="text-base font-bold text-white leading-snug">
+            <h2 className="text-lg font-bold text-white leading-snug">
               {selectedExhibit.title || selectedExhibit.description}
             </h2>
-            <div className="text-[10px] font-mono text-slate-400 mt-1">
+            <div className="text-xs font-mono text-slate-400 mt-1">
               EXHIBIT IDENTIFIER: {selectedExhibit.id}
             </div>
           </div>
@@ -923,12 +922,12 @@ export default function Evidence() {
             {/* Associated Case Card */}
             <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2.5 shadow-md">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                  <Shield size={12} className="text-sky-400" />
+                <span className="text-xs font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5 font-bold">
+                  <Shield size={14} className="text-sky-400" />
                   Associated Case Dossier
                 </span>
                 {selectedExhibit.case_number && (
-                  <span className="badge badge-purple text-[9px]">
+                  <span className="badge badge-purple text-xs font-mono font-bold">
                     {selectedExhibit.case_number}
                   </span>
                 )}
@@ -936,11 +935,11 @@ export default function Evidence() {
 
               {selectedExhibit.case_id || selectedExhibit.case_number ? (
                 <div>
-                  <div className="text-xs font-bold text-white">
+                  <div className="text-sm font-bold text-white">
                     {selectedExhibit.case_title || `Investigation Case ${selectedExhibit.case_number}`}
                   </div>
                   {selectedExhibit.fir_number && (
-                    <div className="text-[11px] font-mono text-slate-400 mt-0.5">
+                    <div className="text-xs font-mono text-slate-400 mt-1">
                       Originating FIR: <strong className="text-amber-400">{selectedExhibit.fir_number}</strong>
                     </div>
                   )}
@@ -952,14 +951,14 @@ export default function Evidence() {
                         navigate(`/cases?case=${selectedExhibit.case_number}`);
                       }
                     }}
-                    className="w-full mt-3 py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs flex items-center justify-center gap-1.5 text-sky-300 hover:text-sky-200 transition-colors"
+                    className="w-full mt-3 py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs md:text-sm font-semibold flex items-center justify-center gap-1.5 text-sky-300 hover:text-sky-200 transition-colors cursor-pointer"
                   >
                     <span>Open Case Dossier</span>
-                    <ExternalLink size={12} />
+                    <ExternalLink size={13} />
                   </button>
                 </div>
               ) : (
-                <div className="text-xs text-slate-500 font-mono">
+                <div className="text-xs text-slate-400 font-mono">
                   No direct Case record attached. Seizure Source: {selectedExhibit.source_record_id || "Unassigned"}
                 </div>
               )}
@@ -968,47 +967,47 @@ export default function Evidence() {
             {/* Cryptographic Seal & SHA-256 Digest */}
             <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-3 shadow-md">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                  <Lock size={12} className="text-emerald-400" />
+                <span className="text-xs font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5 font-bold">
+                  <Lock size={14} className="text-emerald-400" />
                   Tamper-Evident SHA-256 Digest
                 </span>
-                <span className="badge badge-verified text-[8px]">
+                <span className="badge badge-verified text-xs font-mono font-bold">
                   {verifiedMap[selectedExhibit.id] ? "VERIFIED VALID" : "CRYPTOGRAPHICALLY SEALED"}
                 </span>
               </div>
 
-              <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-[10px] font-mono text-sky-300 break-all select-all flex items-start justify-between gap-2 shadow-inner">
+              <div className="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs font-mono text-sky-300 break-all select-all flex items-start justify-between gap-2 shadow-inner">
                 <span>{selectedExhibit.sha256_digest || "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"}</span>
                 <button
                   onClick={() => copyToClipboard(selectedExhibit.sha256_digest, selectedExhibit.id)}
-                  className="p-1 text-slate-400 hover:text-white shrink-0"
+                  className="p-1 text-slate-400 hover:text-white shrink-0 cursor-pointer"
                   title="Copy Full Hash"
                 >
-                  {copiedHashId === selectedExhibit.id ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
+                  {copiedHashId === selectedExhibit.id ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
                 </button>
               </div>
 
               <button
                 onClick={() => handleVerify(selectedExhibit)}
                 disabled={verifyingId === selectedExhibit.id}
-                className="w-full py-2 px-3 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-sky-500/20 transition-all cursor-pointer"
+                className="w-full py-2.5 px-3 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs md:text-sm flex items-center justify-center gap-2 shadow-md shadow-sky-500/20 transition-all cursor-pointer"
               >
-                <CheckCircle2 size={13} className={verifyingId === selectedExhibit.id ? "animate-spin" : ""} />
+                <CheckCircle2 size={15} className={verifyingId === selectedExhibit.id ? "animate-spin" : ""} />
                 <span>{verifyingId === selectedExhibit.id ? "Recomputing SHA-256 Hash..." : "Verify Digital Seal Now"}</span>
               </button>
             </div>
 
             {/* Chain of Custody & Telemetry */}
             <div className="space-y-2.5 text-xs font-mono">
-              <div className="text-[10px] uppercase text-slate-400 tracking-wider">Custody & Telemetry</div>
-              <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+              <div className="text-xs uppercase text-slate-400 tracking-wider font-bold">Custody & Telemetry</div>
+              <div className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2.5 text-xs md:text-sm">
                 <div className="flex justify-between">
                   <span className="text-slate-400">Custodian Unit:</span>
-                  <span className="text-slate-200">{selectedExhibit.custody || "District Vault Locker"}</span>
+                  <span className="text-slate-200 font-semibold">{selectedExhibit.custody || "District Vault Locker"}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Exhibit Type:</span>
-                  <span className="text-sky-400 font-semibold">{selectedExhibit.evidence_type}</span>
+                  <span className="text-sky-400 font-bold">{selectedExhibit.evidence_type}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Seizure Date:</span>
@@ -1018,7 +1017,7 @@ export default function Evidence() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Forensic Confidence:</span>
-                  <span className="text-emerald-400 text-glow-emerald">
+                  <span className="text-emerald-400 font-bold">
                     {Math.round((selectedExhibit.confidence || 0.95) * 100)}%
                   </span>
                 </div>
@@ -1031,8 +1030,8 @@ export default function Evidence() {
 
             {/* Description / Narrative */}
             <div className="space-y-1.5">
-              <div className="text-[10px] font-mono uppercase text-slate-400 tracking-wider">Seizure Notes & Narrative</div>
-              <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 text-xs text-slate-200 leading-relaxed">
+              <div className="text-xs font-mono uppercase text-slate-400 tracking-wider font-bold">Seizure Notes & Narrative</div>
+              <div className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 text-xs md:text-sm text-slate-200 leading-relaxed">
                 {selectedExhibit.description || "No narrative details recorded for this seized asset."}
               </div>
             </div>
@@ -1048,36 +1047,36 @@ export default function Evidence() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-sky-950 border border-sky-700/60 flex items-center justify-center text-sky-400">
-                  <Upload size={16} />
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-sky-950 border border-sky-700/60 flex items-center justify-center text-sky-400 shadow-inner">
+                  <Upload size={18} />
                 </div>
                 <div>
-                  <h2 className="text-sm font-bold uppercase tracking-wider text-white">
+                  <h2 className="text-base font-bold uppercase tracking-wider text-white">
                     Secure Evidence Upload Workflow
                   </h2>
-                  <p className="text-[11px] font-mono text-slate-400">
+                  <p className="text-xs font-mono text-slate-400">
                     INTAKE PROTOCOL (REACT BITS FILE MANAGER 4 INTEGRATION POINT)
                   </p>
                 </div>
               </div>
-              <button onClick={() => setShowUploadModal(false)} className="text-slate-400 hover:text-white">
-                <X size={16} />
+              <button onClick={() => setShowUploadModal(false)} className="text-slate-400 hover:text-white cursor-pointer">
+                <X size={18} />
               </button>
             </div>
 
-            <form onSubmit={handleRegisterExhibit} className="py-4 space-y-4 text-xs">
+            <form onSubmit={handleRegisterExhibit} className="py-4 space-y-4 text-xs md:text-sm">
               {/* Drag-and-drop intake zone */}
               <div className="border-2 border-dashed border-slate-700 hover:border-sky-500/80 rounded-xl p-6 text-center bg-slate-900/60 transition-all flex flex-col items-center justify-center space-y-2 cursor-pointer">
-                <Upload size={28} className="text-sky-400 mb-1" />
-                <div className="font-bold text-slate-200">
+                <Upload size={32} className="text-sky-400 mb-1" />
+                <div className="font-bold text-sm md:text-base text-slate-200">
                   Drop digital forensic dumps, CDR logs, or CCTV feeds here
                 </div>
-                <p className="text-[11px] text-slate-400 max-w-xs">
+                <p className="text-xs text-slate-400 max-w-xs">
                   Supports UFED extractions, PCAP, RAW, MP4, PDF, CSV, and encrypted archives up to 5GB
                 </p>
                 <div className="pt-2">
-                  <span className="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-[11px] font-mono text-sky-300">
+                  <span className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-mono text-sky-300 font-semibold">
                     Browse Local File
                   </span>
                 </div>
@@ -1086,13 +1085,13 @@ export default function Evidence() {
               {/* Case & Exhibit Metadata */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1">
+                  <label className="block text-xs font-mono uppercase text-slate-400 mb-1 font-semibold">
                     Associate with Case
                   </label>
                   <select
                     value={uploadForm.case_id}
                     onChange={(e) => setUploadForm({ ...uploadForm, case_id: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 outline-none"
+                    className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs md:text-sm font-mono text-slate-200 outline-none"
                   >
                     <option value="">Select Target Case...</option>
                     {casesList.map((c) => (
@@ -1104,13 +1103,13 @@ export default function Evidence() {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1">
+                  <label className="block text-xs font-mono uppercase text-slate-400 mb-1 font-semibold">
                     Exhibit Category
                   </label>
                   <select
                     value={uploadForm.evidence_type}
                     onChange={(e) => setUploadForm({ ...uploadForm, evidence_type: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 outline-none"
+                    className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs md:text-sm font-mono text-slate-200 outline-none"
                   >
                     <option value="DIGITAL_EXTRACTION">Digital Extraction (UFED / PC)</option>
                     <option value="CDR_LOGS">Telecom CDR / Tower Logs</option>
@@ -1122,7 +1121,7 @@ export default function Evidence() {
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1">
+                <label className="block text-xs font-mono uppercase text-slate-400 mb-1 font-semibold">
                   Exhibit Title / Asset Label
                 </label>
                 <input
@@ -1130,13 +1129,13 @@ export default function Evidence() {
                   placeholder="e.g. Seized Hard Drive Clone - Sector 4 Raid"
                   value={uploadForm.title}
                   onChange={(e) => setUploadForm({ ...uploadForm, title: e.target.value })}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 outline-none"
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs md:text-sm font-mono text-slate-200 outline-none"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1">
+                <label className="block text-xs font-mono uppercase text-slate-400 mb-1 font-semibold">
                   Description & Seizure Context
                 </label>
                 <textarea
@@ -1144,14 +1143,14 @@ export default function Evidence() {
                   placeholder="Record seizure location, chain of custody officer, and initial forensic triage summary..."
                   value={uploadForm.description}
                   onChange={(e) => setUploadForm({ ...uploadForm, description: e.target.value })}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 outline-none resize-none"
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs md:text-sm font-mono text-slate-200 outline-none resize-none"
                   required
                 />
               </div>
 
               {/* Cryptographic notice */}
-              <div className="p-3 rounded-lg bg-sky-950/30 border border-sky-800/40 text-[11px] text-sky-300/90 leading-relaxed font-mono flex items-start gap-2">
-                <Lock size={14} className="shrink-0 text-sky-400 mt-0.5" />
+              <div className="p-3 rounded-xl bg-sky-950/30 border border-sky-800/40 text-xs text-sky-300/90 leading-relaxed font-mono flex items-start gap-2">
+                <Lock size={16} className="shrink-0 text-sky-400 mt-0.5" />
                 <span>
                   Upon upload, the backend computes a cryptographic SHA-256 digital fingerprint, records the audit trail, and stamps the evidence into the tamper-evident ledger.
                 </span>
@@ -1161,16 +1160,16 @@ export default function Evidence() {
                 <button
                   type="button"
                   onClick={() => setShowUploadModal(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-mono text-xs"
+                  className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-mono text-xs md:text-sm cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={uploadSubmitting}
-                  className="px-5 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-sky-500/20"
+                  className="px-5 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs md:text-sm flex items-center gap-1.5 shadow-md shadow-sky-500/20 cursor-pointer"
                 >
-                  <ShieldCheck size={14} />
+                  <ShieldCheck size={16} />
                   <span>{uploadSubmitting ? "Sealing Exhibit..." : "Register & Seal Exhibit"}</span>
                 </button>
               </div>
@@ -1188,25 +1187,25 @@ export default function Evidence() {
           >
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div className="flex items-center gap-2">
-                <Plus size={16} className="text-sky-400" />
-                <h2 className="text-sm font-bold uppercase tracking-wider text-white">
+                <Plus size={18} className="text-sky-400" />
+                <h2 className="text-base font-bold uppercase tracking-wider text-white">
                   Record Seized Forensic Exhibit
                 </h2>
               </div>
-              <button onClick={() => setShowManualModal(false)} className="text-slate-400 hover:text-white">
-                <X size={16} />
+              <button onClick={() => setShowManualModal(false)} className="text-slate-400 hover:text-white cursor-pointer">
+                <X size={18} />
               </button>
             </div>
 
-            <form onSubmit={handleRegisterExhibit} className="py-4 space-y-3.5 text-xs">
+            <form onSubmit={handleRegisterExhibit} className="py-4 space-y-3.5 text-xs md:text-sm">
               <div>
-                <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1">
+                <label className="block text-xs font-mono uppercase text-slate-400 mb-1 font-semibold">
                   Exhibit Type
                 </label>
                 <select
                   value={uploadForm.evidence_type}
                   onChange={(e) => setUploadForm({ ...uploadForm, evidence_type: e.target.value })}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 outline-none"
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs md:text-sm font-mono text-slate-200 outline-none"
                 >
                   <option value="DIGITAL_EXTRACTION">Digital Extraction</option>
                   <option value="CCTV_SURVEILLANCE">CCTV Surveillance</option>
@@ -1217,13 +1216,13 @@ export default function Evidence() {
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1">
+                <label className="block text-xs font-mono uppercase text-slate-400 mb-1 font-semibold">
                   Case Association
                 </label>
                 <select
                   value={uploadForm.case_id}
                   onChange={(e) => setUploadForm({ ...uploadForm, case_id: e.target.value })}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 outline-none"
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs md:text-sm font-mono text-slate-200 outline-none"
                 >
                   <option value="">No Direct Case</option>
                   {casesList.map((c) => (
@@ -1235,19 +1234,19 @@ export default function Evidence() {
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1">
+                <label className="block text-xs font-mono uppercase text-slate-400 mb-1 font-semibold">
                   Custodian Division
                 </label>
                 <input
                   type="text"
                   value={uploadForm.custodian_division}
                   onChange={(e) => setUploadForm({ ...uploadForm, custodian_division: e.target.value })}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 outline-none font-mono"
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs md:text-sm text-slate-200 outline-none font-mono"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1">
+                <label className="block text-xs font-mono uppercase text-slate-400 mb-1 font-semibold">
                   Exhibit Description & Chain of Custody
                 </label>
                 <textarea
@@ -1255,7 +1254,7 @@ export default function Evidence() {
                   value={uploadForm.description}
                   onChange={(e) => setUploadForm({ ...uploadForm, description: e.target.value })}
                   placeholder="Record description of physical condition, packaging, and custody officer..."
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 outline-none resize-none font-mono"
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs md:text-sm text-slate-200 outline-none resize-none font-mono"
                   required
                 />
               </div>
@@ -1264,16 +1263,16 @@ export default function Evidence() {
                 <button
                   type="button"
                   onClick={() => setShowManualModal(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-mono text-xs"
+                  className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-mono text-xs md:text-sm cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={uploadSubmitting}
-                  className="px-5 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-sky-500/20"
+                  className="px-5 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs md:text-sm flex items-center gap-1.5 shadow-md shadow-sky-500/20 cursor-pointer"
                 >
-                  <ShieldCheck size={14} />
+                  <ShieldCheck size={16} />
                   <span>{uploadSubmitting ? "Recording..." : "Record Exhibit"}</span>
                 </button>
               </div>
@@ -1285,45 +1284,45 @@ export default function Evidence() {
       {/* ── Verification Result Modal ── */}
       {verificationModal && (
         <div className="cmd-palette-backdrop" onClick={() => setVerificationModal(null)}>
-          <div className="cmd-palette-modal max-w-lg p-5 bg-slate-950 border border-slate-800 rounded-2xl shadow-2xl" onClick={(e) => e.stopPropagation()}>
+          <div className="cmd-palette-modal max-w-lg p-6 bg-slate-950 border border-slate-800 rounded-2xl shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 size={18} className="text-emerald-400" />
-                <h2 className="text-xs font-bold uppercase tracking-wider text-white">
+              <div className="flex items-center gap-2.5">
+                <CheckCircle2 size={20} className="text-emerald-400" />
+                <h2 className="text-sm md:text-base font-bold uppercase tracking-wider text-white">
                   Cryptographic Integrity Verification Audit
                 </h2>
               </div>
               <button
                 onClick={() => setVerificationModal(null)}
-                className="text-slate-400 hover:text-white text-xs font-mono"
+                className="text-slate-400 hover:text-white text-sm font-mono cursor-pointer"
               >
                 ✕
               </button>
             </div>
 
-            <div className="py-4 space-y-3 font-mono text-xs">
-              <div className="p-3 rounded-lg bg-emerald-950/30 border border-emerald-700/50 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-emerald-500 text-black flex items-center justify-center font-bold">
+            <div className="py-4 space-y-3 font-mono text-xs md:text-sm">
+              <div className="p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-700/50 flex items-center gap-3">
+                <div className="w-9 h-9 rounded-full bg-emerald-500 text-black flex items-center justify-center font-bold shrink-0 text-sm">
                   ✓
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-emerald-300">
+                  <div className="text-sm font-bold text-emerald-300">
                     Evidence Integrity 100% Validated
                   </div>
-                  <p className="text-[11px] text-slate-400 mt-0.5">
+                  <p className="text-xs text-slate-400 mt-0.5">
                     Live hash match confirms zero byte alteration since forensic seizure.
                   </p>
                 </div>
               </div>
 
-              <div className="space-y-2 text-[11px]">
+              <div className="space-y-2 text-xs">
                 <div className="flex justify-between">
                   <span className="text-slate-400">Exhibit ID:</span>
                   <span className="text-slate-200">{verificationModal.exhibit.id}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Hashing Algorithm:</span>
-                  <span className="text-sky-400">SHA-256 Cryptographic Hash Chaining</span>
+                  <span className="text-sky-400 font-bold">SHA-256 Cryptographic Hash Chaining</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Verified By Badge:</span>
@@ -1336,8 +1335,8 @@ export default function Evidence() {
               </div>
 
               <div>
-                <div className="text-[10px] text-slate-400 mb-1">Calculated SHA-256 Digest:</div>
-                <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-[10px] text-emerald-400 break-all select-all">
+                <div className="text-xs text-slate-400 mb-1 font-bold">Calculated SHA-256 Digest:</div>
+                <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs text-emerald-400 break-all select-all font-mono">
                   {verificationModal.result?.calculated_hash || verificationModal.exhibit.sha256_digest}
                 </div>
               </div>
@@ -1346,7 +1345,7 @@ export default function Evidence() {
             <div className="pt-3 border-t border-slate-800 flex justify-end">
               <button
                 onClick={() => setVerificationModal(null)}
-                className="px-4 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs font-mono shadow-md shadow-sky-500/20"
+                className="px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs md:text-sm font-mono shadow-md shadow-sky-500/20 cursor-pointer"
               >
                 Close Audit Record
               </button>

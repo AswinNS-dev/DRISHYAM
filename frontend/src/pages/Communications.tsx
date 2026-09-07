@@ -62,34 +62,34 @@ export default function Communications() {
         {/* Module Metadata Line */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="badge badge-info text-[10px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
+            <span className="badge badge-info text-xs font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30">
               STATE COMMUNICATIONS & TELEPHONY SURVEILLANCE
             </span>
-            <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1 text-glow-emerald">
+            <span className="text-xs font-mono text-emerald-400 flex items-center gap-1.5 font-semibold">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               LIVE DATABASE SYNCHRONIZED
             </span>
           </div>
-          <div className="text-[11px] font-mono text-slate-400">
+          <div className="text-xs font-mono text-slate-400">
             CDR Registry: <span className="text-white font-bold">{stats.total}</span> Telephony Intercepts
           </div>
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
-              <Radio size={18} />
+            <div className="w-10 h-10 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
+              <Radio size={20} />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-xl md:text-2xl font-black tracking-wide text-white uppercase text-glow-white">
+              <div className="flex items-center gap-2.5">
+                <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white uppercase">
                   Communications & Telephony Analysis
                 </h1>
-                <span className="badge bg-sky-950/80 border-sky-800/80 text-sky-300 text-[8px] font-mono">
+                <span className="badge bg-sky-950/80 border-sky-800/80 text-sky-300 text-xs font-mono font-bold">
                   CDR INTELLIGENCE
                 </span>
               </div>
-              <p className="text-xs text-slate-300 font-medium">
+              <p className="text-sm text-slate-300 font-medium">
                 Call Detail Records (CDR), handset usage links, and transceiver frequency matrix
               </p>
             </div>
@@ -97,27 +97,27 @@ export default function Communications() {
 
           <div className="flex items-center gap-2.5">
             {/* View Mode Toggle */}
-            <div className="flex items-center bg-slate-950 border border-slate-800 rounded-xl p-0.5 text-xs shadow-inner">
+            <div className="flex items-center bg-slate-950 border border-slate-800 rounded-xl p-0.5 shadow-inner">
               <button
                 onClick={() => setViewMode("list")}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all font-mono text-xs cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all font-mono text-xs md:text-sm cursor-pointer ${
                   viewMode === "list"
-                    ? "bg-slate-800 text-sky-300 border border-sky-500/40 text-glow-sky font-bold shadow-sm"
+                    ? "bg-slate-800 text-sky-300 border border-sky-500/40 font-bold shadow-sm"
                     : "text-slate-400 hover:text-white"
                 }`}
               >
-                <Layers size={12} />
+                <Layers size={14} />
                 <span>CDR Feed</span>
               </button>
               <button
                 onClick={() => setViewMode("matrix")}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all font-mono text-xs cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all font-mono text-xs md:text-sm cursor-pointer ${
                   viewMode === "matrix"
-                    ? "bg-slate-800 text-sky-300 border border-sky-500/40 text-glow-sky font-bold shadow-sm"
+                    ? "bg-slate-800 text-sky-300 border border-sky-500/40 font-bold shadow-sm"
                     : "text-slate-400 hover:text-white"
                 }`}
               >
-                <Share2 size={12} />
+                <Share2 size={14} />
                 <span>Topology Matrix</span>
               </button>
             </div>
@@ -127,69 +127,69 @@ export default function Communications() {
               className="p-2.5 rounded-xl border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white bg-slate-950 transition-all cursor-pointer shadow-sm"
               title="Refresh CDR Feed"
             >
-              <RefreshCw size={13} className={loading ? "animate-spin text-sky-400" : ""} />
+              <RefreshCw size={15} className={loading ? "animate-spin text-sky-400" : ""} />
             </button>
           </div>
         </div>
       </div>
 
       {/* ── Visual KPI Operational Metrics Strip ── */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 px-6 py-3 border-b border-slate-800/90 bg-slate-900/90">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 px-6 py-3.5 border-b border-slate-800/90 bg-slate-900/90">
         <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-sky-400 uppercase tracking-wider font-semibold">Active Telephony Records</span>
-            <Radio size={13} className="text-sky-400" />
+            <span className="text-xs font-mono text-sky-400 uppercase tracking-wider font-bold">Active Telephony Records</span>
+            <Radio size={14} className="text-sky-400" />
           </div>
-          <div className="text-xl font-black font-mono text-white text-glow-white mt-1">{stats.total}</div>
-          <div className="text-[10px] font-mono text-slate-400 mt-0.5">Indexed CDR calls</div>
+          <div className="text-2xl md:text-3xl font-black font-mono text-white mt-1">{stats.total}</div>
+          <div className="text-xs font-mono text-slate-400 mt-0.5">Indexed CDR calls</div>
         </div>
 
         <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-purple-400 uppercase tracking-wider font-semibold">Unique Transceivers</span>
-            <Users size={13} className="text-purple-400" />
+            <span className="text-xs font-mono text-purple-400 uppercase tracking-wider font-bold">Unique Transceivers</span>
+            <Users size={14} className="text-purple-400" />
           </div>
-          <div className="text-xl font-black font-mono text-purple-300 text-glow-purple mt-1">{stats.uniqueTransceivers}</div>
-          <div className="text-[10px] font-mono text-purple-400/70 mt-0.5">Tracked handsets</div>
+          <div className="text-2xl md:text-3xl font-black font-mono text-purple-300 mt-1">{stats.uniqueTransceivers}</div>
+          <div className="text-xs font-mono text-purple-400/80 mt-0.5">Tracked handsets</div>
         </div>
 
         <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider font-semibold">High-Frequency Pairs</span>
-            <ShieldAlert size={13} className="text-amber-400" />
+            <span className="text-xs font-mono text-amber-400 uppercase tracking-wider font-bold">High-Frequency Pairs</span>
+            <ShieldAlert size={14} className="text-amber-400" />
           </div>
-          <div className="text-xl font-black font-mono text-amber-300 text-glow-amber mt-1">
+          <div className="text-2xl md:text-3xl font-black font-mono text-amber-300 mt-1">
             {communications.filter((c) => (c.frequency_count || 1) >= 8).length}
           </div>
-          <div className="text-[10px] font-mono text-amber-400/80 mt-0.5">≥ 8 calls logged</div>
+          <div className="text-xs font-mono text-amber-400/80 mt-0.5">≥ 8 calls logged</div>
         </div>
 
         <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider font-semibold">Protocol Compliance</span>
-            <CheckCircle2 size={13} className="text-emerald-400" />
+            <span className="text-xs font-mono text-emerald-400 uppercase tracking-wider font-bold">Protocol Compliance</span>
+            <CheckCircle2 size={14} className="text-emerald-400" />
           </div>
-          <div className="text-xs font-mono font-bold text-emerald-300 text-glow-emerald mt-1.5">TRAI CDR Spec V2</div>
-          <div className="text-[10px] font-mono text-slate-400 mt-0.5">Audited telephony ingest</div>
+          <div className="text-sm md:text-base font-mono font-bold text-emerald-300 mt-1.5">TRAI CDR Spec V2</div>
+          <div className="text-xs font-mono text-slate-400 mt-0.5">Audited telephony ingest</div>
         </div>
       </div>
 
       {/* ── Filter Controls ── */}
-      <div className="px-6 py-2.5 border-b border-slate-800/90 bg-slate-900/95 flex flex-wrap items-center justify-between gap-3">
+      <div className="px-6 py-3 border-b border-slate-800/90 bg-slate-900/95 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3 flex-1 min-w-[280px]">
           <div className="relative flex-1 max-w-md">
-            <Search size={13} className="absolute left-3 top-2.5 text-slate-400" />
+            <Search size={15} className="absolute left-3.5 top-3 text-slate-400" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by name, MSISDN / phone number, or exhibit ID..."
-              className="w-full pl-8 pr-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono text-slate-100 placeholder-slate-500 outline-none focus:border-sky-500"
+              className="w-full pl-10 pr-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm font-mono text-slate-100 placeholder-slate-500 outline-none focus:border-sky-500 transition-colors"
             />
           </div>
 
           {/* Case Filter */}
-          <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-1">
-            <FolderOpen size={12} className="text-sky-400" />
+          <div className="flex items-center gap-2 bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5">
+            <FolderOpen size={14} className="text-sky-400" />
             <select
               value={selectedCaseId}
               onChange={(e) => {
@@ -202,7 +202,7 @@ export default function Communications() {
                   return next;
                 });
               }}
-              className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer max-w-[150px] truncate font-mono"
+              className="bg-transparent text-xs md:text-sm text-slate-200 outline-none cursor-pointer max-w-[180px] truncate font-mono"
             >
               <option value="" className="bg-slate-900 text-slate-300">All Cases (Global)</option>
               {caseList.map((c) => (
@@ -214,12 +214,12 @@ export default function Communications() {
           </div>
 
           {/* Frequency Filter */}
-          <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-1">
-            <Filter size={12} className="text-amber-400" />
+          <div className="flex items-center gap-2 bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5">
+            <Filter size={14} className="text-amber-400" />
             <select
               value={minFrequency}
               onChange={(e) => setMinFrequency(Number(e.target.value))}
-              className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer font-mono"
+              className="bg-transparent text-xs md:text-sm text-slate-200 outline-none cursor-pointer font-mono"
             >
               <option value={1} className="bg-slate-900 text-slate-300">All Interactions (1+)</option>
               <option value={4} className="bg-slate-900 text-amber-300 font-semibold">Medium Traffic (4+ calls)</option>
@@ -228,23 +228,23 @@ export default function Communications() {
           </div>
         </div>
 
-        <div className="text-[11px] font-mono text-slate-400">
-          <span className="text-sky-300 font-bold text-glow-sky">{filtered.length}</span> Communication Traces Indexed
+        <div className="text-xs font-mono text-slate-400">
+          <span className="text-sky-300 font-bold">{filtered.length}</span> Communication Traces Indexed
         </div>
       </div>
 
       {/* ── Active Scope Banner ── */}
       {(selectedCaseId || selectedEntityId) && (
-        <div className="px-6 py-2 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between text-xs">
-          <div className="flex items-center gap-2">
-            <span className="font-mono text-[10px] uppercase text-sky-400 font-semibold">Active Scope:</span>
+        <div className="px-6 py-2.5 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between text-sm">
+          <div className="flex items-center gap-2.5">
+            <span className="font-mono text-xs uppercase text-sky-400 font-bold">Active Scope:</span>
             {selectedCaseId && (
-              <span className="badge bg-sky-950/80 border-sky-700 text-sky-300 text-[10px] font-mono">
+              <span className="badge bg-sky-950/80 border-sky-700 text-sky-300 text-xs font-mono font-bold">
                 Case: {selectedCaseObj?.case_number || selectedCaseId.slice(0, 8)}
               </span>
             )}
             {selectedEntityId && (
-              <span className="badge bg-purple-950/80 border-purple-700 text-purple-300 text-[10px] font-mono">
+              <span className="badge bg-purple-950/80 border-purple-700 text-purple-300 text-xs font-mono font-bold">
                 Entity Scoped: {selectedEntityId.slice(0, 8)}
               </span>
             )}
@@ -255,9 +255,9 @@ export default function Communications() {
               setSelectedEntityId("");
               setSearchParams({});
             }}
-            className="flex items-center gap-1 text-[11px] text-slate-400 hover:text-rose-400 cursor-pointer transition-colors"
+            className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-rose-400 cursor-pointer font-mono transition-colors"
           >
-            <X size={12} />
+            <X size={13} />
             <span>Clear Filter Context</span>
           </button>
         </div>
@@ -272,10 +272,10 @@ export default function Communications() {
             ))}
           </div>
         ) : filtered.length === 0 ? (
-          <div className="panel p-12 text-center text-xs text-[var(--text-muted)] bg-[var(--bg-panel-solid)] rounded-lg">
-            <PhoneCall size={32} className="mx-auto mb-2 opacity-30 text-sky-400" />
-            <div className="font-semibold text-[var(--text-secondary)] uppercase">No communication records matched</div>
-            <p className="mt-1 text-[11px] text-slate-400">
+          <div className="panel p-12 text-center text-sm text-[var(--text-muted)] bg-[var(--bg-panel-solid)] rounded-lg">
+            <PhoneCall size={36} className="mx-auto mb-2 opacity-30 text-sky-400" />
+            <div className="font-bold text-base text-[var(--text-secondary)] uppercase">No communication records matched</div>
+            <p className="mt-1 text-xs text-slate-400">
               {selectedEntityId || selectedCaseId
                 ? "No communication records found for this active scope."
                 : "Adjust search query or frequency filter."}
@@ -283,7 +283,7 @@ export default function Communications() {
           </div>
         ) : viewMode === "matrix" ? (
           /* ── Topology / Matrix View: Caller -> Call -> Receiver ── */
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filtered.map((item) => {
               const isFrequent = (item.frequency_count || 1) >= 8;
               const isMedium = (item.frequency_count || 1) >= 4;
@@ -300,61 +300,61 @@ export default function Communications() {
                   }`}
                 >
                   <div className="flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-1.5">
-                      <span className="px-2 py-0.5 rounded text-[9px] font-mono bg-slate-800 border border-slate-700 text-slate-300">
+                    <div className="flex items-center gap-2">
+                      <span className="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-slate-800 border border-slate-700 text-slate-300">
                         {item.source_evidence}
                       </span>
                       {isFrequent && (
-                        <span className="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-rose-950/80 text-rose-300 border border-rose-600/60 flex items-center gap-1">
-                          <Radio size={9} className="animate-pulse text-rose-400" />
+                        <span className="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-rose-950/80 text-rose-300 border border-rose-600/60 flex items-center gap-1">
+                          <Radio size={11} className="animate-pulse text-rose-400" />
                           <span>HIGH FREQUENCY</span>
                         </span>
                       )}
                     </div>
-                    <span className="text-[10px] font-mono text-slate-400">
+                    <span className="text-xs font-mono text-slate-400">
                       {new Date(item.timestamp).toLocaleDateString()}
                     </span>
                   </div>
 
                   {/* Flow: Caller -> Bridge -> Receiver */}
-                  <div className="flex items-center justify-between gap-2 p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <div className="flex items-center justify-between gap-3 p-3 rounded-lg bg-slate-950/70 border border-slate-800">
                     {/* Originating Party */}
                     <div className="flex-1 min-w-0">
-                      <div className="text-[9px] font-mono uppercase text-sky-400 font-semibold">Originating Party</div>
+                      <div className="text-xs font-mono uppercase text-sky-400 font-bold tracking-wider">Originating Party</div>
                       <div
                         onClick={() => navigate(`/network?entity_id=${item.caller_id}`)}
-                        className="text-xs font-bold text-slate-100 hover:text-sky-300 cursor-pointer truncate transition-colors"
+                        className="text-sm md:text-base font-bold text-slate-100 hover:text-sky-300 cursor-pointer truncate transition-colors"
                         title={item.caller_name}
                       >
                         {item.caller_name}
                       </div>
-                      <div className="text-[10px] font-mono text-slate-400 truncate">{item.caller_phone}</div>
+                      <div className="text-xs md:text-sm font-mono text-slate-400 truncate">{item.caller_phone}</div>
                     </div>
 
                     {/* Middle Telephony Bridge */}
                     <div className="flex flex-col items-center justify-center px-2">
-                      <div className="w-7 h-7 rounded-full bg-sky-950 border border-sky-600/80 flex items-center justify-center text-sky-400 shadow-sm">
-                        <PhoneCall size={12} />
+                      <div className="w-8 h-8 rounded-full bg-sky-950 border border-sky-600/80 flex items-center justify-center text-sky-400 shadow-sm">
+                        <PhoneCall size={14} />
                       </div>
-                      <div className="text-[11px] font-mono font-bold text-amber-300 mt-1">
+                      <div className="text-xs md:text-sm font-mono font-bold text-amber-300 mt-1">
                         {item.frequency_count} calls
                       </div>
-                      <div className="text-[8px] font-mono text-slate-400">
+                      <div className="text-xs font-mono text-slate-400">
                         {Math.floor(item.duration_seconds / 60)}m avg
                       </div>
                     </div>
 
                     {/* Terminating Party */}
                     <div className="flex-1 min-w-0 text-right">
-                      <div className="text-[9px] font-mono uppercase text-purple-400 font-semibold">Terminating Party</div>
+                      <div className="text-xs font-mono uppercase text-purple-400 font-bold tracking-wider">Terminating Party</div>
                       <div
                         onClick={() => navigate(`/network?entity_id=${item.receiver_id}`)}
-                        className="text-xs font-bold text-slate-100 hover:text-sky-300 cursor-pointer truncate transition-colors"
+                        className="text-sm md:text-base font-bold text-slate-100 hover:text-sky-300 cursor-pointer truncate transition-colors"
                         title={item.receiver_name}
                       >
                         {item.receiver_name}
                       </div>
-                      <div className="text-[10px] font-mono text-slate-400 truncate">{item.receiver_phone}</div>
+                      <div className="text-xs md:text-sm font-mono text-slate-400 truncate">{item.receiver_phone}</div>
                     </div>
                   </div>
 
@@ -362,16 +362,16 @@ export default function Communications() {
                   <div className="flex items-center justify-end gap-2 pt-1 border-t border-slate-800 text-xs">
                     <button
                       onClick={() => navigate(`/timeline?entity_id=${item.caller_id}`)}
-                      className="flex items-center gap-1 text-[10px] font-mono text-slate-300 hover:text-sky-300 bg-slate-800/80 px-2 py-1 rounded border border-slate-700 cursor-pointer transition-colors"
+                      className="flex items-center gap-1.5 text-xs font-mono text-slate-300 hover:text-sky-300 bg-slate-800/80 px-2.5 py-1.5 rounded border border-slate-700 cursor-pointer transition-colors"
                     >
-                      <Clock size={11} />
+                      <Clock size={12} />
                       <span>Timeline</span>
                     </button>
                     <button
                       onClick={() => navigate(`/network?entity_id=${item.caller_id}`)}
-                      className="flex items-center gap-1 text-[10px] font-mono text-sky-400 hover:text-sky-300 bg-sky-950/60 px-2 py-1 rounded border border-sky-800/80 cursor-pointer font-semibold transition-colors"
+                      className="flex items-center gap-1.5 text-xs font-mono text-sky-400 hover:text-sky-300 bg-sky-950/60 px-2.5 py-1.5 rounded border border-sky-800/80 cursor-pointer font-bold transition-colors"
                     >
-                      <Network size={11} />
+                      <Network size={12} />
                       <span>Explore Network</span>
                     </button>
                   </div>
@@ -381,16 +381,16 @@ export default function Communications() {
           </div>
         ) : (
           /* ── Standard CDR Feed List View (Strict 12-Column Alignment) ── */
-          <div className="space-y-2">
+          <div className="space-y-2.5">
             {/* Header Bar */}
-            <div className="hidden lg:grid grid-cols-12 gap-4 px-10 py-2.5 bg-slate-950 border-b border-slate-800/80 text-[10px] font-mono uppercase tracking-wider text-slate-400 select-none">
-              <div className="col-span-3 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+            <div className="hidden lg:grid grid-cols-12 gap-4 px-10 py-3 bg-slate-950 border-b border-slate-800/80 text-xs font-mono uppercase tracking-wider font-bold text-slate-400 select-none">
+              <div className="col-span-3 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-sky-400"></span>
                 <span>Originating Party (Caller)</span>
               </div>
               <div className="col-span-2 text-center">Telemetry & Intensity</div>
-              <div className="col-span-3 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+              <div className="col-span-3 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-purple-400"></span>
                 <span>Terminating Party (Receiver)</span>
               </div>
               <div className="col-span-2 text-right">Duration & Timing</div>
@@ -406,7 +406,7 @@ export default function Communications() {
               return (
                 <div
                   key={item.id}
-                  className={`panel p-3.5 rounded-lg border transition-all ${
+                  className={`panel p-4 rounded-lg border transition-all ${
                     isFrequent
                       ? "bg-gradient-to-r from-rose-950/20 via-slate-900/90 to-slate-900 border-l-4 border-l-rose-500 border-slate-800 hover:border-rose-500/50 shadow-sm"
                       : isMedium
@@ -418,11 +418,11 @@ export default function Communications() {
                     
                     {/* Originating Party / Caller (Col 1-3) */}
                     <div className="lg:col-span-3 flex items-center gap-3 min-w-0">
-                      <div className="w-8 h-8 rounded-lg bg-sky-950/90 border border-sky-700/60 text-sky-400 flex items-center justify-center shrink-0 shadow-inner">
-                        <PhoneCall size={14} />
+                      <div className="w-9 h-9 rounded-lg bg-sky-950/90 border border-sky-700/60 text-sky-400 flex items-center justify-center shrink-0 shadow-inner">
+                        <PhoneCall size={16} />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <div className="text-[10px] font-mono text-slate-400 uppercase lg:hidden">
+                        <div className="text-xs font-mono text-slate-400 uppercase lg:hidden font-bold">
                           Originating Party
                         </div>
                         <div
@@ -433,12 +433,12 @@ export default function Communications() {
                               }`
                             )
                           }
-                          className="text-xs font-bold text-slate-100 hover:text-sky-400 cursor-pointer truncate transition-colors"
+                          className="text-sm md:text-base font-bold text-slate-100 hover:text-sky-400 cursor-pointer truncate transition-colors"
                           title={item.caller_name}
                         >
                           {item.caller_name}
                         </div>
-                        <div className="text-[11px] font-mono text-slate-400 truncate">
+                        <div className="text-xs md:text-sm font-mono text-slate-400 truncate">
                           {item.caller_phone}
                         </div>
                       </div>
@@ -448,7 +448,7 @@ export default function Communications() {
                     <div className="lg:col-span-2 flex flex-col items-start lg:items-center justify-center">
                       <div className="flex items-center gap-1.5">
                         <span
-                          className={`font-mono text-xs font-bold px-2 py-0.5 rounded-full border ${
+                          className={`font-mono text-xs md:text-sm font-bold px-2.5 py-1 rounded-full border ${
                             isFrequent
                               ? "bg-rose-950/80 text-rose-300 border-rose-600/60"
                               : isMedium
@@ -460,7 +460,7 @@ export default function Communications() {
                         </span>
                       </div>
                       {/* Mini visual intensity meter */}
-                      <div className="w-20 h-1.5 bg-slate-800 rounded-full overflow-hidden mt-1.5 hidden lg:block">
+                      <div className="w-24 h-2 bg-slate-800 rounded-full overflow-hidden mt-2 hidden lg:block">
                         <div
                           className={`h-full rounded-full ${
                             isFrequent
@@ -478,11 +478,11 @@ export default function Communications() {
 
                     {/* Terminating Party / Receiver (Col 6-8) */}
                     <div className="lg:col-span-3 flex items-center gap-3 min-w-0">
-                      <div className="w-8 h-8 rounded-lg bg-purple-950/90 border border-purple-700/60 text-purple-400 flex items-center justify-center shrink-0 shadow-inner">
-                        <PhoneCall size={14} />
+                      <div className="w-9 h-9 rounded-lg bg-purple-950/90 border border-purple-700/60 text-purple-400 flex items-center justify-center shrink-0 shadow-inner">
+                        <PhoneCall size={16} />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <div className="text-[10px] font-mono text-slate-400 uppercase lg:hidden">
+                        <div className="text-xs font-mono text-slate-400 uppercase lg:hidden font-bold">
                           Terminating Party
                         </div>
                         <div
@@ -493,26 +493,26 @@ export default function Communications() {
                               }`
                             )
                           }
-                          className="text-xs font-bold text-slate-100 hover:text-sky-400 cursor-pointer truncate transition-colors"
+                          className="text-sm md:text-base font-bold text-slate-100 hover:text-sky-400 cursor-pointer truncate transition-colors"
                           title={item.receiver_name}
                         >
                           {item.receiver_name}
                         </div>
-                        <div className="text-[11px] font-mono text-slate-400 truncate">
+                        <div className="text-xs md:text-sm font-mono text-slate-400 truncate">
                           {item.receiver_phone}
                         </div>
                       </div>
                     </div>
 
                     {/* Duration & Timing (Col 9-10) */}
-                    <div className="lg:col-span-2 text-left lg:text-right font-mono text-[10px] text-slate-300">
-                      <div className="text-[10px] font-mono text-slate-400 uppercase lg:hidden">
+                    <div className="lg:col-span-2 text-left lg:text-right font-mono text-xs text-slate-300">
+                      <div className="text-xs font-mono text-slate-400 uppercase lg:hidden font-bold">
                         Timing
                       </div>
-                      <div className="font-semibold text-slate-200">
+                      <div className="font-bold text-slate-200 text-xs md:text-sm">
                         {Math.floor(item.duration_seconds / 60)}m {item.duration_seconds % 60}s avg
                       </div>
-                      <div className="text-slate-400">
+                      <div className="text-slate-400 text-xs">
                         {new Date(item.timestamp).toLocaleDateString([], {
                           month: "short",
                           day: "numeric",
@@ -526,7 +526,7 @@ export default function Communications() {
 
                     {/* Exhibit (Col 11) */}
                     <div className="lg:col-span-1 flex items-center justify-start lg:justify-center">
-                      <span className="px-2 py-0.5 rounded text-[9px] font-mono bg-slate-800/90 border border-slate-700 text-slate-300 truncate max-w-[105px]">
+                      <span className="px-2.5 py-1 rounded text-xs font-mono font-bold bg-slate-800/90 border border-slate-700 text-slate-300 truncate max-w-[120px]">
                         {item.source_evidence}
                       </span>
                     </div>
@@ -541,10 +541,10 @@ export default function Communications() {
                             }`
                           )
                         }
-                        className="p-1.5 rounded-md bg-slate-800/90 border border-slate-700 hover:border-sky-400 hover:bg-sky-950/60 text-slate-300 hover:text-sky-300 transition-all cursor-pointer shadow-sm"
+                        className="p-2 rounded-md bg-slate-800/90 border border-slate-700 hover:border-sky-400 hover:bg-sky-950/60 text-slate-300 hover:text-sky-300 transition-all cursor-pointer shadow-sm"
                         title="View in Chronological Timeline"
                       >
-                        <Clock size={12} />
+                        <Clock size={14} />
                       </button>
                       <button
                         onClick={() =>
@@ -554,10 +554,10 @@ export default function Communications() {
                             }`
                           )
                         }
-                        className="p-1.5 rounded-md bg-slate-800/90 border border-slate-700 hover:border-sky-400 hover:bg-sky-950/60 text-slate-300 hover:text-sky-300 transition-all cursor-pointer shadow-sm"
+                        className="p-2 rounded-md bg-slate-800/90 border border-slate-700 hover:border-sky-400 hover:bg-sky-950/60 text-slate-300 hover:text-sky-300 transition-all cursor-pointer shadow-sm"
                         title="View in Network Graph"
                       >
-                        <ChevronRight size={12} />
+                        <ChevronRight size={14} />
                       </button>
                     </div>
                   </div>

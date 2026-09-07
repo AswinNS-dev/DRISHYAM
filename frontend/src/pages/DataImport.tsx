@@ -85,62 +85,62 @@ export default function DataWorkspace() {
   return (
     <div className="p-6 max-w-7xl mx-auto page-enter space-y-6">
       {/* ── HEADER ── */}
-      <div className="border-b border-slate-800/90 pb-4 space-y-3">
+      <div className="border-b border-slate-800/90 pb-5 space-y-3.5">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="badge badge-info text-[10px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
+            <span className="badge badge-info text-[11px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30">
               STATE INGESTION & DATA OPERATIONS
             </span>
-            <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1 text-glow-emerald">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-[11px] font-mono text-emerald-400 flex items-center gap-1.5 font-semibold">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               LIVE DATABASE SYNCHRONIZED
             </span>
           </div>
-          <div className="text-[11px] font-mono text-slate-400">
+          <div className="text-xs font-mono text-slate-400">
             Registered Datasets: <span className="text-white font-bold">{datasets.length}</span> Ingestion Files
           </div>
         </div>
 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
-              <Database size={18} />
+          <div className="flex items-center gap-3.5">
+            <div className="w-10 h-10 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md shrink-0">
+              <Database size={20} />
             </div>
             <div>
-              <h1 className="text-xl md:text-2xl font-black tracking-wide text-white text-glow-white">
+              <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white">
                 Investigation Data Workspace
               </h1>
-              <p className="text-xs text-slate-300 font-medium">
+              <p className="text-sm text-slate-300 font-normal leading-relaxed mt-0.5">
                 Import, inspect, validate and pipeline-process multi-source intelligence records.
               </p>
             </div>
           </div>
 
           {/* Primary Actions */}
-          <div className="flex items-center gap-2 self-start sm:self-auto">
+          <div className="flex items-center gap-2.5 self-start sm:self-auto">
             <button
               onClick={() => setIsQuickTextModalOpen(true)}
-              className="px-3 py-1.5 rounded-xl border border-slate-800 bg-slate-950 hover:bg-slate-900 text-slate-200 text-xs font-mono flex items-center gap-1.5 transition-colors shadow-sm"
+              className="px-3.5 py-2 rounded-xl border border-slate-800 bg-slate-950 hover:bg-slate-900 text-slate-200 text-xs md:text-sm font-semibold flex items-center gap-2 transition-colors shadow-sm cursor-pointer"
               title="Ad-hoc FIR narrative entity extraction"
             >
-              <FileText size={13} className="text-sky-400" />
+              <FileText size={14} className="text-sky-400" />
               <span>Extract Entities from Text</span>
             </button>
 
             <button
               onClick={loadWorkspaceData}
               disabled={loading}
-              className="p-2 rounded-xl border border-slate-800 bg-slate-950 hover:bg-slate-900 text-slate-300 transition-colors disabled:opacity-50 shadow-sm"
+              className="p-2.5 rounded-xl border border-slate-800 bg-slate-950 hover:bg-slate-900 text-slate-300 transition-colors disabled:opacity-50 shadow-sm cursor-pointer"
               title="Refresh datasets"
             >
-              <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
+              <RefreshCw size={15} className={loading ? "animate-spin" : ""} />
             </button>
 
             <button
               onClick={() => setIsImportModalOpen(true)}
-              className="btn-primary px-4 py-2 text-xs font-mono flex items-center gap-1.5 shadow-md font-bold"
+              className="btn-primary px-4 py-2 text-xs md:text-sm font-bold flex items-center gap-2 shadow-md cursor-pointer"
             >
-              <Plus size={14} />
+              <Plus size={15} />
               <span>+ Import Data</span>
             </button>
           </div>
@@ -167,12 +167,12 @@ export default function DataWorkspace() {
       <DataWorkspaceSummary summary={summary} loading={loading} />
 
       {/* ── DATASET INVENTORY SECTION ── */}
-      <div className="space-y-2">
+      <div className="space-y-3">
         <div className="flex items-center justify-between px-1">
-          <span className="hud-label text-[11px] font-mono tracking-wider text-[var(--text-muted)]">
+          <span className="hud-label text-xs font-mono font-bold tracking-wider text-slate-300 uppercase">
             INVESTIGATION DATASETS INVENTORY
           </span>
-          <span className="text-[10px] font-mono text-zinc-500">
+          <span className="text-xs font-mono text-slate-500">
             {datasets.length} Registered Sources
           </span>
         </div>
@@ -192,20 +192,20 @@ export default function DataWorkspace() {
 
       {/* ── SELECTED DATASET INSPECTOR & PROCESSING PIPELINE ── */}
       {selectedDatasetId && (
-        <div className="space-y-2 pt-2">
+        <div className="space-y-3 pt-3">
           <div className="flex items-center justify-between px-1">
-            <span className="hud-label text-[11px] font-mono tracking-wider text-[var(--text-muted)]">
+            <span className="hud-label text-xs font-mono font-bold tracking-wider text-slate-300 uppercase">
               ACTIVE DATASET INSPECTION & PIPELINE
             </span>
-            <span className="text-[10px] font-mono text-zinc-500">
+            <span className="text-xs font-mono text-slate-400">
               ID: {selectedDatasetId}
             </span>
           </div>
 
           {detailLoading && !activeDetail ? (
-            <div className="py-16 text-center rounded-xl bg-[var(--bg-panel)] border border-[var(--border-subtle)] space-y-2">
-              <RefreshCw size={20} className="animate-spin mx-auto text-zinc-400" />
-              <p className="text-xs font-mono text-zinc-400">Loading dataset details & pipeline telemetry...</p>
+            <div className="py-16 text-center rounded-xl bg-slate-950/60 border border-slate-800 space-y-2">
+              <RefreshCw size={22} className="animate-spin mx-auto text-slate-400" />
+              <p className="text-sm font-mono text-slate-400">Loading dataset details & pipeline telemetry...</p>
             </div>
           ) : activeDetail ? (
             <DatasetDetailsPanel

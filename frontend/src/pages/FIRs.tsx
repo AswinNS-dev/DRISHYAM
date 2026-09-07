@@ -77,7 +77,7 @@ export default function FIRs() {
 
   function renderHighlightedNarrative(text: string, mentions: any[]) {
     if (!mentions || mentions.length === 0) {
-      return <p className="text-xs leading-relaxed text-[var(--text-secondary)] whitespace-pre-wrap">{text}</p>;
+      return <p className="text-sm md:text-base leading-relaxed text-slate-200 whitespace-pre-wrap">{text}</p>;
     }
 
     const sorted = [...mentions].filter((m) => m.start !== null && m.end !== null).sort((a, b) => a.start - b.end);
@@ -96,7 +96,7 @@ export default function FIRs() {
           <mark
             key={`mention-${idx}`}
             title={`${m.type} (Detected identifier)`}
-            className="rounded px-1.5 py-0.5 mx-0.5 text-xs font-semibold cursor-pointer inline-flex items-center gap-1 bg-[rgba(37,99,235,0.15)] text-[var(--intel-sky)] border border-[rgba(37,99,235,0.3)]"
+            className="rounded px-2 py-0.5 mx-0.5 text-xs md:text-sm font-semibold cursor-pointer inline-flex items-center gap-1.5 bg-sky-950/60 text-sky-300 border border-sky-500/40"
             onClick={() => {
               if (m.resolved_entity_id) {
                 navigate(`/entities`);
@@ -104,7 +104,7 @@ export default function FIRs() {
             }}
           >
             <span>{text.substring(m.start, m.end)}</span>
-            <span className="text-[9px] uppercase font-mono opacity-75">[{m.type}]</span>
+            <span className="text-[10px] uppercase font-mono opacity-80 font-bold">[{m.type}]</span>
           </mark>
         );
         lastIndex = m.end;
@@ -115,7 +115,7 @@ export default function FIRs() {
       elements.push(<span key="text-end">{text.substring(lastIndex)}</span>);
     }
 
-    return <div className="text-xs leading-relaxed text-[var(--text-primary)] whitespace-pre-wrap">{elements}</div>;
+    return <div className="text-sm md:text-base leading-relaxed text-slate-200 whitespace-pre-wrap">{elements}</div>;
   }
 
   return (
@@ -124,21 +124,21 @@ export default function FIRs() {
       <div className="w-96 shrink-0 flex flex-col border-r border-slate-800/90 bg-slate-900/95 shadow-xl">
         <div className="p-4 border-b border-slate-800/90 bg-slate-950/80 space-y-3">
           <div className="flex items-center justify-between">
-            <span className="badge badge-info text-[9px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
+            <span className="badge badge-info text-[11px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30">
               STATE FIRST INFORMATION REPORT (FIR) REGISTRY
             </span>
           </div>
 
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
-                <FileText size={18} />
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md shrink-0">
+                <FileText size={20} />
               </div>
               <div>
-                <h1 className="text-sm font-black uppercase tracking-wider text-white text-glow-white">
+                <h1 className="text-base font-black uppercase tracking-wider text-white">
                   FIR Complaint Registry
                 </h1>
-                <div className="text-[10px] font-mono text-slate-400">
+                <div className="text-xs font-mono text-slate-400">
                   {firs.length} POLICE COMPLAINTS
                 </div>
               </div>
@@ -146,20 +146,20 @@ export default function FIRs() {
 
             <button
               onClick={() => setShowModal(true)}
-              className="px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs flex items-center gap-1 shadow-md shadow-sky-500/20 transition-all cursor-pointer"
+              className="px-3.5 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs md:text-sm flex items-center gap-1.5 shadow-md shadow-sky-500/20 transition-all cursor-pointer"
             >
-              <Plus size={13} />
+              <Plus size={14} />
               <span>File FIR</span>
             </button>
           </div>
 
           <div className="relative">
-            <Search size={13} className="absolute left-3 top-2.5 text-slate-400" />
+            <Search size={14} className="absolute left-3 top-2.5 text-slate-400" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search FIR #, complainant, section..."
-              className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-sky-500 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-100 placeholder:text-slate-500 outline-none transition-all shadow-inner"
+              className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-sky-500 rounded-xl pl-9 pr-3 py-2 text-xs md:text-sm text-slate-100 placeholder:text-slate-500 outline-none transition-all shadow-inner font-mono"
             />
           </div>
         </div>
@@ -167,9 +167,9 @@ export default function FIRs() {
         {/* List */}
         <div className="flex-1 overflow-y-auto p-3 space-y-2">
           {loading ? (
-            [1, 2, 3].map((i) => <div key={i} className="skeleton h-16 rounded-xl bg-slate-900/80 border border-slate-800" />)
+            [1, 2, 3].map((i) => <div key={i} className="skeleton h-20 rounded-xl bg-slate-900/80 border border-slate-800" />)
           ) : firs.length === 0 ? (
-            <div className="text-center py-10 text-xs text-slate-500 font-mono">No FIRs found.</div>
+            <div className="text-center py-10 text-xs font-mono text-slate-400">No FIRs found.</div>
           ) : (
             firs.map((f) => {
               const isSelected = selectedFir?.id === f.id;
@@ -183,15 +183,15 @@ export default function FIRs() {
                       : "bg-slate-950/70 border-slate-800/80 hover:border-slate-700 hover:bg-slate-900/50 text-slate-300"
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-mono font-bold text-sky-400 text-glow-sky">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-xs md:text-sm font-mono font-bold text-sky-400">
                       {f.fir_number}
                     </span>
-                    <span className="text-[10px] font-mono text-slate-400">
+                    <span className="text-xs font-mono text-slate-400">
                       {f.created_at ? new Date(f.created_at).toLocaleDateString() : "Historical"}
                     </span>
                   </div>
-                  <div className="text-xs text-slate-300 line-clamp-2 leading-relaxed">
+                  <div className="text-xs md:text-sm text-slate-300 line-clamp-2 leading-relaxed">
                     {f.narrative_text}
                   </div>
                 </div>
@@ -206,10 +206,10 @@ export default function FIRs() {
         {selectedFir ? (
           <div className="flex-1 flex flex-col min-h-0">
             {/* Header Action Bar */}
-            <div className="px-6 py-3.5 border-b border-slate-800/90 bg-slate-900/95 flex items-center justify-between shadow-md">
-              <div className="flex items-center gap-2.5">
-                <span className="badge badge-verified text-[9px] font-mono text-glow-emerald">OFFICIAL POLICE COMPLAINT</span>
-                <span className="text-[11px] font-mono text-slate-400">
+            <div className="px-6 py-4 border-b border-slate-800/90 bg-slate-900/95 flex items-center justify-between shadow-md">
+              <div className="flex items-center gap-3">
+                <span className="badge badge-verified text-xs font-mono font-bold">OFFICIAL POLICE COMPLAINT</span>
+                <span className="text-xs md:text-sm font-mono text-slate-400">
                   FIR NUMBER: <strong className="text-white font-bold">{selectedFir.fir_number}</strong>
                 </span>
               </div>
@@ -217,9 +217,9 @@ export default function FIRs() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => window.print()}
-                  className="px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-900 border border-slate-800 text-xs font-mono text-slate-200 hover:text-white flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-900 border border-slate-800 text-xs md:text-sm font-mono text-slate-200 hover:text-white flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
                 >
-                  <Printer size={13} />
+                  <Printer size={14} />
                   <span>Print Copy</span>
                 </button>
               </div>
@@ -229,56 +229,56 @@ export default function FIRs() {
             <div className="flex-1 overflow-y-auto p-8 max-w-4xl mx-auto w-full">
               <div className="p-8 bg-slate-900/95 border border-slate-800/90 rounded-2xl shadow-2xl space-y-6">
                 <div className="border-b border-slate-800 pb-5 text-center">
-                  <div className="text-xs font-mono tracking-widest uppercase text-slate-400 font-bold">
+                  <div className="text-xs md:text-sm font-mono tracking-widest uppercase text-slate-400 font-bold">
                     STATE POLICE DEPARTMENT · FIRST INFORMATION REPORT (FIR)
                   </div>
-                  <h1 className="text-xl font-black text-white mt-1.5 font-mono tracking-wide uppercase text-glow-white">
+                  <h1 className="text-2xl md:text-3xl font-black text-white mt-2 font-mono tracking-wide uppercase">
                     {selectedFir.fir_number}
                   </h1>
-                  <div className="text-[11px] font-mono text-slate-400 mt-1">
-                    Registered at: <strong className="text-slate-300">{selectedFir.district || "Central Sector"} Police Station</strong>
+                  <div className="text-xs md:text-sm font-mono text-slate-400 mt-1.5">
+                    Registered at: <strong className="text-slate-200">{selectedFir.district || "Central Sector"} Police Station</strong>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 text-xs p-4 rounded-xl bg-slate-950/80 border border-slate-800 shadow-inner">
+                <div className="grid grid-cols-2 gap-4 text-xs md:text-sm p-4 rounded-xl bg-slate-950/80 border border-slate-800 shadow-inner">
                   <div>
-                    <span className="text-[10px] font-mono text-slate-400 block uppercase">Date & Time of Registration:</span>
-                    <span className="font-semibold text-white mt-0.5 block font-mono">
+                    <span className="text-xs font-mono text-slate-400 block uppercase font-medium">Date & Time of Registration:</span>
+                    <span className="font-semibold text-white mt-1 block font-mono text-xs md:text-sm">
                       {selectedFir.created_at ? new Date(selectedFir.created_at).toLocaleString() : "Historical"} IST
                     </span>
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono text-slate-400 block uppercase">Sector Jurisdiction:</span>
-                    <span className="font-semibold text-white mt-0.5 block">
+                    <span className="text-xs font-mono text-slate-400 block uppercase font-medium">Sector Jurisdiction:</span>
+                    <span className="font-semibold text-white mt-1 block text-xs md:text-sm">
                       {selectedFir.district || "Central District"}
                     </span>
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <div className="text-[10px] font-mono uppercase text-sky-400 font-bold tracking-wider text-glow-sky">
+                <div className="space-y-2.5">
+                  <div className="text-xs font-mono uppercase text-sky-400 font-bold tracking-wider">
                     ORIGINAL POLICE NARRATIVE & STATEMENTS
                   </div>
-                  <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
+                  <div className="p-5 rounded-xl bg-slate-950/80 border border-slate-800">
                     {renderHighlightedNarrative(selectedFir.narrative_text, selectedFir.extracted_entities || [])}
                   </div>
                 </div>
 
                 {/* Extracted Identifiers */}
                 {selectedFir.extracted_entities?.length > 0 && (
-                  <div className="space-y-2">
-                    <div className="text-[10px] font-mono uppercase text-sky-400 font-bold tracking-wider text-glow-sky">
+                  <div className="space-y-2.5">
+                    <div className="text-xs font-mono uppercase text-sky-400 font-bold tracking-wider">
                       AUTOMATICALLY EXTRACTED ENTITY IDENTIFIERS
                     </div>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2.5">
                       {selectedFir.extracted_entities.map((ent: any, idx: number) => (
                         <span
                           key={idx}
                           onClick={() => navigate("/entities")}
-                          className="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 hover:border-sky-500 text-xs cursor-pointer flex items-center gap-1.5 transition-colors shadow-sm"
+                          className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 hover:border-sky-500 text-xs md:text-sm cursor-pointer flex items-center gap-2 transition-colors shadow-sm"
                         >
                           <span className="font-bold text-white hover:text-sky-300">{ent.text}</span>
-                          <span className="badge badge-low text-[8px] font-mono">{ent.type}</span>
+                          <span className="badge badge-low text-xs font-mono">{ent.type}</span>
                         </span>
                       ))}
                     </div>

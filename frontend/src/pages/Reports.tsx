@@ -71,21 +71,21 @@ export default function Reports() {
         {/* Header */}
         <div className="p-4 border-b border-slate-800/90 bg-slate-950/80 space-y-3">
           <div className="flex items-center justify-between">
-            <span className="badge badge-info text-[9px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
+            <span className="badge badge-info text-xs font-mono tracking-wider font-bold py-1 px-2.5 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
               STATE INTELLIGENCE BRIEFINGS & DOSSIER EXPORTS
             </span>
           </div>
 
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
-                <FileCheck2 size={18} />
+              <div className="w-10 h-10 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
+                <FileCheck2 size={20} />
               </div>
               <div>
-                <h1 className="text-sm font-black uppercase tracking-wider text-white text-glow-white">
+                <h1 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white text-glow-white">
                   Intelligence Reports
                 </h1>
-                <div className="text-[10px] font-mono text-slate-400">
+                <div className="text-xs font-mono text-slate-400">
                   {reports.length} ARCHIVED DOSSIERS
                 </div>
               </div>
@@ -93,20 +93,20 @@ export default function Reports() {
 
             <button
               onClick={() => setShowGenModal(true)}
-              className="px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs flex items-center gap-1 shadow-md shadow-sky-500/20 transition-all cursor-pointer"
+              className="px-3.5 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs md:text-sm flex items-center gap-1.5 shadow-md shadow-sky-500/20 transition-all cursor-pointer"
             >
-              <Plus size={13} />
+              <Plus size={14} />
               <span>Compile</span>
             </button>
           </div>
 
           <div className="relative">
-            <Search size={13} className="absolute left-3 top-2.5 text-slate-400" />
+            <Search size={15} className="absolute left-3 top-2.5 text-slate-400" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search dossiers & reports..."
-              className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-sky-500 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-100 placeholder:text-slate-500 outline-none transition-all shadow-inner"
+              className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-sky-500 rounded-lg pl-9 pr-3 py-2 text-sm font-mono text-slate-100 placeholder:text-slate-500 outline-none transition-all shadow-inner"
             />
           </div>
         </div>
@@ -116,7 +116,7 @@ export default function Reports() {
           {loading ? (
             [1, 2, 3].map((i) => <div key={i} className="skeleton h-16 rounded-xl bg-slate-900/80 border border-slate-800" />)
           ) : filteredReports.length === 0 ? (
-            <div className="text-center py-10 text-xs text-slate-500 font-mono">
+            <div className="text-center py-10 text-xs md:text-sm text-slate-500 font-mono">
               No reports indexed.
             </div>
           ) : (
@@ -133,13 +133,13 @@ export default function Reports() {
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="badge badge-low text-[8px] font-mono">{r.report_type || "INTELLIGENCE BRIEF"}</span>
-                    <span className="text-[10px] font-mono text-slate-400">
+                    <span className="badge badge-low text-xs font-mono font-bold">{r.report_type || "INTELLIGENCE BRIEF"}</span>
+                    <span className="text-xs font-mono text-slate-400">
                       {r.created_at ? new Date(r.created_at).toLocaleDateString() : "2026"}
                     </span>
                   </div>
-                  <div className="text-xs font-bold text-white line-clamp-1 group-hover:text-sky-300">{r.title}</div>
-                  <div className="text-[10px] text-slate-400 mt-1 font-mono">
+                  <div className="text-sm md:text-base font-bold text-white line-clamp-1 group-hover:text-sky-300">{r.title}</div>
+                  <div className="text-xs text-slate-400 mt-1 font-mono">
                     ID: {r.id}
                   </div>
                 </div>
@@ -156,8 +156,8 @@ export default function Reports() {
             {/* Action Bar */}
             <div className="px-6 py-3.5 border-b border-slate-800/90 bg-slate-900/95 flex items-center justify-between shadow-md">
               <div className="flex items-center gap-2.5">
-                <span className="badge badge-verified text-[9px] font-mono text-glow-emerald">OFFICIAL POLICE DOSSIER</span>
-                <span className="text-[11px] font-mono text-slate-400">
+                <span className="badge badge-verified text-xs font-mono font-bold text-glow-emerald">OFFICIAL POLICE DOSSIER</span>
+                <span className="text-xs font-mono text-slate-400">
                   REPORT REF: <strong className="text-white">{selectedReport.id}</strong>
                 </span>
               </div>
@@ -165,9 +165,9 @@ export default function Reports() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => window.print()}
-                  className="px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-900 border border-slate-800 text-xs font-mono text-slate-200 hover:text-white flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-900 border border-slate-800 text-xs md:text-sm font-mono font-semibold text-slate-200 hover:text-white flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
                 >
-                  <Printer size={13} />
+                  <Printer size={14} />
                   <span>Print Dossier</span>
                 </button>
               </div>
@@ -178,23 +178,23 @@ export default function Reports() {
               <div className="p-8 bg-slate-900/95 border border-slate-800/90 rounded-2xl shadow-2xl space-y-6">
                 {/* Official Letterhead Header */}
                 <div className="border-b border-slate-800 pb-5 text-center">
-                  <div className="text-xs font-mono tracking-widest uppercase text-slate-400 font-bold">
+                  <div className="text-xs md:text-sm font-mono tracking-wider uppercase text-slate-400 font-bold">
                     CENTRAL INVESTIGATION DIVISION · STATE POLICE CRIME BRANCH
                   </div>
-                  <h1 className="text-xl font-black text-white mt-1.5 uppercase text-glow-white tracking-wide">
+                  <h1 className="text-2xl md:text-3xl font-black text-white mt-2 uppercase text-glow-white tracking-tight">
                     {selectedReport.title}
                   </h1>
-                  <div className="text-[11px] font-mono text-slate-400 mt-1">
+                  <div className="text-xs font-mono text-slate-400 mt-1.5">
                     Compiled Date: <strong className="text-slate-300">{selectedReport.created_at ? new Date(selectedReport.created_at).toLocaleString() : "2026"} IST</strong>
                   </div>
                 </div>
 
                 {/* Executive Summary */}
                 <div className="space-y-2">
-                  <div className="text-[10px] font-mono uppercase text-sky-400 font-bold tracking-wider text-glow-sky">
+                  <div className="text-xs font-bold font-mono uppercase text-sky-400 tracking-wider text-glow-sky">
                     1. EXECUTIVE INVESTIGATION SUMMARY
                   </div>
-                  <p className="text-xs text-slate-200 leading-relaxed bg-slate-950/80 p-4 rounded-xl border border-slate-800 shadow-inner">
+                  <p className="text-sm md:text-base text-slate-200 leading-relaxed bg-slate-950/80 p-5 rounded-xl border border-slate-800 shadow-inner">
                     {selectedReport.summary || selectedReport.content || "Comprehensive network synthesis report compiled from multi-source FIR filings, Call Detail Records, seized exhibits, and verified forensic extractions."}
                   </p>
                 </div>
@@ -202,29 +202,29 @@ export default function Reports() {
                 {/* Structured Findings */}
                 {selectedReport.sections?.map((sec: any, idx: number) => (
                   <div key={idx} className="space-y-2">
-                    <div className="text-[10px] font-mono uppercase text-sky-400 font-bold tracking-wider text-glow-sky">
+                    <div className="text-xs font-bold font-mono uppercase text-sky-400 tracking-wider text-glow-sky">
                       {idx + 2}. {sec.title?.toUpperCase()}
                     </div>
-                    <div className="text-xs text-slate-300 leading-relaxed space-y-2 bg-slate-950/60 p-4 rounded-xl border border-slate-800/80">
+                    <div className="text-sm md:text-base text-slate-200 leading-relaxed space-y-2 bg-slate-950/60 p-5 rounded-xl border border-slate-800/80">
                       <p>{sec.body || sec.content}</p>
                     </div>
                   </div>
                 ))}
 
                 {/* Notice & Disclaimer */}
-                <div className="border-t border-slate-800 pt-4 text-[11px] text-slate-400 leading-relaxed">
-                  <strong className="text-slate-300">CONFIDENTIALITY NOTICE:</strong> This intelligence document is generated for authorized law-enforcement and judicial proceedings only. All associative linkages represent investigative leads requiring verification by the investigating officer before charge-sheet filing.
+                <div className="border-t border-slate-800 pt-4 text-xs md:text-sm text-slate-400 leading-relaxed">
+                  <strong className="text-slate-300 font-semibold">CONFIDENTIALITY NOTICE:</strong> This intelligence document is generated for authorized law-enforcement and judicial proceedings only. All associative linkages represent investigative leads requiring verification by the investigating officer before charge-sheet filing.
                 </div>
               </div>
             </div>
           </div>
         ) : (
           <div className="h-full flex flex-col items-center justify-center p-8 text-center text-slate-400 space-y-2">
-            <FileText size={44} className="opacity-20 mb-2 text-slate-500" />
-            <div className="text-sm font-bold uppercase tracking-wider text-slate-300">
+            <FileText size={48} className="opacity-20 mb-2 text-slate-500" />
+            <div className="text-base font-bold uppercase tracking-wider text-slate-300">
               No Report Selected
             </div>
-            <p className="text-xs text-slate-500 max-w-sm">
+            <p className="text-sm text-slate-500 max-w-sm leading-relaxed">
               Select a report from the archive or compile a new case dossier.
             </p>
           </div>
@@ -237,23 +237,23 @@ export default function Reports() {
           <div className="cmd-palette-modal max-w-md p-6 bg-slate-950 border border-slate-800 rounded-2xl shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div className="flex items-center gap-2">
-                <FileCheck2 size={18} className="text-sky-400" />
-                <h2 className="text-sm font-bold uppercase tracking-wider text-white">
+                <FileCheck2 size={20} className="text-sky-400" />
+                <h2 className="text-base font-bold uppercase tracking-wider text-white">
                   Compile Intelligence Dossier
                 </h2>
               </div>
-              <button onClick={() => setShowGenModal(false)} className="text-xs font-mono text-slate-400 hover:text-white">
+              <button onClick={() => setShowGenModal(false)} className="text-sm font-mono text-slate-400 hover:text-white">
                 ✕
               </button>
             </div>
 
-            <div className="py-4 space-y-3.5 text-xs">
+            <div className="py-4 space-y-3.5 text-sm">
               <div>
-                <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1.5 font-bold">Dossier Template Format</label>
+                <label className="block text-xs font-mono uppercase text-slate-400 mb-1.5 font-bold">Dossier Template Format</label>
                 <select
                   value={reportType}
                   onChange={(e) => setReportType(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 outline-none"
+                  className="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-sm font-mono text-slate-200 outline-none"
                 >
                   <option value="Comprehensive Syndicate Dossier">Comprehensive Syndicate Dossier</option>
                   <option value="Court-Admissible Evidence Summary">Court-Admissible Evidence Summary</option>
@@ -261,21 +261,21 @@ export default function Reports() {
                   <option value="Financial Flow & Hawala Reconstruction">Financial Flow & Hawala Reconstruction</option>
                 </select>
               </div>
-              <p className="text-[11px] text-slate-400 leading-relaxed">
+              <p className="text-xs md:text-sm text-slate-300 leading-relaxed">
                 The intelligence synthesizer will assemble active case records, verified evidence digests, and entity association graphs into an authoritative dossier.
               </p>
             </div>
 
-            <div className="flex justify-end gap-2 pt-3 border-t border-slate-800">
-              <button onClick={() => setShowGenModal(false)} className="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-mono text-xs">
+            <div className="flex justify-end gap-2.5 pt-3 border-t border-slate-800">
+              <button onClick={() => setShowGenModal(false)} className="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-mono text-xs md:text-sm">
                 Cancel
               </button>
               <button
                 onClick={handleGenerateReport}
                 disabled={genLoading}
-                className="px-5 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-sky-500/20"
+                className="px-5 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs md:text-sm flex items-center gap-1.5 shadow-md shadow-sky-500/20"
               >
-                <Sparkles size={13} />
+                <Sparkles size={14} />
                 <span>{genLoading ? "Synthesizing Dossier..." : "Generate Official Report"}</span>
               </button>
             </div>
