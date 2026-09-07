@@ -30,7 +30,13 @@ def dashboard_summary(db: Session = Depends(get_db), user=Depends(get_current_us
     nodes = graph_data.load_all_nodes(db)
     edges = graph_data.load_all_edges(db)
     g = ge.build_graph(nodes, edges)
-    communities = ge.detect_communities(g)
+    _, cached_communities = graph_data.load_cached_analytics(db)
+    if cached_communities is not None:
+        community_count = len(set(cached_communities.values()))
+    else:
+        communities = ge.detect_communities(g)
+        community_count = len(set(communities.values())) if communities else 0
+    week_ago = dt.datetime.utcnow() - dt.timedelta(days=7)
     return {
         "active_investigations": db.query(m.CrimeCase).filter(m.CrimeCase.status == "open").count(),
         "connected_entities": len(nodes),
@@ -38,10 +44,11 @@ def dashboard_summary(db: Session = Depends(get_db), user=Depends(get_current_us
         "unresolved_entity_matches": db.query(m.EntityMatch).filter(
             m.EntityMatch.match_status.in_(["POSSIBLE", "UNRESOLVED"])).count(),
         "high_confidence_leads": db.query(m.RelationshipRecord).filter(m.RelationshipRecord.confidence_score >= 0.9).count(),
-        "new_network_connections_7d": db.query(m.RelationshipRecord).count() // 10,
+        "new_network_connections_7d": db.query(m.RelationshipRecord).filter(
+            m.RelationshipRecord.created_at >= week_ago).count(),
         "anomalies": db.query(m.Anomaly).count(),
         "cross_case_links": db.query(m.RelationshipRecord).filter(m.RelationshipRecord.relationship_type == "ACCUSED_IN").count(),
-        "network_communities": len(set(communities.values())) if communities else 0,
+        "network_communities": community_count,
         "recent_alerts": db.query(m.Alert).count(),
     }
 

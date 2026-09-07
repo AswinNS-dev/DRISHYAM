@@ -1,0 +1,1391 @@
+id,evidence_id,key,value
+EVM000001,EV000001,record_type,CDR
+EVM000002,EV000001,acquired_by,SI Priya Darshan
+EVM000003,EV000001,acquisition_method,electronic extraction
+EVM000004,EV000001,integrity_algorithm,SHA-256
+EVM000005,EV000001,storage_class,secure_vault
+EVM000006,EV000002,record_type,SURVEILLANCE
+EVM000007,EV000002,acquired_by,Inspector Karthik Raghavan
+EVM000008,EV000002,acquisition_method,electronic extraction
+EVM000009,EV000002,integrity_algorithm,SHA-256
+EVM000010,EV000002,storage_class,secure_vault
+EVM000011,EV000003,record_type,SURVEILLANCE
+EVM000012,EV000003,acquired_by,SI Priya Darshan
+EVM000013,EV000003,acquisition_method,field capture
+EVM000014,EV000003,integrity_algorithm,SHA-256
+EVM000015,EV000003,storage_class,secure_vault
+EVM000016,EV000004,record_type,SURVEILLANCE
+EVM000017,EV000004,acquired_by,Dy. SP Arjun Sridhar
+EVM000018,EV000004,acquisition_method,electronic extraction
+EVM000019,EV000004,integrity_algorithm,SHA-256
+EVM000020,EV000004,storage_class,secure_vault
+EVM000021,EV000005,record_type,FINANCIAL
+EVM000022,EV000005,acquired_by,Dy. SP Arjun Sridhar
+EVM000023,EV000005,acquisition_method,field capture
+EVM000024,EV000005,integrity_algorithm,SHA-256
+EVM000025,EV000005,storage_class,secure_vault
+EVM000026,EV000006,record_type,FINANCIAL
+EVM000027,EV000006,acquired_by,Dy. SP Arjun Sridhar
+EVM000028,EV000006,acquisition_method,seizure
+EVM000029,EV000006,integrity_algorithm,SHA-256
+EVM000030,EV000006,storage_class,secure_vault
+EVM000031,EV000008,record_type,FIR
+EVM000032,EV000008,acquired_by,Special Sub-Inspector Emmanuel
+EVM000033,EV000008,acquisition_method,electronic extraction
+EVM000034,EV000008,integrity_algorithm,SHA-256
+EVM000035,EV000008,storage_class,secure_vault
+EVM000036,EV000009,record_type,CDR
+EVM000037,EV000009,acquired_by,Inspector Deepa Nanduri
+EVM000038,EV000009,acquisition_method,field capture
+EVM000039,EV000009,integrity_algorithm,SHA-256
+EVM000040,EV000009,storage_class,secure_vault
+EVM000041,EV000010,record_type,SURVEILLANCE
+EVM000042,EV000010,acquired_by,SI Priya Darshan
+EVM000043,EV000010,acquisition_method,seizure
+EVM000044,EV000010,integrity_algorithm,SHA-256
+EVM000045,EV000010,storage_class,secure_vault
+EVM000046,EV000011,record_type,SURVEILLANCE
+EVM000047,EV000011,acquired_by,Inspector Deepa Nanduri
+EVM000048,EV000011,acquisition_method,subpoena
+EVM000049,EV000011,integrity_algorithm,SHA-256
+EVM000050,EV000011,storage_class,secure_vault
+EVM000051,EV000012,record_type,SURVEILLANCE
+EVM000052,EV000012,acquired_by,Inspector Karthik Raghavan
+EVM000053,EV000012,acquisition_method,subpoena
+EVM000054,EV000012,integrity_algorithm,SHA-256
+EVM000055,EV000012,storage_class,secure_vault
+EVM000056,EV000014,record_type,FIR
+EVM000057,EV000014,acquired_by,Inspector Deepa Nanduri
+EVM000058,EV000014,acquisition_method,electronic extraction
+EVM000059,EV000014,integrity_algorithm,SHA-256
+EVM000060,EV000014,storage_class,secure_vault
+EVM000061,EV000015,record_type,CDR
+EVM000062,EV000015,acquired_by,Inspector Deepa Nanduri
+EVM000063,EV000015,acquisition_method,field capture
+EVM000064,EV000015,integrity_algorithm,SHA-256
+EVM000065,EV000015,storage_class,secure_vault
+EVM000066,EV000016,record_type,SURVEILLANCE
+EVM000067,EV000016,acquired_by,Inspector Karthik Raghavan
+EVM000068,EV000016,acquisition_method,field capture
+EVM000069,EV000016,integrity_algorithm,SHA-256
+EVM000070,EV000016,storage_class,secure_vault
+EVM000071,EV000017,record_type,SURVEILLANCE
+EVM000072,EV000017,acquired_by,Inspector Deepa Nanduri
+EVM000073,EV000017,acquisition_method,subpoena
+EVM000074,EV000017,integrity_algorithm,SHA-256
+EVM000075,EV000017,storage_class,secure_vault
+EVM000076,EV000018,record_type,SURVEILLANCE
+EVM000077,EV000018,acquired_by,Inspector Deepa Nanduri
+EVM000078,EV000018,acquisition_method,seizure
+EVM000079,EV000018,integrity_algorithm,SHA-256
+EVM000080,EV000018,storage_class,secure_vault
+EVM000081,EV000019,record_type,FINANCIAL
+EVM000082,EV000019,acquired_by,Dy. SP Arjun Sridhar
+EVM000083,EV000019,acquisition_method,subpoena
+EVM000084,EV000019,integrity_algorithm,SHA-256
+EVM000085,EV000019,storage_class,secure_vault
+EVM000086,EV000020,record_type,FINANCIAL
+EVM000087,EV000020,acquired_by,Dy. SP Arjun Sridhar
+EVM000088,EV000020,acquisition_method,subpoena
+EVM000089,EV000020,integrity_algorithm,SHA-256
+EVM000090,EV000020,storage_class,secure_vault
+EVM000091,EV000022,record_type,FIR
+EVM000092,EV000022,acquired_by,Inspector Deepa Nanduri
+EVM000093,EV000022,acquisition_method,seizure
+EVM000094,EV000022,integrity_algorithm,SHA-256
+EVM000095,EV000022,storage_class,secure_vault
+EVM000096,EV000023,record_type,CDR
+EVM000097,EV000023,acquired_by,Special Sub-Inspector Emmanuel
+EVM000098,EV000023,acquisition_method,subpoena
+EVM000099,EV000023,integrity_algorithm,SHA-256
+EVM000100,EV000023,storage_class,secure_vault
+EVM000101,EV000024,record_type,SURVEILLANCE
+EVM000102,EV000024,acquired_by,ACP Rajesh Menon
+EVM000103,EV000024,acquisition_method,electronic extraction
+EVM000104,EV000024,integrity_algorithm,SHA-256
+EVM000105,EV000024,storage_class,secure_vault
+EVM000106,EV000025,record_type,SURVEILLANCE
+EVM000107,EV000025,acquired_by,SI Priya Darshan
+EVM000108,EV000025,acquisition_method,field capture
+EVM000109,EV000025,integrity_algorithm,SHA-256
+EVM000110,EV000025,storage_class,secure_vault
+EVM000111,EV000026,record_type,SURVEILLANCE
+EVM000112,EV000026,acquired_by,Inspector Karthik Raghavan
+EVM000113,EV000026,acquisition_method,seizure
+EVM000114,EV000026,integrity_algorithm,SHA-256
+EVM000115,EV000026,storage_class,secure_vault
+EVM000116,EV000028,record_type,FIR
+EVM000117,EV000028,acquired_by,SI Priya Darshan
+EVM000118,EV000028,acquisition_method,subpoena
+EVM000119,EV000028,integrity_algorithm,SHA-256
+EVM000120,EV000028,storage_class,secure_vault
+EVM000121,EV000029,record_type,CDR
+EVM000122,EV000029,acquired_by,Dy. SP Arjun Sridhar
+EVM000123,EV000029,acquisition_method,electronic extraction
+EVM000124,EV000029,integrity_algorithm,SHA-256
+EVM000125,EV000029,storage_class,secure_vault
+EVM000126,EV000030,record_type,SURVEILLANCE
+EVM000127,EV000030,acquired_by,Inspector Deepa Nanduri
+EVM000128,EV000030,acquisition_method,field capture
+EVM000129,EV000030,integrity_algorithm,SHA-256
+EVM000130,EV000030,storage_class,secure_vault
+EVM000131,EV000031,record_type,SURVEILLANCE
+EVM000132,EV000031,acquired_by,Dy. SP Arjun Sridhar
+EVM000133,EV000031,acquisition_method,electronic extraction
+EVM000134,EV000031,integrity_algorithm,SHA-256
+EVM000135,EV000031,storage_class,secure_vault
+EVM000136,EV000032,record_type,SURVEILLANCE
+EVM000137,EV000032,acquired_by,ACP Rajesh Menon
+EVM000138,EV000032,acquisition_method,field capture
+EVM000139,EV000032,integrity_algorithm,SHA-256
+EVM000140,EV000032,storage_class,secure_vault
+EVM000141,EV000033,record_type,FINANCIAL
+EVM000142,EV000033,acquired_by,Inspector Deepa Nanduri
+EVM000143,EV000033,acquisition_method,subpoena
+EVM000144,EV000033,integrity_algorithm,SHA-256
+EVM000145,EV000033,storage_class,secure_vault
+EVM000146,EV000034,record_type,FINANCIAL
+EVM000147,EV000034,acquired_by,SI Priya Darshan
+EVM000148,EV000034,acquisition_method,seizure
+EVM000149,EV000034,integrity_algorithm,SHA-256
+EVM000150,EV000034,storage_class,secure_vault
+EVM000151,EV000036,record_type,FIR
+EVM000152,EV000036,acquired_by,ACP Rajesh Menon
+EVM000153,EV000036,acquisition_method,field capture
+EVM000154,EV000036,integrity_algorithm,SHA-256
+EVM000155,EV000036,storage_class,secure_vault
+EVM000156,EV000037,record_type,CDR
+EVM000157,EV000037,acquired_by,Inspector Karthik Raghavan
+EVM000158,EV000037,acquisition_method,electronic extraction
+EVM000159,EV000037,integrity_algorithm,SHA-256
+EVM000160,EV000037,storage_class,secure_vault
+EVM000161,EV000038,record_type,SURVEILLANCE
+EVM000162,EV000038,acquired_by,CI Sandeep Kumar
+EVM000163,EV000038,acquisition_method,seizure
+EVM000164,EV000038,integrity_algorithm,SHA-256
+EVM000165,EV000038,storage_class,secure_vault
+EVM000166,EV000039,record_type,SURVEILLANCE
+EVM000167,EV000039,acquired_by,Dy. SP Arjun Sridhar
+EVM000168,EV000039,acquisition_method,seizure
+EVM000169,EV000039,integrity_algorithm,SHA-256
+EVM000170,EV000039,storage_class,secure_vault
+EVM000171,EV000040,record_type,SURVEILLANCE
+EVM000172,EV000040,acquired_by,Inspector Karthik Raghavan
+EVM000173,EV000040,acquisition_method,seizure
+EVM000174,EV000040,integrity_algorithm,SHA-256
+EVM000175,EV000040,storage_class,secure_vault
+EVM000176,EV000042,record_type,FIR
+EVM000177,EV000042,acquired_by,SI Priya Darshan
+EVM000178,EV000042,acquisition_method,electronic extraction
+EVM000179,EV000042,integrity_algorithm,SHA-256
+EVM000180,EV000042,storage_class,secure_vault
+EVM000181,EV000043,record_type,CDR
+EVM000182,EV000043,acquired_by,Inspector Karthik Raghavan
+EVM000183,EV000043,acquisition_method,field capture
+EVM000184,EV000043,integrity_algorithm,SHA-256
+EVM000185,EV000043,storage_class,secure_vault
+EVM000186,EV000044,record_type,SURVEILLANCE
+EVM000187,EV000044,acquired_by,Special Sub-Inspector Emmanuel
+EVM000188,EV000044,acquisition_method,electronic extraction
+EVM000189,EV000044,integrity_algorithm,SHA-256
+EVM000190,EV000044,storage_class,secure_vault
+EVM000191,EV000045,record_type,SURVEILLANCE
+EVM000192,EV000045,acquired_by,Dy. SP Arjun Sridhar
+EVM000193,EV000045,acquisition_method,seizure
+EVM000194,EV000045,integrity_algorithm,SHA-256
+EVM000195,EV000045,storage_class,secure_vault
+EVM000196,EV000046,record_type,SURVEILLANCE
+EVM000197,EV000046,acquired_by,Dy. SP Arjun Sridhar
+EVM000198,EV000046,acquisition_method,seizure
+EVM000199,EV000046,integrity_algorithm,SHA-256
+EVM000200,EV000046,storage_class,secure_vault
+EVM000201,EV000047,record_type,FINANCIAL
+EVM000202,EV000047,acquired_by,Special Sub-Inspector Emmanuel
+EVM000203,EV000047,acquisition_method,field capture
+EVM000204,EV000047,integrity_algorithm,SHA-256
+EVM000205,EV000047,storage_class,secure_vault
+EVM000206,EV000048,record_type,FINANCIAL
+EVM000207,EV000048,acquired_by,Inspector Deepa Nanduri
+EVM000208,EV000048,acquisition_method,field capture
+EVM000209,EV000048,integrity_algorithm,SHA-256
+EVM000210,EV000048,storage_class,secure_vault
+EVM000211,EV000050,record_type,FIR
+EVM000212,EV000050,acquired_by,Inspector Karthik Raghavan
+EVM000213,EV000050,acquisition_method,electronic extraction
+EVM000214,EV000050,integrity_algorithm,SHA-256
+EVM000215,EV000050,storage_class,secure_vault
+EVM000216,EV000051,record_type,CDR
+EVM000217,EV000051,acquired_by,ACP Rajesh Menon
+EVM000218,EV000051,acquisition_method,subpoena
+EVM000219,EV000051,integrity_algorithm,SHA-256
+EVM000220,EV000051,storage_class,secure_vault
+EVM000221,EV000052,record_type,SURVEILLANCE
+EVM000222,EV000052,acquired_by,Inspector Karthik Raghavan
+EVM000223,EV000052,acquisition_method,field capture
+EVM000224,EV000052,integrity_algorithm,SHA-256
+EVM000225,EV000052,storage_class,secure_vault
+EVM000226,EV000053,record_type,SURVEILLANCE
+EVM000227,EV000053,acquired_by,SI Ramesh Babu
+EVM000228,EV000053,acquisition_method,seizure
+EVM000229,EV000053,integrity_algorithm,SHA-256
+EVM000230,EV000053,storage_class,secure_vault
+EVM000231,EV000054,record_type,SURVEILLANCE
+EVM000232,EV000054,acquired_by,ACP Rajesh Menon
+EVM000233,EV000054,acquisition_method,electronic extraction
+EVM000234,EV000054,integrity_algorithm,SHA-256
+EVM000235,EV000054,storage_class,secure_vault
+EVM000236,EV000056,record_type,FIR
+EVM000237,EV000056,acquired_by,Inspector Deepa Nanduri
+EVM000238,EV000056,acquisition_method,electronic extraction
+EVM000239,EV000056,integrity_algorithm,SHA-256
+EVM000240,EV000056,storage_class,secure_vault
+EVM000241,EV000057,record_type,CDR
+EVM000242,EV000057,acquired_by,Inspector Karthik Raghavan
+EVM000243,EV000057,acquisition_method,field capture
+EVM000244,EV000057,integrity_algorithm,SHA-256
+EVM000245,EV000057,storage_class,secure_vault
+EVM000246,EV000058,record_type,SURVEILLANCE
+EVM000247,EV000058,acquired_by,CI Sandeep Kumar
+EVM000248,EV000058,acquisition_method,seizure
+EVM000249,EV000058,integrity_algorithm,SHA-256
+EVM000250,EV000058,storage_class,secure_vault
+EVM000251,EV000059,record_type,SURVEILLANCE
+EVM000252,EV000059,acquired_by,SI Ramesh Babu
+EVM000253,EV000059,acquisition_method,electronic extraction
+EVM000254,EV000059,integrity_algorithm,SHA-256
+EVM000255,EV000059,storage_class,secure_vault
+EVM000256,EV000060,record_type,SURVEILLANCE
+EVM000257,EV000060,acquired_by,SI Priya Darshan
+EVM000258,EV000060,acquisition_method,field capture
+EVM000259,EV000060,integrity_algorithm,SHA-256
+EVM000260,EV000060,storage_class,secure_vault
+EVM000261,EV000061,record_type,FINANCIAL
+EVM000262,EV000061,acquired_by,Inspector Karthik Raghavan
+EVM000263,EV000061,acquisition_method,subpoena
+EVM000264,EV000061,integrity_algorithm,SHA-256
+EVM000265,EV000061,storage_class,secure_vault
+EVM000266,EV000062,record_type,FINANCIAL
+EVM000267,EV000062,acquired_by,Inspector Deepa Nanduri
+EVM000268,EV000062,acquisition_method,field capture
+EVM000269,EV000062,integrity_algorithm,SHA-256
+EVM000270,EV000062,storage_class,secure_vault
+EVM000271,EV000064,record_type,FIR
+EVM000272,EV000064,acquired_by,SI Priya Darshan
+EVM000273,EV000064,acquisition_method,seizure
+EVM000274,EV000064,integrity_algorithm,SHA-256
+EVM000275,EV000064,storage_class,secure_vault
+EVM000276,EV000065,record_type,CDR
+EVM000277,EV000065,acquired_by,SI Ramesh Babu
+EVM000278,EV000065,acquisition_method,subpoena
+EVM000279,EV000065,integrity_algorithm,SHA-256
+EVM000280,EV000065,storage_class,secure_vault
+EVM000281,EV000066,record_type,SURVEILLANCE
+EVM000282,EV000066,acquired_by,SI Priya Darshan
+EVM000283,EV000066,acquisition_method,subpoena
+EVM000284,EV000066,integrity_algorithm,SHA-256
+EVM000285,EV000066,storage_class,secure_vault
+EVM000286,EV000067,record_type,SURVEILLANCE
+EVM000287,EV000067,acquired_by,Dy. SP Arjun Sridhar
+EVM000288,EV000067,acquisition_method,electronic extraction
+EVM000289,EV000067,integrity_algorithm,SHA-256
+EVM000290,EV000067,storage_class,secure_vault
+EVM000291,EV000068,record_type,SURVEILLANCE
+EVM000292,EV000068,acquired_by,ACP Rajesh Menon
+EVM000293,EV000068,acquisition_method,seizure
+EVM000294,EV000068,integrity_algorithm,SHA-256
+EVM000295,EV000068,storage_class,secure_vault
+EVM000296,EV000070,record_type,FIR
+EVM000297,EV000070,acquired_by,Special Sub-Inspector Emmanuel
+EVM000298,EV000070,acquisition_method,subpoena
+EVM000299,EV000070,integrity_algorithm,SHA-256
+EVM000300,EV000070,storage_class,secure_vault
+EVM000301,EV000071,record_type,CDR
+EVM000302,EV000071,acquired_by,Inspector Karthik Raghavan
+EVM000303,EV000071,acquisition_method,electronic extraction
+EVM000304,EV000071,integrity_algorithm,SHA-256
+EVM000305,EV000071,storage_class,secure_vault
+EVM000306,EV000072,record_type,SURVEILLANCE
+EVM000307,EV000072,acquired_by,Special Sub-Inspector Emmanuel
+EVM000308,EV000072,acquisition_method,subpoena
+EVM000309,EV000072,integrity_algorithm,SHA-256
+EVM000310,EV000072,storage_class,secure_vault
+EVM000311,EV000073,record_type,SURVEILLANCE
+EVM000312,EV000073,acquired_by,ACP Rajesh Menon
+EVM000313,EV000073,acquisition_method,seizure
+EVM000314,EV000073,integrity_algorithm,SHA-256
+EVM000315,EV000073,storage_class,secure_vault
+EVM000316,EV000074,record_type,SURVEILLANCE
+EVM000317,EV000074,acquired_by,SI Priya Darshan
+EVM000318,EV000074,acquisition_method,subpoena
+EVM000319,EV000074,integrity_algorithm,SHA-256
+EVM000320,EV000074,storage_class,secure_vault
+EVM000321,EV000075,record_type,FINANCIAL
+EVM000322,EV000075,acquired_by,Inspector Deepa Nanduri
+EVM000323,EV000075,acquisition_method,field capture
+EVM000324,EV000075,integrity_algorithm,SHA-256
+EVM000325,EV000075,storage_class,secure_vault
+EVM000326,EV000076,record_type,FINANCIAL
+EVM000327,EV000076,acquired_by,Dy. SP Arjun Sridhar
+EVM000328,EV000076,acquisition_method,field capture
+EVM000329,EV000076,integrity_algorithm,SHA-256
+EVM000330,EV000076,storage_class,secure_vault
+EVM000331,EV000078,record_type,FIR
+EVM000332,EV000078,acquired_by,Dy. SP Arjun Sridhar
+EVM000333,EV000078,acquisition_method,seizure
+EVM000334,EV000078,integrity_algorithm,SHA-256
+EVM000335,EV000078,storage_class,secure_vault
+EVM000336,EV000079,record_type,CDR
+EVM000337,EV000079,acquired_by,Special Sub-Inspector Emmanuel
+EVM000338,EV000079,acquisition_method,field capture
+EVM000339,EV000079,integrity_algorithm,SHA-256
+EVM000340,EV000079,storage_class,secure_vault
+EVM000341,EV000080,record_type,SURVEILLANCE
+EVM000342,EV000080,acquired_by,Dy. SP Arjun Sridhar
+EVM000343,EV000080,acquisition_method,field capture
+EVM000344,EV000080,integrity_algorithm,SHA-256
+EVM000345,EV000080,storage_class,secure_vault
+EVM000346,EV000081,record_type,SURVEILLANCE
+EVM000347,EV000081,acquired_by,ACP Rajesh Menon
+EVM000348,EV000081,acquisition_method,subpoena
+EVM000349,EV000081,integrity_algorithm,SHA-256
+EVM000350,EV000081,storage_class,secure_vault
+EVM000351,EV000082,record_type,SURVEILLANCE
+EVM000352,EV000082,acquired_by,CI Sandeep Kumar
+EVM000353,EV000082,acquisition_method,electronic extraction
+EVM000354,EV000082,integrity_algorithm,SHA-256
+EVM000355,EV000082,storage_class,secure_vault
+EVM000356,EV000084,record_type,FIR
+EVM000357,EV000084,acquired_by,CI Sandeep Kumar
+EVM000358,EV000084,acquisition_method,electronic extraction
+EVM000359,EV000084,integrity_algorithm,SHA-256
+EVM000360,EV000084,storage_class,secure_vault
+EVM000361,EV000085,record_type,FIR
+EVM000362,EV000085,acquired_by,Dy. SP Arjun Sridhar
+EVM000363,EV000085,acquisition_method,electronic extraction
+EVM000364,EV000085,integrity_algorithm,SHA-256
+EVM000365,EV000085,storage_class,secure_vault
+EVM000366,EV000086,record_type,CDR
+EVM000367,EV000086,acquired_by,ACP Rajesh Menon
+EVM000368,EV000086,acquisition_method,electronic extraction
+EVM000369,EV000086,integrity_algorithm,SHA-256
+EVM000370,EV000086,storage_class,secure_vault
+EVM000371,EV000087,record_type,SURVEILLANCE
+EVM000372,EV000087,acquired_by,SI Ramesh Babu
+EVM000373,EV000087,acquisition_method,seizure
+EVM000374,EV000087,integrity_algorithm,SHA-256
+EVM000375,EV000087,storage_class,secure_vault
+EVM000376,EV000088,record_type,SURVEILLANCE
+EVM000377,EV000088,acquired_by,ACP Rajesh Menon
+EVM000378,EV000088,acquisition_method,subpoena
+EVM000379,EV000088,integrity_algorithm,SHA-256
+EVM000380,EV000088,storage_class,secure_vault
+EVM000381,EV000089,record_type,FINANCIAL
+EVM000382,EV000089,acquired_by,Inspector Deepa Nanduri
+EVM000383,EV000089,acquisition_method,seizure
+EVM000384,EV000089,integrity_algorithm,SHA-256
+EVM000385,EV000089,storage_class,secure_vault
+EVM000386,EV000090,record_type,FIR
+EVM000387,EV000090,acquired_by,Dy. SP Arjun Sridhar
+EVM000388,EV000090,acquisition_method,seizure
+EVM000389,EV000090,integrity_algorithm,SHA-256
+EVM000390,EV000090,storage_class,secure_vault
+EVM000391,EV000091,record_type,CDR
+EVM000392,EV000091,acquired_by,SI Priya Darshan
+EVM000393,EV000091,acquisition_method,seizure
+EVM000394,EV000091,integrity_algorithm,SHA-256
+EVM000395,EV000091,storage_class,secure_vault
+EVM000396,EV000092,record_type,CDR
+EVM000397,EV000092,acquired_by,SI Priya Darshan
+EVM000398,EV000092,acquisition_method,electronic extraction
+EVM000399,EV000092,integrity_algorithm,SHA-256
+EVM000400,EV000092,storage_class,secure_vault
+EVM000401,EV000093,record_type,CDR
+EVM000402,EV000093,acquired_by,Dy. SP Arjun Sridhar
+EVM000403,EV000093,acquisition_method,subpoena
+EVM000404,EV000093,integrity_algorithm,SHA-256
+EVM000405,EV000093,storage_class,secure_vault
+EVM000406,EV000094,record_type,CDR
+EVM000407,EV000094,acquired_by,CI Sandeep Kumar
+EVM000408,EV000094,acquisition_method,seizure
+EVM000409,EV000094,integrity_algorithm,SHA-256
+EVM000410,EV000094,storage_class,secure_vault
+EVM000411,EV000095,record_type,CDR
+EVM000412,EV000095,acquired_by,CI Sandeep Kumar
+EVM000413,EV000095,acquisition_method,electronic extraction
+EVM000414,EV000095,integrity_algorithm,SHA-256
+EVM000415,EV000095,storage_class,secure_vault
+EVM000416,EV000096,record_type,CDR
+EVM000417,EV000096,acquired_by,Inspector Karthik Raghavan
+EVM000418,EV000096,acquisition_method,subpoena
+EVM000419,EV000096,integrity_algorithm,SHA-256
+EVM000420,EV000096,storage_class,secure_vault
+EVM000421,EV000097,record_type,CDR
+EVM000422,EV000097,acquired_by,CI Sandeep Kumar
+EVM000423,EV000097,acquisition_method,field capture
+EVM000424,EV000097,integrity_algorithm,SHA-256
+EVM000425,EV000097,storage_class,secure_vault
+EVM000426,EV000098,record_type,CDR
+EVM000427,EV000098,acquired_by,Dy. SP Arjun Sridhar
+EVM000428,EV000098,acquisition_method,subpoena
+EVM000429,EV000098,integrity_algorithm,SHA-256
+EVM000430,EV000098,storage_class,secure_vault
+EVM000431,EV000099,record_type,CDR
+EVM000432,EV000099,acquired_by,Inspector Deepa Nanduri
+EVM000433,EV000099,acquisition_method,seizure
+EVM000434,EV000099,integrity_algorithm,SHA-256
+EVM000435,EV000099,storage_class,secure_vault
+EVM000436,EV000100,record_type,CDR
+EVM000437,EV000100,acquired_by,ACP Rajesh Menon
+EVM000438,EV000100,acquisition_method,electronic extraction
+EVM000439,EV000100,integrity_algorithm,SHA-256
+EVM000440,EV000100,storage_class,secure_vault
+EVM000441,EV000101,record_type,CDR
+EVM000442,EV000101,acquired_by,SI Ramesh Babu
+EVM000443,EV000101,acquisition_method,electronic extraction
+EVM000444,EV000101,integrity_algorithm,SHA-256
+EVM000445,EV000101,storage_class,secure_vault
+EVM000446,EV000102,record_type,CDR
+EVM000447,EV000102,acquired_by,Special Sub-Inspector Emmanuel
+EVM000448,EV000102,acquisition_method,subpoena
+EVM000449,EV000102,integrity_algorithm,SHA-256
+EVM000450,EV000102,storage_class,secure_vault
+EVM000451,EV000103,record_type,CDR
+EVM000452,EV000103,acquired_by,CI Sandeep Kumar
+EVM000453,EV000103,acquisition_method,seizure
+EVM000454,EV000103,integrity_algorithm,SHA-256
+EVM000455,EV000103,storage_class,secure_vault
+EVM000456,EV000104,record_type,INVESTIGATION_NOTE
+EVM000457,EV000104,acquired_by,CI Sandeep Kumar
+EVM000458,EV000104,acquisition_method,subpoena
+EVM000459,EV000104,integrity_algorithm,SHA-256
+EVM000460,EV000104,storage_class,secure_vault
+EVM000461,EV000105,record_type,CDR
+EVM000462,EV000105,acquired_by,SI Priya Darshan
+EVM000463,EV000105,acquisition_method,subpoena
+EVM000464,EV000105,integrity_algorithm,SHA-256
+EVM000465,EV000105,storage_class,secure_vault
+EVM000466,EV000106,record_type,INVESTIGATION_NOTE
+EVM000467,EV000106,acquired_by,CI Sandeep Kumar
+EVM000468,EV000106,acquisition_method,seizure
+EVM000469,EV000106,integrity_algorithm,SHA-256
+EVM000470,EV000106,storage_class,secure_vault
+EVM000471,EV000107,record_type,CDR
+EVM000472,EV000107,acquired_by,Special Sub-Inspector Emmanuel
+EVM000473,EV000107,acquisition_method,subpoena
+EVM000474,EV000107,integrity_algorithm,SHA-256
+EVM000475,EV000107,storage_class,secure_vault
+EVM000476,EV000108,record_type,INVESTIGATION_NOTE
+EVM000477,EV000108,acquired_by,Dy. SP Arjun Sridhar
+EVM000478,EV000108,acquisition_method,field capture
+EVM000479,EV000108,integrity_algorithm,SHA-256
+EVM000480,EV000108,storage_class,secure_vault
+EVM000481,EV000109,record_type,INVESTIGATION_NOTE
+EVM000482,EV000109,acquired_by,SI Priya Darshan
+EVM000483,EV000109,acquisition_method,electronic extraction
+EVM000484,EV000109,integrity_algorithm,SHA-256
+EVM000485,EV000109,storage_class,secure_vault
+EVM000486,EV000110,record_type,FIR
+EVM000487,EV000110,acquired_by,ACP Rajesh Menon
+EVM000488,EV000110,acquisition_method,subpoena
+EVM000489,EV000110,integrity_algorithm,SHA-256
+EVM000490,EV000110,storage_class,secure_vault
+EVM000491,EV000111,record_type,INVESTIGATION_NOTE
+EVM000492,EV000111,acquired_by,ACP Rajesh Menon
+EVM000493,EV000111,acquisition_method,electronic extraction
+EVM000494,EV000111,integrity_algorithm,SHA-256
+EVM000495,EV000111,storage_class,secure_vault
+EVM000496,EV000112,record_type,INVESTIGATION_NOTE
+EVM000497,EV000112,acquired_by,Inspector Deepa Nanduri
+EVM000498,EV000112,acquisition_method,electronic extraction
+EVM000499,EV000112,integrity_algorithm,SHA-256
+EVM000500,EV000112,storage_class,secure_vault
+EVM000501,EV000113,record_type,FINANCIAL
+EVM000502,EV000113,acquired_by,SI Priya Darshan
+EVM000503,EV000113,acquisition_method,subpoena
+EVM000504,EV000113,integrity_algorithm,SHA-256
+EVM000505,EV000113,storage_class,secure_vault
+EVM000506,EV000114,record_type,SURVEILLANCE
+EVM000507,EV000114,acquired_by,ACP Rajesh Menon
+EVM000508,EV000114,acquisition_method,electronic extraction
+EVM000509,EV000114,integrity_algorithm,SHA-256
+EVM000510,EV000114,storage_class,secure_vault
+EVM000511,EV000115,record_type,FINANCIAL
+EVM000512,EV000115,acquired_by,SI Ramesh Babu
+EVM000513,EV000115,acquisition_method,subpoena
+EVM000514,EV000115,integrity_algorithm,SHA-256
+EVM000515,EV000115,storage_class,secure_vault
+EVM000516,EV000116,record_type,SURVEILLANCE
+EVM000517,EV000116,acquired_by,CI Sandeep Kumar
+EVM000518,EV000116,acquisition_method,seizure
+EVM000519,EV000116,integrity_algorithm,SHA-256
+EVM000520,EV000116,storage_class,secure_vault
+EVM000521,EV000117,record_type,SURVEILLANCE
+EVM000522,EV000117,acquired_by,Inspector Deepa Nanduri
+EVM000523,EV000117,acquisition_method,seizure
+EVM000524,EV000117,integrity_algorithm,SHA-256
+EVM000525,EV000117,storage_class,secure_vault
+EVM000526,EV000118,record_type,SURVEILLANCE
+EVM000527,EV000118,acquired_by,SI Ramesh Babu
+EVM000528,EV000118,acquisition_method,electronic extraction
+EVM000529,EV000118,integrity_algorithm,SHA-256
+EVM000530,EV000118,storage_class,secure_vault
+EVM000531,EV000119,record_type,FINANCIAL
+EVM000532,EV000119,acquired_by,Special Sub-Inspector Emmanuel
+EVM000533,EV000119,acquisition_method,subpoena
+EVM000534,EV000119,integrity_algorithm,SHA-256
+EVM000535,EV000119,storage_class,secure_vault
+EVM000536,EV000120,record_type,FIR
+EVM000537,EV000120,acquired_by,SI Ramesh Babu
+EVM000538,EV000120,acquisition_method,seizure
+EVM000539,EV000120,integrity_algorithm,SHA-256
+EVM000540,EV000120,storage_class,secure_vault
+EVM000541,EV000121,record_type,SURVEILLANCE
+EVM000542,EV000121,acquired_by,Inspector Deepa Nanduri
+EVM000543,EV000121,acquisition_method,subpoena
+EVM000544,EV000121,integrity_algorithm,SHA-256
+EVM000545,EV000121,storage_class,secure_vault
+EVM000546,EV000122,record_type,SURVEILLANCE
+EVM000547,EV000122,acquired_by,Dy. SP Arjun Sridhar
+EVM000548,EV000122,acquisition_method,electronic extraction
+EVM000549,EV000122,integrity_algorithm,SHA-256
+EVM000550,EV000122,storage_class,secure_vault
+EVM000551,EV000123,record_type,CDR
+EVM000552,EV000123,acquired_by,Special Sub-Inspector Emmanuel
+EVM000553,EV000123,acquisition_method,field capture
+EVM000554,EV000123,integrity_algorithm,SHA-256
+EVM000555,EV000123,storage_class,secure_vault
+EVM000556,EV000124,record_type,CDR
+EVM000557,EV000124,acquired_by,CI Sandeep Kumar
+EVM000558,EV000124,acquisition_method,seizure
+EVM000559,EV000124,integrity_algorithm,SHA-256
+EVM000560,EV000124,storage_class,secure_vault
+EVM000561,EV000125,record_type,FINANCIAL
+EVM000562,EV000125,acquired_by,ACP Rajesh Menon
+EVM000563,EV000125,acquisition_method,electronic extraction
+EVM000564,EV000125,integrity_algorithm,SHA-256
+EVM000565,EV000125,storage_class,secure_vault
+EVM000566,EV000126,record_type,SURVEILLANCE
+EVM000567,EV000126,acquired_by,CI Sandeep Kumar
+EVM000568,EV000126,acquisition_method,electronic extraction
+EVM000569,EV000126,integrity_algorithm,SHA-256
+EVM000570,EV000126,storage_class,secure_vault
+EVM000571,EV000127,record_type,INVESTIGATION_NOTE
+EVM000572,EV000127,acquired_by,SI Priya Darshan
+EVM000573,EV000127,acquisition_method,field capture
+EVM000574,EV000127,integrity_algorithm,SHA-256
+EVM000575,EV000127,storage_class,secure_vault
+EVM000576,EV000128,record_type,FINANCIAL
+EVM000577,EV000128,acquired_by,Special Sub-Inspector Emmanuel
+EVM000578,EV000128,acquisition_method,seizure
+EVM000579,EV000128,integrity_algorithm,SHA-256
+EVM000580,EV000128,storage_class,secure_vault
+EVM000581,EV000129,record_type,FIR
+EVM000582,EV000129,acquired_by,Dy. SP Arjun Sridhar
+EVM000583,EV000129,acquisition_method,seizure
+EVM000584,EV000129,integrity_algorithm,SHA-256
+EVM000585,EV000129,storage_class,secure_vault
+EVM000586,EV000130,record_type,INVESTIGATION_NOTE
+EVM000587,EV000130,acquired_by,SI Ramesh Babu
+EVM000588,EV000130,acquisition_method,seizure
+EVM000589,EV000130,integrity_algorithm,SHA-256
+EVM000590,EV000130,storage_class,secure_vault
+EVM000591,EV000131,record_type,CDR
+EVM000592,EV000131,acquired_by,ACP Rajesh Menon
+EVM000593,EV000131,acquisition_method,subpoena
+EVM000594,EV000131,integrity_algorithm,SHA-256
+EVM000595,EV000131,storage_class,secure_vault
+EVM000596,EV000132,record_type,CDR
+EVM000597,EV000132,acquired_by,Dy. SP Arjun Sridhar
+EVM000598,EV000132,acquisition_method,seizure
+EVM000599,EV000132,integrity_algorithm,SHA-256
+EVM000600,EV000132,storage_class,secure_vault
+EVM000601,EV000133,record_type,FIR
+EVM000602,EV000133,acquired_by,CI Sandeep Kumar
+EVM000603,EV000133,acquisition_method,subpoena
+EVM000604,EV000133,integrity_algorithm,SHA-256
+EVM000605,EV000133,storage_class,secure_vault
+EVM000606,EV000134,record_type,FINANCIAL
+EVM000607,EV000134,acquired_by,SI Priya Darshan
+EVM000608,EV000134,acquisition_method,field capture
+EVM000609,EV000134,integrity_algorithm,SHA-256
+EVM000610,EV000134,storage_class,secure_vault
+EVM000611,EV000135,record_type,INVESTIGATION_NOTE
+EVM000612,EV000135,acquired_by,Special Sub-Inspector Emmanuel
+EVM000613,EV000135,acquisition_method,subpoena
+EVM000614,EV000135,integrity_algorithm,SHA-256
+EVM000615,EV000135,storage_class,secure_vault
+EVM000616,EV000136,record_type,FIR
+EVM000617,EV000136,acquired_by,Dy. SP Arjun Sridhar
+EVM000618,EV000136,acquisition_method,electronic extraction
+EVM000619,EV000136,integrity_algorithm,SHA-256
+EVM000620,EV000136,storage_class,secure_vault
+EVM000621,EV000137,record_type,SURVEILLANCE
+EVM000622,EV000137,acquired_by,SI Priya Darshan
+EVM000623,EV000137,acquisition_method,electronic extraction
+EVM000624,EV000137,integrity_algorithm,SHA-256
+EVM000625,EV000137,storage_class,secure_vault
+EVM000626,EV000138,record_type,INVESTIGATION_NOTE
+EVM000627,EV000138,acquired_by,Inspector Karthik Raghavan
+EVM000628,EV000138,acquisition_method,subpoena
+EVM000629,EV000138,integrity_algorithm,SHA-256
+EVM000630,EV000138,storage_class,secure_vault
+EVM000631,EV000139,record_type,INVESTIGATION_NOTE
+EVM000632,EV000139,acquired_by,Inspector Deepa Nanduri
+EVM000633,EV000139,acquisition_method,subpoena
+EVM000634,EV000139,integrity_algorithm,SHA-256
+EVM000635,EV000139,storage_class,secure_vault
+EVM000636,EV000140,record_type,FINANCIAL
+EVM000637,EV000140,acquired_by,SI Priya Darshan
+EVM000638,EV000140,acquisition_method,electronic extraction
+EVM000639,EV000140,integrity_algorithm,SHA-256
+EVM000640,EV000140,storage_class,secure_vault
+EVM000641,EV000141,record_type,CDR
+EVM000642,EV000141,acquired_by,Inspector Deepa Nanduri
+EVM000643,EV000141,acquisition_method,subpoena
+EVM000644,EV000141,integrity_algorithm,SHA-256
+EVM000645,EV000141,storage_class,secure_vault
+EVM000646,EV000142,record_type,SURVEILLANCE
+EVM000647,EV000142,acquired_by,SI Priya Darshan
+EVM000648,EV000142,acquisition_method,field capture
+EVM000649,EV000142,integrity_algorithm,SHA-256
+EVM000650,EV000142,storage_class,secure_vault
+EVM000651,EV000143,record_type,INVESTIGATION_NOTE
+EVM000652,EV000143,acquired_by,Dy. SP Arjun Sridhar
+EVM000653,EV000143,acquisition_method,seizure
+EVM000654,EV000143,integrity_algorithm,SHA-256
+EVM000655,EV000143,storage_class,secure_vault
+EVM000656,EV000144,record_type,FINANCIAL
+EVM000657,EV000144,acquired_by,SI Priya Darshan
+EVM000658,EV000144,acquisition_method,field capture
+EVM000659,EV000144,integrity_algorithm,SHA-256
+EVM000660,EV000144,storage_class,secure_vault
+EVM000661,EV000145,record_type,INVESTIGATION_NOTE
+EVM000662,EV000145,acquired_by,Inspector Karthik Raghavan
+EVM000663,EV000145,acquisition_method,field capture
+EVM000664,EV000145,integrity_algorithm,SHA-256
+EVM000665,EV000145,storage_class,secure_vault
+EVM000666,EV000146,record_type,FINANCIAL
+EVM000667,EV000146,acquired_by,Inspector Karthik Raghavan
+EVM000668,EV000146,acquisition_method,electronic extraction
+EVM000669,EV000146,integrity_algorithm,SHA-256
+EVM000670,EV000146,storage_class,secure_vault
+EVM000671,EV000147,record_type,FINANCIAL
+EVM000672,EV000147,acquired_by,ACP Rajesh Menon
+EVM000673,EV000147,acquisition_method,electronic extraction
+EVM000674,EV000147,integrity_algorithm,SHA-256
+EVM000675,EV000147,storage_class,secure_vault
+EVM000676,EV000148,record_type,INVESTIGATION_NOTE
+EVM000677,EV000148,acquired_by,ACP Rajesh Menon
+EVM000678,EV000148,acquisition_method,electronic extraction
+EVM000679,EV000148,integrity_algorithm,SHA-256
+EVM000680,EV000148,storage_class,secure_vault
+EVM000681,EV000149,record_type,CDR
+EVM000682,EV000149,acquired_by,Inspector Karthik Raghavan
+EVM000683,EV000149,acquisition_method,electronic extraction
+EVM000684,EV000149,integrity_algorithm,SHA-256
+EVM000685,EV000149,storage_class,secure_vault
+EVM000686,EV000150,record_type,FINANCIAL
+EVM000687,EV000150,acquired_by,Special Sub-Inspector Emmanuel
+EVM000688,EV000150,acquisition_method,subpoena
+EVM000689,EV000150,integrity_algorithm,SHA-256
+EVM000690,EV000150,storage_class,secure_vault
+EVM000691,EV000151,record_type,FIR
+EVM000692,EV000151,acquired_by,Special Sub-Inspector Emmanuel
+EVM000693,EV000151,acquisition_method,field capture
+EVM000694,EV000151,integrity_algorithm,SHA-256
+EVM000695,EV000151,storage_class,secure_vault
+EVM000696,EV000152,record_type,INVESTIGATION_NOTE
+EVM000697,EV000152,acquired_by,Inspector Karthik Raghavan
+EVM000698,EV000152,acquisition_method,field capture
+EVM000699,EV000152,integrity_algorithm,SHA-256
+EVM000700,EV000152,storage_class,secure_vault
+EVM000701,EV000153,record_type,FINANCIAL
+EVM000702,EV000153,acquired_by,SI Ramesh Babu
+EVM000703,EV000153,acquisition_method,field capture
+EVM000704,EV000153,integrity_algorithm,SHA-256
+EVM000705,EV000153,storage_class,secure_vault
+EVM000706,EV000154,record_type,CDR
+EVM000707,EV000154,acquired_by,SI Priya Darshan
+EVM000708,EV000154,acquisition_method,field capture
+EVM000709,EV000154,integrity_algorithm,SHA-256
+EVM000710,EV000154,storage_class,secure_vault
+EVM000711,EV000155,record_type,SURVEILLANCE
+EVM000712,EV000155,acquired_by,Inspector Deepa Nanduri
+EVM000713,EV000155,acquisition_method,electronic extraction
+EVM000714,EV000155,integrity_algorithm,SHA-256
+EVM000715,EV000155,storage_class,secure_vault
+EVM000716,EV000156,record_type,FINANCIAL
+EVM000717,EV000156,acquired_by,Inspector Deepa Nanduri
+EVM000718,EV000156,acquisition_method,field capture
+EVM000719,EV000156,integrity_algorithm,SHA-256
+EVM000720,EV000156,storage_class,secure_vault
+EVM000721,EV000157,record_type,FINANCIAL
+EVM000722,EV000157,acquired_by,Inspector Karthik Raghavan
+EVM000723,EV000157,acquisition_method,electronic extraction
+EVM000724,EV000157,integrity_algorithm,SHA-256
+EVM000725,EV000157,storage_class,secure_vault
+EVM000726,EV000158,record_type,FIR
+EVM000727,EV000158,acquired_by,SI Priya Darshan
+EVM000728,EV000158,acquisition_method,seizure
+EVM000729,EV000158,integrity_algorithm,SHA-256
+EVM000730,EV000158,storage_class,secure_vault
+EVM000731,EV000159,record_type,SURVEILLANCE
+EVM000732,EV000159,acquired_by,Dy. SP Arjun Sridhar
+EVM000733,EV000159,acquisition_method,electronic extraction
+EVM000734,EV000159,integrity_algorithm,SHA-256
+EVM000735,EV000159,storage_class,secure_vault
+EVM000736,EV000160,record_type,INVESTIGATION_NOTE
+EVM000737,EV000160,acquired_by,CI Sandeep Kumar
+EVM000738,EV000160,acquisition_method,subpoena
+EVM000739,EV000160,integrity_algorithm,SHA-256
+EVM000740,EV000160,storage_class,secure_vault
+EVM000741,EV000161,record_type,FIR
+EVM000742,EV000161,acquired_by,Inspector Deepa Nanduri
+EVM000743,EV000161,acquisition_method,electronic extraction
+EVM000744,EV000161,integrity_algorithm,SHA-256
+EVM000745,EV000161,storage_class,secure_vault
+EVM000746,EV000162,record_type,FIR
+EVM000747,EV000162,acquired_by,SI Ramesh Babu
+EVM000748,EV000162,acquisition_method,seizure
+EVM000749,EV000162,integrity_algorithm,SHA-256
+EVM000750,EV000162,storage_class,secure_vault
+EVM000751,EV000163,record_type,FINANCIAL
+EVM000752,EV000163,acquired_by,CI Sandeep Kumar
+EVM000753,EV000163,acquisition_method,electronic extraction
+EVM000754,EV000163,integrity_algorithm,SHA-256
+EVM000755,EV000163,storage_class,secure_vault
+EVM000756,EV000164,record_type,INVESTIGATION_NOTE
+EVM000757,EV000164,acquired_by,Special Sub-Inspector Emmanuel
+EVM000758,EV000164,acquisition_method,field capture
+EVM000759,EV000164,integrity_algorithm,SHA-256
+EVM000760,EV000164,storage_class,secure_vault
+EVM000761,EV000165,record_type,CDR
+EVM000762,EV000165,acquired_by,Special Sub-Inspector Emmanuel
+EVM000763,EV000165,acquisition_method,electronic extraction
+EVM000764,EV000165,integrity_algorithm,SHA-256
+EVM000765,EV000165,storage_class,secure_vault
+EVM000766,EV000166,record_type,FIR
+EVM000767,EV000166,acquired_by,CI Sandeep Kumar
+EVM000768,EV000166,acquisition_method,subpoena
+EVM000769,EV000166,integrity_algorithm,SHA-256
+EVM000770,EV000166,storage_class,secure_vault
+EVM000771,EV000167,record_type,SURVEILLANCE
+EVM000772,EV000167,acquired_by,SI Priya Darshan
+EVM000773,EV000167,acquisition_method,subpoena
+EVM000774,EV000167,integrity_algorithm,SHA-256
+EVM000775,EV000167,storage_class,secure_vault
+EVM000776,EV000168,record_type,CDR
+EVM000777,EV000168,acquired_by,ACP Rajesh Menon
+EVM000778,EV000168,acquisition_method,electronic extraction
+EVM000779,EV000168,integrity_algorithm,SHA-256
+EVM000780,EV000168,storage_class,secure_vault
+EVM000781,EV000169,record_type,FIR
+EVM000782,EV000169,acquired_by,Dy. SP Arjun Sridhar
+EVM000783,EV000169,acquisition_method,electronic extraction
+EVM000784,EV000169,integrity_algorithm,SHA-256
+EVM000785,EV000169,storage_class,secure_vault
+EVM000786,EV000170,record_type,SURVEILLANCE
+EVM000787,EV000170,acquired_by,Inspector Deepa Nanduri
+EVM000788,EV000170,acquisition_method,electronic extraction
+EVM000789,EV000170,integrity_algorithm,SHA-256
+EVM000790,EV000170,storage_class,secure_vault
+EVM000791,EV000171,record_type,INVESTIGATION_NOTE
+EVM000792,EV000171,acquired_by,CI Sandeep Kumar
+EVM000793,EV000171,acquisition_method,subpoena
+EVM000794,EV000171,integrity_algorithm,SHA-256
+EVM000795,EV000171,storage_class,secure_vault
+EVM000796,EV000172,record_type,INVESTIGATION_NOTE
+EVM000797,EV000172,acquired_by,Inspector Deepa Nanduri
+EVM000798,EV000172,acquisition_method,electronic extraction
+EVM000799,EV000172,integrity_algorithm,SHA-256
+EVM000800,EV000172,storage_class,secure_vault
+EVM000801,EV000173,record_type,FINANCIAL
+EVM000802,EV000173,acquired_by,Inspector Karthik Raghavan
+EVM000803,EV000173,acquisition_method,seizure
+EVM000804,EV000173,integrity_algorithm,SHA-256
+EVM000805,EV000173,storage_class,secure_vault
+EVM000806,EV000174,record_type,SURVEILLANCE
+EVM000807,EV000174,acquired_by,Dy. SP Arjun Sridhar
+EVM000808,EV000174,acquisition_method,subpoena
+EVM000809,EV000174,integrity_algorithm,SHA-256
+EVM000810,EV000174,storage_class,secure_vault
+EVM000811,EV000175,record_type,SURVEILLANCE
+EVM000812,EV000175,acquired_by,Dy. SP Arjun Sridhar
+EVM000813,EV000175,acquisition_method,subpoena
+EVM000814,EV000175,integrity_algorithm,SHA-256
+EVM000815,EV000175,storage_class,secure_vault
+EVM000816,EV000176,record_type,FINANCIAL
+EVM000817,EV000176,acquired_by,SI Ramesh Babu
+EVM000818,EV000176,acquisition_method,subpoena
+EVM000819,EV000176,integrity_algorithm,SHA-256
+EVM000820,EV000176,storage_class,secure_vault
+EVM000821,EV000177,record_type,SURVEILLANCE
+EVM000822,EV000177,acquired_by,ACP Rajesh Menon
+EVM000823,EV000177,acquisition_method,seizure
+EVM000824,EV000177,integrity_algorithm,SHA-256
+EVM000825,EV000177,storage_class,secure_vault
+EVM000826,EV000178,record_type,INVESTIGATION_NOTE
+EVM000827,EV000178,acquired_by,Dy. SP Arjun Sridhar
+EVM000828,EV000178,acquisition_method,seizure
+EVM000829,EV000178,integrity_algorithm,SHA-256
+EVM000830,EV000178,storage_class,secure_vault
+EVM000831,EV000179,record_type,INVESTIGATION_NOTE
+EVM000832,EV000179,acquired_by,SI Ramesh Babu
+EVM000833,EV000179,acquisition_method,subpoena
+EVM000834,EV000179,integrity_algorithm,SHA-256
+EVM000835,EV000179,storage_class,secure_vault
+EVM000836,EV000180,record_type,CDR
+EVM000837,EV000180,acquired_by,CI Sandeep Kumar
+EVM000838,EV000180,acquisition_method,electronic extraction
+EVM000839,EV000180,integrity_algorithm,SHA-256
+EVM000840,EV000180,storage_class,secure_vault
+EVM000841,EV000181,record_type,FIR
+EVM000842,EV000181,acquired_by,CI Sandeep Kumar
+EVM000843,EV000181,acquisition_method,subpoena
+EVM000844,EV000181,integrity_algorithm,SHA-256
+EVM000845,EV000181,storage_class,secure_vault
+EVM000846,EV000182,record_type,CDR
+EVM000847,EV000182,acquired_by,Inspector Karthik Raghavan
+EVM000848,EV000182,acquisition_method,electronic extraction
+EVM000849,EV000182,integrity_algorithm,SHA-256
+EVM000850,EV000182,storage_class,secure_vault
+EVM000851,EV000183,record_type,INVESTIGATION_NOTE
+EVM000852,EV000183,acquired_by,Inspector Karthik Raghavan
+EVM000853,EV000183,acquisition_method,field capture
+EVM000854,EV000183,integrity_algorithm,SHA-256
+EVM000855,EV000183,storage_class,secure_vault
+EVM000856,EV000184,record_type,SURVEILLANCE
+EVM000857,EV000184,acquired_by,ACP Rajesh Menon
+EVM000858,EV000184,acquisition_method,field capture
+EVM000859,EV000184,integrity_algorithm,SHA-256
+EVM000860,EV000184,storage_class,secure_vault
+EVM000861,EV000185,record_type,FINANCIAL
+EVM000862,EV000185,acquired_by,Inspector Deepa Nanduri
+EVM000863,EV000185,acquisition_method,field capture
+EVM000864,EV000185,integrity_algorithm,SHA-256
+EVM000865,EV000185,storage_class,secure_vault
+EVM000866,EV000186,record_type,INVESTIGATION_NOTE
+EVM000867,EV000186,acquired_by,Inspector Karthik Raghavan
+EVM000868,EV000186,acquisition_method,electronic extraction
+EVM000869,EV000186,integrity_algorithm,SHA-256
+EVM000870,EV000186,storage_class,secure_vault
+EVM000871,EV000187,record_type,SURVEILLANCE
+EVM000872,EV000187,acquired_by,SI Ramesh Babu
+EVM000873,EV000187,acquisition_method,field capture
+EVM000874,EV000187,integrity_algorithm,SHA-256
+EVM000875,EV000187,storage_class,secure_vault
+EVM000876,EV000188,record_type,INVESTIGATION_NOTE
+EVM000877,EV000188,acquired_by,SI Priya Darshan
+EVM000878,EV000188,acquisition_method,field capture
+EVM000879,EV000188,integrity_algorithm,SHA-256
+EVM000880,EV000188,storage_class,secure_vault
+EVM000881,EV000189,record_type,SURVEILLANCE
+EVM000882,EV000189,acquired_by,ACP Rajesh Menon
+EVM000883,EV000189,acquisition_method,seizure
+EVM000884,EV000189,integrity_algorithm,SHA-256
+EVM000885,EV000189,storage_class,secure_vault
+EVM000886,EV000190,record_type,INVESTIGATION_NOTE
+EVM000887,EV000190,acquired_by,Dy. SP Arjun Sridhar
+EVM000888,EV000190,acquisition_method,subpoena
+EVM000889,EV000190,integrity_algorithm,SHA-256
+EVM000890,EV000190,storage_class,secure_vault
+EVM000891,EV000191,record_type,CDR
+EVM000892,EV000191,acquired_by,Dy. SP Arjun Sridhar
+EVM000893,EV000191,acquisition_method,seizure
+EVM000894,EV000191,integrity_algorithm,SHA-256
+EVM000895,EV000191,storage_class,secure_vault
+EVM000896,EV000192,record_type,FIR
+EVM000897,EV000192,acquired_by,SI Priya Darshan
+EVM000898,EV000192,acquisition_method,field capture
+EVM000899,EV000192,integrity_algorithm,SHA-256
+EVM000900,EV000192,storage_class,secure_vault
+EVM000901,EV000193,record_type,SURVEILLANCE
+EVM000902,EV000193,acquired_by,SI Priya Darshan
+EVM000903,EV000193,acquisition_method,subpoena
+EVM000904,EV000193,integrity_algorithm,SHA-256
+EVM000905,EV000193,storage_class,secure_vault
+EVM000906,EV000194,record_type,FIR
+EVM000907,EV000194,acquired_by,ACP Rajesh Menon
+EVM000908,EV000194,acquisition_method,seizure
+EVM000909,EV000194,integrity_algorithm,SHA-256
+EVM000910,EV000194,storage_class,secure_vault
+EVM000911,EV000195,record_type,SURVEILLANCE
+EVM000912,EV000195,acquired_by,Inspector Deepa Nanduri
+EVM000913,EV000195,acquisition_method,seizure
+EVM000914,EV000195,integrity_algorithm,SHA-256
+EVM000915,EV000195,storage_class,secure_vault
+EVM000916,EV000196,record_type,FINANCIAL
+EVM000917,EV000196,acquired_by,Inspector Karthik Raghavan
+EVM000918,EV000196,acquisition_method,field capture
+EVM000919,EV000196,integrity_algorithm,SHA-256
+EVM000920,EV000196,storage_class,secure_vault
+EVM000921,EV000197,record_type,INVESTIGATION_NOTE
+EVM000922,EV000197,acquired_by,CI Sandeep Kumar
+EVM000923,EV000197,acquisition_method,seizure
+EVM000924,EV000197,integrity_algorithm,SHA-256
+EVM000925,EV000197,storage_class,secure_vault
+EVM000926,EV000198,record_type,FINANCIAL
+EVM000927,EV000198,acquired_by,Inspector Karthik Raghavan
+EVM000928,EV000198,acquisition_method,electronic extraction
+EVM000929,EV000198,integrity_algorithm,SHA-256
+EVM000930,EV000198,storage_class,secure_vault
+EVM000931,EV000199,record_type,INVESTIGATION_NOTE
+EVM000932,EV000199,acquired_by,SI Ramesh Babu
+EVM000933,EV000199,acquisition_method,seizure
+EVM000934,EV000199,integrity_algorithm,SHA-256
+EVM000935,EV000199,storage_class,secure_vault
+EVM000936,EV000200,record_type,FINANCIAL
+EVM000937,EV000200,acquired_by,SI Ramesh Babu
+EVM000938,EV000200,acquisition_method,subpoena
+EVM000939,EV000200,integrity_algorithm,SHA-256
+EVM000940,EV000200,storage_class,secure_vault
+EVM000941,EV000201,record_type,INVESTIGATION_NOTE
+EVM000942,EV000201,acquired_by,Dy. SP Arjun Sridhar
+EVM000943,EV000201,acquisition_method,seizure
+EVM000944,EV000201,integrity_algorithm,SHA-256
+EVM000945,EV000201,storage_class,secure_vault
+EVM000946,EV000202,record_type,SURVEILLANCE
+EVM000947,EV000202,acquired_by,Inspector Deepa Nanduri
+EVM000948,EV000202,acquisition_method,subpoena
+EVM000949,EV000202,integrity_algorithm,SHA-256
+EVM000950,EV000202,storage_class,secure_vault
+EVM000951,EV000203,record_type,FIR
+EVM000952,EV000203,acquired_by,ACP Rajesh Menon
+EVM000953,EV000203,acquisition_method,electronic extraction
+EVM000954,EV000203,integrity_algorithm,SHA-256
+EVM000955,EV000203,storage_class,secure_vault
+EVM000956,EV000204,record_type,CDR
+EVM000957,EV000204,acquired_by,Inspector Deepa Nanduri
+EVM000958,EV000204,acquisition_method,seizure
+EVM000959,EV000204,integrity_algorithm,SHA-256
+EVM000960,EV000204,storage_class,secure_vault
+EVM000961,EV000205,record_type,SURVEILLANCE
+EVM000962,EV000205,acquired_by,Dy. SP Arjun Sridhar
+EVM000963,EV000205,acquisition_method,electronic extraction
+EVM000964,EV000205,integrity_algorithm,SHA-256
+EVM000965,EV000205,storage_class,secure_vault
+EVM000966,EV000206,record_type,FIR
+EVM000967,EV000206,acquired_by,SI Priya Darshan
+EVM000968,EV000206,acquisition_method,seizure
+EVM000969,EV000206,integrity_algorithm,SHA-256
+EVM000970,EV000206,storage_class,secure_vault
+EVM000971,EV000207,record_type,SURVEILLANCE
+EVM000972,EV000207,acquired_by,SI Ramesh Babu
+EVM000973,EV000207,acquisition_method,field capture
+EVM000974,EV000207,integrity_algorithm,SHA-256
+EVM000975,EV000207,storage_class,secure_vault
+EVM000976,EV000208,record_type,CDR
+EVM000977,EV000208,acquired_by,SI Priya Darshan
+EVM000978,EV000208,acquisition_method,electronic extraction
+EVM000979,EV000208,integrity_algorithm,SHA-256
+EVM000980,EV000208,storage_class,secure_vault
+EVM000981,EV000209,record_type,SURVEILLANCE
+EVM000982,EV000209,acquired_by,ACP Rajesh Menon
+EVM000983,EV000209,acquisition_method,field capture
+EVM000984,EV000209,integrity_algorithm,SHA-256
+EVM000985,EV000209,storage_class,secure_vault
+EVM000986,EV000210,record_type,FINANCIAL
+EVM000987,EV000210,acquired_by,Dy. SP Arjun Sridhar
+EVM000988,EV000210,acquisition_method,field capture
+EVM000989,EV000210,integrity_algorithm,SHA-256
+EVM000990,EV000210,storage_class,secure_vault
+EVM000991,EV000211,record_type,INVESTIGATION_NOTE
+EVM000992,EV000211,acquired_by,ACP Rajesh Menon
+EVM000993,EV000211,acquisition_method,subpoena
+EVM000994,EV000211,integrity_algorithm,SHA-256
+EVM000995,EV000211,storage_class,secure_vault
+EVM000996,EV000212,record_type,INVESTIGATION_NOTE
+EVM000997,EV000212,acquired_by,ACP Rajesh Menon
+EVM000998,EV000212,acquisition_method,seizure
+EVM000999,EV000212,integrity_algorithm,SHA-256
+EVM001000,EV000212,storage_class,secure_vault
+EVM001001,EV000213,record_type,INVESTIGATION_NOTE
+EVM001002,EV000213,acquired_by,SI Priya Darshan
+EVM001003,EV000213,acquisition_method,subpoena
+EVM001004,EV000213,integrity_algorithm,SHA-256
+EVM001005,EV000213,storage_class,secure_vault
+EVM001006,EV000214,record_type,FINANCIAL
+EVM001007,EV000214,acquired_by,Dy. SP Arjun Sridhar
+EVM001008,EV000214,acquisition_method,field capture
+EVM001009,EV000214,integrity_algorithm,SHA-256
+EVM001010,EV000214,storage_class,secure_vault
+EVM001011,EV000215,record_type,INVESTIGATION_NOTE
+EVM001012,EV000215,acquired_by,SI Ramesh Babu
+EVM001013,EV000215,acquisition_method,subpoena
+EVM001014,EV000215,integrity_algorithm,SHA-256
+EVM001015,EV000215,storage_class,secure_vault
+EVM001016,EV000216,record_type,SURVEILLANCE
+EVM001017,EV000216,acquired_by,Inspector Deepa Nanduri
+EVM001018,EV000216,acquisition_method,field capture
+EVM001019,EV000216,integrity_algorithm,SHA-256
+EVM001020,EV000216,storage_class,secure_vault
+EVM001021,EV000217,record_type,SURVEILLANCE
+EVM001022,EV000217,acquired_by,Dy. SP Arjun Sridhar
+EVM001023,EV000217,acquisition_method,electronic extraction
+EVM001024,EV000217,integrity_algorithm,SHA-256
+EVM001025,EV000217,storage_class,secure_vault
+EVM001026,EV000218,record_type,INVESTIGATION_NOTE
+EVM001027,EV000218,acquired_by,Inspector Karthik Raghavan
+EVM001028,EV000218,acquisition_method,subpoena
+EVM001029,EV000218,integrity_algorithm,SHA-256
+EVM001030,EV000218,storage_class,secure_vault
+EVM001031,EV000219,record_type,FIR
+EVM001032,EV000219,acquired_by,CI Sandeep Kumar
+EVM001033,EV000219,acquisition_method,electronic extraction
+EVM001034,EV000219,integrity_algorithm,SHA-256
+EVM001035,EV000219,storage_class,secure_vault
+EVM001036,EV000220,record_type,SURVEILLANCE
+EVM001037,EV000220,acquired_by,Special Sub-Inspector Emmanuel
+EVM001038,EV000220,acquisition_method,field capture
+EVM001039,EV000220,integrity_algorithm,SHA-256
+EVM001040,EV000220,storage_class,secure_vault
+EVM001041,EV000221,record_type,CDR
+EVM001042,EV000221,acquired_by,ACP Rajesh Menon
+EVM001043,EV000221,acquisition_method,electronic extraction
+EVM001044,EV000221,integrity_algorithm,SHA-256
+EVM001045,EV000221,storage_class,secure_vault
+EVM001046,EV000222,record_type,FINANCIAL
+EVM001047,EV000222,acquired_by,SI Priya Darshan
+EVM001048,EV000222,acquisition_method,seizure
+EVM001049,EV000222,integrity_algorithm,SHA-256
+EVM001050,EV000222,storage_class,secure_vault
+EVM001051,EV000223,record_type,SURVEILLANCE
+EVM001052,EV000223,acquired_by,CI Sandeep Kumar
+EVM001053,EV000223,acquisition_method,subpoena
+EVM001054,EV000223,integrity_algorithm,SHA-256
+EVM001055,EV000223,storage_class,secure_vault
+EVM001056,EV000224,record_type,SURVEILLANCE
+EVM001057,EV000224,acquired_by,CI Sandeep Kumar
+EVM001058,EV000224,acquisition_method,field capture
+EVM001059,EV000224,integrity_algorithm,SHA-256
+EVM001060,EV000224,storage_class,secure_vault
+EVM001061,EV000225,record_type,FIR
+EVM001062,EV000225,acquired_by,SI Ramesh Babu
+EVM001063,EV000225,acquisition_method,seizure
+EVM001064,EV000225,integrity_algorithm,SHA-256
+EVM001065,EV000225,storage_class,secure_vault
+EVM001066,EV000226,record_type,FINANCIAL
+EVM001067,EV000226,acquired_by,Special Sub-Inspector Emmanuel
+EVM001068,EV000226,acquisition_method,subpoena
+EVM001069,EV000226,integrity_algorithm,SHA-256
+EVM001070,EV000226,storage_class,secure_vault
+EVM001071,EV000227,record_type,FINANCIAL
+EVM001072,EV000227,acquired_by,CI Sandeep Kumar
+EVM001073,EV000227,acquisition_method,field capture
+EVM001074,EV000227,integrity_algorithm,SHA-256
+EVM001075,EV000227,storage_class,secure_vault
+EVM001076,EV000228,record_type,CDR
+EVM001077,EV000228,acquired_by,Dy. SP Arjun Sridhar
+EVM001078,EV000228,acquisition_method,seizure
+EVM001079,EV000228,integrity_algorithm,SHA-256
+EVM001080,EV000228,storage_class,secure_vault
+EVM001081,EV000229,record_type,CDR
+EVM001082,EV000229,acquired_by,Inspector Deepa Nanduri
+EVM001083,EV000229,acquisition_method,electronic extraction
+EVM001084,EV000229,integrity_algorithm,SHA-256
+EVM001085,EV000229,storage_class,secure_vault
+EVM001086,EV000230,record_type,INVESTIGATION_NOTE
+EVM001087,EV000230,acquired_by,Special Sub-Inspector Emmanuel
+EVM001088,EV000230,acquisition_method,electronic extraction
+EVM001089,EV000230,integrity_algorithm,SHA-256
+EVM001090,EV000230,storage_class,secure_vault
+EVM001091,EV000231,record_type,CDR
+EVM001092,EV000231,acquired_by,SI Priya Darshan
+EVM001093,EV000231,acquisition_method,electronic extraction
+EVM001094,EV000231,integrity_algorithm,SHA-256
+EVM001095,EV000231,storage_class,secure_vault
+EVM001096,EV000232,record_type,FINANCIAL
+EVM001097,EV000232,acquired_by,ACP Rajesh Menon
+EVM001098,EV000232,acquisition_method,subpoena
+EVM001099,EV000232,integrity_algorithm,SHA-256
+EVM001100,EV000232,storage_class,secure_vault
+EVM001101,EV000233,record_type,SURVEILLANCE
+EVM001102,EV000233,acquired_by,Inspector Deepa Nanduri
+EVM001103,EV000233,acquisition_method,field capture
+EVM001104,EV000233,integrity_algorithm,SHA-256
+EVM001105,EV000233,storage_class,secure_vault
+EVM001106,EV000234,record_type,FIR
+EVM001107,EV000234,acquired_by,CI Sandeep Kumar
+EVM001108,EV000234,acquisition_method,field capture
+EVM001109,EV000234,integrity_algorithm,SHA-256
+EVM001110,EV000234,storage_class,secure_vault
+EVM001111,EV000235,record_type,INVESTIGATION_NOTE
+EVM001112,EV000235,acquired_by,Special Sub-Inspector Emmanuel
+EVM001113,EV000235,acquisition_method,seizure
+EVM001114,EV000235,integrity_algorithm,SHA-256
+EVM001115,EV000235,storage_class,secure_vault
+EVM001116,EV000236,record_type,FINANCIAL
+EVM001117,EV000236,acquired_by,ACP Rajesh Menon
+EVM001118,EV000236,acquisition_method,field capture
+EVM001119,EV000236,integrity_algorithm,SHA-256
+EVM001120,EV000236,storage_class,secure_vault
+EVM001121,EV000237,record_type,INVESTIGATION_NOTE
+EVM001122,EV000237,acquired_by,CI Sandeep Kumar
+EVM001123,EV000237,acquisition_method,seizure
+EVM001124,EV000237,integrity_algorithm,SHA-256
+EVM001125,EV000237,storage_class,secure_vault
+EVM001126,EV000238,record_type,CDR
+EVM001127,EV000238,acquired_by,SI Priya Darshan
+EVM001128,EV000238,acquisition_method,subpoena
+EVM001129,EV000238,integrity_algorithm,SHA-256
+EVM001130,EV000238,storage_class,secure_vault
+EVM001131,EV000239,record_type,INVESTIGATION_NOTE
+EVM001132,EV000239,acquired_by,Inspector Karthik Raghavan
+EVM001133,EV000239,acquisition_method,seizure
+EVM001134,EV000239,integrity_algorithm,SHA-256
+EVM001135,EV000239,storage_class,secure_vault
+EVM001136,EV000240,record_type,CDR
+EVM001137,EV000240,acquired_by,ACP Rajesh Menon
+EVM001138,EV000240,acquisition_method,field capture
+EVM001139,EV000240,integrity_algorithm,SHA-256
+EVM001140,EV000240,storage_class,secure_vault
+EVM001141,EV000241,record_type,FINANCIAL
+EVM001142,EV000241,acquired_by,SI Ramesh Babu
+EVM001143,EV000241,acquisition_method,electronic extraction
+EVM001144,EV000241,integrity_algorithm,SHA-256
+EVM001145,EV000241,storage_class,secure_vault
+EVM001146,EV000242,record_type,FIR
+EVM001147,EV000242,acquired_by,ACP Rajesh Menon
+EVM001148,EV000242,acquisition_method,field capture
+EVM001149,EV000242,integrity_algorithm,SHA-256
+EVM001150,EV000242,storage_class,secure_vault
+EVM001151,EV000243,record_type,SURVEILLANCE
+EVM001152,EV000243,acquired_by,Dy. SP Arjun Sridhar
+EVM001153,EV000243,acquisition_method,electronic extraction
+EVM001154,EV000243,integrity_algorithm,SHA-256
+EVM001155,EV000243,storage_class,secure_vault
+EVM001156,EV000244,record_type,FINANCIAL
+EVM001157,EV000244,acquired_by,SI Ramesh Babu
+EVM001158,EV000244,acquisition_method,seizure
+EVM001159,EV000244,integrity_algorithm,SHA-256
+EVM001160,EV000244,storage_class,secure_vault
+EVM001161,EV000245,record_type,SURVEILLANCE
+EVM001162,EV000245,acquired_by,Special Sub-Inspector Emmanuel
+EVM001163,EV000245,acquisition_method,electronic extraction
+EVM001164,EV000245,integrity_algorithm,SHA-256
+EVM001165,EV000245,storage_class,secure_vault
+EVM001166,EV000246,record_type,CDR
+EVM001167,EV000246,acquired_by,Inspector Karthik Raghavan
+EVM001168,EV000246,acquisition_method,electronic extraction
+EVM001169,EV000246,integrity_algorithm,SHA-256
+EVM001170,EV000246,storage_class,secure_vault
+EVM001171,EV000247,record_type,INVESTIGATION_NOTE
+EVM001172,EV000247,acquired_by,CI Sandeep Kumar
+EVM001173,EV000247,acquisition_method,seizure
+EVM001174,EV000247,integrity_algorithm,SHA-256
+EVM001175,EV000247,storage_class,secure_vault
+EVM001176,EV000248,record_type,FIR
+EVM001177,EV000248,acquired_by,SI Priya Darshan
+EVM001178,EV000248,acquisition_method,subpoena
+EVM001179,EV000248,integrity_algorithm,SHA-256
+EVM001180,EV000248,storage_class,secure_vault
+EVM001181,EV000249,record_type,FINANCIAL
+EVM001182,EV000249,acquired_by,Inspector Karthik Raghavan
+EVM001183,EV000249,acquisition_method,subpoena
+EVM001184,EV000249,integrity_algorithm,SHA-256
+EVM001185,EV000249,storage_class,secure_vault
+EVM001186,EV000250,record_type,CDR
+EVM001187,EV000250,acquired_by,Special Sub-Inspector Emmanuel
+EVM001188,EV000250,acquisition_method,subpoena
+EVM001189,EV000250,integrity_algorithm,SHA-256
+EVM001190,EV000250,storage_class,secure_vault
+EVM001191,EV000251,record_type,FINANCIAL
+EVM001192,EV000251,acquired_by,CI Sandeep Kumar
+EVM001193,EV000251,acquisition_method,subpoena
+EVM001194,EV000251,integrity_algorithm,SHA-256
+EVM001195,EV000251,storage_class,secure_vault
+EVM001196,EV000252,record_type,FINANCIAL
+EVM001197,EV000252,acquired_by,Dy. SP Arjun Sridhar
+EVM001198,EV000252,acquisition_method,seizure
+EVM001199,EV000252,integrity_algorithm,SHA-256
+EVM001200,EV000252,storage_class,secure_vault
+EVM001201,EV000253,record_type,FINANCIAL
+EVM001202,EV000253,acquired_by,Inspector Deepa Nanduri
+EVM001203,EV000253,acquisition_method,field capture
+EVM001204,EV000253,integrity_algorithm,SHA-256
+EVM001205,EV000253,storage_class,secure_vault
+EVM001206,EV000254,record_type,CDR
+EVM001207,EV000254,acquired_by,CI Sandeep Kumar
+EVM001208,EV000254,acquisition_method,field capture
+EVM001209,EV000254,integrity_algorithm,SHA-256
+EVM001210,EV000254,storage_class,secure_vault
+EVM001211,EV000255,record_type,INVESTIGATION_NOTE
+EVM001212,EV000255,acquired_by,CI Sandeep Kumar
+EVM001213,EV000255,acquisition_method,electronic extraction
+EVM001214,EV000255,integrity_algorithm,SHA-256
+EVM001215,EV000255,storage_class,secure_vault
+EVM001216,EV000256,record_type,CDR
+EVM001217,EV000256,acquired_by,Inspector Deepa Nanduri
+EVM001218,EV000256,acquisition_method,seizure
+EVM001219,EV000256,integrity_algorithm,SHA-256
+EVM001220,EV000256,storage_class,secure_vault
+EVM001221,EV000257,record_type,SURVEILLANCE
+EVM001222,EV000257,acquired_by,ACP Rajesh Menon
+EVM001223,EV000257,acquisition_method,field capture
+EVM001224,EV000257,integrity_algorithm,SHA-256
+EVM001225,EV000257,storage_class,secure_vault
+EVM001226,EV000258,record_type,CDR
+EVM001227,EV000258,acquired_by,Inspector Karthik Raghavan
+EVM001228,EV000258,acquisition_method,seizure
+EVM001229,EV000258,integrity_algorithm,SHA-256
+EVM001230,EV000258,storage_class,secure_vault
+EVM001231,EV000259,record_type,CDR
+EVM001232,EV000259,acquired_by,Dy. SP Arjun Sridhar
+EVM001233,EV000259,acquisition_method,electronic extraction
+EVM001234,EV000259,integrity_algorithm,SHA-256
+EVM001235,EV000259,storage_class,secure_vault
+EVM001236,EV000260,record_type,CDR
+EVM001237,EV000260,acquired_by,SI Ramesh Babu
+EVM001238,EV000260,acquisition_method,electronic extraction
+EVM001239,EV000260,integrity_algorithm,SHA-256
+EVM001240,EV000260,storage_class,secure_vault
+EVM001241,EV000261,record_type,INVESTIGATION_NOTE
+EVM001242,EV000261,acquired_by,Inspector Karthik Raghavan
+EVM001243,EV000261,acquisition_method,electronic extraction
+EVM001244,EV000261,integrity_algorithm,SHA-256
+EVM001245,EV000261,storage_class,secure_vault
+EVM001246,EV000262,record_type,CDR
+EVM001247,EV000262,acquired_by,Inspector Karthik Raghavan
+EVM001248,EV000262,acquisition_method,seizure
+EVM001249,EV000262,integrity_algorithm,SHA-256
+EVM001250,EV000262,storage_class,secure_vault
+EVM001251,EV000263,record_type,CDR
+EVM001252,EV000263,acquired_by,SI Priya Darshan
+EVM001253,EV000263,acquisition_method,subpoena
+EVM001254,EV000263,integrity_algorithm,SHA-256
+EVM001255,EV000263,storage_class,secure_vault
+EVM001256,EV000264,record_type,FINANCIAL
+EVM001257,EV000264,acquired_by,Inspector Deepa Nanduri
+EVM001258,EV000264,acquisition_method,field capture
+EVM001259,EV000264,integrity_algorithm,SHA-256
+EVM001260,EV000264,storage_class,secure_vault
+EVM001261,EV000265,record_type,INVESTIGATION_NOTE
+EVM001262,EV000265,acquired_by,Dy. SP Arjun Sridhar
+EVM001263,EV000265,acquisition_method,subpoena
+EVM001264,EV000265,integrity_algorithm,SHA-256
+EVM001265,EV000265,storage_class,secure_vault
+EVM001266,EV000266,record_type,INVESTIGATION_NOTE
+EVM001267,EV000266,acquired_by,Inspector Deepa Nanduri
+EVM001268,EV000266,acquisition_method,seizure
+EVM001269,EV000266,integrity_algorithm,SHA-256
+EVM001270,EV000266,storage_class,secure_vault
+EVM001271,EV000267,record_type,FIR
+EVM001272,EV000267,acquired_by,Special Sub-Inspector Emmanuel
+EVM001273,EV000267,acquisition_method,electronic extraction
+EVM001274,EV000267,integrity_algorithm,SHA-256
+EVM001275,EV000267,storage_class,secure_vault
+EVM001276,EV000268,record_type,FINANCIAL
+EVM001277,EV000268,acquired_by,Dy. SP Arjun Sridhar
+EVM001278,EV000268,acquisition_method,subpoena
+EVM001279,EV000268,integrity_algorithm,SHA-256
+EVM001280,EV000268,storage_class,secure_vault
+EVM001281,EV000269,record_type,INVESTIGATION_NOTE
+EVM001282,EV000269,acquired_by,SI Priya Darshan
+EVM001283,EV000269,acquisition_method,subpoena
+EVM001284,EV000269,integrity_algorithm,SHA-256
+EVM001285,EV000269,storage_class,secure_vault
+EVM001286,EV000270,record_type,INVESTIGATION_NOTE
+EVM001287,EV000270,acquired_by,SI Ramesh Babu
+EVM001288,EV000270,acquisition_method,electronic extraction
+EVM001289,EV000270,integrity_algorithm,SHA-256
+EVM001290,EV000270,storage_class,secure_vault
+EVM001291,EV000271,record_type,CDR
+EVM001292,EV000271,acquired_by,CI Sandeep Kumar
+EVM001293,EV000271,acquisition_method,electronic extraction
+EVM001294,EV000271,integrity_algorithm,SHA-256
+EVM001295,EV000271,storage_class,secure_vault
+EVM001296,EV000272,record_type,SURVEILLANCE
+EVM001297,EV000272,acquired_by,SI Ramesh Babu
+EVM001298,EV000272,acquisition_method,subpoena
+EVM001299,EV000272,integrity_algorithm,SHA-256
+EVM001300,EV000272,storage_class,secure_vault
+EVM001301,EV000273,record_type,FIR
+EVM001302,EV000273,acquired_by,Special Sub-Inspector Emmanuel
+EVM001303,EV000273,acquisition_method,subpoena
+EVM001304,EV000273,integrity_algorithm,SHA-256
+EVM001305,EV000273,storage_class,secure_vault
+EVM001306,EV000274,record_type,FIR
+EVM001307,EV000274,acquired_by,Special Sub-Inspector Emmanuel
+EVM001308,EV000274,acquisition_method,field capture
+EVM001309,EV000274,integrity_algorithm,SHA-256
+EVM001310,EV000274,storage_class,secure_vault
+EVM001311,EV000275,record_type,INVESTIGATION_NOTE
+EVM001312,EV000275,acquired_by,SI Ramesh Babu
+EVM001313,EV000275,acquisition_method,subpoena
+EVM001314,EV000275,integrity_algorithm,SHA-256
+EVM001315,EV000275,storage_class,secure_vault
+EVM001316,EV000276,record_type,FIR
+EVM001317,EV000276,acquired_by,SI Ramesh Babu
+EVM001318,EV000276,acquisition_method,seizure
+EVM001319,EV000276,integrity_algorithm,SHA-256
+EVM001320,EV000276,storage_class,secure_vault
+EVM001321,EV000277,record_type,INVESTIGATION_NOTE
+EVM001322,EV000277,acquired_by,Inspector Karthik Raghavan
+EVM001323,EV000277,acquisition_method,subpoena
+EVM001324,EV000277,integrity_algorithm,SHA-256
+EVM001325,EV000277,storage_class,secure_vault
+EVM001326,EV000278,record_type,CDR
+EVM001327,EV000278,acquired_by,Inspector Karthik Raghavan
+EVM001328,EV000278,acquisition_method,seizure
+EVM001329,EV000278,integrity_algorithm,SHA-256
+EVM001330,EV000278,storage_class,secure_vault
+EVM001331,EV000279,record_type,SURVEILLANCE
+EVM001332,EV000279,acquired_by,CI Sandeep Kumar
+EVM001333,EV000279,acquisition_method,field capture
+EVM001334,EV000279,integrity_algorithm,SHA-256
+EVM001335,EV000279,storage_class,secure_vault
+EVM001336,EV000280,record_type,CDR
+EVM001337,EV000280,acquired_by,Inspector Karthik Raghavan
+EVM001338,EV000280,acquisition_method,seizure
+EVM001339,EV000280,integrity_algorithm,SHA-256
+EVM001340,EV000280,storage_class,secure_vault
+EVM001341,EV000281,record_type,CDR
+EVM001342,EV000281,acquired_by,Inspector Karthik Raghavan
+EVM001343,EV000281,acquisition_method,subpoena
+EVM001344,EV000281,integrity_algorithm,SHA-256
+EVM001345,EV000281,storage_class,secure_vault
+EVM001346,EV000282,record_type,FINANCIAL
+EVM001347,EV000282,acquired_by,Special Sub-Inspector Emmanuel
+EVM001348,EV000282,acquisition_method,field capture
+EVM001349,EV000282,integrity_algorithm,SHA-256
+EVM001350,EV000282,storage_class,secure_vault
+EVM001351,EV000283,record_type,CDR
+EVM001352,EV000283,acquired_by,Inspector Deepa Nanduri
+EVM001353,EV000283,acquisition_method,field capture
+EVM001354,EV000283,integrity_algorithm,SHA-256
+EVM001355,EV000283,storage_class,secure_vault
+EVM001356,EV000284,record_type,INVESTIGATION_NOTE
+EVM001357,EV000284,acquired_by,Dy. SP Arjun Sridhar
+EVM001358,EV000284,acquisition_method,seizure
+EVM001359,EV000284,integrity_algorithm,SHA-256
+EVM001360,EV000284,storage_class,secure_vault
+EVM001361,EV000285,record_type,SURVEILLANCE
+EVM001362,EV000285,acquired_by,SI Ramesh Babu
+EVM001363,EV000285,acquisition_method,subpoena
+EVM001364,EV000285,integrity_algorithm,SHA-256
+EVM001365,EV000285,storage_class,secure_vault
+EVM001366,EV000286,record_type,SURVEILLANCE
+EVM001367,EV000286,acquired_by,Special Sub-Inspector Emmanuel
+EVM001368,EV000286,acquisition_method,electronic extraction
+EVM001369,EV000286,integrity_algorithm,SHA-256
+EVM001370,EV000286,storage_class,secure_vault
+EVM001371,EV000287,record_type,CDR
+EVM001372,EV000287,acquired_by,SI Ramesh Babu
+EVM001373,EV000287,acquisition_method,field capture
+EVM001374,EV000287,integrity_algorithm,SHA-256
+EVM001375,EV000287,storage_class,secure_vault
+EVM001376,EV000288,record_type,FIR
+EVM001377,EV000288,acquired_by,Inspector Karthik Raghavan
+EVM001378,EV000288,acquisition_method,subpoena
+EVM001379,EV000288,integrity_algorithm,SHA-256
+EVM001380,EV000288,storage_class,secure_vault
+EVM001381,EV000289,record_type,INVESTIGATION_NOTE
+EVM001382,EV000289,acquired_by,CI Sandeep Kumar
+EVM001383,EV000289,acquisition_method,seizure
+EVM001384,EV000289,integrity_algorithm,SHA-256
+EVM001385,EV000289,storage_class,secure_vault
+EVM001386,EV000290,record_type,INVESTIGATION_NOTE
+EVM001387,EV000290,acquired_by,CI Sandeep Kumar
+EVM001388,EV000290,acquisition_method,field capture
+EVM001389,EV000290,integrity_algorithm,SHA-256
+EVM001390,EV000290,storage_class,secure_vault

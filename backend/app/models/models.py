@@ -26,6 +26,16 @@ class User(Base):
     created_at = Column(DateTime, default=now)
 
 
+class Officer(Base):
+    __tablename__ = "officers"
+    id = Column(String, primary_key=True, default=gen_id)
+    user_id = Column(String, ForeignKey("users.id"), nullable=True)
+    badge_number = Column(String, nullable=True, unique=True)
+    rank = Column(String, nullable=True)
+    district = Column(String, nullable=True)
+    created_at = Column(DateTime, default=now)
+
+
 class Person(Base):
     """Unified entity table for persons (criminals, associates, victims, officers-as-persons)."""
     __tablename__ = "persons"
@@ -50,6 +60,22 @@ class Alias(Base):
     created_at = Column(DateTime, default=now)
 
     person = relationship("Person", back_populates="aliases")
+
+
+class Victim(Base):
+    __tablename__ = "victims"
+    id = Column(String, primary_key=True, default=gen_id)
+    person_id = Column(String, ForeignKey("persons.id"), nullable=False)
+    case_id = Column(String, nullable=True)
+    created_at = Column(DateTime, default=now)
+
+
+class Gang(Base):
+    __tablename__ = "gangs"
+    id = Column(String, primary_key=True, default=gen_id)
+    organization_id = Column(String, ForeignKey("organizations.id"), nullable=True)
+    territory = Column(String, nullable=True)
+    created_at = Column(DateTime, default=now)
 
 
 class Phone(Base):
@@ -147,6 +173,53 @@ class Evidence(Base):
     created_at = Column(DateTime, default=now)
 
 
+class InvestigationNote(Base):
+    __tablename__ = "investigation_notes"
+    id = Column(String, primary_key=True, default=gen_id)
+    case_id = Column(String, ForeignKey("crime_cases.id"), nullable=True)
+    author_officer_id = Column(String, ForeignKey("officers.id"), nullable=True)
+    note_text = Column(Text, nullable=False)
+    created_at = Column(DateTime, default=now)
+
+
+class EvidenceMetadata(Base):
+    __tablename__ = "evidence_metadata"
+    id = Column(String, primary_key=True, default=gen_id)
+    evidence_id = Column(String, ForeignKey("evidence.id"), nullable=False)
+    key = Column(String, nullable=False)
+    value = Column(String, nullable=True)
+
+
+class ChainOfCustody(Base):
+    __tablename__ = "chain_of_custody"
+    id = Column(String, primary_key=True, default=gen_id)
+    evidence_id = Column(String, ForeignKey("evidence.id"), nullable=False)
+    handled_by = Column(String, ForeignKey("officers.id"), nullable=True)
+    action = Column(String, nullable=False)
+    occurred_at = Column(DateTime, default=now)
+
+
+class SurveillanceRecord(Base):
+    __tablename__ = "surveillance_records"
+    id = Column(String, primary_key=True, default=gen_id)
+    location_id = Column(String, ForeignKey("locations.id"), nullable=True)
+    person_id = Column(String, ForeignKey("persons.id"), nullable=True)
+    vehicle_id = Column(String, ForeignKey("vehicles.id"), nullable=True)
+    observed_at = Column(DateTime, default=now)
+    notes = Column(Text, nullable=True)
+    data_source = Column(String, default="SYNTHETIC")
+
+
+class CDRRecord(Base):
+    __tablename__ = "cdr_records"
+    id = Column(String, primary_key=True, default=gen_id)
+    phone_id = Column(String, ForeignKey("phones.id"), nullable=True)
+    counterparty_number = Column(String, nullable=True)
+    call_time = Column(DateTime, nullable=True)
+    duration_seconds = Column(Integer, nullable=True)
+    data_source = Column(String, default="SYNTHETIC")
+
+
 class EntityMention(Base):
     __tablename__ = "entity_mentions"
     id = Column(String, primary_key=True, default=gen_id)
@@ -194,6 +267,33 @@ class RelationshipRecord(Base):
     created_at = Column(DateTime, default=now)
 
 
+class NetworkAnalysis(Base):
+    __tablename__ = "network_analysis"
+    id = Column(String, primary_key=True, default=gen_id)
+    entity_id = Column(String, nullable=False)
+    degree_centrality = Column(Float, nullable=True)
+    betweenness_centrality = Column(Float, nullable=True)
+    pagerank = Column(Float, nullable=True)
+    computed_at = Column(DateTime, default=now)
+
+
+class NetworkCommunity(Base):
+    __tablename__ = "network_communities"
+    id = Column(String, primary_key=True, default=gen_id)
+    community_label = Column(Integer, nullable=False)
+    entity_id = Column(String, nullable=False)
+    computed_at = Column(DateTime, default=now)
+
+
+class NetworkEvent(Base):
+    __tablename__ = "network_events"
+    id = Column(String, primary_key=True, default=gen_id)
+    event_type = Column(String, nullable=False)
+    entity_id = Column(String, nullable=True)
+    description = Column(Text, nullable=True)
+    occurred_at = Column(DateTime, default=now)
+
+
 class Anomaly(Base):
     __tablename__ = "anomalies"
     id = Column(String, primary_key=True, default=gen_id)
@@ -237,6 +337,50 @@ class ImportJob(Base):
     entities_extracted = Column(Integer, default=0)
     relationships_created = Column(Integer, default=0)
     created_at = Column(DateTime, default=now)
+
+
+class IntelligenceLead(Base):
+    __tablename__ = "intelligence_leads"
+    id = Column(String, primary_key=True, default=gen_id)
+    title = Column(String, nullable=False)
+    description = Column(Text, nullable=True)
+    related_entities = Column(JSON, default=list)
+    confidence = Column(Float, nullable=True)
+    status = Column(String, default="open")
+    created_at = Column(DateTime, default=now)
+
+
+class Notification(Base):
+    __tablename__ = "notifications"
+    id = Column(String, primary_key=True, default=gen_id)
+    user_id = Column(String, ForeignKey("users.id"), nullable=True)
+    title = Column(String, nullable=False)
+    body = Column(Text, nullable=True)
+    is_read = Column(Boolean, default=False)
+    created_at = Column(DateTime, default=now)
+
+
+class Report(Base):
+    __tablename__ = "reports"
+    id = Column(String, primary_key=True, default=gen_id)
+    report_id = Column(String, ForeignKey("intelligence_reports.id"), nullable=True)
+    file_format = Column(String, nullable=False)
+    storage_path = Column(String, nullable=True)
+    created_at = Column(DateTime, default=now)
+
+
+class ModelMetadata(Base):
+    __tablename__ = "model_metadata"
+    id = Column(String, primary_key=True, default=gen_id)
+    model_name = Column(String, nullable=False)
+    version = Column(String, nullable=False)
+    purpose = Column(String, nullable=True)
+    training_dataset = Column(String, nullable=True)
+    features = Column(JSON, default=list)
+    training_date = Column(String, nullable=True)
+    evaluation_metrics = Column(JSON, default=dict)
+    is_demo_model = Column(Boolean, default=True)
+    updated_at = Column(DateTime, default=now)
 
 
 class IntelligenceReport(Base):

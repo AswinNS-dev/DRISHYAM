@@ -22,7 +22,8 @@ def get_investigation_leads(db: Session = Depends(get_db), user=Depends(get_curr
     edges = graph_data.load_all_edges(db)
     g = ge.build_graph(nodes, edges)
     lookup = graph_data.node_lookup(db)
-    centrality = ge.compute_centrality(g)
+    cached_centrality, _ = graph_data.load_cached_analytics(db)
+    centrality = cached_centrality if cached_centrality is not None else ge.compute_centrality(g)
 
     leads = []
 
@@ -57,34 +58,55 @@ def get_investigation_leads(db: Session = Depends(get_db), user=Depends(get_curr
             })
 
     # Lead 2: Common vehicles or phones used across multiple cases
-    vehicles = db.query(m.Vehicle).all()
-    for v in vehicles:
-        rels = db.query(m.RelationshipRecord).filter(
-            (m.RelationshipRecord.source_entity_id == v.id) | (m.RelationshipRecord.target_entity_id == v.id)
+    # Single aggregate pass over vehicle relationships (no per-vehicle queries)
+    vehicle_rows = db.query(m.Vehicle).all()
+    veh_ids = {v.id for v in vehicle_rows}
+    veh_links = {}
+    if veh_ids:
+        rel_rows = db.query(
+            m.RelationshipRecord.source_entity_id,
+            m.RelationshipRecord.source_entity_type,
+            m.RelationshipRecord.target_entity_id,
+            m.RelationshipRecord.target_entity_type,
+        ).filter(
+            ((m.RelationshipRecord.source_entity_id.in_(veh_ids)) |
+             (m.RelationshipRecord.target_entity_id.in_(veh_ids)))
         ).all()
-        if len(rels) >= 2:
-            linked_people = set()
-            for r in rels:
-                other_id = r.target_entity_id if r.source_entity_id == v.id else r.source_entity_id
-                info = lookup.get(other_id, {})
-                if info.get("type") == "PERSON":
-                    linked_people.add(info.get("name", other_id))
-
-            if len(linked_people) >= 2:
-                leads.append({
-                    "id": f"lead-asset-{v.id[:8]}",
-                    "lead_type": "SHARED_CRIMINAL_ASSET",
-                    "title": f"Shared Transit Asset: Vehicle {v.registration_number}",
-                    "description": (
-                        f"Vehicle {v.registration_number} ({v.vehicle_type or 'Automobile'}) is utilized across "
-                        f"multiple distinct operatives: {', '.join(list(linked_people)[:3])}."
-                    ),
-                    "target_entity": {"id": v.id, "name": v.registration_number, "type": "VEHICLE"},
-                    "confidence": 0.88,
-                    "priority": "HIGH",
-                    "recommended_action": "Deploy ANPR (Automated Number Plate Recognition) toll alerts on district corridors.",
-                    "created_at": dt.datetime.utcnow().isoformat(),
-                })
+        for s_id, s_type, t_id, t_type in rel_rows:
+            if s_id in veh_ids:
+                veh_links.setdefault(s_id, []).append((t_id, t_type))
+            if t_id in veh_ids:
+                veh_links.setdefault(t_id, []).append((s_id, s_type))
+    vehicles_by_id = {v.id: v for v in vehicle_rows}
+    veh_leads = 0
+    for vid, partners in veh_links.items():
+        if veh_leads >= 4:
+            break
+        linked_people = []
+        seen_ids = set()
+        for pid, ptype in partners:
+            info = lookup.get(pid, {})
+            if info.get("type") == "PERSON" and pid not in seen_ids:
+                seen_ids.add(pid)
+                linked_people.append(info.get("name", pid))
+        v = vehicles_by_id.get(vid)
+        if v is None or len(seen_ids) < 2:
+            continue
+        leads.append({
+            "id": f"lead-asset-{v.id[:8]}",
+            "lead_type": "SHARED_CRIMINAL_ASSET",
+            "title": f"Shared Transit Asset: Vehicle {v.registration_number}",
+            "description": (
+                f"Vehicle {v.registration_number} ({v.vehicle_type or 'Automobile'}) is utilized across "
+                f"multiple distinct operatives: {', '.join(linked_people[:3])}."
+            ),
+            "target_entity": {"id": v.id, "name": v.registration_number, "type": "VEHICLE"},
+            "confidence": 0.88,
+            "priority": "HIGH",
+            "recommended_action": "Deploy ANPR (Automated Number Plate Recognition) toll alerts on district corridors.",
+            "created_at": dt.datetime.utcnow().isoformat(),
+        })
+        veh_leads += 1
 
     # Lead 3: Unresolved High-Confidence Entity Matches
     matches = db.query(m.EntityMatch).filter(
@@ -180,21 +202,33 @@ def get_hidden_links(db: Session = Depends(get_db), user=Depends(get_current_use
     lookup = graph_data.node_lookup(db)
 
     persons = [n["id"] for n in nodes if n.get("type") == "PERSON"]
-    findings = []
+    # Prefer already-flagged chain sources / high-centrality persons so the
+    # pairwise search stays bounded (~40 persons instead of all of them).
+    centrality, _ = graph_data.load_cached_analytics(db)
+    if centrality:
+        ranked = sorted(
+            ((pid, centrality.get(pid, {}).get("betweenness_centrality", 0)) for pid in persons),
+            key=lambda kv: -kv[1])
+        persons = [pid for pid, _ in ranked[:40]]
+    else:
+        persons = persons[:40]
 
-    # Run pairwise shortest paths for select key persons
+    findings = []
     import networkx as nx
+    ug = nx.Graph(g)
     checked_pairs = set()
     for i, p1 in enumerate(persons[:15]):
-        for p2 in persons[i+1:15]:
+        for p2 in persons[i+1:40]:
+            if len(findings) >= 10:
+                break
             pair_key = tuple(sorted([p1, p2]))
             if pair_key in checked_pairs:
                 continue
             checked_pairs.add(pair_key)
-            if not g.has_edge(p1, p2) and nx.has_path(g, p1, p2):
+            if not g.has_edge(p1, p2) and nx.has_path(ug, p1, p2):
                 try:
-                    path = nx.shortest_path(g, p1, p2)
-                    if 2 < len(path) <= 5:
+                    path = nx.shortest_path(ug, p1, p2)
+                    if 2 < len(path) <= 6:
                         path_names = [lookup.get(step, {}).get("name", step) for step in path]
                         findings.append({
                             "source_id": p1,
@@ -208,6 +242,8 @@ def get_hidden_links(db: Session = Depends(get_db), user=Depends(get_current_use
                         })
                 except Exception:
                     pass
+        if len(findings) >= 10:
+            break
 
     return {"findings": findings[:10]}
 
