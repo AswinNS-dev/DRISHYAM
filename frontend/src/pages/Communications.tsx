@@ -1,22 +1,39 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { api } from "../lib/api";
 import {
   PhoneCall, Search, Filter, RefreshCw, Radio,
-  ArrowRight, ChevronRight
+  ChevronRight, FolderOpen, X, Clock, Network, Share2, Layers,
+  ShieldAlert, CheckCircle2, Users
 } from "lucide-react";
 
 export default function Communications() {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const paramEntityId = searchParams.get("entity_id") || "";
+  const paramCaseId = searchParams.get("case_id") || "";
+
   const [communications, setCommunications] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [minFrequency, setMinFrequency] = useState<number>(1);
+  const [selectedCaseId, setSelectedCaseId] = useState<string>(paramCaseId);
+  const [selectedEntityId, setSelectedEntityId] = useState<string>(paramEntityId);
+  const [viewMode, setViewMode] = useState<"list" | "matrix">("list");
+  const [caseList, setCaseList] = useState<any[]>([]);
   const [stats, setStats] = useState({ total: 0, uniqueTransceivers: 0 });
+
+  useEffect(() => {
+    api.cases().then((res) => setCaseList(res.cases || [])).catch(() => {});
+  }, []);
 
   function loadCommunications() {
     setLoading(true);
-    api.communications({ q: search || undefined })
+    api.communications({
+      entity_id: selectedEntityId || undefined,
+      case_id: selectedCaseId || undefined,
+      q: search || undefined,
+    })
       .then((res) => {
         setCommunications(res.communications || []);
         setStats({
@@ -30,26 +47,30 @@ export default function Communications() {
 
   useEffect(() => {
     loadCommunications();
-  }, [search]);
+  }, [search, selectedCaseId, selectedEntityId]);
 
   const filtered = communications.filter(
     (c) => (c.frequency_count || 1) >= minFrequency
   );
+
+  const selectedCaseObj = caseList.find((c) => c.id === selectedCaseId);
 
   return (
     <div className="flex flex-col h-full bg-[var(--bg-void)]">
       {/* ── Top Header Strip ── */}
       <div className="px-6 py-4 border-b border-[var(--border-subtle)] flex flex-wrap items-center justify-between gap-4 bg-[var(--bg-panel-solid)]">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-zinc-800 text-zinc-100 border border-zinc-700/60 flex items-center justify-center shadow-sm">
-            <Radio size={16} />
+          <div className="w-9 h-9 rounded-lg bg-sky-950/80 text-sky-400 border border-sky-700/60 flex items-center justify-center shadow-[0_0_12px_rgba(56,189,248,0.2)]">
+            <Radio size={18} />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-xs font-bold tracking-wide uppercase text-[var(--text-primary)]">
+              <h1 className="text-sm font-bold tracking-wide uppercase text-[var(--text-primary)]">
                 Communications & Telephony Analysis
               </h1>
-              <span className="badge badge-low text-[8px]">CDR INTELLIGENCE</span>
+              <span className="badge bg-sky-950/80 border-sky-800/80 text-sky-300 text-[8px] font-mono">
+                CDR INTELLIGENCE
+              </span>
             </div>
             <p className="text-[11px] text-[var(--text-muted)]">
               Call Detail Records (CDR), handset usage links, and transceiver frequency matrix
@@ -58,35 +79,80 @@ export default function Communications() {
         </div>
 
         <div className="flex items-center gap-2.5">
+          {/* View Mode Toggle */}
+          <div className="flex items-center bg-slate-900 border border-slate-700/80 rounded-lg p-0.5 text-xs shadow-sm">
+            <button
+              onClick={() => setViewMode("list")}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all font-medium cursor-pointer ${
+                viewMode === "list"
+                  ? "bg-sky-600 text-white shadow-sm font-semibold"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              <Layers size={12} />
+              <span>CDR Feed</span>
+            </button>
+            <button
+              onClick={() => setViewMode("matrix")}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all font-medium cursor-pointer ${
+                viewMode === "matrix"
+                  ? "bg-slate-700 text-white shadow-sm font-semibold"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              <Share2 size={12} />
+              <span>Topology Matrix</span>
+            </button>
+          </div>
+
           <button
             onClick={loadCommunications}
-            className="p-1.5 rounded border border-[var(--border-subtle)] hover:border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--bg-panel-raised)] transition-all"
+            className="p-2 rounded-lg border border-[var(--border-subtle)] hover:border-sky-500 text-[var(--text-muted)] hover:text-sky-400 bg-[var(--bg-panel-raised)] transition-all cursor-pointer shadow-sm"
             title="Refresh CDR Feed"
           >
-            <RefreshCw size={13} className={loading ? "animate-spin text-[var(--intel-sky)]" : ""} />
+            <RefreshCw size={13} className={loading ? "animate-spin text-sky-400" : ""} />
           </button>
         </div>
       </div>
 
-      {/* ── Summary Operational Metrics Strip ── */}
+      {/* ── Visual KPI Operational Metrics Strip ── */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 px-6 py-3 border-b border-[var(--border-subtle)] bg-[var(--bg-panel)]">
-        <div className="panel p-2.5 bg-[var(--bg-panel-raised)]">
-          <div className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Active Intercepts</div>
-          <div className="text-base font-bold font-mono text-[var(--text-bright)] mt-0.5">{stats.total}</div>
+        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-sky-950/40 border border-slate-800 rounded-lg">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono text-sky-400 uppercase tracking-wider">Active Telephony Records</span>
+            <Radio size={13} className="text-sky-400" />
+          </div>
+          <div className="text-lg font-bold font-mono text-slate-100 mt-1">{stats.total}</div>
+          <div className="text-[10px] font-mono text-slate-400 mt-0.5">Indexed CDR calls</div>
         </div>
-        <div className="panel p-2.5 bg-[var(--bg-panel-raised)]">
-          <div className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Unique Transceivers</div>
-          <div className="text-base font-bold font-mono text-[var(--intel-sky)] mt-0.5">{stats.uniqueTransceivers}</div>
+
+        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-purple-950/40 border border-purple-900/40 rounded-lg shadow-[0_0_15px_rgba(168,85,247,0.05)]">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono text-purple-400/90 uppercase tracking-wider">Unique Transceivers</span>
+            <Users size={13} className="text-purple-400" />
+          </div>
+          <div className="text-lg font-bold font-mono text-purple-300 mt-1">{stats.uniqueTransceivers}</div>
+          <div className="text-[10px] font-mono text-purple-400/70 mt-0.5">Tracked handsets</div>
         </div>
-        <div className="panel p-2.5 bg-[var(--bg-panel-raised)]">
-          <div className="text-[10px] font-mono text-[var(--text-muted)] uppercase">High-Frequency Pairs</div>
-          <div className="text-base font-bold font-mono text-[var(--status-purple)] mt-0.5">
+
+        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/40 border border-amber-900/40 rounded-lg shadow-[0_0_15px_rgba(245,158,11,0.05)]">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono text-amber-400/90 uppercase tracking-wider">High-Frequency Pairs</span>
+            <ShieldAlert size={13} className="text-amber-400" />
+          </div>
+          <div className="text-lg font-bold font-mono text-amber-300 mt-1">
             {communications.filter((c) => (c.frequency_count || 1) >= 8).length}
           </div>
+          <div className="text-[10px] font-mono text-amber-400/80 mt-0.5">≥ 8 calls logged</div>
         </div>
-        <div className="panel p-2.5 bg-[var(--bg-panel-raised)]">
-          <div className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Data Ingestion Standard</div>
-          <div className="text-xs font-mono text-[var(--status-verified)] mt-1">TRAI CDR Spec V2</div>
+
+        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/40 border border-emerald-900/40 rounded-lg">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono text-emerald-400/90 uppercase tracking-wider">Protocol Compliance</span>
+            <CheckCircle2 size={13} className="text-emerald-400" />
+          </div>
+          <div className="text-xs font-mono font-bold text-emerald-300 mt-1">TRAI CDR Spec V2</div>
+          <div className="text-[10px] font-mono text-slate-400 mt-0.5">Audited telephony ingest</div>
         </div>
       </div>
 
@@ -98,29 +164,86 @@ export default function Communications() {
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by suspect name, MSISDN / phone number, or exhibit ID..."
+              placeholder="Search by name, MSISDN / phone number, or exhibit ID..."
               className="workstation-input pl-8 pr-3 text-xs"
             />
           </div>
 
-          <div className="flex items-center gap-1.5 bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] rounded px-2.5 py-1">
-            <Filter size={12} className="text-[var(--text-muted)]" />
+          {/* Case Filter */}
+          <div className="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/80 rounded-lg px-2.5 py-1">
+            <FolderOpen size={12} className="text-sky-400" />
+            <select
+              value={selectedCaseId}
+              onChange={(e) => {
+                const val = e.target.value;
+                setSelectedCaseId(val);
+                setSearchParams((prev) => {
+                  const next = new URLSearchParams(prev);
+                  if (val) next.set("case_id", val);
+                  else next.delete("case_id");
+                  return next;
+                });
+              }}
+              className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer max-w-[150px] truncate"
+            >
+              <option value="" className="bg-slate-900 text-slate-300">All Cases (Global)</option>
+              {caseList.map((c) => (
+                <option key={c.id} value={c.id} className="bg-slate-900 text-slate-200">
+                  {c.case_number}: {c.title}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Frequency Filter */}
+          <div className="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/80 rounded-lg px-2.5 py-1">
+            <Filter size={12} className="text-amber-400" />
             <select
               value={minFrequency}
               onChange={(e) => setMinFrequency(Number(e.target.value))}
-              className="bg-transparent text-xs text-[var(--text-secondary)] outline-none cursor-pointer"
+              className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer"
             >
-              <option value={1} className="bg-[var(--bg-panel-solid)]">All Interactions (1+)</option>
-              <option value={4} className="bg-[var(--bg-panel-solid)]">Medium Traffic (4+ calls)</option>
-              <option value={8} className="bg-[var(--bg-panel-solid)]">Burst / Syndicate (8+ calls)</option>
+              <option value={1} className="bg-slate-900 text-slate-300">All Interactions (1+)</option>
+              <option value={4} className="bg-slate-900 text-amber-300 font-semibold">Medium Traffic (4+ calls)</option>
+              <option value={8} className="bg-slate-900 text-rose-300 font-semibold">Frequent Contact (8+ calls)</option>
             </select>
           </div>
         </div>
 
-        <div className="text-[11px] font-mono text-[var(--text-muted)]">
-          {filtered.length} Communication Traces Indexed
+        <div className="text-[11px] font-mono text-slate-400">
+          <span className="text-sky-400 font-bold">{filtered.length}</span> Communication Traces Indexed
         </div>
       </div>
+
+      {/* ── Active Scope Banner ── */}
+      {(selectedCaseId || selectedEntityId) && (
+        <div className="px-6 py-2 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between text-xs">
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-[10px] uppercase text-sky-400 font-semibold">Active Scope:</span>
+            {selectedCaseId && (
+              <span className="badge bg-sky-950/80 border-sky-700 text-sky-300 text-[10px] font-mono">
+                Case: {selectedCaseObj?.case_number || selectedCaseId.slice(0, 8)}
+              </span>
+            )}
+            {selectedEntityId && (
+              <span className="badge bg-purple-950/80 border-purple-700 text-purple-300 text-[10px] font-mono">
+                Entity Scoped: {selectedEntityId.slice(0, 8)}
+              </span>
+            )}
+          </div>
+          <button
+            onClick={() => {
+              setSelectedCaseId("");
+              setSelectedEntityId("");
+              setSearchParams({});
+            }}
+            className="flex items-center gap-1 text-[11px] text-slate-400 hover:text-rose-400 cursor-pointer transition-colors"
+          >
+            <X size={12} />
+            <span>Clear Filter Context</span>
+          </button>
+        </div>
+      )}
 
       {/* ── Main Data View ── */}
       <div className="flex-1 p-6 overflow-y-auto space-y-3">
@@ -131,101 +254,292 @@ export default function Communications() {
             ))}
           </div>
         ) : filtered.length === 0 ? (
-          <div className="panel p-12 text-center text-xs text-[var(--text-muted)] bg-[var(--bg-panel-solid)]">
-            <PhoneCall size={32} className="mx-auto mb-2 opacity-30" />
+          <div className="panel p-12 text-center text-xs text-[var(--text-muted)] bg-[var(--bg-panel-solid)] rounded-lg">
+            <PhoneCall size={32} className="mx-auto mb-2 opacity-30 text-sky-400" />
             <div className="font-semibold text-[var(--text-secondary)] uppercase">No communication records matched</div>
-            <p className="mt-1 text-[11px]">Adjust search query or frequency filter.</p>
+            <p className="mt-1 text-[11px] text-slate-400">
+              {selectedEntityId || selectedCaseId
+                ? "No communication records found for this active scope."
+                : "Adjust search query or frequency filter."}
+            </p>
           </div>
-        ) : (
-          <div className="space-y-2">
+        ) : viewMode === "matrix" ? (
+          /* ── Topology / Matrix View: Caller -> Call -> Receiver ── */
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
             {filtered.map((item) => {
-              const isBurst = (item.frequency_count || 1) >= 8;
+              const isFrequent = (item.frequency_count || 1) >= 8;
+              const isMedium = (item.frequency_count || 1) >= 4;
 
               return (
                 <div
                   key={item.id}
-                  className={`panel p-3.5 bg-[var(--bg-panel-solid)] hover:border-[var(--border-strong)] transition-all ${
-                    isBurst ? "border-l-2 border-l-[var(--status-warning)]" : ""
+                  className={`panel p-4 rounded-lg border transition-all space-y-3 ${
+                    isFrequent
+                      ? "bg-gradient-to-br from-rose-950/20 via-slate-900/90 to-slate-900 border-rose-500/50 shadow-[0_0_15px_rgba(244,63,94,0.1)]"
+                      : isMedium
+                      ? "bg-gradient-to-br from-amber-950/20 via-slate-900/90 to-slate-900 border-amber-500/50 shadow-[0_0_15px_rgba(245,158,11,0.08)]"
+                      : "bg-gradient-to-br from-sky-950/10 via-slate-900/90 to-slate-900 border-slate-800 hover:border-slate-700"
                   }`}
                 >
-                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-                    {/* Left: Originating & Terminating Parties */}
-                    <div className="flex items-center gap-4 flex-1 min-w-0">
-                      <div className="w-8 h-8 rounded flex items-center justify-center bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] text-[var(--intel-sky)] shrink-0">
-                        <PhoneCall size={15} />
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1 min-w-0">
-                        {/* Caller */}
-                        <div className="space-y-0.5">
-                          <div className="text-[10px] font-mono uppercase text-[var(--text-muted)]">
-                            Originating Party
-                          </div>
-                          <div
-                            onClick={() => navigate(`/entities?q=${encodeURIComponent(item.caller_name)}`)}
-                            className="text-xs font-bold text-[var(--text-primary)] hover:text-[var(--intel-sky)] cursor-pointer truncate"
-                          >
-                            {item.caller_name}
-                          </div>
-                          <div className="text-[11px] font-mono text-[var(--text-secondary)]">
-                            {item.caller_phone}
-                          </div>
-                        </div>
-
-                        {/* Arrow & Receiver */}
-                        <div className="space-y-0.5">
-                          <div className="text-[10px] font-mono uppercase text-[var(--text-muted)] flex items-center gap-1">
-                            <ArrowRight size={10} />
-                            <span>Terminating Party</span>
-                          </div>
-                          <div
-                            onClick={() => navigate(`/entities?q=${encodeURIComponent(item.receiver_name)}`)}
-                            className="text-xs font-bold text-[var(--text-primary)] hover:text-[var(--intel-sky)] cursor-pointer truncate"
-                          >
-                            {item.receiver_name}
-                          </div>
-                          <div className="text-[11px] font-mono text-[var(--text-secondary)]">
-                            {item.receiver_phone}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Middle: Metrics & Timing */}
-                    <div className="flex items-center gap-4 text-xs shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-[var(--border-subtle)]">
-                      <div className="text-right">
-                        <div className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Interactions</div>
-                        <div className="font-mono font-bold text-[var(--text-bright)]">
-                          {item.frequency_count} calls
-                        </div>
-                      </div>
-
-                      <div className="text-right">
-                        <div className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Avg Duration</div>
-                        <div className="font-mono text-[var(--text-secondary)]">
-                          {Math.floor(item.duration_seconds / 60)}m {item.duration_seconds % 60}s
-                        </div>
-                      </div>
-
-                      <div className="text-right min-w-[130px]">
-                        <div className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Last Contact</div>
-                        <div className="font-mono text-[11px] text-[var(--text-secondary)]">
-                          {new Date(item.timestamp).toLocaleDateString()} {new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Right: Evidence Reference */}
-                    <div className="flex items-center gap-2 shrink-0">
-                      <span className="badge badge-low text-[9px] font-mono">
+                  <div className="flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-1.5">
+                      <span className="px-2 py-0.5 rounded text-[9px] font-mono bg-slate-800 border border-slate-700 text-slate-300">
                         {item.source_evidence}
                       </span>
+                      {isFrequent && (
+                        <span className="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-rose-950/80 text-rose-300 border border-rose-600/60 flex items-center gap-1">
+                          <Radio size={9} className="animate-pulse text-rose-400" />
+                          <span>HIGH FREQUENCY</span>
+                        </span>
+                      )}
+                    </div>
+                    <span className="text-[10px] font-mono text-slate-400">
+                      {new Date(item.timestamp).toLocaleDateString()}
+                    </span>
+                  </div>
+
+                  {/* Flow: Caller -> Bridge -> Receiver */}
+                  <div className="flex items-center justify-between gap-2 p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                    {/* Originating Party */}
+                    <div className="flex-1 min-w-0">
+                      <div className="text-[9px] font-mono uppercase text-sky-400 font-semibold">Originating Party</div>
+                      <div
+                        onClick={() => navigate(`/network?entity_id=${item.caller_id}`)}
+                        className="text-xs font-bold text-slate-100 hover:text-sky-300 cursor-pointer truncate transition-colors"
+                        title={item.caller_name}
+                      >
+                        {item.caller_name}
+                      </div>
+                      <div className="text-[10px] font-mono text-slate-400 truncate">{item.caller_phone}</div>
+                    </div>
+
+                    {/* Middle Telephony Bridge */}
+                    <div className="flex flex-col items-center justify-center px-2">
+                      <div className="w-7 h-7 rounded-full bg-sky-950 border border-sky-600/80 flex items-center justify-center text-sky-400 shadow-sm">
+                        <PhoneCall size={12} />
+                      </div>
+                      <div className="text-[11px] font-mono font-bold text-amber-300 mt-1">
+                        {item.frequency_count} calls
+                      </div>
+                      <div className="text-[8px] font-mono text-slate-400">
+                        {Math.floor(item.duration_seconds / 60)}m avg
+                      </div>
+                    </div>
+
+                    {/* Terminating Party */}
+                    <div className="flex-1 min-w-0 text-right">
+                      <div className="text-[9px] font-mono uppercase text-purple-400 font-semibold">Terminating Party</div>
+                      <div
+                        onClick={() => navigate(`/network?entity_id=${item.receiver_id}`)}
+                        className="text-xs font-bold text-slate-100 hover:text-sky-300 cursor-pointer truncate transition-colors"
+                        title={item.receiver_name}
+                      >
+                        {item.receiver_name}
+                      </div>
+                      <div className="text-[10px] font-mono text-slate-400 truncate">{item.receiver_phone}</div>
+                    </div>
+                  </div>
+
+                  {/* Pivot Actions */}
+                  <div className="flex items-center justify-end gap-2 pt-1 border-t border-slate-800 text-xs">
+                    <button
+                      onClick={() => navigate(`/timeline?entity_id=${item.caller_id}`)}
+                      className="flex items-center gap-1 text-[10px] font-mono text-slate-300 hover:text-sky-300 bg-slate-800/80 px-2 py-1 rounded border border-slate-700 cursor-pointer transition-colors"
+                    >
+                      <Clock size={11} />
+                      <span>Timeline</span>
+                    </button>
+                    <button
+                      onClick={() => navigate(`/network?entity_id=${item.caller_id}`)}
+                      className="flex items-center gap-1 text-[10px] font-mono text-sky-400 hover:text-sky-300 bg-sky-950/60 px-2 py-1 rounded border border-sky-800/80 cursor-pointer font-semibold transition-colors"
+                    >
+                      <Network size={11} />
+                      <span>Explore Network</span>
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          /* ── Standard CDR Feed List View (Strict 12-Column Alignment) ── */
+          <div className="space-y-2">
+            {/* Header Bar */}
+            <div className="hidden lg:grid grid-cols-12 gap-4 px-10 py-2.5 bg-slate-950 border-b border-slate-800/80 text-[10px] font-mono uppercase tracking-wider text-slate-400 select-none">
+              <div className="col-span-3 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                <span>Originating Party (Caller)</span>
+              </div>
+              <div className="col-span-2 text-center">Telemetry & Intensity</div>
+              <div className="col-span-3 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+                <span>Terminating Party (Receiver)</span>
+              </div>
+              <div className="col-span-2 text-right">Duration & Timing</div>
+              <div className="col-span-1 text-center">Exhibit</div>
+              <div className="col-span-1 text-right">Actions</div>
+            </div>
+
+            {/* List Rows */}
+            {filtered.map((item) => {
+              const isFrequent = (item.frequency_count || 1) >= 8;
+              const isMedium = (item.frequency_count || 1) >= 4;
+
+              return (
+                <div
+                  key={item.id}
+                  className={`panel p-3.5 rounded-lg border transition-all ${
+                    isFrequent
+                      ? "bg-gradient-to-r from-rose-950/20 via-slate-900/90 to-slate-900 border-l-4 border-l-rose-500 border-slate-800 hover:border-rose-500/50 shadow-sm"
+                      : isMedium
+                      ? "bg-gradient-to-r from-amber-950/15 via-slate-900/90 to-slate-900 border-l-4 border-l-amber-500 border-slate-800 hover:border-amber-500/50 shadow-sm"
+                      : "bg-gradient-to-r from-sky-950/10 via-slate-900/90 to-slate-900 border-l-4 border-l-sky-500/70 border-slate-800 hover:border-slate-700"
+                  }`}
+                >
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-4 items-center">
+                    
+                    {/* Originating Party / Caller (Col 1-3) */}
+                    <div className="lg:col-span-3 flex items-center gap-3 min-w-0">
+                      <div className="w-8 h-8 rounded-lg bg-sky-950/90 border border-sky-700/60 text-sky-400 flex items-center justify-center shrink-0 shadow-inner">
+                        <PhoneCall size={14} />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="text-[10px] font-mono text-slate-400 uppercase lg:hidden">
+                          Originating Party
+                        </div>
+                        <div
+                          onClick={() =>
+                            navigate(
+                              `/network?entity_id=${item.caller_id}${
+                                selectedCaseId ? `&case_id=${selectedCaseId}` : ""
+                              }`
+                            )
+                          }
+                          className="text-xs font-bold text-slate-100 hover:text-sky-400 cursor-pointer truncate transition-colors"
+                          title={item.caller_name}
+                        >
+                          {item.caller_name}
+                        </div>
+                        <div className="text-[11px] font-mono text-slate-400 truncate">
+                          {item.caller_phone}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Telemetry Channel & Intensity (Col 4-5) */}
+                    <div className="lg:col-span-2 flex flex-col items-start lg:items-center justify-center">
+                      <div className="flex items-center gap-1.5">
+                        <span
+                          className={`font-mono text-xs font-bold px-2 py-0.5 rounded-full border ${
+                            isFrequent
+                              ? "bg-rose-950/80 text-rose-300 border-rose-600/60 shadow-[0_0_10px_rgba(244,63,94,0.2)]"
+                              : isMedium
+                              ? "bg-amber-950/80 text-amber-300 border-amber-600/60"
+                              : "bg-sky-950/80 text-sky-300 border-sky-700/60"
+                          }`}
+                        >
+                          {item.frequency_count} Calls
+                        </span>
+                      </div>
+                      {/* Mini visual intensity meter */}
+                      <div className="w-20 h-1.5 bg-slate-800 rounded-full overflow-hidden mt-1.5 hidden lg:block">
+                        <div
+                          className={`h-full rounded-full ${
+                            isFrequent
+                              ? "bg-rose-500"
+                              : isMedium
+                              ? "bg-amber-500"
+                              : "bg-sky-500"
+                          }`}
+                          style={{
+                            width: `${Math.min(100, ((item.frequency_count || 1) / 12) * 100)}%`,
+                          }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Terminating Party / Receiver (Col 6-8) */}
+                    <div className="lg:col-span-3 flex items-center gap-3 min-w-0">
+                      <div className="w-8 h-8 rounded-lg bg-purple-950/90 border border-purple-700/60 text-purple-400 flex items-center justify-center shrink-0 shadow-inner">
+                        <PhoneCall size={14} />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="text-[10px] font-mono text-slate-400 uppercase lg:hidden">
+                          Terminating Party
+                        </div>
+                        <div
+                          onClick={() =>
+                            navigate(
+                              `/network?entity_id=${item.receiver_id}${
+                                selectedCaseId ? `&case_id=${selectedCaseId}` : ""
+                              }`
+                            )
+                          }
+                          className="text-xs font-bold text-slate-100 hover:text-sky-400 cursor-pointer truncate transition-colors"
+                          title={item.receiver_name}
+                        >
+                          {item.receiver_name}
+                        </div>
+                        <div className="text-[11px] font-mono text-slate-400 truncate">
+                          {item.receiver_phone}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Duration & Timing (Col 9-10) */}
+                    <div className="lg:col-span-2 text-left lg:text-right font-mono text-[10px] text-slate-300">
+                      <div className="text-[10px] font-mono text-slate-400 uppercase lg:hidden">
+                        Timing
+                      </div>
+                      <div className="font-semibold text-slate-200">
+                        {Math.floor(item.duration_seconds / 60)}m {item.duration_seconds % 60}s avg
+                      </div>
+                      <div className="text-slate-400">
+                        {new Date(item.timestamp).toLocaleDateString([], {
+                          month: "short",
+                          day: "numeric",
+                        })}{" "}
+                        {new Date(item.timestamp).toLocaleTimeString([], {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Exhibit (Col 11) */}
+                    <div className="lg:col-span-1 flex items-center justify-start lg:justify-center">
+                      <span className="px-2 py-0.5 rounded text-[9px] font-mono bg-slate-800/90 border border-slate-700 text-slate-300 truncate max-w-[105px]">
+                        {item.source_evidence}
+                      </span>
+                    </div>
+
+                    {/* Actions (Col 12) */}
+                    <div className="lg:col-span-1 flex items-center justify-end gap-1.5">
                       <button
-                        onClick={() => navigate(`/network`)}
-                        className="p-1 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] hover:border-[var(--intel-sky)] text-[var(--text-muted)] hover:text-[var(--text-primary)]"
+                        onClick={() =>
+                          navigate(
+                            `/timeline?entity_id=${item.caller_id}${
+                              selectedCaseId ? `&case_id=${selectedCaseId}` : ""
+                            }`
+                          )
+                        }
+                        className="p-1.5 rounded-md bg-slate-800/90 border border-slate-700 hover:border-sky-400 hover:bg-sky-950/60 text-slate-300 hover:text-sky-300 transition-all cursor-pointer shadow-sm"
+                        title="View in Chronological Timeline"
+                      >
+                        <Clock size={12} />
+                      </button>
+                      <button
+                        onClick={() =>
+                          navigate(
+                            `/network?entity_id=${item.caller_id}${
+                              selectedCaseId ? `&case_id=${selectedCaseId}` : ""
+                            }`
+                          )
+                        }
+                        className="p-1.5 rounded-md bg-slate-800/90 border border-slate-700 hover:border-sky-400 hover:bg-sky-950/60 text-slate-300 hover:text-sky-300 transition-all cursor-pointer shadow-sm"
                         title="View in Network Graph"
                       >
-                        <ChevronRight size={13} />
+                        <ChevronRight size={12} />
                       </button>
                     </div>
                   </div>

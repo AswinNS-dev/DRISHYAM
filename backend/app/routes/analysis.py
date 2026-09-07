@@ -14,7 +14,10 @@ router = APIRouter(prefix="/api/v2", tags=["analysis"])
 @router.get("/analysis/communications")
 def list_communications(
     entity_id: Optional[str] = None,
+    case_id: Optional[str] = None,
     q: Optional[str] = None,
+    from_date: Optional[str] = None,
+    to_date: Optional[str] = None,
     limit: int = 100,
     db: Session = Depends(get_db),
     user=Depends(get_current_user)
@@ -25,7 +28,20 @@ def list_communications(
     """
     lookup = graph_data.node_lookup(db)
     phones = {p.id: p for p in db.query(m.Phone).all()}
-    
+
+    # Resolve case entities if case_id provided
+    case_entity_ids = set()
+    if case_id:
+        accused = db.query(m.RelationshipRecord).filter(
+            m.RelationshipRecord.relationship_type == "ACCUSED_IN",
+            m.RelationshipRecord.target_entity_id == case_id,
+        ).all()
+        case_entity_ids.update(r.source_entity_id for r in accused)
+        fir_ids = [f.id for f in db.query(m.FIR).filter(m.FIR.case_id == case_id).all()]
+        if fir_ids:
+            mentions = db.query(m.EntityMention).filter(m.EntityMention.source_record_id.in_(fir_ids)).all()
+            case_entity_ids.update(m.resolved_entity_id for m in mentions if m.resolved_entity_id)
+
     # Query communication and phone relationships
     comm_rels = db.query(m.RelationshipRecord).filter(
         (m.RelationshipRecord.relationship_type.in_(["COMMUNICATED_WITH", "USED_PHONE"])) |
@@ -40,6 +56,9 @@ def list_communications(
         tgt_info = lookup.get(tgt_id, {})
 
         if entity_id and entity_id not in (src_id, tgt_id):
+            continue
+
+        if case_id and not (src_id in case_entity_ids or tgt_id in case_entity_ids):
             continue
 
         caller_name = src_info.get("name", "Unknown Subject")
@@ -63,12 +82,18 @@ def list_communications(
         timestamp = r.last_seen_at.isoformat() if r.last_seen_at else dt.datetime.utcnow().isoformat()
         first_seen = r.first_seen_at.isoformat() if r.first_seen_at else timestamp
 
+        # Date filtering
+        if from_date and timestamp < from_date:
+            continue
+        if to_date and timestamp > to_date:
+            continue
+
         # Calculate estimated duration & frequency from real evidence notes or confidence
         frequency = max(1, int((r.confidence_score or 0.8) * 12))
         duration_sec = int(45 + ((r.confidence_score or 0.8) * 240))
 
         # Check for case linkage
-        case_id = r.source_record_id if r.source_record_type == "FIR" else None
+        linked_case_id = r.source_record_id if r.source_record_type == "FIR" else case_id
 
         record = {
             "id": r.id,
@@ -88,7 +113,7 @@ def list_communications(
             "confidence": round(r.confidence_score or 0.85, 2),
             "source_evidence": r.source_record_id or f"CDR-EXHIBIT-{r.id[:6].upper()}",
             "evidence_id": r.evidence_id,
-            "case_id": case_id,
+            "case_id": linked_case_id,
         }
 
         if q:
@@ -108,13 +133,17 @@ def list_communications(
         "communications": results[:limit],
         "total_records": len(results),
         "unique_transceivers": len(set([c["caller_id"] for c in results] + [c["receiver_id"] for c in results])),
+        "filters_applied": {"entity_id": entity_id, "case_id": case_id, "q": q, "from_date": from_date, "to_date": to_date},
     }
 
 
 @router.get("/analysis/transactions")
 def list_transactions(
     entity_id: Optional[str] = None,
+    case_id: Optional[str] = None,
     q: Optional[str] = None,
+    from_date: Optional[str] = None,
+    to_date: Optional[str] = None,
     min_amount: Optional[float] = None,
     limit: int = 100,
     db: Session = Depends(get_db),
@@ -125,6 +154,19 @@ def list_transactions(
     """
     lookup = graph_data.node_lookup(db)
     accounts = {a.id: a for a in db.query(m.FinancialAccount).all()}
+
+    # Resolve case entities if case_id provided
+    case_entity_ids = set()
+    if case_id:
+        accused = db.query(m.RelationshipRecord).filter(
+            m.RelationshipRecord.relationship_type == "ACCUSED_IN",
+            m.RelationshipRecord.target_entity_id == case_id,
+        ).all()
+        case_entity_ids.update(r.source_entity_id for r in accused)
+        fir_ids = [f.id for f in db.query(m.FIR).filter(m.FIR.case_id == case_id).all()]
+        if fir_ids:
+            mentions = db.query(m.EntityMention).filter(m.EntityMention.source_record_id.in_(fir_ids)).all()
+            case_entity_ids.update(m.resolved_entity_id for m in mentions if m.resolved_entity_id)
     
     query = db.query(m.Transaction).order_by(m.Transaction.txn_date.desc(), m.Transaction.created_at.desc())
     if min_amount:
@@ -143,6 +185,9 @@ def list_transactions(
         if entity_id and entity_id not in (from_owner_id, to_owner_id, t.from_account_id, t.to_account_id):
             continue
 
+        if case_id and not (from_owner_id in case_entity_ids or to_owner_id in case_entity_ids):
+            continue
+
         sender_name = lookup.get(from_owner_id, {}).get("name", "Authorized Entity") if from_owner_id else "External Clearing"
         receiver_name = lookup.get(to_owner_id, {}).get("name", "Beneficiary Subject") if to_owner_id else "Counterparty Acct"
 
@@ -153,6 +198,11 @@ def list_transactions(
         receiver_bank = to_acc.bank_name if to_acc else "State Scheduled Bank"
 
         txn_time = t.txn_date.isoformat() if t.txn_date else (t.created_at.isoformat() if t.created_at else dt.datetime.utcnow().isoformat())
+
+        if from_date and txn_time < from_date:
+            continue
+        if to_date and txn_time > to_date:
+            continue
 
         item = {
             "id": t.id,
@@ -169,6 +219,7 @@ def list_transactions(
             "status": "COMPLETED",
             "flagged": (t.amount or 0) >= 150000,
             "data_source": t.data_source or "SYNTHETIC",
+            "case_id": case_id,
         }
 
         if q:
@@ -190,6 +241,7 @@ def list_transactions(
         "total_volume": round(sum(r["amount"] for r in results), 2),
         "flagged_count": sum(1 for r in results if r["flagged"]),
         "total_records": len(results),
+        "filters_applied": {"entity_id": entity_id, "case_id": case_id, "q": q, "from_date": from_date, "to_date": to_date, "min_amount": min_amount},
     }
 
 
