@@ -13,7 +13,7 @@ def login(form: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get
     user = db.query(m.User).filter(m.User.email == form.username).first()
     if not user or not verify_password(form.password, user.hashed_password):
         raise HTTPException(status_code=401, detail="Incorrect email or password")
-    token = create_access_token(user.id, user.role)
+    token = create_access_token(user.id, user.role, email=user.email, full_name=user.full_name)
     db.add(m.AuditLog(user_id=user.id, action="LOGIN", details={"email": user.email}))
     db.commit()
     return {

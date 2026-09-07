@@ -61,6 +61,7 @@ ROLE_PERMISSIONS: dict[Role, Set[Permission]] = {
         Permission.VIEW_EVIDENCE,
         Permission.VERIFY_INTEGRITY,
         Permission.MANAGE_EVIDENCE,
+        Permission.VIEW_AUDIT_LOGS,  # investigators review the AUDIT LOG for their operations
         Permission.VIEW_ENTITIES,
         Permission.VIEW_NETWORK,
         Permission.RUN_ANALYSIS,

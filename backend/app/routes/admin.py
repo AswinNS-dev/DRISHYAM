@@ -97,7 +97,7 @@ def get_system_telemetry(db: Session = Depends(get_db), officer: AuthenticatedOf
             "total_relationships": db.query(m.RelationshipRecord).count(),
             "total_audit_records": db.query(m.AuditLog).count(),
             "server_uptime": "Operational — 99.98%",
-            "security_encryption": "AES-256 / SHA-256 + Bcrypt",
+            "security_encryption": "SHA-256 (evidence integrity) + bcrypt (password hashing)",
         }
     }
 
@@ -105,11 +105,14 @@ def get_system_telemetry(db: Session = Depends(get_db), officer: AuthenticatedOf
 @router.get("/audit")
 def list_audit_trail(db: Session = Depends(get_db), officer: AuthenticatedOfficer = Depends(require_role([Role.ADMIN]))):
     logs = db.query(m.AuditLog).order_by(m.AuditLog.created_at.desc()).limit(150).all()
+    users = {u.id: u for u in db.query(m.User).all()}
     return {
         "audit_logs": [
             {
                 "id": l.id,
                 "user_id": l.user_id,
+                "operator_name": users[l.user_id].full_name if l.user_id in users else "Authenticated Officer",
+                "operator_email": users[l.user_id].email if l.user_id in users else None,
                 "action": l.action,
                 "details": l.details,
                 "created_at": l.created_at.isoformat() if l.created_at else None,

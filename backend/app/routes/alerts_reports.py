@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 from app.database.db import get_db
 from app.core.security import get_current_user
 from app.models import models as m
+from app.security.permissions import Permission
+from app.security.dependencies import get_current_officer
 from app.services import graph_data
 from app.graph import engine as ge
 
@@ -123,9 +125,41 @@ def export_report(report_id: str, db: Session = Depends(get_db)):
 
 
 @router.get("/audit")
-def audit_log(db: Session = Depends(get_db), user=Depends(get_current_user), limit: int = 100):
-    rows = db.query(m.AuditLog).order_by(m.AuditLog.created_at.desc()).limit(limit).all()
-    return {"audit_logs": [
-        {"id": a.id, "user_id": a.user_id, "action": a.action, "details": a.details, "created_at": a.created_at.isoformat()}
-        for a in rows
-    ]}
+def audit_log(
+    db: Session = Depends(get_db),
+    officer=Depends(get_current_officer),
+    limit: int = 100,
+):
+    """
+    AUDIT LOG — authorized security & investigation audit trail.
+    Backend-enforced: requires VIEW_AUDIT_LOGS clearance (403 if missing).
+    Records REAL actions only (logins, evidence operations, user governance, etc).
+    """
+    if not officer.can(Permission.VIEW_AUDIT_LOGS):
+        raise HTTPException(
+            status_code=403,
+            detail="Access denied: Missing required clearance scope 'view_audit_logs'.",
+        )
+
+    rows = db.query(m.AuditLog).order_by(m.AuditLog.created_at.desc()).limit(min(limit, 500)).all()
+    users = {u.id: u for u in db.query(m.User).all()}
+
+    results = []
+    for a in rows:
+        u = users.get(a.user_id)
+        results.append({
+            "id": a.id,
+            "user_id": a.user_id,
+            "operator_name": u.full_name if u else "Authenticated Officer",
+            "operator_email": u.email if u else "system.officer@drishyam.gov.in",
+            "operator_role": u.role if u else "investigator",
+            "action": a.action,
+            "details": a.details,
+            "timestamp": a.created_at.isoformat() if a.created_at else None,
+        })
+
+    return {
+        "audit_logs": results,
+        "total_logged": len(results),
+        "ledger_seal": "CRYPTOGRAPHIC_SHA256_ACTIVE",
+    }

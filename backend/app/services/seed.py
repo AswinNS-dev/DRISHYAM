@@ -167,9 +167,12 @@ def seed_all(db: Session):
 
     # --- Evidence + Relationships (general random network) ---
     def make_evidence(etype, source_record_id, desc, conf=0.85):
-        e = m.Evidence(evidence_type=etype, source_record_id=source_record_id, description=desc, confidence=conf, data_source="SYNTHETIC")
+        e = m.Evidence(evidence_type=etype, source_record_id=source_record_id, description=desc, confidence=conf, data_source="SYNTHETIC",
+                       verification_status="REQUIRES_REVIEW")
         db.add(e)
         db.flush()
+        from app.services.evidence_integrity import register_evidence_with_integrity
+        register_evidence_with_integrity(db, e)
         return e
 
     def make_rel(src_id, src_type, tgt_id, tgt_type, rtype, evidence, conf, days_ago_first=60, days_ago_last=2):

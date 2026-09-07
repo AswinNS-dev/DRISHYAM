@@ -142,6 +142,20 @@ class Evidence(Base):
     source_record_id = Column(String, nullable=True)
     description = Column(Text, nullable=True)
     storage_path = Column(String, nullable=True)
+    # File/object storage metadata (columns exist in the approved Supabase schema)
+    storage_url = Column(String, nullable=True)
+    mime_type = Column(String, nullable=True)
+    # SHA-256 integrity: digest persisted at registration and compared on verification
+    file_hash = Column(String, nullable=True)
+    source_hash = Column(String, nullable=True)  # digest of raw content bytes when uploaded
+    # Tamper-Evident Integrity Ledger: hash chain links recorded per record
+    previous_hash = Column(String, nullable=True)  # ledger hash of the prior record in the chain
+    ledger_position = Column(Integer, nullable=True, default=0)
+    ledger_anchor = Column(String, nullable=True)  # root anchor hash of the chain
+    # Human verification state (distinct from cryptographic integrity)
+    verification_status = Column(String, nullable=False, default="REQUIRES_REVIEW")  # VERIFIED | REJECTED | REQUIRES_REVIEW
+    verified_by = Column(String, nullable=True)
+    verified_at = Column(DateTime, nullable=True)
     confidence = Column(Float, default=0.9)
     data_source = Column(String, default="SYNTHETIC")
     created_at = Column(DateTime, default=now)

@@ -10,6 +10,21 @@ import {
   Shield
 } from "lucide-react";
 
+// Integrity/verification state display (distinct from authenticity)
+function integrityBadgeState(ev: any, verified: any) {
+  const s = verified?.status || ev.integrity_status || ev.verification_status || "REQUIRES_REVIEW";
+  if (s === "CHANGED") {
+    return { label: "INTEGRITY FAILED", tone: "text-red-400", dot: "bg-red-400 shadow-[0_0_6px_#ef4444]" };
+  }
+  if (s === "REJECTED") {
+    return { label: "REJECTED", tone: "text-rose-400", dot: "bg-rose-400 shadow-[0_0_6px_#f43f5e]" };
+  }
+  if (s === "VERIFIED" || verified?.status === "VERIFIED") {
+    return { label: "INTEGRITY VERIFIED", tone: "text-emerald-400", dot: "bg-emerald-400 shadow-[0_0_6px_#10b981]" };
+  }
+  return { label: "REQUIRES VERIFICATION", tone: "text-amber-400", dot: "bg-amber-400 shadow-[0_0_6px_#f59e0b]" };
+}
+
 // Evidence type metadata and category classification
 const EVIDENCE_TYPES: Record<string, { label: string; icon: any; badgeClass: string }> = {
   ALL: { label: "All Exhibits", icon: FileDigit, badgeClass: "badge-low" },
@@ -693,11 +708,11 @@ export default function Evidence() {
                       <div className="flex items-center justify-between gap-2 pt-1">
                         <span
                           className={`inline-flex items-center gap-1 text-[9px] font-mono font-bold uppercase ${
-                            verified ? "text-emerald-400" : "text-emerald-500/80"
+                            integrityBadgeState(ev, verified).tone
                           }`}
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#10b981]" />
-                          <span>{verified ? "VERIFIED" : "SEALED"}</span>
+                          <span className={`w-1.5 h-1.5 rounded-full ${integrityBadgeState(ev, verified).dot}`} />
+                          <span>{integrityBadgeState(ev, verified).label}</span>
                         </span>
 
                         <div className="flex items-center gap-1.5">
@@ -827,11 +842,15 @@ export default function Evidence() {
                           <td>
                             <span
                               className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[9px] font-mono font-bold uppercase ${
-                                verified ? "bg-emerald-950/40 text-emerald-300 border border-emerald-800/40" : "bg-zinc-800 text-zinc-300"
+                                integrityBadgeState(ev, verified).label.includes("FAILED")
+                                  ? "bg-red-950/40 text-red-300 border border-red-800/40"
+                                  : integrityBadgeState(ev, verified).label.includes("REQUIRES")
+                                  ? "bg-amber-950/40 text-amber-300 border border-amber-800/40"
+                                  : "bg-emerald-950/40 text-emerald-300 border border-emerald-800/40"
                               }`}
                             >
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                              <span>{verified ? "VERIFIED" : "SEALED"}</span>
+                              <span className={`w-1.5 h-1.5 rounded-full ${integrityBadgeState(ev, verified).dot}`} />
+                              <span>{integrityBadgeState(ev, verified).label}</span>
                             </span>
                           </td>
                           <td className="text-right whitespace-nowrap" onClick={(e) => e.stopPropagation()}>
@@ -982,8 +1001,16 @@ export default function Evidence() {
                   <Lock size={12} className="text-emerald-400" />
                   Tamper-Evident SHA-256 Digest
                 </span>
-                <span className="badge badge-verified text-[8px]">
-                  {verifiedMap[selectedExhibit.id] ? "VERIFIED VALID" : "CRYPTOGRAPHICALLY SEALED"}
+                <span className={`badge text-[8px] ${
+                  verifiedMap[selectedExhibit.id]?.status === "CHANGED" ? "bg-red-950/40 text-red-300 border border-red-800/40"
+                  : verifiedMap[selectedExhibit.id]?.status === "VERIFIED" || selectedExhibit.integrity_status === "VERIFIED" ? "badge-verified"
+                  : "badge-low"
+                }`}>
+                  {verifiedMap[selectedExhibit.id]?.status === "CHANGED"
+                    ? "INTEGRITY CHANGED"
+                    : verifiedMap[selectedExhibit.id]?.status === "VERIFIED" || selectedExhibit.integrity_status === "VERIFIED"
+                    ? "INTEGRITY VERIFIED"
+                    : "REQUIRES VERIFICATION"}
                 </span>
               </div>
 
@@ -1298,9 +1325,19 @@ export default function Evidence() {
           <div className="cmd-palette-modal max-w-lg p-5 bg-[#0e0e12] border border-zinc-700 rounded-2xl shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between pb-3 border-b border-zinc-800">
               <div className="flex items-center gap-2">
-                <CheckCircle2 size={18} className="text-emerald-400" />
+                {verificationModal.result?.status === "CHANGED" ? (
+                  <X size={18} className="text-red-400" />
+                ) : verificationModal.result?.status === "VERIFIED" ? (
+                  <CheckCircle2 size={18} className="text-emerald-400" />
+                ) : (
+                  <Shield size={18} className="text-amber-400" />
+                )}
                 <h2 className="text-xs font-bold uppercase tracking-wider text-white">
-                  Cryptographic Integrity Verification Audit
+                  {verificationModal.result?.status === "CHANGED"
+                    ? "Evidence Integrity Check Failed"
+                    : verificationModal.result?.status === "VERIFIED"
+                    ? "SHA-256 Integrity Verified"
+                    : "Integrity Requires Review"}
                 </h2>
               </div>
               <button
@@ -1312,16 +1349,45 @@ export default function Evidence() {
             </div>
 
             <div className="py-4 space-y-3 font-mono text-xs">
-              <div className="p-3 rounded-lg bg-emerald-950/30 border border-emerald-700/50 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-emerald-500 text-black flex items-center justify-center font-bold">
-                  ✓
+              <div
+                className={`p-3 rounded-lg border flex items-center gap-3 ${
+                  verificationModal.result?.status === "CHANGED"
+                    ? "bg-red-950/30 border-red-700/50"
+                    : verificationModal.result?.status === "VERIFIED"
+                    ? "bg-emerald-950/30 border-emerald-700/50"
+                    : "bg-amber-950/30 border-amber-700/50"
+                }`}
+              >
+                <div
+                  className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
+                    verificationModal.result?.status === "CHANGED"
+                      ? "bg-red-500 text-black"
+                      : verificationModal.result?.status === "VERIFIED"
+                      ? "bg-emerald-500 text-black"
+                      : "bg-amber-500 text-black"
+                  }`}
+                >
+                  {verificationModal.result?.status === "CHANGED" ? "✕" : verificationModal.result?.status === "VERIFIED" ? "✓" : "?"}
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-emerald-300">
-                    Evidence Integrity 100% Validated
+                  <div
+                    className={`text-xs font-bold ${
+                      verificationModal.result?.status === "CHANGED"
+                        ? "text-red-300"
+                        : verificationModal.result?.status === "VERIFIED"
+                        ? "text-emerald-300"
+                        : "text-amber-300"
+                    }`}
+                  >
+                    {verificationModal.result?.status === "CHANGED"
+                      ? "INTEGRITY CHECK FAILED — recorded digest mismatch"
+                      : verificationModal.result?.status === "VERIFIED"
+                      ? "SHA-256 Integrity: Verified"
+                      : "No persisted SHA-256 digest — re-seal required"}
                   </div>
                   <p className="text-[11px] text-zinc-400 mt-0.5">
-                    Live hash match confirms zero byte alteration since forensic seizure.
+                    {verificationModal.result?.reason ||
+                      "Recalculated hash compared against the digest recorded at seal time. This confirms code/content integrity, not real-world authenticity."}
                   </p>
                 </div>
               </div>
@@ -1333,7 +1399,7 @@ export default function Evidence() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-500">Hashing Algorithm:</span>
-                  <span className="text-sky-400">SHA-256 Cryptographic Hash Chaining</span>
+                  <span className="text-sky-400">SHA-256</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-500">Verified By Badge:</span>
@@ -1347,9 +1413,17 @@ export default function Evidence() {
 
               <div>
                 <div className="text-[10px] text-zinc-500 mb-1">Calculated SHA-256 Digest:</div>
-                <div className="p-2 rounded bg-black border border-zinc-800 text-[10px] text-emerald-400 break-all select-all">
+                <div className="p-2 rounded bg-black border border-zinc-800 text-[10px] text-sky-300 break-all select-all">
                   {verificationModal.result?.calculated_hash || verificationModal.exhibit.sha256_digest}
                 </div>
+                {verificationModal.result?.recorded_hash && (
+                  <>
+                    <div className="text-[10px] text-zinc-500 mb-1 mt-2">Recorded SHA-256 Digest:</div>
+                    <div className="p-2 rounded bg-black border border-zinc-800 text-[10px] text-zinc-400 break-all select-all">
+                      {verificationModal.result.recorded_hash}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
 

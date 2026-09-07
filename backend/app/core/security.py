@@ -18,9 +18,9 @@ def verify_password(plain: str, hashed: str) -> bool:
     return pwd_context.verify(plain, hashed)
 
 
-def create_access_token(subject: str, role: str) -> str:
+def create_access_token(subject: str, role: str, email: Optional[str] = None, full_name: Optional[str] = None) -> str:
     expire = dt.datetime.utcnow() + dt.timedelta(minutes=settings.JWT_EXPIRE_MINUTES)
-    payload = {"sub": subject, "role": role, "exp": expire}
+    payload = {"sub": subject, "role": role, "email": email, "full_name": full_name, "exp": expire}
     return jwt.encode(payload, settings.JWT_SECRET, algorithm=settings.JWT_ALGORITHM)
 
 
@@ -37,7 +37,12 @@ def decode_token(token: str) -> dict:
 
 def get_current_user(token: str = Depends(oauth2_scheme)) -> dict:
     payload = decode_token(token)
-    return {"user_id": payload["sub"], "role": payload["role"]}
+    return {
+        "user_id": payload["sub"],
+        "role": payload["role"],
+        "email": payload.get("email"),
+        "full_name": payload.get("full_name"),
+    }
 
 
 def require_roles(allowed: List[str]):

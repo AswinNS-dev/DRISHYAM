@@ -3,7 +3,7 @@ import { api } from "../lib/api";
 import { useAuth } from "../store/auth";
 import {
   ShieldCheck, Search, Filter, RefreshCw, CheckCircle2,
-  Lock, Copy, Check, Fingerprint
+  Lock, Copy, Check, Fingerprint, X
 } from "lucide-react";
 
 export default function Integrity() {
@@ -107,7 +107,7 @@ export default function Integrity() {
       <div className="px-6 py-2.5 bg-[rgba(59,130,246,0.06)] border-b border-[rgba(59,130,246,0.2)] text-[11px] text-[var(--text-secondary)] flex items-center gap-2">
         <Lock size={13} className="text-[var(--intel-sky)] shrink-0" />
         <span>
-          <strong>CRYPTOGRAPHIC SEAL GUARANTEE:</strong> SHA-256 verification confirms that seized digital records have not been altered or tampered with since acquisition. It provides mathematical proof of bit-level custody integrity.
+          <strong>INTEGRITY VS AUTHENTICITY:</strong> SHA-256 verification confirms whether the recorded content has changed since it was sealed. It does NOT independently prove that a document is real-world genuine or that its source is legitimate — that remains subject to investigator verification.
         </span>
       </div>
 
@@ -248,14 +248,24 @@ export default function Integrity() {
 
                       <div className="flex items-center justify-between gap-2 pt-1">
                         <div>
-                          {verified ? (
+                          {verified?.status === "CHANGED" ? (
+                            <span className="badge text-[9px] flex items-center gap-1 bg-red-950/40 text-red-300 border border-red-800/40">
+                              <X size={11} />
+                              <span>INTEGRITY FAILED</span>
+                            </span>
+                          ) : verified?.status === "VERIFIED" ? (
                             <span className="badge badge-verified text-[9px] flex items-center gap-1">
                               <CheckCircle2 size={11} />
-                              <span>ZERO ALTERATIONS CONFIRMED</span>
+                              <span>INTEGRITY VERIFIED</span>
+                            </span>
+                          ) : ev.integrity_status === "CHANGED" ? (
+                            <span className="badge text-[9px] flex items-center gap-1 bg-red-950/40 text-red-300 border border-red-800/40">
+                              <X size={11} />
+                              <span>INTEGRITY FAILED</span>
                             </span>
                           ) : (
                             <span className="badge badge-low text-[9px]">
-                              SEAL INTACT
+                              {ev.integrity_status === "VERIFIED" ? "SEALED — INTEGRITY OK" : "REQUIRES VERIFICATION"}
                             </span>
                           )}
                         </div>
@@ -284,9 +294,19 @@ export default function Integrity() {
           <div className="cmd-palette-modal max-w-lg p-5" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
               <div className="flex items-center gap-2">
-                <CheckCircle2 size={18} className="text-[var(--status-verified)]" />
+                {verificationModal.result?.status === "CHANGED" ? (
+                  <X size={18} className="text-[var(--neon-red)]" />
+                ) : verificationModal.result?.status === "VERIFIED" ? (
+                  <CheckCircle2 size={18} className="text-[var(--status-verified)]" />
+                ) : (
+                  <Lock size={18} className="text-[var(--intel-sky)]" />
+                )}
                 <h2 className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
-                  Cryptographic Integrity Verification Passed
+                  {verificationModal.result?.status === "CHANGED"
+                    ? "SHA-256 Integrity Check Failed"
+                    : verificationModal.result?.status === "VERIFIED"
+                    ? "SHA-256 Integrity Verified"
+                    : "Integrity Requires Review"}
                 </h2>
               </div>
               <button onClick={() => setVerificationModal(null)} className="text-xs font-mono text-[var(--text-muted)]">
@@ -302,21 +322,40 @@ export default function Integrity() {
               </div>
 
               <div className="space-y-1">
-                <div className="text-[10px] font-mono text-[var(--text-muted)]">VERIFIED SHA-256 DIGEST</div>
-                <div className="p-2 rounded bg-[var(--bg-panel-raised)] font-mono text-[10px] text-[var(--status-verified)] break-all border border-[var(--border-subtle)]">
+                <div className="text-[10px] font-mono text-[var(--text-muted)]">CALCULATED SHA-256 DIGEST</div>
+                <div className={`p-2 rounded bg-[var(--bg-panel-raised)] font-mono text-[10px] break-all border border-[var(--border-subtle)] ${
+                  verificationModal.result?.status === "CHANGED" ? "text-[var(--neon-red)]" : "text-[var(--status-verified)]"
+                }`}>
                   {verificationModal.result.calculated_hash}
                 </div>
+                {verificationModal.result.recorded_hash && (
+                  <>
+                    <div className="text-[10px] font-mono text-[var(--text-muted)] pt-1">RECORDED SHA-256 DIGEST</div>
+                    <div className="p-2 rounded bg-[var(--bg-panel-raised)] font-mono text-[10px] text-[var(--text-secondary)] break-all border border-[var(--border-subtle)]">
+                      {verificationModal.result.recorded_hash}
+                    </div>
+                  </>
+                )}
               </div>
 
               <div className="grid grid-cols-2 gap-2 text-[11px] font-mono text-[var(--text-secondary)] pt-1">
                 <div>Verified By: <strong>{verificationModal.result.verified_by || user?.full_name || "Investigating Officer"}</strong></div>
                 <div>Algorithm: <strong>SHA-256 Digest</strong></div>
-                <div>Status: <span className="text-[var(--status-verified)] font-bold">BIT-ACCURATE</span></div>
+                <div>Status: <span className={`font-bold ${
+                  verificationModal.result?.status === "CHANGED" ? "text-[var(--neon-red)]" : "text-[var(--status-verified)]"
+                }`}>
+                  {verificationModal.result?.status === "CHANGED" ? "CHANGED" : verificationModal.result?.status === "VERIFIED" ? "VERIFIED" : "REQUIRES REVIEW"}
+                </span></div>
                 <div>Timestamp: <strong>{new Date().toLocaleTimeString()} IST</strong></div>
               </div>
 
-              <div className="p-2.5 rounded bg-[rgba(16,185,129,0.06)] border border-[rgba(16,185,129,0.2)] text-[11px] text-[var(--text-secondary)]">
-                {verificationModal.result.message || "Integrity confirmed: Digital hash matches original forensic seizure state. Zero byte alterations detected."}
+              <div className={`p-2.5 rounded border text-[11px] text-[var(--text-secondary)] ${
+                verificationModal.result?.status === "CHANGED"
+                  ? "bg-[rgba(239,68,68,0.06)] border-[rgba(239,68,68,0.25)]"
+                  : "bg-[rgba(16,185,129,0.06)] border-[rgba(16,185,129,0.2)]"
+              }`}>
+                {verificationModal.result.reason || verificationModal.result.message ||
+                  "SHA-256 confirms content integrity (unchanged since seal), not real-world authenticity."}
               </div>
             </div>
 

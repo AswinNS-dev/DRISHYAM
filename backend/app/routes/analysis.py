@@ -6,6 +6,8 @@ import datetime as dt
 from app.database.db import get_db
 from app.core.security import get_current_user
 from app.models import models as m
+from app.security.permissions import Permission
+from app.security.dependencies import get_current_officer
 from app.services import graph_data
 
 router = APIRouter(prefix="/api/v2", tags=["analysis"])
@@ -249,13 +251,19 @@ def list_transactions(
 def get_audit_trail(
     limit: int = 100,
     db: Session = Depends(get_db),
-    user=Depends(get_current_user)
+    officer=Depends(get_current_officer),
 ):
     """
-    Unified investigation audit trail. Records officer logins, evidence verifications, 
+    Unified investigation audit trail. Records officer logins, evidence verifications,
     case access, and tamper-evident ledger inspections.
+    Backend-enforced: requires VIEW_AUDIT_LOGS clearance (403 if missing).
     """
-    logs = db.query(m.AuditLog).order_by(m.AuditLog.created_at.desc()).limit(limit).all()
+    if not officer.can(Permission.VIEW_AUDIT_LOGS):
+        raise HTTPException(
+            status_code=403,
+            detail="Access denied: Missing required clearance scope 'view_audit_logs'.",
+        )
+    logs = db.query(m.AuditLog).order_by(m.AuditLog.created_at.desc()).limit(min(limit, 500)).all()
     users = {u.id: u for u in db.query(m.User).all()}
 
     results = []
