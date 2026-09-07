@@ -103,7 +103,14 @@ export const api = {
   },
 
   // Locations / Map
-  locations: () => request("/api/v2/locations"),
+  locations: (params: Record<string, string> = {}) => {
+    const qs = new URLSearchParams(params).toString();
+    return request(qs ? `/api/v2/locations?${qs}` : "/api/v2/locations");
+  },
+  locationHotspots: (params: Record<string, string> = {}) => {
+    const qs = new URLSearchParams(params).toString();
+    return request(qs ? `/api/v2/locations/hotspots?${qs}` : "/api/v2/locations/hotspots");
+  },
   locationDetail: (id: string) => request(`/api/v2/locations/${id}`),
 
   // Admin
