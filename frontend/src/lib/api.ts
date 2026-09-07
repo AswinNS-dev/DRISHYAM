@@ -10,7 +10,7 @@ async function request(path: string, opts: RequestInit = {}) {
   const token = getToken();
   const headers: Record<string, string> = { ...(opts.headers as any) };
   if (token) headers["Authorization"] = `Bearer ${token}`;
-  if (opts.body && !(opts.body instanceof URLSearchParams)) {
+  if (opts.body && !(opts.body instanceof URLSearchParams) && !(opts.body instanceof FormData)) {
     headers["Content-Type"] = "application/json";
   }
   const res = await fetch(`${BASE}${path}`, { ...opts, headers });
@@ -144,10 +144,16 @@ export const api = {
     const qs = new URLSearchParams(p).toString();
     return request(qs ? `/api/v2/evidence?${qs}` : "/api/v2/evidence");
   },
-  verifyEvidence: (evidenceId: string) =>
-    request(`/api/v2/evidence/${evidenceId}/verify`, { method: "POST" }),
+  verifyEvidence: (evidenceId: string, simulateTamper = false) =>
+    request(`/api/v2/evidence/${evidenceId}/verify${simulateTamper ? "?simulate_tamper=true" : ""}`, { method: "POST" }),
   registerEvidence: (payload: any) =>
     request("/api/v2/evidence", { method: "POST", body: JSON.stringify(payload) }),
+  uploadEvidenceFile: (formData: FormData) =>
+    request("/api/v2/evidence/upload", { method: "POST", body: formData }),
+  evidenceLedger: () =>
+    request("/api/v2/evidence/ledger"),
+  tamperTestEvidence: (evidenceId: string, enableTamper = true) =>
+    request(`/api/v2/evidence/${evidenceId}/tamper-test?enable_tamper=${enableTamper}`, { method: "POST" }),
 
   // Analysis: Communications & Transactions
   communications: (params: {

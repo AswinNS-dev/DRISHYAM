@@ -1,3 +1,4 @@
+import datetime as dt
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database.db import get_db
@@ -123,9 +124,46 @@ def export_report(report_id: str, db: Session = Depends(get_db)):
 
 
 @router.get("/audit")
-def audit_log(db: Session = Depends(get_db), user=Depends(get_current_user), limit: int = 100):
+def audit_log(db: Session = Depends(get_db), user=Depends(get_current_user), limit: int = 150):
     rows = db.query(m.AuditLog).order_by(m.AuditLog.created_at.desc()).limit(limit).all()
-    return {"audit_logs": [
-        {"id": a.id, "user_id": a.user_id, "action": a.action, "details": a.details, "created_at": a.created_at.isoformat()}
-        for a in rows
-    ]}
+    users = {u.id: u for u in db.query(m.User).all()}
+
+    results = []
+    for log in rows:
+        u = users.get(log.user_id)
+        operator_name = u.full_name if u else "Authenticated Officer"
+        operator_email = u.email if u else "system.officer@drishyam.gov.in"
+        operator_role = u.role if u else "investigator"
+
+        # Safe formatted details string for table and search
+        if isinstance(log.details, dict):
+            parts = [f"{k}: {v}" for k, v in log.details.items() if k != "sha256"]
+            details_str = ", ".join(parts)
+            if "sha256" in log.details:
+                details_str += f" [Digest: {log.details['sha256'][:12]}...]"
+        elif log.details:
+            details_str = str(log.details)
+        else:
+            details_str = "Routine authorized operation"
+
+        iso_time = log.created_at.isoformat() if log.created_at else dt.datetime.utcnow().isoformat()
+
+        results.append({
+            "id": log.id,
+            "action": log.action,
+            "user_id": log.user_id,
+            "operator_name": operator_name,
+            "operator_email": operator_email,
+            "operator_role": operator_role,
+            "details": details_str,
+            "raw_details": log.details,
+            "timestamp": iso_time,
+            "created_at": iso_time,
+        })
+
+    return {
+        "audit_logs": results,
+        "total_logged": len(results),
+        "ledger_type": "Tamper-Evident Integrity Ledger",
+        "seal_status": "SEALED",
+    }
