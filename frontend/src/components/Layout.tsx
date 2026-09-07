@@ -215,9 +215,9 @@ export default function Layout() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search cases, subjects, phone numbers, vehicle plates (ESC to close)..."
-                className="w-full bg-transparent border-none outline-none text-xs text-white placeholder:text-zinc-600 font-sans"
+                className="w-full bg-transparent border-none outline-none text-sm text-white placeholder:text-zinc-500 font-sans"
               />
-              <span className="text-[10px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded border border-zinc-800">
+              <span className="text-[11px] font-mono text-zinc-400 bg-zinc-900 px-1.5 py-0.5 rounded border border-zinc-800">
                 ESC
               </span>
             </div>
@@ -287,12 +287,12 @@ export default function Layout() {
           {!collapsed && (
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
-                <span className="text-xs font-bold tracking-wider text-white truncate leading-tight font-mono">
+                <span className="text-sm font-black tracking-wider text-white truncate leading-tight font-mono">
                   CRIMEINTEL
                 </span>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" title="DRISHYAM Online" />
               </div>
-              <div className="text-[10px] font-mono text-zinc-500 truncate tracking-tight">
+              <div className="text-[11px] font-mono text-zinc-400 truncate tracking-tight">
                 INVESTIGATION SUITE
               </div>
             </div>
@@ -304,7 +304,7 @@ export default function Layout() {
           {visibleNavGroups.map((group) => (
             <div key={group.group} className="space-y-0.5">
               {!collapsed && (
-                <div className="px-2.5 py-1 text-[9px] font-mono font-semibold uppercase tracking-wider text-zinc-500">
+                <div className="px-2.5 py-1 text-[10.5px] font-mono font-bold uppercase tracking-wider text-zinc-400">
                   {group.group}
                 </div>
               )}
@@ -314,19 +314,19 @@ export default function Layout() {
                   to={to}
                   title={collapsed ? label : undefined}
                   className={({ isActive }) =>
-                    `flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors ${
+                    `flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[13px] transition-colors ${
                       isActive
-                        ? "bg-[#1c1c20] text-white font-medium shadow-sm"
-                        : "text-zinc-400 hover:text-zinc-100 hover:bg-[#121214]"
+                        ? "bg-[#1c1c20] text-white font-semibold shadow-sm"
+                        : "text-zinc-400 hover:text-zinc-100 hover:bg-[#121214] font-medium"
                     }`
                   }
                 >
                   <div className="flex items-center gap-2.5 truncate">
-                    <Icon size={14} className="shrink-0 text-zinc-400" />
+                    <Icon size={15} className="shrink-0 text-zinc-400" />
                     {!collapsed && <span className="truncate">{label}</span>}
                   </div>
                   {!collapsed && badge !== undefined && (
-                    <span className="text-[11px] font-mono text-zinc-500 pl-2">
+                    <span className="text-xs font-mono text-zinc-400 pl-2">
                       {badge}
                     </span>
                   )}
@@ -345,7 +345,7 @@ export default function Layout() {
             title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
           >
             <PanelLeft size={15} className="shrink-0 text-zinc-400" />
-            {!collapsed && <span>Collapse sidebar</span>}
+            {!collapsed && <span className="text-[13px]">Collapse sidebar</span>}
           </button>
 
           {/* User profile row with Popover */}
@@ -360,10 +360,10 @@ export default function Layout() {
                 </div>
                 {!collapsed && (
                   <div className="min-w-0">
-                    <div className="text-xs font-medium text-white truncate leading-tight">
+                    <div className="text-[13px] font-semibold text-white truncate leading-tight">
                       {user?.full_name || "Investigating Officer"}
                     </div>
-                    <div className="text-[10px] font-mono text-zinc-500 truncate">
+                    <div className="text-[11px] font-mono text-zinc-400 truncate">
                       {userRole === "admin"
                         ? "System Administrator"
                         : userRole === "investigator"
@@ -447,11 +447,11 @@ export default function Layout() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#0c0c0e] border border-zinc-800 text-xs text-zinc-400 hover:text-zinc-200 transition-colors cursor-pointer"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#0c0c0e] border border-zinc-800 text-[13px] text-zinc-300 hover:text-white transition-colors cursor-pointer"
             >
-              <Search size={13} />
+              <Search size={14} />
               <span>Search workspace...</span>
-              <kbd className="text-[10px] font-mono text-zinc-500 bg-zinc-900 px-1 rounded">⌘K</kbd>
+              <kbd className="text-[11px] font-mono text-zinc-400 bg-zinc-900 px-1.5 py-0.5 rounded border border-zinc-800">⌘K</kbd>
             </button>
           </div>
 

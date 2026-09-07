@@ -198,42 +198,42 @@ export default function NetworkIntelligence() {
   return (
     <div className="flex flex-col h-full overflow-hidden bg-[#020617]">
       {/* ── Top HUD Control Strip ── */}
-      <div className="px-5 py-3 border-b border-slate-800/90 flex flex-col gap-2.5 bg-slate-900/95 backdrop-blur-md shadow-md">
+      <div className="px-5 py-3.5 border-b border-slate-800/90 flex flex-col gap-3 bg-slate-900/95 backdrop-blur-md shadow-md">
         {/* Module Metadata Line */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="badge badge-info text-[10px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
+            <span className="badge badge-info text-[11px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30">
               STATE NETWORK INTELLIGENCE & SYNDICATE TOPOLOGY
             </span>
-            <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1 text-glow-emerald">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-[11px] font-mono text-emerald-400 flex items-center gap-1.5 font-semibold">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               LIVE DATABASE SYNCHRONIZED
             </span>
           </div>
           {graph && (
-            <div className="flex items-center gap-2 px-2.5 py-0.5 rounded-lg bg-slate-950 border border-slate-800 text-[10px] font-mono text-slate-400">
-              <span className="font-bold text-sky-300 text-glow-sky">{graph.nodes.length} Nodes</span>
+            <div className="flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-950 border border-slate-800 text-xs font-mono text-slate-400">
+              <span className="font-bold text-sky-300">{graph.nodes.length} Nodes</span>
               <span>·</span>
               <span className="text-slate-300">{graph.edges.length} Corroborated Links</span>
             </div>
           )}
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
-              <Network size={16} />
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="w-10 h-10 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md shrink-0">
+              <Network size={20} />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-sm font-black tracking-wide text-white uppercase text-glow-white">
+              <div className="flex items-center gap-2.5">
+                <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white">
                   Entity Network Analysis Workspace
                 </h1>
-                <span className="badge badge-low text-[8px] bg-sky-950/80 text-sky-300 border border-sky-800/60 font-mono">
+                <span className="badge badge-low text-xs bg-sky-950/80 text-sky-300 border border-sky-800/60 font-mono">
                   {viewMode === "3d" ? "3D NEURAL GRAPH" : "2D PLANAR GRAPH"}
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400">
+              <p className="text-sm text-slate-300 font-normal leading-relaxed mt-0.5">
                 Multi-hop associative clustering, key connectors, and neural relationship maps
               </p>
             </div>
@@ -242,34 +242,34 @@ export default function NetworkIntelligence() {
           {/* View Mode Toggle & Filters */}
           <div className="flex items-center gap-2.5 flex-wrap">
             {/* 3D vs 2D Toggle */}
-            <div className="flex items-center bg-slate-950 border border-slate-800 rounded-xl p-0.5 text-xs shadow-inner">
+            <div className="flex items-center bg-slate-950 border border-slate-800 rounded-xl p-1 text-xs shadow-inner">
               <button
                 onClick={() => setViewMode("3d")}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg transition-all font-mono text-xs ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all font-mono text-xs ${
                   viewMode === "3d"
-                    ? "bg-slate-800 text-sky-300 border border-sky-500/40 text-glow-sky font-bold shadow-sm"
+                    ? "bg-slate-800 text-sky-300 border border-sky-500/40 font-bold shadow-sm"
                     : "text-slate-400 hover:text-white"
                 }`}
               >
-                <Sparkles size={11} />
+                <Sparkles size={13} />
                 <span>3D Neural</span>
               </button>
               <button
                 onClick={() => setViewMode("2d")}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg transition-all font-mono text-xs ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all font-mono text-xs ${
                   viewMode === "2d"
-                    ? "bg-slate-800 text-sky-300 border border-sky-500/40 text-glow-sky font-bold shadow-sm"
+                    ? "bg-slate-800 text-sky-300 border border-sky-500/40 font-bold shadow-sm"
                     : "text-slate-400 hover:text-white"
                 }`}
               >
-                <Layers size={11} />
+                <Layers size={13} />
                 <span>2D Planar</span>
               </button>
             </div>
 
             {/* Search Node */}
-            <div className="relative w-56 flex items-center">
-              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none z-10" />
+            <div className="relative w-64 flex items-center">
+              <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none z-10" />
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -279,14 +279,14 @@ export default function NetworkIntelligence() {
                   }
                 }}
                 placeholder="Filter or find entity..."
-                style={{ paddingLeft: "2.35rem" }}
-                className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-sky-500 text-slate-100 placeholder-slate-500 rounded-xl py-1.5 text-xs font-mono outline-none"
+                style={{ paddingLeft: "2.4rem" }}
+                className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-sky-500 text-slate-100 placeholder-slate-500 rounded-xl py-2 text-xs md:text-sm font-mono outline-none"
               />
             </div>
 
             {/* Case Filter */}
-            <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-1">
-              <FolderOpen size={12} className="text-slate-400" />
+            <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5">
+              <FolderOpen size={14} className="text-slate-400" />
               <select
                 value={selectedCaseId}
                 onChange={(e) => {
@@ -299,7 +299,7 @@ export default function NetworkIntelligence() {
                     return next;
                   });
                 }}
-                className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer max-w-[150px] truncate font-mono"
+                className="bg-transparent text-xs font-semibold text-slate-200 outline-none cursor-pointer max-w-[160px] truncate font-mono"
               >
                 <option value="" className="bg-slate-900">All Cases (Global)</option>
                 {caseList.map((c) => (
@@ -311,12 +311,12 @@ export default function NetworkIntelligence() {
             </div>
 
             {/* Entity Type Filter */}
-            <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-1">
-              <Filter size={12} className="text-slate-400" />
+            <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5">
+              <Filter size={14} className="text-slate-400" />
               <select
                 value={entityTypeFilter}
                 onChange={(e) => setEntityTypeFilter(e.target.value)}
-                className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer font-mono"
+                className="bg-transparent text-xs font-semibold text-slate-200 outline-none cursor-pointer font-mono"
               >
                 <option value="" className="bg-slate-900">All Entity Types</option>
                 <option value="PERSON" className="bg-slate-900">Persons</option>
@@ -333,9 +333,9 @@ export default function NetworkIntelligence() {
             <button
               onClick={loadGraph}
               title="Refresh network simulation"
-              className="p-2 rounded-xl border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-white bg-slate-950 transition-all shadow-sm"
+              className="p-2.5 rounded-xl border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-white bg-slate-950 transition-all shadow-sm cursor-pointer"
             >
-              <RefreshCw size={13} className={loading ? "animate-spin text-sky-400" : ""} />
+              <RefreshCw size={14} className={loading ? "animate-spin text-sky-400" : ""} />
             </button>
           </div>
         </div>
@@ -343,16 +343,16 @@ export default function NetworkIntelligence() {
 
       {/* Active Scope Sub-Strip */}
       {(selectedCaseId || scopeEntityId) && (
-        <div className="px-5 py-1.5 bg-sky-950/40 border-b border-sky-800/40 flex items-center justify-between text-xs text-sky-200">
+        <div className="px-5 py-2 bg-sky-950/40 border-b border-sky-800/40 flex items-center justify-between text-xs text-sky-200">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[10px] uppercase text-sky-400">Scoped Context:</span>
+            <span className="font-mono text-xs uppercase text-sky-400 font-bold">Scoped Context:</span>
             {selectedCaseId && (
-              <span className="badge badge-low text-[9px] bg-sky-900/60 text-sky-200 border border-sky-700/60">
+              <span className="badge badge-low text-xs bg-sky-900/60 text-sky-200 border border-sky-700/60 font-mono">
                 Case: {caseList.find((c) => c.id === selectedCaseId)?.case_number || selectedCaseId.slice(0, 8)}
               </span>
             )}
             {scopeEntityId && (
-              <span className="badge badge-low text-[9px] bg-sky-900/60 text-sky-200 border border-sky-700/60">
+              <span className="badge badge-low text-xs bg-sky-900/60 text-sky-200 border border-sky-700/60 font-mono">
                 Subject: {graph?.nodes.find((n) => n.id === scopeEntityId)?.name || scopeEntityId.slice(0, 8)} ({focusDegree}° depth)
               </span>
             )}
@@ -363,9 +363,9 @@ export default function NetworkIntelligence() {
               setScopeEntityId("");
               setSearchParams({});
             }}
-            className="flex items-center gap-1 text-[11px] text-sky-400 hover:text-sky-200 font-medium cursor-pointer"
+            className="flex items-center gap-1 text-xs text-sky-400 hover:text-sky-200 font-medium cursor-pointer"
           >
-            <X size={12} />
+            <X size={13} />
             <span>Reset Scoped View</span>
           </button>
         </div>
@@ -377,8 +377,8 @@ export default function NetworkIntelligence() {
         <div className="flex-1 min-w-0 h-full relative bg-[var(--bg-void)]">
           {loading ? (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-              <div className="w-9 h-9 rounded-full border-2 border-[var(--intel-sky)] border-t-transparent animate-spin" />
-              <div className="text-xs font-mono text-[var(--intel-sky)] uppercase tracking-wider">
+              <div className="w-10 h-10 rounded-full border-2 border-[var(--intel-sky)] border-t-transparent animate-spin" />
+              <div className="text-xs md:text-sm font-mono text-[var(--intel-sky)] uppercase tracking-wider font-semibold">
                 Computing 3D association matrix...
               </div>
             </div>
@@ -408,19 +408,19 @@ export default function NetworkIntelligence() {
         </div>
 
         {/* ── Right Inspection Drawer (The Redesigned Entity Dossier) ── */}
-        <div className="w-96 shrink-0 border-l border-slate-800/90 flex flex-col min-h-0 bg-slate-900/95 shadow-2xl backdrop-blur-md">
+        <div className="w-[420px] shrink-0 border-l border-slate-800/90 flex flex-col min-h-0 bg-slate-900/95 shadow-2xl backdrop-blur-md">
           {/* Header */}
-          <div className="px-4 py-3 border-b border-slate-800/80 flex items-center justify-between bg-slate-950/60">
+          <div className="px-5 py-3.5 border-b border-slate-800/80 flex items-center justify-between bg-slate-950/60">
             <div className="flex items-center gap-2">
-              <ShieldCheck size={14} className="text-sky-400 text-glow-sky" />
-              <span className="text-xs font-bold uppercase tracking-wider text-white text-glow-white">
+              <ShieldCheck size={16} className="text-sky-400" />
+              <span className="text-xs font-bold uppercase tracking-wider text-white">
                 {selectedEdge ? "Relationship Record" : "Entity Dossier"}
               </span>
             </div>
 
             {selected && (
               <span
-                className="text-[9px] font-bold px-2 py-0.5 rounded uppercase font-mono tracking-wider"
+                className="text-xs font-bold px-2.5 py-0.5 rounded uppercase font-mono tracking-wider"
                 style={{
                   background: `${getEntityColor(selected.type)}22`,
                   color: getEntityColor(selected.type),
@@ -432,38 +432,38 @@ export default function NetworkIntelligence() {
             )}
 
             {selectedEdge && (
-              <span className="badge badge-low text-[9px] font-mono">
+              <span className="badge badge-low text-xs font-mono font-bold">
                 {Math.round((selectedEdge.confidence_score || 0.8) * 100)}% Corroborated
               </span>
             )}
           </div>
 
           {/* Dossier Body */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3.5">
+          <div className="flex-1 overflow-y-auto p-5 space-y-4">
             {/* Edge Selection View */}
             {selectedEdge ? (
-              <div className="space-y-3">
-                <div className="p-3.5 rounded-xl bg-slate-950/70 space-y-1.5 border border-slate-800 shadow-md">
-                  <div className="text-[9px] font-mono text-sky-400 uppercase tracking-wider text-glow-sky">
+              <div className="space-y-3.5">
+                <div className="p-4 rounded-xl bg-slate-950/70 space-y-2 border border-slate-800 shadow-md">
+                  <div className="text-xs font-mono text-sky-400 uppercase tracking-wider font-bold">
                     CORROBORATED CONNECTION RECORD
                   </div>
-                  <div className="flex items-center gap-2 text-xs font-bold text-white">
+                  <div className="flex items-center gap-2 text-sm font-bold text-white">
                     <span className="truncate">{selectedEdge.source?.name}</span>
                     <span className="text-sky-400">↔</span>
                     <span className="truncate">{selectedEdge.target?.name}</span>
                   </div>
-                  <div className="text-[10px] font-mono text-amber-300 font-semibold uppercase">
+                  <div className="text-xs font-mono text-amber-300 font-semibold uppercase">
                     {getPoliceRelationLabel(selectedEdge.relationship_type)}
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-slate-950/70 space-y-2 border border-slate-800 shadow-md">
-                  <div className="text-[9px] font-mono text-slate-400 uppercase">SUPPORTING EVIDENCE SOURCE</div>
-                  <p className="text-xs text-slate-300 leading-relaxed">
+                <div className="p-4 rounded-xl bg-slate-950/70 space-y-2 border border-slate-800 shadow-md">
+                  <div className="text-xs font-mono text-slate-400 uppercase font-bold">SUPPORTING EVIDENCE SOURCE</div>
+                  <p className="text-xs md:text-sm text-slate-300 leading-relaxed">
                     Association verified under primary case records and validated intelligence logs.
                   </p>
                   {selectedEdge.evidence_id && (
-                    <div className="text-[10px] font-mono text-slate-400">
+                    <div className="text-xs font-mono text-slate-400">
                       Evidence Ref: <span className="text-sky-300">{selectedEdge.evidence_id}</span>
                     </div>
                   )}
@@ -471,7 +471,7 @@ export default function NetworkIntelligence() {
 
                 <button
                   onClick={() => setSelectedEdge(null)}
-                  className="btn-ghost w-full text-xs py-1.5 border border-slate-800 text-slate-300 hover:text-white"
+                  className="btn-ghost w-full text-xs md:text-sm py-2 border border-slate-800 text-slate-300 hover:text-white"
                 >
                   Clear Selection
                 </button>
@@ -479,43 +479,43 @@ export default function NetworkIntelligence() {
             ) : !selected ? (
               /* Empty State when No Entity is Selected */
               <div className="h-full flex flex-col items-center justify-center text-center p-6 text-slate-500 space-y-2">
-                <div className="w-12 h-12 rounded-full bg-slate-950 border border-slate-800 flex items-center justify-center text-slate-400">
-                  <Compass size={24} className="opacity-50 text-sky-400" />
+                <div className="w-14 h-14 rounded-full bg-slate-950 border border-slate-800 flex items-center justify-center text-slate-400">
+                  <Compass size={28} className="opacity-50 text-sky-400" />
                 </div>
-                <div className="text-xs font-semibold text-slate-200">No Entity Selected</div>
-                <p className="text-[11px] text-slate-400 max-w-[220px] leading-relaxed font-mono">
+                <div className="text-sm font-bold text-slate-200 uppercase tracking-wider">No Entity Selected</div>
+                <p className="text-xs text-slate-400 max-w-[240px] leading-relaxed font-mono mt-1">
                   Click any node in the 3D neural map or search above to isolate its direct relationships,
                   examine case ties, and review timeline records.
                 </p>
               </div>
             ) : (
               /* Selected Entity Dossier */
-              <div className="space-y-3.5">
+              <div className="space-y-4">
                 {/* Entity Identity Card */}
-                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-2">
+                <div className="panel p-4 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-2.5 rounded-xl">
                   <div className="flex items-start justify-between gap-2">
                     <div>
-                      <div className="text-sm font-bold text-[var(--text-primary)] leading-tight">
+                      <div className="text-base font-bold text-[var(--text-primary)] leading-tight">
                         {selected.name}
                       </div>
-                      <div className="text-[10px] font-mono text-amber-400 font-semibold mt-0.5">
+                      <div className="text-xs font-mono text-amber-400 font-semibold mt-1">
                         {selected.role_label || dossier?.identity?.role || "Recorded Associate"}
                       </div>
                     </div>
                     {dossier?.identity?.risk_band && (
-                      <span className="badge badge-low text-[8px] uppercase">
+                      <span className="badge badge-low text-xs font-mono font-bold uppercase">
                         {dossier.identity.risk_band} RISK
                       </span>
                     )}
                   </div>
 
-                  <div className="text-[10px] font-mono text-[var(--text-muted)] truncate">
+                  <div className="text-xs font-mono text-[var(--text-muted)] truncate">
                     ENTITY ID: {selected.id}
                   </div>
 
                   {/* Aliases if present */}
                   {dossier?.identity?.aliases?.length > 0 && (
-                    <div className="text-[10px] text-slate-300 pt-1 border-t border-slate-800">
+                    <div className="text-xs text-slate-300 pt-1.5 border-t border-slate-800">
                       <span className="text-slate-400">Known Aliases: </span>
                       {dossier.identity.aliases.join(", ")}
                     </div>
@@ -524,36 +524,36 @@ export default function NetworkIntelligence() {
 
                 {/* Connection Summary Stats */}
                 {connectionStats && (
-                  <div className="grid grid-cols-2 gap-2 text-center">
-                    <div className="p-2 rounded-lg bg-[var(--bg-panel-raised)] border border-slate-800/80">
-                      <div className="text-base font-bold font-mono text-[var(--intel-sky)]">
+                  <div className="grid grid-cols-2 gap-2.5 text-center">
+                    <div className="p-2.5 rounded-xl bg-[var(--bg-panel-raised)] border border-slate-800/80 shadow-sm">
+                      <div className="text-xl font-bold font-mono text-[var(--intel-sky)]">
                         {connectionStats.directCount}
                       </div>
-                      <div className="text-[9px] uppercase font-mono text-[var(--text-muted)]">
+                      <div className="text-[11px] uppercase font-mono text-[var(--text-muted)] font-semibold mt-0.5">
                         Direct Links
                       </div>
                     </div>
-                    <div className="p-2 rounded-lg bg-[var(--bg-panel-raised)] border border-slate-800/80">
-                      <div className="text-base font-bold font-mono text-red-400">
+                    <div className="p-2.5 rounded-xl bg-[var(--bg-panel-raised)] border border-slate-800/80 shadow-sm">
+                      <div className="text-xl font-bold font-mono text-rose-400">
                         {connectionStats.relatedCases}
                       </div>
-                      <div className="text-[9px] uppercase font-mono text-[var(--text-muted)]">
+                      <div className="text-[11px] uppercase font-mono text-[var(--text-muted)] font-semibold mt-0.5">
                         Linked Cases
                       </div>
                     </div>
-                    <div className="p-2 rounded-lg bg-[var(--bg-panel-raised)] border border-slate-800/80">
-                      <div className="text-base font-bold font-mono text-emerald-400">
+                    <div className="p-2.5 rounded-xl bg-[var(--bg-panel-raised)] border border-slate-800/80 shadow-sm">
+                      <div className="text-xl font-bold font-mono text-emerald-400">
                         {connectionStats.locationsCount}
                       </div>
-                      <div className="text-[9px] uppercase font-mono text-[var(--text-muted)]">
+                      <div className="text-[11px] uppercase font-mono text-[var(--text-muted)] font-semibold mt-0.5">
                         Locations
                       </div>
                     </div>
-                    <div className="p-2 rounded-lg bg-[var(--bg-panel-raised)] border border-slate-800/80">
-                      <div className="text-base font-bold font-mono text-purple-400">
+                    <div className="p-2.5 rounded-xl bg-[var(--bg-panel-raised)] border border-slate-800/80 shadow-sm">
+                      <div className="text-xl font-bold font-mono text-purple-400">
                         #{connectionStats.communityId}
                       </div>
-                      <div className="text-[9px] uppercase font-mono text-[var(--text-muted)]">
+                      <div className="text-[11px] uppercase font-mono text-[var(--text-muted)] font-semibold mt-0.5">
                         Cluster
                       </div>
                     </div>
@@ -561,7 +561,7 @@ export default function NetworkIntelligence() {
                 )}
 
                 {/* Action Toolbar */}
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       onClick={() => {
@@ -571,19 +571,19 @@ export default function NetworkIntelligence() {
                           setScopeEntityId(selected.id);
                         }
                       }}
-                      className="flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-sky-950/60 border border-sky-800/60 text-sky-300 text-xs hover:bg-sky-900/60 transition-all font-medium"
+                      className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-sky-950/60 border border-sky-800/60 text-sky-300 text-xs md:text-sm hover:bg-sky-900/60 transition-all font-semibold cursor-pointer"
                       title="Expand or collapse network hops around this subject"
                     >
-                      <Share2 size={12} />
+                      <Share2 size={13} />
                       <span>{focusDegree === 1 ? "Expand 2° Hops" : "Collapse to 1°"}</span>
                     </button>
 
                     <button
                       onClick={() => navigate(`/timeline?entity_id=${selected.id}${selectedCaseId ? `&case_id=${selectedCaseId}` : ""}`)}
-                      className="flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-slate-200 text-xs hover:bg-slate-700 transition-all font-medium"
+                      className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700/80 text-slate-200 text-xs md:text-sm hover:bg-slate-700 transition-all font-semibold cursor-pointer"
                       title="View chronological timeline for this entity"
                     >
-                      <Clock size={12} />
+                      <Clock size={13} />
                       <span>Timeline</span>
                     </button>
                   </div>
@@ -591,34 +591,34 @@ export default function NetworkIntelligence() {
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       onClick={() => navigate(`/communications?entity_id=${selected.id}${selectedCaseId ? `&case_id=${selectedCaseId}` : ""}`)}
-                      className="flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-slate-200 text-xs hover:bg-slate-700 transition-all font-medium"
+                      className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700/80 text-slate-200 text-xs md:text-sm hover:bg-slate-700 transition-all font-semibold cursor-pointer"
                       title="Inspect telephony and CDR traces for this entity"
                     >
-                      <Radio size={12} />
+                      <Radio size={13} />
                       <span>Communications</span>
                     </button>
 
                     <button
                       onClick={() => navigate(`/transactions?entity_id=${selected.id}${selectedCaseId ? `&case_id=${selectedCaseId}` : ""}`)}
-                      className="flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-slate-200 text-xs hover:bg-slate-700 transition-all font-medium"
+                      className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700/80 text-slate-200 text-xs md:text-sm hover:bg-slate-700 transition-all font-semibold cursor-pointer"
                       title="Inspect financial transactions for this entity"
                     >
-                      <CreditCard size={12} />
+                      <CreditCard size={13} />
                       <span>Transactions</span>
                     </button>
                   </div>
                 </div>
 
                 {/* Corroborated Relationships List */}
-                <div className="panel p-3 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-2">
+                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-2 rounded-xl">
                   <div className="flex items-center justify-between">
-                    <div className="hud-label text-[9px] text-[var(--intel-sky)]">
+                    <div className="hud-label text-xs font-mono font-bold uppercase text-[var(--intel-sky)] tracking-wider">
                       CORROBORATED RELATIONSHIPS ({dossier?.connections?.length || 0})
                     </div>
-                    <span className="text-[9px] text-slate-400 font-mono">Click to Pivot</span>
+                    <span className="text-xs text-slate-400 font-mono">Click to Pivot</span>
                   </div>
 
-                  <div className="max-h-48 overflow-y-auto space-y-1.5 pr-1">
+                  <div className="max-h-52 overflow-y-auto space-y-2 pr-1">
                     {dossier?.connections && dossier.connections.length > 0 ? (
                       dossier.connections.map((c: any) => (
                         <div
@@ -629,27 +629,27 @@ export default function NetworkIntelligence() {
                               selectNode(targetNode);
                             }
                           }}
-                          className="p-2 rounded-lg bg-slate-900/60 hover:bg-slate-800/90 border border-slate-800/80 cursor-pointer transition-all flex items-center justify-between gap-2 group"
+                          className="p-2.5 rounded-lg bg-slate-900/60 hover:bg-slate-800/90 border border-slate-800/80 cursor-pointer transition-all flex items-center justify-between gap-2 group shadow-sm"
                         >
                           <div className="min-w-0 flex-1">
-                            <div className="flex items-center gap-1.5">
+                            <div className="flex items-center gap-2">
                               <div
-                                className="w-2 h-2 rounded-full shrink-0"
+                                className="w-2.5 h-2.5 rounded-full shrink-0"
                                 style={{ background: getEntityColor(c.type) }}
                               />
-                              <span className="text-xs font-semibold text-slate-200 truncate group-hover:text-sky-300">
+                              <span className="text-xs md:text-sm font-bold text-slate-200 truncate group-hover:text-sky-300">
                                 {c.name}
                               </span>
                             </div>
-                            <div className="text-[10px] text-amber-400/90 font-mono mt-0.5 truncate">
+                            <div className="text-xs text-amber-400/90 font-mono mt-0.5 truncate font-medium">
                               {getPoliceRelationLabel(c.relationship_type)}
                             </div>
                           </div>
                           <div className="text-right shrink-0">
-                            <span className="text-[9px] font-mono text-slate-400">
+                            <span className="text-xs font-mono text-slate-400 font-semibold">
                               {Math.round((c.confidence || 0.8) * 100)}%
                             </span>
-                            <ChevronRight size={12} className="text-slate-500 group-hover:text-white inline ml-1" />
+                            <ChevronRight size={13} className="text-slate-500 group-hover:text-white inline ml-1" />
                           </div>
                         </div>
                       ))
@@ -662,12 +662,12 @@ export default function NetworkIntelligence() {
                 </div>
 
                 {/* Recent Chronological Activity */}
-                <div className="panel p-3 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-2">
+                <div className="panel p-3.5 bg-[var(--bg-panel-raised)] border border-slate-700/60 space-y-2 rounded-xl">
                   <div className="flex items-center justify-between">
-                    <div className="hud-label text-[9px] text-[var(--text-muted)]">
+                    <div className="hud-label text-xs font-mono font-bold uppercase text-[var(--text-muted)] tracking-wider">
                       RECENT INTELLIGENCE ACTIVITY
                     </div>
-                    {timelineLoading && <RefreshCw size={11} className="animate-spin text-sky-400" />}
+                    {timelineLoading && <RefreshCw size={12} className="animate-spin text-sky-400" />}
                   </div>
 
                   <div className="space-y-2">
@@ -675,15 +675,15 @@ export default function NetworkIntelligence() {
                       timelineEvents.slice(0, 3).map((evt: any, idx: number) => (
                         <div
                           key={evt.id || idx}
-                          className="p-2 rounded-lg bg-slate-900/60 border border-slate-800 text-xs space-y-1"
+                          className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800 space-y-1"
                         >
                           <div className="flex items-center justify-between gap-2">
-                            <span className="font-semibold text-slate-200 truncate">{evt.title}</span>
-                            <span className="text-[9px] font-mono text-slate-400 shrink-0">
+                            <span className="font-bold text-slate-200 truncate text-xs">{evt.title}</span>
+                            <span className="text-xs font-mono text-slate-400 shrink-0">
                               {evt.timestamp ? new Date(evt.timestamp).toLocaleDateString() : ""}
                             </span>
                           </div>
-                          <p className="text-[11px] text-slate-400 line-clamp-2 leading-relaxed">
+                          <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
                             {evt.description}
                           </p>
                         </div>
@@ -700,16 +700,16 @@ export default function NetworkIntelligence() {
           </div>
 
           {/* Natural Language Investigation Query Input */}
-          <div className="p-3 border-t border-[var(--border-subtle)] bg-[var(--bg-panel)] space-y-2">
+          <div className="p-3.5 border-t border-slate-800 bg-slate-950 space-y-2">
             {chatLog.length > 0 && (
-              <div className="max-h-24 overflow-y-auto space-y-1 text-xs mb-1">
+              <div className="max-h-28 overflow-y-auto space-y-1.5 text-xs mb-1">
                 {chatLog.slice(0, 2).map((entry, i) => (
                   <div
                     key={i}
-                    className="p-2 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] text-[11px]"
+                    className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-xs"
                   >
-                    <div className="font-semibold text-[var(--intel-sky)]">{entry.q}</div>
-                    <div className="text-[var(--text-secondary)] mt-0.5">
+                    <div className="font-semibold text-sky-300">{entry.q}</div>
+                    <div className="text-slate-300 mt-1 leading-relaxed">
                       {entry.a.answer || entry.a.text || JSON.stringify(entry.a)}
                     </div>
                   </div>
@@ -717,18 +717,18 @@ export default function NetworkIntelligence() {
               </div>
             )}
 
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               <input
                 value={chatQ}
                 onChange={(e) => setChatQ(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && askAI()}
                 placeholder="Ask investigative assistant..."
-                className="workstation-input text-xs flex-1"
+                className="w-full bg-slate-900 border border-slate-800 focus:border-sky-500 rounded-xl px-3 py-2 text-xs md:text-sm text-slate-100 placeholder:text-slate-500 outline-none flex-1 font-mono"
               />
               <button
                 onClick={askAI}
                 disabled={chatLoading || !chatQ.trim()}
-                className="btn-primary py-1 px-3 text-xs"
+                className="btn-primary py-2 px-4 text-xs md:text-sm font-semibold cursor-pointer shrink-0"
               >
                 {chatLoading ? "..." : "Query"}
               </button>
@@ -738,8 +738,8 @@ export default function NetworkIntelligence() {
       </div>
 
       {/* ── Bottom Analysis Workbench ── */}
-      <div className="border-t border-[var(--border-subtle)] shrink-0 bg-[var(--bg-panel-solid)] shadow-lg">
-        <div className="flex items-center gap-1 px-4 pt-2 border-b border-[var(--border-subtle)]">
+      <div className="border-t border-slate-800 shrink-0 bg-slate-950 shadow-xl">
+        <div className="flex items-center gap-1.5 px-5 pt-2.5 border-b border-slate-800/80">
           {(
             [
               { id: "centrality", label: "Key Influencer Contacts", icon: Zap },
@@ -751,13 +751,13 @@ export default function NetworkIntelligence() {
             <button
               key={id}
               onClick={() => setBottomTab(id as BottomTab)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-t transition-all ${
+              className={`flex items-center gap-2 px-3.5 py-2 text-xs md:text-sm font-semibold rounded-t-lg transition-all cursor-pointer ${
                 bottomTab === id
-                  ? "bg-slate-800 text-sky-300 font-semibold border-b-2 border-sky-400 shadow-sm"
-                  : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                  ? "bg-slate-800 text-sky-300 border-b-2 border-sky-400 shadow-sm font-bold"
+                  : "text-slate-400 hover:text-slate-200"
               }`}
             >
-              <Icon size={12} />
+              <Icon size={14} />
               <span>{label}</span>
             </button>
           ))}
@@ -765,21 +765,21 @@ export default function NetworkIntelligence() {
           {highlightPath && (
             <button
               onClick={() => setHighlightPath(undefined)}
-              className="ml-auto text-[10px] font-mono px-2 py-0.5 rounded border border-[rgba(239,68,68,0.4)] text-[var(--status-alert)] hover:bg-[rgba(239,68,68,0.1)] transition-all"
+              className="ml-auto text-xs font-mono px-2.5 py-1 rounded-lg border border-rose-500/40 text-rose-300 hover:bg-rose-950/40 transition-all cursor-pointer font-semibold"
             >
               Clear Route ✕
             </button>
           )}
         </div>
 
-        <div className="p-3.5 h-36 overflow-y-auto bg-[var(--bg-panel)]">
+        <div className="p-4 h-40 overflow-y-auto bg-slate-900/90">
           {bottomTab === "centrality" && centrality && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs">
               <div>
-                <div className="font-bold text-[11px] text-[var(--intel-sky)] uppercase mb-1.5">
+                <div className="font-bold text-xs font-mono text-sky-400 uppercase tracking-wider mb-2">
                   Top by Influence (PageRank)
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-1.5">
                   {centrality.top_by_pagerank?.slice(0, 4).map((r: any) => (
                     <div
                       key={r.id}
@@ -787,20 +787,20 @@ export default function NetworkIntelligence() {
                         const n = graph?.nodes.find((node) => node.id === r.id);
                         if (n) selectNode(n);
                       }}
-                      className="flex justify-between py-0.5 px-1.5 rounded hover:bg-[var(--bg-panel-hover)] cursor-pointer"
+                      className="flex justify-between py-1 px-2 rounded-lg hover:bg-slate-800/80 cursor-pointer transition-colors"
                     >
-                      <span className="text-[var(--text-primary)] truncate max-w-[150px]">{r.name}</span>
-                      <span className="font-mono text-[var(--intel-sky)]">{(r.pagerank * 100).toFixed(0)}%</span>
+                      <span className="text-slate-200 font-semibold truncate max-w-[170px] text-xs md:text-sm">{r.name}</span>
+                      <span className="font-mono text-sky-300 font-bold text-xs md:text-sm">{(r.pagerank * 100).toFixed(0)}%</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div>
-                <div className="font-bold text-[11px] text-[var(--status-purple)] uppercase mb-1.5">
+                <div className="font-bold text-xs font-mono text-purple-400 uppercase tracking-wider mb-2">
                   Key Bridge Contacts (Betweenness)
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-1.5">
                   {centrality.top_bridges?.slice(0, 4).map((r: any) => (
                     <div
                       key={r.id}
@@ -808,10 +808,10 @@ export default function NetworkIntelligence() {
                         const n = graph?.nodes.find((node) => node.id === r.id);
                         if (n) selectNode(n);
                       }}
-                      className="flex justify-between py-0.5 px-1.5 rounded hover:bg-[var(--bg-panel-hover)] cursor-pointer"
+                      className="flex justify-between py-1 px-2 rounded-lg hover:bg-slate-800/80 cursor-pointer transition-colors"
                     >
-                      <span className="text-[var(--text-primary)] truncate max-w-[150px]">{r.name}</span>
-                      <span className="font-mono text-[var(--status-purple)]">
+                      <span className="text-slate-200 font-semibold truncate max-w-[170px] text-xs md:text-sm">{r.name}</span>
+                      <span className="font-mono text-purple-300 font-bold text-xs md:text-sm">
                         {(r.betweenness_centrality * 100).toFixed(0)}%
                       </span>
                     </div>
@@ -820,10 +820,10 @@ export default function NetworkIntelligence() {
               </div>
 
               <div>
-                <div className="font-bold text-[11px] text-[var(--status-warning)] uppercase mb-1.5">
+                <div className="font-bold text-xs font-mono text-amber-400 uppercase tracking-wider mb-2">
                   High-Connectivity Hubs (Degree)
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-1.5">
                   {centrality.top_by_degree?.slice(0, 4).map((r: any) => (
                     <div
                       key={r.id}
@@ -831,10 +831,10 @@ export default function NetworkIntelligence() {
                         const n = graph?.nodes.find((node) => node.id === r.id);
                         if (n) selectNode(n);
                       }}
-                      className="flex justify-between py-0.5 px-1.5 rounded hover:bg-[var(--bg-panel-hover)] cursor-pointer"
+                      className="flex justify-between py-1 px-2 rounded-lg hover:bg-slate-800/80 cursor-pointer transition-colors"
                     >
-                      <span className="text-[var(--text-primary)] truncate max-w-[150px]">{r.name}</span>
-                      <span className="font-mono text-[var(--status-warning)]">
+                      <span className="text-slate-200 font-semibold truncate max-w-[170px] text-xs md:text-sm">{r.name}</span>
+                      <span className="font-mono text-amber-300 font-bold text-xs md:text-sm">
                         {(r.degree_centrality * 100).toFixed(0)}%
                       </span>
                     </div>
@@ -845,16 +845,16 @@ export default function NetworkIntelligence() {
           )}
 
           {bottomTab === "communities" && communities && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 text-xs">
               {communities.communities?.map((c: any) => (
                 <div
                   key={c.community_id}
-                  className="p-2.5 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)]"
+                  className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 shadow-sm"
                 >
-                  <div className="font-bold text-[var(--text-primary)]">
+                  <div className="font-bold text-white text-xs md:text-sm">
                     Cluster #{c.community_id} ({c.size} Associates)
                   </div>
-                  <div className="text-[11px] text-[var(--text-muted)] truncate mt-1">
+                  <div className="text-xs text-slate-400 truncate mt-1">
                     Primary: {c.members?.slice(0, 3).map((m: any) => m.name).join(", ")}
                   </div>
                 </div>
@@ -863,12 +863,12 @@ export default function NetworkIntelligence() {
           )}
 
           {bottomTab === "paths" && (
-            <div className="space-y-2 text-xs">
-              <div className="flex items-center gap-2 max-w-xl">
+            <div className="space-y-2.5 text-xs">
+              <div className="flex items-center gap-2.5 max-w-2xl">
                 <select
                   value={sourceNodeId}
                   onChange={(e) => setSourceNodeId(e.target.value)}
-                  className="workstation-input flex-1 text-xs"
+                  className="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs md:text-sm text-slate-200 outline-none flex-1 font-mono cursor-pointer"
                 >
                   <option value="">Select Entity A...</option>
                   {graph?.nodes.map((n) => (
@@ -877,11 +877,11 @@ export default function NetworkIntelligence() {
                     </option>
                   ))}
                 </select>
-                <span className="text-[var(--text-muted)] font-mono">↔</span>
+                <span className="text-slate-400 font-mono text-sm">↔</span>
                 <select
                   value={targetNodeId}
                   onChange={(e) => setTargetNodeId(e.target.value)}
-                  className="workstation-input flex-1 text-xs"
+                  className="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs md:text-sm text-slate-200 outline-none flex-1 font-mono cursor-pointer"
                 >
                   <option value="">Select Entity B...</option>
                   {graph?.nodes.map((n) => (
@@ -893,16 +893,16 @@ export default function NetworkIntelligence() {
                 <button
                   onClick={findShortestPath}
                   disabled={pathLoading || !sourceNodeId || !targetNodeId}
-                  className="btn-primary py-1 px-3 text-xs shrink-0"
+                  className="btn-primary py-2 px-4 text-xs md:text-sm font-semibold shrink-0 cursor-pointer"
                 >
                   {pathLoading ? "Tracing..." : "Trace 3D Route"}
                 </button>
               </div>
 
               {pathResult && (
-                <div className="p-2 rounded bg-[var(--bg-panel-raised)] text-[11px] font-mono text-[var(--intel-sky)]">
+                <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs md:text-sm font-mono text-sky-300">
                   {pathResult.error ? (
-                    <span className="text-[var(--status-alert)]">{pathResult.error}</span>
+                    <span className="text-rose-400">{pathResult.error}</span>
                   ) : (
                     <span>
                       Identified Route ({pathResult.path?.length} hops): {pathResult.path_names?.join(" → ") || pathResult.path?.join(" → ")}
@@ -914,7 +914,7 @@ export default function NetworkIntelligence() {
           )}
 
           {bottomTab === "anomalies" && anomalies && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs">
               {anomalies.anomalies?.map((a: any, i: number) => (
                 <div
                   key={i}
@@ -924,14 +924,14 @@ export default function NetworkIntelligence() {
                       if (n) selectNode(n);
                     }
                   }}
-                  className="p-2.5 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] cursor-pointer hover:border-amber-500/50 transition-all"
+                  className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 cursor-pointer hover:border-amber-500/50 transition-all shadow-sm"
                 >
-                  <div className="font-bold text-[var(--status-warning)]">
+                  <div className="font-bold text-amber-300 text-xs md:text-sm">
                     {a.title || a.anomaly_type || "Unusual Activity"}
                   </div>
-                  <div className="text-[11px] text-[var(--text-secondary)] mt-0.5">{a.reason}</div>
+                  <div className="text-xs text-slate-300 mt-1 leading-relaxed">{a.reason}</div>
                   {a.entity_name && (
-                    <div className="text-[10px] text-slate-400 font-mono mt-1">Entity: {a.entity_name}</div>
+                    <div className="text-xs text-slate-400 font-mono mt-1.5">Entity: {a.entity_name}</div>
                   )}
                 </div>
               ))}
