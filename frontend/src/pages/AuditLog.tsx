@@ -33,10 +33,11 @@ export default function AuditLog() {
   }, []);
 
   const filteredLogs = logs.filter((l) => {
+    const detailsText = typeof l.details === "string" ? l.details : JSON.stringify(l.details || "");
     const matchesSearch =
       !search ||
       l.action?.toLowerCase().includes(search.toLowerCase()) ||
-      l.details?.toLowerCase().includes(search.toLowerCase()) ||
+      detailsText.toLowerCase().includes(search.toLowerCase()) ||
       l.operator_name?.toLowerCase().includes(search.toLowerCase()) ||
       l.operator_email?.toLowerCase().includes(search.toLowerCase());
 
@@ -167,10 +168,18 @@ export default function AuditLog() {
                   filteredLogs.map((log, idx) => (
                     <tr key={log.id || idx} className="hover:bg-[var(--bg-panel-hover)]">
                       <td className="font-mono text-[10px] text-[var(--text-muted)] whitespace-nowrap">
-                        {log.timestamp ? new Date(log.timestamp).toLocaleString("en-IN") : "2026-09-05"} IST
+                        {log.timestamp || log.created_at ? new Date(log.timestamp || log.created_at).toLocaleString("en-IN") : "2026-09-05"} IST
                       </td>
                       <td>
-                        <span className="badge badge-low text-[9px] font-mono font-semibold">
+                        <span className={`badge text-[9px] font-mono font-semibold ${
+                          log.action?.includes("FAIL") || log.action?.includes("TAMPER")
+                            ? "badge-critical text-rose-300 border-rose-800/60 bg-rose-950/40"
+                            : log.action?.includes("VERIFIED")
+                            ? "badge-verified text-emerald-300 border-emerald-800/60 bg-emerald-950/40"
+                            : log.action?.includes("EVIDENCE")
+                            ? "badge-purple text-purple-300 border-purple-800/60 bg-purple-950/40"
+                            : "badge-low text-sky-300 border-sky-800/60 bg-sky-950/40"
+                        }`}>
                           {log.action || "SECURITY_AUDIT"}
                         </span>
                       </td>
