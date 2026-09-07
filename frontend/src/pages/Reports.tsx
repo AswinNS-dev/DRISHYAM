@@ -65,21 +65,27 @@ export default function Reports() {
   );
 
   return (
-    <div className="flex h-full min-h-0 bg-[var(--bg-void)]">
+    <div className="flex h-full min-h-0 bg-[#020617]">
       {/* ── Left Column: Reports List ── */}
-      <div className="w-88 shrink-0 flex flex-col border-r border-[var(--border-subtle)] bg-[var(--bg-panel-solid)]">
+      <div className="w-96 shrink-0 flex flex-col border-r border-slate-800/90 bg-slate-900/95 shadow-xl">
         {/* Header */}
-        <div className="p-4 border-b border-[var(--border-subtle)]">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-lg bg-zinc-800 text-zinc-100 border border-zinc-700/60 flex items-center justify-center shadow-sm">
-                <FileCheck2 size={15} />
+        <div className="p-4 border-b border-slate-800/90 bg-slate-950/80 space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="badge badge-info text-[9px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
+              STATE INTELLIGENCE BRIEFINGS & DOSSIER EXPORTS
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
+                <FileCheck2 size={18} />
               </div>
               <div>
-                <h1 className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+                <h1 className="text-sm font-black uppercase tracking-wider text-white text-glow-white">
                   Intelligence Reports
                 </h1>
-                <div className="text-[10px] font-mono text-[var(--text-muted)]">
+                <div className="text-[10px] font-mono text-slate-400">
                   {reports.length} ARCHIVED DOSSIERS
                 </div>
               </div>
@@ -87,30 +93,30 @@ export default function Reports() {
 
             <button
               onClick={() => setShowGenModal(true)}
-              className="btn-primary py-1 px-2.5 text-[10px] flex items-center gap-1"
+              className="px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs flex items-center gap-1 shadow-md shadow-sky-500/20 transition-all cursor-pointer"
             >
-              <Plus size={12} />
+              <Plus size={13} />
               <span>Compile</span>
             </button>
           </div>
 
           <div className="relative">
-            <Search size={12} className="absolute left-2.5 top-2.5 text-[var(--text-muted)]" />
+            <Search size={13} className="absolute left-3 top-2.5 text-slate-400" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search reports..."
-              className="workstation-input pl-7 text-xs"
+              placeholder="Search dossiers & reports..."
+              className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-sky-500 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-100 placeholder:text-slate-500 outline-none transition-all shadow-inner"
             />
           </div>
         </div>
 
         {/* List */}
-        <div className="flex-1 overflow-y-auto p-2.5 space-y-1.5">
+        <div className="flex-1 overflow-y-auto p-3 space-y-2">
           {loading ? (
-            [1, 2, 3].map((i) => <div key={i} className="skeleton h-16 rounded" />)
+            [1, 2, 3].map((i) => <div key={i} className="skeleton h-16 rounded-xl bg-slate-900/80 border border-slate-800" />)
           ) : filteredReports.length === 0 ? (
-            <div className="text-center py-10 text-xs text-[var(--text-muted)]">
+            <div className="text-center py-10 text-xs text-slate-500 font-mono">
               No reports indexed.
             </div>
           ) : (
@@ -120,20 +126,20 @@ export default function Reports() {
                 <div
                   key={r.id}
                   onClick={() => openReport(r.id)}
-                  className={`p-3 rounded-lg cursor-pointer transition-all border ${
+                  className={`p-3.5 rounded-xl cursor-pointer transition-all border ${
                     isSelected
-                      ? "bg-[var(--bg-panel-raised)] border-[var(--intel-sky)] text-[var(--text-bright)]"
-                      : "bg-[var(--bg-panel)] border-[var(--border-subtle)] hover:border-[var(--border-strong)] text-[var(--text-primary)]"
+                      ? "bg-slate-900 border-sky-500/80 shadow-lg shadow-sky-950/40 text-white"
+                      : "bg-slate-950/70 border-slate-800/80 hover:border-slate-700 hover:bg-slate-900/50 text-slate-300"
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="badge badge-low text-[8px]">{r.report_type || "INTELLIGENCE BRIEF"}</span>
-                    <span className="text-[9px] font-mono text-[var(--text-muted)]">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="badge badge-low text-[8px] font-mono">{r.report_type || "INTELLIGENCE BRIEF"}</span>
+                    <span className="text-[10px] font-mono text-slate-400">
                       {r.created_at ? new Date(r.created_at).toLocaleDateString() : "2026"}
                     </span>
                   </div>
-                  <div className="text-xs font-semibold line-clamp-1">{r.title}</div>
-                  <div className="text-[10px] text-[var(--text-muted)] mt-1 font-mono">
+                  <div className="text-xs font-bold text-white line-clamp-1 group-hover:text-sky-300">{r.title}</div>
+                  <div className="text-[10px] text-slate-400 mt-1 font-mono">
                     ID: {r.id}
                   </div>
                 </div>
@@ -144,22 +150,22 @@ export default function Reports() {
       </div>
 
       {/* ── Right Column: Report Viewer & Print Layout ── */}
-      <div className="flex-1 flex flex-col min-w-0 bg-[var(--bg-void)]">
+      <div className="flex-1 flex flex-col min-w-0 bg-[#020617]">
         {selectedReport ? (
           <div className="flex-1 flex flex-col min-h-0">
             {/* Action Bar */}
-            <div className="px-6 py-3 border-b border-[var(--border-subtle)] bg-[var(--bg-panel-solid)] flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="badge badge-verified text-[9px]">OFFICIAL POLICE DOSSIER</span>
-                <span className="text-[11px] font-mono text-[var(--text-muted)]">
-                  REPORT REF: {selectedReport.id}
+            <div className="px-6 py-3.5 border-b border-slate-800/90 bg-slate-900/95 flex items-center justify-between shadow-md">
+              <div className="flex items-center gap-2.5">
+                <span className="badge badge-verified text-[9px] font-mono text-glow-emerald">OFFICIAL POLICE DOSSIER</span>
+                <span className="text-[11px] font-mono text-slate-400">
+                  REPORT REF: <strong className="text-white">{selectedReport.id}</strong>
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => window.print()}
-                  className="btn-secondary py-1 px-3 text-xs flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-900 border border-slate-800 text-xs font-mono text-slate-200 hover:text-white flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
                 >
                   <Printer size={13} />
                   <span>Print Dossier</span>
@@ -169,26 +175,26 @@ export default function Reports() {
 
             {/* Document Content Viewport */}
             <div className="flex-1 overflow-y-auto p-8 max-w-4xl mx-auto w-full">
-              <div className="panel p-8 bg-[var(--bg-panel-solid)] border border-[var(--border-strong)] space-y-6">
+              <div className="p-8 bg-slate-900/95 border border-slate-800/90 rounded-2xl shadow-2xl space-y-6">
                 {/* Official Letterhead Header */}
-                <div className="border-b border-[var(--border-strong)] pb-4 text-center">
-                  <div className="text-xs font-mono tracking-widest uppercase text-[var(--text-muted)] font-bold">
+                <div className="border-b border-slate-800 pb-5 text-center">
+                  <div className="text-xs font-mono tracking-widest uppercase text-slate-400 font-bold">
                     CENTRAL INVESTIGATION DIVISION · STATE POLICE CRIME BRANCH
                   </div>
-                  <h1 className="text-base font-bold text-[var(--text-bright)] mt-1">
+                  <h1 className="text-xl font-black text-white mt-1.5 uppercase text-glow-white tracking-wide">
                     {selectedReport.title}
                   </h1>
-                  <div className="text-[10px] font-mono text-[var(--text-muted)] mt-1">
-                    Compiled Date: {selectedReport.created_at ? new Date(selectedReport.created_at).toLocaleString() : "2026"} IST
+                  <div className="text-[11px] font-mono text-slate-400 mt-1">
+                    Compiled Date: <strong className="text-slate-300">{selectedReport.created_at ? new Date(selectedReport.created_at).toLocaleString() : "2026"} IST</strong>
                   </div>
                 </div>
 
                 {/* Executive Summary */}
                 <div className="space-y-2">
-                  <div className="hud-label text-[10px] text-[var(--intel-sky)]">
+                  <div className="text-[10px] font-mono uppercase text-sky-400 font-bold tracking-wider text-glow-sky">
                     1. EXECUTIVE INVESTIGATION SUMMARY
                   </div>
-                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed bg-[var(--bg-panel-raised)] p-3.5 rounded border border-[var(--border-subtle)]">
+                  <p className="text-xs text-slate-200 leading-relaxed bg-slate-950/80 p-4 rounded-xl border border-slate-800 shadow-inner">
                     {selectedReport.summary || selectedReport.content || "Comprehensive network synthesis report compiled from multi-source FIR filings, Call Detail Records, seized exhibits, and verified forensic extractions."}
                   </p>
                 </div>
@@ -196,29 +202,29 @@ export default function Reports() {
                 {/* Structured Findings */}
                 {selectedReport.sections?.map((sec: any, idx: number) => (
                   <div key={idx} className="space-y-2">
-                    <div className="hud-label text-[10px] text-[var(--intel-sky)]">
+                    <div className="text-[10px] font-mono uppercase text-sky-400 font-bold tracking-wider text-glow-sky">
                       {idx + 2}. {sec.title?.toUpperCase()}
                     </div>
-                    <div className="text-xs text-[var(--text-secondary)] leading-relaxed space-y-2">
+                    <div className="text-xs text-slate-300 leading-relaxed space-y-2 bg-slate-950/60 p-4 rounded-xl border border-slate-800/80">
                       <p>{sec.body || sec.content}</p>
                     </div>
                   </div>
                 ))}
 
                 {/* Notice & Disclaimer */}
-                <div className="border-t border-[var(--border-subtle)] pt-4 text-[10px] text-[var(--text-muted)] leading-relaxed">
-                  <strong>CONFIDENTIALITY NOTICE:</strong> This intelligence document is generated for authorized law-enforcement and judicial proceedings only. All associative linkages represent investigative leads requiring verification by the investigating officer before charge-sheet filing.
+                <div className="border-t border-slate-800 pt-4 text-[11px] text-slate-400 leading-relaxed">
+                  <strong className="text-slate-300">CONFIDENTIALITY NOTICE:</strong> This intelligence document is generated for authorized law-enforcement and judicial proceedings only. All associative linkages represent investigative leads requiring verification by the investigating officer before charge-sheet filing.
                 </div>
               </div>
             </div>
           </div>
         ) : (
-          <div className="h-full flex flex-col items-center justify-center p-8 text-center text-[var(--text-muted)]">
-            <FileText size={40} className="opacity-20 mb-2" />
-            <div className="text-xs font-bold uppercase tracking-wider text-[var(--text-secondary)]">
+          <div className="h-full flex flex-col items-center justify-center p-8 text-center text-slate-400 space-y-2">
+            <FileText size={44} className="opacity-20 mb-2 text-slate-500" />
+            <div className="text-sm font-bold uppercase tracking-wider text-slate-300">
               No Report Selected
             </div>
-            <p className="text-[11px] text-[var(--text-muted)] mt-1">
+            <p className="text-xs text-slate-500 max-w-sm">
               Select a report from the archive or compile a new case dossier.
             </p>
           </div>
@@ -228,26 +234,26 @@ export default function Reports() {
       {/* ── Compile Report Modal ── */}
       {showGenModal && (
         <div className="cmd-palette-backdrop" onClick={() => setShowGenModal(false)}>
-          <div className="cmd-palette-modal max-w-md p-5" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
+          <div className="cmd-palette-modal max-w-md p-6 bg-slate-950 border border-slate-800 rounded-2xl shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div className="flex items-center gap-2">
-                <FileCheck2 size={16} className="text-[var(--intel-sky)]" />
-                <h2 className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+                <FileCheck2 size={18} className="text-sky-400" />
+                <h2 className="text-sm font-bold uppercase tracking-wider text-white">
                   Compile Intelligence Dossier
                 </h2>
               </div>
-              <button onClick={() => setShowGenModal(false)} className="text-xs font-mono text-[var(--text-muted)]">
+              <button onClick={() => setShowGenModal(false)} className="text-xs font-mono text-slate-400 hover:text-white">
                 ✕
               </button>
             </div>
 
-            <div className="py-4 space-y-3 text-xs">
+            <div className="py-4 space-y-3.5 text-xs">
               <div>
-                <label className="hud-label text-[9px] block mb-1">Dossier Template Format</label>
+                <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1.5 font-bold">Dossier Template Format</label>
                 <select
                   value={reportType}
                   onChange={(e) => setReportType(e.target.value)}
-                  className="workstation-input"
+                  className="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-slate-200 outline-none"
                 >
                   <option value="Comprehensive Syndicate Dossier">Comprehensive Syndicate Dossier</option>
                   <option value="Court-Admissible Evidence Summary">Court-Admissible Evidence Summary</option>
@@ -255,19 +261,19 @@ export default function Reports() {
                   <option value="Financial Flow & Hawala Reconstruction">Financial Flow & Hawala Reconstruction</option>
                 </select>
               </div>
-              <p className="text-[11px] text-[var(--text-muted)]">
+              <p className="text-[11px] text-slate-400 leading-relaxed">
                 The intelligence synthesizer will assemble active case records, verified evidence digests, and entity association graphs into an authoritative dossier.
               </p>
             </div>
 
-            <div className="flex justify-end gap-2 pt-3 border-t border-[var(--border-subtle)]">
-              <button onClick={() => setShowGenModal(false)} className="btn-ghost">
+            <div className="flex justify-end gap-2 pt-3 border-t border-slate-800">
+              <button onClick={() => setShowGenModal(false)} className="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-mono text-xs">
                 Cancel
               </button>
               <button
                 onClick={handleGenerateReport}
                 disabled={genLoading}
-                className="btn-primary flex items-center gap-1.5"
+                className="px-5 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-sky-500/20"
               >
                 <Sparkles size={13} />
                 <span>{genLoading ? "Synthesizing Dossier..." : "Generate Official Report"}</span>

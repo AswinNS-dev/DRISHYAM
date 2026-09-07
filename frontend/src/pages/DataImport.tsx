@@ -1,127 +1,235 @@
-import { useState } from "react";
-import { api } from "../lib/api";
-import { Upload, Scan, CheckCircle2 } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Plus, RefreshCw, Database, FileText, AlertCircle } from "lucide-react";
+import { dataWorkspaceService } from "../services/dataWorkspaceService";
+import type {
+  DatasetSummary,
+  DatasetItem,
+  DatasetDetail,
+  CaseOption,
+} from "../types/dataWorkspace";
 
-const SAMPLE = "Ravi alias Rocky met Arjun near Central Market. They used vehicle KA01AB1234 and phone 9876543210. The transaction was routed through account XXXX7788.";
+import DataWorkspaceSummary from "./DataWorkspace/DataWorkspaceSummary";
+import DatasetListTable from "./DataWorkspace/DatasetListTable";
+import DatasetDetailsPanel from "./DataWorkspace/DatasetDetailsPanel";
+import ImportDataModal from "./DataWorkspace/ImportDataModal";
+import QuickTextAnalysisModal from "./DataWorkspace/QuickTextAnalysisModal";
 
-const TYPE_COLORS: Record<string, { badge: string }> = {
-  PERSON: { badge: "badge-info" },
-  ALIAS: { badge: "badge-low" },
-  PHONE: { badge: "badge-low" },
-  VEHICLE: { badge: "badge-medium" },
-  LOCATION: { badge: "badge-purple" },
-  ORGANIZATION: { badge: "badge-high" },
-  GANG: { badge: "badge-high" },
-  BANK_ACCOUNT: { badge: "badge-medium" },
-  FIR_NUMBER: { badge: "badge-demo" },
-  CASE_NUMBER: { badge: "badge-demo" },
-  DATE: { badge: "badge-low" },
-  LEGAL_SECTION: { badge: "badge-demo" },
-  CRIME_TYPE: { badge: "badge-high" },
-};
+export default function DataWorkspace() {
+  const [summary, setSummary] = useState<DatasetSummary | null>(null);
+  const [datasets, setDatasets] = useState<DatasetItem[]>([]);
+  const [cases, setCases] = useState<CaseOption[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-export default function DataImport() {
-  const [text, setText] = useState(SAMPLE);
-  const [result, setResult] = useState<any>(null);
-  const [loading, setLoading] = useState(false);
+  // Active selected dataset details
+  const [selectedDatasetId, setSelectedDatasetId] = useState<string | null>(null);
+  const [activeDetail, setActiveDetail] = useState<DatasetDetail | null>(null);
+  const [detailLoading, setDetailLoading] = useState(false);
+  const [detailTab, setDetailTab] = useState<"preview" | "validation" | "entities" | "resolution" | "pipeline">("preview");
 
-  async function runExtraction() {
+  // Modals
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
+  const [isQuickTextModalOpen, setIsQuickTextModalOpen] = useState(false);
+
+  async function loadWorkspaceData() {
     setLoading(true);
+    setError(null);
     try {
-      const res = await api.importFir(text);
-      setResult(res);
+      const [dsRes, casesRes] = await Promise.all([
+        dataWorkspaceService.getDatasets(),
+        dataWorkspaceService.getCases(),
+      ]);
+      setSummary(dsRes.summary);
+      setDatasets(dsRes.datasets);
+      setCases(casesRes);
+
+      // Auto-select first dataset if none selected
+      if (dsRes.datasets.length > 0 && !selectedDatasetId) {
+        selectDataset(dsRes.datasets[0].id, "preview");
+      }
+    } catch (err: any) {
+      setError(err?.message || "Unable to load investigation datasets. Please try again.");
     } finally {
       setLoading(false);
     }
   }
 
+  async function selectDataset(
+    id: string,
+    tab: "preview" | "validation" | "entities" | "resolution" | "pipeline" = "preview"
+  ) {
+    setSelectedDatasetId(id);
+    setDetailTab(tab);
+    setDetailLoading(true);
+    try {
+      const detail = await dataWorkspaceService.getDatasetDetail(id);
+      setActiveDetail(detail);
+    } catch (err: any) {
+      console.error("Failed to load dataset details:", err);
+    } finally {
+      setDetailLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    loadWorkspaceData();
+  }, []);
+
+  function handleImportSuccess(newDataset: any) {
+    loadWorkspaceData();
+    if (newDataset?.dataset_id) {
+      selectDataset(newDataset.dataset_id, "validation");
+    }
+  }
+
   return (
-    <div className="p-6 max-w-4xl mx-auto page-enter space-y-6">
-      {/* Header */}
-      <div className="flex items-center gap-3 border-b border-[var(--border-subtle)] pb-4">
-        <div className="w-8 h-8 rounded-lg bg-zinc-800 text-zinc-100 border border-zinc-700/60 flex items-center justify-center shadow-sm">
-          <Upload size={16} />
-        </div>
-        <div>
-          <h1 className="text-sm font-bold uppercase tracking-wider text-[var(--text-primary)]">
-            Intelligence Data Ingestion Pipeline
-          </h1>
-          <p className="text-xs text-[var(--text-muted)]">
-            Automated entity extraction and identity resolution from police field notes and reports
-          </p>
-        </div>
-      </div>
-
-      <div className="p-3.5 rounded bg-[var(--bg-panel-solid)] border border-[var(--border-subtle)] text-xs text-[var(--text-secondary)] leading-relaxed">
-        Paste an FIR narrative, witness statement, or surveillance report. The ingestion engine extracts person names, phone numbers, vehicle registrations, and bank conduits live, cross-referencing against existing database records.
-      </div>
-
-      {/* Text area with line number gutter */}
-      <div className="panel overflow-hidden bg-[var(--bg-panel-solid)]">
-        <div className="flex">
-          {/* Gutter */}
-          <div
-            className="py-3 px-2 text-right select-none shrink-0 bg-[var(--bg-void)] border-r border-[var(--border-subtle)] text-[var(--text-muted)] font-mono text-[11px] min-w-[32px]"
-          >
-            {text.split("\n").map((_, i) => (
-              <div key={i}>{i + 1}</div>
-            ))}
+    <div className="p-6 max-w-7xl mx-auto page-enter space-y-6">
+      {/* ── HEADER ── */}
+      <div className="border-b border-slate-800/90 pb-4 space-y-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="badge badge-info text-[10px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
+              STATE INGESTION & DATA OPERATIONS
+            </span>
+            <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1 text-glow-emerald">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              LIVE DATABASE SYNCHRONIZED
+            </span>
           </div>
-          {/* Textarea */}
-          <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            rows={5}
-            className="flex-1 bg-transparent p-3 text-xs outline-none resize-none font-mono text-[var(--text-primary)] leading-relaxed"
-          />
+          <div className="text-[11px] font-mono text-slate-400">
+            Registered Datasets: <span className="text-white font-bold">{datasets.length}</span> Ingestion Files
+          </div>
         </div>
-      </div>
 
-      <div className="flex justify-end">
-        <button
-          onClick={runExtraction}
-          disabled={loading}
-          className="btn-primary flex items-center gap-1.5"
-        >
-          <Scan size={14} className={loading ? "animate-spin" : ""} />
-          <span>{loading ? "Extracting Identifiers..." : "Run Entity Extraction"}</span>
-        </button>
-      </div>
-
-      {/* Results */}
-      {result && (
-        <div className="panel p-5 bg-[var(--bg-panel-solid)] space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 size={16} className="text-[var(--status-verified)]" />
-              <span className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
-                Extracted Identifiers ({result.entity_count})
-              </span>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
+              <Database size={18} />
             </div>
-            <span className="badge badge-verified text-[8px]">{result.data_classification || "CLASSIFIED"}</span>
+            <div>
+              <h1 className="text-xl md:text-2xl font-black tracking-wide text-white text-glow-white">
+                Investigation Data Workspace
+              </h1>
+              <p className="text-xs text-slate-300 font-medium">
+                Import, inspect, validate and pipeline-process multi-source intelligence records.
+              </p>
+            </div>
           </div>
 
-          <div className="space-y-2">
-            {result.extracted_entities?.map((e: any, i: number) => {
-              const typeStyle = TYPE_COLORS[e.type] || { badge: "badge-low" };
-              return (
-                <div
-                  key={i}
-                  className="flex items-center justify-between py-2 px-3 rounded bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] text-xs"
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold text-[var(--text-primary)]">{e.text}</span>
-                    <span className={`badge ${typeStyle.badge} text-[8px]`}>{e.type}</span>
-                  </div>
-                  <span className="text-[10px] font-mono text-[var(--text-muted)]">
-                    Confidence: {Math.round((e.confidence || 0.9) * 100)}%
-                  </span>
-                </div>
-              );
-            })}
+          {/* Primary Actions */}
+          <div className="flex items-center gap-2 self-start sm:self-auto">
+            <button
+              onClick={() => setIsQuickTextModalOpen(true)}
+              className="px-3 py-1.5 rounded-xl border border-slate-800 bg-slate-950 hover:bg-slate-900 text-slate-200 text-xs font-mono flex items-center gap-1.5 transition-colors shadow-sm"
+              title="Ad-hoc FIR narrative entity extraction"
+            >
+              <FileText size={13} className="text-sky-400" />
+              <span>Extract Entities from Text</span>
+            </button>
+
+            <button
+              onClick={loadWorkspaceData}
+              disabled={loading}
+              className="p-2 rounded-xl border border-slate-800 bg-slate-950 hover:bg-slate-900 text-slate-300 transition-colors disabled:opacity-50 shadow-sm"
+              title="Refresh datasets"
+            >
+              <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
+            </button>
+
+            <button
+              onClick={() => setIsImportModalOpen(true)}
+              className="btn-primary px-4 py-2 text-xs font-mono flex items-center gap-1.5 shadow-md font-bold"
+            >
+              <Plus size={14} />
+              <span>+ Import Data</span>
+            </button>
           </div>
+        </div>
+      </div>
+
+      {/* Global Error Banner */}
+      {error && (
+        <div className="p-3.5 rounded-xl bg-rose-950/30 border border-rose-800/40 text-xs font-mono text-rose-300 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <AlertCircle size={15} className="text-rose-400 shrink-0" />
+            <span>{error}</span>
+          </div>
+          <button
+            onClick={loadWorkspaceData}
+            className="underline hover:text-white font-bold"
+          >
+            Retry
+          </button>
         </div>
       )}
+
+      {/* ── SUMMARY SECTION ── */}
+      <DataWorkspaceSummary summary={summary} loading={loading} />
+
+      {/* ── DATASET INVENTORY SECTION ── */}
+      <div className="space-y-2">
+        <div className="flex items-center justify-between px-1">
+          <span className="hud-label text-[11px] font-mono tracking-wider text-[var(--text-muted)]">
+            INVESTIGATION DATASETS INVENTORY
+          </span>
+          <span className="text-[10px] font-mono text-zinc-500">
+            {datasets.length} Registered Sources
+          </span>
+        </div>
+
+        <DatasetListTable
+          datasets={datasets}
+          selectedDatasetId={selectedDatasetId}
+          onSelectDataset={(id) => selectDataset(id, "preview")}
+          onOpenPreview={(d) => selectDataset(d.id, "preview")}
+          onOpenDetails={(d) => selectDataset(d.id, "validation")}
+          onAnalyze={(d) => selectDataset(d.id, "entities")}
+          cases={cases}
+          loading={loading}
+          onRefresh={loadWorkspaceData}
+        />
+      </div>
+
+      {/* ── SELECTED DATASET INSPECTOR & PROCESSING PIPELINE ── */}
+      {selectedDatasetId && (
+        <div className="space-y-2 pt-2">
+          <div className="flex items-center justify-between px-1">
+            <span className="hud-label text-[11px] font-mono tracking-wider text-[var(--text-muted)]">
+              ACTIVE DATASET INSPECTION & PIPELINE
+            </span>
+            <span className="text-[10px] font-mono text-zinc-500">
+              ID: {selectedDatasetId}
+            </span>
+          </div>
+
+          {detailLoading && !activeDetail ? (
+            <div className="py-16 text-center rounded-xl bg-[var(--bg-panel)] border border-[var(--border-subtle)] space-y-2">
+              <RefreshCw size={20} className="animate-spin mx-auto text-zinc-400" />
+              <p className="text-xs font-mono text-zinc-400">Loading dataset details & pipeline telemetry...</p>
+            </div>
+          ) : activeDetail ? (
+            <DatasetDetailsPanel
+              key={activeDetail.dataset.id}
+              detail={activeDetail}
+              defaultTab={detailTab}
+            />
+          ) : null}
+        </div>
+      )}
+
+      {/* ── MODALS ── */}
+      <ImportDataModal
+        isOpen={isImportModalOpen}
+        onClose={() => setIsImportModalOpen(false)}
+        onSuccess={handleImportSuccess}
+        cases={cases}
+      />
+
+      <QuickTextAnalysisModal
+        isOpen={isQuickTextModalOpen}
+        onClose={() => setIsQuickTextModalOpen(false)}
+        onImportComplete={loadWorkspaceData}
+      />
     </div>
   );
 }

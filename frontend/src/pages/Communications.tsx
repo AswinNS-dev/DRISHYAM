@@ -56,121 +56,139 @@ export default function Communications() {
   const selectedCaseObj = caseList.find((c) => c.id === selectedCaseId);
 
   return (
-    <div className="flex flex-col h-full bg-[var(--bg-void)]">
+    <div className="flex flex-col h-full bg-[#020617]">
       {/* ── Top Header Strip ── */}
-      <div className="px-6 py-4 border-b border-[var(--border-subtle)] flex flex-wrap items-center justify-between gap-4 bg-[var(--bg-panel-solid)]">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-sky-950/80 text-sky-400 border border-sky-700/60 flex items-center justify-center shadow-[0_0_12px_rgba(56,189,248,0.2)]">
-            <Radio size={18} />
+      <div className="px-6 py-4 border-b border-slate-800/90 space-y-3 bg-slate-900/95 backdrop-blur-md">
+        {/* Module Metadata Line */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="badge badge-info text-[10px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
+              STATE COMMUNICATIONS & TELEPHONY SURVEILLANCE
+            </span>
+            <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1 text-glow-emerald">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              LIVE DATABASE SYNCHRONIZED
+            </span>
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-sm font-bold tracking-wide uppercase text-[var(--text-primary)]">
-                Communications & Telephony Analysis
-              </h1>
-              <span className="badge bg-sky-950/80 border-sky-800/80 text-sky-300 text-[8px] font-mono">
-                CDR INTELLIGENCE
-              </span>
-            </div>
-            <p className="text-[11px] text-[var(--text-muted)]">
-              Call Detail Records (CDR), handset usage links, and transceiver frequency matrix
-            </p>
+          <div className="text-[11px] font-mono text-slate-400">
+            CDR Registry: <span className="text-white font-bold">{stats.total}</span> Telephony Intercepts
           </div>
         </div>
 
-        <div className="flex items-center gap-2.5">
-          {/* View Mode Toggle */}
-          <div className="flex items-center bg-slate-900 border border-slate-700/80 rounded-lg p-0.5 text-xs shadow-sm">
-            <button
-              onClick={() => setViewMode("list")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all font-medium cursor-pointer ${
-                viewMode === "list"
-                  ? "bg-sky-600 text-white shadow-sm font-semibold"
-                  : "text-slate-400 hover:text-white"
-              }`}
-            >
-              <Layers size={12} />
-              <span>CDR Feed</span>
-            </button>
-            <button
-              onClick={() => setViewMode("matrix")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all font-medium cursor-pointer ${
-                viewMode === "matrix"
-                  ? "bg-slate-700 text-white shadow-sm font-semibold"
-                  : "text-slate-400 hover:text-white"
-              }`}
-            >
-              <Share2 size={12} />
-              <span>Topology Matrix</span>
-            </button>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
+              <Radio size={18} />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="text-xl md:text-2xl font-black tracking-wide text-white uppercase text-glow-white">
+                  Communications & Telephony Analysis
+                </h1>
+                <span className="badge bg-sky-950/80 border-sky-800/80 text-sky-300 text-[8px] font-mono">
+                  CDR INTELLIGENCE
+                </span>
+              </div>
+              <p className="text-xs text-slate-300 font-medium">
+                Call Detail Records (CDR), handset usage links, and transceiver frequency matrix
+              </p>
+            </div>
           </div>
 
-          <button
-            onClick={loadCommunications}
-            className="p-2 rounded-lg border border-[var(--border-subtle)] hover:border-sky-500 text-[var(--text-muted)] hover:text-sky-400 bg-[var(--bg-panel-raised)] transition-all cursor-pointer shadow-sm"
-            title="Refresh CDR Feed"
-          >
-            <RefreshCw size={13} className={loading ? "animate-spin text-sky-400" : ""} />
-          </button>
+          <div className="flex items-center gap-2.5">
+            {/* View Mode Toggle */}
+            <div className="flex items-center bg-slate-950 border border-slate-800 rounded-xl p-0.5 text-xs shadow-inner">
+              <button
+                onClick={() => setViewMode("list")}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all font-mono text-xs cursor-pointer ${
+                  viewMode === "list"
+                    ? "bg-slate-800 text-sky-300 border border-sky-500/40 text-glow-sky font-bold shadow-sm"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                <Layers size={12} />
+                <span>CDR Feed</span>
+              </button>
+              <button
+                onClick={() => setViewMode("matrix")}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all font-mono text-xs cursor-pointer ${
+                  viewMode === "matrix"
+                    ? "bg-slate-800 text-sky-300 border border-sky-500/40 text-glow-sky font-bold shadow-sm"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                <Share2 size={12} />
+                <span>Topology Matrix</span>
+              </button>
+            </div>
+
+            <button
+              onClick={loadCommunications}
+              className="p-2.5 rounded-xl border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white bg-slate-950 transition-all cursor-pointer shadow-sm"
+              title="Refresh CDR Feed"
+            >
+              <RefreshCw size={13} className={loading ? "animate-spin text-sky-400" : ""} />
+            </button>
+          </div>
         </div>
       </div>
 
       {/* ── Visual KPI Operational Metrics Strip ── */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 px-6 py-3 border-b border-[var(--border-subtle)] bg-[var(--bg-panel)]">
-        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-sky-950/40 border border-slate-800 rounded-lg">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 px-6 py-3 border-b border-slate-800/90 bg-slate-900/90">
+        <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-sky-400 uppercase tracking-wider">Active Telephony Records</span>
+            <span className="text-[10px] font-mono text-sky-400 uppercase tracking-wider font-semibold">Active Telephony Records</span>
             <Radio size={13} className="text-sky-400" />
           </div>
-          <div className="text-lg font-bold font-mono text-slate-100 mt-1">{stats.total}</div>
+          <div className="text-xl font-black font-mono text-white text-glow-white mt-1">{stats.total}</div>
           <div className="text-[10px] font-mono text-slate-400 mt-0.5">Indexed CDR calls</div>
         </div>
 
-        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-purple-950/40 border border-purple-900/40 rounded-lg shadow-[0_0_15px_rgba(168,85,247,0.05)]">
+        <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-purple-400/90 uppercase tracking-wider">Unique Transceivers</span>
+            <span className="text-[10px] font-mono text-purple-400 uppercase tracking-wider font-semibold">Unique Transceivers</span>
             <Users size={13} className="text-purple-400" />
           </div>
-          <div className="text-lg font-bold font-mono text-purple-300 mt-1">{stats.uniqueTransceivers}</div>
+          <div className="text-xl font-black font-mono text-purple-300 text-glow-purple mt-1">{stats.uniqueTransceivers}</div>
           <div className="text-[10px] font-mono text-purple-400/70 mt-0.5">Tracked handsets</div>
         </div>
 
-        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/40 border border-amber-900/40 rounded-lg shadow-[0_0_15px_rgba(245,158,11,0.05)]">
+        <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-amber-400/90 uppercase tracking-wider">High-Frequency Pairs</span>
+            <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider font-semibold">High-Frequency Pairs</span>
             <ShieldAlert size={13} className="text-amber-400" />
           </div>
-          <div className="text-lg font-bold font-mono text-amber-300 mt-1">
+          <div className="text-xl font-black font-mono text-amber-300 text-glow-amber mt-1">
             {communications.filter((c) => (c.frequency_count || 1) >= 8).length}
           </div>
           <div className="text-[10px] font-mono text-amber-400/80 mt-0.5">≥ 8 calls logged</div>
         </div>
 
-        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/40 border border-emerald-900/40 rounded-lg">
+        <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-emerald-400/90 uppercase tracking-wider">Protocol Compliance</span>
+            <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider font-semibold">Protocol Compliance</span>
             <CheckCircle2 size={13} className="text-emerald-400" />
           </div>
-          <div className="text-xs font-mono font-bold text-emerald-300 mt-1">TRAI CDR Spec V2</div>
+          <div className="text-xs font-mono font-bold text-emerald-300 text-glow-emerald mt-1.5">TRAI CDR Spec V2</div>
           <div className="text-[10px] font-mono text-slate-400 mt-0.5">Audited telephony ingest</div>
         </div>
       </div>
 
       {/* ── Filter Controls ── */}
-      <div className="px-6 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-panel)] flex flex-wrap items-center justify-between gap-3">
+      <div className="px-6 py-2.5 border-b border-slate-800/90 bg-slate-900/95 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3 flex-1 min-w-[280px]">
           <div className="relative flex-1 max-w-md">
-            <Search size={12} className="absolute left-3 top-2.5 text-[var(--text-muted)]" />
+            <Search size={13} className="absolute left-3 top-2.5 text-slate-400" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by name, MSISDN / phone number, or exhibit ID..."
-              className="workstation-input pl-8 pr-3 text-xs"
+              className="w-full pl-8 pr-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono text-slate-100 placeholder-slate-500 outline-none focus:border-sky-500"
             />
           </div>
 
           {/* Case Filter */}
-          <div className="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/80 rounded-lg px-2.5 py-1">
+          <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-1">
             <FolderOpen size={12} className="text-sky-400" />
             <select
               value={selectedCaseId}
@@ -184,7 +202,7 @@ export default function Communications() {
                   return next;
                 });
               }}
-              className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer max-w-[150px] truncate"
+              className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer max-w-[150px] truncate font-mono"
             >
               <option value="" className="bg-slate-900 text-slate-300">All Cases (Global)</option>
               {caseList.map((c) => (
@@ -196,12 +214,12 @@ export default function Communications() {
           </div>
 
           {/* Frequency Filter */}
-          <div className="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/80 rounded-lg px-2.5 py-1">
+          <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-1">
             <Filter size={12} className="text-amber-400" />
             <select
               value={minFrequency}
               onChange={(e) => setMinFrequency(Number(e.target.value))}
-              className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer"
+              className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer font-mono"
             >
               <option value={1} className="bg-slate-900 text-slate-300">All Interactions (1+)</option>
               <option value={4} className="bg-slate-900 text-amber-300 font-semibold">Medium Traffic (4+ calls)</option>
@@ -211,7 +229,7 @@ export default function Communications() {
         </div>
 
         <div className="text-[11px] font-mono text-slate-400">
-          <span className="text-sky-400 font-bold">{filtered.length}</span> Communication Traces Indexed
+          <span className="text-sky-300 font-bold text-glow-sky">{filtered.length}</span> Communication Traces Indexed
         </div>
       </div>
 
@@ -275,9 +293,9 @@ export default function Communications() {
                   key={item.id}
                   className={`panel p-4 rounded-lg border transition-all space-y-3 ${
                     isFrequent
-                      ? "bg-gradient-to-br from-rose-950/20 via-slate-900/90 to-slate-900 border-rose-500/50 shadow-[0_0_15px_rgba(244,63,94,0.1)]"
+                      ? "bg-gradient-to-br from-rose-950/20 via-slate-900/90 to-slate-900 border-rose-500/50 shadow-md"
                       : isMedium
-                      ? "bg-gradient-to-br from-amber-950/20 via-slate-900/90 to-slate-900 border-amber-500/50 shadow-[0_0_15px_rgba(245,158,11,0.08)]"
+                      ? "bg-gradient-to-br from-amber-950/20 via-slate-900/90 to-slate-900 border-amber-500/50 shadow-sm"
                       : "bg-gradient-to-br from-sky-950/10 via-slate-900/90 to-slate-900 border-slate-800 hover:border-slate-700"
                   }`}
                 >
@@ -432,7 +450,7 @@ export default function Communications() {
                         <span
                           className={`font-mono text-xs font-bold px-2 py-0.5 rounded-full border ${
                             isFrequent
-                              ? "bg-rose-950/80 text-rose-300 border-rose-600/60 shadow-[0_0_10px_rgba(244,63,94,0.2)]"
+                              ? "bg-rose-950/80 text-rose-300 border-rose-600/60"
                               : isMedium
                               ? "bg-amber-950/80 text-amber-300 border-amber-600/60"
                               : "bg-sky-950/80 text-sky-300 border-sky-700/60"
