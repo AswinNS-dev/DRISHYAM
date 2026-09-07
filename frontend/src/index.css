@@ -7,65 +7,65 @@
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ── Exact Pitch-Black Canvas & Charcoal Panels ── */
-  --bg-void:           #000000;
-  --bg-panel:          #0c0c0e;
-  --bg-panel-solid:    #0c0c0e;
-  --bg-panel-raised:   #141417;
-  --bg-panel-hover:    #1a1a1f;
-  --bg-input:          #08080a;
-  --bg-subtle:         rgba(255, 255, 255, 0.02);
+  /* ── CrimeIntel Deep Navy & Charcoal Investigation Canvas ── */
+  --bg-void:           #020617; /* Pitch dark navy / slate 950 */
+  --bg-panel:          rgba(15, 23, 42, 0.95); /* Deep slate-900 glass panel */
+  --bg-panel-solid:    #0b1329; /* Solid rich dark navy */
+  --bg-panel-raised:   #131e3a; /* Elevated navy surface */
+  --bg-panel-hover:    #1e293b; /* Hover slate */
+  --bg-input:          #020617;
+  --bg-subtle:         rgba(56, 189, 248, 0.03);
 
   /* ── Clean Hairline Borders ── */
-  --border-subtle:     #1f1f23;
-  --border-strong:     #27272a;
-  --border-glow:       rgba(255, 255, 255, 0.1);
-  --border-input:      #27272a;
-  --border-focus:      #71717a;
+  --border-subtle:     rgba(51, 65, 85, 0.7); /* slate-800 */
+  --border-strong:     rgba(71, 85, 105, 0.9); /* slate-700 */
+  --border-glow:       rgba(56, 189, 248, 0.3);
+  --border-input:      #1e293b;
+  --border-focus:      #38bdf8;
 
   /* ── Accent & Monochromatic Elegance ── */
-  --intel-blue:        #ffffff;
-  --intel-cyan:        #a1a1aa;
-  --intel-sky:         #d4d4d8;
-  --intel-navy:        #18181b;
+  --intel-blue:        #38bdf8;
+  --intel-cyan:        #06b6d4;
+  --intel-sky:         #38bdf8;
+  --intel-navy:        #0f172a;
 
-  /* ── Status & Security Indicators (Crisp, Muted) ── */
+  /* ── Status & Security Indicators (Crisp, Radiant) ── */
   --status-verified:   #10b981;
   --status-warning:    #f59e0b;
-  --status-alert:      #ef4444;
+  --status-alert:      #f43f5e;
   --status-purple:     #a855f7;
-  --status-slate:      #71717a;
+  --status-slate:      #64748b;
 
   /* ── Compatibility Mappings ── */
-  --neon-teal:         #e4e4e7;
-  --neon-cyan:         #a1a1aa;
+  --neon-teal:         #38bdf8;
+  --neon-cyan:         #06b6d4;
   --neon-amber:        #f59e0b;
-  --neon-red:          #ef4444;
-  --neon-blue:         #ffffff;
+  --neon-red:          #f43f5e;
+  --neon-blue:         #38bdf8;
   --neon-purple:       #a855f7;
   --neon-green:        #10b981;
-  --accent-red:        #ef4444;
+  --accent-red:        #f43f5e;
 
   /* ── Typography Contrast ── */
-  --text-primary:      #f4f4f5;
-  --text-secondary:    #a1a1aa;
-  --text-muted:        #71717a;
+  --text-primary:      #f8fafc;
+  --text-secondary:    #cbd5e1;
+  --text-muted:        #94a3b8;
   --text-bright:       #ffffff;
 
-  /* ── Primary Action Colors (Stark White on Black) ── */
-  --btn-primary-bg:    #ffffff;
-  --btn-primary-text:  #000000;
-  --btn-primary-hover: #e4e4e7;
+  /* ── Primary Action Colors (Cyan Accent on Navy) ── */
+  --btn-primary-bg:    #38bdf8;
+  --btn-primary-text:  #020617;
+  --btn-primary-hover: #0ea5e9;
 
   /* ── Shadows ── */
-  --shadow-sm:         0 1px 2px 0 rgba(0, 0, 0, 0.6);
-  --shadow-md:         0 4px 14px -2px rgba(0, 0, 0, 0.8);
-  --shadow-lg:         0 16px 36px -4px rgba(0, 0, 0, 0.9);
-  --glow-teal:         none;
-  --glow-teal-strong:  none;
-  --glow-red:          none;
-  --glow-amber:        none;
-  --glow-blue:         none;
+  --shadow-sm:         0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md:         0 4px 14px -2px rgba(0, 0, 0, 0.7);
+  --shadow-lg:         0 16px 36px -4px rgba(0, 0, 0, 0.85);
+  --glow-teal:         0 0 16px rgba(56, 189, 248, 0.35);
+  --glow-teal-strong:  0 0 24px rgba(56, 189, 248, 0.5);
+  --glow-red:          0 0 16px rgba(244, 63, 94, 0.35);
+  --glow-amber:        0 0 16px rgba(245, 158, 11, 0.35);
+  --glow-blue:         0 0 16px rgba(56, 189, 248, 0.35);
 
   /* ── Fonts ── */
   --font-sans:         'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -234,43 +234,43 @@ body {
 }
 
 .badge-demo {
-  background: rgba(245, 158, 11, 0.1);
-  color: var(--status-warning);
-  border: 1px solid rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.14);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.35);
 }
 .badge-high, .badge-critical {
-  background: rgba(239, 68, 68, 0.1);
-  color: var(--status-alert);
-  border: 1px solid rgba(239, 68, 68, 0.25);
+  background: rgba(244, 63, 94, 0.14);
+  color: #f87171;
+  border: 1px solid rgba(244, 63, 94, 0.35);
 }
 .badge-medium {
-  background: rgba(245, 158, 11, 0.1);
-  color: var(--status-warning);
-  border: 1px solid rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.14);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.35);
 }
 .badge-low {
-  background: #141417;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-subtle);
+  background: #1e293b;
+  color: #cbd5e1;
+  border: 1px solid rgba(51, 65, 85, 0.7);
 }
 .badge-verified {
-  background: rgba(16, 185, 129, 0.1);
-  color: var(--status-verified);
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  background: rgba(16, 185, 129, 0.14);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.35);
 }
 .badge-info {
-  background: #141417;
-  color: var(--text-primary);
-  border: 1px solid var(--border-subtle);
+  background: rgba(56, 189, 248, 0.14);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.35);
 }
 .badge-purple {
-  background: rgba(168, 85, 247, 0.1);
-  color: var(--status-purple);
-  border: 1px solid rgba(168, 85, 247, 0.25);
+  background: rgba(168, 85, 247, 0.14);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.35);
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   BUTTONS (REACT BITS PRO SPEC — STARK WHITE ON BLACK)
+   BUTTONS (CRIMEINTEL ACCENT & SECONDARY STYLING)
    ═══════════════════════════════════════════════════════════════ */
 
 .btn-primary {
@@ -289,10 +289,12 @@ body {
   align-items: center;
   justify-content: center;
   gap: 6px;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
 }
 .btn-primary:hover {
   background: var(--btn-primary-hover);
-  opacity: 0.95;
+  border-color: var(--btn-primary-hover);
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.45);
 }
 .btn-primary:active {
   transform: translateY(1px);
@@ -301,16 +303,17 @@ body {
   opacity: 0.4;
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 
 .btn-secondary {
-  background: transparent;
-  color: var(--text-primary);
+  background: #1e293b;
+  color: #f1f5f9;
   font-family: var(--font-sans);
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   padding: 7px 14px;
-  border: 1px solid var(--border-strong);
+  border: 1px solid rgba(71, 85, 105, 0.8);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -320,9 +323,9 @@ body {
   gap: 6px;
 }
 .btn-secondary:hover {
-  background: var(--bg-panel-hover);
-  border-color: #3f3f46;
-  color: var(--text-bright);
+  background: #334155;
+  border-color: #64748b;
+  color: #ffffff;
 }
 
 .btn-ghost {

@@ -186,65 +186,83 @@ export default function Timeline() {
   const selectedCaseObj = caseList.find((c) => c.id === selectedCaseId);
 
   return (
-    <div className="flex flex-col h-full bg-[var(--bg-void)]">
+    <div className="flex flex-col h-full bg-[#020617]">
       {/* ── Top Header Strip ── */}
-      <div className="px-6 py-4 border-b border-[var(--border-subtle)] flex flex-wrap items-center justify-between gap-4 bg-[var(--bg-panel-solid)]">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-indigo-950/80 text-indigo-400 border border-indigo-700/60 flex items-center justify-center shadow-[0_0_12px_rgba(99,102,241,0.2)]">
-            <Clock size={18} />
+      <div className="px-6 py-4 border-b border-slate-800/90 space-y-3 bg-slate-900/95 backdrop-blur-md">
+        {/* Module Metadata Line */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="badge badge-info text-[10px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
+              STATE TEMPORAL & SEQUENCE INTELLIGENCE
+            </span>
+            <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1 text-glow-emerald">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              LIVE DATABASE SYNCHRONIZED
+            </span>
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-sm font-bold tracking-wide uppercase text-[var(--text-primary)]">
-                Multi-Source Chronological Timeline
-              </h1>
-              <span className="badge bg-indigo-950/80 border-indigo-800/80 text-indigo-300 text-[8px] font-mono">
-                TEMPORAL CORRELATION
-              </span>
-            </div>
-            <p className="text-[11px] text-[var(--text-muted)]">
-              Unified cross-source temporal feed: formal FIRs, capital transfers, telephony CDR links, and tactical events
-            </p>
+          <div className="text-[11px] font-mono text-slate-400">
+            Timeline Feed: <span className="text-white font-bold">{events.length}</span> Indexed Events
           </div>
         </div>
 
-        <button
-          onClick={loadTimeline}
-          className="p-2 rounded-lg border border-[var(--border-subtle)] hover:border-indigo-500 text-[var(--text-muted)] hover:text-indigo-400 bg-[var(--bg-panel-raised)] transition-all cursor-pointer shadow-sm"
-          title="Refresh Timeline"
-        >
-          <RefreshCw size={13} className={loading ? "animate-spin text-indigo-400" : ""} />
-        </button>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
+              <Clock size={18} />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="text-xl md:text-2xl font-black tracking-wide text-white uppercase text-glow-white">
+                  Multi-Source Chronological Timeline
+                </h1>
+                <span className="badge bg-sky-950/80 border-sky-800/80 text-sky-300 text-[8px] font-mono">
+                  TEMPORAL CORRELATION
+                </span>
+              </div>
+              <p className="text-xs text-slate-300 font-medium">
+                Unified cross-source temporal feed: formal FIRs, capital transfers, telephony CDR links, and tactical events
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={loadTimeline}
+            className="p-2.5 rounded-xl border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white bg-slate-950 transition-all cursor-pointer shadow-sm"
+            title="Refresh Timeline"
+          >
+            <RefreshCw size={14} className={loading ? "animate-spin text-sky-400" : ""} />
+          </button>
+        </div>
       </div>
 
       {/* ── Visual KPI Operational Metrics Strip ── */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 px-6 py-3 border-b border-[var(--border-subtle)] bg-[var(--bg-panel)]">
-        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/40 border border-slate-800 rounded-lg">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 px-6 py-3 border-b border-slate-800/90 bg-slate-900/90">
+        <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-indigo-400 uppercase tracking-wider">Total Indexed Events</span>
-            <Clock size={13} className="text-indigo-400" />
+            <span className="text-[10px] font-mono text-sky-400 uppercase tracking-wider font-semibold">Total Indexed Events</span>
+            <Clock size={13} className="text-sky-400" />
           </div>
-          <div className="text-lg font-bold font-mono text-slate-100 mt-1">{events.length}</div>
+          <div className="text-xl font-black font-mono text-white text-glow-white mt-1">{events.length}</div>
           <div className="text-[10px] font-mono text-slate-400 mt-0.5">Across all evidence types</div>
         </div>
 
-        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/40 border border-emerald-900/40 rounded-lg shadow-[0_0_15px_rgba(16,185,129,0.05)]">
+        <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-emerald-400/90 uppercase tracking-wider">Multi-Source Types</span>
+            <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider font-semibold">Multi-Source Types</span>
             <TrendingUp size={13} className="text-emerald-400" />
           </div>
-          <div className="text-lg font-bold font-mono text-emerald-300 mt-1">
+          <div className="text-xl font-black font-mono text-emerald-300 text-glow-emerald mt-1">
             {new Set(events.map((e) => e.event_type)).size} Streams
           </div>
-          <div className="text-[10px] font-mono text-emerald-400/70 mt-0.5">FIR, CDR, TX, Alerts</div>
+          <div className="text-[10px] font-mono text-emerald-400/80 mt-0.5">FIR, CDR, TX, Alerts</div>
         </div>
 
-        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/40 border border-amber-900/40 rounded-lg shadow-[0_0_15px_rgba(245,158,11,0.05)]">
+        <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-amber-400/90 uppercase tracking-wider">Incident Reference</span>
+            <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider font-semibold">Incident Reference</span>
             <Calendar size={13} className="text-amber-400" />
           </div>
-          <div className="text-xs font-mono font-bold text-amber-300 mt-1.5 truncate">
+          <div className="text-xs font-mono font-bold text-amber-300 text-glow-amber mt-1.5 truncate">
             {incidentAnalysis?.has_incident_date
               ? new Date(incidentAnalysis.anchor_date).toLocaleDateString()
               : selectedCaseId
@@ -256,37 +274,37 @@ export default function Timeline() {
           </div>
         </div>
 
-        <div className="panel p-3 bg-gradient-to-br from-slate-900 via-slate-900 to-sky-950/40 border border-sky-900/40 rounded-lg">
+        <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-sky-400/90 uppercase tracking-wider">Temporal Windows</span>
-            <Filter size={13} className="text-sky-400" />
+            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-wider font-semibold">Temporal Windows</span>
+            <Filter size={13} className="text-cyan-400" />
           </div>
-          <div className="text-xs font-mono font-bold text-sky-300 mt-1 flex items-center gap-1.5">
-            <span className="text-blue-400">{incidentAnalysis?.before_incident_count ?? "-"} B</span>
-            <span>•</span>
-            <span className="text-amber-400">{incidentAnalysis?.during_incident_count ?? "-"} D</span>
-            <span>•</span>
-            <span className="text-teal-400">{incidentAnalysis?.after_incident_count ?? "-"} A</span>
+          <div className="text-xs font-mono font-bold text-cyan-300 text-glow-cyan mt-1 flex items-center gap-1.5">
+            <span className="text-sky-300">{incidentAnalysis?.before_incident_count ?? "-"} B</span>
+            <span className="text-slate-500">•</span>
+            <span className="text-amber-300">{incidentAnalysis?.during_incident_count ?? "-"} D</span>
+            <span className="text-slate-500">•</span>
+            <span className="text-teal-300">{incidentAnalysis?.after_incident_count ?? "-"} A</span>
           </div>
           <div className="text-[10px] font-mono text-slate-400 mt-0.5">Before / During / After</div>
         </div>
       </div>
 
       {/* ── Filter Controls ── */}
-      <div className="px-6 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-panel)] flex flex-wrap items-center justify-between gap-3">
+      <div className="px-6 py-2.5 border-b border-slate-800/90 bg-slate-900/95 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3 flex-1 min-w-[280px] flex-wrap">
           <div className="relative flex-1 max-w-xs min-w-[180px]">
-            <Search size={12} className="absolute left-3 top-2.5 text-[var(--text-muted)]" />
+            <Search size={13} className="absolute left-3 top-2.5 text-slate-400" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search narrative, entity, tag..."
-              className="workstation-input pl-8 pr-3 text-xs"
+              className="w-full pl-8 pr-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono text-slate-100 placeholder-slate-500 outline-none focus:border-sky-500"
             />
           </div>
 
           {/* Case Filter */}
-          <div className="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/80 rounded-lg px-2.5 py-1">
+          <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-1">
             <FolderOpen size={12} className="text-sky-400" />
             <select
               value={selectedCaseId}
@@ -300,7 +318,7 @@ export default function Timeline() {
                   return next;
                 });
               }}
-              className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer max-w-[150px] truncate"
+              className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer max-w-[150px] truncate font-mono"
             >
               <option value="" className="bg-slate-900 text-slate-300">All Cases (Global)</option>
               {caseList.map((c) => (
@@ -312,19 +330,18 @@ export default function Timeline() {
           </div>
 
           {/* Event Type Filter */}
-          <div className="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/80 rounded-lg px-2.5 py-1">
+          <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-1">
             <Filter size={12} className="text-amber-400" />
             <select
               value={eventTypeFilter}
               onChange={(e) => setEventTypeFilter(e.target.value)}
-              className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer"
+              className="bg-transparent text-xs text-slate-200 outline-none cursor-pointer font-mono"
             >
-              <option value="" className="bg-slate-900 text-slate-300">All Event Types</option>
-              <option value="FIR_FILED" className="bg-slate-900 text-amber-300 font-medium">FIR Filings</option>
-              <option value="TRANSACTION" className="bg-slate-900 text-emerald-300 font-medium">Capital Transfers</option>
-              <option value="COMMUNICATION" className="bg-slate-900 text-sky-300 font-medium">CDR Telephony</option>
-              <option value="ANOMALY_FLAGGED" className="bg-slate-900 text-rose-300 font-medium">Unusual Activities</option>
-              <option value="TACTICAL_ALERT" className="bg-slate-900 text-purple-300 font-medium">Tactical Sightings</option>
+              <option value="" className="bg-slate-900">All Event Types</option>
+              <option value="FIR_FILED" className="bg-slate-900">FIR Complaints</option>
+              <option value="TRANSACTION" className="bg-slate-900">Capital Transfers</option>
+              <option value="COMMUNICATION" className="bg-slate-900">CDR Telephony Links</option>
+              <option value="ANOMALY_FLAGGED" className="bg-slate-900">Unusual Activity</option>
             </select>
           </div>
 

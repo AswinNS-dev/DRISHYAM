@@ -90,20 +90,20 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-6 lg:p-12 bg-black select-none">
+    <div className="min-h-screen w-full flex items-center justify-center p-6 lg:p-12 bg-[#020617] text-slate-100 select-none">
       <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
         {/* ── Left Side: Prominent & Eye-Catching RBAC Clearance Showcase ── */}
         <div className="lg:col-span-7 space-y-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-[10px] font-mono tracking-wider uppercase text-zinc-400">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Role-Based Access Control (RBAC)</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/80 border border-slate-800 text-[10px] font-mono tracking-wider uppercase text-sky-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Role-Based Access Control (RBAC) Governance</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white uppercase text-glow-white">
               Law-Enforcement Clearance Tiers
             </h1>
-            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-xl">
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-xl">
               Select an authorized clearance level below to inspect role-restricted permissions, sensitive case intelligence, and chain-of-custody controls.
             </p>
           </div>
@@ -119,38 +119,38 @@ export default function Login() {
                   onClick={() => handleSelectTier(tier)}
                   className={`p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer relative overflow-hidden group ${
                     isSelected
-                      ? "bg-[#121215] border-zinc-400 shadow-2xl ring-1 ring-zinc-500/50"
-                      : "bg-[#0c0c0e] border-zinc-800/80 hover:border-zinc-700 hover:bg-[#101013]"
+                      ? "bg-sky-950/30 border-sky-500/60 shadow-xl shadow-sky-950/40 ring-1 ring-sky-500/40"
+                      : "bg-slate-900/80 border-slate-800/80 hover:border-slate-700 hover:bg-slate-900"
                   }`}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-start gap-3.5 min-w-0">
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border transition-colors ${
                         isSelected
-                          ? "bg-white text-black border-white"
-                          : "bg-zinc-900 text-zinc-400 border-zinc-800 group-hover:text-zinc-200"
+                          ? "bg-sky-500 text-slate-950 border-sky-400 shadow-[0_0_12px_rgba(14,165,233,0.5)]"
+                          : "bg-slate-950 text-slate-400 border-slate-800 group-hover:text-slate-200"
                       }`}>
                         <Icon size={18} />
                       </div>
 
                       <div className="min-w-0 space-y-1">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="text-sm font-semibold text-white tracking-tight">
+                          <h3 className={`text-sm font-bold tracking-tight ${isSelected ? "text-white text-glow-white" : "text-slate-200"}`}>
                             {tier.title}
                           </h3>
-                          <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700 font-medium">
+                          <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-slate-800 font-bold">
                             {tier.clearanceLevel}
                           </span>
-                          <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded ${
+                          <span className={`text-[9px] font-mono px-2 py-0.5 rounded font-bold uppercase ${
                             isSelected
-                              ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30"
-                              : "bg-zinc-900 text-zinc-500"
+                              ? "bg-emerald-950/60 text-emerald-300 border border-emerald-800/60"
+                              : "bg-slate-950 text-slate-500 border border-slate-800"
                           }`}>
                             {tier.badge}
                           </span>
                         </div>
 
-                        <p className="text-xs text-zinc-400 leading-normal">
+                        <p className="text-xs text-slate-400 leading-normal">
                           {tier.summary}
                         </p>
 
@@ -158,9 +158,9 @@ export default function Login() {
                           {tier.features.map((f, idx) => (
                             <span
                               key={idx}
-                              className="inline-flex items-center gap-1 text-[10px] text-zinc-500 font-mono"
+                              className="inline-flex items-center gap-1 text-[10px] text-slate-400 font-mono"
                             >
-                              <CheckCircle2 size={10} className={isSelected ? "text-emerald-400" : "text-zinc-600"} />
+                              <CheckCircle2 size={11} className={isSelected ? "text-emerald-400" : "text-slate-600"} />
                               <span>{f}</span>
                             </span>
                           ))}
@@ -171,10 +171,10 @@ export default function Login() {
                     <div className="shrink-0 pt-0.5">
                       <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
                         isSelected
-                          ? "border-white bg-white text-black"
-                          : "border-zinc-700 bg-transparent"
+                          ? "border-sky-400 bg-sky-500 text-slate-950"
+                          : "border-slate-700 bg-transparent"
                       }`}>
-                        {isSelected && <div className="w-2 h-2 rounded-full bg-black" />}
+                        {isSelected && <div className="w-2 h-2 rounded-full bg-slate-950" />}
                       </div>
                     </div>
                   </div>
@@ -183,7 +183,7 @@ export default function Login() {
             })}
           </div>
 
-          <div className="flex items-center gap-4 text-xs text-zinc-500 pt-2">
+          <div className="flex items-center gap-4 text-xs text-slate-500 pt-2 font-mono">
             <span>Official Police Department Clearance</span>
             <span>•</span>
             <span>Zero-Trust Cryptographic Audit</span>
@@ -192,42 +192,42 @@ export default function Login() {
 
         {/* ── Right Side: Sleek Sign-In Card (Exact Theme Alignment) ── */}
         <div className="lg:col-span-5 w-full max-w-[420px] mx-auto">
-          <div className="bg-[#0c0c0e] border border-zinc-800/80 rounded-2xl p-7 sm:p-8 shadow-2xl space-y-6">
+          <div className="bg-slate-900/95 border border-slate-800/90 rounded-2xl p-7 sm:p-8 shadow-2xl space-y-6 backdrop-blur-md">
             {/* Header with Department Icon */}
             <div className="text-center space-y-2">
-              <div className="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 text-white font-bold text-xs flex items-center justify-center mx-auto shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-sky-950/50 border border-sky-500/40 text-sky-400 font-black text-xs flex items-center justify-center mx-auto shadow-[0_0_15px_rgba(14,165,233,0.3)]">
                 CI
               </div>
               <div>
-                <h2 className="text-xl font-semibold tracking-tight text-white">
-                  Sign in
+                <h2 className="text-xl font-bold tracking-tight text-white uppercase text-glow-white">
+                  Officer Sign In
                 </h2>
-                <p className="text-xs text-zinc-400 mt-1">
-                  Access the CrimeIntel investigation suite
+                <p className="text-xs text-slate-400 mt-1">
+                  Access the CrimeIntel AI Investigation Suite
                 </p>
               </div>
             </div>
 
             {/* Active Clearance Badge Notification */}
-            <div className="p-3 rounded-xl bg-zinc-900/80 border border-zinc-800 flex items-center justify-between text-xs">
-              <span className="text-zinc-400">Target Clearance:</span>
+            <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center justify-between text-xs">
+              <span className="text-slate-400">Target Clearance:</span>
               <span className="font-semibold text-white font-mono flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 {selectedTier.title}
               </span>
             </div>
 
             {/* Error / Expiration notices */}
             {sessionExpiredMessage && (
-              <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-xs text-red-400 flex items-center gap-2">
-                <AlertTriangle size={14} className="shrink-0" />
+              <div className="p-3 rounded-xl bg-rose-950/40 border border-rose-800/60 text-xs text-rose-300 flex items-center gap-2">
+                <AlertTriangle size={14} className="shrink-0 text-rose-400" />
                 <span>{sessionExpiredMessage}</span>
               </div>
             )}
 
             {error && (
-              <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-xs text-red-400 flex items-center gap-2">
-                <AlertTriangle size={14} className="shrink-0" />
+              <div className="p-3 rounded-xl bg-rose-950/40 border border-rose-800/60 text-xs text-rose-300 flex items-center gap-2">
+                <AlertTriangle size={14} className="shrink-0 text-rose-400" />
                 <span>{error}</span>
               </div>
             )}
@@ -235,7 +235,7 @@ export default function Login() {
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-zinc-300 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
                   Department Email or Officer ID
                 </label>
                 <input
@@ -244,19 +244,19 @@ export default function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="officer@police.gov.in"
-                  className="w-full h-10 px-3.5 rounded-lg bg-[#08080a] border border-zinc-800 text-xs text-white placeholder:text-zinc-600 focus:border-zinc-500 focus:outline-none transition-colors"
+                  className="w-full h-10 px-3.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-white placeholder:text-slate-600 focus:border-sky-500 focus:outline-none transition-colors"
                 />
               </div>
 
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label className="text-xs font-medium text-zinc-300">
+                  <label className="text-xs font-semibold text-slate-300">
                     Security Passcode
                   </label>
                   <button
                     type="button"
                     onClick={() => alert("Contact Station Administrator or Cyber Cell to reset cryptographic tokens.")}
-                    className="text-xs text-zinc-400 hover:text-white transition-colors cursor-pointer"
+                    className="text-xs text-sky-400 hover:text-sky-300 transition-colors cursor-pointer"
                   >
                     Forgot passcode?
                   </button>
@@ -268,12 +268,12 @@ export default function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full h-10 pl-3.5 pr-10 rounded-lg bg-[#08080a] border border-zinc-800 text-xs text-white placeholder:text-zinc-600 focus:border-zinc-500 focus:outline-none transition-colors"
+                    className="w-full h-10 pl-3.5 pr-10 rounded-lg bg-slate-950 border border-slate-800 text-xs text-white placeholder:text-slate-600 focus:border-sky-500 focus:outline-none transition-colors"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-2.5 p-1 text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer"
+                    className="absolute right-3 top-2.5 p-1 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
                     title={showPassword ? "Hide password" : "Show password"}
                   >
                     {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
@@ -288,17 +288,17 @@ export default function Login() {
                     type="checkbox"
                     checked={keepSignedIn}
                     onChange={(e) => setKeepSignedIn(e.target.checked)}
-                    className="w-4 h-4 rounded border-zinc-700 bg-[#08080a] text-white focus:ring-0 focus:ring-offset-0 cursor-pointer accent-white"
+                    className="w-4 h-4 rounded border-slate-700 bg-slate-950 text-sky-500 focus:ring-0 focus:ring-offset-0 cursor-pointer accent-sky-500"
                   />
-                  <span className="text-xs text-zinc-400">Keep me signed in for 30 days</span>
+                  <span className="text-xs text-slate-400">Keep me signed in for 30 days</span>
                 </label>
               </div>
 
-              {/* Stark White Submit Action */}
+              {/* Tactical Sky Submit Action */}
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full h-10 rounded-lg bg-white text-black font-semibold text-xs hover:bg-zinc-200 transition-colors cursor-pointer shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full h-10 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-colors cursor-pointer shadow-lg shadow-sky-950/50 flex items-center justify-center gap-2 disabled:opacity-50 active:scale-[0.98]"
               >
                 <span>{loading ? "Verifying Clearance..." : "Authorize & Enter Workstation"}</span>
                 <ArrowRight size={14} />
@@ -306,7 +306,7 @@ export default function Login() {
             </form>
 
             {/* Legal / Security Footer */}
-            <div className="pt-2 text-center text-[10px] text-zinc-500 leading-relaxed font-mono">
+            <div className="pt-2 text-center text-[10px] text-slate-500 leading-relaxed font-mono">
               Authorized personnel only. All access attempts are cryptographically timestamped and signed.
             </div>
           </div>

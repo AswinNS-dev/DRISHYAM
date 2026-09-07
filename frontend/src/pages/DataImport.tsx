@@ -85,48 +85,65 @@ export default function DataWorkspace() {
   return (
     <div className="p-6 max-w-7xl mx-auto page-enter space-y-6">
       {/* ── HEADER ── */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-4">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-zinc-800 text-zinc-100 border border-zinc-700/60 flex items-center justify-center shadow-sm">
-            <Database size={18} />
+      <div className="border-b border-slate-800/90 pb-4 space-y-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="badge badge-info text-[10px] font-mono tracking-wider font-bold py-0.5 px-2 bg-slate-800 text-sky-300 border border-sky-500/30 text-glow-sky">
+              STATE INGESTION & DATA OPERATIONS
+            </span>
+            <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1 text-glow-emerald">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              LIVE DATABASE SYNCHRONIZED
+            </span>
           </div>
-          <div>
-            <h1 className="text-sm font-bold uppercase tracking-wider text-[var(--text-primary)] font-mono">
-              DATA WORKSPACE
-            </h1>
-            <p className="text-xs text-[var(--text-muted)] font-mono">
-              Import, inspect, validate and process investigation datasets.
-            </p>
+          <div className="text-[11px] font-mono text-slate-400">
+            Registered Datasets: <span className="text-white font-bold">{datasets.length}</span> Ingestion Files
           </div>
         </div>
 
-        {/* Primary Actions */}
-        <div className="flex items-center gap-2 self-start sm:self-auto">
-          <button
-            onClick={() => setIsQuickTextModalOpen(true)}
-            className="px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-panel-raised)] hover:bg-[var(--bg-panel-hover)] text-zinc-200 text-xs font-mono flex items-center gap-1.5 transition-colors"
-            title="Ad-hoc FIR narrative entity extraction"
-          >
-            <FileText size={13} className="text-zinc-400" />
-            <span>Extract Entities from Text</span>
-          </button>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-slate-950 text-sky-400 border border-slate-800 flex items-center justify-center shadow-md">
+              <Database size={18} />
+            </div>
+            <div>
+              <h1 className="text-xl md:text-2xl font-black tracking-wide text-white text-glow-white">
+                Investigation Data Workspace
+              </h1>
+              <p className="text-xs text-slate-300 font-medium">
+                Import, inspect, validate and pipeline-process multi-source intelligence records.
+              </p>
+            </div>
+          </div>
 
-          <button
-            onClick={loadWorkspaceData}
-            disabled={loading}
-            className="p-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-panel-raised)] hover:bg-[var(--bg-panel-hover)] text-zinc-300 transition-colors disabled:opacity-50"
-            title="Refresh datasets"
-          >
-            <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
-          </button>
+          {/* Primary Actions */}
+          <div className="flex items-center gap-2 self-start sm:self-auto">
+            <button
+              onClick={() => setIsQuickTextModalOpen(true)}
+              className="px-3 py-1.5 rounded-xl border border-slate-800 bg-slate-950 hover:bg-slate-900 text-slate-200 text-xs font-mono flex items-center gap-1.5 transition-colors shadow-sm"
+              title="Ad-hoc FIR narrative entity extraction"
+            >
+              <FileText size={13} className="text-sky-400" />
+              <span>Extract Entities from Text</span>
+            </button>
 
-          <button
-            onClick={() => setIsImportModalOpen(true)}
-            className="btn-primary px-3.5 py-1.5 text-xs font-mono flex items-center gap-1.5 shadow-sm"
-          >
-            <Plus size={14} />
-            <span>+ Import Data</span>
-          </button>
+            <button
+              onClick={loadWorkspaceData}
+              disabled={loading}
+              className="p-2 rounded-xl border border-slate-800 bg-slate-950 hover:bg-slate-900 text-slate-300 transition-colors disabled:opacity-50 shadow-sm"
+              title="Refresh datasets"
+            >
+              <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
+            </button>
+
+            <button
+              onClick={() => setIsImportModalOpen(true)}
+              className="btn-primary px-4 py-2 text-xs font-mono flex items-center gap-1.5 shadow-md font-bold"
+            >
+              <Plus size={14} />
+              <span>+ Import Data</span>
+            </button>
+          </div>
         </div>
       </div>
 

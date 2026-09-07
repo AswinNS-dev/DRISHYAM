@@ -53,27 +53,27 @@ export default function DataWorkspaceSummary({ summary, loading }: Props) {
         return (
           <div
             key={idx}
-            className="p-4 rounded-xl bg-[var(--bg-panel)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] transition-colors shadow-sm flex flex-col justify-between"
+            className="p-4 rounded-xl bg-slate-900/95 border border-slate-800/90 hover:border-slate-700 transition-colors shadow-xl flex flex-col justify-between"
           >
             <div className="flex items-center justify-between">
-              <span className="hud-label text-[10px] tracking-wider text-[var(--text-muted)] font-mono">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold">
                 {card.label}
               </span>
-              <div className="w-7 h-7 rounded-lg bg-[var(--bg-panel-raised)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-secondary)]">
-                <Icon size={14} />
+              <div className="w-8 h-8 rounded-lg bg-slate-950 border border-slate-800 flex items-center justify-center text-sky-400 shadow-sm">
+                <Icon size={15} />
               </div>
             </div>
 
             <div className="mt-3">
               {loading ? (
-                <div className="h-7 w-20 bg-zinc-800/60 rounded animate-pulse" />
+                <div className="h-7 w-20 bg-slate-800 rounded animate-pulse" />
               ) : (
-                <div className={`text-2xl font-bold font-mono tracking-tight ${card.color}`}>
+                <div className={`text-2xl font-black font-mono tracking-tight text-white text-glow-white`}>
                   {card.value}
                 </div>
               )}
-              <div className="flex items-center justify-between mt-2 pt-2 border-t border-[var(--border-subtle)]">
-                <span className="text-[11px] text-[var(--text-muted)] truncate mr-2">
+              <div className="flex items-center justify-between mt-2 pt-2 border-t border-slate-800/80">
+                <span className="text-[11px] text-slate-400 truncate mr-2">
                   {card.subtext}
                 </span>
                 <span className={`badge ${card.badgeClass} text-[8px] shrink-0 font-mono`}>
