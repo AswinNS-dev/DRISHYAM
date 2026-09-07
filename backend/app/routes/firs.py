@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+from sqlalchemy import func
 from pydantic import BaseModel
 from typing import Optional, List
 import datetime as dt
@@ -41,12 +42,20 @@ def list_firs(
 
     cases = {c.id: c for c in db.query(m.CrimeCase).all()}
     locations = {l.id: l for l in db.query(m.Location).all()}
+    fir_ids = [f.id for f in firs]
+    mention_counts = {}
+    if fir_ids:
+        mention_counts = dict(
+            db.query(m.EntityMention.source_record_id, func.count(m.EntityMention.id))
+            .filter(m.EntityMention.source_record_id.in_(fir_ids))
+            .group_by(m.EntityMention.source_record_id)
+            .all()
+        )
 
     results = []
     for f in firs:
         case = cases.get(f.case_id)
         loc = locations.get(f.location_id)
-        mention_count = db.query(m.EntityMention).filter(m.EntityMention.source_record_id == f.id).count()
         results.append({
             "id": f.id,
             "fir_number": f.fir_number,
@@ -57,7 +66,7 @@ def list_firs(
             "location_name": loc.name if loc else "City Zone",
             "filed_at": f.filed_at.isoformat() if f.filed_at else None,
             "narrative_preview": (f.narrative_text[:220] + "...") if len(f.narrative_text) > 220 else f.narrative_text,
-            "entity_count": mention_count,
+            "entity_count": mention_counts.get(f.id, 0),
             "data_source": f.data_source,
         })
     return {"firs": results}

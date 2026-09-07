@@ -24,6 +24,7 @@ from datetime import datetime, date
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT_DIR, "data")
 SQL_PATH = os.path.join(ROOT_DIR, "database", "drishyam_complete.sql")
+sys.path.insert(0, os.path.join(ROOT_DIR, "data_generator"))
 
 # Load order respects foreign-key constraints (matches core.TABLE_ORDER)
 TABLE_ORDER = [
@@ -54,8 +55,7 @@ def _csv_value_to_pg(v):
     return v
 
 
-def load_from_sql():
-    """Execute database/drishyam_complete.sql directly (schema + seed)."""
+def _connect_pg():
     db_uri = os.environ.get("DRISHYAM_DB_URI")
     if not db_uri:
         print("Error: set DRISHYAM_DB_URI (postgresql://...)")
@@ -65,9 +65,32 @@ def load_from_sql():
     except ImportError:
         print("Error: psycopg2 not installed (pip install psycopg2-binary)")
         sys.exit(1)
+    conn = psycopg2.connect(db_uri, sslmode="require", connect_timeout=30)
+    return conn
 
-    print(f"Connecting to database ...")
-    conn = psycopg2.connect(db_uri)
+
+def load_schema():
+    """Execute the canonical DDL (tables, indexes, views, RLS) only."""
+    conn = _connect_pg()
+    conn.autocommit = True
+    cur = conn.cursor()
+    from schema_sql import SCHEMA_DDL
+    print("Executing schema DDL on Postgres/Supabase ...")
+    cur.execute(SCHEMA_DDL)
+    cur.execute("""
+        select table_name from information_schema.tables
+        where table_schema = 'public' order by table_name
+    """)
+    tables = [t[0] for t in cur.fetchall()]
+    print(f"Schema ready. Public tables ({len(tables)}):")
+    print("  " + ", ".join(tables))
+    cur.close()
+    conn.close()
+
+
+def load_from_sql():
+    """Execute database/drishyam_complete.sql directly (schema + seed)."""
+    conn = _connect_pg()
     conn.autocommit = True
     cur = conn.cursor()
     print(f"Executing {SQL_PATH} (this can take a few minutes) ...")
@@ -96,19 +119,7 @@ def load_from_sql():
 
 
 def load_csv_to_postgres():
-    db_uri = os.environ.get("DRISHYAM_DB_URI")
-    if not db_uri:
-        print("Error: set DRISHYAM_DB_URI (postgresql://...)")
-        sys.exit(1)
-    try:
-        import psycopg2
-        from psycopg2.extras import execute_values
-    except ImportError:
-        print("Error: psycopg2 not installed (pip install psycopg2-binary)")
-        sys.exit(1)
-
-    print("Connecting to database ...")
-    conn = psycopg2.connect(db_uri)
+    conn = _connect_pg()
     cur = conn.cursor()
     total_inserted = 0
     errors = []
@@ -312,12 +323,16 @@ def main():
     parser = argparse.ArgumentParser(description="Load DRISHYAM dataset")
     parser.add_argument("--sqlite", action="store_true",
                         help="load CSVs into backend/drishyam_local.db (SQLite)")
+    parser.add_argument("--schema", action="store_true",
+                        help="create tables/views/RLS on Postgres (no data)")
     parser.add_argument("--from-sql", action="store_true",
                         help="execute database/drishyam_complete.sql on Postgres instead of CSV loading")
     args = parser.parse_args()
 
     if args.sqlite:
         load_csv_to_sqlite()
+    elif args.schema:
+        load_schema()
     elif args.from_sql:
         load_from_sql()
     else:

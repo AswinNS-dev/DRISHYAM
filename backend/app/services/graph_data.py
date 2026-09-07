@@ -61,3 +61,32 @@ def load_all_edges(db: Session):
 
 def node_lookup(db: Session):
     return {n["id"]: n for n in load_all_nodes(db)}
+
+
+def load_cached_analytics(db: Session):
+    """Pre-computed centrality + communities from network_analysis /
+    network_communities (populated by the synthetic data generator or any
+    offline analysis job). Returns (centrality_map, community_map) or
+    (None, None) when the cache is empty, so callers fall back to live
+    computation."""
+    try:
+        na_rows = db.query(m.NetworkAnalysis).all()
+    except Exception:
+        return None, None
+    if not na_rows:
+        return None, None
+    centrality = {
+        r.entity_id: {
+            "degree_centrality": float(r.degree_centrality or 0.0),
+            "betweenness_centrality": float(r.betweenness_centrality or 0.0),
+            "pagerank": float(r.pagerank or 0.0),
+        }
+        for r in na_rows
+    }
+    community_map = {}
+    try:
+        for r in db.query(m.NetworkCommunity).all():
+            community_map[r.entity_id] = r.community_label
+    except Exception:
+        community_map = None
+    return centrality, community_map

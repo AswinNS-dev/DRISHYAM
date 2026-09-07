@@ -188,7 +188,8 @@ create table if not exists crime_cases (
   status text not null default 'open'
     check (status in ('open','under_investigation','under_review','closed')),
   opened_at timestamptz not null default now(),
-  data_source data_source_type not null default 'SYNTHETIC'
+  data_source data_source_type not null default 'SYNTHETIC',
+  created_at timestamptz not null default now()
 );
 
 create table if not exists firs (
@@ -198,7 +199,8 @@ create table if not exists firs (
   narrative_text text not null,
   filed_at timestamptz not null default now(),
   location_id text references locations(id) on delete set null,
-  data_source data_source_type not null default 'SYNTHETIC'
+  data_source data_source_type not null default 'SYNTHETIC',
+  created_at timestamptz not null default now()
 );
 create index if not exists idx_firs_case on firs(case_id);
 create index if not exists idx_firs_filed on firs(filed_at);
@@ -491,37 +493,37 @@ create or replace view v_dashboard_summary as
 -- which bypass RLS by design. These policies protect direct anon client
 -- access via the Supabase REST API. `auth.role()` only exists on Supabase,
 -- so policy creation is guarded for vanilla PostgreSQL compatibility.
-do $$
+do $do$
 begin
   if to_regproc('auth.role') is not null then
-    execute $$ alter table persons enable row level security; $$;
-    execute $$ alter table relationships enable row level security; $$;
-    execute $$ alter table evidence enable row level security; $$;
-    execute $$ alter table anomalies enable row level security; $$;
-    execute $$ alter table alerts enable row level security; $$;
-    execute $$ alter table audit_logs enable row level security; $$;
-    execute $$ alter table intelligence_reports enable row level security; $$;
-    execute $$ drop policy if exists authenticated_read_persons on persons; $$;
-    execute $$ create policy authenticated_read_persons on persons
-      for select using (auth.role() = 'authenticated'); $$;
-    execute $$ drop policy if exists authenticated_read_relationships on relationships; $$;
-    execute $$ create policy authenticated_read_relationships on relationships
-      for select using (auth.role() = 'authenticated'); $$;
-    execute $$ drop policy if exists authenticated_read_evidence on evidence; $$;
-    execute $$ create policy authenticated_read_evidence on evidence
-      for select using (auth.role() = 'authenticated'); $$;
-    execute $$ drop policy if exists authenticated_read_anomalies on anomalies; $$;
-    execute $$ create policy authenticated_read_anomalies on anomalies
-      for select using (auth.role() = 'authenticated'); $$;
-    execute $$ drop policy if exists authenticated_read_alerts on alerts; $$;
-    execute $$ create policy authenticated_read_alerts on alerts
-      for select using (auth.role() = 'authenticated'); $$;
-    execute $$ drop policy if exists authenticated_read_reports on intelligence_reports; $$;
-    execute $$ create policy authenticated_read_reports on intelligence_reports
-      for select using (auth.role() = 'authenticated'); $$;
-    execute $$ drop policy if exists service_role_only_audit on audit_logs; $$;
-    execute $$ create policy service_role_only_audit on audit_logs
-      for all using (auth.role() = 'service_role'); $$;
+    execute $e$ alter table persons enable row level security $e$;
+    execute $e$ alter table relationships enable row level security $e$;
+    execute $e$ alter table evidence enable row level security $e$;
+    execute $e$ alter table anomalies enable row level security $e$;
+    execute $e$ alter table alerts enable row level security $e$;
+    execute $e$ alter table audit_logs enable row level security $e$;
+    execute $e$ alter table intelligence_reports enable row level security $e$;
+    execute $e$ drop policy if exists authenticated_read_persons on persons $e$;
+    execute $e$ create policy authenticated_read_persons on persons
+      for select using (auth.role() = 'authenticated') $e$;
+    execute $e$ drop policy if exists authenticated_read_relationships on relationships $e$;
+    execute $e$ create policy authenticated_read_relationships on relationships
+      for select using (auth.role() = 'authenticated') $e$;
+    execute $e$ drop policy if exists authenticated_read_evidence on evidence $e$;
+    execute $e$ create policy authenticated_read_evidence on evidence
+      for select using (auth.role() = 'authenticated') $e$;
+    execute $e$ drop policy if exists authenticated_read_anomalies on anomalies $e$;
+    execute $e$ create policy authenticated_read_anomalies on anomalies
+      for select using (auth.role() = 'authenticated') $e$;
+    execute $e$ drop policy if exists authenticated_read_alerts on alerts $e$;
+    execute $e$ create policy authenticated_read_alerts on alerts
+      for select using (auth.role() = 'authenticated') $e$;
+    execute $e$ drop policy if exists authenticated_read_reports on intelligence_reports $e$;
+    execute $e$ create policy authenticated_read_reports on intelligence_reports
+      for select using (auth.role() = 'authenticated') $e$;
+    execute $e$ drop policy if exists service_role_only_audit on audit_logs $e$;
+    execute $e$ create policy service_role_only_audit on audit_logs
+      for all using (auth.role() = 'service_role') $e$;
   end if;
-end $$;
+end $do$;
 """

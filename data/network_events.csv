@@ -1,36 +1,36 @@
 id,event_type,entity_id,description,occurred_at
-NE000001,HIDDEN_CHAIN_DISCOVERED,P000359,Amaira Chana -> Cobra Syndicate chain of 6 hops supported by 7 evidence records.,2026-09-07T05:25:55.396348Z
-NE000002,HIDDEN_CHAIN_DISCOVERED,P000286,Tamanna Misra -> Silver Line Network chain of 5 hops supported by 5 evidence records.,2026-09-07T05:25:55.396364Z
-NE000003,HIDDEN_CHAIN_DISCOVERED,P000244,Diya D’Alia -> Harbour Road Group chain of 6 hops supported by 7 evidence records.,2026-09-07T05:25:55.396375Z
-NE000004,HIDDEN_CHAIN_DISCOVERED,P000383,Alexander Chanda -> North Star Outfit chain of 5 hops supported by 5 evidence records.,2026-09-07T05:25:55.396384Z
-NE000005,HIDDEN_CHAIN_DISCOVERED,P000428,Ryan Warrior -> Red Sand Gang chain of 6 hops supported by 7 evidence records.,2026-09-07T05:25:55.396393Z
-NE000006,HIDDEN_CHAIN_DISCOVERED,P000443,Simon Shah -> Delta Cartel chain of 5 hops supported by 5 evidence records.,2026-09-07T05:25:55.396402Z
-NE000007,HIDDEN_CHAIN_DISCOVERED,P000256,Hemal Yadav -> Iron Wolf Syndicate chain of 6 hops supported by 7 evidence records.,2026-09-07T05:25:55.396410Z
-NE000008,HIDDEN_CHAIN_DISCOVERED,P000246,Vritti Sidhu -> Crimson Tide Group chain of 5 hops supported by 5 evidence records.,2026-09-07T05:25:55.396416Z
-NE000009,HIDDEN_CHAIN_DISCOVERED,P000331,Megha Roy -> Black Lotus Network chain of 6 hops supported by 7 evidence records.,2026-09-07T05:25:55.396423Z
-NE000010,HIDDEN_CHAIN_DISCOVERED,P000398,Ekiya Savant -> Eastern Arc Outfit chain of 5 hops supported by 5 evidence records.,2026-09-07T05:25:55.396430Z
-NE000011,HIDDEN_CHAIN_DISCOVERED,P000227,Ati Tank -> Blue Orchid Cartel chain of 6 hops supported by 7 evidence records.,2026-09-07T05:25:55.396437Z
-NE000012,HIDDEN_CHAIN_DISCOVERED,P000441,Manthan Garg -> Steel Falcon Gang chain of 5 hops supported by 5 evidence records.,2026-09-07T05:25:55.396444Z
-NE000013,COMMUNICATION_BURST,P000625,"23 outgoing calls recorded on 2024-10-18, compared with a baseline average of 1.0 calls/day (23.0x increase).",2026-09-07T05:25:55.396453Z
-NE000014,SUDDEN_NETWORK_EXPANSION,P000231,14 new ASSOCIATED_WITH relationships appeared in the final 45 days of the observation window (since 2026-07-17) versus a prior baseline of ~0.3 per 45 days - a 47x expansion.,2026-09-07T05:25:55.396460Z
-NE000015,SUDDEN_NETWORK_EXPANSION,P000379,14 new ASSOCIATED_WITH relationships appeared in the final 45 days of the observation window (since 2026-07-17) versus a prior baseline of ~0.3 per 45 days - a 47x expansion.,2026-09-07T05:25:55.396475Z
-NE000016,FINANCIAL_SPIKE,AC000004,"Rs. 24,950,000 moved through account XXXX8272 on 2025-10-20 (13 transfers) versus a daily median of Rs. 2,000,000 (12.5x).",2026-09-07T05:25:55.396486Z
-NE000017,FINANCIAL_SPIKE,AC000023,"Rs. 35,200,000 moved through account XXXX2288 on 2024-07-23 (13 transfers) versus a daily median of Rs. 1,550,000 (22.7x).",2026-09-07T05:25:55.396497Z
-NE000018,FINANCIAL_SPIKE,AC000025,"Rs. 32,550,000 moved through account XXXX2567 on 2024-09-28 (13 transfers) versus a daily median of Rs. 1,600,000 (20.3x).",2026-09-07T05:25:55.396508Z
-NE000019,SUDDEN_NETWORK_EXPANSION,P000294,13 new ASSOCIATED_WITH relationships appeared in the final 45 days of the observation window (since 2026-07-17) versus a prior baseline of ~0.3 per 45 days - a 43x expansion.,2026-09-07T05:25:55.396512Z
-NE000020,SUDDEN_NETWORK_EXPANSION,P000292,13 new ASSOCIATED_WITH relationships appeared in the final 45 days of the observation window (since 2026-07-17) versus a prior baseline of ~0.3 per 45 days - a 43x expansion.,2026-09-07T05:25:55.396517Z
-NE000021,SUDDEN_NETWORK_EXPANSION,P000210,13 new ASSOCIATED_WITH relationships appeared in the final 45 days of the observation window (since 2026-07-17) versus a prior baseline of ~0.3 per 45 days - a 43x expansion.,2026-09-07T05:25:55.396522Z
-NE000022,SUDDEN_NETWORK_EXPANSION,P000333,13 new ASSOCIATED_WITH relationships appeared in the final 45 days of the observation window (since 2026-07-17) versus a prior baseline of ~0.3 per 45 days - a 43x expansion.,2026-09-07T05:25:55.396526Z
-NE000023,NEW_ASSOCIATION,P000294,Henry Edwin gained 13 new associations in the final 45 days of the window.,2026-09-07T05:25:55.396534Z
-NE000024,NEW_ASSOCIATION,P000231,Omya Parsa gained 14 new associations in the final 45 days of the window.,2026-09-07T05:25:55.396541Z
-NE000025,NEW_ASSOCIATION,P000319,Banjeet Walla gained 12 new associations in the final 45 days of the window.,2026-09-07T05:25:55.396547Z
-NE000026,NEW_ASSOCIATION,P000439,Veer Vasa gained 8 new associations in the final 45 days of the window.,2026-09-07T05:25:55.396553Z
-NE000027,NEW_ASSOCIATION,P000379,Jagvi Sampath gained 14 new associations in the final 45 days of the window.,2026-09-07T05:25:55.396559Z
-NE000028,NEW_ASSOCIATION,P000292,Harish Balakrishnan gained 13 new associations in the final 45 days of the window.,2026-09-07T05:25:55.396564Z
-NE000029,NEW_ASSOCIATION,P000210,Jasmit Chakrabarti gained 13 new associations in the final 45 days of the window.,2026-09-07T05:25:55.396569Z
-NE000030,NEW_ASSOCIATION,P000333,Chakradhar Chokshi gained 13 new associations in the final 45 days of the window.,2026-09-07T05:25:55.396574Z
-NE000031,NEW_ASSOCIATION,P000288,Pranit Kurian gained 12 new associations in the final 45 days of the window.,2026-09-07T05:25:55.396578Z
-NE000032,NEW_ASSOCIATION,P000275,Faris Suri gained 13 new associations in the final 45 days of the window.,2026-09-07T05:25:55.396583Z
+NE000001,HIDDEN_CHAIN_DISCOVERED,P000359,Amaira Chana -> Cobra Syndicate chain of 6 hops supported by 7 evidence records.,2026-09-07T05:41:20.155932Z
+NE000002,HIDDEN_CHAIN_DISCOVERED,P000286,Tamanna Misra -> Silver Line Network chain of 5 hops supported by 5 evidence records.,2026-09-07T05:41:20.155948Z
+NE000003,HIDDEN_CHAIN_DISCOVERED,P000244,Diya D’Alia -> Harbour Road Group chain of 6 hops supported by 7 evidence records.,2026-09-07T05:41:20.155956Z
+NE000004,HIDDEN_CHAIN_DISCOVERED,P000383,Alexander Chanda -> North Star Outfit chain of 5 hops supported by 5 evidence records.,2026-09-07T05:41:20.155963Z
+NE000005,HIDDEN_CHAIN_DISCOVERED,P000428,Ryan Warrior -> Red Sand Gang chain of 6 hops supported by 7 evidence records.,2026-09-07T05:41:20.155970Z
+NE000006,HIDDEN_CHAIN_DISCOVERED,P000443,Simon Shah -> Delta Cartel chain of 5 hops supported by 5 evidence records.,2026-09-07T05:41:20.155976Z
+NE000007,HIDDEN_CHAIN_DISCOVERED,P000256,Hemal Yadav -> Iron Wolf Syndicate chain of 6 hops supported by 7 evidence records.,2026-09-07T05:41:20.155983Z
+NE000008,HIDDEN_CHAIN_DISCOVERED,P000246,Vritti Sidhu -> Crimson Tide Group chain of 5 hops supported by 5 evidence records.,2026-09-07T05:41:20.155989Z
+NE000009,HIDDEN_CHAIN_DISCOVERED,P000331,Megha Roy -> Black Lotus Network chain of 6 hops supported by 7 evidence records.,2026-09-07T05:41:20.155996Z
+NE000010,HIDDEN_CHAIN_DISCOVERED,P000398,Ekiya Savant -> Eastern Arc Outfit chain of 5 hops supported by 5 evidence records.,2026-09-07T05:41:20.156002Z
+NE000011,HIDDEN_CHAIN_DISCOVERED,P000227,Ati Tank -> Blue Orchid Cartel chain of 6 hops supported by 7 evidence records.,2026-09-07T05:41:20.156009Z
+NE000012,HIDDEN_CHAIN_DISCOVERED,P000441,Manthan Garg -> Steel Falcon Gang chain of 5 hops supported by 5 evidence records.,2026-09-07T05:41:20.156015Z
+NE000013,COMMUNICATION_BURST,P000625,"23 outgoing calls recorded on 2024-10-18, compared with a baseline average of 1.0 calls/day (23.0x increase).",2026-09-07T05:41:20.156024Z
+NE000014,SUDDEN_NETWORK_EXPANSION,P000381,14 new ASSOCIATED_WITH relationships appeared in the final 45 days of the observation window (since 2026-07-17) versus a prior baseline of ~0.3 per 45 days - a 47x expansion.,2026-09-07T05:41:20.156030Z
+NE000015,SUDDEN_NETWORK_EXPANSION,P000441,14 new ASSOCIATED_WITH relationships appeared in the final 45 days of the observation window (since 2026-07-17) versus a prior baseline of ~0.3 per 45 days - a 47x expansion.,2026-09-07T05:41:20.156036Z
+NE000016,FINANCIAL_SPIKE,AC000004,"Rs. 24,950,000 moved through account XXXX8272 on 2025-10-20 (13 transfers) versus a daily median of Rs. 2,000,000 (12.5x).",2026-09-07T05:41:20.156042Z
+NE000017,FINANCIAL_SPIKE,AC000023,"Rs. 35,200,000 moved through account XXXX2288 on 2024-07-23 (13 transfers) versus a daily median of Rs. 1,550,000 (22.7x).",2026-09-07T05:41:20.156047Z
+NE000018,FINANCIAL_SPIKE,AC000025,"Rs. 32,550,000 moved through account XXXX2567 on 2024-09-28 (13 transfers) versus a daily median of Rs. 1,600,000 (20.3x).",2026-09-07T05:41:20.156053Z
+NE000019,SUDDEN_NETWORK_EXPANSION,P000333,13 new ASSOCIATED_WITH relationships appeared in the final 45 days of the observation window (since 2026-07-17) versus a prior baseline of ~0.3 per 45 days - a 43x expansion.,2026-09-07T05:41:20.156058Z
+NE000020,FINANCIAL_SPIKE,AC000024,"Rs. 21,550,000 moved through account XXXX8927 on 2026-06-21 (12 transfers) versus a daily median of Rs. 1,700,000 (12.7x).",2026-09-07T05:41:20.156064Z
+NE000021,SUDDEN_NETWORK_EXPANSION,P000386,11 new ASSOCIATED_WITH relationships appeared in the final 45 days of the observation window (since 2026-07-17) versus a prior baseline of ~0.3 per 45 days - a 37x expansion.,2026-09-07T05:41:20.156069Z
+NE000022,SUDDEN_NETWORK_EXPANSION,P000425,11 new ASSOCIATED_WITH relationships appeared in the final 45 days of the observation window (since 2026-07-17) versus a prior baseline of ~0.3 per 45 days - a 37x expansion.,2026-09-07T05:41:20.156075Z
+NE000023,NEW_ASSOCIATION,P000363,Falak Kunda gained 10 new associations in the final 45 days of the window.,2026-09-07T05:41:20.156085Z
+NE000024,NEW_ASSOCIATION,P000386,Janaki Char gained 11 new associations in the final 45 days of the window.,2026-09-07T05:41:20.156093Z
+NE000025,NEW_ASSOCIATION,P000425,Jyoti Tandon gained 11 new associations in the final 45 days of the window.,2026-09-07T05:41:20.156100Z
+NE000026,NEW_ASSOCIATION,P000322,Zarna Dasgupta gained 10 new associations in the final 45 days of the window.,2026-09-07T05:41:20.156106Z
+NE000027,NEW_ASSOCIATION,P000333,Chakradhar Chokshi gained 13 new associations in the final 45 days of the window.,2026-09-07T05:41:20.156112Z
+NE000028,NEW_ASSOCIATION,P000311,Rajeshri Thakur gained 11 new associations in the final 45 days of the window.,2026-09-07T05:41:20.156118Z
+NE000029,NEW_ASSOCIATION,P000345,Hemang Sabharwal gained 10 new associations in the final 45 days of the window.,2026-09-07T05:41:20.156124Z
+NE000030,NEW_ASSOCIATION,P000381,Meghana Vohra gained 14 new associations in the final 45 days of the window.,2026-09-07T05:41:20.156131Z
+NE000031,NEW_ASSOCIATION,P000255,Krishna Nagy gained 10 new associations in the final 45 days of the window.,2026-09-07T05:41:20.156137Z
+NE000032,NEW_ASSOCIATION,P000441,Manthan Garg gained 14 new associations in the final 45 days of the window.,2026-09-07T05:41:20.156143Z
 NE000033,CASE_OPENED,CS000010,Case CASE-0010 opened: Smuggling corridor case — Chennai,2026-08-13T02:49:53Z
 NE000034,CASE_OPENED,CS000016,Case CASE-0016 opened: Operation Bluewater — Extortion probe (Chengalpattu),2026-08-02T03:29:14Z
 NE000035,CASE_OPENED,CS000031,Case CASE-0031 opened: Operation Grayshield — Money Laundering probe (Pudukkottai),2026-08-01T04:56:20Z

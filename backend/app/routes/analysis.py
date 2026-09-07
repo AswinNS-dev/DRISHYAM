@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, Query, HTTPException
 from sqlalchemy.orm import Session
+from sqlalchemy import func
 from typing import Optional, List
 import datetime as dt
 
@@ -11,9 +12,106 @@ from app.services import graph_data
 router = APIRouter(prefix="/api/v2", tags=["analysis"])
 
 
+def _communications_from_cdr(db, lookup, phones, case_entity_ids,
+                             entity_id=None, case_id=None, q=None,
+                             from_date=None, to_date=None, limit=100):
+    """Build the communications feed from real per-call cdr_records rows.
+    Same response contract as the relationship-derived path."""
+    phone_by_number = {}
+    for p in phones.values():
+        phone_by_number.setdefault(p.number, p)
+    phone_owner = {}
+    for p in phones.values():
+        if p.owner_person_id:
+            phone_owner.setdefault(p.owner_person_id, []).append(p)
+
+    # pair frequencies (one aggregate query)
+    pair_counts = dict(
+        db.query(
+            m.CDRRecord.phone_id, m.CDRRecord.counterparty_number,
+            func.count(m.CDRRecord.id),
+        ).group_by(m.CDRRecord.phone_id, m.CDRRecord.counterparty_number).all()
+    )
+
+    query = db.query(m.CDRRecord).order_by(m.CDRRecord.call_time.desc())
+    if from_date:
+        try:
+            query = query.filter(m.CDRRecord.call_time >= dt.datetime.fromisoformat(from_date.replace("Z", "+00:00")))
+        except ValueError:
+            pass
+    if to_date:
+        try:
+            query = query.filter(m.CDRRecord.call_time <= dt.datetime.fromisoformat(to_date.replace("Z", "+00:00")))
+        except ValueError:
+            pass
+    cdrs = query.limit(4000).all()
+
+    results = []
+    for c in cdrs:
+        phone = phones.get(c.phone_id)
+        if phone is None:
+            continue
+        caller = phone.owner_person_id
+        counterparty = phone_by_number.get(c.counterparty_number)
+        receiver = counterparty.owner_person_id if counterparty else None
+
+        if entity_id and entity_id not in (caller, receiver, phone.id,
+                                           counterparty.id if counterparty else None):
+            continue
+        if case_id and not ({caller, receiver} & case_entity_ids):
+            continue
+
+        caller_info = lookup.get(caller, {})
+        receiver_info = lookup.get(receiver, {})
+        caller_name = caller_info.get("name", "Unknown Subscriber")
+        receiver_name = receiver_info.get("name", "Unregistered Number")
+
+        item = {
+            "id": c.id,
+            "caller_id": caller,
+            "caller_name": caller_name,
+            "caller_type": caller_info.get("type", "PERSON"),
+            "caller_phone": phone.number,
+            "receiver_id": receiver,
+            "receiver_name": receiver_name,
+            "receiver_type": receiver_info.get("type", "PERSON"),
+            "receiver_phone": c.counterparty_number or "Unknown",
+            "timestamp": c.call_time.isoformat() if c.call_time else None,
+            "first_seen": c.call_time.isoformat() if c.call_time else None,
+            "duration_seconds": c.duration_seconds or 0,
+            "frequency_count": pair_counts.get((c.phone_id, c.counterparty_number), 1),
+            "relationship_type": "COMMUNICATED_WITH",
+            "confidence": 0.95,
+            "source_evidence": f"CDR-{c.id}",
+            "evidence_id": None,
+            "case_id": case_id,
+        }
+
+        if q:
+            term = q.lower()
+            if not (
+                term in caller_name.lower()
+                or term in receiver_name.lower()
+                or term in (phone.number or "").lower()
+                or term in (c.counterparty_number or "").lower()
+            ):
+                continue
+
+        results.append(item)
+        if len(results) >= limit:
+            break
+
+    return {
+        "communications": results,
+        "total_records": len(results),
+        "unique_transceivers": len({r["caller_id"] for r in results} | {r["receiver_id"] for r in results if r["receiver_id"]}),
+        "filters_applied": {"entity_id": entity_id, "case_id": case_id, "q": q,
+                            "from_date": from_date, "to_date": to_date},
+    }
+
+
 @router.get("/analysis/communications")
-def list_communications(
-    entity_id: Optional[str] = None,
+def list_communications(    entity_id: Optional[str] = None,
     case_id: Optional[str] = None,
     q: Optional[str] = None,
     from_date: Optional[str] = None,
@@ -42,6 +140,17 @@ def list_communications(
             mentions = db.query(m.EntityMention).filter(m.EntityMention.source_record_id.in_(fir_ids)).all()
             case_entity_ids.update(m.resolved_entity_id for m in mentions if m.resolved_entity_id)
 
+    # ---- Preferred path: real per-call rows from cdr_records ----
+    cdr_count = db.query(m.CDRRecord).count()
+    if cdr_count:
+        return _communications_from_cdr(
+            db, lookup, phones, case_entity_ids,
+            entity_id=entity_id, case_id=case_id, q=q,
+            from_date=from_date, to_date=to_date, limit=limit,
+        )
+
+    # ---- Fallback (small demo DBs without CDR detail): derive from
+    # communication relationship records ----
     # Query communication and phone relationships
     comm_rels = db.query(m.RelationshipRecord).filter(
         (m.RelationshipRecord.relationship_type.in_(["COMMUNICATED_WITH", "USED_PHONE"])) |

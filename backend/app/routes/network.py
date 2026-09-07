@@ -70,13 +70,21 @@ def get_graph(
         allowed_ids = {n["id"] for n in nodes if n["type"] == entity_type}
         edges = [e for e in edges if e["source_entity_id"] in allowed_ids or e["target_entity_id"] in allowed_ids]
 
-    centrality = ge.compute_centrality(g)
-    communities = ge.detect_communities(g)
+    scoped = bool(case_id or entity_id)
+    if scoped:
+        centrality = ge.compute_centrality(g)
+        communities = ge.detect_communities(g)
+    else:
+        # Full-graph requests use the precomputed analytics cache when available
+        centrality, communities = graph_data.load_cached_analytics(db)
+        if centrality is None:
+            centrality = ge.compute_centrality(g)
+            communities = ge.detect_communities(g) if communities is None else communities
     for n in nodes:
         c = centrality.get(n["id"], {"degree_centrality": 0, "betweenness_centrality": 0, "pagerank": 0})
         n["centrality"] = c
         n["role_label"] = ge.label_entity_role(c)
-        n["community"] = communities.get(n["id"])
+        n["community"] = communities.get(n["id"]) if communities else None
     return {
         "nodes": nodes[:limit],
         "edges": edges[:limit * 3],
@@ -95,7 +103,8 @@ def centrality(db: Session = Depends(get_db), user=Depends(get_current_user), to
     nodes = graph_data.load_all_nodes(db)
     edges = graph_data.load_all_edges(db)
     g = ge.build_graph(nodes, edges)
-    scores = ge.compute_centrality(g)
+    cached, _ = graph_data.load_cached_analytics(db)
+    scores = cached if cached is not None else ge.compute_centrality(g)
     lookup = {n["id"]: n for n in nodes}
     rows = []
     for eid, s in scores.items():
@@ -114,7 +123,8 @@ def communities(db: Session = Depends(get_db), user=Depends(get_current_user)):
     nodes = graph_data.load_all_nodes(db)
     edges = graph_data.load_all_edges(db)
     g = ge.build_graph(nodes, edges)
-    mapping = ge.detect_communities(g)
+    _, cached = graph_data.load_cached_analytics(db)
+    mapping = cached if cached is not None else ge.detect_communities(g)
     lookup = {n["id"]: n for n in nodes}
     grouped = {}
     for eid, cid in mapping.items():

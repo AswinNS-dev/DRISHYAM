@@ -90,252 +90,190 @@ EV000100,CDR,CDR-BATCH-2026-Q2,Bulk CDR pull 2026 Q2 (synthetic demo),/secure_va
 EV000101,CDR,CDR-BATCH-2026-Q3,Bulk CDR pull 2026 Q3 (synthetic demo),/secure_vault/synthetic/cdr/batch-2026-Q3.enc,0.85,SYNTHETIC,2026-09-28T18:00:00Z
 EV000102,CDR,CDR-BATCH-2026-Q4,Bulk CDR pull 2026 Q4 (synthetic demo),/secure_vault/synthetic/cdr/batch-2026-Q4.enc,0.85,SYNTHETIC,2026-12-28T18:00:00Z
 EV000103,CDR,CDR-CASE-0001-0,Cdr exhibit supporting case CASE-0001 (money laundering),/secure_vault/synthetic/cdr/case-0001-0.enc,0.93,SYNTHETIC,2024-10-13T10:23:03Z
-EV000103,CDR,CDR-CASE-0001-0,Cdr exhibit supporting case CASE-0001 (money laundering),/secure_vault/synthetic/cdr/case-0001-0.enc,0.93,SYNTHETIC,2024-10-13T10:23:03Z
-EV000104,INVESTIGATION_NOTE,NOTE-CASE-0001-1,Investigation Note exhibit supporting case CASE-0001 (money laundering),/secure_vault/synthetic/investigation_note/case-0001-1.enc,0.8,SYNTHETIC,2024-10-07T10:23:03Z
 EV000104,INVESTIGATION_NOTE,NOTE-CASE-0001-1,Investigation Note exhibit supporting case CASE-0001 (money laundering),/secure_vault/synthetic/investigation_note/case-0001-1.enc,0.8,SYNTHETIC,2024-10-07T10:23:03Z
 EV000105,CDR,CDR-CASE-0001-2,Cdr exhibit supporting case CASE-0001 (money laundering),/secure_vault/synthetic/cdr/case-0001-2.enc,0.87,SYNTHETIC,2024-10-16T10:23:03Z
-EV000105,CDR,CDR-CASE-0001-2,Cdr exhibit supporting case CASE-0001 (money laundering),/secure_vault/synthetic/cdr/case-0001-2.enc,0.87,SYNTHETIC,2024-10-16T10:23:03Z
-EV000106,INVESTIGATION_NOTE,NOTE-CASE-0002-0,Investigation Note exhibit supporting case CASE-0002 (murder),/secure_vault/synthetic/investigation_note/case-0002-0.enc,0.82,SYNTHETIC,2026-01-03T09:06:04Z
 EV000106,INVESTIGATION_NOTE,NOTE-CASE-0002-0,Investigation Note exhibit supporting case CASE-0002 (murder),/secure_vault/synthetic/investigation_note/case-0002-0.enc,0.82,SYNTHETIC,2026-01-03T09:06:04Z
 EV000107,CDR,CDR-CASE-0002-1,Cdr exhibit supporting case CASE-0002 (murder),/secure_vault/synthetic/cdr/case-0002-1.enc,0.79,SYNTHETIC,2026-01-26T09:06:04Z
-EV000107,CDR,CDR-CASE-0002-1,Cdr exhibit supporting case CASE-0002 (murder),/secure_vault/synthetic/cdr/case-0002-1.enc,0.79,SYNTHETIC,2026-01-26T09:06:04Z
-EV000108,INVESTIGATION_NOTE,NOTE-CASE-0002-2,Investigation Note exhibit supporting case CASE-0002 (murder),/secure_vault/synthetic/investigation_note/case-0002-2.enc,0.94,SYNTHETIC,2026-01-29T09:06:04Z
 EV000108,INVESTIGATION_NOTE,NOTE-CASE-0002-2,Investigation Note exhibit supporting case CASE-0002 (murder),/secure_vault/synthetic/investigation_note/case-0002-2.enc,0.94,SYNTHETIC,2026-01-29T09:06:04Z
 EV000109,INVESTIGATION_NOTE,NOTE-CASE-0003-0,Investigation Note exhibit supporting case CASE-0003 (vehicle theft),/secure_vault/synthetic/investigation_note/case-0003-0.enc,0.89,SYNTHETIC,2025-08-01T18:14:31Z
-EV000109,INVESTIGATION_NOTE,NOTE-CASE-0003-0,Investigation Note exhibit supporting case CASE-0003 (vehicle theft),/secure_vault/synthetic/investigation_note/case-0003-0.enc,0.89,SYNTHETIC,2025-08-01T18:14:31Z
-EV000110,FIR,FIR-2024-0004,Fir exhibit supporting case CASE-0004 (extortion),/secure_vault/synthetic/fir/case-0004-0.enc,0.92,SYNTHETIC,2024-10-01T08:03:34Z
 EV000110,FIR,FIR-2024-0004,Fir exhibit supporting case CASE-0004 (extortion),/secure_vault/synthetic/fir/case-0004-0.enc,0.92,SYNTHETIC,2024-10-01T08:03:34Z
 EV000111,INVESTIGATION_NOTE,NOTE-CASE-0005-0,Investigation Note exhibit supporting case CASE-0005 (murder),/secure_vault/synthetic/investigation_note/case-0005-0.enc,0.88,SYNTHETIC,2024-12-21T20:41:01Z
-EV000111,INVESTIGATION_NOTE,NOTE-CASE-0005-0,Investigation Note exhibit supporting case CASE-0005 (murder),/secure_vault/synthetic/investigation_note/case-0005-0.enc,0.88,SYNTHETIC,2024-12-21T20:41:01Z
-EV000112,INVESTIGATION_NOTE,NOTE-CASE-0005-1,Investigation Note exhibit supporting case CASE-0005 (murder),/secure_vault/synthetic/investigation_note/case-0005-1.enc,0.77,SYNTHETIC,2024-12-31T20:41:01Z
 EV000112,INVESTIGATION_NOTE,NOTE-CASE-0005-1,Investigation Note exhibit supporting case CASE-0005 (murder),/secure_vault/synthetic/investigation_note/case-0005-1.enc,0.77,SYNTHETIC,2024-12-31T20:41:01Z
 EV000113,FINANCIAL,TXN-CASE-0005-2,Financial exhibit supporting case CASE-0005 (murder),/secure_vault/synthetic/financial/case-0005-2.enc,0.79,SYNTHETIC,2024-12-31T20:41:01Z
-EV000113,FINANCIAL,TXN-CASE-0005-2,Financial exhibit supporting case CASE-0005 (murder),/secure_vault/synthetic/financial/case-0005-2.enc,0.79,SYNTHETIC,2024-12-31T20:41:01Z
-EV000114,SURVEILLANCE,SR-CASE-0006-0,Surveillance exhibit supporting case CASE-0006 (smuggling),/secure_vault/synthetic/surveillance/case-0006-0.enc,0.82,SYNTHETIC,2024-10-27T09:23:35Z
 EV000114,SURVEILLANCE,SR-CASE-0006-0,Surveillance exhibit supporting case CASE-0006 (smuggling),/secure_vault/synthetic/surveillance/case-0006-0.enc,0.82,SYNTHETIC,2024-10-27T09:23:35Z
 EV000115,FINANCIAL,TXN-CASE-0006-1,Financial exhibit supporting case CASE-0006 (smuggling),/secure_vault/synthetic/financial/case-0006-1.enc,0.83,SYNTHETIC,2024-10-29T09:23:35Z
-EV000115,FINANCIAL,TXN-CASE-0006-1,Financial exhibit supporting case CASE-0006 (smuggling),/secure_vault/synthetic/financial/case-0006-1.enc,0.83,SYNTHETIC,2024-10-29T09:23:35Z
-EV000116,SURVEILLANCE,SR-CASE-0007-0,Surveillance exhibit supporting case CASE-0007 (narcotics trafficking),/secure_vault/synthetic/surveillance/case-0007-0.enc,0.91,SYNTHETIC,2025-08-18T16:40:35Z
 EV000116,SURVEILLANCE,SR-CASE-0007-0,Surveillance exhibit supporting case CASE-0007 (narcotics trafficking),/secure_vault/synthetic/surveillance/case-0007-0.enc,0.91,SYNTHETIC,2025-08-18T16:40:35Z
 EV000117,SURVEILLANCE,SR-CASE-0007-1,Surveillance exhibit supporting case CASE-0007 (narcotics trafficking),/secure_vault/synthetic/surveillance/case-0007-1.enc,0.92,SYNTHETIC,2025-07-28T16:40:35Z
-EV000117,SURVEILLANCE,SR-CASE-0007-1,Surveillance exhibit supporting case CASE-0007 (narcotics trafficking),/secure_vault/synthetic/surveillance/case-0007-1.enc,0.92,SYNTHETIC,2025-07-28T16:40:35Z
-EV000118,SURVEILLANCE,SR-CASE-0007-2,Surveillance exhibit supporting case CASE-0007 (narcotics trafficking),/secure_vault/synthetic/surveillance/case-0007-2.enc,0.76,SYNTHETIC,2025-08-18T16:40:35Z
 EV000118,SURVEILLANCE,SR-CASE-0007-2,Surveillance exhibit supporting case CASE-0007 (narcotics trafficking),/secure_vault/synthetic/surveillance/case-0007-2.enc,0.76,SYNTHETIC,2025-08-18T16:40:35Z
 EV000119,FINANCIAL,TXN-CASE-0008-0,Financial exhibit supporting case CASE-0008 (fraud),/secure_vault/synthetic/financial/case-0008-0.enc,0.94,SYNTHETIC,2026-07-27T04:25:44Z
-EV000119,FINANCIAL,TXN-CASE-0008-0,Financial exhibit supporting case CASE-0008 (fraud),/secure_vault/synthetic/financial/case-0008-0.enc,0.94,SYNTHETIC,2026-07-27T04:25:44Z
-EV000120,FIR,FIR-2024-0009,Fir exhibit supporting case CASE-0009 (money laundering),/secure_vault/synthetic/fir/case-0009-0.enc,0.88,SYNTHETIC,2024-04-12T06:06:31Z
 EV000120,FIR,FIR-2024-0009,Fir exhibit supporting case CASE-0009 (money laundering),/secure_vault/synthetic/fir/case-0009-0.enc,0.88,SYNTHETIC,2024-04-12T06:06:31Z
 EV000121,SURVEILLANCE,SR-CASE-0009-1,Surveillance exhibit supporting case CASE-0009 (money laundering),/secure_vault/synthetic/surveillance/case-0009-1.enc,0.85,SYNTHETIC,2024-03-10T06:06:31Z
-EV000121,SURVEILLANCE,SR-CASE-0009-1,Surveillance exhibit supporting case CASE-0009 (money laundering),/secure_vault/synthetic/surveillance/case-0009-1.enc,0.85,SYNTHETIC,2024-03-10T06:06:31Z
-EV000122,SURVEILLANCE,SR-CASE-0009-2,Surveillance exhibit supporting case CASE-0009 (money laundering),/secure_vault/synthetic/surveillance/case-0009-2.enc,0.81,SYNTHETIC,2024-03-09T06:06:31Z
 EV000122,SURVEILLANCE,SR-CASE-0009-2,Surveillance exhibit supporting case CASE-0009 (money laundering),/secure_vault/synthetic/surveillance/case-0009-2.enc,0.81,SYNTHETIC,2024-03-09T06:06:31Z
 EV000123,CDR,CDR-CASE-0010-0,Cdr exhibit supporting case CASE-0010 (smuggling),/secure_vault/synthetic/cdr/case-0010-0.enc,0.82,SYNTHETIC,2026-08-31T00:00:00Z
-EV000123,CDR,CDR-CASE-0010-0,Cdr exhibit supporting case CASE-0010 (smuggling),/secure_vault/synthetic/cdr/case-0010-0.enc,0.82,SYNTHETIC,2026-08-31T00:00:00Z
-EV000124,CDR,CDR-CASE-0011-0,Cdr exhibit supporting case CASE-0011 (smuggling),/secure_vault/synthetic/cdr/case-0011-0.enc,0.75,SYNTHETIC,2026-03-21T20:05:48Z
 EV000124,CDR,CDR-CASE-0011-0,Cdr exhibit supporting case CASE-0011 (smuggling),/secure_vault/synthetic/cdr/case-0011-0.enc,0.75,SYNTHETIC,2026-03-21T20:05:48Z
 EV000125,FINANCIAL,TXN-CASE-0011-1,Financial exhibit supporting case CASE-0011 (smuggling),/secure_vault/synthetic/financial/case-0011-1.enc,0.95,SYNTHETIC,2026-03-13T20:05:48Z
-EV000125,FINANCIAL,TXN-CASE-0011-1,Financial exhibit supporting case CASE-0011 (smuggling),/secure_vault/synthetic/financial/case-0011-1.enc,0.95,SYNTHETIC,2026-03-13T20:05:48Z
-EV000126,SURVEILLANCE,SR-CASE-0011-2,Surveillance exhibit supporting case CASE-0011 (smuggling),/secure_vault/synthetic/surveillance/case-0011-2.enc,0.92,SYNTHETIC,2026-03-30T20:05:48Z
 EV000126,SURVEILLANCE,SR-CASE-0011-2,Surveillance exhibit supporting case CASE-0011 (smuggling),/secure_vault/synthetic/surveillance/case-0011-2.enc,0.92,SYNTHETIC,2026-03-30T20:05:48Z
 EV000127,INVESTIGATION_NOTE,NOTE-CASE-0012-0,Investigation Note exhibit supporting case CASE-0012 (narcotics trafficking),/secure_vault/synthetic/investigation_note/case-0012-0.enc,0.81,SYNTHETIC,2026-01-15T23:28:34Z
-EV000127,INVESTIGATION_NOTE,NOTE-CASE-0012-0,Investigation Note exhibit supporting case CASE-0012 (narcotics trafficking),/secure_vault/synthetic/investigation_note/case-0012-0.enc,0.81,SYNTHETIC,2026-01-15T23:28:34Z
-EV000128,FINANCIAL,TXN-CASE-0012-1,Financial exhibit supporting case CASE-0012 (narcotics trafficking),/secure_vault/synthetic/financial/case-0012-1.enc,0.94,SYNTHETIC,2025-12-30T23:28:34Z
 EV000128,FINANCIAL,TXN-CASE-0012-1,Financial exhibit supporting case CASE-0012 (narcotics trafficking),/secure_vault/synthetic/financial/case-0012-1.enc,0.94,SYNTHETIC,2025-12-30T23:28:34Z
 EV000129,FIR,FIR-2024-0015,Fir exhibit supporting case CASE-0013 (extortion),/secure_vault/synthetic/fir/case-0013-0.enc,0.93,SYNTHETIC,2024-08-31T22:28:43Z
-EV000129,FIR,FIR-2024-0015,Fir exhibit supporting case CASE-0013 (extortion),/secure_vault/synthetic/fir/case-0013-0.enc,0.93,SYNTHETIC,2024-08-31T22:28:43Z
-EV000130,INVESTIGATION_NOTE,NOTE-CASE-0013-1,Investigation Note exhibit supporting case CASE-0013 (extortion),/secure_vault/synthetic/investigation_note/case-0013-1.enc,0.81,SYNTHETIC,2024-09-22T22:28:43Z
 EV000130,INVESTIGATION_NOTE,NOTE-CASE-0013-1,Investigation Note exhibit supporting case CASE-0013 (extortion),/secure_vault/synthetic/investigation_note/case-0013-1.enc,0.81,SYNTHETIC,2024-09-22T22:28:43Z
 EV000131,CDR,CDR-CASE-0014-0,Cdr exhibit supporting case CASE-0014 (counterfeiting),/secure_vault/synthetic/cdr/case-0014-0.enc,0.87,SYNTHETIC,2024-06-13T19:17:02Z
-EV000131,CDR,CDR-CASE-0014-0,Cdr exhibit supporting case CASE-0014 (counterfeiting),/secure_vault/synthetic/cdr/case-0014-0.enc,0.87,SYNTHETIC,2024-06-13T19:17:02Z
-EV000132,CDR,CDR-CASE-0014-1,Cdr exhibit supporting case CASE-0014 (counterfeiting),/secure_vault/synthetic/cdr/case-0014-1.enc,0.94,SYNTHETIC,2024-06-15T19:17:02Z
 EV000132,CDR,CDR-CASE-0014-1,Cdr exhibit supporting case CASE-0014 (counterfeiting),/secure_vault/synthetic/cdr/case-0014-1.enc,0.94,SYNTHETIC,2024-06-15T19:17:02Z
 EV000133,FIR,FIR-2024-0016,Fir exhibit supporting case CASE-0014 (counterfeiting),/secure_vault/synthetic/fir/case-0014-2.enc,0.94,SYNTHETIC,2024-06-23T19:17:02Z
-EV000133,FIR,FIR-2024-0016,Fir exhibit supporting case CASE-0014 (counterfeiting),/secure_vault/synthetic/fir/case-0014-2.enc,0.94,SYNTHETIC,2024-06-23T19:17:02Z
-EV000134,FINANCIAL,TXN-CASE-0015-0,Financial exhibit supporting case CASE-0015 (smuggling),/secure_vault/synthetic/financial/case-0015-0.enc,0.9,SYNTHETIC,2025-03-20T10:18:31Z
 EV000134,FINANCIAL,TXN-CASE-0015-0,Financial exhibit supporting case CASE-0015 (smuggling),/secure_vault/synthetic/financial/case-0015-0.enc,0.9,SYNTHETIC,2025-03-20T10:18:31Z
 EV000135,INVESTIGATION_NOTE,NOTE-CASE-0016-0,Investigation Note exhibit supporting case CASE-0016 (extortion),/secure_vault/synthetic/investigation_note/case-0016-0.enc,0.81,SYNTHETIC,2026-08-13T03:29:14Z
-EV000135,INVESTIGATION_NOTE,NOTE-CASE-0016-0,Investigation Note exhibit supporting case CASE-0016 (extortion),/secure_vault/synthetic/investigation_note/case-0016-0.enc,0.81,SYNTHETIC,2026-08-13T03:29:14Z
-EV000136,FIR,FIR-2024-0019,Fir exhibit supporting case CASE-0017 (cybercrime),/secure_vault/synthetic/fir/case-0017-0.enc,0.93,SYNTHETIC,2024-11-04T19:21:38Z
 EV000136,FIR,FIR-2024-0019,Fir exhibit supporting case CASE-0017 (cybercrime),/secure_vault/synthetic/fir/case-0017-0.enc,0.93,SYNTHETIC,2024-11-04T19:21:38Z
 EV000137,SURVEILLANCE,SR-CASE-0018-0,Surveillance exhibit supporting case CASE-0018 (smuggling),/secure_vault/synthetic/surveillance/case-0018-0.enc,0.95,SYNTHETIC,2026-03-27T19:47:56Z
-EV000137,SURVEILLANCE,SR-CASE-0018-0,Surveillance exhibit supporting case CASE-0018 (smuggling),/secure_vault/synthetic/surveillance/case-0018-0.enc,0.95,SYNTHETIC,2026-03-27T19:47:56Z
-EV000138,INVESTIGATION_NOTE,NOTE-CASE-0019-0,Investigation Note exhibit supporting case CASE-0019 (smuggling),/secure_vault/synthetic/investigation_note/case-0019-0.enc,0.78,SYNTHETIC,2025-07-27T04:26:24Z
 EV000138,INVESTIGATION_NOTE,NOTE-CASE-0019-0,Investigation Note exhibit supporting case CASE-0019 (smuggling),/secure_vault/synthetic/investigation_note/case-0019-0.enc,0.78,SYNTHETIC,2025-07-27T04:26:24Z
 EV000139,INVESTIGATION_NOTE,NOTE-CASE-0019-1,Investigation Note exhibit supporting case CASE-0019 (smuggling),/secure_vault/synthetic/investigation_note/case-0019-1.enc,0.93,SYNTHETIC,2025-07-11T04:26:24Z
-EV000139,INVESTIGATION_NOTE,NOTE-CASE-0019-1,Investigation Note exhibit supporting case CASE-0019 (smuggling),/secure_vault/synthetic/investigation_note/case-0019-1.enc,0.93,SYNTHETIC,2025-07-11T04:26:24Z
-EV000140,FINANCIAL,TXN-CASE-0020-0,Financial exhibit supporting case CASE-0020 (counterfeiting),/secure_vault/synthetic/financial/case-0020-0.enc,0.89,SYNTHETIC,2026-01-18T21:36:35Z
 EV000140,FINANCIAL,TXN-CASE-0020-0,Financial exhibit supporting case CASE-0020 (counterfeiting),/secure_vault/synthetic/financial/case-0020-0.enc,0.89,SYNTHETIC,2026-01-18T21:36:35Z
 EV000141,CDR,CDR-CASE-0020-1,Cdr exhibit supporting case CASE-0020 (counterfeiting),/secure_vault/synthetic/cdr/case-0020-1.enc,0.95,SYNTHETIC,2026-01-02T21:36:35Z
-EV000141,CDR,CDR-CASE-0020-1,Cdr exhibit supporting case CASE-0020 (counterfeiting),/secure_vault/synthetic/cdr/case-0020-1.enc,0.95,SYNTHETIC,2026-01-02T21:36:35Z
-EV000142,SURVEILLANCE,SR-CASE-0021-0,Surveillance exhibit supporting case CASE-0021 (robbery),/secure_vault/synthetic/surveillance/case-0021-0.enc,0.83,SYNTHETIC,2024-04-15T19:32:41Z
 EV000142,SURVEILLANCE,SR-CASE-0021-0,Surveillance exhibit supporting case CASE-0021 (robbery),/secure_vault/synthetic/surveillance/case-0021-0.enc,0.83,SYNTHETIC,2024-04-15T19:32:41Z
 EV000143,INVESTIGATION_NOTE,NOTE-CASE-0021-1,Investigation Note exhibit supporting case CASE-0021 (robbery),/secure_vault/synthetic/investigation_note/case-0021-1.enc,0.86,SYNTHETIC,2024-04-03T19:32:41Z
-EV000143,INVESTIGATION_NOTE,NOTE-CASE-0021-1,Investigation Note exhibit supporting case CASE-0021 (robbery),/secure_vault/synthetic/investigation_note/case-0021-1.enc,0.86,SYNTHETIC,2024-04-03T19:32:41Z
-EV000144,FINANCIAL,TXN-CASE-0022-0,Financial exhibit supporting case CASE-0022 (narcotics trafficking),/secure_vault/synthetic/financial/case-0022-0.enc,0.97,SYNTHETIC,2024-08-01T18:41:53Z
 EV000144,FINANCIAL,TXN-CASE-0022-0,Financial exhibit supporting case CASE-0022 (narcotics trafficking),/secure_vault/synthetic/financial/case-0022-0.enc,0.97,SYNTHETIC,2024-08-01T18:41:53Z
 EV000145,INVESTIGATION_NOTE,NOTE-CASE-0022-1,Investigation Note exhibit supporting case CASE-0022 (narcotics trafficking),/secure_vault/synthetic/investigation_note/case-0022-1.enc,0.84,SYNTHETIC,2024-08-05T18:41:53Z
-EV000145,INVESTIGATION_NOTE,NOTE-CASE-0022-1,Investigation Note exhibit supporting case CASE-0022 (narcotics trafficking),/secure_vault/synthetic/investigation_note/case-0022-1.enc,0.84,SYNTHETIC,2024-08-05T18:41:53Z
-EV000146,FINANCIAL,TXN-CASE-0022-2,Financial exhibit supporting case CASE-0022 (narcotics trafficking),/secure_vault/synthetic/financial/case-0022-2.enc,0.92,SYNTHETIC,2024-08-27T18:41:53Z
 EV000146,FINANCIAL,TXN-CASE-0022-2,Financial exhibit supporting case CASE-0022 (narcotics trafficking),/secure_vault/synthetic/financial/case-0022-2.enc,0.92,SYNTHETIC,2024-08-27T18:41:53Z
 EV000147,FINANCIAL,TXN-CASE-0023-0,Financial exhibit supporting case CASE-0023 (money laundering),/secure_vault/synthetic/financial/case-0023-0.enc,0.96,SYNTHETIC,2025-05-23T23:13:57Z
-EV000147,FINANCIAL,TXN-CASE-0023-0,Financial exhibit supporting case CASE-0023 (money laundering),/secure_vault/synthetic/financial/case-0023-0.enc,0.96,SYNTHETIC,2025-05-23T23:13:57Z
-EV000148,INVESTIGATION_NOTE,NOTE-CASE-0024-0,Investigation Note exhibit supporting case CASE-0024 (vehicle theft),/secure_vault/synthetic/investigation_note/case-0024-0.enc,0.9,SYNTHETIC,2024-03-11T17:54:12Z
 EV000148,INVESTIGATION_NOTE,NOTE-CASE-0024-0,Investigation Note exhibit supporting case CASE-0024 (vehicle theft),/secure_vault/synthetic/investigation_note/case-0024-0.enc,0.9,SYNTHETIC,2024-03-11T17:54:12Z
 EV000149,CDR,CDR-CASE-0025-0,Cdr exhibit supporting case CASE-0025 (smuggling),/secure_vault/synthetic/cdr/case-0025-0.enc,0.97,SYNTHETIC,2025-07-17T11:35:52Z
-EV000149,CDR,CDR-CASE-0025-0,Cdr exhibit supporting case CASE-0025 (smuggling),/secure_vault/synthetic/cdr/case-0025-0.enc,0.97,SYNTHETIC,2025-07-17T11:35:52Z
-EV000150,FINANCIAL,TXN-CASE-0025-1,Financial exhibit supporting case CASE-0025 (smuggling),/secure_vault/synthetic/financial/case-0025-1.enc,0.79,SYNTHETIC,2025-07-19T11:35:52Z
 EV000150,FINANCIAL,TXN-CASE-0025-1,Financial exhibit supporting case CASE-0025 (smuggling),/secure_vault/synthetic/financial/case-0025-1.enc,0.79,SYNTHETIC,2025-07-19T11:35:52Z
 EV000151,FIR,FIR-2025-0028,Fir exhibit supporting case CASE-0025 (smuggling),/secure_vault/synthetic/fir/case-0025-2.enc,0.96,SYNTHETIC,2025-06-22T11:35:52Z
-EV000151,FIR,FIR-2025-0028,Fir exhibit supporting case CASE-0025 (smuggling),/secure_vault/synthetic/fir/case-0025-2.enc,0.96,SYNTHETIC,2025-06-22T11:35:52Z
-EV000152,INVESTIGATION_NOTE,NOTE-CASE-0026-0,Investigation Note exhibit supporting case CASE-0026 (money laundering),/secure_vault/synthetic/investigation_note/case-0026-0.enc,0.76,SYNTHETIC,2024-10-18T20:49:52Z
 EV000152,INVESTIGATION_NOTE,NOTE-CASE-0026-0,Investigation Note exhibit supporting case CASE-0026 (money laundering),/secure_vault/synthetic/investigation_note/case-0026-0.enc,0.76,SYNTHETIC,2024-10-18T20:49:52Z
 EV000153,FINANCIAL,TXN-CASE-0027-0,Financial exhibit supporting case CASE-0027 (extortion),/secure_vault/synthetic/financial/case-0027-0.enc,0.89,SYNTHETIC,2025-02-22T16:30:00Z
-EV000153,FINANCIAL,TXN-CASE-0027-0,Financial exhibit supporting case CASE-0027 (extortion),/secure_vault/synthetic/financial/case-0027-0.enc,0.89,SYNTHETIC,2025-02-22T16:30:00Z
-EV000154,CDR,CDR-CASE-0028-0,Cdr exhibit supporting case CASE-0028 (narcotics trafficking),/secure_vault/synthetic/cdr/case-0028-0.enc,0.94,SYNTHETIC,2026-03-16T03:40:50Z
 EV000154,CDR,CDR-CASE-0028-0,Cdr exhibit supporting case CASE-0028 (narcotics trafficking),/secure_vault/synthetic/cdr/case-0028-0.enc,0.94,SYNTHETIC,2026-03-16T03:40:50Z
 EV000155,SURVEILLANCE,SR-CASE-0028-1,Surveillance exhibit supporting case CASE-0028 (narcotics trafficking),/secure_vault/synthetic/surveillance/case-0028-1.enc,0.83,SYNTHETIC,2026-03-18T03:40:50Z
-EV000155,SURVEILLANCE,SR-CASE-0028-1,Surveillance exhibit supporting case CASE-0028 (narcotics trafficking),/secure_vault/synthetic/surveillance/case-0028-1.enc,0.83,SYNTHETIC,2026-03-18T03:40:50Z
-EV000156,FINANCIAL,TXN-CASE-0029-0,Financial exhibit supporting case CASE-0029 (extortion),/secure_vault/synthetic/financial/case-0029-0.enc,0.83,SYNTHETIC,2024-09-28T16:05:38Z
 EV000156,FINANCIAL,TXN-CASE-0029-0,Financial exhibit supporting case CASE-0029 (extortion),/secure_vault/synthetic/financial/case-0029-0.enc,0.83,SYNTHETIC,2024-09-28T16:05:38Z
 EV000157,FINANCIAL,TXN-CASE-0029-1,Financial exhibit supporting case CASE-0029 (extortion),/secure_vault/synthetic/financial/case-0029-1.enc,0.76,SYNTHETIC,2024-09-18T16:05:38Z
-EV000157,FINANCIAL,TXN-CASE-0029-1,Financial exhibit supporting case CASE-0029 (extortion),/secure_vault/synthetic/financial/case-0029-1.enc,0.76,SYNTHETIC,2024-09-18T16:05:38Z
-EV000158,FIR,FIR-2024-0032,Fir exhibit supporting case CASE-0029 (extortion),/secure_vault/synthetic/fir/case-0029-2.enc,0.88,SYNTHETIC,2024-09-14T16:05:38Z
 EV000158,FIR,FIR-2024-0032,Fir exhibit supporting case CASE-0029 (extortion),/secure_vault/synthetic/fir/case-0029-2.enc,0.88,SYNTHETIC,2024-09-14T16:05:38Z
 EV000159,SURVEILLANCE,SR-CASE-0030-0,Surveillance exhibit supporting case CASE-0030 (narcotics trafficking),/secure_vault/synthetic/surveillance/case-0030-0.enc,0.85,SYNTHETIC,2026-04-09T06:13:12Z
-EV000159,SURVEILLANCE,SR-CASE-0030-0,Surveillance exhibit supporting case CASE-0030 (narcotics trafficking),/secure_vault/synthetic/surveillance/case-0030-0.enc,0.85,SYNTHETIC,2026-04-09T06:13:12Z
-EV000160,INVESTIGATION_NOTE,NOTE-CASE-0030-1,Investigation Note exhibit supporting case CASE-0030 (narcotics trafficking),/secure_vault/synthetic/investigation_note/case-0030-1.enc,0.94,SYNTHETIC,2026-03-07T06:13:12Z
 EV000160,INVESTIGATION_NOTE,NOTE-CASE-0030-1,Investigation Note exhibit supporting case CASE-0030 (narcotics trafficking),/secure_vault/synthetic/investigation_note/case-0030-1.enc,0.94,SYNTHETIC,2026-03-07T06:13:12Z
 EV000161,FIR,FIR-2026-0033,Fir exhibit supporting case CASE-0030 (narcotics trafficking),/secure_vault/synthetic/fir/case-0030-2.enc,0.9,SYNTHETIC,2026-03-15T06:13:12Z
-EV000161,FIR,FIR-2026-0033,Fir exhibit supporting case CASE-0030 (narcotics trafficking),/secure_vault/synthetic/fir/case-0030-2.enc,0.9,SYNTHETIC,2026-03-15T06:13:12Z
-EV000162,FIR,FIR-2026-0034,Fir exhibit supporting case CASE-0031 (money laundering),/secure_vault/synthetic/fir/case-0031-0.enc,0.92,SYNTHETIC,2026-08-15T04:56:20Z
 EV000162,FIR,FIR-2026-0034,Fir exhibit supporting case CASE-0031 (money laundering),/secure_vault/synthetic/fir/case-0031-0.enc,0.92,SYNTHETIC,2026-08-15T04:56:20Z
 EV000163,FINANCIAL,TXN-CASE-0031-1,Financial exhibit supporting case CASE-0031 (money laundering),/secure_vault/synthetic/financial/case-0031-1.enc,0.9,SYNTHETIC,2026-08-07T04:56:20Z
-EV000163,FINANCIAL,TXN-CASE-0031-1,Financial exhibit supporting case CASE-0031 (money laundering),/secure_vault/synthetic/financial/case-0031-1.enc,0.9,SYNTHETIC,2026-08-07T04:56:20Z
-EV000164,INVESTIGATION_NOTE,NOTE-CASE-0031-2,Investigation Note exhibit supporting case CASE-0031 (money laundering),/secure_vault/synthetic/investigation_note/case-0031-2.enc,0.77,SYNTHETIC,2026-08-27T04:56:20Z
 EV000164,INVESTIGATION_NOTE,NOTE-CASE-0031-2,Investigation Note exhibit supporting case CASE-0031 (money laundering),/secure_vault/synthetic/investigation_note/case-0031-2.enc,0.77,SYNTHETIC,2026-08-27T04:56:20Z
 EV000165,CDR,CDR-CASE-0032-0,Cdr exhibit supporting case CASE-0032 (kidnapping),/secure_vault/synthetic/cdr/case-0032-0.enc,0.86,SYNTHETIC,2026-06-12T04:05:40Z
-EV000165,CDR,CDR-CASE-0032-0,Cdr exhibit supporting case CASE-0032 (kidnapping),/secure_vault/synthetic/cdr/case-0032-0.enc,0.86,SYNTHETIC,2026-06-12T04:05:40Z
-EV000166,FIR,FIR-2026-0035,Fir exhibit supporting case CASE-0032 (kidnapping),/secure_vault/synthetic/fir/case-0032-1.enc,0.81,SYNTHETIC,2026-06-25T04:05:40Z
 EV000166,FIR,FIR-2026-0035,Fir exhibit supporting case CASE-0032 (kidnapping),/secure_vault/synthetic/fir/case-0032-1.enc,0.81,SYNTHETIC,2026-06-25T04:05:40Z
 EV000167,SURVEILLANCE,SR-CASE-0033-0,Surveillance exhibit supporting case CASE-0033 (extortion),/secure_vault/synthetic/surveillance/case-0033-0.enc,0.89,SYNTHETIC,2024-10-21T20:54:19Z
-EV000167,SURVEILLANCE,SR-CASE-0033-0,Surveillance exhibit supporting case CASE-0033 (extortion),/secure_vault/synthetic/surveillance/case-0033-0.enc,0.89,SYNTHETIC,2024-10-21T20:54:19Z
-EV000168,CDR,CDR-CASE-0034-0,Cdr exhibit supporting case CASE-0034 (fraud),/secure_vault/synthetic/cdr/case-0034-0.enc,0.8,SYNTHETIC,2024-12-03T13:54:19Z
 EV000168,CDR,CDR-CASE-0034-0,Cdr exhibit supporting case CASE-0034 (fraud),/secure_vault/synthetic/cdr/case-0034-0.enc,0.8,SYNTHETIC,2024-12-03T13:54:19Z
 EV000169,FIR,FIR-2024-0037,Fir exhibit supporting case CASE-0034 (fraud),/secure_vault/synthetic/fir/case-0034-1.enc,0.83,SYNTHETIC,2024-11-25T13:54:19Z
-EV000169,FIR,FIR-2024-0037,Fir exhibit supporting case CASE-0034 (fraud),/secure_vault/synthetic/fir/case-0034-1.enc,0.83,SYNTHETIC,2024-11-25T13:54:19Z
-EV000170,SURVEILLANCE,SR-CASE-0034-2,Surveillance exhibit supporting case CASE-0034 (fraud),/secure_vault/synthetic/surveillance/case-0034-2.enc,0.81,SYNTHETIC,2024-12-02T13:54:19Z
 EV000170,SURVEILLANCE,SR-CASE-0034-2,Surveillance exhibit supporting case CASE-0034 (fraud),/secure_vault/synthetic/surveillance/case-0034-2.enc,0.81,SYNTHETIC,2024-12-02T13:54:19Z
 EV000171,INVESTIGATION_NOTE,NOTE-CASE-0035-0,Investigation Note exhibit supporting case CASE-0035 (smuggling),/secure_vault/synthetic/investigation_note/case-0035-0.enc,0.93,SYNTHETIC,2024-05-09T06:06:52Z
-EV000171,INVESTIGATION_NOTE,NOTE-CASE-0035-0,Investigation Note exhibit supporting case CASE-0035 (smuggling),/secure_vault/synthetic/investigation_note/case-0035-0.enc,0.93,SYNTHETIC,2024-05-09T06:06:52Z
-EV000172,INVESTIGATION_NOTE,NOTE-CASE-0036-0,Investigation Note exhibit supporting case CASE-0036 (robbery),/secure_vault/synthetic/investigation_note/case-0036-0.enc,0.96,SYNTHETIC,2025-05-02T02:41:28Z
 EV000172,INVESTIGATION_NOTE,NOTE-CASE-0036-0,Investigation Note exhibit supporting case CASE-0036 (robbery),/secure_vault/synthetic/investigation_note/case-0036-0.enc,0.96,SYNTHETIC,2025-05-02T02:41:28Z
 EV000173,FINANCIAL,TXN-CASE-0036-1,Financial exhibit supporting case CASE-0036 (robbery),/secure_vault/synthetic/financial/case-0036-1.enc,0.84,SYNTHETIC,2025-05-26T02:41:28Z
-EV000173,FINANCIAL,TXN-CASE-0036-1,Financial exhibit supporting case CASE-0036 (robbery),/secure_vault/synthetic/financial/case-0036-1.enc,0.84,SYNTHETIC,2025-05-26T02:41:28Z
-EV000174,SURVEILLANCE,SR-CASE-0036-2,Surveillance exhibit supporting case CASE-0036 (robbery),/secure_vault/synthetic/surveillance/case-0036-2.enc,0.88,SYNTHETIC,2025-04-27T02:41:28Z
 EV000174,SURVEILLANCE,SR-CASE-0036-2,Surveillance exhibit supporting case CASE-0036 (robbery),/secure_vault/synthetic/surveillance/case-0036-2.enc,0.88,SYNTHETIC,2025-04-27T02:41:28Z
 EV000175,SURVEILLANCE,SR-CASE-0037-0,Surveillance exhibit supporting case CASE-0037 (counterfeiting),/secure_vault/synthetic/surveillance/case-0037-0.enc,0.85,SYNTHETIC,2025-10-05T13:44:16Z
-EV000175,SURVEILLANCE,SR-CASE-0037-0,Surveillance exhibit supporting case CASE-0037 (counterfeiting),/secure_vault/synthetic/surveillance/case-0037-0.enc,0.85,SYNTHETIC,2025-10-05T13:44:16Z
-EV000176,FINANCIAL,TXN-CASE-0038-0,Financial exhibit supporting case CASE-0038 (extortion),/secure_vault/synthetic/financial/case-0038-0.enc,0.8,SYNTHETIC,2026-03-29T16:00:15Z
 EV000176,FINANCIAL,TXN-CASE-0038-0,Financial exhibit supporting case CASE-0038 (extortion),/secure_vault/synthetic/financial/case-0038-0.enc,0.8,SYNTHETIC,2026-03-29T16:00:15Z
 EV000177,SURVEILLANCE,SR-CASE-0038-1,Surveillance exhibit supporting case CASE-0038 (extortion),/secure_vault/synthetic/surveillance/case-0038-1.enc,0.91,SYNTHETIC,2026-04-10T16:00:15Z
-EV000177,SURVEILLANCE,SR-CASE-0038-1,Surveillance exhibit supporting case CASE-0038 (extortion),/secure_vault/synthetic/surveillance/case-0038-1.enc,0.91,SYNTHETIC,2026-04-10T16:00:15Z
-EV000178,INVESTIGATION_NOTE,NOTE-CASE-0039-0,Investigation Note exhibit supporting case CASE-0039 (extortion),/secure_vault/synthetic/investigation_note/case-0039-0.enc,0.96,SYNTHETIC,2024-06-05T08:40:23Z
 EV000178,INVESTIGATION_NOTE,NOTE-CASE-0039-0,Investigation Note exhibit supporting case CASE-0039 (extortion),/secure_vault/synthetic/investigation_note/case-0039-0.enc,0.96,SYNTHETIC,2024-06-05T08:40:23Z
 EV000179,INVESTIGATION_NOTE,NOTE-CASE-0039-1,Investigation Note exhibit supporting case CASE-0039 (extortion),/secure_vault/synthetic/investigation_note/case-0039-1.enc,0.82,SYNTHETIC,2024-05-20T08:40:23Z
-EV000179,INVESTIGATION_NOTE,NOTE-CASE-0039-1,Investigation Note exhibit supporting case CASE-0039 (extortion),/secure_vault/synthetic/investigation_note/case-0039-1.enc,0.82,SYNTHETIC,2024-05-20T08:40:23Z
-EV000180,CDR,CDR-CASE-0039-2,Cdr exhibit supporting case CASE-0039 (extortion),/secure_vault/synthetic/cdr/case-0039-2.enc,0.92,SYNTHETIC,2024-05-28T08:40:23Z
 EV000180,CDR,CDR-CASE-0039-2,Cdr exhibit supporting case CASE-0039 (extortion),/secure_vault/synthetic/cdr/case-0039-2.enc,0.92,SYNTHETIC,2024-05-28T08:40:23Z
 EV000181,FIR,FIR-2025-0043,Fir exhibit supporting case CASE-0040 (narcotics trafficking),/secure_vault/synthetic/fir/case-0040-0.enc,0.9,SYNTHETIC,2025-04-01T03:15:34Z
-EV000181,FIR,FIR-2025-0043,Fir exhibit supporting case CASE-0040 (narcotics trafficking),/secure_vault/synthetic/fir/case-0040-0.enc,0.9,SYNTHETIC,2025-04-01T03:15:34Z
-EV000182,CDR,CDR-CASE-0040-1,Cdr exhibit supporting case CASE-0040 (narcotics trafficking),/secure_vault/synthetic/cdr/case-0040-1.enc,0.81,SYNTHETIC,2025-03-14T03:15:34Z
 EV000182,CDR,CDR-CASE-0040-1,Cdr exhibit supporting case CASE-0040 (narcotics trafficking),/secure_vault/synthetic/cdr/case-0040-1.enc,0.81,SYNTHETIC,2025-03-14T03:15:34Z
 EV000183,INVESTIGATION_NOTE,NOTE-CASE-0041-0,Investigation Note exhibit supporting case CASE-0041 (cybercrime),/secure_vault/synthetic/investigation_note/case-0041-0.enc,0.94,SYNTHETIC,2025-02-04T10:51:27Z
-EV000183,INVESTIGATION_NOTE,NOTE-CASE-0041-0,Investigation Note exhibit supporting case CASE-0041 (cybercrime),/secure_vault/synthetic/investigation_note/case-0041-0.enc,0.94,SYNTHETIC,2025-02-04T10:51:27Z
-EV000184,SURVEILLANCE,SR-CASE-0041-1,Surveillance exhibit supporting case CASE-0041 (cybercrime),/secure_vault/synthetic/surveillance/case-0041-1.enc,0.79,SYNTHETIC,2025-01-18T10:51:27Z
 EV000184,SURVEILLANCE,SR-CASE-0041-1,Surveillance exhibit supporting case CASE-0041 (cybercrime),/secure_vault/synthetic/surveillance/case-0041-1.enc,0.79,SYNTHETIC,2025-01-18T10:51:27Z
 EV000185,FINANCIAL,TXN-CASE-0042-0,Financial exhibit supporting case CASE-0042 (murder),/secure_vault/synthetic/financial/case-0042-0.enc,0.81,SYNTHETIC,2025-06-18T22:12:28Z
-EV000185,FINANCIAL,TXN-CASE-0042-0,Financial exhibit supporting case CASE-0042 (murder),/secure_vault/synthetic/financial/case-0042-0.enc,0.81,SYNTHETIC,2025-06-18T22:12:28Z
-EV000186,INVESTIGATION_NOTE,NOTE-CASE-0043-0,Investigation Note exhibit supporting case CASE-0043 (fraud),/secure_vault/synthetic/investigation_note/case-0043-0.enc,0.82,SYNTHETIC,2025-11-01T13:23:21Z
 EV000186,INVESTIGATION_NOTE,NOTE-CASE-0043-0,Investigation Note exhibit supporting case CASE-0043 (fraud),/secure_vault/synthetic/investigation_note/case-0043-0.enc,0.82,SYNTHETIC,2025-11-01T13:23:21Z
 EV000187,SURVEILLANCE,SR-CASE-0043-1,Surveillance exhibit supporting case CASE-0043 (fraud),/secure_vault/synthetic/surveillance/case-0043-1.enc,0.78,SYNTHETIC,2025-11-13T13:23:21Z
-EV000187,SURVEILLANCE,SR-CASE-0043-1,Surveillance exhibit supporting case CASE-0043 (fraud),/secure_vault/synthetic/surveillance/case-0043-1.enc,0.78,SYNTHETIC,2025-11-13T13:23:21Z
-EV000188,INVESTIGATION_NOTE,NOTE-CASE-0044-0,Investigation Note exhibit supporting case CASE-0044 (cybercrime),/secure_vault/synthetic/investigation_note/case-0044-0.enc,0.85,SYNTHETIC,2024-10-22T16:49:56Z
 EV000188,INVESTIGATION_NOTE,NOTE-CASE-0044-0,Investigation Note exhibit supporting case CASE-0044 (cybercrime),/secure_vault/synthetic/investigation_note/case-0044-0.enc,0.85,SYNTHETIC,2024-10-22T16:49:56Z
 EV000189,SURVEILLANCE,SR-CASE-0044-1,Surveillance exhibit supporting case CASE-0044 (cybercrime),/secure_vault/synthetic/surveillance/case-0044-1.enc,0.88,SYNTHETIC,2024-11-04T16:49:56Z
-EV000189,SURVEILLANCE,SR-CASE-0044-1,Surveillance exhibit supporting case CASE-0044 (cybercrime),/secure_vault/synthetic/surveillance/case-0044-1.enc,0.88,SYNTHETIC,2024-11-04T16:49:56Z
-EV000190,INVESTIGATION_NOTE,NOTE-CASE-0044-2,Investigation Note exhibit supporting case CASE-0044 (cybercrime),/secure_vault/synthetic/investigation_note/case-0044-2.enc,0.91,SYNTHETIC,2024-10-20T16:49:56Z
 EV000190,INVESTIGATION_NOTE,NOTE-CASE-0044-2,Investigation Note exhibit supporting case CASE-0044 (cybercrime),/secure_vault/synthetic/investigation_note/case-0044-2.enc,0.91,SYNTHETIC,2024-10-20T16:49:56Z
 EV000191,CDR,CDR-CASE-0045-0,Cdr exhibit supporting case CASE-0045 (robbery),/secure_vault/synthetic/cdr/case-0045-0.enc,0.93,SYNTHETIC,2026-06-15T17:18:39Z
-EV000191,CDR,CDR-CASE-0045-0,Cdr exhibit supporting case CASE-0045 (robbery),/secure_vault/synthetic/cdr/case-0045-0.enc,0.93,SYNTHETIC,2026-06-15T17:18:39Z
-EV000192,FIR,FIR-2026-0049,Fir exhibit supporting case CASE-0045 (robbery),/secure_vault/synthetic/fir/case-0045-1.enc,0.77,SYNTHETIC,2026-06-02T17:18:39Z
 EV000192,FIR,FIR-2026-0049,Fir exhibit supporting case CASE-0045 (robbery),/secure_vault/synthetic/fir/case-0045-1.enc,0.77,SYNTHETIC,2026-06-02T17:18:39Z
 EV000193,SURVEILLANCE,SR-CASE-0046-0,Surveillance exhibit supporting case CASE-0046 (smuggling),/secure_vault/synthetic/surveillance/case-0046-0.enc,0.85,SYNTHETIC,2026-06-16T00:44:01Z
-EV000193,SURVEILLANCE,SR-CASE-0046-0,Surveillance exhibit supporting case CASE-0046 (smuggling),/secure_vault/synthetic/surveillance/case-0046-0.enc,0.85,SYNTHETIC,2026-06-16T00:44:01Z
-EV000194,FIR,FIR-2026-0050,Fir exhibit supporting case CASE-0046 (smuggling),/secure_vault/synthetic/fir/case-0046-1.enc,0.97,SYNTHETIC,2026-07-11T00:44:01Z
 EV000194,FIR,FIR-2026-0050,Fir exhibit supporting case CASE-0046 (smuggling),/secure_vault/synthetic/fir/case-0046-1.enc,0.97,SYNTHETIC,2026-07-11T00:44:01Z
 EV000195,SURVEILLANCE,SR-CASE-0047-0,Surveillance exhibit supporting case CASE-0047 (murder),/secure_vault/synthetic/surveillance/case-0047-0.enc,0.86,SYNTHETIC,2025-01-16T23:09:48Z
-EV000195,SURVEILLANCE,SR-CASE-0047-0,Surveillance exhibit supporting case CASE-0047 (murder),/secure_vault/synthetic/surveillance/case-0047-0.enc,0.86,SYNTHETIC,2025-01-16T23:09:48Z
-EV000196,FINANCIAL,TXN-CASE-0047-1,Financial exhibit supporting case CASE-0047 (murder),/secure_vault/synthetic/financial/case-0047-1.enc,0.85,SYNTHETIC,2025-01-10T23:09:48Z
 EV000196,FINANCIAL,TXN-CASE-0047-1,Financial exhibit supporting case CASE-0047 (murder),/secure_vault/synthetic/financial/case-0047-1.enc,0.85,SYNTHETIC,2025-01-10T23:09:48Z
 EV000197,INVESTIGATION_NOTE,NOTE-CASE-0047-2,Investigation Note exhibit supporting case CASE-0047 (murder),/secure_vault/synthetic/investigation_note/case-0047-2.enc,0.95,SYNTHETIC,2025-02-02T23:09:48Z
-EV000197,INVESTIGATION_NOTE,NOTE-CASE-0047-2,Investigation Note exhibit supporting case CASE-0047 (murder),/secure_vault/synthetic/investigation_note/case-0047-2.enc,0.95,SYNTHETIC,2025-02-02T23:09:48Z
-EV000198,FINANCIAL,TXN-CASE-0048-0,Financial exhibit supporting case CASE-0048 (smuggling),/secure_vault/synthetic/financial/case-0048-0.enc,0.85,SYNTHETIC,2026-06-04T06:08:16Z
 EV000198,FINANCIAL,TXN-CASE-0048-0,Financial exhibit supporting case CASE-0048 (smuggling),/secure_vault/synthetic/financial/case-0048-0.enc,0.85,SYNTHETIC,2026-06-04T06:08:16Z
 EV000199,INVESTIGATION_NOTE,NOTE-CASE-0048-1,Investigation Note exhibit supporting case CASE-0048 (smuggling),/secure_vault/synthetic/investigation_note/case-0048-1.enc,0.95,SYNTHETIC,2026-05-13T06:08:16Z
-EV000199,INVESTIGATION_NOTE,NOTE-CASE-0048-1,Investigation Note exhibit supporting case CASE-0048 (smuggling),/secure_vault/synthetic/investigation_note/case-0048-1.enc,0.95,SYNTHETIC,2026-05-13T06:08:16Z
-EV000200,FINANCIAL,TXN-CASE-0048-2,Financial exhibit supporting case CASE-0048 (smuggling),/secure_vault/synthetic/financial/case-0048-2.enc,0.83,SYNTHETIC,2026-05-20T06:08:16Z
 EV000200,FINANCIAL,TXN-CASE-0048-2,Financial exhibit supporting case CASE-0048 (smuggling),/secure_vault/synthetic/financial/case-0048-2.enc,0.83,SYNTHETIC,2026-05-20T06:08:16Z
 EV000201,INVESTIGATION_NOTE,NOTE-CASE-0049-0,Investigation Note exhibit supporting case CASE-0049 (narcotics trafficking),/secure_vault/synthetic/investigation_note/case-0049-0.enc,0.88,SYNTHETIC,2025-12-07T17:57:25Z
-EV000201,INVESTIGATION_NOTE,NOTE-CASE-0049-0,Investigation Note exhibit supporting case CASE-0049 (narcotics trafficking),/secure_vault/synthetic/investigation_note/case-0049-0.enc,0.88,SYNTHETIC,2025-12-07T17:57:25Z
-EV000202,SURVEILLANCE,SR-CASE-0049-1,Surveillance exhibit supporting case CASE-0049 (narcotics trafficking),/secure_vault/synthetic/surveillance/case-0049-1.enc,0.88,SYNTHETIC,2025-12-10T17:57:25Z
 EV000202,SURVEILLANCE,SR-CASE-0049-1,Surveillance exhibit supporting case CASE-0049 (narcotics trafficking),/secure_vault/synthetic/surveillance/case-0049-1.enc,0.88,SYNTHETIC,2025-12-10T17:57:25Z
 EV000203,FIR,FIR-2025-0054,Fir exhibit supporting case CASE-0049 (narcotics trafficking),/secure_vault/synthetic/fir/case-0049-2.enc,0.89,SYNTHETIC,2026-01-01T17:57:25Z
-EV000203,FIR,FIR-2025-0054,Fir exhibit supporting case CASE-0049 (narcotics trafficking),/secure_vault/synthetic/fir/case-0049-2.enc,0.89,SYNTHETIC,2026-01-01T17:57:25Z
-EV000204,CDR,CDR-CASE-0050-0,Cdr exhibit supporting case CASE-0050 (money laundering),/secure_vault/synthetic/cdr/case-0050-0.enc,0.87,SYNTHETIC,2025-11-25T00:23:15Z
 EV000204,CDR,CDR-CASE-0050-0,Cdr exhibit supporting case CASE-0050 (money laundering),/secure_vault/synthetic/cdr/case-0050-0.enc,0.87,SYNTHETIC,2025-11-25T00:23:15Z
 EV000205,SURVEILLANCE,SR-CASE-0050-1,Surveillance exhibit supporting case CASE-0050 (money laundering),/secure_vault/synthetic/surveillance/case-0050-1.enc,0.92,SYNTHETIC,2025-11-26T00:23:15Z
-EV000205,SURVEILLANCE,SR-CASE-0050-1,Surveillance exhibit supporting case CASE-0050 (money laundering),/secure_vault/synthetic/surveillance/case-0050-1.enc,0.92,SYNTHETIC,2025-11-26T00:23:15Z
-EV000206,FIR,FIR-2025-0055,Fir exhibit supporting case CASE-0050 (money laundering),/secure_vault/synthetic/fir/case-0050-2.enc,0.76,SYNTHETIC,2025-12-07T00:23:15Z
 EV000206,FIR,FIR-2025-0055,Fir exhibit supporting case CASE-0050 (money laundering),/secure_vault/synthetic/fir/case-0050-2.enc,0.76,SYNTHETIC,2025-12-07T00:23:15Z
 EV000207,SURVEILLANCE,SR-CASE-0051-0,Surveillance exhibit supporting case CASE-0051 (money laundering),/secure_vault/synthetic/surveillance/case-0051-0.enc,0.93,SYNTHETIC,2024-12-15T13:19:52Z
-EV000207,SURVEILLANCE,SR-CASE-0051-0,Surveillance exhibit supporting case CASE-0051 (money laundering),/secure_vault/synthetic/surveillance/case-0051-0.enc,0.93,SYNTHETIC,2024-12-15T13:19:52Z
-EV000208,CDR,CDR-CASE-0052-0,Cdr exhibit supporting case CASE-0052 (money laundering),/secure_vault/synthetic/cdr/case-0052-0.enc,0.76,SYNTHETIC,2024-01-29T06:05:05Z
 EV000208,CDR,CDR-CASE-0052-0,Cdr exhibit supporting case CASE-0052 (money laundering),/secure_vault/synthetic/cdr/case-0052-0.enc,0.76,SYNTHETIC,2024-01-29T06:05:05Z
 EV000209,SURVEILLANCE,SR-CASE-0052-1,Surveillance exhibit supporting case CASE-0052 (money laundering),/secure_vault/synthetic/surveillance/case-0052-1.enc,0.83,SYNTHETIC,2024-02-16T06:05:05Z
-EV000209,SURVEILLANCE,SR-CASE-0052-1,Surveillance exhibit supporting case CASE-0052 (money laundering),/secure_vault/synthetic/surveillance/case-0052-1.enc,0.83,SYNTHETIC,2024-02-16T06:05:05Z
-EV000210,FINANCIAL,TXN-CASE-0052-2,Financial exhibit supporting case CASE-0052 (money laundering),/secure_vault/synthetic/financial/case-0052-2.enc,0.76,SYNTHETIC,2024-02-27T06:05:05Z
 EV000210,FINANCIAL,TXN-CASE-0052-2,Financial exhibit supporting case CASE-0052 (money laundering),/secure_vault/synthetic/financial/case-0052-2.enc,0.76,SYNTHETIC,2024-02-27T06:05:05Z
 EV000211,INVESTIGATION_NOTE,NOTE-CASE-0053-0,Investigation Note exhibit supporting case CASE-0053 (robbery),/secure_vault/synthetic/investigation_note/case-0053-0.enc,0.86,SYNTHETIC,2025-12-25T14:38:31Z
-EV000211,INVESTIGATION_NOTE,NOTE-CASE-0053-0,Investigation Note exhibit supporting case CASE-0053 (robbery),/secure_vault/synthetic/investigation_note/case-0053-0.enc,0.86,SYNTHETIC,2025-12-25T14:38:31Z
-EV000212,INVESTIGATION_NOTE,NOTE-CASE-0053-1,Investigation Note exhibit supporting case CASE-0053 (robbery),/secure_vault/synthetic/investigation_note/case-0053-1.enc,0.95,SYNTHETIC,2025-12-30T14:38:31Z
 EV000212,INVESTIGATION_NOTE,NOTE-CASE-0053-1,Investigation Note exhibit supporting case CASE-0053 (robbery),/secure_vault/synthetic/investigation_note/case-0053-1.enc,0.95,SYNTHETIC,2025-12-30T14:38:31Z
 EV000213,INVESTIGATION_NOTE,NOTE-CASE-0054-0,Investigation Note exhibit supporting case CASE-0054 (extortion),/secure_vault/synthetic/investigation_note/case-0054-0.enc,0.84,SYNTHETIC,2026-04-26T11:33:00Z
-EV000213,INVESTIGATION_NOTE,NOTE-CASE-0054-0,Investigation Note exhibit supporting case CASE-0054 (extortion),/secure_vault/synthetic/investigation_note/case-0054-0.enc,0.84,SYNTHETIC,2026-04-26T11:33:00Z
-EV000214,FINANCIAL,TXN-CASE-0054-1,Financial exhibit supporting case CASE-0054 (extortion),/secure_vault/synthetic/financial/case-0054-1.enc,0.87,SYNTHETIC,2026-04-08T11:33:00Z
 EV000214,FINANCIAL,TXN-CASE-0054-1,Financial exhibit supporting case CASE-0054 (extortion),/secure_vault/synthetic/financial/case-0054-1.enc,0.87,SYNTHETIC,2026-04-08T11:33:00Z
 EV000215,INVESTIGATION_NOTE,NOTE-CASE-0055-0,Investigation Note exhibit supporting case CASE-0055 (robbery),/secure_vault/synthetic/investigation_note/case-0055-0.enc,0.92,SYNTHETIC,2024-11-09T12:02:45Z
-EV000215,INVESTIGATION_NOTE,NOTE-CASE-0055-0,Investigation Note exhibit supporting case CASE-0055 (robbery),/secure_vault/synthetic/investigation_note/case-0055-0.enc,0.92,SYNTHETIC,2024-11-09T12:02:45Z
-EV000216,SURVEILLANCE,SR-CASE-0055-1,Surveillance exhibit supporting case CASE-0055 (robbery),/secure_vault/synthetic/surveillance/case-0055-1.enc,0.9,SYNTHETIC,2024-10-17T12:02:45Z
 EV000216,SURVEILLANCE,SR-CASE-0055-1,Surveillance exhibit supporting case CASE-0055 (robbery),/secure_vault/synthetic/surveillance/case-0055-1.enc,0.9,SYNTHETIC,2024-10-17T12:02:45Z
 EV000217,SURVEILLANCE,SR-CASE-0056-0,Surveillance exhibit supporting case CASE-0056 (fraud),/secure_vault/synthetic/surveillance/case-0056-0.enc,0.92,SYNTHETIC,2024-06-14T00:35:46Z
-EV000217,SURVEILLANCE,SR-CASE-0056-0,Surveillance exhibit supporting case CASE-0056 (fraud),/secure_vault/synthetic/surveillance/case-0056-0.enc,0.92,SYNTHETIC,2024-06-14T00:35:46Z
 EV000218,INVESTIGATION_NOTE,NOTE-CASE-0057-0,Investigation Note exhibit supporting case CASE-0057 (narcotics trafficking),/secure_vault/synthetic/investigation_note/case-0057-0.enc,0.87,SYNTHETIC,2025-12-31T04:16:44Z
-EV000218,INVESTIGATION_NOTE,NOTE-CASE-0057-0,Investigation Note exhibit supporting case CASE-0057 (narcotics trafficking),/secure_vault/synthetic/investigation_note/case-0057-0.enc,0.87,SYNTHETIC,2025-12-31T04:16:44Z
-EV000219,FIR,FIR-2025-0064,Fir exhibit supporting case CASE-0057 (narcotics trafficking),/secure_vault/synthetic/fir/case-0057-1.enc,0.78,SYNTHETIC,2025-12-30T04:16:44Z
-EV000219,FIR,FIR-2025-0064,Fir exhibit supporting case CASE-0057 (narcotics trafficking),/secure_vault/synthetic/fir/case-0057-1.enc,0.78,SYNTHETIC,2025-12-30T04:16:44Z
-EV000220,SURVEILLANCE,SR-CASE-0057-2,Surveillance exhibit supporting case CASE-0057 (narcotics trafficking),/secure_vault/synthetic/surveillance/case-0057-2.enc,0.89,SYNTHETIC,2025-12-28T04:16:44Z
+EV000219,FIR,FIR-2025-0066,Fir exhibit supporting case CASE-0057 (narcotics trafficking),/secure_vault/synthetic/fir/case-0057-1.enc,0.78,SYNTHETIC,2025-12-30T04:16:44Z
 EV000220,SURVEILLANCE,SR-CASE-0057-2,Surveillance exhibit supporting case CASE-0057 (narcotics trafficking),/secure_vault/synthetic/surveillance/case-0057-2.enc,0.89,SYNTHETIC,2025-12-28T04:16:44Z
 EV000221,CDR,CDR-CASE-0058-0,Cdr exhibit supporting case CASE-0058 (fraud),/secure_vault/synthetic/cdr/case-0058-0.enc,0.85,SYNTHETIC,2026-03-21T05:58:39Z
-EV000221,CDR,CDR-CASE-0058-0,Cdr exhibit supporting case CASE-0058 (fraud),/secure_vault/synthetic/cdr/case-0058-0.enc,0.85,SYNTHETIC,2026-03-21T05:58:39Z
-EV000222,FINANCIAL,TXN-CASE-0058-1,Financial exhibit supporting case CASE-0058 (fraud),/secure_vault/synthetic/financial/case-0058-1.enc,0.88,SYNTHETIC,2026-03-13T05:58:39Z
 EV000222,FINANCIAL,TXN-CASE-0058-1,Financial exhibit supporting case CASE-0058 (fraud),/secure_vault/synthetic/financial/case-0058-1.enc,0.88,SYNTHETIC,2026-03-13T05:58:39Z
 EV000223,SURVEILLANCE,SR-CASE-0058-2,Surveillance exhibit supporting case CASE-0058 (fraud),/secure_vault/synthetic/surveillance/case-0058-2.enc,0.85,SYNTHETIC,2026-03-17T05:58:39Z
-EV000223,SURVEILLANCE,SR-CASE-0058-2,Surveillance exhibit supporting case CASE-0058 (fraud),/secure_vault/synthetic/surveillance/case-0058-2.enc,0.85,SYNTHETIC,2026-03-17T05:58:39Z
 EV000224,SURVEILLANCE,SR-CASE-0059-0,Surveillance exhibit supporting case CASE-0059 (cybercrime),/secure_vault/synthetic/surveillance/case-0059-0.enc,0.86,SYNTHETIC,2026-01-04T12:33:24Z
-EV000224,SURVEILLANCE,SR-CASE-0059-0,Surveillance exhibit supporting case CASE-0059 (cybercrime),/secure_vault/synthetic/surveillance/case-0059-0.enc,0.86,SYNTHETIC,2026-01-04T12:33:24Z
-EV000225,FIR,FIR-2025-0066,Fir exhibit supporting case CASE-0059 (cybercrime),/secure_vault/synthetic/fir/case-0059-1.enc,0.8,SYNTHETIC,2025-12-28T12:33:24Z
-EV000225,FIR,FIR-2025-0066,Fir exhibit supporting case CASE-0059 (cybercrime),/secure_vault/synthetic/fir/case-0059-1.enc,0.8,SYNTHETIC,2025-12-28T12:33:24Z
-EV000226,FINANCIAL,TXN-CASE-0059-2,Financial exhibit supporting case CASE-0059 (cybercrime),/secure_vault/synthetic/financial/case-0059-2.enc,0.96,SYNTHETIC,2025-11-30T12:33:24Z
+EV000225,FIR,FIR-2025-0068,Fir exhibit supporting case CASE-0059 (cybercrime),/secure_vault/synthetic/fir/case-0059-1.enc,0.8,SYNTHETIC,2025-12-28T12:33:24Z
 EV000226,FINANCIAL,TXN-CASE-0059-2,Financial exhibit supporting case CASE-0059 (cybercrime),/secure_vault/synthetic/financial/case-0059-2.enc,0.96,SYNTHETIC,2025-11-30T12:33:24Z
 EV000227,FINANCIAL,TXN-CASE-0060-0,Financial exhibit supporting case CASE-0060 (narcotics trafficking),/secure_vault/synthetic/financial/case-0060-0.enc,0.77,SYNTHETIC,2025-10-08T06:23:28Z
-EV000227,FINANCIAL,TXN-CASE-0060-0,Financial exhibit supporting case CASE-0060 (narcotics trafficking),/secure_vault/synthetic/financial/case-0060-0.enc,0.77,SYNTHETIC,2025-10-08T06:23:28Z
+EV000228,CDR,CDR-CASE-0060-1,Cdr exhibit supporting case CASE-0060 (narcotics trafficking),/secure_vault/synthetic/cdr/case-0060-1.enc,0.8,SYNTHETIC,2025-10-07T06:23:28Z
+EV000229,CDR,CDR-CASE-0061-0,Cdr exhibit supporting case CASE-0061 (extortion),/secure_vault/synthetic/cdr/case-0061-0.enc,0.82,SYNTHETIC,2025-03-21T20:32:19Z
+EV000230,INVESTIGATION_NOTE,NOTE-CASE-0061-1,Investigation Note exhibit supporting case CASE-0061 (extortion),/secure_vault/synthetic/investigation_note/case-0061-1.enc,0.84,SYNTHETIC,2025-03-12T20:32:19Z
+EV000231,CDR,CDR-CASE-0061-2,Cdr exhibit supporting case CASE-0061 (extortion),/secure_vault/synthetic/cdr/case-0061-2.enc,0.88,SYNTHETIC,2025-03-29T20:32:19Z
+EV000232,FINANCIAL,TXN-CASE-0062-0,Financial exhibit supporting case CASE-0062 (robbery),/secure_vault/synthetic/financial/case-0062-0.enc,0.96,SYNTHETIC,2025-08-02T01:18:42Z
+EV000233,SURVEILLANCE,SR-CASE-0062-1,Surveillance exhibit supporting case CASE-0062 (robbery),/secure_vault/synthetic/surveillance/case-0062-1.enc,0.76,SYNTHETIC,2025-07-05T01:18:42Z
+EV000234,FIR,FIR-2025-0071,Fir exhibit supporting case CASE-0062 (robbery),/secure_vault/synthetic/fir/case-0062-2.enc,0.85,SYNTHETIC,2025-08-18T01:18:42Z
+EV000235,INVESTIGATION_NOTE,NOTE-CASE-0063-0,Investigation Note exhibit supporting case CASE-0063 (narcotics trafficking),/secure_vault/synthetic/investigation_note/case-0063-0.enc,0.87,SYNTHETIC,2025-12-11T18:11:40Z
+EV000236,FINANCIAL,TXN-CASE-0063-1,Financial exhibit supporting case CASE-0063 (narcotics trafficking),/secure_vault/synthetic/financial/case-0063-1.enc,0.96,SYNTHETIC,2025-12-20T18:11:40Z
+EV000237,INVESTIGATION_NOTE,NOTE-CASE-0063-2,Investigation Note exhibit supporting case CASE-0063 (narcotics trafficking),/secure_vault/synthetic/investigation_note/case-0063-2.enc,0.76,SYNTHETIC,2025-12-22T18:11:40Z
+EV000238,CDR,CDR-CASE-0064-0,Cdr exhibit supporting case CASE-0064 (murder),/secure_vault/synthetic/cdr/case-0064-0.enc,0.95,SYNTHETIC,2026-07-19T16:48:53Z
+EV000239,INVESTIGATION_NOTE,NOTE-CASE-0065-0,Investigation Note exhibit supporting case CASE-0065 (robbery),/secure_vault/synthetic/investigation_note/case-0065-0.enc,0.96,SYNTHETIC,2024-10-03T10:57:18Z
+EV000240,CDR,CDR-CASE-0065-1,Cdr exhibit supporting case CASE-0065 (robbery),/secure_vault/synthetic/cdr/case-0065-1.enc,0.8,SYNTHETIC,2024-09-12T10:57:18Z
+EV000241,FINANCIAL,TXN-CASE-0065-2,Financial exhibit supporting case CASE-0065 (robbery),/secure_vault/synthetic/financial/case-0065-2.enc,0.94,SYNTHETIC,2024-09-19T10:57:18Z
+EV000242,FIR,FIR-2024-0077,Fir exhibit supporting case CASE-0066 (robbery),/secure_vault/synthetic/fir/case-0066-0.enc,0.77,SYNTHETIC,2024-03-13T17:31:50Z
+EV000243,SURVEILLANCE,SR-CASE-0067-0,Surveillance exhibit supporting case CASE-0067 (cybercrime),/secure_vault/synthetic/surveillance/case-0067-0.enc,0.84,SYNTHETIC,2024-08-09T00:46:13Z
+EV000244,FINANCIAL,TXN-CASE-0067-1,Financial exhibit supporting case CASE-0067 (cybercrime),/secure_vault/synthetic/financial/case-0067-1.enc,0.86,SYNTHETIC,2024-08-22T00:46:13Z
+EV000245,SURVEILLANCE,SR-CASE-0068-0,Surveillance exhibit supporting case CASE-0068 (extortion),/secure_vault/synthetic/surveillance/case-0068-0.enc,0.76,SYNTHETIC,2024-11-02T19:11:32Z
+EV000246,CDR,CDR-CASE-0068-1,Cdr exhibit supporting case CASE-0068 (extortion),/secure_vault/synthetic/cdr/case-0068-1.enc,0.77,SYNTHETIC,2024-10-25T19:11:32Z
+EV000247,INVESTIGATION_NOTE,NOTE-CASE-0068-2,Investigation Note exhibit supporting case CASE-0068 (extortion),/secure_vault/synthetic/investigation_note/case-0068-2.enc,0.93,SYNTHETIC,2024-10-12T19:11:32Z
+EV000248,FIR,FIR-2025-0081,Fir exhibit supporting case CASE-0069 (robbery),/secure_vault/synthetic/fir/case-0069-0.enc,0.93,SYNTHETIC,2025-08-20T18:17:22Z
+EV000249,FINANCIAL,TXN-CASE-0070-0,Financial exhibit supporting case CASE-0070 (extortion),/secure_vault/synthetic/financial/case-0070-0.enc,0.84,SYNTHETIC,2024-12-28T08:56:44Z
+EV000250,CDR,CDR-CASE-0070-1,Cdr exhibit supporting case CASE-0070 (extortion),/secure_vault/synthetic/cdr/case-0070-1.enc,0.87,SYNTHETIC,2024-12-24T08:56:44Z
+EV000251,FINANCIAL,TXN-CASE-0070-2,Financial exhibit supporting case CASE-0070 (extortion),/secure_vault/synthetic/financial/case-0070-2.enc,0.76,SYNTHETIC,2024-12-11T08:56:44Z
+EV000252,FINANCIAL,TXN-CASE-0071-0,Financial exhibit supporting case CASE-0071 (money laundering),/secure_vault/synthetic/financial/case-0071-0.enc,0.8,SYNTHETIC,2024-09-16T07:19:36Z
+EV000253,FINANCIAL,TXN-CASE-0071-1,Financial exhibit supporting case CASE-0071 (money laundering),/secure_vault/synthetic/financial/case-0071-1.enc,0.76,SYNTHETIC,2024-10-09T07:19:36Z
+EV000254,CDR,CDR-CASE-0072-0,Cdr exhibit supporting case CASE-0072 (money laundering),/secure_vault/synthetic/cdr/case-0072-0.enc,0.76,SYNTHETIC,2026-07-27T17:54:49Z
+EV000255,INVESTIGATION_NOTE,NOTE-CASE-0073-0,Investigation Note exhibit supporting case CASE-0073 (fraud),/secure_vault/synthetic/investigation_note/case-0073-0.enc,0.85,SYNTHETIC,2025-07-21T13:50:25Z
+EV000256,CDR,CDR-CASE-0073-1,Cdr exhibit supporting case CASE-0073 (fraud),/secure_vault/synthetic/cdr/case-0073-1.enc,0.93,SYNTHETIC,2025-07-29T13:50:25Z
+EV000257,SURVEILLANCE,SR-CASE-0073-2,Surveillance exhibit supporting case CASE-0073 (fraud),/secure_vault/synthetic/surveillance/case-0073-2.enc,0.86,SYNTHETIC,2025-08-10T13:50:25Z
+EV000258,CDR,CDR-CASE-0074-0,Cdr exhibit supporting case CASE-0074 (counterfeiting),/secure_vault/synthetic/cdr/case-0074-0.enc,0.79,SYNTHETIC,2026-07-01T03:06:22Z
+EV000259,CDR,CDR-CASE-0075-0,Cdr exhibit supporting case CASE-0075 (extortion),/secure_vault/synthetic/cdr/case-0075-0.enc,0.94,SYNTHETIC,2025-12-01T05:10:32Z
+EV000260,CDR,CDR-CASE-0076-0,Cdr exhibit supporting case CASE-0076 (money laundering),/secure_vault/synthetic/cdr/case-0076-0.enc,0.92,SYNTHETIC,2025-07-23T12:36:23Z
+EV000261,INVESTIGATION_NOTE,NOTE-CASE-0077-0,Investigation Note exhibit supporting case CASE-0077 (robbery),/secure_vault/synthetic/investigation_note/case-0077-0.enc,0.9,SYNTHETIC,2024-12-08T01:08:34Z
+EV000262,CDR,CDR-CASE-0078-0,Cdr exhibit supporting case CASE-0078 (smuggling),/secure_vault/synthetic/cdr/case-0078-0.enc,0.78,SYNTHETIC,2026-06-27T04:49:40Z
+EV000263,CDR,CDR-CASE-0078-1,Cdr exhibit supporting case CASE-0078 (smuggling),/secure_vault/synthetic/cdr/case-0078-1.enc,0.89,SYNTHETIC,2026-07-20T04:49:40Z
+EV000264,FINANCIAL,TXN-CASE-0079-0,Financial exhibit supporting case CASE-0079 (vehicle theft),/secure_vault/synthetic/financial/case-0079-0.enc,0.9,SYNTHETIC,2025-06-06T17:20:53Z
+EV000265,INVESTIGATION_NOTE,NOTE-CASE-0079-1,Investigation Note exhibit supporting case CASE-0079 (vehicle theft),/secure_vault/synthetic/investigation_note/case-0079-1.enc,0.91,SYNTHETIC,2025-06-04T17:20:53Z
+EV000266,INVESTIGATION_NOTE,NOTE-CASE-0079-2,Investigation Note exhibit supporting case CASE-0079 (vehicle theft),/secure_vault/synthetic/investigation_note/case-0079-2.enc,0.94,SYNTHETIC,2025-04-27T17:20:53Z
+EV000267,FIR,FIR-2024-0096,Fir exhibit supporting case CASE-0080 (extortion),/secure_vault/synthetic/fir/case-0080-0.enc,0.89,SYNTHETIC,2024-11-04T21:53:58Z
+EV000268,FINANCIAL,TXN-CASE-0080-1,Financial exhibit supporting case CASE-0080 (extortion),/secure_vault/synthetic/financial/case-0080-1.enc,0.92,SYNTHETIC,2024-11-06T21:53:58Z
+EV000269,INVESTIGATION_NOTE,NOTE-CASE-0081-0,Investigation Note exhibit supporting case CASE-0081 (counterfeiting),/secure_vault/synthetic/investigation_note/case-0081-0.enc,0.89,SYNTHETIC,2025-10-02T14:04:40Z
+EV000270,INVESTIGATION_NOTE,NOTE-CASE-0081-1,Investigation Note exhibit supporting case CASE-0081 (counterfeiting),/secure_vault/synthetic/investigation_note/case-0081-1.enc,0.88,SYNTHETIC,2025-09-24T14:04:40Z
+EV000271,CDR,CDR-CASE-0081-2,Cdr exhibit supporting case CASE-0081 (counterfeiting),/secure_vault/synthetic/cdr/case-0081-2.enc,0.8,SYNTHETIC,2025-09-30T14:04:40Z
+EV000272,SURVEILLANCE,SR-CASE-0082-0,Surveillance exhibit supporting case CASE-0082 (extortion),/secure_vault/synthetic/surveillance/case-0082-0.enc,0.75,SYNTHETIC,2025-09-01T02:41:59Z
+EV000273,FIR,FIR-2025-0098,Fir exhibit supporting case CASE-0082 (extortion),/secure_vault/synthetic/fir/case-0082-1.enc,0.96,SYNTHETIC,2025-09-05T02:41:59Z
+EV000274,FIR,FIR-2026-0100,Fir exhibit supporting case CASE-0083 (money laundering),/secure_vault/synthetic/fir/case-0083-0.enc,0.96,SYNTHETIC,2026-05-19T21:57:14Z
+EV000275,INVESTIGATION_NOTE,NOTE-CASE-0083-1,Investigation Note exhibit supporting case CASE-0083 (money laundering),/secure_vault/synthetic/investigation_note/case-0083-1.enc,0.95,SYNTHETIC,2026-05-16T21:57:14Z
+EV000276,FIR,FIR-2026-0101,Fir exhibit supporting case CASE-0084 (murder),/secure_vault/synthetic/fir/case-0084-0.enc,0.85,SYNTHETIC,2026-06-15T06:34:34Z
+EV000277,INVESTIGATION_NOTE,NOTE-CASE-0084-1,Investigation Note exhibit supporting case CASE-0084 (murder),/secure_vault/synthetic/investigation_note/case-0084-1.enc,0.76,SYNTHETIC,2026-07-01T06:34:34Z
+EV000278,CDR,CDR-CASE-0085-0,Cdr exhibit supporting case CASE-0085 (money laundering),/secure_vault/synthetic/cdr/case-0085-0.enc,0.85,SYNTHETIC,2025-01-31T02:21:39Z
+EV000279,SURVEILLANCE,SR-CASE-0085-1,Surveillance exhibit supporting case CASE-0085 (money laundering),/secure_vault/synthetic/surveillance/case-0085-1.enc,0.91,SYNTHETIC,2025-01-21T02:21:39Z
+EV000280,CDR,CDR-CASE-0086-0,Cdr exhibit supporting case CASE-0086 (robbery),/secure_vault/synthetic/cdr/case-0086-0.enc,0.86,SYNTHETIC,2025-10-09T07:20:31Z
+EV000281,CDR,CDR-CASE-0086-1,Cdr exhibit supporting case CASE-0086 (robbery),/secure_vault/synthetic/cdr/case-0086-1.enc,0.94,SYNTHETIC,2025-09-28T07:20:31Z
+EV000282,FINANCIAL,TXN-CASE-0087-0,Financial exhibit supporting case CASE-0087 (counterfeiting),/secure_vault/synthetic/financial/case-0087-0.enc,0.75,SYNTHETIC,2024-07-26T15:45:12Z
+EV000283,CDR,CDR-CASE-0088-0,Cdr exhibit supporting case CASE-0088 (money laundering),/secure_vault/synthetic/cdr/case-0088-0.enc,0.91,SYNTHETIC,2025-12-09T07:38:20Z
+EV000284,INVESTIGATION_NOTE,NOTE-CASE-0088-1,Investigation Note exhibit supporting case CASE-0088 (money laundering),/secure_vault/synthetic/investigation_note/case-0088-1.enc,0.89,SYNTHETIC,2025-12-23T07:38:20Z
+EV000285,SURVEILLANCE,SR-CASE-0089-0,Surveillance exhibit supporting case CASE-0089 (robbery),/secure_vault/synthetic/surveillance/case-0089-0.enc,0.75,SYNTHETIC,2025-11-05T14:07:42Z
+EV000286,SURVEILLANCE,SR-CASE-0089-1,Surveillance exhibit supporting case CASE-0089 (robbery),/secure_vault/synthetic/surveillance/case-0089-1.enc,0.93,SYNTHETIC,2025-12-13T14:07:42Z
+EV000287,CDR,CDR-CASE-0090-0,Cdr exhibit supporting case CASE-0090 (money laundering),/secure_vault/synthetic/cdr/case-0090-0.enc,0.78,SYNTHETIC,2024-02-19T05:00:50Z
+EV000288,FIR,FIR-2024-0107,Fir exhibit supporting case CASE-0090 (money laundering),/secure_vault/synthetic/fir/case-0090-1.enc,0.76,SYNTHETIC,2024-03-15T05:00:50Z
+EV000289,INVESTIGATION_NOTE,NOTE-CASE-9091-0,Investigation Note exhibit supporting case CASE-9091 (extortion),/secure_vault/synthetic/investigation_note/case-9091-0.enc,0.84,SYNTHETIC,2024-10-23T06:15:34Z
+EV000290,INVESTIGATION_NOTE,NOTE-CASE-9091-1,Investigation Note exhibit supporting case CASE-9091 (extortion),/secure_vault/synthetic/investigation_note/case-9091-1.enc,0.82,SYNTHETIC,2024-10-30T06:15:34Z

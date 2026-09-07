@@ -1,9 +1,8 @@
 id,user_id,title,body,is_read,created_at
-NT000001,US000001,New New Hidden Link alert,"Multi-hop chain discovered: Alexander Chanda links to North Star Outfit across 5 hops, each hop supported by a distinct evidence record.",False,2026-02-12T11:42:41Z
-NT000002,US000001,New Financial Anomaly alert,"Rs. 24,950,000 moved through account XXXX8272 on 2025-10-20 (13 transfers) versus a daily median of Rs. 2,000,000 (12.5x).",False,2025-06-29T19:15:37Z
-NT000003,US000002,New New Hidden Link alert,"Multi-hop chain discovered: Ati Tank links to Blue Orchid Cartel across 6 hops, each hop supported by a distinct evidence record.",False,2026-02-26T21:36:13Z
-NT000004,US000002,New New Hidden Link alert,"Multi-hop chain discovered: Amaira Chana links to Cobra Syndicate across 6 hops, each hop supported by a distinct evidence record.",False,2025-06-02T07:15:25Z
-NT000005,US000002,New New Hidden Link alert,"Multi-hop chain discovered: Tamanna Misra links to Silver Line Network across 5 hops, each hop supported by a distinct evidence record.",False,2025-12-27T04:11:34Z
-NT000006,US000003,New New Hidden Link alert,"Multi-hop chain discovered: Manthan Garg links to Steel Falcon Gang across 5 hops, each hop supported by a distinct evidence record.",False,2026-07-26T07:26:00Z
-NT000007,US000003,New Communication Burst alert,"Ravi Kumar: 23 outgoing calls recorded on 2024-10-18, compared with a baseline average of 1.0 calls/day (23.0x increase).",True,2025-05-19T21:03:03Z
-NT000008,US000003,New New Hidden Link alert,"Multi-hop chain discovered: Ekiya Savant links to Eastern Arc Outfit across 5 hops, each hop supported by a distinct evidence record.",True,2025-11-14T13:49:17Z
+NT000001,US000001,New New Hidden Link alert,"Multi-hop chain discovered: Diya D’Alia links to Harbour Road Group across 6 hops, each hop supported by a distinct evidence record.",True,2026-08-30T03:15:38Z
+NT000002,US000001,New New Hidden Link alert,"Multi-hop chain discovered: Alexander Chanda links to North Star Outfit across 5 hops, each hop supported by a distinct evidence record.",True,2024-01-14T07:37:22Z
+NT000003,US000002,New New Hidden Link alert,"Multi-hop chain discovered: Amaira Chana links to Cobra Syndicate across 6 hops, each hop supported by a distinct evidence record.",False,2025-12-15T22:55:44Z
+NT000004,US000002,New New Hidden Link alert,"Multi-hop chain discovered: Ryan Warrior links to Red Sand Gang across 6 hops, each hop supported by a distinct evidence record.",True,2024-11-29T05:07:53Z
+NT000005,US000002,New New Hidden Link alert,"Multi-hop chain discovered: Simon Shah links to Delta Cartel across 5 hops, each hop supported by a distinct evidence record.",True,2025-03-13T14:22:45Z
+NT000006,US000003,New Unusual Geographic Activity alert,Vehicle TN39 JX 9364 recorded at Gandhipuram Warehouse Complex and Kajamalai Junction (92 km apart) within 68 minutes on 2024-04-19.,False,2025-12-03T02:09:10Z
+NT000007,US000003,New New Hidden Link alert,"Multi-hop chain discovered: Simon Shah links to Delta Cartel across 5 hops, each hop supported by a distinct evidence record.",False,2025-11-19T15:22:29Z

@@ -248,8 +248,8 @@ def generate_evidence_chain(ctx):
                 "created_at": min(
                     case["opened_at"] + timedelta(days=rng.randint(1, 45)), epoch_end),
             }
+            # NOTE: evidence_rows IS core.DATA["evidence"]; add_row appends.
             core.add_row("evidence", row)
-            evidence_rows.append(row)
 
     for e in evidence_rows:
         for k, v in [

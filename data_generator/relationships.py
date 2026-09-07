@@ -321,8 +321,9 @@ def _ensure_org_and_location(ctx, org_name, loc_name, district):
             "latitude": 12.6819, "longitude": 79.9864,
             "data_source": config.DATA_SOURCE, "created_at": core.now_utc(),
         }
+        # NOTE: ctx["locations"]["locations"] IS core.DATA["locations"]
+        # (same list object from make_locations), so append only via add_row.
         core.add_row("locations", loc)
-        ctx["locations"]["locations"].append(loc)
         ctx["locations"]["loc_by_id"][loc["id"]] = loc
     return org, loc
 

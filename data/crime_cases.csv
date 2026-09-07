@@ -1,92 +1,92 @@
 id,case_number,title,crime_type,district,status,opened_at,data_source,created_at
-CS000001,CASE-0001,Operation Bluefin — Money Laundering probe (Salem),money laundering,Salem,under_investigation,2024-09-18T10:23:03Z,SYNTHETIC,2026-09-07T05:25:48.238999Z
-CS000002,CASE-0002,Murder racket dismantled in Chennai,murder,Chennai,under_investigation,2025-12-26T09:06:04Z,SYNTHETIC,2026-09-07T05:25:48.239215Z
-CS000003,CASE-0003,Vehicle Theft syndicate in ,vehicle theft,Chennai,closed,2025-07-26T18:14:31Z,SYNTHETIC,2026-09-07T05:25:48.239380Z
-CS000004,CASE-0004,Investigation into Extortion at Adyar,extortion,Kancheepuram,under_investigation,2024-09-07T08:03:34Z,SYNTHETIC,2026-09-07T05:25:48.239533Z
-CS000005,CASE-0005,Murder corridor case — Thanjavur,murder,Thanjavur,open,2024-11-24T20:41:01Z,SYNTHETIC,2026-09-07T05:25:48.239685Z
-CS000006,CASE-0006,Operation Bluefin — Smuggling probe (Madurai),smuggling,Madurai,open,2024-10-20T09:23:35Z,SYNTHETIC,2026-09-07T05:25:48.239845Z
-CS000007,CASE-0007,Narcotics Trafficking racket dismantled in Coimbatore,narcotics trafficking,Coimbatore,open,2025-07-20T16:40:35Z,SYNTHETIC,2026-09-07T05:25:48.240062Z
-CS000008,CASE-0008,Fraud syndicate in ,fraud,Coimbatore,under_investigation,2026-06-28T04:25:44Z,SYNTHETIC,2026-09-07T05:25:48.240225Z
-CS000009,CASE-0009,Investigation into Money Laundering at Keezhakkarai,money laundering,Pudukkottai,closed,2024-02-28T06:06:31Z,SYNTHETIC,2026-09-07T05:25:48.240368Z
-CS000010,CASE-0010,Smuggling corridor case — Chennai,smuggling,Chennai,open,2026-08-13T02:49:53Z,SYNTHETIC,2026-09-07T05:25:48.240514Z
-CS000011,CASE-0011,Operation Ebonwing — Smuggling probe (Ariyalur),smuggling,Ariyalur,open,2026-03-12T20:05:48Z,SYNTHETIC,2026-09-07T05:25:48.240744Z
-CS000012,CASE-0012,Narcotics Trafficking racket dismantled in Madurai,narcotics trafficking,Madurai,under_investigation,2025-12-25T23:28:34Z,SYNTHETIC,2026-09-07T05:25:48.240957Z
-CS000013,CASE-0013,Extortion syndicate linked to ,extortion,Chennai,under_investigation,2024-08-20T22:28:43Z,SYNTHETIC,2026-09-07T05:25:48.241177Z
-CS000014,CASE-0014,Investigation into Counterfeiting at Tambaram,counterfeiting,Erode,open,2024-05-28T19:17:02Z,SYNTHETIC,2026-09-07T05:25:48.241816Z
-CS000015,CASE-0015,Smuggling corridor case — Tiruchchirappalli,smuggling,Tiruchchirappalli,open,2025-02-04T10:18:31Z,SYNTHETIC,2026-09-07T05:25:48.241971Z
-CS000016,CASE-0016,Operation Bluewater — Extortion probe (Chengalpattu),extortion,Chengalpattu,open,2026-08-02T03:29:14Z,SYNTHETIC,2026-09-07T05:25:48.242190Z
-CS000017,CASE-0017,Cybercrime racket dismantled in Tiruvannamalai,cybercrime,Tiruvannamalai,open,2024-10-16T19:21:38Z,SYNTHETIC,2026-09-07T05:25:48.242404Z
-CS000018,CASE-0018,Smuggling syndicate in ,smuggling,Erode,open,2026-03-20T19:47:56Z,SYNTHETIC,2026-09-07T05:25:48.242549Z
-CS000019,CASE-0019,Investigation into Smuggling at Bharathi Bazaar,smuggling,Tiruppur,under_investigation,2025-06-16T04:26:24Z,SYNTHETIC,2026-09-07T05:25:48.242703Z
-CS000020,CASE-0020,Counterfeiting corridor case — Madurai,counterfeiting,Madurai,open,2025-12-18T21:36:35Z,SYNTHETIC,2026-09-07T05:25:48.242898Z
-CS000021,CASE-0021,Operation Ebonwing — Robbery probe (Kancheepuram),robbery,Kancheepuram,open,2024-03-04T19:32:41Z,SYNTHETIC,2026-09-07T05:25:48.243106Z
-CS000022,CASE-0022,Narcotics Trafficking racket dismantled in Thoothukudi,narcotics trafficking,Thoothukudi,under_investigation,2024-07-24T18:41:53Z,SYNTHETIC,2026-09-07T05:25:48.243255Z
-CS000023,CASE-0023,Money Laundering syndicate linked to ,money laundering,Villupuram,under_investigation,2025-04-23T23:13:57Z,SYNTHETIC,2026-09-07T05:25:48.243444Z
-CS000024,CASE-0024,Investigation into Vehicle Theft at Sulur,vehicle theft,Tiruppur,closed,2024-02-13T17:54:12Z,SYNTHETIC,2026-09-07T05:25:48.243651Z
-CS000025,CASE-0025,Smuggling corridor case — Coimbatore,smuggling,Coimbatore,open,2025-06-19T11:35:52Z,SYNTHETIC,2026-09-07T05:25:48.243799Z
-CS000026,CASE-0026,Operation Silverhawk — Money Laundering probe (Chennai),money laundering,Chennai,closed,2024-09-23T20:49:52Z,SYNTHETIC,2026-09-07T05:25:48.244017Z
-CS000027,CASE-0027,Extortion racket dismantled in Chennai,extortion,Chennai,under_investigation,2025-02-21T16:30:00Z,SYNTHETIC,2026-09-07T05:25:48.244254Z
-CS000028,CASE-0028,Narcotics Trafficking syndicate linked to ,narcotics trafficking,Erode,open,2026-03-07T03:40:50Z,SYNTHETIC,2026-09-07T05:25:48.244456Z
-CS000029,CASE-0029,Investigation into Extortion at Vilachery,extortion,Tiruchchirappalli,under_investigation,2024-08-30T16:05:38Z,SYNTHETIC,2026-09-07T05:25:48.244669Z
-CS000030,CASE-0030,Narcotics Trafficking corridor case — Tiruchchirappalli,narcotics trafficking,Tiruchchirappalli,open,2026-03-04T06:13:12Z,SYNTHETIC,2026-09-07T05:25:48.244811Z
-CS000031,CASE-0031,Operation Grayshield — Money Laundering probe (Pudukkottai),money laundering,Pudukkottai,open,2026-08-01T04:56:20Z,SYNTHETIC,2026-09-07T05:25:48.244956Z
-CS000032,CASE-0032,Kidnapping racket dismantled in Madurai,kidnapping,Madurai,closed,2026-05-22T04:05:40Z,SYNTHETIC,2026-09-07T05:25:48.245170Z
-CS000033,CASE-0033,Extortion syndicate linked to ,extortion,Madurai,open,2024-10-12T20:54:19Z,SYNTHETIC,2026-09-07T05:25:48.245315Z
-CS000034,CASE-0034,Investigation into Fraud at Meenakshi Nagar,fraud,Sivaganga,open,2024-10-26T13:54:19Z,SYNTHETIC,2026-09-07T05:25:48.245515Z
-CS000035,CASE-0035,Smuggling corridor case — Perambalur,smuggling,Perambalur,under_investigation,2024-04-18T06:06:52Z,SYNTHETIC,2026-09-07T05:25:48.245658Z
-CS000036,CASE-0036,Operation Ebonwing — Robbery probe (Coimbatore),robbery,Coimbatore,under_investigation,2025-04-17T02:41:28Z,SYNTHETIC,2026-09-07T05:25:48.245856Z
-CS000037,CASE-0037,Counterfeiting racket dismantled in Thoothukudi,counterfeiting,Thoothukudi,closed,2025-10-02T13:44:16Z,SYNTHETIC,2026-09-07T05:25:48.246004Z
-CS000038,CASE-0038,Extortion syndicate in ,extortion,Chengalpattu,open,2026-03-26T16:00:15Z,SYNTHETIC,2026-09-07T05:25:48.246154Z
-CS000039,CASE-0039,Investigation into Extortion at Sundarankottai,extortion,Nilgiris,under_investigation,2024-05-17T08:40:23Z,SYNTHETIC,2026-09-07T05:25:48.246282Z
-CS000040,CASE-0040,Narcotics Trafficking corridor case — Vellore,narcotics trafficking,Vellore,open,2025-03-05T03:15:34Z,SYNTHETIC,2026-09-07T05:25:48.246419Z
-CS000041,CASE-0041,Operation Sandstorm — Cybercrime probe (Thanjavur),cybercrime,Thanjavur,open,2025-01-04T10:51:27Z,SYNTHETIC,2026-09-07T05:25:48.246560Z
-CS000042,CASE-0042,Murder racket dismantled in Madurai,murder,Madurai,under_investigation,2025-05-06T22:12:28Z,SYNTHETIC,2026-09-07T05:25:48.246710Z
-CS000043,CASE-0043,Fraud syndicate in ,fraud,Madurai,under_investigation,2025-09-30T13:23:21Z,SYNTHETIC,2026-09-07T05:25:48.246853Z
-CS000044,CASE-0044,Investigation into Cybercrime at Pappanaickenpalayam,cybercrime,Erode,closed,2024-09-25T16:49:56Z,SYNTHETIC,2026-09-07T05:25:48.246994Z
-CS000045,CASE-0045,Robbery corridor case — Salem,robbery,Salem,open,2026-05-04T17:18:39Z,SYNTHETIC,2026-09-07T05:25:48.247133Z
-CS000046,CASE-0046,Operation Cobra — Smuggling probe (Villupuram),smuggling,Villupuram,under_investigation,2026-06-07T00:44:01Z,SYNTHETIC,2026-09-07T05:25:48.247345Z
-CS000047,CASE-0047,Murder racket dismantled in Salem,murder,Salem,under_investigation,2024-12-30T23:09:48Z,SYNTHETIC,2026-09-07T05:25:48.247552Z
-CS000048,CASE-0048,Smuggling syndicate in ,smuggling,Coimbatore,under_investigation,2026-05-08T06:08:16Z,SYNTHETIC,2026-09-07T05:25:48.247693Z
-CS000049,CASE-0049,Investigation into Narcotics Trafficking at Estancia,narcotics trafficking,Chennai,under_investigation,2025-11-22T17:57:25Z,SYNTHETIC,2026-09-07T05:25:48.247842Z
-CS000050,CASE-0050,Money Laundering corridor case — Madurai,money laundering,Madurai,open,2025-10-25T00:23:15Z,SYNTHETIC,2026-09-07T05:25:48.248058Z
-CS000051,CASE-0051,Operation Redline — Money Laundering probe (Coimbatore),money laundering,Coimbatore,open,2024-11-11T13:19:52Z,SYNTHETIC,2026-09-07T05:25:48.248276Z
-CS000052,CASE-0052,Money Laundering racket dismantled in Chennai,money laundering,Chennai,open,2024-01-24T06:05:05Z,SYNTHETIC,2026-09-07T05:25:48.248448Z
-CS000053,CASE-0053,Robbery syndicate in ,robbery,Salem,under_investigation,2025-11-27T14:38:31Z,SYNTHETIC,2026-09-07T05:25:48.248640Z
-CS000054,CASE-0054,Investigation into Extortion at Mylapore,extortion,Salem,open,2026-03-16T11:33:00Z,SYNTHETIC,2026-09-07T05:25:48.248788Z
-CS000055,CASE-0055,Robbery corridor case — Chengalpattu,robbery,Chengalpattu,closed,2024-09-27T12:02:45Z,SYNTHETIC,2026-09-07T05:25:48.248937Z
-CS000056,CASE-0056,Operation Hardcourt — Fraud probe (Coimbatore),fraud,Coimbatore,open,2024-05-16T00:35:46Z,SYNTHETIC,2026-09-07T05:25:48.249080Z
-CS000057,CASE-0057,Narcotics Trafficking racket dismantled in Chennai,narcotics trafficking,Chennai,closed,2025-12-10T04:16:44Z,SYNTHETIC,2026-09-07T05:25:48.249225Z
-CS000058,CASE-0058,Fraud syndicate in ,fraud,Theni,open,2026-02-15T05:58:39Z,SYNTHETIC,2026-09-07T05:25:48.249432Z
-CS000059,CASE-0059,Investigation into Cybercrime at Washermenpet,cybercrime,Salem,open,2025-11-29T12:33:24Z,SYNTHETIC,2026-09-07T05:25:48.249575Z
-CS000060,CASE-0060,Narcotics Trafficking corridor case — Kanniyakumari,narcotics trafficking,Kanniyakumari,open,2025-09-05T06:23:28Z,SYNTHETIC,2026-09-07T05:25:48.249724Z
-CS000061,CASE-0061,Operation Redline — Extortion probe (Kancheepuram),extortion,Kancheepuram,open,2025-03-04T20:32:19Z,SYNTHETIC,2026-09-07T05:25:48.249999Z
-CS000062,CASE-0062,Robbery racket dismantled in Erode,robbery,Erode,open,2025-07-04T01:18:42Z,SYNTHETIC,2026-09-07T05:25:48.250162Z
-CS000063,CASE-0063,Narcotics Trafficking syndicate linked to ,narcotics trafficking,Chengalpattu,open,2025-12-07T18:11:40Z,SYNTHETIC,2026-09-07T05:25:48.250312Z
-CS000064,CASE-0064,Investigation into Murder at Palayamkottai,murder,Thanjavur,under_investigation,2026-07-11T16:48:53Z,SYNTHETIC,2026-09-07T05:25:48.250520Z
-CS000065,CASE-0065,Robbery corridor case — Erode,robbery,Erode,open,2024-08-30T10:57:18Z,SYNTHETIC,2026-09-07T05:25:48.250663Z
-CS000066,CASE-0066,Operation Sandstorm — Robbery probe (Chengalpattu),robbery,Chengalpattu,open,2024-03-03T17:31:50Z,SYNTHETIC,2026-09-07T05:25:48.250794Z
-CS000067,CASE-0067,Cybercrime racket dismantled in Tiruchchirappalli,cybercrime,Tiruchchirappalli,open,2024-07-24T00:46:13Z,SYNTHETIC,2026-09-07T05:25:48.250922Z
-CS000068,CASE-0068,Extortion syndicate in ,extortion,Madurai,under_investigation,2024-10-02T19:11:32Z,SYNTHETIC,2026-09-07T05:25:48.251306Z
-CS000069,CASE-0069,Investigation into Robbery at Gandhipuram,robbery,Kancheepuram,open,2025-07-21T18:17:22Z,SYNTHETIC,2026-09-07T05:25:48.251430Z
-CS000070,CASE-0070,Extortion corridor case — Kancheepuram,extortion,Kancheepuram,closed,2024-11-29T08:56:44Z,SYNTHETIC,2026-09-07T05:25:48.251556Z
-CS000071,CASE-0071,Operation Starlit — Money Laundering probe (Thiruvarur),money laundering,Thiruvarur,under_investigation,2024-09-15T07:19:36Z,SYNTHETIC,2026-09-07T05:25:48.251741Z
-CS000072,CASE-0072,Money Laundering racket dismantled in Coimbatore,money laundering,Coimbatore,closed,2026-06-21T17:54:49Z,SYNTHETIC,2026-09-07T05:25:48.251867Z
-CS000073,CASE-0073,Fraud syndicate in ,fraud,Salem,open,2025-07-17T13:50:25Z,SYNTHETIC,2026-09-07T05:25:48.251988Z
-CS000074,CASE-0074,Investigation into Counterfeiting at Bharathi Bazaar,counterfeiting,Erode,under_investigation,2026-05-24T03:06:22Z,SYNTHETIC,2026-09-07T05:25:48.252107Z
-CS000075,CASE-0075,Extortion corridor case — Virudhunagar,extortion,Virudhunagar,open,2025-10-31T05:10:32Z,SYNTHETIC,2026-09-07T05:25:48.252287Z
-CS000076,CASE-0076,Operation Windchime — Money Laundering probe (Theni),money laundering,Theni,under_investigation,2025-06-21T12:36:23Z,SYNTHETIC,2026-09-07T05:25:48.252405Z
-CS000077,CASE-0077,Robbery racket dismantled in Villupuram,robbery,Villupuram,open,2024-11-06T01:08:34Z,SYNTHETIC,2026-09-07T05:25:48.252568Z
-CS000078,CASE-0078,Smuggling syndicate linked to ,smuggling,Madurai,open,2026-06-22T04:49:40Z,SYNTHETIC,2026-09-07T05:25:48.252688Z
-CS000079,CASE-0079,Investigation into Vehicle Theft at Royapuram,vehicle theft,Tiruchchirappalli,open,2025-04-23T17:20:53Z,SYNTHETIC,2026-09-07T05:25:48.252847Z
-CS000080,CASE-0080,Extortion corridor case — Chengalpattu,extortion,Chengalpattu,under_investigation,2024-10-13T21:53:58Z,SYNTHETIC,2026-09-07T05:25:48.252975Z
-CS000081,CASE-0081,Operation Ironbite — Counterfeiting probe (Erode),counterfeiting,Erode,under_investigation,2025-09-15T14:04:40Z,SYNTHETIC,2026-09-07T05:25:48.253138Z
-CS000082,CASE-0082,Extortion racket dismantled in Ramanathapuram,extortion,Ramanathapuram,open,2025-08-10T02:41:59Z,SYNTHETIC,2026-09-07T05:25:48.253262Z
-CS000083,CASE-0083,Money Laundering syndicate in ,money laundering,Kanniyakumari,open,2026-05-03T21:57:14Z,SYNTHETIC,2026-09-07T05:25:48.253439Z
-CS000084,CASE-0084,Investigation into Murder at Sulur,murder,Salem,under_investigation,2026-06-10T06:34:34Z,SYNTHETIC,2026-09-07T05:25:48.253555Z
-CS000085,CASE-0085,Money Laundering corridor case — Erode,money laundering,Erode,closed,2025-01-12T02:21:39Z,SYNTHETIC,2026-09-07T05:25:48.253676Z
-CS000086,CASE-0086,Operation Windchime — Robbery probe (Coimbatore),robbery,Coimbatore,open,2025-08-31T07:20:31Z,SYNTHETIC,2026-09-07T05:25:48.253847Z
-CS000087,CASE-0087,Counterfeiting racket dismantled in Erode,counterfeiting,Erode,open,2024-07-25T15:45:12Z,SYNTHETIC,2026-09-07T05:25:48.253965Z
-CS000088,CASE-0088,Money Laundering syndicate linked to ,money laundering,Thanjavur,open,2025-11-25T07:38:20Z,SYNTHETIC,2026-09-07T05:25:48.254143Z
-CS000089,CASE-0089,Investigation into Robbery at Sundarankottai,robbery,Vellore,under_investigation,2025-11-01T14:07:42Z,SYNTHETIC,2026-09-07T05:25:48.254316Z
-CS000090,CASE-0090,Money Laundering corridor case — Thanjavur,money laundering,Thanjavur,open,2024-02-15T05:00:50Z,SYNTHETIC,2026-09-07T05:25:48.255114Z
-CS000091,CASE-9091,Cross-district extortion - hidden network probe,extortion,Chengalpattu,open,2024-10-14T06:15:34Z,SYNTHETIC,2026-09-07T05:25:48.258119Z
+CS000001,CASE-0001,Operation Bluefin — Money Laundering probe (Salem),money laundering,Salem,under_investigation,2024-09-18T10:23:03Z,SYNTHETIC,2026-09-07T05:41:13.203655Z
+CS000002,CASE-0002,Murder racket dismantled in Chennai,murder,Chennai,under_investigation,2025-12-26T09:06:04Z,SYNTHETIC,2026-09-07T05:41:13.203851Z
+CS000003,CASE-0003,Vehicle Theft syndicate in ,vehicle theft,Chennai,closed,2025-07-26T18:14:31Z,SYNTHETIC,2026-09-07T05:41:13.203997Z
+CS000004,CASE-0004,Investigation into Extortion at Adyar,extortion,Kancheepuram,under_investigation,2024-09-07T08:03:34Z,SYNTHETIC,2026-09-07T05:41:13.204127Z
+CS000005,CASE-0005,Murder corridor case — Thanjavur,murder,Thanjavur,open,2024-11-24T20:41:01Z,SYNTHETIC,2026-09-07T05:41:13.204270Z
+CS000006,CASE-0006,Operation Bluefin — Smuggling probe (Madurai),smuggling,Madurai,open,2024-10-20T09:23:35Z,SYNTHETIC,2026-09-07T05:41:13.204425Z
+CS000007,CASE-0007,Narcotics Trafficking racket dismantled in Coimbatore,narcotics trafficking,Coimbatore,open,2025-07-20T16:40:35Z,SYNTHETIC,2026-09-07T05:41:13.204617Z
+CS000008,CASE-0008,Fraud syndicate in ,fraud,Coimbatore,under_investigation,2026-06-28T04:25:44Z,SYNTHETIC,2026-09-07T05:41:13.204743Z
+CS000009,CASE-0009,Investigation into Money Laundering at Keezhakkarai,money laundering,Pudukkottai,closed,2024-02-28T06:06:31Z,SYNTHETIC,2026-09-07T05:41:13.204867Z
+CS000010,CASE-0010,Smuggling corridor case — Chennai,smuggling,Chennai,open,2026-08-13T02:49:53Z,SYNTHETIC,2026-09-07T05:41:13.204996Z
+CS000011,CASE-0011,Operation Ebonwing — Smuggling probe (Ariyalur),smuggling,Ariyalur,open,2026-03-12T20:05:48Z,SYNTHETIC,2026-09-07T05:41:13.205173Z
+CS000012,CASE-0012,Narcotics Trafficking racket dismantled in Madurai,narcotics trafficking,Madurai,under_investigation,2025-12-25T23:28:34Z,SYNTHETIC,2026-09-07T05:41:13.205362Z
+CS000013,CASE-0013,Extortion syndicate linked to ,extortion,Chennai,under_investigation,2024-08-20T22:28:43Z,SYNTHETIC,2026-09-07T05:41:13.205551Z
+CS000014,CASE-0014,Investigation into Counterfeiting at Tambaram,counterfeiting,Erode,open,2024-05-28T19:17:02Z,SYNTHETIC,2026-09-07T05:41:13.205728Z
+CS000015,CASE-0015,Smuggling corridor case — Tiruchchirappalli,smuggling,Tiruchchirappalli,open,2025-02-04T10:18:31Z,SYNTHETIC,2026-09-07T05:41:13.205852Z
+CS000016,CASE-0016,Operation Bluewater — Extortion probe (Chengalpattu),extortion,Chengalpattu,open,2026-08-02T03:29:14Z,SYNTHETIC,2026-09-07T05:41:13.206024Z
+CS000017,CASE-0017,Cybercrime racket dismantled in Tiruvannamalai,cybercrime,Tiruvannamalai,open,2024-10-16T19:21:38Z,SYNTHETIC,2026-09-07T05:41:13.206209Z
+CS000018,CASE-0018,Smuggling syndicate in ,smuggling,Erode,open,2026-03-20T19:47:56Z,SYNTHETIC,2026-09-07T05:41:13.206347Z
+CS000019,CASE-0019,Investigation into Smuggling at Bharathi Bazaar,smuggling,Tiruppur,under_investigation,2025-06-16T04:26:24Z,SYNTHETIC,2026-09-07T05:41:13.206477Z
+CS000020,CASE-0020,Counterfeiting corridor case — Madurai,counterfeiting,Madurai,open,2025-12-18T21:36:35Z,SYNTHETIC,2026-09-07T05:41:13.206651Z
+CS000021,CASE-0021,Operation Ebonwing — Robbery probe (Kancheepuram),robbery,Kancheepuram,open,2024-03-04T19:32:41Z,SYNTHETIC,2026-09-07T05:41:13.206832Z
+CS000022,CASE-0022,Narcotics Trafficking racket dismantled in Thoothukudi,narcotics trafficking,Thoothukudi,under_investigation,2024-07-24T18:41:53Z,SYNTHETIC,2026-09-07T05:41:13.206960Z
+CS000023,CASE-0023,Money Laundering syndicate linked to ,money laundering,Villupuram,under_investigation,2025-04-23T23:13:57Z,SYNTHETIC,2026-09-07T05:41:13.207128Z
+CS000024,CASE-0024,Investigation into Vehicle Theft at Sulur,vehicle theft,Tiruppur,closed,2024-02-13T17:54:12Z,SYNTHETIC,2026-09-07T05:41:13.207320Z
+CS000025,CASE-0025,Smuggling corridor case — Coimbatore,smuggling,Coimbatore,open,2025-06-19T11:35:52Z,SYNTHETIC,2026-09-07T05:41:13.207453Z
+CS000026,CASE-0026,Operation Silverhawk — Money Laundering probe (Chennai),money laundering,Chennai,closed,2024-09-23T20:49:52Z,SYNTHETIC,2026-09-07T05:41:13.207642Z
+CS000027,CASE-0027,Extortion racket dismantled in Chennai,extortion,Chennai,under_investigation,2025-02-21T16:30:00Z,SYNTHETIC,2026-09-07T05:41:13.207814Z
+CS000028,CASE-0028,Narcotics Trafficking syndicate linked to ,narcotics trafficking,Erode,open,2026-03-07T03:40:50Z,SYNTHETIC,2026-09-07T05:41:13.207985Z
+CS000029,CASE-0029,Investigation into Extortion at Vilachery,extortion,Tiruchchirappalli,under_investigation,2024-08-30T16:05:38Z,SYNTHETIC,2026-09-07T05:41:13.208163Z
+CS000030,CASE-0030,Narcotics Trafficking corridor case — Tiruchchirappalli,narcotics trafficking,Tiruchchirappalli,open,2026-03-04T06:13:12Z,SYNTHETIC,2026-09-07T05:41:13.208284Z
+CS000031,CASE-0031,Operation Grayshield — Money Laundering probe (Pudukkottai),money laundering,Pudukkottai,open,2026-08-01T04:56:20Z,SYNTHETIC,2026-09-07T05:41:13.208436Z
+CS000032,CASE-0032,Kidnapping racket dismantled in Madurai,kidnapping,Madurai,closed,2026-05-22T04:05:40Z,SYNTHETIC,2026-09-07T05:41:13.208625Z
+CS000033,CASE-0033,Extortion syndicate linked to ,extortion,Madurai,open,2024-10-12T20:54:19Z,SYNTHETIC,2026-09-07T05:41:13.208751Z
+CS000034,CASE-0034,Investigation into Fraud at Meenakshi Nagar,fraud,Sivaganga,open,2024-10-26T13:54:19Z,SYNTHETIC,2026-09-07T05:41:13.208936Z
+CS000035,CASE-0035,Smuggling corridor case — Perambalur,smuggling,Perambalur,under_investigation,2024-04-18T06:06:52Z,SYNTHETIC,2026-09-07T05:41:13.209042Z
+CS000036,CASE-0036,Operation Ebonwing — Robbery probe (Coimbatore),robbery,Coimbatore,under_investigation,2025-04-17T02:41:28Z,SYNTHETIC,2026-09-07T05:41:13.209163Z
+CS000037,CASE-0037,Counterfeiting racket dismantled in Thoothukudi,counterfeiting,Thoothukudi,closed,2025-10-02T13:44:16Z,SYNTHETIC,2026-09-07T05:41:13.209245Z
+CS000038,CASE-0038,Extortion syndicate in ,extortion,Chengalpattu,open,2026-03-26T16:00:15Z,SYNTHETIC,2026-09-07T05:41:13.209323Z
+CS000039,CASE-0039,Investigation into Extortion at Sundarankottai,extortion,Nilgiris,under_investigation,2024-05-17T08:40:23Z,SYNTHETIC,2026-09-07T05:41:13.209405Z
+CS000040,CASE-0040,Narcotics Trafficking corridor case — Vellore,narcotics trafficking,Vellore,open,2025-03-05T03:15:34Z,SYNTHETIC,2026-09-07T05:41:13.209487Z
+CS000041,CASE-0041,Operation Sandstorm — Cybercrime probe (Thanjavur),cybercrime,Thanjavur,open,2025-01-04T10:51:27Z,SYNTHETIC,2026-09-07T05:41:13.209568Z
+CS000042,CASE-0042,Murder racket dismantled in Madurai,murder,Madurai,under_investigation,2025-05-06T22:12:28Z,SYNTHETIC,2026-09-07T05:41:13.209650Z
+CS000043,CASE-0043,Fraud syndicate in ,fraud,Madurai,under_investigation,2025-09-30T13:23:21Z,SYNTHETIC,2026-09-07T05:41:13.209731Z
+CS000044,CASE-0044,Investigation into Cybercrime at Pappanaickenpalayam,cybercrime,Erode,closed,2024-09-25T16:49:56Z,SYNTHETIC,2026-09-07T05:41:13.209811Z
+CS000045,CASE-0045,Robbery corridor case — Salem,robbery,Salem,open,2026-05-04T17:18:39Z,SYNTHETIC,2026-09-07T05:41:13.209890Z
+CS000046,CASE-0046,Operation Cobra — Smuggling probe (Villupuram),smuggling,Villupuram,under_investigation,2026-06-07T00:44:01Z,SYNTHETIC,2026-09-07T05:41:13.210092Z
+CS000047,CASE-0047,Murder racket dismantled in Salem,murder,Salem,under_investigation,2024-12-30T23:09:48Z,SYNTHETIC,2026-09-07T05:41:13.210217Z
+CS000048,CASE-0048,Smuggling syndicate in ,smuggling,Coimbatore,under_investigation,2026-05-08T06:08:16Z,SYNTHETIC,2026-09-07T05:41:13.210298Z
+CS000049,CASE-0049,Investigation into Narcotics Trafficking at Estancia,narcotics trafficking,Chennai,under_investigation,2025-11-22T17:57:25Z,SYNTHETIC,2026-09-07T05:41:13.210398Z
+CS000050,CASE-0050,Money Laundering corridor case — Madurai,money laundering,Madurai,open,2025-10-25T00:23:15Z,SYNTHETIC,2026-09-07T05:41:13.210574Z
+CS000051,CASE-0051,Operation Redline — Money Laundering probe (Coimbatore),money laundering,Coimbatore,open,2024-11-11T13:19:52Z,SYNTHETIC,2026-09-07T05:41:13.210755Z
+CS000052,CASE-0052,Money Laundering racket dismantled in Chennai,money laundering,Chennai,open,2024-01-24T06:05:05Z,SYNTHETIC,2026-09-07T05:41:13.210875Z
+CS000053,CASE-0053,Robbery syndicate in ,robbery,Salem,under_investigation,2025-11-27T14:38:31Z,SYNTHETIC,2026-09-07T05:41:13.211004Z
+CS000054,CASE-0054,Investigation into Extortion at Mylapore,extortion,Salem,open,2026-03-16T11:33:00Z,SYNTHETIC,2026-09-07T05:41:13.211117Z
+CS000055,CASE-0055,Robbery corridor case — Chengalpattu,robbery,Chengalpattu,closed,2024-09-27T12:02:45Z,SYNTHETIC,2026-09-07T05:41:13.211248Z
+CS000056,CASE-0056,Operation Hardcourt — Fraud probe (Coimbatore),fraud,Coimbatore,open,2024-05-16T00:35:46Z,SYNTHETIC,2026-09-07T05:41:13.211367Z
+CS000057,CASE-0057,Narcotics Trafficking racket dismantled in Chennai,narcotics trafficking,Chennai,closed,2025-12-10T04:16:44Z,SYNTHETIC,2026-09-07T05:41:13.211493Z
+CS000058,CASE-0058,Fraud syndicate in ,fraud,Theni,open,2026-02-15T05:58:39Z,SYNTHETIC,2026-09-07T05:41:13.211676Z
+CS000059,CASE-0059,Investigation into Cybercrime at Washermenpet,cybercrime,Salem,open,2025-11-29T12:33:24Z,SYNTHETIC,2026-09-07T05:41:13.211801Z
+CS000060,CASE-0060,Narcotics Trafficking corridor case — Kanniyakumari,narcotics trafficking,Kanniyakumari,open,2025-09-05T06:23:28Z,SYNTHETIC,2026-09-07T05:41:13.211926Z
+CS000061,CASE-0061,Operation Redline — Extortion probe (Kancheepuram),extortion,Kancheepuram,open,2025-03-04T20:32:19Z,SYNTHETIC,2026-09-07T05:41:13.212105Z
+CS000062,CASE-0062,Robbery racket dismantled in Erode,robbery,Erode,open,2025-07-04T01:18:42Z,SYNTHETIC,2026-09-07T05:41:13.212231Z
+CS000063,CASE-0063,Narcotics Trafficking syndicate linked to ,narcotics trafficking,Chengalpattu,open,2025-12-07T18:11:40Z,SYNTHETIC,2026-09-07T05:41:13.212391Z
+CS000064,CASE-0064,Investigation into Murder at Palayamkottai,murder,Thanjavur,under_investigation,2026-07-11T16:48:53Z,SYNTHETIC,2026-09-07T05:41:13.212583Z
+CS000065,CASE-0065,Robbery corridor case — Erode,robbery,Erode,open,2024-08-30T10:57:18Z,SYNTHETIC,2026-09-07T05:41:13.212706Z
+CS000066,CASE-0066,Operation Sandstorm — Robbery probe (Chengalpattu),robbery,Chengalpattu,open,2024-03-03T17:31:50Z,SYNTHETIC,2026-09-07T05:41:13.212831Z
+CS000067,CASE-0067,Cybercrime racket dismantled in Tiruchchirappalli,cybercrime,Tiruchchirappalli,open,2024-07-24T00:46:13Z,SYNTHETIC,2026-09-07T05:41:13.212965Z
+CS000068,CASE-0068,Extortion syndicate in ,extortion,Madurai,under_investigation,2024-10-02T19:11:32Z,SYNTHETIC,2026-09-07T05:41:13.213089Z
+CS000069,CASE-0069,Investigation into Robbery at Gandhipuram,robbery,Kancheepuram,open,2025-07-21T18:17:22Z,SYNTHETIC,2026-09-07T05:41:13.213210Z
+CS000070,CASE-0070,Extortion corridor case — Kancheepuram,extortion,Kancheepuram,closed,2024-11-29T08:56:44Z,SYNTHETIC,2026-09-07T05:41:13.213334Z
+CS000071,CASE-0071,Operation Starlit — Money Laundering probe (Thiruvarur),money laundering,Thiruvarur,under_investigation,2024-09-15T07:19:36Z,SYNTHETIC,2026-09-07T05:41:13.213495Z
+CS000072,CASE-0072,Money Laundering racket dismantled in Coimbatore,money laundering,Coimbatore,closed,2026-06-21T17:54:49Z,SYNTHETIC,2026-09-07T05:41:13.213632Z
+CS000073,CASE-0073,Fraud syndicate in ,fraud,Salem,open,2025-07-17T13:50:25Z,SYNTHETIC,2026-09-07T05:41:13.213757Z
+CS000074,CASE-0074,Investigation into Counterfeiting at Bharathi Bazaar,counterfeiting,Erode,under_investigation,2026-05-24T03:06:22Z,SYNTHETIC,2026-09-07T05:41:13.213880Z
+CS000075,CASE-0075,Extortion corridor case — Virudhunagar,extortion,Virudhunagar,open,2025-10-31T05:10:32Z,SYNTHETIC,2026-09-07T05:41:13.214059Z
+CS000076,CASE-0076,Operation Windchime — Money Laundering probe (Theni),money laundering,Theni,under_investigation,2025-06-21T12:36:23Z,SYNTHETIC,2026-09-07T05:41:13.214184Z
+CS000077,CASE-0077,Robbery racket dismantled in Villupuram,robbery,Villupuram,open,2024-11-06T01:08:34Z,SYNTHETIC,2026-09-07T05:41:13.214356Z
+CS000078,CASE-0078,Smuggling syndicate linked to ,smuggling,Madurai,open,2026-06-22T04:49:40Z,SYNTHETIC,2026-09-07T05:41:13.214498Z
+CS000079,CASE-0079,Investigation into Vehicle Theft at Royapuram,vehicle theft,Tiruchchirappalli,open,2025-04-23T17:20:53Z,SYNTHETIC,2026-09-07T05:41:13.214670Z
+CS000080,CASE-0080,Extortion corridor case — Chengalpattu,extortion,Chengalpattu,under_investigation,2024-10-13T21:53:58Z,SYNTHETIC,2026-09-07T05:41:13.214805Z
+CS000081,CASE-0081,Operation Ironbite — Counterfeiting probe (Erode),counterfeiting,Erode,under_investigation,2025-09-15T14:04:40Z,SYNTHETIC,2026-09-07T05:41:13.214990Z
+CS000082,CASE-0082,Extortion racket dismantled in Ramanathapuram,extortion,Ramanathapuram,open,2025-08-10T02:41:59Z,SYNTHETIC,2026-09-07T05:41:13.215123Z
+CS000083,CASE-0083,Money Laundering syndicate in ,money laundering,Kanniyakumari,open,2026-05-03T21:57:14Z,SYNTHETIC,2026-09-07T05:41:13.215320Z
+CS000084,CASE-0084,Investigation into Murder at Sulur,murder,Salem,under_investigation,2026-06-10T06:34:34Z,SYNTHETIC,2026-09-07T05:41:13.215447Z
+CS000085,CASE-0085,Money Laundering corridor case — Erode,money laundering,Erode,closed,2025-01-12T02:21:39Z,SYNTHETIC,2026-09-07T05:41:13.215571Z
+CS000086,CASE-0086,Operation Windchime — Robbery probe (Coimbatore),robbery,Coimbatore,open,2025-08-31T07:20:31Z,SYNTHETIC,2026-09-07T05:41:13.215762Z
+CS000087,CASE-0087,Counterfeiting racket dismantled in Erode,counterfeiting,Erode,open,2024-07-25T15:45:12Z,SYNTHETIC,2026-09-07T05:41:13.215886Z
+CS000088,CASE-0088,Money Laundering syndicate linked to ,money laundering,Thanjavur,open,2025-11-25T07:38:20Z,SYNTHETIC,2026-09-07T05:41:13.216065Z
+CS000089,CASE-0089,Investigation into Robbery at Sundarankottai,robbery,Vellore,under_investigation,2025-11-01T14:07:42Z,SYNTHETIC,2026-09-07T05:41:13.216254Z
+CS000090,CASE-0090,Money Laundering corridor case — Thanjavur,money laundering,Thanjavur,open,2024-02-15T05:00:50Z,SYNTHETIC,2026-09-07T05:41:13.216388Z
+CS000091,CASE-9091,Cross-district extortion - hidden network probe,extortion,Chengalpattu,open,2024-10-14T06:15:34Z,SYNTHETIC,2026-09-07T05:41:13.219491Z
