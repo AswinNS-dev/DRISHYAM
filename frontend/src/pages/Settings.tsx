@@ -62,7 +62,7 @@ export default function Settings() {
       <div className="flex-none px-6 py-4 border-b border-slate-800/90 bg-slate-950/90 backdrop-blur-md">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-sky-950/40 border border-sky-500/30 text-sky-400 flex items-center justify-center shadow-[0_0_12px_rgba(14,165,233,0.2)]">
+            <div className="w-9 h-9 rounded-lg bg-sky-950/40 border border-sky-500/30 text-sky-400 flex items-center justify-center">
               <SettingsIcon size={18} />
             </div>
             <div>
@@ -88,7 +88,7 @@ export default function Settings() {
           </div>
 
           {savedSuccess && (
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-950/60 border border-emerald-500/50 text-xs font-semibold text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.3)] animate-in fade-in duration-200">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-950/60 border border-emerald-500/50 text-xs font-semibold text-emerald-300 animate-in fade-in duration-200">
               <CheckCircle2 size={15} className="text-emerald-400" />
               <span>Engine Parameters Calibrated & Saved Successfully</span>
             </div>
@@ -130,7 +130,7 @@ export default function Settings() {
                       onClick={() => setAiProvider(prov.id)}
                       className={`p-4 rounded-xl border transition-all cursor-pointer relative ${
                         isSelected
-                          ? "border-sky-500/70 bg-sky-950/40 text-white shadow-[0_0_15px_rgba(14,165,233,0.15)] ring-1 ring-sky-500/50"
+                          ? "border-sky-500/70 bg-sky-950/40 text-white ring-1 ring-sky-500/50"
                           : "border-slate-800 bg-slate-950/60 hover:border-slate-700 hover:bg-slate-950/90 text-slate-300"
                       }`}
                     >
@@ -145,7 +145,7 @@ export default function Settings() {
                         </div>
                         <div className="flex flex-col items-end gap-2 flex-shrink-0">
                           {isSelected ? (
-                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
                           ) : (
                             <span className="w-2.5 h-2.5 rounded-full border border-slate-700" />
                           )}

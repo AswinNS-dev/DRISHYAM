@@ -1,0 +1,19 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "provider": {
+        "bai": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "b.ai",
+            "options": {
+                "baseURL": "https://api.b.ai/v1",
+                "apiKey": "sk-1e8y9p3vqry65rppqykchdfbnuyw703c"
+            },
+            "models": {
+                "glm-5.3-flash": {
+                    "name": "qwen3.8-flash"
+                }
+            }
+        }
+    },
+    "model": "bai/glm-5.3-flash"
+}

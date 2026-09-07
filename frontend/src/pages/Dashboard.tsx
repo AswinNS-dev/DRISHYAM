@@ -251,7 +251,7 @@ export default function Dashboard() {
   }, [data]);
 
   return (
-    <div className={`p-4 md:p-5 space-y-4 page-enter max-w-[1600px] mx-auto font-sans transition-colors duration-200 ${isDark ? "text-slate-100" : "text-slate-900"}`}>
+    <div className={`dashboard-page p-4 md:p-5 space-y-4 page-enter max-w-[1600px] mx-auto font-sans transition-colors duration-200 ${isDark ? "text-slate-100" : "text-slate-900"}`}>
       {/* ── Top Header & State Intelligence Banner ── */}
       <div className={`flex flex-col lg:flex-row lg:items-center justify-between gap-3 border-b pb-4 ${isDark ? "border-slate-800/80" : "border-slate-200"}`}>
         <div>
@@ -269,7 +269,7 @@ export default function Dashboard() {
               </span>
             )}
           </div>
-          <h1 className={`text-2xl md:text-3xl font-black tracking-tight flex items-center gap-2 ${isDark ? "text-white text-glow-white" : "text-slate-900"}`}>
+          <h1 className={`text-2xl md:text-3xl font-black tracking-tight flex items-center gap-2 ${isDark ? "text-white" : "text-slate-900"}`}>
             <span>Crime Intelligence Overview</span>
           </h1>
           <p className={`text-xs md:text-sm mt-1 max-w-3xl leading-relaxed font-medium ${isDark ? "text-slate-200" : "text-slate-700"}`}>

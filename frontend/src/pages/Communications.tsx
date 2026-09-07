@@ -293,9 +293,9 @@ export default function Communications() {
                   key={item.id}
                   className={`panel p-4 rounded-lg border transition-all space-y-3 ${
                     isFrequent
-                      ? "bg-gradient-to-br from-rose-950/20 via-slate-900/90 to-slate-900 border-rose-500/50 shadow-[0_0_15px_rgba(244,63,94,0.1)]"
+                      ? "bg-gradient-to-br from-rose-950/20 via-slate-900/90 to-slate-900 border-rose-500/50 shadow-md"
                       : isMedium
-                      ? "bg-gradient-to-br from-amber-950/20 via-slate-900/90 to-slate-900 border-amber-500/50 shadow-[0_0_15px_rgba(245,158,11,0.08)]"
+                      ? "bg-gradient-to-br from-amber-950/20 via-slate-900/90 to-slate-900 border-amber-500/50 shadow-sm"
                       : "bg-gradient-to-br from-sky-950/10 via-slate-900/90 to-slate-900 border-slate-800 hover:border-slate-700"
                   }`}
                 >
@@ -450,7 +450,7 @@ export default function Communications() {
                         <span
                           className={`font-mono text-xs font-bold px-2 py-0.5 rounded-full border ${
                             isFrequent
-                              ? "bg-rose-950/80 text-rose-300 border-rose-600/60 shadow-[0_0_10px_rgba(244,63,94,0.2)]"
+                              ? "bg-rose-950/80 text-rose-300 border-rose-600/60"
                               : isMedium
                               ? "bg-amber-950/80 text-amber-300 border-amber-600/60"
                               : "bg-sky-950/80 text-sky-300 border-sky-700/60"

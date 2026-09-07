@@ -111,7 +111,7 @@ export default function Timeline() {
         );
       case "DURING":
         return (
-          <span className="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-amber-500 text-slate-950 border border-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.5)] flex items-center gap-1 whitespace-nowrap">
+          <span className="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-amber-500 text-slate-950 border border-amber-300 shadow-sm flex items-center gap-1 whitespace-nowrap">
             <AlertCircle size={9} className="animate-ping text-slate-950" />
             <span>INCIDENT DAY</span>
           </span>
@@ -131,9 +131,9 @@ export default function Timeline() {
   function getEventVisualConfig(type: string, rel?: string) {
     if (rel === "DURING") {
       return {
-        border: "border-l-4 border-l-amber-500 border-amber-500/40 shadow-[0_0_15px_rgba(245,158,11,0.15)]",
+        border: "border-l-4 border-l-amber-500 border-amber-500/40 shadow-md",
         gradient: "bg-gradient-to-r from-amber-950/30 via-slate-900/95 to-slate-900",
-        spineDot: "border-amber-400 bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.8)]",
+        spineDot: "border-amber-400 bg-amber-500",
         glowText: "text-amber-300",
       };
     }
@@ -142,35 +142,35 @@ export default function Timeline() {
         return {
           border: "border-l-4 border-l-amber-500 border-slate-800 hover:border-amber-500/50",
           gradient: "bg-gradient-to-r from-amber-950/20 via-slate-900/90 to-slate-900",
-          spineDot: "border-amber-400 bg-amber-950 shadow-[0_0_8px_rgba(245,158,11,0.5)]",
+          spineDot: "border-amber-400 bg-amber-950",
           glowText: "text-amber-300",
         };
       case "TRANSACTION":
         return {
           border: "border-l-4 border-l-emerald-500 border-slate-800 hover:border-emerald-500/50",
           gradient: "bg-gradient-to-r from-emerald-950/20 via-slate-900/90 to-slate-900",
-          spineDot: "border-emerald-400 bg-emerald-950 shadow-[0_0_8px_rgba(16,185,129,0.5)]",
+          spineDot: "border-emerald-400 bg-emerald-950",
           glowText: "text-emerald-300",
         };
       case "COMMUNICATION":
         return {
           border: "border-l-4 border-l-sky-500 border-slate-800 hover:border-sky-500/50",
           gradient: "bg-gradient-to-r from-sky-950/20 via-slate-900/90 to-slate-900",
-          spineDot: "border-sky-400 bg-sky-950 shadow-[0_0_8px_rgba(56,189,248,0.5)]",
+          spineDot: "border-sky-400 bg-sky-950",
           glowText: "text-sky-300",
         };
       case "ANOMALY_FLAGGED":
         return {
           border: "border-l-4 border-l-rose-500 border-slate-800 hover:border-rose-500/50",
           gradient: "bg-gradient-to-r from-rose-950/25 via-slate-900/90 to-slate-900",
-          spineDot: "border-rose-400 bg-rose-950 shadow-[0_0_8px_rgba(244,63,94,0.5)]",
+          spineDot: "border-rose-400 bg-rose-950",
           glowText: "text-rose-300",
         };
       case "TACTICAL_ALERT":
         return {
           border: "border-l-4 border-l-purple-500 border-slate-800 hover:border-purple-500/50",
           gradient: "bg-gradient-to-r from-purple-950/20 via-slate-900/90 to-slate-900",
-          spineDot: "border-purple-400 bg-purple-950 shadow-[0_0_8px_rgba(168,85,247,0.5)]",
+          spineDot: "border-purple-400 bg-purple-950",
           glowText: "text-purple-300",
         };
       default:

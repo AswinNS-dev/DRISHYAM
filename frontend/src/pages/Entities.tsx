@@ -707,10 +707,10 @@ export default function Entities() {
                               <span
                                 className={`w-1.5 h-1.5 rounded-full ${
                                   risk === "high"
-                                    ? "bg-rose-400 shadow-[0_0_6px_#f43f5e]"
+                                    ? "bg-rose-400"
                                     : risk === "medium"
-                                    ? "bg-amber-400 shadow-[0_0_6px_#f59e0b]"
-                                    : "bg-emerald-400 shadow-[0_0_6px_#10b981]"
+                                    ? "bg-amber-400"
+                                    : "bg-emerald-400"
                                 }`}
                               />
                               <span>{risk}</span>
@@ -826,7 +826,7 @@ export default function Entities() {
                     onClick={() => openDossier(e.id)}
                     className={`p-4 rounded-xl cursor-pointer transition-all border shadow-lg ${
                       isSelected
-                        ? "bg-slate-900 border-sky-500 shadow-[0_0_16px_rgba(56,189,248,0.25)] text-white"
+                        ? "bg-slate-900 border-sky-500 shadow-md text-white"
                         : "bg-slate-900/95 border-slate-800/90 hover:border-slate-700 hover:bg-slate-900 text-slate-300"
                     }`}
                   >

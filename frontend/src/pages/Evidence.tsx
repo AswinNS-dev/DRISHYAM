@@ -686,7 +686,7 @@ export default function Evidence() {
                             verified ? "text-emerald-400 text-glow-emerald" : "text-emerald-500/80"
                           }`}
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#10b981]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                           <span>{verified ? "VERIFIED" : "SEALED"}</span>
                         </span>
 
@@ -820,7 +820,7 @@ export default function Evidence() {
                                 verified ? "bg-emerald-950/40 text-emerald-300 border border-emerald-800/40" : "bg-slate-800 text-slate-300"
                               }`}
                             >
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#10b981]" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                               <span>{verified ? "VERIFIED" : "SEALED"}</span>
                             </span>
                           </td>

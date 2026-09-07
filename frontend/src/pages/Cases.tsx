@@ -205,7 +205,7 @@ export default function Cases() {
                 onClick={() => openCase(c.id)}
                 className={`p-3 rounded-xl cursor-pointer transition-all border ${
                   isSelected
-                    ? "bg-slate-900 border-sky-500 shadow-[0_0_16px_rgba(56,189,248,0.2)] text-white"
+                    ? "bg-slate-900 border-sky-500 shadow-md text-white"
                     : "bg-slate-900/60 border-slate-800/80 hover:border-slate-700 hover:bg-slate-900/90 text-slate-300"
                 }`}
               >

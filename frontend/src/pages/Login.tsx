@@ -127,7 +127,7 @@ export default function Login() {
                     <div className="flex items-start gap-3.5 min-w-0">
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border transition-colors ${
                         isSelected
-                          ? "bg-sky-500 text-slate-950 border-sky-400 shadow-[0_0_12px_rgba(14,165,233,0.5)]"
+                          ? "bg-sky-500 text-slate-950 border-sky-400"
                           : "bg-slate-950 text-slate-400 border-slate-800 group-hover:text-slate-200"
                       }`}>
                         <Icon size={18} />
@@ -195,7 +195,7 @@ export default function Login() {
           <div className="bg-slate-900/95 border border-slate-800/90 rounded-2xl p-7 sm:p-8 shadow-2xl space-y-6 backdrop-blur-md">
             {/* Header with Department Icon */}
             <div className="text-center space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-sky-950/50 border border-sky-500/40 text-sky-400 font-black text-xs flex items-center justify-center mx-auto shadow-[0_0_15px_rgba(14,165,233,0.3)]">
+              <div className="w-10 h-10 rounded-xl bg-sky-950/50 border border-sky-500/40 text-sky-400 font-black text-xs flex items-center justify-center mx-auto">
                 CI
               </div>
               <div>

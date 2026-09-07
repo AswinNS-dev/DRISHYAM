@@ -452,7 +452,7 @@ export default function Transactions() {
                     <div
                       className={`font-mono font-bold text-sm inline-block px-2.5 py-1 rounded-md ${
                         txn.flagged
-                          ? "text-amber-300 bg-amber-950/60 border border-amber-600/60 shadow-[0_0_12px_rgba(245,158,11,0.15)]"
+                          ? "text-amber-300 bg-amber-950/60 border border-amber-600/60"
                           : "text-emerald-400 bg-emerald-950/40 border border-emerald-800/40"
                       }`}
                     >
